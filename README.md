@@ -1,6 +1,6 @@
 # Trabajo práctico integrador - Programacion en Ambiente Web 2023
 
-## Sitio web de reviews de Música (Inspiracion: [Letterbox](https://letterboxd.com/))
+## SoundHub: sitio web de reviews de Música (Inspiracion: [Letterbox](https://letterboxd.com/))
 
 ### Visión general:
 La propuesta es desarrollar un sitio web que combine características de un blog y una red social, permitiendo a los usuarios realizar reviews de música, ya sea sobre canciones o álbumes. El objetivo principal es brindar a los usuarios una plataforma interactiva donde puedan compartir sus opiniones sobre música y descubrir nuevas recomendaciones a partir de las opiniones de otros usaurios.
