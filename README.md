@@ -2,9 +2,9 @@
 
 ## SongHub: sitio web de reviews de Música (Inspiracion: [Letterbox](https://letterboxd.com/))
 
-### [Autores](https://github.com/matiasgimenezdev/trabajo-integrador-paw/blob/main/AUTHORS.md)
+### [Autores](https://github.com/matiasgimenezdev/trabajo-integrador-paw/blob/main/docs/AUTHORS.md)
 
-### [Instrucciones de ejecucion](https://github.com/matiasgimenezdev/trabajo-integrador-paw/blob/main/INSTRUCTIONS.md)
+### [Instrucciones de ejecucion](https://github.com/matiasgimenezdev/trabajo-integrador-paw/blob/main/docs/INSTRUCTIONS.md)
 
 ### Visión general
 
