@@ -63,6 +63,5 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
     -   Proporcionar instrucciones detalladas sobre cómo configurar el entorno de desarrollo, instalar las dependencias y ejecutar la aplicación en el entorno de producción.
 
 ### Sitemap
-
-![Sitemap](https://github.com/matiasgimenezdev/trabajo-integrador-paw/assets/117539520/b6196173-a145-45d7-9b58-396a008c892d)
+![Sitemap](https://github.com/matiasgimenezdev/trabajo-integrador-paw/assets/117539520/38e73ecc-c82f-41b7-b847-f36da742be01)
 
