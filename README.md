@@ -22,7 +22,7 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
 
 2. Perfiles de usuario (tiempo estimado: 6 días)
 
-    - Páginas de perfil para cada usuario, donde puedan agregar información personal y una foto de perfil.
+    - Páginas de perfil para cada usuario, donde puedan agregar información personal, una descripcion, una foto de perfil y hasta 5 álbumes favoritos.
     - Listado de todas los posts realizados por el usuario.
 
 3. Búsqueda y navegación (tiempo estimado: 6 dias)
