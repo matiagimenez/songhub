@@ -61,3 +61,8 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
 -   Documentación y despliegue:
     -   Crear una documentación clara que especifique los requisitos y los pasos necesarios para el despliegue del sitio web.
     -   Proporcionar instrucciones detalladas sobre cómo configurar el entorno de desarrollo, instalar las dependencias y ejecutar la aplicación en el entorno de producción.
+
+### Sitemap
+
+![Sitemap](https://github.com/matiasgimenezdev/trabajo-integrador-paw/assets/117539520/b6196173-a145-45d7-9b58-396a008c892d)
+
