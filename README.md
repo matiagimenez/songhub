@@ -2,15 +2,15 @@
 
 ## SongHub: sitio web de reviews de Música (Inspiracion: [Letterbox](https://letterboxd.com/))
 
-### Autores
+### [Autores](https://github.com/matiasgimenezdev/trabajo-integrador-paw/blob/main/AUTHORS.md)
 
-### Instrucciones de ejecucion
+### [Instrucciones de ejecucion](https://github.com/matiasgimenezdev/trabajo-integrador-paw/blob/main/INSTRUCTIONS.md)
 
-### Visión general:
+### Visión general
 
 La propuesta es desarrollar un sitio web que combine características de un blog y una red social, permitiendo a los usuarios realizar reviews de música, ya sea sobre canciones o álbumes. El objetivo principal es brindar a los usuarios una plataforma interactiva donde puedan compartir sus opiniones sobre música y descubrir nuevas recomendaciones a partir de las opiniones de otros usaurios.
 
-### Funcionalidades:
+### Funcionalidades
 
 El presupuesto funcional es estimado y entendemos que podria variar ante problemas que seguramente encontremos durante la implementación y cualquier requisito adicional que pueda surgir durante el proceso.
 
