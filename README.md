@@ -66,4 +66,4 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
 ![Sitemap](https://github.com/matiasgimenezdev/trabajo-integrador-paw/assets/117539520/38e73ecc-c82f-41b7-b847-f36da742be01)
 
 ### 3. Wireframes
-Se encuentran en este [proyecto Figma](https://www.figma.com/file/NwlRVzUqfsnZq5wf3lhRXU/TP-Integrador?type=design&node-id=234%3A6&t=WTJ9vOxfqnIEATJf-1). Al abrir el enlace te permite solicitar el acceso al proyecto Figma para poder visualizarlo.
+Se encuentran en el siguiente [proyecto](https://www.figma.com/file/NwlRVzUqfsnZq5wf3lhRXU/TP-Integrador?type=design&node-id=234%3A6&t=WTJ9vOxfqnIEATJf-1) Figma. Es el mismo proyecto que utilizamos para las practicas de la cursada, por lo tanto, hay posibilidad de que algun docente tenga acceso al mismo. De todas formas, al abrir el enlace te permite solicitar el acceso al proyecto. 
