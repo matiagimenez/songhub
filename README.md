@@ -66,4 +66,4 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
 ![Sitemap](https://github.com/matiasgimenezdev/trabajo-integrador-paw/assets/117539520/38e73ecc-c82f-41b7-b847-f36da742be01)
 
 ### [Wireframes](https://www.figma.com/file/NwlRVzUqfsnZq5wf3lhRXU/TP-Integrador?type=design&node-id=234%3A6&t=WTJ9vOxfqnIEATJf-1)
-(Solicitar el acceso al proyecto en caso de no tenerlo)
+Solicitar el acceso al proyecto Figma en caso de no tenerlo
