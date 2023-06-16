@@ -24,7 +24,7 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
 
     - Páginas de perfil para cada usuario, donde puedan agregar información personal, una descripcion, una foto de perfil y hasta 5 álbumes favoritos.
     - Listado de todas los posts realizados por el usuario.
-    - Se podran filtrar los posts por tags agregados al momento de realizarlo
+    - Se podran filtrar los posts por tags agregados al post.
     - Artistas reconocidos tendran la posibilidad de tener un perfil verificado
 
 3. Búsqueda y navegación (tiempo estimado: 6 dias)
