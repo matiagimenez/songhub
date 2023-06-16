@@ -36,6 +36,7 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
 
     - Un usuario debe poder escribir y publicar reviews sobre canciones o álbumes.
     - En un post de este estilo debe poder incluir calificaciones, algun comentarios y etiquetas relevantes.
+    - Las reviews pueden ser privadas (solo visibles por el usuario) o publicas (visibles por todo el mundo).
 
 5. Interacción social (tiempo estimado: 7 o más días)
     - Comentarios en las reviews para fomentar la participación y el debate.
