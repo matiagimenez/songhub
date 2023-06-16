@@ -6,11 +6,11 @@
 
 ### [Instrucciones de ejecucion](https://github.com/matiasgimenezdev/trabajo-integrador-paw/blob/main/docs/INSTRUCTIONS.md)
 
-### Visión general
+### 1. Visión general
 
 La propuesta es desarrollar un sitio web que combine características de un blog y una red social, permitiendo a los usuarios realizar reviews de música, ya sea sobre canciones o álbumes. El objetivo principal es brindar a los usuarios una plataforma interactiva donde puedan compartir sus opiniones sobre música y descubrir nuevas recomendaciones a partir de las opiniones de otros usaurios.
 
-### Funcionalidades
+#### Funcionalidades
 
 El presupuesto funcional es estimado y entendemos que podria variar ante problemas que seguramente encontremos durante la implementación y cualquier requisito adicional que pueda surgir durante el proceso.
 
@@ -40,9 +40,9 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
     - Sistema de me gustas/favoritos en los posts realizados por otro usuario.
     - Compartir las reviews en redes sociales como Twitter ([Twitter API](https://developer.twitter.com/en/docs/twitter-api) para autenticar a los usuarios y publicar tweets en su nombre).
 
-#### Tiempo total de trabajo estimado: 1 mes
+##### Tiempo total de trabajo estimado: 1 mes
 
-### Otras consideraciones
+#### Otras consideraciones
 
 -   Diseño y experiencia de usuario:
     -   Diseñar una interfaz de usuario atractiva y usable que proporcione una experiencia agradable para los usuarios tanto en navegadores móviles como de escritorio.
@@ -62,8 +62,8 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
     -   Crear una documentación clara que especifique los requisitos y los pasos necesarios para el despliegue del sitio web.
     -   Proporcionar instrucciones detalladas sobre cómo configurar el entorno de desarrollo, instalar las dependencias y ejecutar la aplicación en el entorno de producción.
 
-### Sitemap
+### 2. Sitemap
 ![Sitemap](https://github.com/matiasgimenezdev/trabajo-integrador-paw/assets/117539520/38e73ecc-c82f-41b7-b847-f36da742be01)
 
-### [Wireframes](https://www.figma.com/file/NwlRVzUqfsnZq5wf3lhRXU/TP-Integrador?type=design&node-id=234%3A6&t=WTJ9vOxfqnIEATJf-1)
+### 3. [Wireframes](https://www.figma.com/file/NwlRVzUqfsnZq5wf3lhRXU/TP-Integrador?type=design&node-id=234%3A6&t=WTJ9vOxfqnIEATJf-1)
 Solicitar el acceso al proyecto Figma en caso de no tenerlo habilitado
