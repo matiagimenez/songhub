@@ -1,0 +1,193 @@
+@import url('global/variables.css');
+
+body {
+	background-color: var(--color-violet-lightest);
+	font-family: var(--font-family);
+}
+
+main {
+	height: 100vh;
+	padding-top: 10%;
+}
+
+h1,
+h2,
+legend {
+	display: none;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	background-color: var(--color-white);
+	width: 80%;
+	height: 95%;
+	margin: auto;
+	border-radius: 10px;
+	background-image: url('https://i.pinimg.com/564x/c0/a6/8d/c0a68d8895db701afa779956585ed6c4.jpg');
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: 100% 35%;
+	align-content: flex-end;
+	gap: 0.5rem;
+}
+
+fieldset {
+	background-color: transparent;
+	border-color: transparent;
+	width: 100%;
+}
+
+.input-container {
+	width: 100%;
+	text-align: center;
+	margin-top: 0.8rem;
+}
+
+.input-container label {
+	display: block;
+	text-align: left;
+	margin-left: 0.7rem;
+	padding: 0.3rem;
+	color: var(--color-violet-dark);
+	font-size: 1rem;
+}
+
+.input-container input {
+	font-family: var(--font-family);
+	width: 85%;
+	height: 2rem;
+	border-radius: 6px;
+	background-color: transparent;
+	outline: none;
+	border: 1px solid var(--color-violet-light);
+}
+
+abbr {
+	text-decoration: none;
+	font-size: 0.8rem;
+	font-weight: bold;
+	margin-left: 0.3rem;
+}
+
+form fieldset a {
+	display: inline-block;
+	width: 90%;
+	text-align: right;
+	padding-top: 0.8rem;
+	margin: auto;
+}
+
+a {
+	font-weight: bold;
+	text-decoration: none;
+	color: var(--color-violet-dark);
+	font-size: 0.95rem;
+}
+
+.button-container {
+	width: 100%;
+	text-align: center;
+}
+
+.button-container input[type='submit'] {
+	background-color: var(--color-violet-dark);
+	display: block;
+	margin-left: 5%;
+	padding: 0;
+	width: 90%;
+	color: var(--color-white);
+	font-weight: bold;
+	outline: none;
+	border: none;
+	height: 2.5rem;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-top: 1rem;
+}
+
+.button-container button {
+	border: none;
+	outline: none;
+	background-color: var(--color-white);
+	font-family: var(--font-family);
+	color: var(--color-black);
+	font-weight: 500;
+	font-size: 14px;
+	padding-left: 8px;
+	padding-right: 8px;
+	height: 2.5rem;
+	margin-right: 24px;
+	margin-left: 5%;
+	margin-top: 1rem;
+	padding: 0;
+	width: 90%;
+	border-radius: 4px;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+	border: 1px solid #dadce0;
+	color: rgba(0, 0, 0, 0.54);
+	text-align: center;
+	cursor: pointer;
+}
+
+.button-container button span {
+	display: inline-block;
+	width: 2rem;
+	height: 100%;
+	vertical-align: middle;
+}
+
+.button-container button span img {
+	height: 100%;
+}
+
+.link-container {
+	padding: 15px;
+}
+
+@media (prefers-color-scheme: dark) {
+	main {
+		background-color: var(--color-violet-dark-black);
+	}
+
+	form {
+		background-color: var(--color-black);
+		color: var(--color-violet-dark-white);
+	}
+
+	.input-container label {
+		color: var(--color-violet-dark-white);
+	}
+
+	.input-container input {
+		border-color: var(--color-violet-dark-white);
+	}
+
+	.button-container input[type='submit'] {
+		border: 1px solid var(--color-white);
+	}
+
+	a {
+		color: var(--color-violet-lightest);
+	}
+}
+
+@media (min-height: 650px) {
+	form {
+		background-size: 100% 40%;
+	}
+}
+
+@media (min-height: 700px) {
+	form {
+		background-size: 100% 45%;
+	}
+}
+
+@media (min-height: 700px) {
+	form {
+		background-size: 100% 50%;
+	}
+}
