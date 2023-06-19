@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500&display=swap');
+:root {
+	--color-violet-lightest: #ba93ae; /* Violeta más claro */
+	--color-violet-light: #834370; /* Violeta claro */
+	--color-violet: #723260; /* Violeta */
+	--color-violet-dark: #4f1140; /* Violeta oscuro */
+	--color-violet-dark-black: #000009; /* Violeta casi negro*/
+	--color-violet-darkest: #1b0026; /* Violeta más oscuro */
+	--color-black: #000000; /* Negro base*/
+	--color-white: #ffffff; /* Blanco base*/
+	--color-grey-light: #5e6871; /* Gris claro*/
+	--color-grey-dark: #2e3045; /* Gris oscuro*/
+	--color-green: #14ff00; /* Verde - Exito*/
+	--color-green: #c30303; /* Rojo - Error*/
+	--font-family: 'Roboto', sans-serif;
+}
