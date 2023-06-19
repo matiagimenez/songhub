@@ -7,7 +7,7 @@ body {
 
 main {
 	height: 100vh;
-	padding-top: 10%;
+	padding-top: 5%;
 }
 
 h1,
@@ -49,7 +49,8 @@ fieldset {
 .input-container label {
 	display: block;
 	text-align: left;
-	margin-left: 0.7rem;
+	margin-left: 1.5rem;
+	margin-bottom: 0.4rem;
 	padding: 0.3rem;
 	color: var(--color-violet-dark);
 	font-size: 1rem;
@@ -57,7 +58,7 @@ fieldset {
 
 .input-container input {
 	font-family: var(--font-family);
-	width: 85%;
+	width: 87%;
 	height: 2rem;
 	border-radius: 6px;
 	background-color: transparent;
@@ -119,8 +120,6 @@ a {
 	padding-left: 8px;
 	padding-right: 8px;
 	height: 2.5rem;
-	margin-right: 24px;
-	margin-left: 5%;
 	margin-top: 1rem;
 	padding: 0;
 	width: 90%;
@@ -147,6 +146,122 @@ a {
 	padding: 15px;
 }
 
+@media (min-height: 650px) {
+	form {
+		background-size: 100% 40%;
+	}
+}
+
+@media (min-height: 700px) {
+	form {
+		background-size: 100% 47%;
+	}
+}
+
+@media (min-height: 800px) {
+	.link-container {
+		padding: 25px;
+	}
+}
+
+@media (min-height: 870px) {
+	form {
+		background-size: 100% 55%;
+	}
+}
+
+@media (min-height: 1000px) {
+	form {
+		background-size: 100% 65%;
+	}
+}
+
+@media (min-width: 900px) {
+	main {
+		height: 100vh;
+		padding-top: 15%;
+	}
+	header {
+		width: 50%;
+		align-self: flex-start;
+		padding-left: 1.5rem;
+		padding-left: 2.5%;
+	}
+
+	h1,
+	h2 {
+		display: block;
+		color: var(--color-violet-light);
+	}
+
+	h1 {
+		font-size: 2.5rem;
+		font-weight: bold;
+		margin-bottom: 0.5rem;
+	}
+	h2 {
+		font-size: 1.5rem;
+	}
+
+	form {
+		width: 95%;
+		height: 75%;
+		background-size: 50% 100%;
+		background-position: right;
+		justify-content: center;
+	}
+
+	fieldset {
+		align-self: flex-start;
+		width: 50%;
+		padding-left: 0.8rem;
+	}
+	.input-container {
+		width: 100%;
+	}
+	.input-container input {
+		width: 90%;
+	}
+
+	.input-container label {
+		margin-left: 3%;
+		margin-bottom: 0.3rem;
+	}
+
+	.button-container {
+		width: 50%;
+		align-self: flex-start;
+	}
+
+	.link-container {
+		align-self: flex-start;
+		width: 50%;
+		text-align: center;
+	}
+}
+
+@media (min-width: 1300px) {
+	main {
+		height: 100vh;
+		padding-top: 10%;
+	}
+
+	form {
+		height: 85%;
+	}
+}
+
+@media (min-width: 1400px) {
+	main {
+		height: 100vh;
+		padding-top: 10%;
+	}
+
+	form {
+		height: 90%;
+	}
+}
+
 @media (prefers-color-scheme: dark) {
 	main {
 		background-color: var(--color-violet-dark-black);
@@ -155,6 +270,7 @@ a {
 	form {
 		background-color: var(--color-black);
 		color: var(--color-violet-dark-white);
+		background-image: url('https://i.pinimg.com/564x/54/29/d9/5429d95ae015fe24d8e30578c82ea7de.jpg');
 	}
 
 	.input-container label {
@@ -167,27 +283,15 @@ a {
 
 	.button-container input[type='submit'] {
 		border: 1px solid var(--color-white);
+		background-color: var(--color-violet-darkest);
 	}
 
 	a {
 		color: var(--color-violet-lightest);
 	}
-}
 
-@media (min-height: 650px) {
-	form {
-		background-size: 100% 40%;
-	}
-}
-
-@media (min-height: 700px) {
-	form {
-		background-size: 100% 45%;
-	}
-}
-
-@media (min-height: 700px) {
-	form {
-		background-size: 100% 50%;
+	h1,
+	h2 {
+		color: var(--color-violet-dark-white);
 	}
 }
