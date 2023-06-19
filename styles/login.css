@@ -23,7 +23,7 @@ form {
 	align-items: center;
 	background-color: var(--color-white);
 	width: 80%;
-	height: 95%;
+	height: 90%;
 	margin: auto;
 	border-radius: 10px;
 	background-image: url('https://i.pinimg.com/564x/c0/a6/8d/c0a68d8895db701afa779956585ed6c4.jpg');
@@ -63,6 +63,8 @@ fieldset {
 	border-radius: 6px;
 	background-color: transparent;
 	outline: none;
+	padding: 0rem 0.5rem;
+	font-size: 1rem;
 	border: 1px solid var(--color-violet-light);
 }
 
@@ -86,6 +88,10 @@ a {
 	text-decoration: none;
 	color: var(--color-violet-dark);
 	font-size: 0.95rem;
+}
+
+a:hover {
+	color: var(--color-violet-dark-black);
 }
 
 .button-container {
@@ -166,13 +172,13 @@ a {
 
 @media (min-height: 870px) {
 	form {
-		background-size: 100% 55%;
+		background-size: 100% 50%;
 	}
 }
 
 @media (min-height: 1000px) {
 	form {
-		background-size: 100% 65%;
+		background-size: 100% 60%;
 	}
 }
 
@@ -181,6 +187,7 @@ a {
 		height: 100vh;
 		padding-top: 15%;
 	}
+
 	header {
 		width: 50%;
 		align-self: flex-start;
@@ -221,6 +228,8 @@ a {
 	}
 	.input-container input {
 		width: 90%;
+		height: 2.2rem;
+		font-size: 1.1rem;
 	}
 
 	.input-container label {
@@ -235,7 +244,7 @@ a {
 
 	.link-container {
 		align-self: flex-start;
-		width: 50%;
+		width: 55%;
 		text-align: center;
 	}
 }
@@ -243,7 +252,7 @@ a {
 @media (min-width: 1300px) {
 	main {
 		height: 100vh;
-		padding-top: 10%;
+		padding-top: 5%;
 	}
 
 	form {
@@ -252,11 +261,6 @@ a {
 }
 
 @media (min-width: 1400px) {
-	main {
-		height: 100vh;
-		padding-top: 10%;
-	}
-
 	form {
 		height: 90%;
 	}
@@ -269,16 +273,17 @@ a {
 
 	form {
 		background-color: var(--color-black);
-		color: var(--color-violet-dark-white);
+		color: var(--color-violet-light-white);
 		background-image: url('https://i.pinimg.com/564x/54/29/d9/5429d95ae015fe24d8e30578c82ea7de.jpg');
 	}
 
 	.input-container label {
-		color: var(--color-violet-dark-white);
+		color: var(--color-violet-light-white);
 	}
 
 	.input-container input {
-		border-color: var(--color-violet-dark-white);
+		border-color: var(--color-violet-light-white);
+		color: var(--color-violet-light-white);
 	}
 
 	.button-container input[type='submit'] {
@@ -290,8 +295,12 @@ a {
 		color: var(--color-violet-lightest);
 	}
 
+	a:hover {
+		color: var(--color-violet-light-white);
+	}
+
 	h1,
 	h2 {
-		color: var(--color-violet-dark-white);
+		color: var(--color-violet-light-white);
 	}
 }
