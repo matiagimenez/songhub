@@ -1,190 +1,248 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Editar Perfil | SongHub</title>
-    <link rel="icon" href="../assets/icons/favicon.ico" />
-    <link rel="stylesheet" href="../styles/register.css" />
-  </head>
-  <body>
-    <main>
-      <header>
-        <h1>Configuración de Perfil</h1>
-      </header>
-      <form action="/" method="POST">
-        <fieldset>
-          <legend>Información de perfil</legend>
-          <p>
-            <label for="avatar">Avatar</label>
-            <img
-              src="https://i.pinimg.com/236x/f4/e4/ff/f4e4ff0e8518813c6d5dde10a4d5164d.jpg"
-              alt="Imagen de perfil"
-            />
-          </p>
-          <p>
-            <label for="username">Nombre de usuario</label>
-            <input name="username" id="username" type="text" value="Username" />
-          </p>
-          <p>
-            <label for="firstname">Nombre</label>
-            <input name="firstname" id="firstname" type="text" />
-          </p>
-          <p>
-            <label for="lastname">Apellido</label>
-            <input name="lastname" id="lastname" type="text" />
-          </p>
-          <p>
-            <label for="email">Correo electrónico</label>
-            <input
-              name="email"
-              id="email"
-              type="email"
-              value="usermail@gmail.com"
-            />
-          </p>
-          <p>
-            <label for="localidad">Localidad</label>
-            <input name="localidad" id="localidad" type="text" />
-          </p>
-          <p>
-            <label for="biografia">Biografía</label>
-            <input id="biografia" name="biografia" type="text" />
-          </p>
-        </fieldset>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Editar Perfil | SongHub</title>
+		<link rel="icon" href="../assets/icons/favicon.ico" />
+	</head>
+	<body>
+		<header>
+			<h1>
+				<img src="../assets/icons/logo.svg" alt="Logo de SongHub" />
+			</h1>
+			<nav>
+				<ul>
+					<li>
+						<a href="profile.html">Perfil</a>
+						<img
+							src="https://i.pinimg.com/236x/f4/e4/ff/f4e4ff0e8518813c6d5dde10a4d5164d.jpg"
+							alt="Imagen de perfil"
+						/>
+					</li>
+					<li>
+						<a href="explore.html">Explorar</a>
+					</li>
+					<input type="search" />
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<h2>Configuración de Perfil</h2>
+			<form action="/" method="POST">
+				<fieldset>
+					<legend>Información de perfil</legend>
+					<p>
+						<img
+							src="https://i.pinimg.com/236x/f4/e4/ff/f4e4ff0e8518813c6d5dde10a4d5164d.jpg"
+							alt="Imagen de perfil"
+						/>
+					</p>
+					<p>
+						<label for="username">Nombre de usuario</label>
+						<input name="username" id="username" type="text" />
+					</p>
+					<p>
+						<label for="firstname">Nombre</label>
+						<input name="firstname" id="firstname" type="text" />
+					</p>
+					<p>
+						<label for="lastname">Apellido</label>
+						<input name="lastname" id="lastname" type="text" />
+					</p>
+					<p>
+						<label for="email">Correo electrónico</label>
+						<input name="email" id="email" type="email" />
+					</p>
+					<p>
+						<label for="country">Pais</label>
+						<input name="country" id="country" type="text" />
+					</p>
+					<p>
+						<label for="biography">Biografía</label>
+						<textarea
+							name="biography"
+							id="biography"
+							cols="70"
+							rows="10"
+						>
+						</textarea>
+					</p>
+				</fieldset>
 
-        <fieldset>
-          <legend>Álbumes Favoritos</legend>
+				<fieldset>
+					<legend>Álbumes Favoritos</legend>
 
-          <p>
-            <input name="album1" id="album1" type="text" />
-            <figure>
-              <img
-                src="https://i.pinimg.com/564x/89/28/e3/8928e372651fc60256360ba5e21a7d2f.jpg"
-                alt="Portada del álbum 'Pulse' de Pink Floyd"
-              />
-              <figcaption>Pulse - Pink Floyd</figcaption>
-            </figure>
-          </p>
+					<p>
+						<input name="album1" id="album1" type="text" />
+						<figure>
+							<img
+								src="https://i.pinimg.com/564x/89/28/e3/8928e372651fc60256360ba5e21a7d2f.jpg"
+								alt="Portada del álbum 'Pulse' de Pink Floyd"
+							/>
+							<figcaption>Pulse - Pink Floyd</figcaption>
+						</figure>
+					</p>
 
-          <p>
-            <input name="album2" id="album2" type="text" />
-            <figure>
-              <img
-                src="https://i.pinimg.com/564x/99/41/82/99418264794012ddd044c761919fbb44.jpg"
-                alt="Portada del álbum 'Punisher' de Phoebe Bridgers"
-              />
-              <figcaption>Punisher - Phoebe Bridgers</figcaption>
-            </figure>
-          </p>
+					<p>
+						<input name="album2" id="album2" type="text" />
+						<figure>
+							<img
+								src="https://i.pinimg.com/564x/99/41/82/99418264794012ddd044c761919fbb44.jpg"
+								alt="Portada del álbum 'Punisher' de Phoebe Bridgers"
+							/>
+							<figcaption>Punisher - Phoebe Bridgers</figcaption>
+						</figure>
+					</p>
 
-          <p>
-            <input name="album3" id="album3" type="text" />
-            <figure>
-              <img
-                src="https://i.pinimg.com/564x/94/76/b8/9476b8e8cb9368ceba6f90bec0c1b980.jpg"
-                alt="Portada del álbum 'Random Acces Memories' de Daft Punk"
-              />
-              <figcaption>Random Acces Memories - Daft Punk</figcaption>
-            </figure>
-          </p>
+					<p>
+						<input name="album3" id="album3" type="text" />
+						<figure>
+							<img
+								src="https://i.pinimg.com/564x/94/76/b8/9476b8e8cb9368ceba6f90bec0c1b980.jpg"
+								alt="Portada del álbum 'Random Acces Memories' de Daft Punk"
+							/>
+							<figcaption>
+								Random Acces Memories - Daft Punk
+							</figcaption>
+						</figure>
+					</p>
 
-          <p>
-            <input name="album4" id="album4" type="text" />
-            <figure>
-              <img
-                src="https://i.pinimg.com/564x/dd/ff/e0/ddffe0a469a486bdde609fe2467e75c1.jpg"
-                alt="Portada del álbum 'Led Zeppelin III' de Led Zeppelin"
-              />
-              <figcaption>Led Zeppelin III - Led Zeppelin</figcaption>
-            </figure>
-          </p>
+					<p>
+						<input name="album4" id="album4" type="text" />
+						<figure>
+							<img
+								src="https://i.pinimg.com/564x/dd/ff/e0/ddffe0a469a486bdde609fe2467e75c1.jpg"
+								alt="Portada del álbum 'Led Zeppelin III' de Led Zeppelin"
+							/>
+							<figcaption>
+								Led Zeppelin III - Led Zeppelin
+							</figcaption>
+						</figure>
+					</p>
 
-          <p>
-            <input name="album5" id="album5" type="text" />
-            <figure>
-              <img
-                src="https://i.pinimg.com/564x/50/75/92/5075926b9579b1155b7e4366184c0f64.jpg"
-                alt="Portada del álbum 'X100PRE' de Bad Bunny"
-              />
-              <figcaption>X100PRE - Bad Bunny</figcaption>
-            </figure>
-          </p>
-        </fieldset>
+					<p>
+						<input name="album5" id="album5" type="text" />
+						<figure>
+							<img
+								src="https://i.pinimg.com/564x/50/75/92/5075926b9579b1155b7e4366184c0f64.jpg"
+								alt="Portada del álbum 'X100PRE' de Bad Bunny"
+							/>
+							<figcaption>X100PRE - Bad Bunny</figcaption>
+						</figure>
+					</p>
+				</fieldset>
 
-        <fieldset>
-          <legend>Canciones Favoritas</legend>
+				<fieldset>
+					<legend>Canciones Favoritas</legend>
 
-          <p>
-            <input name="cancion1" id="cancion1" type="text" />
-            <figure>
-              <img
-                src="https://i.pinimg.com/564x/3d/65/d5/3d65d5e4af0cde2458b2e7b55869f4e6.jpg"
-                alt="Portada del álbum 'Peso Pluma || Music Session' de Bizarrap"
-              />
-              <figcaption>Peso Pluma || Music Session - Bizarrap</figcaption>
-            </figure>
-          </p>
+					<p>
+						<input name="cancion1" id="cancion1" type="text" />
+						<figure>
+							<img
+								src="https://i.pinimg.com/564x/3d/65/d5/3d65d5e4af0cde2458b2e7b55869f4e6.jpg"
+								alt="Portada del álbum 'Peso Pluma || Music Session' de Bizarrap"
+							/>
+							<figcaption>
+								Peso Pluma || Music Session - Bizarrap
+							</figcaption>
+						</figure>
+					</p>
 
-          <p>
-            <input name="cancion2" id="cancion2" type="text" />
-            <figure>
-              <img
-                src="https://i.pinimg.com/564x/aa/af/30/aaaf30cb2a66f80057d06d8e78b0bd3e.jpg"
-                alt="Portada del álbum 'Bad Habit' de Steve Lazy"
-              />
-              <figcaption>Bad Habit - Steve Lazy</figcaption>
-            </figure>
-          </p>
+					<p>
+						<input name="cancion2" id="cancion2" type="text" />
+						<figure>
+							<img
+								src="https://i.pinimg.com/564x/aa/af/30/aaaf30cb2a66f80057d06d8e78b0bd3e.jpg"
+								alt="Portada del álbum 'Bad Habit' de Steve Lazy"
+							/>
+							<figcaption>Bad Habit - Steve Lazy</figcaption>
+						</figure>
+					</p>
 
-          <p>
-            <input name="cancion3" id="cancion3" type="text" />
-            <figure>
-              <img
-                src="https://i.pinimg.com/564x/28/83/60/288360836d7d5532e52012bf06981410.jpg"
-                alt="Portada del álbum 'Comfortably Numb' de Pink Floyd"
-              />
-              <figcaption>Comfortably Numb - Pink Floyd</figcaption>
-            </figure>
-          </p>
+					<p>
+						<input name="cancion3" id="cancion3" type="text" />
+						<figure>
+							<img
+								src="https://i.pinimg.com/564x/28/83/60/288360836d7d5532e52012bf06981410.jpg"
+								alt="Portada del álbum 'Comfortably Numb' de Pink Floyd"
+							/>
+							<figcaption>
+								Comfortably Numb - Pink Floyd
+							</figcaption>
+						</figure>
+					</p>
 
-          <p>
-            <input name="cancion4" id="cancion4" type="text" />
-            <figure>
-              <img
-                src="https://i.pinimg.com/564x/5f/5f/45/5f5f45f7be4f8486ab60ab002c14325c.jpg"
-                alt="Portada del álbum 'Stairway To Heaven' de Led Zeppelin"
-              />
-              <figcaption>Stairway To Heaven - Led Zeppelin</figcaption>
-            </figure>
-          </p>
+					<p>
+						<input name="cancion4" id="cancion4" type="text" />
+						<figure>
+							<img
+								src="https://i.pinimg.com/564x/5f/5f/45/5f5f45f7be4f8486ab60ab002c14325c.jpg"
+								alt="Portada del álbum 'Stairway To Heaven' de Led Zeppelin"
+							/>
+							<figcaption>
+								Stairway To Heaven - Led Zeppelin
+							</figcaption>
+						</figure>
+					</p>
 
-          <p>
-            <input name="cancion5" id="cancion5" type="text" />
-            <figure>
-              <img
-                src="https://i.pinimg.com/564x/17/8c/ea/178ceaa5c0c24fd3cee2fe08dadf82e6.jpg"
-                alt="Portada de canción 'Goteo' de Duki"
-              />
-              <figcaption>Goteo - Duki</figcaption>
-            </figure>
-          </p>
-        </fieldset>
+					<p>
+						<input name="cancion5" id="cancion5" type="text" />
+						<figure>
+							<img
+								src="https://i.pinimg.com/564x/17/8c/ea/178ceaa5c0c24fd3cee2fe08dadf82e6.jpg"
+								alt="Portada de canción 'Goteo' de Duki"
+							/>
+							<figcaption>Goteo - Duki</figcaption>
+						</figure>
+					</p>
+				</fieldset>
 
-        <p>
-          <input type="submit" value="Guardad Cambios" />
-          <button>
-            <span>
-              <img src="../assets/icons/google.svg" alt="Google icon" />
-            </span>
-            Registrarse con Google
-          </button>
-        </p>
-        <p>
-          Ya tenes cuenta?
-          <a href="register.html">Inicía sesión aquí</a>
-        </p>
-      </form>
-    </main>
-  </body>
+				<p>
+					<input type="submit" value="Guardad Cambios" />
+					<button>
+						<span>
+							<img
+								src="../assets/icons/google.svg"
+								alt="Google icon"
+							/>
+						</span>
+						Registrarse con Google
+					</button>
+				</p>
+				<p>
+					Ya tenes cuenta?
+					<a href="register.html">Inicía sesión aquí</a>
+				</p>
+			</form>
+		</main>
+		<footer>
+			<section>
+				<p>
+					<span>
+						<img
+							src="../assets/icons/icon.svg"
+							alt="Icono de SongHub"
+						/>
+						&#169; 2023 SongHub Inc.
+					</span>
+				</p>
+				<p>
+					<span>
+						<img
+							src="../assets/icons/spotify.svg"
+							alt="Icono de Spotify"
+						/>
+						&#169; En colaboración con Spotify
+					</span>
+				</p>
+			</section>
+			<nav>
+				<ul>
+					<a href="terms.html">Terminos y condiciones</a>
+					<a href="home.html">Volver al inicio</a>
+				</ul>
+			</nav>
+		</footer>
+	</body>
 </html>
