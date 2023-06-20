@@ -7,29 +7,30 @@ main {
 }
 
 .carousel {
-	max-height: 60vh;
-	text-align: center;
-	overflow: hidden;
-	background-color: var(--color-violet-dark-black);
+  overflow: hidden;
+  text-align: center;
+}
+.carousel img {
+  width: 100%;
 }
 
-.carousel img {
-	width: 60%;
+.carousel figcaption{
+  display: none;
 }
 
 .feed {
-	width: 60%;
+	width: 80%;
 	margin: auto;
 }
 
 .feed h2 {
-	font-size: 2rem;
+	font-size: 1.5rem;
 	margin: 1rem 0 2rem 0;
 	font-weight: bold;
 }
 
 .post {
-	margin-bottom: 4rem;
+	margin-bottom: 1rem;
 }
 
 .user-info {
@@ -38,38 +39,119 @@ main {
 }
 
 .user-img {
-	height: 50px;
-	width: 50px;
-	border-radius: 80px;
+	height: 30px;
+	width: 30px;
+	border-radius: 30px;
 }
 
 .user-name {
-	font-size: 1rem;
-	margin-left: 1rem;
+	font-size: 0.8rem;
 	float: right;
-	margin-top: 1rem;
+	margin: 0.5rem 0 0 0.5rem;
+}
+
+.song {
+  margin-top: 1rem;
 }
 
 .song-img {
 	display: inline;
-	height: 200px;
-	width: 200px;
+	height: 100px;
+	width: 100px;
 	float: left;
-	margin-right: 2rem;
+	margin-right: 1rem;
 	border-radius: 20px;
 }
 
 .song figcaption h3 {
-	font-size: 2rem;
+	font-size: 1rem;
 }
 
 .song figcaption p {
-	font-size: 1.5rem;
+	font-size: 0.8rem;
 	margin-top: 1rem;
-	margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .stars {
-	font-size: 2rem;
+	font-size: 1.5rem;
 	color: var(--color-violet-light);
+}
+
+@media (min-width: 700px) {
+  
+  .carousel {
+    max-height: 70vh;
+  }
+
+  .carousel img {
+    width: 50%;
+  }
+
+}
+
+
+@media (min-width: 1000px) {
+  
+  .carousel {
+    max-height: 80vh;
+  }
+
+  .post {
+    margin-bottom: 4rem;
+  }
+
+  .song-img {
+    height: 200px;
+    width: 200px;
+  }
+
+  .user-name {
+    font-size: 1rem;
+  }
+
+  .song figcaption h3 {
+    font-size: 1.5rem;
+  }
+  
+  .song figcaption p {
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .stars {
+    font-size: 2rem;
+  }
+
+}
+
+@media (min-width: 1400px) {
+  .feed {
+    width: 60%;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+
+  .carousel {
+    background-color: var(--color-black);
+  }
+
+  body {
+    background-color: var(--color-violet-dark-black);
+    color: var(--color-white);
+  }
+
+  .song-img {
+    border: 1px solid var(--color-violet-lightest);
+  }
+
+  .stars {
+    color: var(--color-violet-lightest);
+  }
+
+  .post {
+    border-top: 1px solid var(--color-violet-lightest);
+  }
 }
