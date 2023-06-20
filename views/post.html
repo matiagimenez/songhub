@@ -12,21 +12,23 @@
 	</head>
 
 	<body>
-		<header>
+		<header class="main-header">
 			<h1>
 				<img src="../assets/icons/logo.svg" alt="Logo de SongHub" />
 			</h1>
-			<nav>
+			<nav class="header-nav">
 				<ul>
 					<li>
-						<a href="profile.html">Perfil</a>
-						<img
-							src="https://i.pinimg.com/236x/f4/e4/ff/f4e4ff0e8518813c6d5dde10a4d5164d.jpg"
-							alt="Imagen de perfil"
-						/>
+						<a href="profile.html">
+							<img
+								src="https://i.pinimg.com/236x/f4/e4/ff/f4e4ff0e8518813c6d5dde10a4d5164d.jpg"
+								alt="Imagen de perfil"
+							/>
+							<span>PERFIL</span>
+						</a>
 					</li>
 					<li>
-						<a href="explore.html">Explorar</a>
+						<a href="explore.html">EXPLORAR</a>
 					</li>
 					<li>
 						<form action="">
@@ -34,11 +36,15 @@
 								type="search"
 								name="search"
 								id="search"
+								autocomplete="off"
 								placeholder="Buscar álbum o canción..."
 							/>
 						</form>
 					</li>
 				</ul>
+				<button class="menu">
+					<span class="material-symbols-outlined"> menu </span>
+				</button>
 			</nav>
 		</header>
 
