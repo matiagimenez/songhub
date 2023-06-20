@@ -1,72 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Descubre una plataforma interactiva donde puedes compartir opiniones sobre música y explorar nuevas recomendaciones. 
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Descubre una plataforma interactiva donde puedes compartir opiniones sobre música y explorar nuevas recomendaciones. 
                 Únete a nuestra comunidad de usuarios para escribir reviews de canciones y álbumes e interactuar con otros amantes de la música. 
                 ¡Explora, conecta y descubre la pasión por la música en SongHub!"
-    />
+		/>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+		/>
+		<link rel="icon" href="../assets/icons/favicon.ico" />
+		<link rel="stylesheet" href="../styles/home.css" />
 
-    <link rel="icon" href="../assets/icons/favicon.ico" />
-    <link rel="stylesheet" href="../styles/home.css" />
-    <link rel="stylesheet" href="../styles/global/footer.css" />
-    <link rel="stylesheet" href="../styles/global/header.css" />
+		<title>Inicio | SongHub</title>
+	</head>
+	<body>
+		<header class="main-header">
+			<h1>
+				<img src="../assets/icons/logo.svg" alt="Logo de SongHub" />
+			</h1>
+			<nav class="header-nav">
+				<ul>
+					<li>
+						<a href="profile.html">
+							<img
+								src="https://i.pinimg.com/236x/f4/e4/ff/f4e4ff0e8518813c6d5dde10a4d5164d.jpg"
+								alt="Imagen de perfil"
+							/>
+							<span>PERFIL</span>
+						</a>
+					</li>
+					<li>
+						<a href="explore.html">EXPLORAR</a>
+					</li>
+					<li>
+						<form action="">
+							<input
+								type="search"
+								name="search"
+								id="search"
+								autocomplete="off"
+								placeholder="Buscar álbum o canción..."
+							/>
+						</form>
+					</li>
+				</ul>
+				<button class="menu">
+					<span class="material-symbols-outlined"> menu </span>
+				</button>
+			</nav>
+		</header>
 
-    <title>Inicio | SongHub</title>
-  </head>
-  <body>
-    <header class="main-header">
-      <h1>
-        <img src="../assets/icons/logo.svg" alt="Logo de SongHub" />
-      </h1>
-      <nav class="header-nav">
-        <ul>
-          <li>
-            <a href="profile.html">
-              <img
-                src="https://i.pinimg.com/236x/f4/e4/ff/f4e4ff0e8518813c6d5dde10a4d5164d.jpg"
-                alt="Imagen de perfil"
-              />
-              <span>PERFIL</span>
-            </a>
-          </li>
-          <li>
-            <a href="explore.html">EXPLORAR</a>
-          </li>
-          <li>
-            <form action="">
-              <input
-                type="search"
-                name="search"
-                id="search"
-                autocomplete="off"
-                placeholder="Buscar álbum o canción..."
-              />
-            </form>
-          </li>
-        </ul>
-        <button class="menu">
-          <span class="material-symbols-outlined"> menu </span>
-        </button>
-      </nav>
-    </header>
-
-    <main>
-      <article class="carousel">
-        <ul>
-          <li>
-            <figure>
-              <img
-                src="https://i.pinimg.com/564x/d0/a4/93/d0a49393825b75b890a073b66510293b.jpg"
-                alt="Portada del álbum 'Starboy' de The Weeknd"
-              />
-              <figcaption>Starboy - The Weeknd</figcaption>
-            </figure>
-          </li>
-          <!--<li>
+		<main>
+			<article class="carousel">
+				<ul>
+					<li>
+						<figure>
+							<img
+								src="https://i.pinimg.com/564x/d0/a4/93/d0a49393825b75b890a073b66510293b.jpg"
+								alt="Portada del álbum 'Starboy' de The Weeknd"
+							/>
+							<figcaption>Starboy - The Weeknd</figcaption>
+						</figure>
+					</li>
+					<!--<li>
             <figure>
               <img
                 src="https://i.pinimg.com/564x/d8/5b/9f/d85b9f602915f6d999e2a9a47a0f7201.jpg"
@@ -93,109 +94,117 @@
               <figcaption>The Dark Side of the Moon - Pink Floyd</figcaption>
             </figure>
           </li>-->
-        </ul>
-      </article>
+				</ul>
+			</article>
 
-      <section class="feed">
-        <h2>Feed</h2>
-        <article class="post">
-          <section class="song">
-            <figure>
-              <img
-                class="song-img"
-                src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
-                alt="Portada del álbum 'The Dark Side of the Moon' de Pink Floyd"
-              />
-              <section class="user-info">
-                <img
-                  class="user-img"
-                  src="https://i.pinimg.com/236x/94/7f/14/947f14841d26f5dc3541366a987b32f5.jpg"
-                  alt="Imagen de perfil de 'Usuario 1'"
-                />
-                <p class="user-name">
-                  <a href="profile.html">Usuario 1</a> <span>@username1</span>
-                </p>
-              </section>
-              <figcaption>
-                <h3>The Dark Side of the Moon</h3>
-                <p>Pink Floyd</p>
-              </figcaption>
-            </figure>
-            <span class="stars">★★★★★</span>
-          </section>
-        </article>
-        <article class="post">
-          <section class="song">
-            <figure>
-              <img
-                class="song-img"
-                src="https://i.pinimg.com/236x/73/01/9f/73019f71f5bc1124787d11044d21d12d.jpg"
-                alt="Portada del álbum 'Preacher`s Daughter' de Ethel Cain"
-              />
-              <section class="user-info">
-                <img
-                  class="user-img"
-                  src="https://i.pinimg.com/236x/2d/92/d0/2d92d085613a400e12fbadacc019e0e2.jpg"
-                  alt="Imagen de perfil de 'Usuario 2'"
-                />
-                <p class="user-name">
-                  <a href="profile.html">Usuario 2</a> <span>@username2</span>
-                </p>
-              </section>
-              <figcaption>
-                <h3>Preacher`s Daughter</h3>
-                <p>Ethel Cain</p>
-              </figcaption>
-            </figure>
-            <span class="stars">★★★★½</span>
-          </section>
-        </article>
-        <article class="post">
-          <section class="song">
-            <figure>
-              <img
-                class="song-img"
-                src="https://i.pinimg.com/236x/bf/00/49/bf0049614afb7ec4f5f64bb20834d728.jpg"
-                alt="Portada del álbum 'Certified Lover Boy' de Drake"
-              />
-              <section class="user-info">
-                <img
-                  class="user-img"
-                  src="https://i.pinimg.com/236x/94/7f/14/947f14841d26f5dc3541366a987b32f5.jpg"
-                  alt="Imagen de perfil de 'Usuario 1'"
-                />
-                <p class="user-name">
-                  <a href="profile.html">Usuario 1</a>
-                  <span>@username1</span>
-                </p>
-              </section>
-              <figcaption>
-                <h3>Certified Lover Boy</h3>
-                <p>Drake</p>
-              </figcaption>
-            </figure>
-            <span class="stars">★★★½</span>
-          </section>
-        </article>
-      </section>
-    </main>
-    <footer class="main-footer">
-      <section>
-        <p>
-          <img src="../assets/icons/icon.svg" alt="Icono de SongHub" />
-          <span> &#169; 2023 SongHub Inc. </span>
-        </p>
-        <p>
-          <img src="../assets/icons/spotify.svg" alt="Icono de Spotify" />
-          <span> En colaboración con Spotify </span>
-        </p>
-      </section>
-      <nav class="footer-nav">
-        <ul>
-          <li><a href="home.html">Volver al inicio</a></li>
-          <li><a href="terms.html">Terminos y condiciones</a></li>
-        </ul>
-      </nav>
-    </footer>
-  </body>
+			<section class="feed">
+				<h2>Feed</h2>
+				<article class="post">
+					<section class="song">
+						<figure>
+							<img
+								class="song-img"
+								src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
+								alt="Portada del álbum 'The Dark Side of the Moon' de Pink Floyd"
+							/>
+							<section class="user-info">
+								<img
+									class="user-img"
+									src="https://i.pinimg.com/236x/94/7f/14/947f14841d26f5dc3541366a987b32f5.jpg"
+									alt="Imagen de perfil de 'Usuario 1'"
+								/>
+								<p class="user-name">
+									<a href="profile.html">Usuario 1</a>
+									<span>@username1</span>
+								</p>
+							</section>
+							<figcaption>
+								<h3>The Dark Side of the Moon</h3>
+								<p>Pink Floyd</p>
+							</figcaption>
+						</figure>
+						<span class="stars">★★★★★</span>
+					</section>
+				</article>
+				<article class="post">
+					<section class="song">
+						<figure>
+							<img
+								class="song-img"
+								src="https://i.pinimg.com/236x/73/01/9f/73019f71f5bc1124787d11044d21d12d.jpg"
+								alt="Portada del álbum 'Preacher`s Daughter' de Ethel Cain"
+							/>
+							<section class="user-info">
+								<img
+									class="user-img"
+									src="https://i.pinimg.com/236x/2d/92/d0/2d92d085613a400e12fbadacc019e0e2.jpg"
+									alt="Imagen de perfil de 'Usuario 2'"
+								/>
+								<p class="user-name">
+									<a href="profile.html">Usuario 2</a>
+									<span>@username2</span>
+								</p>
+							</section>
+							<figcaption>
+								<h3>Preacher`s Daughter</h3>
+								<p>Ethel Cain</p>
+							</figcaption>
+						</figure>
+						<span class="stars">★★★★½</span>
+					</section>
+				</article>
+				<article class="post">
+					<section class="song">
+						<figure>
+							<img
+								class="song-img"
+								src="https://i.pinimg.com/236x/bf/00/49/bf0049614afb7ec4f5f64bb20834d728.jpg"
+								alt="Portada del álbum 'Certified Lover Boy' de Drake"
+							/>
+							<section class="user-info">
+								<img
+									class="user-img"
+									src="https://i.pinimg.com/236x/94/7f/14/947f14841d26f5dc3541366a987b32f5.jpg"
+									alt="Imagen de perfil de 'Usuario 1'"
+								/>
+								<p class="user-name">
+									<a href="profile.html">Usuario 1</a>
+									<span>@username1</span>
+								</p>
+							</section>
+							<figcaption>
+								<h3>Certified Lover Boy</h3>
+								<p>Drake</p>
+							</figcaption>
+						</figure>
+						<span class="stars">★★★½</span>
+					</section>
+				</article>
+			</section>
+		</main>
+		<footer class="main-footer">
+			<section>
+				<p>
+					<img
+						src="../assets/icons/icon.svg"
+						alt="Icono de SongHub"
+					/>
+					<span> &#169; 2023 SongHub Inc. </span>
+				</p>
+				<p>
+					<img
+						src="../assets/icons/spotify.svg"
+						alt="Icono de Spotify"
+					/>
+					<span> En colaboración con Spotify </span>
+				</p>
+			</section>
+			<nav class="footer-nav">
+				<ul>
+					<li><a href="home.html">Volver al inicio</a></li>
+					<li><a href="terms.html">Terminos y condiciones</a></li>
+				</ul>
+			</nav>
+		</footer>
+	</body>
 </html>

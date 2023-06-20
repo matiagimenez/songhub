@@ -1,68 +1,74 @@
-@import url("global/variables.css");
+@import url('global/variables.css');
+@import url('global/header.css');
+@import url('global/footer.css');
+
+main {
+	font-family: var(--font-family);
+}
 
 .carousel {
-  max-height: 60vh;
-  text-align: center;
-  overflow: hidden;
-  background-color: var(--color-violet-dark-black);
+	max-height: 60vh;
+	text-align: center;
+	overflow: hidden;
+	background-color: var(--color-violet-dark-black);
 }
 
 .carousel img {
-  width: 60%;
+	width: 60%;
 }
 
 .feed {
-  width: 60%;
-  margin: auto;
+	width: 60%;
+	margin: auto;
 }
 
 .feed h2 {
-  font-size: 2rem;
-  margin: 1rem 0 2rem 0;
-  font-weight: bold;
+	font-size: 2rem;
+	margin: 1rem 0 2rem 0;
+	font-weight: bold;
 }
 
 .post {
-  margin-bottom: 4rem;
+	margin-bottom: 4rem;
 }
 
 .user-info {
-  display: inline-block;
-  margin-bottom: 1rem;
+	display: inline-block;
+	margin-bottom: 1rem;
 }
 
 .user-img {
-  height: 50px;
-  width: 50px;
-  border-radius: 80px;
+	height: 50px;
+	width: 50px;
+	border-radius: 80px;
 }
 
 .user-name {
-  font-size: 1rem;
-  margin-left: 1rem;
-  float: right;
-  margin-top: 1rem;
+	font-size: 1rem;
+	margin-left: 1rem;
+	float: right;
+	margin-top: 1rem;
 }
 
 .song-img {
-  display: inline;
-  height: 200px;
-  width: 200px;
-  float: left;
-  margin-right: 2rem;
-  border-radius: 20px;
+	display: inline;
+	height: 200px;
+	width: 200px;
+	float: left;
+	margin-right: 2rem;
+	border-radius: 20px;
 }
 
 .song h3 {
-  font-size: 2rem;
+	font-size: 2rem;
 }
 
 .song figcaption p {
-  font-size: 1.5rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+	font-size: 1.5rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 }
 
 .stars {
-  font-size: 2rem;
+	font-size: 2rem;
 }
