@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Editar Perfil | SongHub</title>
+		<title>Editar perfil | SongHub</title>
 		<link rel="icon" href="../assets/icons/favicon.ico" />
 	</head>
 	<body>
@@ -23,7 +23,16 @@
 					<li>
 						<a href="explore.html">Explorar</a>
 					</li>
-					<input type="search" />
+					<li>
+						<form action="">
+							<input
+								type="search"
+								name="search"
+								id="search"
+								placeholder="Buscar álbum o canción..."
+							/>
+						</form>
+					</li>
 				</ul>
 			</nav>
 		</header>
@@ -198,22 +207,7 @@
 					</p>
 				</fieldset>
 
-				<p>
-					<input type="submit" value="Guardad Cambios" />
-					<button>
-						<span>
-							<img
-								src="../assets/icons/google.svg"
-								alt="Google icon"
-							/>
-						</span>
-						Registrarse con Google
-					</button>
-				</p>
-				<p>
-					Ya tenes cuenta?
-					<a href="register.html">Inicía sesión aquí</a>
-				</p>
+				<input type="submit" value="Guardar Cambios" />
 			</form>
 		</main>
 		<footer>
@@ -233,7 +227,7 @@
 							src="../assets/icons/spotify.svg"
 							alt="Icono de Spotify"
 						/>
-						&#169; En colaboración con Spotify
+						En colaboración con Spotify
 					</span>
 				</p>
 			</section>
