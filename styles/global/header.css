@@ -138,3 +138,15 @@ h1 img {
 		width: 85%;
 	}
 }
+
+@media (prefers-color-scheme: dark) {
+	.header-nav ul li form input {
+		background-color: transparent;
+		border: 2px solid var(--color-white);
+		color: var(--color-white);
+	}
+
+	.header-nav ul li form input::placeholder {
+		color: var(--color-grey-light);
+	}
+}
