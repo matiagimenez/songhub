@@ -1,6 +1,8 @@
 @import url('variables.css');
 
 .main-header {
+	position: sticky;
+	top: 0vh;
 	background-color: var(--color-violet-darkest);
 	min-height: 110px;
 	height: 10vh;
