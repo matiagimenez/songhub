@@ -59,7 +59,7 @@ main {
 	border-radius: 20px;
 }
 
-.song h3 {
+.song figcaption h3 {
 	font-size: 2rem;
 }
 
@@ -71,4 +71,5 @@ main {
 
 .stars {
 	font-size: 2rem;
+	color: var(--color-violet-light);
 }
