@@ -12,7 +12,7 @@
 			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
 		/>
 		<link rel="icon" href="../assets/icons/favicon.ico" />
-		<title>Álbum | SongHub</title>
+		<title>Cancion | SongHub</title>
 	</head>
 	<body>
 		<header>
@@ -42,9 +42,10 @@
 				alt="Portada del álbum 'The Dark Side of the Moon' de Pink Floyd"
 			/>
 			<header>
-				<p>Álbum</p>
-				<h2>The Dark Side Of The Moon</h2>
+				<p>Cancion</p>
+				<h2>Comfortably Numb</h2>
 			</header>
+
 			<section>
 				<img
 					src="https://i.pinimg.com/236x/20/cc/b2/20ccb24df9750b08d764e574fcec5f5d.jpg"
@@ -55,8 +56,8 @@
 
 			<section>
 				<p>
-					<span class="material-symbols-outlined"> public </span>
-					Pública
+					<span class="material-symbols-outlined"> lock </span>
+					Privada
 				</p>
 
 				<form action="">
@@ -67,26 +68,29 @@
 						rows="10"
 					>
 					</textarea>
-					<p>
-						<label for="rate">Valoración</label>
-						<span>★★★★★</span>
-						<!-- <input type="hidden" name="rate" id="rate" /> -->
-						<input
-							type="range"
-							step="0.5"
-							min="0"
-							max="5"
-							name="rate"
-							id="rate"
-						/>
-					</p>
-					<button>Agregar tag</button>
-					<button>
-						<span class="material-symbols-outlined"> share </span>
-						<span>Compartir álbum</span>
-					</button>
-					<input type="submit" value="Postear" />
 				</form>
+
+				<p>
+					<label for="rate">Valoración</label>
+					<span>★★★★★</span>
+					<!-- <input type="hidden" name="rate" id="rate" /> -->
+					<input
+						type="range"
+						step="0.5"
+						min="0"
+						max="5"
+						name="rate"
+						id="rate"
+					/>
+				</p>
+
+				<button>Agregar tag</button>
+				<button>
+					<span class="material-symbols-outlined"> share </span>
+					<span>Compartir canción</span>
+				</button>
+
+				<input type="submit" value="Postear" />
 			</section>
 		</main>
 
