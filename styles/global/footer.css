@@ -1,0 +1,68 @@
+@import url('variables.css');
+
+.main-footer {
+	background-color: var(--color-violet-darkest);
+	min-height: 100px;
+	height: 10vh;
+	max-height: 120px;
+	width: 100%;
+	font-family: var(--font-family);
+	position: relative;
+}
+.main-footer section {
+	width: 60%;
+	height: 100%;
+	display: inline-block;
+}
+.main-footer section p {
+	height: 50%;
+	padding: 0.65rem 0.5rem;
+}
+
+.main-footer section p span {
+	display: inline-block;
+	margin-left: 0.3rem;
+	color: var(--color-grey-light);
+	font-size: 0.8rem;
+	height: 100%;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+.main-footer section p img {
+	width: 25px;
+	height: 25px;
+}
+
+.footer-nav {
+	display: inline-block;
+	width: 38%;
+	position: relative;
+	bottom: 8px;
+}
+
+.footer-nav ul {
+	height: 100%;
+	width: 100%;
+}
+.footer-nav ul li {
+	display: block;
+	height: 50%;
+}
+
+.footer-nav ul li a {
+	font-size: 0.9rem;
+	display: inline-block;
+	margin-bottom: 0.6rem;
+	vertical-align: middle;
+	width: 100%;
+	font-weight: bold;
+	color: var(--color-white);
+	text-decoration: none;
+}
+
+@media (min-width: 900px) {
+	.footer-nav ul li a {
+		font-size: 1rem;
+	}
+}
