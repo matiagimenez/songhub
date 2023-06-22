@@ -74,5 +74,7 @@ Se encuentran en el siguiente [proyecto](https://www.figma.com/team_invite/redee
 ### 4. Modelo de datos
 Link al [diagrama](https://drive.google.com/file/d/10rYR58VVp8gg7Kd3lUvzr_m5yX_5B9eo/view?usp=sharing)
 
-![DER](https://github.com/matiasgimenezdev/trabajo-integrador-paw/assets/117539520/0033a607-5b27-4c5d-ab27-241391914714)
+### 5. Diagrama de clases
+Link al [diagrama](https://drive.google.com/file/d/15qIrA1Yu18rwsZVra1lWtVs7T8oYDvXk/view?usp=sharing)
+
 
