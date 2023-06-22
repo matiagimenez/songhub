@@ -4,154 +4,262 @@
 
 main {
 	font-family: var(--font-family);
+	min-height: 100vh;
 }
 
 .carousel {
-  overflow: hidden;
-  text-align: center;
-}
-.carousel img {
-  width: 100%;
+	overflow: hidden;
+	text-align: center;
+	background-color: var(--color-violet-dark-black);
 }
 
-.carousel figcaption{
-  display: none;
+.carousel figure {
+	position: relative;
+	height: 100%;
+}
+
+.carousel img {
+	width: 100%;
+	height: 100%;
+}
+
+.carousel figcaption {
+	position: absolute;
+	bottom: 30px;
+	font-size: 1.6rem;
+	left: 20px;
+	font-weight: bold;
+	text-align: left;
+	filter: drop-shadow(2px 2px 2px var(--color-black));
+	color: var(--color-white);
+}
+
+.carousel figcaption p {
+	margin-bottom: 0.1rem;
 }
 
 .feed {
-	width: 80%;
+	width: 90%;
 	margin: auto;
 }
 
 .feed h2 {
-	font-size: 1.5rem;
-	margin: 1rem 0 2rem 0;
+	font-size: 1.9rem;
+	padding: 1.3rem 0 0.5rem 0;
 	font-weight: bold;
+	color: var(--color-violet);
+	border-bottom: 1px solid var(--color-grey-dark);
 }
 
 .post {
-	margin-bottom: 1rem;
+	margin-bottom: 1.5rem;
+	cursor: pointer;
 }
 
 .user-info {
 	display: inline-block;
-	margin-bottom: 1rem;
+	width: 60%;
+	vertical-align: top;
+	margin-bottom: 0.2rem;
 }
 
 .user-img {
 	height: 30px;
 	width: 30px;
-	border-radius: 30px;
+	border-radius: 50%;
+	display: inline;
 }
 
 .user-name {
 	font-size: 0.8rem;
-	float: right;
-	margin: 0.5rem 0 0 0.5rem;
+	display: inline-block;
+	height: 100%;
+	margin: 0.3rem 0 0 0;
+	padding: 0 0.3rem;
+}
+
+.user-name a {
+	text-decoration: none;
+	color: var(--color-violet);
+	font-weight: bold;
+	font-size: 1.1rem;
+}
+
+.user-name span {
+	font-size: 0.9rem;
+	vertical-align: text-top;
+	color: var(--color-grey-dark);
 }
 
 .song {
-  margin-top: 1rem;
+	margin-top: 1rem;
+	min-height: 150px;
 }
 
-.song-img {
-	display: inline;
-	height: 100px;
-	width: 100px;
-	float: left;
-	margin-right: 1rem;
-	border-radius: 20px;
+.song figure {
+	min-height: 130px;
+	height: 100%;
+	display: block;
+	position: relative;
+}
+
+.song figcaption {
+	display: inline-block;
+	margin-top: 0.3rem;
+	position: absolute;
+	width: 70%;
+	bottom: 18px;
+	left: 140px;
 }
 
 .song figcaption h3 {
-	font-size: 1rem;
+	font-weight: bold;
+	font-size: 1.2rem;
+	width: 100%;
 }
 
 .song figcaption p {
-	font-size: 0.8rem;
-	margin-top: 1rem;
-  margin-bottom: 1rem;
+	font-size: 1.1rem;
+	margin-top: 0.4rem;
+	margin-bottom: 0rem;
+}
+
+.song figcaption a {
+	display: none;
+}
+
+.song-img {
+	display: inline-block;
+	height: 120px;
+	width: 120px;
+	margin-right: 1rem;
+	border-radius: 10px;
+	border: 1px solid var(--color-grey-medium);
 }
 
 .stars {
-	font-size: 1.5rem;
+	display: inline-block;
 	color: var(--color-violet-light);
 }
 
 @media (min-width: 700px) {
-  
-  .carousel {
-    max-height: 70vh;
-  }
+	.carousel {
+		max-height: 70vh;
+	}
 
-  .carousel img {
-    width: 50%;
-  }
-
+	.carousel img {
+		width: 50%;
+	}
 }
-
 
 @media (min-width: 1000px) {
-  
-  .carousel {
-    max-height: 80vh;
-  }
+	.carousel {
+		max-height: 70vh;
+	}
 
-  .post {
-    margin-bottom: 4rem;
-  }
+	.carousel figcaption {
+		position: absolute;
+		top: 50px;
+		left: 50px;
+	}
 
-  .song-img {
-    height: 200px;
-    width: 200px;
-  }
+	.post {
+		margin-bottom: 4rem;
+	}
 
-  .user-name {
-    font-size: 1rem;
-  }
+	.song-img {
+		height: 200px;
+		width: 200px;
+	}
 
-  .song figcaption h3 {
-    font-size: 1.5rem;
-  }
-  
-  .song figcaption p {
-    font-size: 1rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
+	.user-name a {
+		font-size: 1rem;
+	}
 
-  .stars {
-    font-size: 2rem;
-  }
+	.user-name span {
+		font-size: 1rem;
+	}
 
-}
+	.user-info {
+		margin-bottom: 0.5rem;
+	}
 
-@media (min-width: 1400px) {
-  .feed {
-    width: 60%;
-  }
+	.song figcaption {
+		left: 225px;
+		height: 150px;
+		bottom: 0px;
+	}
+
+	.song figcaption h3 {
+		font-size: 1.7rem;
+	}
+
+	.song figcaption p {
+		font-size: 1.2rem;
+		margin-top: 0.8rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.song figcaption p.stars {
+		margin-top: 0rem;
+		margin-bottom: 1rem;
+		font-size: 1.6rem;
+	}
+
+	.song figcaption a {
+		display: block;
+		width: 40%;
+		height: 2rem;
+		padding: 0.2rem;
+	}
+
+	.song figcaption a button {
+		background-color: var(--color-violet-dark);
+		padding: 0.6rem 1rem;
+		border: none;
+		outline: none;
+		font-weight: bold;
+		border-radius: 10px;
+		color: var(--color-white);
+	}
 }
 
 @media (prefers-color-scheme: dark) {
+	.carousel {
+		background-color: var(--color-black);
+	}
 
-  .carousel {
-    background-color: var(--color-black);
-  }
+	body {
+		background-color: var(--color-violet-dark-black);
+		color: var(--color-white);
+	}
 
-  body {
-    background-color: var(--color-violet-dark-black);
-    color: var(--color-white);
-  }
+	.feed h2 {
+		color: var(--color-white);
+		border-color: var(--color-white);
+	}
 
-  .song-img {
-    border: 1px solid var(--color-violet-lightest);
-  }
+	.user-name a {
+		color: var(--color-violet-lightest);
+	}
+	.user-name span {
+		color: var(--color-grey-light);
+	}
 
-  .stars {
-    color: var(--color-violet-lightest);
-  }
+	.song-img {
+		border: 1px solid var(--color-violet-lightest);
+	}
 
-  .post {
-    border-top: 1px solid var(--color-violet-lightest);
-  }
+	.stars {
+		color: var(--color-violet-lightest);
+	}
+
+	.song figcaption a button {
+		background-color: var(--color-white);
+		color: var(--color-violet-dark);
+	}
+
+	.post {
+		margin-top: 1.5rem;
+	}
 }
