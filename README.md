@@ -72,7 +72,7 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
 Se encuentran en el siguiente [proyecto](https://www.figma.com/team_invite/redeem/8gsvLe0YYBM4Q47UAvpgqo) Figma. Es el mismo proyecto que utilizamos para las practicas de la cursada, por lo tanto, hay posibilidad de que algun docente tenga acceso al mismo. 
 
 ### 4. Modelo de datos
-[Link al proyecto](https://drive.google.com/file/d/10rYR58VVp8gg7Kd3lUvzr_m5yX_5B9eo/view?usp=sharing)
+Link al [diagrama](https://drive.google.com/file/d/10rYR58VVp8gg7Kd3lUvzr_m5yX_5B9eo/view?usp=sharing)
 
 ![DER](https://github.com/matiasgimenezdev/trabajo-integrador-paw/assets/117539520/0033a607-5b27-4c5d-ab27-241391914714)
 
