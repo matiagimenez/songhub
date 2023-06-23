@@ -96,6 +96,10 @@ body {
 	width: 100%;
 }
 
+main {
+	min-height: 80vh;
+}
+
 *,
 *::after,
 *::before {

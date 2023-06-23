@@ -3,7 +3,6 @@
 .main-header {
 	position: sticky;
 	z-index: 1000;
-
 	top: 0vh;
 	background-color: var(--color-violet-darkest);
 	min-height: 110px;

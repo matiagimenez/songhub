@@ -15,6 +15,6 @@
 	--color-grey-medium: #5e6871; /* Gris claro*/
 	--color-grey-dark: #2e3045; /* Gris oscuro*/
 	--color-green: #14ff00; /* Verde - Exito*/
-	--color-green: #c30303; /* Rojo - Error*/
+	--color-red: #c30303; /* Rojo - Error*/
 	--font-family: 'Roboto', sans-serif;
 }

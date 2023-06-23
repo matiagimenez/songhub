@@ -4,7 +4,6 @@
 
 main {
 	font-family: var(--font-family);
-	min-height: 100vh;
 }
 
 .carousel {
