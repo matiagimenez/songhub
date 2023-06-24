@@ -58,6 +58,8 @@ main {
 .user-info {
 	display: inline-block;
 	width: 60%;
+	position: absolute;
+	left: 130px;
 	vertical-align: top;
 	margin-bottom: 0.2rem;
 }
@@ -82,7 +84,7 @@ main {
 	text-decoration: none;
 	color: var(--color-violet);
 	font-weight: bold;
-	font-size: 1.1rem;
+	font-size: 1rem;
 }
 
 .user-name span {
@@ -93,7 +95,8 @@ main {
 
 .song {
 	margin-top: 1rem;
-	min-height: 150px;
+	min-height: 135px;
+	position: relative;
 }
 
 .song figure {
@@ -106,14 +109,14 @@ main {
 .song figcaption {
 	display: inline-block;
 	position: absolute;
-	width: 70%;
+	width: 65%;
 	bottom: 8px;
-	left: 140px;
+	left: 130px;
 }
 
 .song figcaption h3 {
 	font-weight: bold;
-	font-size: 1.1rem;
+	font-size: 1rem;
 	width: 100%;
 }
 
@@ -124,7 +127,7 @@ main {
 }
 
 .song figcaption p {
-	font-size: 1rem;
+	font-size: 0.95rem;
 	margin-top: 0.4rem;
 	margin-bottom: 0rem;
 }
@@ -144,7 +147,6 @@ main {
 
 .stars {
 	display: inline-block;
-
 	color: var(--color-violet-light);
 }
 
@@ -188,6 +190,7 @@ main {
 
 	.user-info {
 		margin-bottom: 0.5rem;
+		left: 225px;
 	}
 
 	.song figcaption {
@@ -197,7 +200,7 @@ main {
 	}
 
 	.song figcaption h3 {
-		font-size: 1.7rem;
+		font-size: 1.4rem;
 	}
 
 	.song figcaption p:first-child {
@@ -206,15 +209,15 @@ main {
 	}
 
 	.song figcaption p {
-		font-size: 1.2rem;
+		font-size: 1.1rem;
 		margin-top: 0.8rem;
 		margin-bottom: 0.5rem;
 	}
 
 	.song figcaption p.stars {
 		margin-top: 0rem;
-		margin-bottom: 1rem;
-		font-size: 1.6rem;
+		/* margin-bottom: 1rem; */
+		font-size: 1.4rem;
 	}
 
 	.song figcaption a {
