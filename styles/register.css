@@ -30,12 +30,22 @@ form {
 	width: 80%;
 	height: 100%;
 	margin: auto;
-	background-image: url('https://i.pinimg.com/564x/c0/a6/8d/c0a68d8895db701afa779956585ed6c4.jpg');
-	background-position: top;
-	background-repeat: no-repeat;
-	background-size: 100% 25%;
 	align-content: flex-end;
 	gap: 0.5rem;
+	position: relative;
+}
+
+form::after {
+	position: absolute;
+	top: 0;
+	content: '';
+	display: inline-block;
+	width: 100%;
+	height: 23%;
+	background-image: url('https://i.pinimg.com/564x/c0/a6/8d/c0a68d8895db701afa779956585ed6c4.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
 }
 
 .input-container {
@@ -156,27 +166,27 @@ a:hover {
 }
 
 @media (min-height: 720px) {
-	form {
-		background-size: 100% 30%;
+	form::after {
+		height: 30%;
 	}
 }
 
 @media (min-height: 800px) {
-	form {
-		background-size: 100% 35%;
+	form::after {
+		height: 35%;
 	}
 }
 
 @media (min-height: 900px) {
-	form {
-		background-size: 100% 42%;
+	form::after {
+		height: 43%;
 	}
 }
 
 @media (min-width: 900px) {
 	main {
 		height: 100vh;
-		padding-top: 10%;
+		padding-top: 5%;
 	}
 
 	h1 {
@@ -194,10 +204,14 @@ a:hover {
 		width: 95%;
 		height: 95%;
 		min-height: 95%;
-		background-size: 45% 100%;
-		background-position: right;
 		justify-content: center;
 		border-radius: 10px;
+	}
+
+	form::after {
+		right: 0;
+		width: 45%;
+		height: 100%;
 	}
 
 	fieldset {
@@ -234,11 +248,7 @@ a:hover {
 @media (min-width: 1300px) {
 	main {
 		height: 100vh;
-		padding-top: 5%;
-	}
-
-	form {
-		background-image: url('https://i.pinimg.com/564x/54/29/d9/5429d95ae015fe24d8e30578c82ea7de.jpg');
+		padding-top: 2%;
 	}
 }
 
@@ -250,6 +260,10 @@ a:hover {
 	form {
 		background-color: var(--color-black);
 		color: var(--color-violet-light-white);
+	}
+
+	form::after {
+		background-image: url('https://i.pinimg.com/564x/54/29/d9/5429d95ae015fe24d8e30578c82ea7de.jpg');
 	}
 
 	.input-container label {
