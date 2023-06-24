@@ -26,12 +26,22 @@ form {
 	height: 90%;
 	margin: auto;
 	border-radius: 10px;
-	background-image: url('https://i.pinimg.com/564x/c0/a6/8d/c0a68d8895db701afa779956585ed6c4.jpg');
-	background-position: top;
-	background-repeat: no-repeat;
-	background-size: 100% 35%;
+	position: relative;
 	align-content: flex-end;
 	gap: 0.5rem;
+}
+
+form::after {
+	position: absolute;
+	top: 0;
+	content: '';
+	display: inline-block;
+	width: 100%;
+	height: 40%;
+	background-image: url('https://i.pinimg.com/564x/c0/a6/8d/c0a68d8895db701afa779956585ed6c4.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
 }
 
 fieldset {
@@ -153,14 +163,8 @@ a:hover {
 }
 
 @media (min-height: 650px) {
-	form {
-		background-size: 100% 40%;
-	}
-}
-
-@media (min-height: 700px) {
-	form {
-		background-size: 100% 47%;
+	form::after {
+		height: 45%;
 	}
 }
 
@@ -171,14 +175,14 @@ a:hover {
 }
 
 @media (min-height: 870px) {
-	form {
-		background-size: 100% 50%;
+	form::after {
+		height: 50%;
 	}
 }
 
 @media (min-height: 1000px) {
-	form {
-		background-size: 100% 60%;
+	form::after {
+		height: 60%;
 	}
 }
 
@@ -213,9 +217,14 @@ a:hover {
 	form {
 		width: 95%;
 		height: 75%;
-		background-size: 45% 100%;
-		background-position: right;
+		position: relative;
 		justify-content: center;
+	}
+
+	form::after {
+		right: 0;
+		width: 45%;
+		height: 100%;
 	}
 
 	fieldset {
@@ -274,6 +283,9 @@ a:hover {
 	form {
 		background-color: var(--color-black);
 		color: var(--color-violet-light-white);
+	}
+
+	form::after {
 		background-image: url('https://i.pinimg.com/564x/54/29/d9/5429d95ae015fe24d8e30578c82ea7de.jpg');
 	}
 
