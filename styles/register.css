@@ -196,7 +196,7 @@ a:hover {
 		padding-left: 100px;
 		display: block;
 		color: var(--color-violet-light);
-		font-size: 3rem;
+		font-size: 2.8rem;
 		font-weight: bold;
 		position: relative;
 	}
@@ -207,8 +207,8 @@ a:hover {
 		display: inline-block;
 		left: 5%;
 		bottom: -5px;
-		width: 60px;
-		height: 60px;
+		width: 55px;
+		height: 55px;
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center;
