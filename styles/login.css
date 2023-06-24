@@ -209,14 +209,30 @@ a:hover {
 		font-size: 2.5rem;
 		font-weight: bold;
 		margin-bottom: 0.5rem;
+		position: relative;
 	}
+
+	h1::before {
+		position: absolute;
+		content: '';
+		display: inline-block;
+		left: -5px;
+		bottom: 65px;
+		width: 60px;
+		height: 60px;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		background-image: url('../assets/icons/icon.svg');
+	}
+
 	h2 {
 		font-size: 1.5rem;
 	}
 
 	form {
 		width: 95%;
-		height: 75%;
+		height: 85%;
 		justify-content: center;
 	}
 
@@ -265,6 +281,11 @@ a:hover {
 
 	form {
 		height: 85%;
+	}
+
+	h1::before {
+		left: -5px;
+		bottom: 100px;
 	}
 }
 

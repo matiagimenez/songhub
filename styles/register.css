@@ -192,12 +192,27 @@ a:hover {
 	h1 {
 		width: 50%;
 		align-self: flex-start;
-		margin-bottom: 2rem;
-		padding-left: 3.5%;
+		margin-bottom: 1rem;
+		padding-left: 100px;
 		display: block;
 		color: var(--color-violet-light);
 		font-size: 3rem;
 		font-weight: bold;
+		position: relative;
+	}
+
+	h1::before {
+		position: absolute;
+		content: '';
+		display: inline-block;
+		left: 5%;
+		bottom: -5px;
+		width: 60px;
+		height: 60px;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		background-image: url('../assets/icons/icon.svg');
 	}
 
 	form {
