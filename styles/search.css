@@ -148,7 +148,7 @@ figcaption p:nth-child(2) {
 }
 
 @media (prefers-color-scheme: dark) {
-	main {
+	body {
 		background-color: var(--color-violet-dark-black);
 	}
 

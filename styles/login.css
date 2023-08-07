@@ -296,7 +296,7 @@ a:hover {
 }
 
 @media (prefers-color-scheme: dark) {
-	main {
+	body {
 		background-color: var(--color-violet-dark-black);
 	}
 
