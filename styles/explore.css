@@ -97,9 +97,11 @@ figcaption p {
 	figcaption {
 		border-color: var(--color-white);
 	}
+
 	figcaption h3 {
 		color: var(--color-violet-lightest);
 	}
+
 	figcaption p {
 		color: var(--color-white);
 	}
