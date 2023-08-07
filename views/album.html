@@ -7,7 +7,8 @@
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
 		/>
-		<link rel="icon" href="../assets/icons/favicon.ico" />
+		<link rel="stylesheet" href="../styles/album.css" />
+		<link rel="icon" href="../assets/icons/favicon.svg" />
 		<title>Álbum | SongHub</title>
 	</head>
 	<body>
@@ -57,29 +58,30 @@
 					<p>Álbum</p>
 					<h2>The Dark Side Of The Moon</h2>
 				</figcaption>
-				<p>
+				<p class="artist-info">
 					<img
 						src="https://i.pinimg.com/236x/20/cc/b2/20ccb24df9750b08d764e574fcec5f5d.jpg"
 						alt="Imagen de perfil de 'Pink Floyd'"
 					/>
-					<span>Pink Floyd</span>
+					<span>Pink Floyd · 1973</span>
 				</p>
 			</figure>
 
-			<section>
-				<p>
+			<section class="post-section">
+				<p class="visibility">
 					<span class="material-symbols-outlined"> public </span>
 					<span>Pública</span>
 				</p>
 
 				<form action="">
 					<textarea
+						placeholder="Agrega una descripción..."
 						name="description"
 						id="description"
 						cols="70"
 						rows="10"
-					>
-					</textarea>
+					></textarea>
+					<button class="tag-button">+ Agregar tag</button>
 					<p>
 						<label for="rate">Valoración</label>
 						<span>★★★★★</span>
@@ -93,10 +95,8 @@
 							id="rate"
 						/>
 					</p>
-					<button>Agregar tag</button>
-					<button>
+					<button class="share-button">
 						<span class="material-symbols-outlined"> share </span>
-						<span>Compartir álbum</span>
 					</button>
 					<input type="submit" value="Postear" />
 				</form>

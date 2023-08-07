@@ -1,0 +1,217 @@
+@import url('global/variables.css');
+@import url('global/header.css');
+@import url('global/footer.css');
+
+body {
+	font-family: var(--font-family);
+}
+
+main {
+	min-height: 100%;
+}
+
+figure {
+	width: 100%;
+	padding-top: 1rem;
+}
+
+figure img {
+	display: block;
+	width: 95%;
+	margin: auto;
+	position: relative;
+	height: auto;
+	border-radius: 15px;
+}
+
+figure figcaption {
+	padding: 1rem 0.8rem;
+	padding-bottom: 0;
+	color: var(--color-violet-darkest);
+}
+
+figure figcaption h2 {
+	font-weight: bold;
+	font-size: 1.4rem;
+	padding: 0.6rem 0 0 0;
+}
+
+figure figcaption p {
+	font-size: 1.1rem;
+}
+
+.artist-info {
+	padding: 0.5rem 0.8rem;
+	padding-top: 0.8rem;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	min-height: 65px;
+}
+
+.artist-info span {
+	color: var(--color-black);
+	font-size: 1rem;
+	margin-left: 10px;
+	font-weight: 500;
+}
+
+.artist-info img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	margin: 0;
+}
+
+.post-section .visibility {
+	position: relative;
+	min-height: 24px;
+	text-align: right;
+	padding-right: 1.1rem;
+	font-size: 0.9rem;
+	cursor: pointer;
+}
+.post-section .visibility span:nth-child(2) {
+	color: var(--color-violet-darkest);
+	font-weight: bold;
+}
+.post-section .visibility span:nth-child(1) {
+	position: absolute;
+	right: 73px;
+	bottom: 5px;
+	color: var(--color-grey-medium);
+}
+
+.post-section form {
+	position: relative;
+}
+
+.post-section form textarea {
+	width: 92%;
+	height: 120px;
+	resize: none;
+	display: block;
+	margin: 5px auto;
+	border-radius: 15px;
+	border-color: var(--color-violet-darkest);
+	position: relative;
+	font-family: var(--font-family);
+	padding: 0.6rem;
+}
+
+.post-section form textarea:focus {
+	outline-color: var(--color-violet-white);
+}
+
+.post-section form textarea::placeholder {
+	font-family: var(--font-family);
+	font-weight: bold;
+	color: var(--color-violet-darkest);
+}
+
+.post-section form p {
+	color: var(--color-violet-darkest);
+	padding: 0.5rem;
+	padding-left: 1rem;
+	font-weight: bold;
+	display: inline-block;
+}
+
+.post-section form p label {
+	margin-right: 0.5rem;
+}
+
+.post-section form p input {
+	display: none;
+}
+
+.post-section form .tag-button {
+	height: 2rem;
+	display: block;
+	width: 200px;
+	text-align: center;
+	margin: 0.8rem 0;
+	margin-left: 1rem;
+	font-size: 0.75rem;
+	border-radius: 10px;
+	outline: none;
+	border: none;
+	background-color: var(--color-violet-light);
+	color: var(--color-white);
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.post-section form .share-button {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	color: var(--color-violet-darkest);
+	position: absolute;
+	right: 30px;
+	bottom: 95px;
+	cursor: pointer;
+}
+
+.post-section form input[type='submit'] {
+	display: block;
+	background-color: var(--color-violet-darkest);
+	color: var(--color-white);
+	width: 90%;
+	margin: 1rem auto;
+	height: 2.2rem;
+	outline: none;
+	border: 1px solid;
+	border-radius: 10px;
+	font-weight: bold;
+	border-color: var(--color-violet-darkest);
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: var(--color-violet-dark-black);
+	}
+
+	figure figcaption {
+		color: var(--color-white);
+	}
+
+	.artist-info span {
+		color: var(--color-white);
+	}
+
+	.post-section form p label {
+		color: var(--color-white);
+	}
+
+	.post-section form p span {
+		color: var(--color-violet-light);
+	}
+
+	.post-section .visibility span:nth-child(2) {
+		color: var(--color-white);
+	}
+
+	.post-section .visibility span:nth-child(1) {
+		color: var(--color-grey-light);
+	}
+
+	.post-section form textarea {
+		background-color: var(--color-black);
+		color: var(--color-white);
+		border-color: var(--color-white);
+	}
+
+	.post-section form textarea:focus {
+		border: 2px solid;
+	}
+
+	.post-section form textarea::placeholder {
+		color: var(--color-white);
+	}
+
+	.post-section form input[type='submit'] {
+		border-color: var(--color-white);
+	}
+}
