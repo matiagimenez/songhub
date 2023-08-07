@@ -61,12 +61,12 @@ main {
 	position: absolute;
 	left: 130px;
 	vertical-align: top;
-	margin-bottom: 0.2rem;
+	margin-top: 0.4rem;
 }
 
 .user-img {
-	height: 30px;
-	width: 30px;
+	height: 25px;
+	width: 25px;
 	border-radius: 50%;
 	display: inline;
 	float: left;
@@ -76,7 +76,7 @@ main {
 	font-size: 0.8rem;
 	display: inline-block;
 	height: 100%;
-	margin: 0.6rem 0 0 0.4rem;
+	margin: 0.4rem 0 0 0.2rem;
 	padding: 0 0.3rem;
 }
 
@@ -84,11 +84,11 @@ main {
 	text-decoration: none;
 	color: var(--color-violet);
 	font-weight: bold;
-	font-size: 1rem;
+	font-size: 0.9rem;
 }
 
 .user-name span {
-	font-size: 0.9rem;
+	font-size: 0.85rem;
 	vertical-align: text-top;
 	color: var(--color-grey-dark);
 }
@@ -110,25 +110,26 @@ main {
 	display: inline-block;
 	position: absolute;
 	width: 65%;
-	bottom: 8px;
+	bottom: 15px;
 	left: 130px;
 }
 
 .song figcaption h3 {
 	font-weight: bold;
-	font-size: 1rem;
+	font-size: 0.85rem;
 	width: 100%;
+	margin-bottom: 0.4rem;
 }
 
 .song figcaption p:first-child {
-	font-size: 0.9rem;
-	margin-bottom: 0.5rem;
+	font-size: 0.75rem;
+	margin-bottom: 0.4rem;
 	color: var(--color-grey-dark);
 }
 
 .song figcaption p {
-	font-size: 0.95rem;
-	margin-top: 0.4rem;
+	font-size: 0.8rem;
+	margin-top: 0rem;
 	margin-bottom: 0rem;
 }
 
@@ -142,7 +143,7 @@ main {
 	width: 120px;
 	margin-right: 1rem;
 	border-radius: 10px;
-	border: 1px solid var(--color-grey-medium);
+	border: 2px solid var(--color-violet-dark);
 }
 
 .stars {
@@ -182,15 +183,16 @@ main {
 
 	.user-name a {
 		font-size: 1rem;
-	}
-
-	.user-name span {
-		font-size: 1rem;
+		margin-right: 0.4rem;
 	}
 
 	.user-info {
-		margin-bottom: 0.5rem;
 		left: 225px;
+	}
+
+	.user-img {
+		height: 30px;
+		width: 30px;
 	}
 
 	.song figcaption {
@@ -257,15 +259,15 @@ main {
 		color: var(--color-violet-lightest);
 	}
 	.user-name span {
-		color: var(--color-grey-light);
-	}
-
-	.song-img {
-		border: 1px solid var(--color-violet-lightest);
+		color: var(--color-grey-very-light);
 	}
 
 	.stars {
 		color: var(--color-violet-lightest);
+	}
+
+	.song-img {
+		border-color: var(--color-grey-medium);
 	}
 
 	.song figcaption p:first-child {
