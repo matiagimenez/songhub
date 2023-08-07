@@ -88,6 +88,7 @@ figcaption p {
 	main {
 		background-color: var(--color-violet-dark-black);
 	}
+
 	h2 {
 		color: var(--color-violet-lightest);
 		border-color: var(--color-violet-light-white);
