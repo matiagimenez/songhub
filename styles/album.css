@@ -103,12 +103,12 @@ figure figcaption p {
 }
 
 .post-section form textarea:focus {
-	outline-color: var(--color-violet-white);
+	outline: 1px solid inherit;
+	border: none;
 }
 
 .post-section form textarea::placeholder {
 	font-family: var(--font-family);
-	font-weight: bold;
 	color: var(--color-violet-darkest);
 }
 
@@ -117,6 +117,7 @@ figure figcaption p {
 	padding: 0.5rem;
 	padding-left: 20px;
 	font-weight: bold;
+	margin: 8px 0;
 	display: inline-block;
 }
 
@@ -211,7 +212,8 @@ figure figcaption p {
 	}
 
 	.post-section form textarea:focus {
-		border: 2px solid;
+		outline: 2px solid var(--color-violet-light);
+		border: none;
 	}
 
 	.post-section form textarea::placeholder {
@@ -262,7 +264,7 @@ figure figcaption p {
 		position: absolute;
 		left: 42%;
 		margin-left: 5px;
-		top: 105px;
+		top: 85px;
 	}
 
 	.post-section form textarea {
@@ -286,21 +288,21 @@ figure figcaption p {
 	main {
 		display: flex;
 		justify-content: space-between;
-		align-items: flex-end;
+		align-items: center;
 		gap: 10px;
-		padding: 2rem 0;
+		padding: 2.3rem 0;
 	}
 
 	figure {
 		padding-bottom: 25px;
 		display: flex;
-		width: 40%;
 		flex-direction: column;
+		width: 35%;
 	}
 
 	figure img {
 		height: auto;
-		width: 100%;
+		width: 80%;
 		order: 3;
 		margin-top: 15px;
 	}
@@ -328,8 +330,9 @@ figure figcaption p {
 
 	.post-section {
 		display: inline-block;
-		width: 60%;
+		width: 65%;
 		position: relative;
+		top: 70px;
 	}
 
 	.post-section .visibility {
@@ -374,23 +377,10 @@ figure figcaption p {
 	}
 }
 
-@media screen and (min-width: 1100px) {
-	figure {
-		width: 35%;
-	}
-
-	figure img {
-		width: 60%;
-	}
-
-	.post-section {
-		width: 65%;
-	}
-}
-
 @media screen and (min-width: 1400px) {
 	main {
 		gap: 0px;
+		padding: 2.3rem 0;
 	}
 
 	figure img {
@@ -407,8 +397,8 @@ figure figcaption p {
 	}
 
 	.post-section form .share-button {
-		right: 200px;
-		top: 215px;
+		right: 250px;
+		top: 170px;
 	}
 }
 
@@ -434,7 +424,7 @@ figure figcaption p {
 	}
 
 	.post-section {
-		margin-top: 150px;
+		top: 100px;
 	}
 
 	.post-section form textarea {
