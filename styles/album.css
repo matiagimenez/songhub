@@ -212,7 +212,7 @@ figure figcaption p {
 	}
 
 	.post-section form textarea:focus {
-		outline: 2px solid var(--color-violet-dark);
+		outline: 2px solid var(--color-violet-light);
 		border: none;
 	}
 
