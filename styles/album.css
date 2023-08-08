@@ -17,15 +17,17 @@ figure {
 
 figure img {
 	display: block;
-	width: 95%;
-	margin: auto;
+	width: 70%;
+	margin-left: 20px;
+	/* margin: auto; */
 	position: relative;
 	height: auto;
 	border-radius: 15px;
+	border: 1px solid var(--color-grey-light);
 }
 
 figure figcaption {
-	padding: 1rem 0.8rem;
+	padding: 1rem 20px;
 	padding-bottom: 0;
 	color: var(--color-violet-darkest);
 }
@@ -41,7 +43,7 @@ figure figcaption p {
 }
 
 .artist-info {
-	padding: 0.5rem 0.8rem;
+	padding: 0.5rem 20px;
 	padding-top: 0.8rem;
 	position: relative;
 	display: flex;
@@ -68,7 +70,7 @@ figure figcaption p {
 	position: relative;
 	min-height: 24px;
 	text-align: right;
-	padding-right: 1.1rem;
+	padding-right: 56px;
 	font-size: 0.9rem;
 	cursor: pointer;
 }
@@ -78,7 +80,7 @@ figure figcaption p {
 }
 .post-section .visibility span:nth-child(1) {
 	position: absolute;
-	right: 73px;
+	right: 110px;
 	bottom: 5px;
 	color: var(--color-grey-medium);
 }
@@ -88,12 +90,12 @@ figure figcaption p {
 }
 
 .post-section form textarea {
-	width: 92%;
+	width: 85%;
 	height: 120px;
 	resize: none;
 	display: block;
-	margin: 5px auto;
-	border-radius: 15px;
+	margin: 5px 20px;
+	border-radius: 10px;
 	border-color: var(--color-violet-darkest);
 	position: relative;
 	font-family: var(--font-family);
@@ -113,7 +115,7 @@ figure figcaption p {
 .post-section form p {
 	color: var(--color-violet-darkest);
 	padding: 0.5rem;
-	padding-left: 1rem;
+	padding-left: 20px;
 	font-weight: bold;
 	display: inline-block;
 }
@@ -132,7 +134,7 @@ figure figcaption p {
 	width: 200px;
 	text-align: center;
 	margin: 0.8rem 0;
-	margin-left: 1rem;
+	margin-left: 20px;
 	font-size: 0.75rem;
 	border-radius: 10px;
 	outline: none;
@@ -149,7 +151,7 @@ figure figcaption p {
 	outline: none;
 	color: var(--color-violet-darkest);
 	position: absolute;
-	right: 30px;
+	right: 55px;
 	bottom: 95px;
 	cursor: pointer;
 }
@@ -159,7 +161,7 @@ figure figcaption p {
 	background-color: var(--color-violet-darkest);
 	color: var(--color-white);
 	width: 90%;
-	margin: 1rem auto;
+	margin: 1rem;
 	height: 2.2rem;
 	outline: none;
 	border: 1px solid;
@@ -200,7 +202,7 @@ figure figcaption p {
 	.post-section form textarea {
 		background-color: var(--color-black);
 		color: var(--color-white);
-		border-color: var(--color-white);
+		border-color: var(--color-grey-light);
 	}
 
 	.post-section form textarea:focus {
@@ -211,7 +213,11 @@ figure figcaption p {
 		color: var(--color-white);
 	}
 
+	.post-section form .share-button {
+		color: var(--color-white);
+	}
+
 	.post-section form input[type='submit'] {
-		border-color: var(--color-white);
+		border-color: var(--color-grey-light);
 	}
 }
