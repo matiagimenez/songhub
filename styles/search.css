@@ -47,7 +47,7 @@ figure img {
 	height: 140px;
 	border-radius: 10px;
 	overflow: hidden;
-	border: 2px solid var(--color-violet-dark);
+	border: 1px solid var(--color-violet-dark);
 }
 
 figcaption {
