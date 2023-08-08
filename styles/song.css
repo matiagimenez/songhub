@@ -1,3 +1,433 @@
 @import url('global/variables.css');
 @import url('global/header.css');
 @import url('global/footer.css');
+
+body {
+	font-family: var(--font-family);
+}
+
+main {
+	min-height: 100%;
+}
+
+figure {
+	width: 100%;
+	padding-top: 1rem;
+}
+
+figure img {
+	display: block;
+	width: 60%;
+	margin-left: 20px;
+	/* margin: auto; */
+	position: relative;
+	height: auto;
+	border-radius: 15px;
+	border: 1px solid var(--color-grey-light);
+}
+
+figure figcaption {
+	padding: 1rem 20px;
+	padding-bottom: 0;
+	color: var(--color-violet-darkest);
+}
+
+figure figcaption h2 {
+	font-weight: bold;
+	font-size: 1.4rem;
+	padding: 0.6rem 0 0 0;
+}
+
+figure figcaption p {
+	font-size: 1.1rem;
+}
+
+.artist-info {
+	padding: 0.5rem 20px;
+	padding-top: 0.8rem;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	min-height: 65px;
+}
+
+.artist-info span {
+	color: var(--color-black);
+	font-size: 1rem;
+	margin-left: 10px;
+	font-weight: 500;
+}
+
+.artist-info img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	margin: 0;
+}
+
+.post-section .visibility {
+	position: relative;
+	min-height: 24px;
+	text-align: right;
+	padding-right: 56px;
+	font-size: 0.9rem;
+	cursor: pointer;
+}
+.post-section .visibility span:nth-child(2) {
+	color: var(--color-violet-darkest);
+	font-weight: bold;
+}
+.post-section .visibility span:nth-child(1) {
+	position: absolute;
+	right: 110px;
+	bottom: 5px;
+	color: var(--color-grey-medium);
+}
+
+.post-section form {
+	position: relative;
+}
+
+.post-section form textarea {
+	width: 90%;
+	height: 120px;
+	resize: none;
+	display: block;
+	margin: 5px 20px;
+	border-radius: 10px;
+	border-color: var(--color-violet-darkest);
+	position: relative;
+	font-family: var(--font-family);
+	padding: 0.6rem;
+}
+
+.post-section form textarea:focus {
+	outline: 2px solid var(--color-violet-lightest);
+	border: none;
+}
+
+.post-section form textarea::placeholder {
+	font-family: var(--font-family);
+	color: var(--color-violet-darkest);
+}
+
+.post-section form p {
+	color: var(--color-violet-darkest);
+	padding: 0.5rem;
+	padding-left: 20px;
+	font-weight: bold;
+	margin: 8px 0;
+	display: inline-block;
+}
+
+.post-section form p label {
+	margin-right: 0.5rem;
+}
+
+.post-section form .tag {
+	font-size: 0.8rem;
+	background-color: var(--color-grey-medium);
+	padding: 0.3rem 0.8rem;
+	border-radius: 15px;
+	font-weight: normal;
+	color: var(--color-white);
+}
+
+.post-section form .tag-button {
+	height: 2rem;
+	display: block;
+	width: 200px;
+	text-align: center;
+	margin: 0.8rem 0;
+	margin-left: 20px;
+	font-size: 0.75rem;
+	border-radius: 10px;
+	outline: none;
+	border: none;
+	background-color: var(--color-violet-light);
+	color: var(--color-white);
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.post-section form .share-button {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	color: var(--color-violet-darkest);
+	position: absolute;
+	right: 55px;
+	bottom: 95px;
+	cursor: pointer;
+}
+
+.post-section form input[type='submit'] {
+	display: block;
+	background-color: var(--color-violet-darkest);
+	color: var(--color-white);
+	width: 90%;
+	margin: 1rem;
+	height: 2.2rem;
+	outline: none;
+	border: 1px solid;
+	border-radius: 10px;
+	font-weight: bold;
+	border-color: var(--color-violet-darkest);
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: var(--color-violet-dark-black);
+	}
+
+	figure figcaption {
+		color: var(--color-white);
+	}
+
+	.artist-info span {
+		color: var(--color-white);
+	}
+
+	.post-section form p label {
+		color: var(--color-white);
+	}
+
+	.post-section form p span {
+		color: var(--color-violet-light);
+	}
+
+	.post-section .visibility span:nth-child(2) {
+		color: var(--color-white);
+	}
+
+	.post-section .visibility span:nth-child(1) {
+		color: var(--color-grey-light);
+	}
+
+	.post-section form textarea {
+		background-color: var(--color-black);
+		color: var(--color-white);
+		border-color: var(--color-grey-light);
+	}
+
+	.post-section form textarea:focus {
+		outline: 2px solid var(--color-violet-light);
+		border: none;
+	}
+
+	.post-section form textarea::placeholder {
+		color: var(--color-white);
+	}
+
+	.post-section form .share-button {
+		color: var(--color-white);
+	}
+
+	.post-section form input[type='submit'] {
+		border-color: var(--color-grey-light);
+	}
+}
+
+@media screen and (min-width: 650px) {
+	figure img {
+		width: 45%;
+	}
+}
+
+@media screen and (min-width: 800px) {
+	figure {
+		display: flex;
+		position: relative;
+	}
+
+	figure img {
+		width: 40%;
+		display: inline-block;
+	}
+
+	figure figcaption {
+		display: inline-block;
+		width: 100%;
+	}
+
+	figure figcaption p {
+		font-size: 1.3rem;
+	}
+
+	figure figcaption h2 {
+		font-size: 1.5rem;
+		width: 100%;
+	}
+
+	.artist-info {
+		position: absolute;
+		left: 42%;
+		margin-left: 5px;
+		top: 85px;
+	}
+
+	.post-section form textarea {
+		width: 90%;
+	}
+
+	.post-section .visibility {
+		padding-right: 90px;
+	}
+
+	.post-section .visibility span:nth-child(1) {
+		right: 142px;
+	}
+
+	.post-section form .share-button {
+		right: 90px;
+	}
+}
+
+@media screen and (min-width: 1100px) {
+	main {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 10px;
+		padding: 2.3rem 0;
+	}
+
+	figure {
+		padding-bottom: 25px;
+		display: flex;
+		flex-direction: column;
+		width: 35%;
+	}
+
+	figure img {
+		height: auto;
+		width: 80%;
+		order: 3;
+		margin-top: 15px;
+	}
+
+	figure figcaption {
+		width: 100%;
+	}
+
+	.artist-info {
+		position: initial;
+		flex-direction: row;
+		justify-content: flex-start;
+		margin-left: 0px;
+	}
+
+	.artist-info img {
+		order: 0;
+		width: 60px;
+		height: 60px;
+	}
+
+	.artist-info span {
+		font-size: 1rem;
+	}
+
+	.post-section {
+		display: inline-block;
+		width: 65%;
+		position: relative;
+		top: 70px;
+	}
+
+	.post-section .visibility {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	.post-section .visibility span:nth-child(2) {
+		position: absolute;
+		left: 50px;
+		bottom: 37px;
+		font-size: 1.1rem;
+	}
+
+	.post-section .visibility span:nth-child(1) {
+		position: absolute;
+		left: 20px;
+		bottom: 35px;
+		color: var(--color-grey-medium);
+	}
+
+	.post-section form textarea {
+		height: 150px;
+	}
+
+	.post-section form p label {
+		font-size: 1.2rem;
+	}
+
+	.post-section form p span {
+		font-size: 1.4rem;
+	}
+
+	.post-section form .tag-button {
+		height: 2.3rem;
+	}
+
+	.post-section form input[type='submit'] {
+		margin: 1.7rem 0;
+		margin-left: 20px;
+		height: 2.8rem;
+	}
+}
+
+@media screen and (min-width: 1400px) {
+	main {
+		gap: 0px;
+		padding: 2.3rem 0;
+	}
+
+	figure img {
+		width: 65%;
+	}
+
+	.post-section form textarea {
+		height: 220px;
+		width: 80%;
+	}
+
+	.post-section form input[type='submit'] {
+		width: 80%;
+	}
+
+	.post-section form .share-button {
+		right: 250px;
+		top: 170px;
+	}
+}
+
+@media screen and (min-width: 1600px) {
+	main {
+		align-items: center;
+	}
+
+	figure img {
+		width: 65%;
+	}
+
+	figure figcaption h2 {
+		font-size: 1.8rem;
+	}
+
+	figure figcaption p {
+		font-size: 1.5rem;
+	}
+
+	.artist-info span {
+		font-size: 1.1rem;
+	}
+
+	.post-section {
+		top: 100px;
+	}
+
+	.post-section form textarea {
+		height: 150px;
+	}
+}

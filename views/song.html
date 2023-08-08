@@ -54,62 +54,55 @@
 		</header>
 
 		<main>
-			<section>
-				<figure>
-					<img
-						src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
-						alt="Portada del álbum 'The Dark Side of the Moon' de Pink Floyd"
-					/>
-					<figcaption>
-						<p>Cancion</p>
-						<h2>Comfortably Numb</h2>
-					</figcaption>
-				</figure>
-				<p>
+			<figure>
+				<img
+					src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
+					alt="Portada del álbum 'The Dark Side of the Moon' de Pink Floyd"
+				/>
+				<figcaption>
+					<p>Canción</p>
+					<h2>Comfortably Numb</h2>
+				</figcaption>
+				<p class="artist-info">
 					<img
 						src="https://i.pinimg.com/236x/20/cc/b2/20ccb24df9750b08d764e574fcec5f5d.jpg"
 						alt="Imagen de perfil de 'Pink Floyd'"
 					/>
-					<span>Pink Floyd</span>
+					<span>Pink Floyd · 1973</span>
 				</p>
-			</section>
-			<section>
-				<p>
+			</figure>
+
+			<section class="post-section">
+				<p class="visibility">
 					<span class="material-symbols-outlined"> lock </span>
 					<span>Privada</span>
 				</p>
 
-				<form action="">
+				<form action="" method="GET">
 					<textarea
+						placeholder="Agrega una descripción..."
 						name="description"
 						id="description"
 						cols="70"
 						rows="10"
-					>
-					</textarea>
+					></textarea>
+					<p>
+						<span class="tag">Increible</span>
+						<input type="hidden" name="tag" value="Increible" />
+						<span class="tag">Me gusta</span>
+						<input type="hidden" name="tag" value="Me gusta" />
+					</p>
+					<button class="tag-button">+ Agregar etiqueta</button>
+					<p>
+						<label for="rate">Valoración</label>
+						<span>★★★★★</span>
+						<input type="hidden" value="3" name="rate" id="rate" />
+					</p>
+					<button class="share-button">
+						<span class="material-symbols-outlined"> share </span>
+					</button>
+					<input type="submit" value="Realizar post" />
 				</form>
-
-				<p>
-					<label for="rate">Valoración</label>
-					<span>★★★★★</span>
-					<!-- <input type="hidden" name="rate" id="rate" /> -->
-					<input
-						type="range"
-						step="0.5"
-						min="0"
-						max="5"
-						name="rate"
-						id="rate"
-					/>
-				</p>
-
-				<button>Agregar tag</button>
-				<button>
-					<span class="material-symbols-outlined"> share </span>
-					<span>Compartir canción</span>
-				</button>
-
-				<input type="submit" value="Postear" />
 			</section>
 		</main>
 
