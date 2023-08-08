@@ -1,5 +1,9 @@
 @import url('variables.css');
 
+body {
+	position: relative;
+}
+
 .main-footer {
 	background-color: var(--color-violet-darkest);
 	min-height: 100px;
@@ -9,6 +13,7 @@
 	font-family: var(--font-family);
 	position: relative;
 }
+
 .main-footer section {
 	width: 60%;
 	height: 100%;
@@ -93,5 +98,12 @@
 
 	.main-footer section p {
 		padding: 0rem 1rem;
+	}
+}
+
+@media (min-width: 1100px) {
+	.main-footer {
+		position: fixed; /* Si NO HAY scroll vertical (Y) tiene que posicionarse con relative */
+		bottom: 0;
 	}
 }
