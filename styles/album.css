@@ -17,7 +17,7 @@ figure {
 
 figure img {
 	display: block;
-	width: 70%;
+	width: 60%;
 	margin-left: 20px;
 	/* margin: auto; */
 	position: relative;
@@ -90,7 +90,7 @@ figure figcaption p {
 }
 
 .post-section form textarea {
-	width: 85%;
+	width: 90%;
 	height: 120px;
 	resize: none;
 	display: block;
@@ -124,8 +124,13 @@ figure figcaption p {
 	margin-right: 0.5rem;
 }
 
-.post-section form p input {
-	display: none;
+.post-section form .tag {
+	font-size: 0.8rem;
+	background-color: var(--color-grey-medium);
+	padding: 0.3rem 0.8rem;
+	border-radius: 15px;
+	font-weight: normal;
+	color: var(--color-white);
 }
 
 .post-section form .tag-button {
@@ -219,5 +224,220 @@ figure figcaption p {
 
 	.post-section form input[type='submit'] {
 		border-color: var(--color-grey-light);
+	}
+}
+
+@media screen and (min-width: 650px) {
+	figure img {
+		width: 45%;
+	}
+}
+
+@media screen and (min-width: 800px) {
+	figure {
+		display: flex;
+		position: relative;
+	}
+
+	figure img {
+		width: 40%;
+		display: inline-block;
+	}
+
+	figure figcaption {
+		display: inline-block;
+		width: 100%;
+	}
+
+	figure figcaption p {
+		font-size: 1.3rem;
+	}
+
+	figure figcaption h2 {
+		font-size: 1.5rem;
+		width: 100%;
+	}
+
+	.artist-info {
+		position: absolute;
+		left: 42%;
+		margin-left: 5px;
+		top: 105px;
+	}
+
+	.post-section form textarea {
+		width: 90%;
+	}
+
+	.post-section .visibility {
+		padding-right: 90px;
+	}
+
+	.post-section .visibility span:nth-child(1) {
+		right: 142px;
+	}
+
+	.post-section form .share-button {
+		right: 90px;
+	}
+}
+
+@media screen and (min-width: 1100px) {
+	main {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		gap: 10px;
+		padding: 2rem 0;
+	}
+
+	figure {
+		padding-bottom: 25px;
+		display: flex;
+		width: 40%;
+		flex-direction: column;
+	}
+
+	figure img {
+		height: auto;
+		width: 100%;
+		order: 3;
+		margin-top: 15px;
+	}
+
+	figure figcaption {
+		width: 100%;
+	}
+
+	.artist-info {
+		position: initial;
+		flex-direction: row;
+		justify-content: flex-start;
+		margin-left: 0px;
+	}
+
+	.artist-info img {
+		order: 0;
+		width: 60px;
+		height: 60px;
+	}
+
+	.artist-info span {
+		font-size: 1rem;
+	}
+
+	.post-section {
+		display: inline-block;
+		width: 60%;
+		position: relative;
+	}
+
+	.post-section .visibility {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	.post-section .visibility span:nth-child(2) {
+		position: absolute;
+		left: 50px;
+		bottom: 37px;
+		font-size: 1.1rem;
+	}
+
+	.post-section .visibility span:nth-child(1) {
+		position: absolute;
+		left: 20px;
+		bottom: 35px;
+		color: var(--color-grey-medium);
+	}
+
+	.post-section form textarea {
+		height: 150px;
+	}
+
+	.post-section form p label {
+		font-size: 1.2rem;
+	}
+
+	.post-section form p span {
+		font-size: 1.4rem;
+	}
+
+	.post-section form .tag-button {
+		height: 2.3rem;
+	}
+
+	.post-section form input[type='submit'] {
+		margin: 1.7rem 0;
+		margin-left: 20px;
+		height: 2.8rem;
+	}
+}
+
+@media screen and (min-width: 1100px) {
+	figure {
+		width: 35%;
+	}
+
+	figure img {
+		width: 60%;
+	}
+
+	.post-section {
+		width: 65%;
+	}
+}
+
+@media screen and (min-width: 1400px) {
+	main {
+		gap: 0px;
+	}
+
+	figure img {
+		width: 65%;
+	}
+
+	.post-section form textarea {
+		height: 220px;
+		width: 80%;
+	}
+
+	.post-section form input[type='submit'] {
+		width: 80%;
+	}
+
+	.post-section form .share-button {
+		right: 200px;
+		top: 215px;
+	}
+}
+
+@media screen and (min-width: 1600px) {
+	main {
+		align-items: center;
+	}
+
+	figure img {
+		width: 65%;
+	}
+
+	figure figcaption h2 {
+		font-size: 1.8rem;
+	}
+
+	figure figcaption p {
+		font-size: 1.5rem;
+	}
+
+	.artist-info span {
+		font-size: 1.1rem;
+	}
+
+	.post-section {
+		margin-top: 150px;
+	}
+
+	.post-section form textarea {
+		height: 150px;
 	}
 }

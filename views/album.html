@@ -73,7 +73,7 @@
 					<span>Pública</span>
 				</p>
 
-				<form action="">
+				<form action="" method="GET">
 					<textarea
 						placeholder="Agrega una descripción..."
 						name="description"
@@ -81,19 +81,17 @@
 						cols="70"
 						rows="10"
 					></textarea>
+					<p>
+						<span class="tag">Increible</span>
+						<input type="hidden" name="tag" value="Increible" />
+						<span class="tag">Me gusta</span>
+						<input type="hidden" name="tag" value="Me gusta" />
+					</p>
 					<button class="tag-button">+ Agregar etiqueta</button>
 					<p>
 						<label for="rate">Valoración</label>
 						<span>★★★★★</span>
-						<!-- <input type="hidden" name="rate" id="rate" /> -->
-						<input
-							type="range"
-							step="0.5"
-							min="0"
-							max="5"
-							name="rate"
-							id="rate"
-						/>
+						<input type="hidden" value="3" name="rate" id="rate" />
 					</p>
 					<button class="share-button">
 						<span class="material-symbols-outlined"> share </span>
