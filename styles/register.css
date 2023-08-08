@@ -9,8 +9,36 @@ main {
 	height: 100vh;
 }
 
+h1 {
+	width: 50%;
+	align-self: flex-start;
+	margin-bottom: 1rem;
+	padding-left: 100px;
+	display: block;
+	color: var(--color-violet-light);
+	font-size: 2.8rem;
+	font-weight: bold;
+	position: relative;
+}
+
+h1::before {
+	position: absolute;
+	content: '';
+	display: inline-block;
+	left: 5%;
+	bottom: -8px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-image: url('../assets/icons/icon.svg');
+	background-color: var(--color-violet-light);
+	border-radius: 50%;
+	padding: 10px;
+	width: 60px;
+	height: 60px;
+}
+
 h1,
-h2,
 legend {
 	display: none;
 }
@@ -73,6 +101,11 @@ form::after {
 	padding: 0rem 0.5rem;
 	font-size: 1rem;
 	border: 1px solid var(--color-violet-light);
+}
+
+.input-container input:focus {
+	border: none;
+	outline: 2px solid var(--color-violet-lightest);
 }
 
 abbr {
@@ -164,6 +197,21 @@ a:hover {
 	padding: 15px;
 }
 
+@media screen and (min-height: 750px) and (max-width: 900px) and (min-width: 350px) {
+	h1 {
+		display: block;
+		font-size: 1.3rem;
+		margin-bottom: 0;
+		width: 100%;
+		padding-left: 24px;
+	}
+
+	h1::before {
+		background: none;
+		content: '';
+	}
+}
+
 @media (min-height: 720px) {
 	form::after {
 		height: 30%;
@@ -195,29 +243,7 @@ a:hover {
 	}
 
 	h1 {
-		width: 50%;
-		align-self: flex-start;
-		margin-bottom: 1rem;
-		padding-left: 100px;
 		display: block;
-		color: var(--color-violet-light);
-		font-size: 2.8rem;
-		font-weight: bold;
-		position: relative;
-	}
-
-	h1::before {
-		position: absolute;
-		content: '';
-		display: inline-block;
-		left: 5%;
-		bottom: -5px;
-		width: 55px;
-		height: 55px;
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center;
-		background-image: url('../assets/icons/icon.svg');
 	}
 
 	form {
@@ -286,6 +312,10 @@ a:hover {
 		background-color: var(--color-violet-dark-black);
 	}
 
+	h1::before {
+		background-color: transparent;
+	}
+
 	form {
 		background-color: var(--color-black);
 		color: var(--color-violet-light-white);
@@ -303,6 +333,11 @@ a:hover {
 		border-color: var(--color-violet-light-white);
 		color: var(--color-violet-light-white);
 		font-size: 1.1rem;
+	}
+
+	.input-container input:focus {
+		border: none;
+		outline: 2px solid var(--color-violet-dark);
 	}
 
 	.button-container input[type='submit'] {
