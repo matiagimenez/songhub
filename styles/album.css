@@ -103,7 +103,7 @@ figure figcaption p {
 }
 
 .post-section form textarea:focus {
-	outline: 1px solid inherit;
+	outline: 2px solid var(--color-violet-lightest);
 	border: none;
 }
 
@@ -212,7 +212,7 @@ figure figcaption p {
 	}
 
 	.post-section form textarea:focus {
-		outline: 2px solid var(--color-violet-light);
+		outline: 2px solid var(--color-violet-dark);
 		border: none;
 	}
 
