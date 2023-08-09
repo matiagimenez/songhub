@@ -76,7 +76,7 @@ main {
 	font-size: 0.8rem;
 	display: inline-block;
 	height: 100%;
-	margin: 0.4rem 0 0 0.2rem;
+	margin: 12px 0 0 4px;
 	padding: 0 0.3rem;
 }
 
@@ -172,6 +172,10 @@ main {
 		left: 50px;
 	}
 
+	.feed {
+		width: 70%;
+	}
+
 	.post {
 		margin-bottom: 4rem;
 	}
@@ -183,7 +187,7 @@ main {
 
 	.user-name a {
 		font-size: 1rem;
-		margin-right: 0.4rem;
+		margin-right: 4px;
 	}
 
 	.user-info {
@@ -218,7 +222,6 @@ main {
 
 	.song figcaption p.stars {
 		margin-top: 0rem;
-		/* margin-bottom: 1rem; */
 		font-size: 1.4rem;
 	}
 
