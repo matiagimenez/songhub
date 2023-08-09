@@ -14,6 +14,7 @@ h1,
 h2 {
 	display: block;
 	color: var(--color-violet-light);
+	padding-left: 10px;
 }
 
 h1 {
@@ -28,7 +29,7 @@ h1::before {
 	content: '';
 	display: inline-block;
 	left: -5px;
-	bottom: 65px;
+	bottom: 50px;
 	width: 60px;
 	height: 60px;
 	background-repeat: no-repeat;
@@ -44,8 +45,6 @@ h2 {
 	font-size: 1.5rem;
 }
 
-h1,
-h2,
 legend {
 	display: none;
 }
@@ -53,29 +52,18 @@ legend {
 form {
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-end;
-	align-items: center;
+	justify-content: center;
+	align-items: left;
 	background-color: var(--color-white);
-	width: 80%;
-	height: 90%;
+	width: 90%;
+	height: 85%;
+	padding: 2rem;
 	margin: auto;
+	margin-top: 40px;
 	border-radius: 10px;
 	position: relative;
 	align-content: flex-end;
 	gap: 0.5rem;
-}
-
-form::after {
-	position: absolute;
-	top: 0;
-	content: '';
-	display: inline-block;
-	width: 100%;
-	height: 40%;
-	background-image: url('https://i.pinimg.com/564x/c0/a6/8d/c0a68d8895db701afa779956585ed6c4.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
 }
 
 fieldset {
@@ -88,6 +76,7 @@ fieldset {
 	width: 100%;
 	margin-top: 0.8rem;
 	margin-left: 0.8rem;
+	position: relative;
 }
 
 .input-container label {
@@ -95,14 +84,18 @@ fieldset {
 	text-align: left;
 	margin-bottom: 0.4rem;
 	padding: 0.3rem 0;
+	position: absolute;
 	color: var(--color-violet-dark);
 	font-size: 1rem;
+	top: 10px;
+	left: 10px;
+	transition: 0.3s;
 }
 
 .input-container input {
 	font-family: var(--font-family);
-	width: 87%;
-	height: 2rem;
+	width: 90%;
+	height: 3rem;
 	border-radius: 6px;
 	background-color: transparent;
 	outline: none;
@@ -114,6 +107,16 @@ fieldset {
 .input-container input:focus {
 	border: none;
 	outline: 2px solid var(--color-violet-lightest);
+}
+
+.input-container input:focus ~ label,
+.input-container input:valid ~ label,
+.input-container input.has-value ~ label {
+	background-color: var(--color-white);
+	font-size: 0.8rem;
+	transform: translateY(-15px);
+	left: 2px;
+	padding: 0 5px;
 }
 
 abbr {
@@ -149,18 +152,16 @@ a:hover {
 
 .button-container input[type='submit'] {
 	background-color: var(--color-violet-dark);
-	display: block;
-	margin-left: 15%;
 	padding: 0;
-	width: 70%;
+	width: 90%;
 	color: var(--color-white);
 	font-weight: bold;
 	outline: none;
 	border: none;
 	height: 2.5rem;
 	border-radius: 4px;
+	margin-top: 16px;
 	cursor: pointer;
-	margin-top: 1rem;
 }
 
 .button-container button {
@@ -176,7 +177,7 @@ a:hover {
 	height: 2.5rem;
 	margin-top: 1rem;
 	padding: 0;
-	width: 70%;
+	width: 90%;
 	border-radius: 4px;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
 	border: 1px solid #dadce0;
@@ -194,80 +195,31 @@ a:hover {
 
 .button-container button span img {
 	height: 100%;
+	background-color: transparent;
+	box-shadow: none;
 }
 
 .link-container {
 	padding: 15px;
-}
-
-@media (min-height: 650px) {
-	form::after {
-		height: 45%;
-	}
-}
-
-@media screen and (min-height: 750px) and (max-width: 900px) and (min-width: 350px) {
-	form {
-		gap: 5px;
-	}
-
-	header {
-		width: 100%;
-		padding-left: 13px;
-		margin-top: 5px;
-	}
-
-	h1,
-	h2 {
-		display: block;
-		font-size: 1.1rem;
-	}
-
-	h1::before {
-		background: none;
-		content: '';
-	}
-}
-
-@media (min-height: 800px) {
-	.link-container {
-		padding: 25px;
-	}
-}
-
-@media (min-height: 870px) {
-	form::after {
-		height: 50%;
-	}
-}
-
-@media (min-height: 1000px) {
-	form::after {
-		height: 60%;
-	}
+	align-self: center;
 }
 
 @media (min-width: 900px) {
 	main {
 		height: 100vh;
-		padding-top: 15%;
+		padding-top: 5%;
 	}
 
 	header {
 		width: 50%;
 		align-self: flex-start;
 		padding-left: 1.5rem;
-		padding-left: 2.5%;
-	}
-
-	h1,
-	h2 {
-		display: block;
 	}
 
 	form {
 		width: 95%;
-		height: 85%;
+		margin-top: 0;
+		height: 90%;
 		justify-content: center;
 	}
 
@@ -275,6 +227,14 @@ a:hover {
 		right: 0;
 		width: 45%;
 		height: 100%;
+		position: absolute;
+		top: 0;
+		content: '';
+		display: inline-block;
+		background-image: url('https://i.pinimg.com/564x/c0/a6/8d/c0a68d8895db701afa779956585ed6c4.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
 	}
 
 	fieldset {
@@ -289,7 +249,6 @@ a:hover {
 
 	.input-container input {
 		width: 90%;
-		height: 2.2rem;
 		font-size: 1.1rem;
 	}
 
@@ -316,6 +275,7 @@ a:hover {
 	}
 
 	form {
+		min-height: 85%;
 		height: 85%;
 	}
 
@@ -324,20 +284,23 @@ a:hover {
 	}
 
 	h1::before {
-		left: -5px;
-		bottom: 100px;
+		left: 0px;
+		bottom: 40px;
 	}
 }
 
 @media (min-width: 1400px) {
 	form {
-		height: 90%;
+		gap: 1.5rem;
+		margin-top: 0;
+		height: 95%;
+		min-height: 95%;
 	}
 }
 
 @media (prefers-color-scheme: dark) {
 	body {
-		background-color: var(--color-violet-dark-black);
+		background-color: var(--color-violet-darkest);
 	}
 
 	h1::before {
@@ -367,6 +330,12 @@ a:hover {
 		outline: 2px solid var(--color-violet-light);
 	}
 
+	.input-container input:focus ~ label,
+	.input-container input:valid ~ label,
+	.input-container input.has-value ~ label {
+		background-color: var(--color-black);
+	}
+
 	.button-container input[type='submit'] {
 		border: 1px solid var(--color-white);
 		background-color: var(--color-violet-darkest);
@@ -386,9 +355,10 @@ a:hover {
 	}
 }
 
-@media (max-height: 900px) {
+@media screen and (min-height: 680px) and (min-width: 900px) {
 	main {
-		padding-top: 0;
+		height: 100vh;
+		padding-top: 0%;
 	}
 
 	form {

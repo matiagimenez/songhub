@@ -12,8 +12,8 @@
             <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter2" result="shadowBlurOuter2"></feGaussianBlur>
             <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.084 0" in="shadowBlurOuter2" type="matrix" result="shadowMatrixOuter2"></feColorMatrix>
             <feMerge>
-                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
-                <feMergeNode in="shadowMatrixOuter2"></feMergeNode>
+                <!-- <feMergeNode in="shadowMatrixOuter1"></feMergeNode> -->
+                <!-- <feMergeNode in="shadowMatrixOuter2"></feMergeNode> -->
                 <feMergeNode in="SourceGraphic"></feMergeNode>
             </feMerge>
         </filter>
