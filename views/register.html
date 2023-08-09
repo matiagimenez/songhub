@@ -14,7 +14,6 @@
 				<fieldset>
 					<legend>Informacion de registro</legend>
 					<p class="input-container">
-						<label for="username">Nombre de usuario</label>
 						<input
 							name="username"
 							id="username"
@@ -22,45 +21,53 @@
 							required
 							autocomplete="off"
 						/>
+						<label for="username">Nombre de usuario</label>
 						<strong><abbr title="required">*</abbr></strong>
 					</p>
 					<p class="input-container">
+						<input
+							name="email"
+							id="email"
+							type="email"
+							required
+							autocomplete="off"
+						/>
 						<label for="email">Correo electrónico</label>
-						<input name="email" id="email" type="email" required />
 						<strong><abbr title="required">*</abbr></strong>
 					</p>
 					<p class="input-container">
-						<label for="emailConfirmation"
-							>Confirmar correo electrónico</label
-						>
 						<input
 							name="emailConfirmation"
 							id="emailConfirmation"
 							type="email"
+							autocomplete="off"
 							required
 						/>
+						<label for="emailConfirmation"
+							>Confirmar correo electrónico</label
+						>
 						<strong><abbr title="required">*</abbr></strong>
 					</p>
 					<p class="input-container">
-						<label for="password">Contraseña</label>
 						<input
 							id="password"
 							name="password"
 							type="password"
 							required
 						/>
+						<label for="password">Contraseña</label>
 						<strong><abbr title="required">*</abbr></strong>
 					</p>
 					<p class="input-container">
-						<label for="passwordConfirmation"
-							>Confirmar contraseña</label
-						>
 						<input
 							id="passwordConfirmation"
 							name="passwordConfirmation"
 							type="password"
 							required
 						/>
+						<label for="passwordConfirmation"
+							>Confirmar contraseña</label
+						>
 						<strong><abbr title="required">*</abbr></strong>
 					</p>
 				</fieldset>

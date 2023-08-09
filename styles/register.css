@@ -7,13 +7,14 @@ body {
 
 main {
 	height: 100vh;
+	padding-top: 5%;
 }
 
 h1 {
 	width: 50%;
 	align-self: flex-start;
 	margin-bottom: 1rem;
-	padding-left: 100px;
+	padding-left: 85px;
 	display: block;
 	color: var(--color-violet-light);
 	font-size: 2.8rem;
@@ -25,7 +26,7 @@ h1::before {
 	position: absolute;
 	content: '';
 	display: inline-block;
-	left: 5%;
+	left: 25px;
 	bottom: -8px;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -38,7 +39,6 @@ h1::before {
 	height: 60px;
 }
 
-h1,
 legend {
 	display: none;
 }
@@ -52,60 +52,68 @@ fieldset {
 form {
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-end;
+	justify-content: center;
 	align-items: center;
 	background-color: var(--color-white);
-	width: 80%;
-	height: 100%;
+	width: 90%;
+	height: 90%;
+	padding: 2rem;
+	margin-top: 40px;
 	margin: auto;
+	border-radius: 10px;
 	align-content: flex-end;
 	gap: 0.5rem;
 	position: relative;
-}
-
-form::after {
-	position: absolute;
-	top: 0;
-	content: '';
-	display: inline-block;
-	width: 100%;
-	height: 23%;
-	background-image: url('https://i.pinimg.com/564x/c0/a6/8d/c0a68d8895db701afa779956585ed6c4.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
+	gap: 0.5rem;
 }
 
 .input-container {
 	width: 100%;
-	margin-top: 0.6rem;
-	margin-left: 1.5rem;
+	margin-top: 0.8rem;
+	margin-left: 0.8rem;
+	position: relative;
 }
 
 .input-container label {
 	display: block;
 	text-align: left;
-	margin-bottom: 0.3rem;
+	margin-bottom: 0.4rem;
 	padding: 0.3rem 0;
+	position: absolute;
 	color: var(--color-violet-dark);
 	font-size: 1rem;
+	top: 15px;
+	left: 10px;
+	transition: 0.3s;
 }
 
 .input-container input {
 	font-family: var(--font-family);
-	width: 85%;
-	height: 1.8rem;
+	width: 90%;
+	height: 3rem;
 	border-radius: 6px;
 	background-color: transparent;
 	outline: none;
 	padding: 0rem 0.5rem;
 	font-size: 1rem;
+	margin: 5px 0;
+
 	border: 1px solid var(--color-violet-light);
 }
 
 .input-container input:focus {
 	border: none;
 	outline: 2px solid var(--color-violet-lightest);
+}
+
+.input-container input:focus ~ label,
+.input-container input:valid ~ label,
+.input-container input.has-value ~ label {
+	background-color: var(--color-white);
+	font-size: 0.8rem;
+	transform: translateY(-15px);
+	left: 2px;
+	padding: 0 5px;
 }
 
 abbr {
@@ -134,6 +142,12 @@ a:hover {
 	color: var(--color-violet-dark-black);
 }
 
+a:focus {
+	text-decoration: underline;
+	outline: none;
+	border: none;
+}
+
 .button-container {
 	width: 100%;
 	text-align: center;
@@ -141,20 +155,18 @@ a:hover {
 
 .button-container input[type='submit'] {
 	background-color: var(--color-violet-dark);
-	display: block;
-	margin-left: 15%;
 	padding: 0;
-	width: 70%;
+	width: 75%;
+	margin-right: 15px;
+	display: inline-block;
 	color: var(--color-white);
 	font-weight: bold;
 	outline: none;
 	border: none;
 	height: 2.5rem;
-	margin-right: 0;
-	border-radius: 4px;
+	border-radius: 5px;
 	cursor: pointer;
-	margin-top: 0.6rem;
-	transition: transform 0.2s ease;
+	margin-top: 16px;
 }
 
 .button-container button {
@@ -169,8 +181,10 @@ a:hover {
 	height: 2.5rem;
 	margin-top: 1rem;
 	padding: 0;
-	width: 70%;
-	border-radius: 4px;
+	width: 75%;
+	margin-right: 15px;
+	display: inline-block;
+	border-radius: 5px;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
 	border: 1px solid #dadce0;
 	color: rgba(0, 0, 0, 0.54);
@@ -195,45 +209,7 @@ a:hover {
 
 .link-container {
 	padding: 15px;
-}
-
-@media screen and (min-height: 750px) and (max-width: 900px) and (min-width: 350px) {
-	h1 {
-		display: block;
-		font-size: 1.3rem;
-		margin-bottom: 0;
-		width: 100%;
-		padding-left: 24px;
-	}
-
-	h1::before {
-		background: none;
-		content: '';
-	}
-}
-
-@media (min-height: 720px) {
-	form::after {
-		height: 30%;
-	}
-}
-
-@media (min-height: 800px) {
-	form::after {
-		height: 35%;
-	}
-}
-
-@media (min-height: 900px) {
-	form::after {
-		height: 43%;
-	}
-}
-
-@media (min-width: 400px) {
-	.input-container input {
-		width: 85%;
-	}
+	align-self: center;
 }
 
 @media (min-width: 900px) {
@@ -255,9 +231,16 @@ a:hover {
 	}
 
 	form::after {
+		position: absolute;
 		right: 0;
+		content: '';
+		display: inline-block;
 		width: 45%;
 		height: 100%;
+		background-image: url('https://i.pinimg.com/564x/c0/a6/8d/c0a68d8895db701afa779956585ed6c4.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
 	}
 
 	fieldset {
@@ -268,24 +251,20 @@ a:hover {
 
 	.input-container {
 		width: 100%;
-		margin: 1.2rem 0;
-		margin-left: 1rem;
 	}
 
 	.input-container input {
 		width: 90%;
-		height: 2.2rem;
+		font-size: 1.1rem;
 	}
 
 	.input-container label {
 		margin-bottom: 0.3rem;
-		padding: 0.3rem 0;
 	}
 
 	.button-container {
 		width: 55%;
 		align-self: flex-start;
-		margin-top: 2rem;
 	}
 
 	.link-container {
@@ -298,18 +277,25 @@ a:hover {
 @media (min-width: 1300px) {
 	main {
 		height: 100vh;
-		padding-top: 2%;
+		padding-top: 5%;
+	}
+
+	form {
+		min-height: 85%;
+		height: 85%;
+	}
+	.input-container {
+		margin-left: 1.5rem;
 	}
 
 	.input-container input {
-		width: 91%;
-		height: 2.2rem;
+		width: 90%;
 	}
 }
 
 @media (prefers-color-scheme: dark) {
 	body {
-		background-color: var(--color-violet-dark-black);
+		background-color: var(--color-violet-darkest);
 	}
 
 	h1::before {
@@ -332,12 +318,17 @@ a:hover {
 	.input-container input {
 		border-color: var(--color-violet-light-white);
 		color: var(--color-violet-light-white);
-		font-size: 1.1rem;
 	}
 
 	.input-container input:focus {
 		border: none;
 		outline: 2px solid var(--color-violet-light);
+	}
+
+	.input-container input:focus ~ label,
+	.input-container input:valid ~ label,
+	.input-container input.has-value ~ label {
+		background-color: var(--color-black);
 	}
 
 	.button-container input[type='submit'] {
@@ -359,11 +350,14 @@ a:hover {
 	}
 }
 
-@media (max-height: 900px) {
+@media screen and (max-height: 800px) and (min-width: 900px) {
 	main {
-		padding-top: 0;
+		height: 100vh;
+		padding-top: 0%;
 	}
+
 	form {
 		height: 100%;
+		gap: 0;
 	}
 }

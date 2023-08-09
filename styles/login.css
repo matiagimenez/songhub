@@ -15,6 +15,7 @@ h2 {
 	display: block;
 	color: var(--color-violet-light);
 	padding-left: 10px;
+	width: 100%;
 }
 
 h1 {
@@ -28,7 +29,7 @@ h1::before {
 	position: absolute;
 	content: '';
 	display: inline-block;
-	left: -5px;
+	left: 5px;
 	bottom: 50px;
 	width: 60px;
 	height: 60px;
@@ -87,7 +88,7 @@ fieldset {
 	position: absolute;
 	color: var(--color-violet-dark);
 	font-size: 1rem;
-	top: 10px;
+	top: 15px;
 	left: 10px;
 	transition: 0.3s;
 }
@@ -101,6 +102,7 @@ fieldset {
 	outline: none;
 	padding: 0rem 0.5rem;
 	font-size: 1rem;
+	margin: 5px 0;
 	border: 1px solid var(--color-violet-light);
 }
 
@@ -159,13 +161,15 @@ a:focus {
 .button-container input[type='submit'] {
 	background-color: var(--color-violet-dark);
 	padding: 0;
-	width: 90%;
+	width: 75%;
+	display: inline-block;
+	margin-right: 15px;
 	color: var(--color-white);
 	font-weight: bold;
 	outline: none;
 	border: none;
 	height: 2.5rem;
-	border-radius: 4px;
+	border-radius: 5px;
 	margin-top: 16px;
 	cursor: pointer;
 }
@@ -183,8 +187,10 @@ a:focus {
 	height: 2.5rem;
 	margin-top: 1rem;
 	padding: 0;
-	width: 90%;
-	border-radius: 4px;
+	width: 75%;
+	margin-right: 15px;
+	display: inline-block;
+	border-radius: 5px;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
 	border: 1px solid #dadce0;
 	color: rgba(0, 0, 0, 0.54);
@@ -291,7 +297,6 @@ a:focus {
 
 	h1::before {
 		left: 0px;
-		bottom: 40px;
 	}
 }
 
@@ -361,7 +366,7 @@ a:focus {
 	}
 }
 
-@media screen and (min-height: 680px) and (min-width: 900px) {
+@media screen and (max-height: 680px) and (min-width: 900px) {
 	main {
 		height: 100vh;
 		padding-top: 0%;
