@@ -203,4 +203,12 @@
 			</nav>
 		</footer>
 	</body>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			if (window.scrollY == 0) {
+				const footer = document.querySelector('.main-footer');
+				footer.classList.add('fixed-bottom');
+			}
+		});
+	</script>
 </html>

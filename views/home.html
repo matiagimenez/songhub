@@ -124,7 +124,7 @@
 								/>
 								<p class="user-name">
 									<a href="profile.html">Usuario 1</a>
-									<span>.username1</span>
+									<span>$username1</span>
 								</p>
 							</section>
 							<figcaption>
@@ -152,7 +152,7 @@
 								/>
 								<p class="user-name">
 									<a href="profile.html">Usuario 2</a>
-									<span>.username2</span>
+									<span>$username2</span>
 								</p>
 							</section>
 							<figcaption>
@@ -180,7 +180,7 @@
 								/>
 								<p class="user-name">
 									<a href="profile.html">Usuario 1</a>
-									<span>.username1</span>
+									<span>$username1</span>
 								</p>
 							</section>
 							<figcaption>
@@ -219,4 +219,12 @@
 			</nav>
 		</footer>
 	</body>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			if (window.scrollY == 0) {
+				const footer = document.querySelector('.main-footer');
+				footer.classList.add('fixed-bottom');
+			}
+		});
+	</script>
 </html>

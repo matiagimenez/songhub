@@ -101,9 +101,7 @@ body {
 	}
 }
 
-@media (min-width: 1100px) {
-	.main-footer {
-		position: fixed; /* Si NO HAY scroll vertical (Y) tiene que posicionarse con relative */
-		bottom: 0;
-	}
+.fixed {
+	position: fixed; /* Si NO HAY scroll vertical (Y) tiene que posicionarse con relative */
+	bottom: 0;
 }

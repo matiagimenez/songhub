@@ -146,4 +146,16 @@
 			</nav>
 		</footer>
 	</body>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const footer = document.querySelector('.main-footer');
+			console.log(window.scrollY);
+			if (window.scrollY === 0) {
+				console.log('fixed');
+				footer.classList.add('fixed');
+			} else {
+				footer.classList.remove('fixed');
+			}
+		});
+	</script>
 </html>
