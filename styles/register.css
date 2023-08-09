@@ -85,6 +85,7 @@ form {
 	top: 15px;
 	left: 10px;
 	transition: 0.3s;
+	border-radius: 20px;
 }
 
 .input-container input {
@@ -97,7 +98,6 @@ form {
 	padding: 0rem 0.5rem;
 	font-size: 1rem;
 	margin: 5px 0;
-
 	border: 1px solid var(--color-violet-light);
 }
 
