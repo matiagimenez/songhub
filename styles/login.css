@@ -145,6 +145,12 @@ a:hover {
 	color: var(--color-violet-dark-black);
 }
 
+a:focus {
+	text-decoration: underline;
+	outline: none;
+	border: none;
+}
+
 .button-container {
 	width: 100%;
 	text-align: center;
