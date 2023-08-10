@@ -168,6 +168,7 @@ figure figcaption p {
 	color: var(--color-white);
 	width: 90%;
 	margin: 1rem;
+	cursor: pointer;
 	height: 2.2rem;
 	outline: none;
 	border: 1px solid;
