@@ -4,10 +4,10 @@
 
 main {
 	font-family: var(--font-family);
-	padding-bottom: 10px;
+	padding-bottom: 20px;
 }
 
-.following {
+.users {
 	margin: auto;
 }
 
@@ -84,7 +84,7 @@ h2 {
 		margin: auto;
 	}
 
-	.following {
+	.users {
 		width: 80%;
 	}
 
@@ -102,7 +102,7 @@ h2 {
 		font-size: 2rem;
 	}
 
-	.following {
+	.users {
 		width: 70%;
 	}
 
@@ -130,7 +130,7 @@ h2 {
 		font-size: 2.3rem;
 	}
 
-	.following {
+	.users {
 		width: 60%;
 	}
 
