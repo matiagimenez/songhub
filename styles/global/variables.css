@@ -18,3 +18,18 @@
 	--color-red: #c30303; /* Rojo - Error*/
 	--font-family: 'Roboto', sans-serif;
 }
+
+body {
+	overflow: auto;
+}
+
+body::-webkit-scrollbar {
+	width: 12px;
+	background-color: #dbdfe2;
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: #1b0026;
+	border: 1px solid #bfc4c9;
+	border-radius: 10px;
+}
