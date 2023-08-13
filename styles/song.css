@@ -155,10 +155,17 @@ figure figcaption p:nth-of-type(2) {
 	color: var(--color-white);
 	cursor: pointer;
 	font-weight: bold;
+	transition: all 0.3s;
 }
 
 .post-section form .tag-button:hover {
-	opacity: 0.85;
+	border: none;
+	border-bottom: 1px solid var(--color-violet-dark);
+	border-top: 1px solid var(--color-violet-dark);
+	color: var(--color-violet-darkest);
+	border-radius: 0;
+	background-color: transparent;
+	letter-spacing: 1px;
 }
 
 .post-section form .share-button {
@@ -189,11 +196,19 @@ figure figcaption p:nth-of-type(2) {
 	border: 1px solid;
 	border-radius: 10px;
 	font-weight: bold;
-	transition: opacity 0.1s ease;
+	position: relative;
+	transition: all 0.3s;
 }
 
 .post-section form input[type='submit']:hover {
-	opacity: 0.8;
+	border: none;
+	border-bottom: 1px solid var(--color-violet-dark);
+	border-top: 1px solid var(--color-violet-dark);
+	color: var(--color-violet-darkest);
+	border-radius: 0;
+	background-color: transparent;
+	letter-spacing: 1px;
+	font-size: 0.9rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -247,6 +262,16 @@ figure figcaption p:nth-of-type(2) {
 	.post-section form input[type='submit'] {
 		border: none;
 		background-color: var(--color-violet-light);
+	}
+
+	.post-section form .tag-button:hover {
+		color: var(--color-white);
+		border-color: var(--color-violet-lightest);
+	}
+
+	.post-section form input[type='submit']:hover {
+		color: var(--color-white);
+		border-color: var(--color-violet-lightest);
 	}
 }
 
