@@ -204,10 +204,15 @@
 		</footer>
 	</body>
 	<script>
-		document.addEventListener('load', () => {
-			if (window.scrollY == 0) {
-				const footer = document.querySelector('.main-footer');
-				footer.classList.add('fixed-bottom');
+		window.addEventListener('load', () => {
+			const contentElement = document.querySelector('html');
+			const isScrollable =
+				contentElement.scrollHeight > contentElement.clientHeight;
+			const footer = document.querySelector('.main-footer');
+			if (!isScrollable) {
+				footer.classList.add('fixed');
+			} else {
+				footer.classList.remove('fixed');
 			}
 		});
 	</script>
