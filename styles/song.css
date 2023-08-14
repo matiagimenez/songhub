@@ -341,7 +341,7 @@ figure figcaption p:nth-of-type(2) {
 		justify-content: space-between;
 		align-items: center;
 		gap: 10px;
-		padding: 2.3rem 0;
+		padding: 10px 0;
 	}
 
 	figure {
@@ -431,7 +431,6 @@ figure figcaption p:nth-of-type(2) {
 @media screen and (min-width: 1400px) {
 	main {
 		gap: 0px;
-		padding: 2.3rem 0;
 	}
 
 	figure img {
