@@ -53,6 +53,56 @@ main {
 .post {
 	margin-bottom: 1.5rem;
 	cursor: pointer;
+	margin-top: 1rem;
+	min-height: 135px;
+	position: relative;
+}
+
+.post figure {
+	min-height: 130px;
+	height: 100%;
+	display: block;
+	position: relative;
+}
+
+.post figcaption {
+	display: inline-block;
+	position: absolute;
+	width: 65%;
+	bottom: 15px;
+	left: 130px;
+}
+
+.post figcaption h3 {
+	font-weight: bold;
+	font-size: 0.85rem;
+	width: 100%;
+	margin-bottom: 0.4rem;
+}
+
+.post figcaption p:first-child {
+	font-size: 0.75rem;
+	margin-bottom: 0.4rem;
+	color: var(--color-grey-dark);
+}
+
+.post figcaption p {
+	font-size: 0.8rem;
+	margin-top: 0rem;
+	margin-bottom: 0rem;
+}
+
+.post figcaption a {
+	display: none;
+}
+
+.post-img {
+	display: inline-block;
+	height: 120px;
+	width: 120px;
+	margin-right: 1rem;
+	border-radius: 10px;
+	border: 1px solid var(--color-violet-dark);
 }
 
 .user-info {
@@ -93,59 +143,6 @@ main {
 	color: var(--color-grey-dark);
 }
 
-.song {
-	margin-top: 1rem;
-	min-height: 135px;
-	position: relative;
-}
-
-.song figure {
-	min-height: 130px;
-	height: 100%;
-	display: block;
-	position: relative;
-}
-
-.song figcaption {
-	display: inline-block;
-	position: absolute;
-	width: 65%;
-	bottom: 15px;
-	left: 130px;
-}
-
-.song figcaption h3 {
-	font-weight: bold;
-	font-size: 0.85rem;
-	width: 100%;
-	margin-bottom: 0.4rem;
-}
-
-.song figcaption p:first-child {
-	font-size: 0.75rem;
-	margin-bottom: 0.4rem;
-	color: var(--color-grey-dark);
-}
-
-.song figcaption p {
-	font-size: 0.8rem;
-	margin-top: 0rem;
-	margin-bottom: 0rem;
-}
-
-.song figcaption a {
-	display: none;
-}
-
-.song-img {
-	display: inline-block;
-	height: 120px;
-	width: 120px;
-	margin-right: 1rem;
-	border-radius: 10px;
-	border: 1px solid var(--color-violet-dark);
-}
-
 .stars {
 	display: inline-block;
 	color: var(--color-violet-light);
@@ -173,14 +170,15 @@ main {
 	}
 
 	.feed {
-		width: 70%;
+		width: 60%;
 	}
 
 	.post {
 		margin-bottom: 4rem;
+		margin-bottom: 20px;
 	}
 
-	.song-img {
+	.post-img {
 		height: 200px;
 		width: 200px;
 	}
@@ -195,44 +193,46 @@ main {
 	}
 
 	.user-img {
-		height: 30px;
-		width: 30px;
+		height: 35px;
+		width: 35px;
 	}
 
-	.song figcaption {
+	.post figcaption {
 		left: 225px;
 		height: 150px;
 		bottom: 0px;
 	}
 
-	.song figcaption h3 {
-		font-size: 1.4rem;
+	.post figcaption h3 {
+		margin-top: 20px;
+		font-size: 1.3rem;
 	}
 
-	.song figcaption p:first-child {
+	.post figcaption p:first-child {
 		font-size: 1rem;
-		margin-top: 0;
+		margin-top: 5px;
+		margin-bottom: 10px;
 	}
 
-	.song figcaption p {
+	.post figcaption p {
 		font-size: 1.1rem;
-		margin-top: 0.8rem;
-		margin-bottom: 0.5rem;
+		margin-top: 10px;
+		margin-bottom: 0px;
 	}
 
-	.song figcaption p.stars {
-		margin-top: 0rem;
-		font-size: 1.4rem;
+	.post figcaption p.stars {
+		margin-top: 10px;
+		font-size: 1.6rem;
 	}
 
-	.song figcaption a {
+	.post figcaption a {
 		display: block;
 		width: 40%;
 		height: 2rem;
 		padding: 0.2rem;
 	}
 
-	.song figcaption a button {
+	.post figcaption a button {
 		background-color: var(--color-violet-dark);
 		padding: 0.6rem 1rem;
 		border: none;
@@ -269,15 +269,15 @@ main {
 		color: var(--color-violet-lightest);
 	}
 
-	.song-img {
+	.post-img {
 		border-color: var(--color-grey-medium);
 	}
 
-	.song figcaption p:first-child {
+	.post figcaption p:first-child {
 		color: var(--color-grey-very-light);
 	}
 
-	.song figcaption a button {
+	.post figcaption a button {
 		background-color: var(--color-white);
 		color: var(--color-violet-dark);
 	}
