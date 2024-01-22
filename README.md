@@ -50,7 +50,7 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
 -   Diseño y experiencia de usuario:
     -   Diseñar una interfaz de usuario atractiva y usable que proporcione una experiencia agradable para los usuarios tanto en navegadores móviles como de escritorio.
     -   Implementar un diseño responsivo que se adapte a diferentes tamaños de pantalla y dispositivos.
-    -
+    
 -   Seguridad:
 
     -   El sitio web cumplirá con las mejores prácticas de seguridad, como protección contra ataques de inyección SQL y cross-site scripting (XSS).
