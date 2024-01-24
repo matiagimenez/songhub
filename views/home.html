@@ -16,19 +16,19 @@
 
 		<link rel="stylesheet" href="../styles/home.css" />
 		<link rel="icon" type="image/x-icon" href="/assets/icons/favicon.svg" />
-
+		<script src="../scripts/index.js" type="module"></script>
 		<title>Inicio | SongHub</title>
 	</head>
 	<body>
 		<header class="main-header">
 			<h1>
-				<a href="home.html">
+				<a href="home.html" tabindex="0">
 					<img src="../assets/icons/logo.svg" alt="Logo de SongHub" />
 				</a>
 			</h1>
 			<nav class="header-nav">
-				<ul>
-					<li>
+				<ul class="hidden" role="menu" id="main-menu">
+					<li tabindex="1">
 						<a href="profile.html">
 							<img
 								height="60px"
@@ -39,13 +39,13 @@
 							<span>PERFIL</span>
 						</a>
 					</li>
-					<li>
+					<li tabindex="2">
 						<a href="home.html">INICIO</a>
 					</li>
-					<li>
+					<li tabindex="3">
 						<a href="explore.html">EXPLORAR</a>
 					</li>
-					<li>
+					<li tabindex="4">
 						<form action="">
 							<input
 								type="search"
@@ -58,7 +58,12 @@
 						</form>
 					</li>
 				</ul>
-				<button class="menu">
+				<button
+					class="menu-button"
+					tabindex="0"
+					aria-expanded="false"
+					aria-controls="main-menu"
+				>
 					<span class="material-symbols-outlined"> menu </span>
 				</button>
 			</nav>
@@ -138,7 +143,9 @@
 						</section>
 						<figcaption>
 							<p>hace 8 horas</p>
-							<h3 class="post-title">The Dark Side of the Moon</h3>
+							<h3 class="post-title">
+								The Dark Side of the Moon
+							</h3>
 							<p>Pink Floyd</p>
 							<p class="stars">★★★★★</p>
 						</figcaption>
@@ -211,34 +218,6 @@
 				</article>
 			</section>
 		</main>
-		<footer class="main-footer">
-			<section>
-				<p>
-					<img
-						src="../assets/icons/icon.svg"
-						alt="Icono de SongHub"
-						height="15px"
-						width="15px"
-					/>
-					<span> &#169; 2023 SongHub Inc. </span>
-				</p>
-				<p>
-					<img
-						src="../assets/icons/spotify.svg"
-						alt="Icono de Spotify"
-						height="15px"
-						width="15px"
-					/>
-					<span> En colaboración con Spotify </span>
-				</p>
-			</section>
-			<nav class="footer-nav">
-				<ul>
-					<li><a href="home.html">Volver al inicio</a></li>
-					<li><a href="terms.html">Terminos y condiciones</a></li>
-				</ul>
-			</nav>
-		</footer>
 	</body>
 	<script>
 		window.addEventListener('load', () => {

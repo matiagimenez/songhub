@@ -9,18 +9,19 @@
 		/>
 		<link rel="stylesheet" href="../styles/song.css" />
 		<link rel="icon" href="../assets/icons/favicon.svg" />
+		<script src="../scripts/index.js" type="module"></script>
 		<title>Cancion | SongHub</title>
 	</head>
 	<body>
 		<header class="main-header">
 			<h1>
-				<a href="home.html">
+				<a href="home.html" tabindex="0">
 					<img src="../assets/icons/logo.svg" alt="Logo de SongHub" />
 				</a>
 			</h1>
 			<nav class="header-nav">
-				<ul>
-					<li>
+				<ul class="hidden" role="menu" id="main-menu">
+					<li tabindex="1">
 						<a href="profile.html">
 							<img
 								height="60px"
@@ -31,13 +32,13 @@
 							<span>PERFIL</span>
 						</a>
 					</li>
-					<li>
+					<li tabindex="2">
 						<a href="home.html">INICIO</a>
 					</li>
-					<li>
+					<li tabindex="3">
 						<a href="explore.html">EXPLORAR</a>
 					</li>
-					<li>
+					<li tabindex="4">
 						<form action="">
 							<input
 								type="search"
@@ -50,7 +51,12 @@
 						</form>
 					</li>
 				</ul>
-				<button class="menu">
+				<button
+					class="menu-button"
+					tabindex="0"
+					aria-expanded="false"
+					aria-controls="main-menu"
+				>
 					<span class="material-symbols-outlined"> menu </span>
 				</button>
 			</nav>

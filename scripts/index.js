@@ -1,19 +1,5 @@
+import { routes } from './routes.js';
 import { ScriptLoader } from './utils/ScriptLoader.js';
-
-const routes = {
-	'/login': [
-		{
-			scriptName: 'input-animation',
-			scriptPath: '/scripts/animations/input-animation.js',
-		},
-	],
-	'/register': [
-		{
-			scriptName: 'input-animation',
-			scriptPath: '/scripts/animations/input-animation.js',
-		},
-	],
-};
 
 document.addEventListener('DOMContentLoaded', () => {
 	const currentPath = window.location.pathname;
