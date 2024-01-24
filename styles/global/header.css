@@ -68,7 +68,7 @@ h1 img {
 }
 
 .header-nav ul.hidden {
-	display: none;
+	visibility: hidden;
 	right: -100% !important;
 }
 
