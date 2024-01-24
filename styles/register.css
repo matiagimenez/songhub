@@ -1,4 +1,5 @@
 @import url('global/variables.css');
+@import url('global/utilities.css');
 
 body {
 	background-color: var(--color-violet-lightest);
@@ -89,21 +90,8 @@ form {
 }
 
 .input-container input {
-	font-family: var(--font-family);
 	width: 90%;
-	height: 3rem;
-	border-radius: 6px;
-	background-color: transparent;
-	outline: none;
-	padding: 0rem 0.5rem;
-	font-size: 1rem;
 	margin: 5px 0;
-	border: 1px solid var(--color-violet-light);
-}
-
-.input-container input:focus {
-	border: none;
-	outline: 2px solid var(--color-violet-lightest);
 }
 
 .input-container input:focus ~ label,
@@ -313,16 +301,6 @@ a:focus {
 
 	.input-container label {
 		color: var(--color-violet-light-white);
-	}
-
-	.input-container input {
-		border-color: var(--color-violet-light-white);
-		color: var(--color-violet-light-white);
-	}
-
-	.input-container input:focus {
-		border: none;
-		outline: 2px solid var(--color-violet-light);
 	}
 
 	.input-container input:focus ~ label,

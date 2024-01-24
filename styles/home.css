@@ -38,7 +38,7 @@ main {
 
 .feed {
 	width: 90%;
-	margin: auto;
+	margin-left: 24px;
 }
 
 .feed h2 {
@@ -53,6 +53,7 @@ main {
 	margin-bottom: 1.5rem;
 	cursor: pointer;
 	margin-top: 1rem;
+	width: 100%;
 	min-height: 135px;
 	position: relative;
 }
@@ -74,19 +75,18 @@ main {
 
 .post figcaption h3 {
 	font-weight: bold;
-	font-size: 0.85rem;
 	width: 100%;
+	font-size: 1rem;
 	margin-bottom: 0.4rem;
 }
 
 .post figcaption p:first-child {
-	font-size: 0.75rem;
+	font-size: 0.8rem;
 	margin-bottom: 0.4rem;
 	color: var(--color-grey-dark);
 }
 
 .post figcaption p {
-	font-size: 0.8rem;
 	margin-top: 0rem;
 	margin-bottom: 0rem;
 }
@@ -101,7 +101,6 @@ main {
 	width: 120px;
 	margin-right: 1rem;
 	border-radius: 10px;
-	border: 1px solid var(--color-violet-dark);
 }
 
 .user-info {
@@ -109,8 +108,7 @@ main {
 	width: 60%;
 	position: absolute;
 	left: 130px;
-	vertical-align: top;
-	margin-top: 0.4rem;
+	top: 0;
 }
 
 .user-img {
@@ -125,8 +123,8 @@ main {
 	font-size: 0.8rem;
 	display: inline-block;
 	height: 100%;
-	margin: 12px 0 0 4px;
 	padding: 0 0.3rem;
+	margin-top: 5px;
 }
 
 .user-name a {
@@ -137,7 +135,7 @@ main {
 }
 
 .user-name span {
-	font-size: 0.85rem;
+	font-size: 0.9rem;
 	vertical-align: text-top;
 	color: var(--color-grey-dark);
 }
@@ -166,10 +164,6 @@ main {
 		position: absolute;
 		top: 50px;
 		left: 50px;
-	}
-
-	.feed {
-		width: 60%;
 	}
 
 	.post {
@@ -242,6 +236,12 @@ main {
 	}
 }
 
+@media (min-width: 1400px) {
+	.feed {
+		margin-left: 0px;
+	}
+}
+
 @media (prefers-color-scheme: dark) {
 	.carousel {
 		background-color: var(--color-black);
@@ -266,10 +266,6 @@ main {
 
 	.stars {
 		color: var(--color-violet-lightest);
-	}
-
-	.post-img {
-		border-color: var(--color-grey-medium);
 	}
 
 	.post figcaption p:first-child {
