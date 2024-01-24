@@ -23,7 +23,7 @@ h1 {
 h1 img {
 	height: 100%;
 	width: 100%;
-	min-width: 120px;
+	min-width: 150px;
 	padding: 0 20px;
 }
 
@@ -39,7 +39,7 @@ h1 img {
 	position: absolute;
 	right: 25px;
 	top: 0px;
-	bottom: 0;
+	bottom: 0px;
 	background-color: transparent;
 	color: var(--color-white);
 	outline: none;
@@ -116,9 +116,12 @@ h1 img {
 }
 
 @media (min-width: 1250px) {
-
 	form input {
 		width: 250px;
+	}
+
+	h1 img {
+		min-width: 160px;
 	}
 }
 
