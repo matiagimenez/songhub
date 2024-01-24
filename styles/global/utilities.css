@@ -14,6 +14,11 @@
 	outline: 2px solid var(--color-violet-lightest);
 }
 
+.image-border {
+	border-radius: 10px;
+	border: 1px solid var(--color-violet-dark);
+}
+
 @media (prefers-color-scheme: dark) {
 	.input {
 		border-color: var(--color-violet-light-white);
@@ -23,5 +28,9 @@
 	.input:focus {
 		border: none;
 		outline: 2px solid var(--color-violet-light);
+	}
+
+	.image-border {
+		border-color: var(--color-grey-medium);
 	}
 }

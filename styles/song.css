@@ -21,7 +21,6 @@ figure img {
 	position: relative;
 	height: auto;
 	border-radius: 15px;
-	border: 1px solid var(--color-grey-light);
 }
 
 figure figcaption {

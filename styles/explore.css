@@ -44,7 +44,6 @@ figure img {
 	height: 100%;
 	border-radius: 10px;
 	overflow: hidden;
-	border: 1px solid var(--color-violet-dark);
 }
 
 figcaption {
@@ -103,9 +102,5 @@ figcaption p {
 
 	figcaption p {
 		color: var(--color-white);
-	}
-
-	figure img {
-		border-color: var(--color-grey-medium);
 	}
 }

@@ -62,7 +62,6 @@ h2 {
 }
 
 .user img {
-	border: 1px solid var(--color-grey-medium);
 	width: 70px;
 	height: 70px;
 	border-radius: 50%;
@@ -151,10 +150,6 @@ h2 {
 
 	.user {
 		border-color: var(--color-white);
-	}
-
-	.user img {
-		border-color: var(--color-grey-medium);
 	}
 
 	.user a {
