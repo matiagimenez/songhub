@@ -1,0 +1,13 @@
+.title {
+  font-size: 1rem;
+  padding: 1.3rem 0 0.5rem 0;
+  font-weight: bold;
+  color: var(--color-violet-dark);
+  border-bottom: 0.8px solid var(--color-violet-light-white);
+}
+
+@media (min-width: 900px) {
+  .title {
+    font-size: 1.2rem;
+  }
+}
