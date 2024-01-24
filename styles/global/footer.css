@@ -23,7 +23,7 @@ body {
 
 .main-footer section p {
 	height: 50%;
-	padding: 0rem 0.5rem;
+	padding: 0rem 1rem;
 	display: flex;
 	align-items: center;
 }
@@ -67,7 +67,6 @@ body {
 	margin-bottom: 0.6rem;
 	vertical-align: middle;
 	width: 100%;
-	font-weight: bold;
 	color: var(--color-white);
 	text-decoration: none;
 }
