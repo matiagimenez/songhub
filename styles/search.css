@@ -2,8 +2,8 @@
 @import url('global/main.css');
 
 main {
-	padding: 1rem;
 	font-family: var(--font-family);
+	padding: 1rem;
 }
 
 h2 {
@@ -131,9 +131,9 @@ figcaption p:nth-child(2) {
 
 @media (min-width: 1600px) {
 	main {
-		grid-template-columns: repeat(4, 1fr);
 		grid-template-rows: 10%;
-		grid-auto-rows: 230px;
+		grid-auto-rows: 250px;
+		grid-template-columns: repeat(3, 1fr);
 	}
 
 	figure img {
@@ -142,7 +142,7 @@ figcaption p:nth-child(2) {
 	}
 
 	main header {
-		grid-column: 1/5;
+		grid-column: 1/4;
 	}
 }
 

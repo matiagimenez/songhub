@@ -109,18 +109,11 @@ h1 img {
 
 	.header-nav ul li form input {
 		position: relative;
-		height: 2.2rem;
+		height: 2.5rem;
 		font-size: 1.02rem;
 		width: 220px;
-		border: none;
-		outline: none;
-		background-color: transparent;
-		border: 2px solid var(--color-white);
-		padding: 0 0.5rem;
-		border-radius: 10px;
 		color: var(--color-white);
-
-		font-family: var(--font-family);
+		border-width: 2px;
 	}
 
 	.header-nav ul li form input::placeholder {
@@ -150,18 +143,7 @@ h1 img {
 }
 
 @media (prefers-color-scheme: dark) {
-	.header-nav ul li form input {
-		background-color: transparent;
-		border: 2px solid var(--color-white);
-		color: var(--color-white);
-	}
-
 	.header-nav ul li form input::placeholder {
 		color: var(--color-grey-light);
-	}
-
-	.header-nav ul li form input:focus {
-		border: none;
-		outline: 2px solid var(--color-violet-light);
 	}
 }

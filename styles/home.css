@@ -37,8 +37,7 @@ main {
 }
 
 .feed {
-	width: 90%;
-	margin: auto;
+	width: 100%;
 }
 
 .feed h2 {
@@ -53,6 +52,7 @@ main {
 	margin-bottom: 1.5rem;
 	cursor: pointer;
 	margin-top: 1rem;
+	width: 100%;
 	min-height: 135px;
 	position: relative;
 }
@@ -166,10 +166,6 @@ main {
 		position: absolute;
 		top: 50px;
 		left: 50px;
-	}
-
-	.feed {
-		width: 60%;
 	}
 
 	.post {

@@ -100,16 +100,8 @@ figure figcaption p:nth-of-type(2) {
 	resize: none;
 	display: block;
 	margin: 5px 20px;
-	border-radius: 10px;
-	border-color: var(--color-violet-darkest);
 	position: relative;
-	font-family: var(--font-family);
 	padding: 0.6rem;
-}
-
-.post-section form textarea:focus {
-	outline: 2px solid var(--color-violet-darkest);
-	border: none;
 }
 
 .post-section form textarea::placeholder {
@@ -240,17 +232,6 @@ figure figcaption p:nth-of-type(2) {
 
 	.post-section .visibility span:nth-child(1) {
 		color: var(--color-grey-light);
-	}
-
-	.post-section form textarea {
-		background-color: var(--color-black);
-		color: var(--color-white);
-		border-color: var(--color-grey-light);
-	}
-
-	.post-section form textarea:focus {
-		outline: 2px solid var(--color-violet-light);
-		border: none;
 	}
 
 	.post-section form textarea::placeholder {
