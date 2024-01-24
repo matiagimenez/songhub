@@ -17,7 +17,6 @@ const routes = {
 
 document.addEventListener('DOMContentLoaded', () => {
 	const currentPath = window.location.pathname;
-	console.log(currentPath);
 	for (const route in routes) {
 		const scripts = routes[route];
 		for (const script of scripts) {
