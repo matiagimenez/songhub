@@ -17,6 +17,14 @@
   text-align: center;
 }
 
+.post-title {
+  font-weight: bold;
+  width: 100%;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  color: var(--color-violet-dark);
+}
+
 @media (min-width: 900px) {
 
   .body-title,
@@ -24,6 +32,10 @@
     font-size: 1.4rem;
   }
 
+  .post-title {
+    margin-top: 20px;
+    font-size: 1.3rem;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
