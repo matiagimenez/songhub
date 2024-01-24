@@ -1,0 +1,8 @@
+@import url('header.css');
+@import url('footer.css');
+
+main {
+	margin-left: auto;
+	margin-right: auto;
+	width: min(100%, var(--content-max-width));
+}

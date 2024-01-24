@@ -1,5 +1,6 @@
 @import url('reset.css');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500&display=swap');
+
 :root {
 	--color-violet-light-white: #f5e1fd; /* Violeta casi blanco */
 	--color-violet-lightest: #ba93ae; /* Violeta más claro */
@@ -17,6 +18,7 @@
 	--color-green: #14ff00; /* Verde - Exito*/
 	--color-red: #c30303; /* Rojo - Error*/
 	--font-family: 'Roboto', sans-serif;
+	--content-max-width: 1300px;
 }
 
 body {

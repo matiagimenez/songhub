@@ -1,6 +1,5 @@
 @import url('global/variables.css');
-@import url('global/header.css');
-@import url('global/footer.css');
+@import url('global/main.css');
 
 main {
 	font-family: var(--font-family);
@@ -102,10 +101,6 @@ h2 {
 		font-size: 2rem;
 	}
 
-	.users {
-		width: 70%;
-	}
-
 	.user {
 		padding: 15px 25px;
 	}
@@ -128,10 +123,6 @@ h2 {
 	h2 {
 		width: 60%;
 		font-size: 2.3rem;
-	}
-
-	.users {
-		width: 60%;
 	}
 
 	.user a {

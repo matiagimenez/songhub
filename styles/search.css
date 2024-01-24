@@ -1,6 +1,5 @@
 @import url('global/variables.css');
-@import url('global/header.css');
-@import url('global/footer.css');
+@import url('global/main.css');
 
 main {
 	padding: 1rem;
