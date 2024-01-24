@@ -5,9 +5,9 @@
 	z-index: 1000;
 	top: 0vh;
 	background-color: var(--color-violet-darkest);
-	min-height: 110px;
+	min-height: 90px;
 	height: 10vh;
-	max-height: 120px;
+	max-height: 100px;
 	width: 100%;
 	font-family: var(--font-family);
 }
@@ -38,8 +38,9 @@ h1 img {
 
 .menu {
 	position: absolute;
-	right: 20px;
-	top: 40px;
+	right: 25px;
+	top: 0px;
+	bottom: 0;
 	background-color: transparent;
 	color: var(--color-white);
 	outline: none;
@@ -93,7 +94,7 @@ h1 img {
 	}
 
 	.header-nav ul li {
-		font-size: 1.1rem;
+		font-size: 1rem;
 		font-weight: bold;
 	}
 	.header-nav ul li a {
@@ -102,14 +103,14 @@ h1 img {
 	}
 
 	.header-nav ul li img {
-		width: 60px;
-		height: 60px;
+		width: 50px;
+		height: 50px;
 		border-radius: 50%;
 	}
 
 	.header-nav ul li form input {
 		position: relative;
-		height: 2.5rem;
+		height: 2.2rem;
 		font-size: 1.02rem;
 		width: 220px;
 		color: var(--color-white);
