@@ -102,16 +102,11 @@ h1 img {
 		font-size: 0.8rem;
 		width: 180px;
 		color: var(--color-white);
-		border-width: 2px;
+		border: 2px solid var(--color-violet-light-white);
 	}
 
 	.header-nav ul li form input::placeholder {
 		color: var(--color-grey-light);
-	}
-
-	.header-nav ul li form input:focus {
-		border: none;
-		outline: 2px solid var(--color-violet-light);
 	}
 }
 
@@ -122,11 +117,5 @@ h1 img {
 
 	h1 img {
 		min-width: 160px;
-	}
-}
-
-@media (prefers-color-scheme: dark) {
-	.header-nav ul li form input::placeholder {
-		color: var(--color-grey-light);
 	}
 }

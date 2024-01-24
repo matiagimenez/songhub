@@ -39,16 +39,8 @@ main {
 
 .feed {
 	width: 90%;
-	margin-left: 24px;
+	margin: auto;
 }
-
-/*.feed h2 {
-	font-size: 1.9rem;
-	padding: 1.3rem 0 0.5rem 0;
-	font-weight: bold;
-	color: var(--color-violet);
-	border-bottom: 1px solid var(--color-grey-dark);
-}*/
 
 .post {
 	margin-bottom: 1.5rem;
@@ -156,6 +148,7 @@ main {
 	}
 }
 
+
 @media (min-width: 1000px) {
 	.carousel {
 		max-height: 70vh;
@@ -237,9 +230,9 @@ main {
 	}
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1300px) {
 	.feed {
-		margin-left: 0px;
+		width: 100%;
 	}
 }
 
@@ -251,11 +244,6 @@ main {
 	body {
 		background-color: var(--color-violet-dark-black);
 		color: var(--color-white);
-	}
-
-	.feed h2 {
-		color: var(--color-white);
-		border-color: var(--color-white);
 	}
 
 	.user-name a {
