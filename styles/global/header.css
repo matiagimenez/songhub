@@ -7,9 +7,8 @@
 	background-color: var(--color-violet-darkest);
 	height: 80px;
 	width: 100%;
+	display: flex;
 	font-family: var(--font-family);
-	display: grid;
-	grid-template-columns: 40% 60%;
 }
 
 h1 {
@@ -53,6 +52,7 @@ h1 img {
 .header-nav ul {
 	display: flex;
 	padding: 1rem;
+	z-index: 10000;
 	flex-direction: column;
 	align-items: left;
 	gap: 24px;
@@ -64,12 +64,10 @@ h1 img {
 	border: 1px solid white;
 	border-top: none;
 	border-right: none;
-	transition: all 200ms ease-out;
 }
 
 .header-nav ul.hidden {
-	visibility: hidden;
-	right: -100% !important;
+	display: none;
 }
 
 .header-nav ul li:first-child a {
@@ -126,6 +124,7 @@ h1 img {
 
 	.header-nav ul {
 		position: static;
+		background-color: transparent;
 		top: 0;
 		right: 0;
 		display: flex;
