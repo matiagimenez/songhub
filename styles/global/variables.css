@@ -20,17 +20,3 @@
 	--font-family: 'Roboto', sans-serif;
 	--content-max-width: 1300px;
 }
-
-body {
-	overflow: auto;
-}
-
-body::-webkit-scrollbar {
-	background-color: white;
-}
-
-body::-webkit-scrollbar-thumb {
-	background-color: #1b0026;
-	border: 1px solid white;
-	border-radius: 5px;
-}
