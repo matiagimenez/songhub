@@ -6,6 +6,7 @@
 		<title>Crear cuenta | SongHub</title>
 		<link rel="icon" href="../assets/icons/favicon.svg" />
 		<link rel="stylesheet" href="../styles/register.css" />
+		<script src="../scripts/index.js" type="module"></script>
 	</head>
 	<body>
 		<main>
@@ -94,18 +95,5 @@
 				</p>
 			</form>
 		</main>
-
-		<script>
-			const inputs = document.querySelectorAll('input');
-			inputs.forEach((input) => {
-				input.addEventListener('input', () => {
-					if (input.value.trim() !== '') {
-						input.classList.add('has-value');
-					} else {
-						input.classList.remove('has-value');
-					}
-				});
-			});
-		</script>
 	</body>
 </html>
