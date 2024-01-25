@@ -19,7 +19,13 @@ export const routes = {
 	'/explore': [menuScript],
 	'/followers': [menuScript],
 	'/following': [menuScript],
-	'/home': [menuScript],
+	'/home': [
+		menuScript,
+		{
+			scriptName: 'expanding-cards',
+			scriptPath: '/scripts/components/expanding-cards.js',
+		},
+	],
 	'/post': [menuScript],
 	'/profile-edit': [menuScript],
 	'/profile': [menuScript],
