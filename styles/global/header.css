@@ -93,6 +93,7 @@ h1 img {
 .header-nav ul li a {
 	text-decoration: none;
 	color: var(--color-white);
+	font-size: 0.9rem;
 }
 
 .header-nav ul li img {

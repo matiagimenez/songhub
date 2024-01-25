@@ -54,8 +54,8 @@ main {
 .post figure {
 	min-height: 130px;
 	height: 100%;
-	display: block;
-	position: relative;
+	display: grid;
+	grid-template-columns: 100px auto;
 }
 
 .post figcaption {
@@ -64,11 +64,6 @@ main {
 	width: 65%;
 	top: 30px;
 	left: 130px;
-}
-
-.post figcaption p:first-child {
-	font-size: 0.8rem;
-	color: var(--color-grey-dark);
 }
 
 .post figcaption p {
@@ -82,34 +77,31 @@ main {
 
 .post-img {
 	display: inline-block;
-	height: 120px;
-	width: 120px;
-	margin-right: 1rem;
+	height: 100px;
+	width: 100px;
 	border-radius: 10px;
 }
 
 .user-info {
-	display: inline-block;
-	width: 60%;
-	position: absolute;
-	left: 130px;
-	top: 0;
+	display: grid;
+	grid-template-columns: 40px 120px auto;
+}
+
+.time-post {
+	margin: 0 0 auto auto;
+	color: var(--color-grey-light);
+	font-size: small;
 }
 
 .user-img {
 	height: 25px;
 	width: 25px;
 	border-radius: 50%;
-	display: inline;
-	float: left;
+	margin: 0 auto;
 }
 
 .user-name {
 	font-size: 0.8rem;
-	display: inline-block;
-	height: 100%;
-	padding: 0 0.3rem;
-	margin-top: 5px;
 }
 
 .user-name a {
@@ -120,7 +112,7 @@ main {
 }
 
 .user-name span {
-	font-size: 0.9rem;
+	font-size: 0.8rem;
 	vertical-align: text-top;
 	color: var(--color-grey-dark);
 }
@@ -182,10 +174,6 @@ main {
 		bottom: 0px;
 	}
 
-	.post figcaption p:first-child {
-		font-size: 1rem;
-		margin-top: 10px;
-	}
 
 	.post figcaption p.stars {
 		margin-top: 10px;
@@ -238,9 +226,6 @@ main {
 		color: var(--color-violet-lightest);
 	}
 
-	.post figcaption p:first-child {
-		color: var(--color-grey-very-light);
-	}
 
 	.post figcaption a button {
 		background-color: var(--color-white);
