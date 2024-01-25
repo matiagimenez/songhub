@@ -16,13 +16,13 @@
 	<body>
 		<header class="main-header">
 			<h1>
-				<a href="home.html" tabindex="0">
+				<a href="home.html">
 					<img src="../assets/icons/logo.svg" alt="Logo de SongHub" />
 				</a>
 			</h1>
 			<nav class="header-nav">
-				<ul class="hidden" role="menu" id="main-menu">
-					<li tabindex="1">
+				<ul class="hidden" id="main-menu" aria-hidden="true">
+					<li>
 						<a href="profile.html">
 							<img
 								height="60px"
@@ -33,28 +33,33 @@
 							<span>PERFIL</span>
 						</a>
 					</li>
-					<li tabindex="2">
+					<li>
 						<a href="home.html">INICIO</a>
 					</li>
-					<li tabindex="3">
+					<li>
 						<a href="explore.html">EXPLORAR</a>
 					</li>
-					<li tabindex="4">
+					<li>
 						<form action="">
 							<input
 								type="search"
 								name="search"
+								role="searchbox"
 								id="search"
 								autocomplete="off"
 								placeholder="Buscar álbum o canción..."
 								class="input"
+								aria-describedby="search-description"
 							/>
+							<p id="search-description" class="visually-hidden">
+								Los resultados de la búsqueda aparecerán en un
+								momento.
+							</p>
 						</form>
 					</li>
 				</ul>
 				<button
 					class="menu-button"
-					tabindex="0"
 					aria-expanded="false"
 					aria-controls="main-menu"
 				>
@@ -184,7 +189,9 @@
 							class="image-border"
 						/>
 						<figcaption>
-							<h3 class="song-title">Peso Pluma || Music Session</h3>
+							<h3 class="song-title">
+								Peso Pluma || Music Session
+							</h3>
 							<p class="artist-title">Bizarrap</p>
 						</figcaption>
 					</figure>
