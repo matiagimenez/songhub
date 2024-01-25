@@ -150,6 +150,10 @@ h1 img {
 		opacity: 1;
 	}
 
+	.header-nav ul.hidden li {
+		display: initial;
+	}
+
 	.header-nav ul li span {
 		font-size: 0.9rem;
 	}
