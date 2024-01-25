@@ -98,13 +98,13 @@ main {
 	min-height: 130px;
 	height: 100%;
 	display: grid;
-	grid-template-columns: 100px auto;
+	grid-template-columns: 120px auto;
 }
 
 .post-img {
 	display: inline-block;
-	height: 100px;
-	width: 100px;
+	height: 120px;
+	width: 120px;
 	border-radius: 10px;
 	grid-row: span 4;
 }
@@ -147,6 +147,17 @@ main {
 
 .post figcaption a {
 	display: none;
+	text-decoration: none;
+	font-size: smaller;
+	color: var(--color-grey-dark);
+	background-color: var(--color-grey-very-light);
+	padding: 4px 8px;
+	border-radius: 20px;
+	margin: 0.8rem 0 0 0;
+}
+
+.post figcaption a:hover {
+	opacity: 80%;
 }
 
 
@@ -262,6 +273,10 @@ main {
 		font-size: 1.6rem;
 	}
 
+	.post figcaption a {
+		display: inline-block;
+	}
+
 	.post figcaption a button {
 		background-color: var(--color-violet-dark);
 		padding: 0.6rem 1rem;
@@ -270,6 +285,10 @@ main {
 		font-weight: bold;
 		border-radius: 10px;
 		color: var(--color-white);
+	}
+
+	.stars {
+		padding: 0;
 	}
 }
 
@@ -320,6 +339,11 @@ main {
 
 	.stars {
 		color: var(--color-violet-lightest);
+	}
+
+	.post figcaption a {
+		background-color: var(--color-white);
+
 	}
 
 
