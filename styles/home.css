@@ -105,13 +105,12 @@ main {
 	display: inline-block;
 	position: absolute;
 	width: 65%;
-	bottom: 15px;
+	top: 30px;
 	left: 130px;
 }
 
 .post figcaption p:first-child {
 	font-size: 0.8rem;
-	margin-bottom: 0.4rem;
 	color: var(--color-grey-dark);
 }
 
@@ -158,7 +157,7 @@ main {
 
 .user-name a {
 	text-decoration: none;
-	color: var(--color-violet);
+	color: var(--color-violet-darkest);
 	font-weight: bold;
 	font-size: 0.9rem;
 }
@@ -170,7 +169,7 @@ main {
 }
 
 .stars {
-	display: inline-block;
+	padding: 4px 0;
 	color: var(--color-violet-light);
 }
 
@@ -268,14 +267,7 @@ main {
 
 	.post figcaption p:first-child {
 		font-size: 1rem;
-		margin-top: 5px;
-		margin-bottom: 10px;
-	}
-
-	.post figcaption p {
-		font-size: 1.1rem;
 		margin-top: 10px;
-		margin-bottom: 0px;
 	}
 
 	.post figcaption p.stars {

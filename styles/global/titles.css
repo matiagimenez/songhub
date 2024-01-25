@@ -1,51 +1,43 @@
-.body-title,
 .section-title {
   font-size: 1rem;
   font-weight: bold;
   color: var(--color-violet-light);
   border-bottom: 0.8px solid var(--color-violet-light);
-}
-
-.body-title {
   padding: 1.3rem 0 0.5rem 0;
-}
-
-.section-title {
-  padding: 1rem 0 0.5rem 0;
-  font-weight: bold;
   width: 100%;
-  text-align: center;
 }
 
-.post-title {
+.song-title {
   font-weight: bold;
   width: 100%;
   font-size: 1rem;
-  margin-bottom: 0.4rem;
   color: var(--color-violet-dark);
+  padding: 4px 0;
+}
+
+.artist-title {
+  font-size: 0.8rem;
+  color: var(--color-violet-dark-black);
 }
 
 @media (min-width: 900px) {
 
-  .body-title,
   .section-title {
-    font-size: 1.4rem;
-  }
-
-  .post-title {
-    margin-top: 20px;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 }
 
 @media (prefers-color-scheme: dark) {
-  .body-title {
+  .section-title {
     color: var(--color-white);
     border-color: var(--color-white);
   }
 
-  .section-title {
-    color: var(--color-violet-lightest);
-    border-color: var(--color-violet-light-white);
+  .song-title {
+    color: var(--color-violet-light-white);
+  }
+
+  .artist-title {
+    color: var(--color-white);
   }
 }
