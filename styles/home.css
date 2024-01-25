@@ -1,6 +1,5 @@
 @import url('global/variables.css');
 @import url('global/main.css');
-@import url('global/titles.css');
 
 main {
 	font-family: var(--font-family);
@@ -139,11 +138,9 @@ main {
 	color: var(--color-grey-dark);
 }
 
-
 .post figcaption {
 	margin-left: 0.5rem;
 }
-
 
 .post figcaption a {
 	display: none;
@@ -159,7 +156,6 @@ main {
 .post figcaption a:hover {
 	opacity: 80%;
 }
-
 
 .stars {
 	padding: 4px 0;
@@ -262,11 +258,9 @@ main {
 		width: 30px;
 	}
 
-
 	.post figcaption {
 		grid-row: 2;
 	}
-
 
 	.post figcaption p.stars {
 		margin-top: 10px;
@@ -343,9 +337,7 @@ main {
 
 	.post figcaption a {
 		background-color: var(--color-white);
-
 	}
-
 
 	.post figcaption a button {
 		background-color: var(--color-white);

@@ -1,46 +1,46 @@
 .section-title {
-  font-size: 1rem;
-  font-weight: bold;
-  color: var(--color-violet-dark);
-  border-bottom: 0.8px solid var(--color-violet-dark);
-  padding: 1.3rem 0 0.5rem 0;
-  width: 100%;
+	font-size: 1rem;
+	font-weight: bold;
+	color: var(--color-violet-dark);
+	border-bottom: 0.8px solid var(--color-violet-dark);
+	padding: 1.3rem 0 0.5rem 0;
+	width: 100%;
 }
 
 .song-title {
-  font-weight: bold;
-  width: 100%;
-  font-size: 1rem;
-  color: var(--color-violet-dark);
-  padding: 4px 0;
+	font-weight: bold;
+	width: 100%;
+	font-size: 1rem;
+	color: var(--color-violet-dark);
+	padding: 4px 0;
 }
 
 .artist-title {
-  font-size: 0.8rem;
-  color: var(--color-violet-dark-black);
+	font-size: 0.8rem;
+	color: var(--color-violet-dark-black);
 }
 
 @media (min-width: 1000px) {
-  .section-title {
-    font-size: 1.2rem;
-  }
+	.section-title {
+		font-size: 1.2rem;
+	}
 
-  .song-title {
-    font-size: 1.2rem;
-  }
+	.song-title {
+		font-size: 1.2rem;
+	}
 }
 
 @media (prefers-color-scheme: dark) {
-  .section-title {
-    color: var(--color-white);
-    border-color: var(--color-white);
-  }
+	.section-title {
+		color: var(--color-white);
+		border-color: var(--color-white);
+	}
 
-  .song-title {
-    color: var(--color-violet-light-white);
-  }
+	.song-title {
+		color: var(--color-violet-light-white);
+	}
 
-  .artist-title {
-    color: var(--color-white);
-  }
+	.artist-title {
+		color: var(--color-white);
+	}
 }

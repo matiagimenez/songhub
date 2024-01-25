@@ -1,6 +1,7 @@
 @import url('header.css');
 @import url('footer.css');
 @import url('utilities.css');
+@import url('titles.css');
 
 main {
 	margin-left: auto;
