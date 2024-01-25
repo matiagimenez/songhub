@@ -143,10 +143,6 @@ main {
 	margin: 0 auto;
 }
 
-.user-name {
-	font-size: 0.8rem;
-}
-
 .user-name a {
 	text-decoration: none;
 	color: var(--color-violet-darkest);
@@ -156,7 +152,6 @@ main {
 
 .user-name span {
 	font-size: 0.8rem;
-	vertical-align: text-top;
 	color: var(--color-grey-dark);
 }
 
@@ -237,18 +232,21 @@ main {
 		width: 200px;
 	}
 
-	.user-name a {
-		font-size: 1rem;
-		margin-right: 4px;
+	.post figure {
+		grid-template-columns: 200px auto;
 	}
 
-	.user-info {
-		left: 225px;
+	.user-name a {
+		font-size: 1rem;
 	}
 
 	.user-img {
 		height: 35px;
 		width: 35px;
+	}
+
+	.user-info {
+		grid-template-columns: 50px 120px auto;
 	}
 
 	.post figcaption {
@@ -261,13 +259,6 @@ main {
 	.post figcaption p.stars {
 		margin-top: 10px;
 		font-size: 1.6rem;
-	}
-
-	.post figcaption a {
-		display: block;
-		width: 40%;
-		height: 2rem;
-		padding: 0.2rem;
 	}
 
 	.post figcaption a button {
