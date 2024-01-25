@@ -233,6 +233,15 @@ main {
 		grid-row: 2;
 	}
 
+	.user-info {
+		grid-template-columns: 50px auto auto;
+		grid-column: span 3;
+	}
+
+	.user-name {
+		margin: auto 0;
+	}
+
 	.user-name a {
 		font-size: 1rem;
 	}
@@ -242,10 +251,6 @@ main {
 		width: 30px;
 	}
 
-	.user-info {
-		grid-template-columns: 50px 120px auto;
-		grid-column: span 3;
-	}
 
 	.post figcaption {
 		grid-row: 2;
