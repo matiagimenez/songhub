@@ -6,10 +6,12 @@ main {
 }
 
 .cards-container {
-	margin-top: 40px;
+	margin-top: 20px;
 	overflow: hidden;
 	border-radius: 15px;
-
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
 	text-align: center;
 	background-color: var(--color-violet-dark-black);
 }
@@ -64,6 +66,8 @@ main {
 .cards-container figure.active figcaption {
 	width: initial;
 	height: initial;
+	bottom: 60px;
+	left: 40px;
 	opacity: 1;
 	transition: opacity 200ms ease-in-out;
 	transition-delay: 100ms;
@@ -288,15 +292,20 @@ main {
 
 @media (min-width: 1300px) {
 	.cards-container {
-		max-height: 70vh;
+		height: 70vh;
+		min-height: 500px;
+		max-height: 500px;
+		width: 100%;
 	}
 
 	.cards-container ul {
 		gap: 8px;
+		height: 100%;
 	}
 
 	.cards-container figure img {
-		width: 220px;
+		width: 180px;
+		height: 550px;
 	}
 
 	.cards-container figure.active img {
