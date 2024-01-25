@@ -101,28 +101,12 @@ main {
 	grid-template-columns: 100px auto;
 }
 
-.post figcaption {
-	display: inline-block;
-	position: absolute;
-	width: 65%;
-	top: 30px;
-	left: 130px;
-}
-
-.post figcaption p {
-	margin-top: 0rem;
-	margin-bottom: 0rem;
-}
-
-.post figcaption a {
-	display: none;
-}
-
 .post-img {
 	display: inline-block;
 	height: 100px;
 	width: 100px;
 	border-radius: 10px;
+	grid-row: span 4;
 }
 
 .user-info {
@@ -154,6 +138,17 @@ main {
 	font-size: 0.8rem;
 	color: var(--color-grey-dark);
 }
+
+
+.post figcaption {
+	margin-left: 0.5rem;
+}
+
+
+.post figcaption a {
+	display: none;
+}
+
 
 .stars {
 	padding: 4px 0;
@@ -227,13 +222,15 @@ main {
 		margin-bottom: 20px;
 	}
 
-	.post-img {
-		height: 200px;
-		width: 200px;
+	.post figure {
+		grid-template-columns: 190px auto;
+		row-gap: 0.8rem;
 	}
 
-	.post figure {
-		grid-template-columns: 200px auto;
+	.post-img {
+		height: 180px;
+		width: 180px;
+		grid-row: 2;
 	}
 
 	.user-name a {
@@ -241,18 +238,17 @@ main {
 	}
 
 	.user-img {
-		height: 35px;
-		width: 35px;
+		height: 30px;
+		width: 30px;
 	}
 
 	.user-info {
 		grid-template-columns: 50px 120px auto;
+		grid-column: span 3;
 	}
 
 	.post figcaption {
-		left: 225px;
-		height: 150px;
-		bottom: 0px;
+		grid-row: 2;
 	}
 
 
