@@ -22,13 +22,18 @@
 	<body>
 		<header class="main-header">
 			<h1>
-				<a href="home.html" tabindex="0">
+				<a href="home.html">
 					<img src="../assets/icons/logo.svg" alt="Logo de SongHub" />
 				</a>
 			</h1>
 			<nav class="header-nav">
-				<ul class="hidden" role="menu" id="main-menu">
-					<li tabindex="1">
+				<ul
+					class="hidden"
+					role="menu"
+					id="main-menu"
+					aria-hidden="true"
+				>
+					<li role="menuitem">
 						<a href="profile.html">
 							<img
 								height="60px"
@@ -39,17 +44,19 @@
 							<span>PERFIL</span>
 						</a>
 					</li>
-					<li tabindex="2">
+					<li role="menuitem">
 						<a href="home.html">INICIO</a>
 					</li>
-					<li tabindex="3">
+					<li role="menuitem">
 						<a href="explore.html">EXPLORAR</a>
 					</li>
-					<li tabindex="4">
+					<li role="menuitem">
 						<form action="">
 							<input
 								type="search"
 								name="search"
+								role="searchbox"
+								aria-description="los resultados de la busqueda apareceran en un momento"
 								id="search"
 								autocomplete="off"
 								placeholder="Buscar álbum o canción..."
@@ -60,7 +67,6 @@
 				</ul>
 				<button
 					class="menu-button"
-					tabindex="0"
 					aria-expanded="false"
 					aria-controls="main-menu"
 				>
