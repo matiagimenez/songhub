@@ -72,6 +72,10 @@ h1 img {
 	opacity: 0;
 }
 
+.header-nav ul.hidden li {
+	display: none;
+}
+
 .header-nav ul li:first-child a {
 	display: flex;
 	align-items: center;
@@ -142,6 +146,8 @@ h1 img {
 
 	.header-nav ul.hidden {
 		display: flex;
+		top: 80px;
+		opacity: 1;
 	}
 
 	.header-nav ul li span {
