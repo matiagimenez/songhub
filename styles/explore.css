@@ -44,16 +44,6 @@ figcaption {
 	border-left: 2px solid var(--color-violet-dark);
 }
 
-figcaption h3 {
-	color: var(--color-violet-dark);
-	font-weight: bold;
-}
-
-figcaption p {
-	margin-top: 5px;
-	font-weight: b;
-}
-
 @media (min-width: 700px) {
 	article {
 		width: 30%;
@@ -84,13 +74,5 @@ figcaption p {
 
 	figcaption {
 		border-color: var(--color-white);
-	}
-
-	figcaption h3 {
-		color: var(--color-violet-lightest);
-	}
-
-	figcaption p {
-		color: var(--color-white);
 	}
 }
