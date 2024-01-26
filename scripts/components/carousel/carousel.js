@@ -10,22 +10,30 @@ let loadCount = 0;
 function previousCardChange() {
 	const activeCard = getCurrentActiveCard();
 	const activeCardIndex = activeCard.getAttribute('data-item-index');
+	const thumbs = document.querySelectorAll('.thumb');
 	cards[activeCardIndex].classList.remove('active');
+	thumbs[activeCardIndex].classList.remove('active-thumb');
 	if (activeCardIndex > 0) {
 		cards[activeCardIndex - 1].classList.add('active');
+		thumbs[activeCardIndex - 1].classList.add('active-thumb');
 	} else {
 		cards[cards.length - 1].classList.add('active');
+		thumbs[cards.length - 1].classList.add('active-thumb');
 	}
 }
 
 function nextCardChange() {
 	const activeCard = getCurrentActiveCard();
 	const activeCardIndex = activeCard.getAttribute('data-item-index');
+	const thumbs = document.querySelectorAll('.thumb');
+	thumbs[activeCardIndex].classList.remove('active-thumb');
 	cards[activeCardIndex].classList.remove('active');
 	if (activeCardIndex < cards.length - 1) {
 		cards[Number(activeCardIndex) + 1].classList.add('active');
+		thumbs[Number(activeCardIndex) + 1].classList.add('active-thumb');
 	} else {
 		cards[0].classList.add('active');
+		thumbs[0].classList.add('active-thumb');
 	}
 }
 
