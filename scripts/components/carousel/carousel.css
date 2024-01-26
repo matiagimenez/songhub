@@ -6,16 +6,8 @@
 	flex-grow: 2;
 }
 
-.cards-container figure.active figcaption {
-	opacity: 1;
-	position: absolute;
-	bottom: 30px;
-	font-size: 1.6rem;
-	left: 20px;
-	font-weight: bold;
-	text-align: left;
-	filter: drop-shadow(2px 2px 2px var(--color-black));
-	color: var(--color-white);
+.cards-container figure img {
+	max-width: 400px;
 }
 
 .cards-container figure.active img {
@@ -25,11 +17,18 @@
 }
 
 .cards-container figure.active figcaption {
+	position: absolute;
 	width: initial;
-	height: initial;
-	bottom: 60px;
-	left: 40px;
 	opacity: 1;
+	color: var(--color-white);
+	height: initial;
+	font-size: 1.4rem;
+	font-weight: bold;
+	text-align: left;
+	bottom: 50px;
+	left: 20px;
+	opacity: 1;
+	filter: drop-shadow(2px 2px 2px var(--color-black));
 	transition: opacity 200ms ease-in-out;
 	transition-delay: 100ms;
 }
@@ -64,7 +63,7 @@
 	height: 30px;
 	width: 30px;
 	border: none;
-	outline: none;
+	outline-color: #5e6871;
 	background-color: transparent;
 	background-image: url('assets/arrow.svg');
 	background-position: center;
@@ -73,12 +72,12 @@
 }
 
 .left {
-	left: 10px;
+	left: 5px;
 	transform: rotate(180deg);
 }
 
 .right {
-	right: 10px;
+	right: 5px;
 }
 
 .thumbs-container {
@@ -100,8 +99,8 @@
 	width: 12px;
 	border-radius: 50%;
 	border: 1px solid #5e6871;
-	outline: none;
 	cursor: pointer;
+	outline-color: #5e6871;
 	opacity: 1;
 }
 
@@ -185,6 +184,7 @@
 	.cards-container figure.active img {
 		display: block;
 		width: 550px;
+		max-width: 550px;
 	}
 
 	.cards-container figure.active figcaption {

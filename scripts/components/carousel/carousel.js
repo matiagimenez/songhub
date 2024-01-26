@@ -10,30 +10,43 @@ let loadCount = 0;
 function previousCardChange() {
 	const activeCard = getCurrentActiveCard();
 	const activeCardIndex = activeCard.getAttribute('data-item-index');
-	const thumbs = document.querySelectorAll('.thumb');
+	const thumbs = document.querySelectorAll('button.thumb');
 	cards[activeCardIndex].classList.remove('active');
-	thumbs[activeCardIndex].classList.remove('active-thumb');
+
 	if (activeCardIndex > 0) {
 		cards[activeCardIndex - 1].classList.add('active');
-		thumbs[activeCardIndex - 1].classList.add('active-thumb');
+		if (thumbs.length > 0) {
+			thumbs[activeCardIndex].classList.remove('active-thumb');
+			thumbs[activeCardIndex - 1].classList.add('active-thumb');
+		}
 	} else {
 		cards[cards.length - 1].classList.add('active');
-		thumbs[cards.length - 1].classList.add('active-thumb');
+		console.log(thumbs);
+		if (thumbs.length > 0) {
+			thumbs[activeCardIndex].classList.remove('active-thumb');
+			thumbs[cards.length - 1].classList.add('active-thumb');
+		}
 	}
 }
 
 function nextCardChange() {
 	const activeCard = getCurrentActiveCard();
 	const activeCardIndex = activeCard.getAttribute('data-item-index');
-	const thumbs = document.querySelectorAll('.thumb');
-	thumbs[activeCardIndex].classList.remove('active-thumb');
+	const thumbs = document.querySelectorAll('button.thumb');
+
 	cards[activeCardIndex].classList.remove('active');
 	if (activeCardIndex < cards.length - 1) {
 		cards[Number(activeCardIndex) + 1].classList.add('active');
-		thumbs[Number(activeCardIndex) + 1].classList.add('active-thumb');
+		if (thumbs.length > 0) {
+			thumbs[activeCardIndex].classList.remove('active-thumb');
+			thumbs[Number(activeCardIndex) + 1].classList.add('active-thumb');
+		}
 	} else {
 		cards[0].classList.add('active');
-		thumbs[0].classList.add('active-thumb');
+		if (thumbs.length > 0) {
+			thumbs[activeCardIndex].classList.remove('active-thumb');
+			thumbs[0].classList.add('active-thumb');
+		}
 	}
 }
 
@@ -82,7 +95,16 @@ function animateCarousel() {
 	for (const card of cards) {
 		card.addEventListener('click', (event) => {
 			const activeCard = getCurrentActiveCard();
+			const activeCardIndex = activeCard.getAttribute('data-item-index');
+			const thumbs = document.querySelectorAll('button.thumb');
 			activeCard.classList.remove('active');
+			if (thumbs.length > 0) {
+				thumbs[activeCardIndex].classList.remove('active-thumb');
+				thumbs[activeCardIndex].setAttribute('aria-checked', 'false');
+				const cardIndex = card.getAttribute('data-item-index');
+				thumbs[cardIndex].classList.add('active-thumb');
+				thumbs[cardIndex].setAttribute('aria-checked', 'true');
+			}
 			card.classList.add('active');
 		});
 	}
@@ -101,12 +123,21 @@ function animateCarousel() {
 	// Agrega interaccion mediante thumbs
 	const thumbsContainer = ElementBuilder.createElement('div', '', {
 		class: 'thumbs-container',
+		role: 'group',
+		'aria-label': 'Thumbs para manejar el carrusel de imágenes',
 	});
 
 	cards.forEach((_, index) => {
+		const activeCard = getCurrentActiveCard();
+		const activeCardIndex = activeCard.getAttribute('data-item-index');
 		const thumb = ElementBuilder.createElement('button', '', {
-			class: 'thumb',
+			class: `thumb ${
+				Number(activeCardIndex) === index && 'active-thumb'
+			}`,
 			id: index,
+			'aria-label': `Ir a la imagen ${index + 1}`,
+			'aria-controls': 'carousel',
+			'aria-checked': 'false',
 		});
 
 		thumb.addEventListener('click', (event) => {
@@ -116,21 +147,28 @@ function animateCarousel() {
 			cards[id].classList.add('active');
 			const currentActiveThumb = document.querySelector('.active-thumb');
 			currentActiveThumb.classList.remove('active-thumb');
+			currentActiveThumb.setAttribute('aria-checked', 'false');
 			thumb.classList.add('active-thumb');
+			thumb.setAttribute('aria-checked', 'true');
 		});
 
 		thumbsContainer.appendChild(thumb);
 	});
 
 	cardsContainer.appendChild(thumbsContainer);
-	document.getElementById('0').classList.add('active-thumb');
 
 	// Agrega interaccion mediante botones
 	const leftButton = ElementBuilder.createElement('button', '', {
 		class: 'left carousel-button',
+		'aria-label': 'anterior',
+		'aria-controls': 'carousel',
+		'aria-disabled': 'false',
 	});
 	const rightButton = ElementBuilder.createElement('button', '', {
 		class: 'right carousel-button',
+		'aria-label': 'siguiente',
+		'aria-controls': 'carousel',
+		'aria-disabled': 'false',
 	});
 
 	leftButton.addEventListener('click', () => previousCardChange());
