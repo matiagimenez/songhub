@@ -168,27 +168,29 @@ const link = ElementBuilder.createElement('link', '', {
 
 document.head.appendChild(link);
 
-for (const card of cards) {
-	card.classList.add('blur');
-}
-const loader = addLoader();
-
 for (const image of images) {
+	console.log(image);
+	console.log(image.complete);
 	if (!image.complete) {
 		image.addEventListener('load', () => {
+			console.log('image loaded');
 			loader.style.width = `${(100 / images.length) * loadCount}%`;
 		});
 	}
 }
 
+for (const card of cards) {
+	card.classList.add('blur');
+}
+
+const loader = addLoader();
+console.log(images);
+
 // Cada 50ms verifica si las imagenes fueron cargadas
 const interval = setInterval(() => {
 	if (checkAllImagesLoaded()) {
 		// Una vez que fueron cargadas, activa la interaccion con el carrusel
-		// TODO: Eliminar el timeout. Se está usando unicamente para simular un tiempo de carga en las pruebas del loader
-		setTimeout(() => {
-			animateCarousel();
-		}, 2000);
+		animateCarousel();
 		clearInterval(interval);
 	}
 }, 50);
