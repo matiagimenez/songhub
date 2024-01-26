@@ -1,3 +1,11 @@
+import { ElementBuilder } from '../../utils/ElementBuilder.js';
+
+const link = ElementBuilder.createElement('link', '', {
+	rel: 'stylesheet',
+	href: '../scripts/components/carousel/carousel.css',
+});
+document.head.appendChild(link);
+
 const cardsContainer = document.querySelector('.cards-container');
 const cards = document.querySelectorAll('.cards-container figure');
 

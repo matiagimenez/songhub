@@ -1,0 +1,73 @@
+.cards-container figure.active {
+	flex-grow: 2;
+}
+
+.cards-container figure.active figcaption {
+	opacity: 1;
+	position: absolute;
+	bottom: 30px;
+	font-size: 1.6rem;
+	left: 20px;
+	font-weight: bold;
+	text-align: left;
+	filter: drop-shadow(2px 2px 2px var(--color-black));
+	color: var(--color-white);
+}
+
+.cards-container figure.active img {
+	display: block;
+	width: 100%;
+}
+
+.cards-container figure.active figcaption {
+	width: initial;
+	height: initial;
+	bottom: 60px;
+	left: 40px;
+	opacity: 1;
+	transition: opacity 200ms ease-in-out;
+	transition-delay: 100ms;
+}
+
+@media (min-width: 700px) {
+	.cards-container figure.active img {
+		display: block;
+		width: 320px;
+	}
+
+	.cards-container figure.active figcaption {
+		font-size: 1.2rem;
+	}
+}
+
+@media (min-width: 850px) {
+	.cards-container figure.active img {
+		display: block;
+		width: 350px;
+	}
+
+	.cards-container figure.active figcaption {
+		font-size: 1.3rem;
+	}
+}
+
+@media (min-width: 1000px) {
+	.cards-container figure.active img {
+		width: 400px;
+	}
+
+	.cards-container figure.active figcaption {
+		font-size: 1.3rem;
+	}
+}
+
+@media (min-width: 1300px) {
+	.cards-container figure.active img {
+		display: block;
+		width: 550px;
+	}
+
+	.cards-container figure.active figcaption {
+		font-size: 1.4rem;
+	}
+}

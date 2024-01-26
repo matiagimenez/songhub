@@ -23,7 +23,7 @@ export const routes = {
 		menuScript,
 		{
 			scriptName: 'expanding-cards',
-			scriptPath: '/scripts/components/expanding-cards.js',
+			scriptPath: '/scripts/components/carousel/carousel.js',
 		},
 	],
 	'/post': [menuScript],
