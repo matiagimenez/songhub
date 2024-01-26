@@ -90,6 +90,33 @@ function animateCarousel() {
 		}
 	});
 
+	// Agrega interaccion mediante thumbs
+	const thumbsContainer = ElementBuilder.createElement('div', '', {
+		class: 'thumbs-container',
+	});
+
+	cards.forEach((_, index) => {
+		const thumb = ElementBuilder.createElement('button', '', {
+			class: 'thumb',
+			id: index,
+		});
+
+		thumb.addEventListener('click', (event) => {
+			const id = event.target.getAttribute('id');
+			const activeCard = getCurrentActiveCard();
+			activeCard.classList.remove('active');
+			cards[id].classList.add('active');
+			const currentActiveThumb = document.querySelector('.active-thumb');
+			currentActiveThumb.classList.remove('active-thumb');
+			thumb.classList.add('active-thumb');
+		});
+
+		thumbsContainer.appendChild(thumb);
+	});
+
+	cardsContainer.appendChild(thumbsContainer);
+	document.getElementById('0').classList.add('active-thumb');
+
 	// Agrega interaccion mediante botones
 	const leftButton = ElementBuilder.createElement('button', '', {
 		class: 'left carousel-button',
@@ -150,6 +177,7 @@ for (const image of images) {
 const interval = setInterval(() => {
 	if (checkAllImagesLoaded()) {
 		// Una vez que fueron cargadas, activa la interaccion con el carrusel
+		// TODO: Eliminar el timeout. Se está usando unicamente para simular un tiempo de carga en las pruebas del loader
 		setTimeout(() => {
 			animateCarousel();
 		}, 2000);
