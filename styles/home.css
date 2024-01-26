@@ -141,7 +141,6 @@ main {
 	}
 
 	.cards-container figure img {
-		display: block;
 		width: 120px;
 		border-radius: 20px;
 		transition: width 200ms ease-in-out;

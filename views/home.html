@@ -16,7 +16,6 @@
 
 		<link rel="stylesheet" href="../styles/home.css" />
 		<link rel="icon" type="image/x-icon" href="/assets/icons/favicon.svg" />
-		<script src="../scripts/index.js" type="module"></script>
 		<title>Inicio | SongHub</title>
 	</head>
 	<body>
@@ -246,17 +245,5 @@
 			</section>
 		</main>
 	</body>
-	<script>
-		window.addEventListener('load', () => {
-			const contentElement = document.querySelector('html');
-			const isScrollable =
-				contentElement.scrollHeight > contentElement.clientHeight;
-			const footer = document.querySelector('.main-footer');
-			if (!isScrollable) {
-				footer.classList.add('fixed');
-			} else {
-				footer.classList.remove('fixed');
-			}
-		});
-	</script>
+	<script src="../scripts/index.js" type="module"></script>
 </html>
