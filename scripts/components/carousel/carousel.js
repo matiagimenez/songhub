@@ -88,7 +88,7 @@ function animateCarousel() {
 	}
 
 	// Agrega interaccion mediante teclado
-	document.addEventListener('keydown', (event) => {
+	document.addEventListener('keyup', (event) => {
 		if (event.code === 'ArrowLeft') {
 			previousCardChange();
 		}
