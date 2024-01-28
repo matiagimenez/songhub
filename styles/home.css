@@ -57,21 +57,22 @@ main {
 	width: 100%;
 	min-height: 135px;
 	position: relative;
+	border-bottom: 1px solid var(--color-grey-very-light);
 }
 
 .post figure {
 	min-height: 130px;
 	height: 100%;
 	display: grid;
-	grid-template-columns: 120px auto;
+	grid-template-columns: 110px auto;
 }
 
 .post-img {
 	display: inline-block;
-	height: 120px;
-	width: 120px;
+	height: 100px;
+	width: 100px;
 	border-radius: 10px;
-	grid-row: span 4;
+	grid-row: span 3;
 }
 
 .user-info {
@@ -82,12 +83,12 @@ main {
 .time-post {
 	margin: 0 0 auto auto;
 	color: var(--color-grey-light);
-	font-size: small;
+	font-size: x-small;
 }
 
 .user-img {
-	height: 25px;
-	width: 25px;
+	height: 30px;
+	width: 30px;
 	border-radius: 50%;
 	margin: 0 auto;
 }
@@ -127,6 +128,44 @@ main {
 	padding: 4px 0;
 	color: var(--color-violet-light);
 }
+
+.post .post-content {
+	margin-bottom: 1rem;
+}
+
+.post .post-content p {
+	max-height: 4rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.post .post-content p::after {
+	/*content: '...';
+	position: absolute;
+	top: 18rem;
+	right: 0;
+	background-color: white;*/
+}
+
+.post footer {
+	text-align: end;
+	margin-bottom: 1rem;
+}
+
+.post footer img,
+.post footer section {
+	display: inline-block;
+	margin: 0 0.4rem;
+}
+
+.post footer section img,
+.post footer section p {
+	display: inline;
+	margin: 0;
+}
+
+
 
 @media (min-width: 700px) {
 	.cards-container {
@@ -185,6 +224,10 @@ main {
 		width: 30px;
 	}
 
+	.time-post {
+		margin: auto 0 auto auto;
+	}
+
 	.post figcaption {
 		grid-row: 2;
 	}
@@ -210,6 +253,10 @@ main {
 
 	.stars {
 		padding: 0;
+	}
+
+	.post .post-content {
+		margin: 1rem 0;
 	}
 }
 
