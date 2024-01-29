@@ -80,7 +80,7 @@ fieldset {
 	width: 100%;
 	margin-left: 0.8rem;
 	position: relative;
-	margin-bottom: 12px;
+	margin-bottom: 16px;
 }
 
 .input-container label {
@@ -157,6 +157,8 @@ a:focus {
 	cursor: pointer;
 	margin-left: auto;
 	margin-right: auto;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+	border: 1px solid #dadce0;
 }
 
 .button-container button {
@@ -172,7 +174,7 @@ a:focus {
 	padding: 0;
 	width: 80%;
 	max-width: 400px;
-	border-radius: 5px;
+	border-radius: 6px;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
 	border: 1px solid #dadce0;
 	color: rgba(0, 0, 0, 0.54);
@@ -284,6 +286,12 @@ a:focus {
 
 	.input-container {
 		margin-left: 24px;
+	}
+
+	.input-container input:focus ~ label,
+	.input-container input:valid ~ label,
+	.input-container input.has-value ~ label {
+		font-size: 0.9rem;
 	}
 
 	.button-container input[type='submit'] {
