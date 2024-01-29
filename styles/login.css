@@ -20,31 +20,14 @@ h2 {
 }
 
 h1 {
-	font-size: 2.5rem;
+	font-size: 2.3rem;
 	font-weight: bold;
 	margin-bottom: 0.5rem;
 	position: relative;
 }
 
-h1::before {
-	position: absolute;
-	content: '';
-	display: inline-block;
-	left: 5px;
-	bottom: 50px;
-	width: 60px;
-	height: 60px;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-	background-image: url('../assets/icons/icon.svg');
-	background-color: var(--color-violet-light);
-	border-radius: 50%;
-	padding: 10px;
-}
-
 h2 {
-	font-size: 1.5rem;
+	font-size: 1.3rem;
 }
 
 legend {
@@ -58,27 +41,29 @@ form {
 	align-items: left;
 	background-color: var(--color-white);
 	width: 90%;
-	height: 85%;
+	height: 90%;
 	padding: 2rem;
 	margin: auto;
-	margin-top: 40px;
+	margin-top: 20px;
 	border-radius: 10px;
 	position: relative;
 	align-content: flex-end;
-	gap: 0.5rem;
+	gap: 8px;
 }
 
 fieldset {
 	background-color: transparent;
 	border-color: transparent;
 	width: 100%;
+	position: relative;
+	margin-top: 16px;
 }
 
 .input-container {
 	width: 100%;
-	margin-top: 0.8rem;
 	margin-left: 0.8rem;
 	position: relative;
+	margin-bottom: 12px;
 }
 
 .input-container label {
@@ -89,83 +74,73 @@ fieldset {
 	position: absolute;
 	color: var(--color-violet-dark);
 	font-size: 1rem;
-	top: 15px;
+	top: 10px;
 	left: 10px;
 	transition: 0.3s;
 	border-radius: 20px;
 }
 
 .input-container input {
+	width: 280px;
 	width: 90%;
-	margin: 5px 0;
 }
 
 .input-container input:focus ~ label,
 .input-container input:valid ~ label,
 .input-container input.has-value ~ label {
 	background-color: var(--color-white);
-	font-size: 0.8rem;
-	transform: translateY(-15px);
+	font-size: 0.85rem;
+	transform: translateY(-16px);
 	left: 2px;
 	padding: 0 5px;
 }
 
-abbr {
-	text-decoration: none;
-	font-size: 0.8rem;
-	font-weight: bold;
-	margin-left: 0.5rem;
-}
-
 form fieldset a {
-	display: inline-block;
-	width: 90%;
-	text-align: right;
-	padding-top: 0.8rem;
-	margin: auto;
+	position: absolute;
+	bottom: -12px;
+	right: 24px;
 }
 
 a {
-	font-weight: bold;
+	font-weight: bolder;
 	text-decoration: none;
 	color: var(--color-violet-dark);
-	font-size: 0.95rem;
+	font-size: 0.9rem;
 }
 
 a:hover {
 	color: var(--color-violet-dark-black);
+	text-decoration: underline;
 }
 
 a:focus {
 	text-decoration: underline;
-	outline: none;
-	border: none;
 }
 
 .button-container {
 	width: 100%;
+	margin-top: 24px;
 	text-align: center;
 }
 
 .button-container input[type='submit'] {
 	background-color: var(--color-violet-dark);
 	padding: 0;
-	width: 75%;
-	display: inline-block;
-	margin-right: 15px;
+	width: 80%;
+	max-width: 320px;
+	display: block;
 	color: var(--color-white);
 	font-weight: bold;
-	outline: none;
 	border: none;
 	height: 2.5rem;
-	border-radius: 5px;
-	margin-top: 16px;
+	border-radius: 6px;
 	cursor: pointer;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .button-container button {
 	border: none;
-	outline: none;
 	background-color: var(--color-white);
 	font-family: var(--font-family);
 	color: var(--color-black);
@@ -174,10 +149,10 @@ a:focus {
 	padding-left: 8px;
 	padding-right: 8px;
 	height: 2.5rem;
-	margin-top: 1rem;
+	margin-top: 8px;
 	padding: 0;
-	width: 75%;
-	margin-right: 15px;
+	width: 80%;
+	max-width: 320px;
 	display: inline-block;
 	border-radius: 5px;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
@@ -201,7 +176,7 @@ a:focus {
 }
 
 .link-container {
-	padding: 15px;
+	padding: 16px;
 	align-self: center;
 }
 
@@ -285,7 +260,20 @@ a:focus {
 	}
 
 	h1::before {
+		position: absolute;
+		content: '';
+		display: inline-block;
 		left: 0px;
+		bottom: 50px;
+		width: 60px;
+		height: 60px;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		background-image: url('../assets/icons/icon.svg');
+		background-color: var(--color-violet-light);
+		border-radius: 50%;
+		padding: 10px;
 	}
 }
 
@@ -327,8 +315,8 @@ a:focus {
 	}
 
 	.button-container input[type='submit'] {
-		border: 1px solid var(--color-white);
-		background-color: var(--color-violet-darkest);
+		border: 1px solid var(--color-violet-light-white);
+		background-color: var(--color-violet-dark);
 	}
 
 	a {
@@ -353,5 +341,18 @@ a:focus {
 
 	form {
 		height: 100%;
+	}
+}
+
+@media screen and (max-height: 600px) {
+	main {
+		height: 100%;
+		padding-top: 0;
+		margin-top: 0;
+	}
+
+	form {
+		height: 100%;
+		margin-top: 0;
 	}
 }
