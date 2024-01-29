@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		for (const script of scripts) {
 			if (route === currentPath || currentPath.includes(route)) {
 				const { scriptName, scriptPath, initFunction } = script;
-
 				ScriptLoader.loadScript(scriptName, scriptPath, initFunction);
 			}
 		}

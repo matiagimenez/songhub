@@ -1,19 +1,19 @@
 const menuScript = {
 	scriptName: 'menu-animation',
-	scriptPath: '/scripts/animations/menu-animation.js',
+	scriptPath: '../scripts/animations/menu-animation.js',
 };
 
 export const routes = {
 	'/login': [
 		{
 			scriptName: 'input-animation',
-			scriptPath: '/scripts/animations/input-animation.js',
+			scriptPath: '../scripts/animations/input-animation.js',
 		},
 	],
 	'/register': [
 		{
 			scriptName: 'input-animation',
-			scriptPath: '/scripts/animations/input-animation.js',
+			scriptPath: '../scripts/animations/input-animation.js',
 		},
 	],
 	'/explore': [menuScript],
@@ -23,7 +23,7 @@ export const routes = {
 		menuScript,
 		{
 			scriptName: 'expanding-cards',
-			scriptPath: '/scripts/components/carousel/carousel.js',
+			scriptPath: '../scripts/components/carousel/carousel.js',
 		},
 		{
 			scriptName: 'like-post',
