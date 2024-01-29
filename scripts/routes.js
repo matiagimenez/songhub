@@ -25,6 +25,10 @@ export const routes = {
 			scriptName: 'expanding-cards',
 			scriptPath: '/scripts/components/carousel/carousel.js',
 		},
+		{
+			scriptName: 'like-post',
+			scriptPath: '/scripts/components/post/like_post.js',
+		}
 	],
 	'/post': [menuScript],
 	'/profile-edit': [menuScript],

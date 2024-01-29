@@ -165,8 +165,6 @@ main {
 	margin: 0;
 }
 
-
-
 @media (min-width: 700px) {
 	.cards-container {
 		gap: 4px;
