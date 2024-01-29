@@ -80,10 +80,10 @@ main {
 	grid-template-columns: 40px 120px auto;
 }
 
-.time-post {
+.post-time {
 	margin: 0 0 auto auto;
 	color: var(--color-grey-light);
-	font-size: x-small;
+	font-size: 14px;
 }
 
 .user-img {
@@ -165,8 +165,6 @@ main {
 	margin: 0;
 }
 
-
-
 @media (min-width: 700px) {
 	.cards-container {
 		gap: 4px;
@@ -224,7 +222,7 @@ main {
 		width: 30px;
 	}
 
-	.time-post {
+	.post-time {
 		margin: auto 0 auto auto;
 	}
 
