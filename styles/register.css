@@ -340,17 +340,6 @@ a:focus {
 	}
 }
 
-@media screen and (max-height: 700px) and (min-width: 900px) {
-	main {
-		height: 100vh;
-		padding-top: 0;
-	}
-
-	form {
-		height: 100%;
-	}
-}
-
 @media screen and (max-height: 700px) {
 	main {
 		height: 100%;
@@ -361,5 +350,6 @@ a:focus {
 	form {
 		height: 100%;
 		margin-top: 0;
+		border-radius: 0;
 	}
 }
