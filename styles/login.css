@@ -8,7 +8,7 @@ body {
 
 main {
 	height: 100vh;
-	padding-top: 5%;
+	padding-top: 32px;
 }
 
 h1,
@@ -24,6 +24,23 @@ h1 {
 	font-weight: bold;
 	margin-bottom: 0.5rem;
 	position: relative;
+}
+
+h1::before {
+	position: absolute;
+	content: '';
+	display: inline-block;
+	left: 0px;
+	bottom: 50px;
+	width: 60px;
+	height: 60px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-image: url('../assets/icons/icon.svg');
+	background-color: var(--color-violet-light);
+	border-radius: 50%;
+	padding: 10px;
 }
 
 h2 {
@@ -81,7 +98,6 @@ fieldset {
 }
 
 .input-container input {
-	width: 280px;
 	width: 90%;
 }
 
@@ -98,7 +114,7 @@ fieldset {
 form fieldset a {
 	position: absolute;
 	bottom: -12px;
-	right: 24px;
+	right: 8%;
 }
 
 a {
@@ -118,16 +134,20 @@ a:focus {
 }
 
 .button-container {
-	width: 100%;
+	width: 95%;
 	margin-top: 24px;
+	margin-left: auto;
+	margin-right: auto;
 	text-align: center;
+	padding-left: 8px;
+	padding-right: 8px;
 }
 
 .button-container input[type='submit'] {
 	background-color: var(--color-violet-dark);
 	padding: 0;
 	width: 80%;
-	max-width: 320px;
+	max-width: 400px;
 	display: block;
 	color: var(--color-white);
 	font-weight: bold;
@@ -141,25 +161,25 @@ a:focus {
 
 .button-container button {
 	border: none;
+	display: block;
 	background-color: var(--color-white);
 	font-family: var(--font-family);
 	color: var(--color-black);
 	font-weight: 500;
 	font-size: 14px;
-	padding-left: 8px;
-	padding-right: 8px;
 	height: 2.5rem;
 	margin-top: 8px;
 	padding: 0;
 	width: 80%;
-	max-width: 320px;
-	display: inline-block;
+	max-width: 400px;
 	border-radius: 5px;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
 	border: 1px solid #dadce0;
 	color: rgba(0, 0, 0, 0.54);
 	text-align: center;
 	cursor: pointer;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .button-container button span {
@@ -180,10 +200,10 @@ a:focus {
 	align-self: center;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1000px) {
 	main {
 		height: 100vh;
-		padding-top: 5%;
+		padding-top: 72px;
 	}
 
 	header {
@@ -196,6 +216,7 @@ a:focus {
 		width: 95%;
 		margin-top: 0;
 		height: 90%;
+		padding-top: 48px;
 		justify-content: center;
 	}
 
@@ -234,6 +255,8 @@ a:focus {
 
 	.button-container {
 		width: 55%;
+		min-width: 480px;
+		margin-left: 0;
 		align-self: flex-start;
 	}
 
@@ -247,7 +270,7 @@ a:focus {
 @media (min-width: 1300px) {
 	main {
 		height: 100vh;
-		padding-top: 5%;
+		padding-top: 40px;
 	}
 
 	form {
@@ -255,25 +278,20 @@ a:focus {
 		height: 85%;
 	}
 
-	.input-container {
-		margin-left: 1.5rem;
+	h1::before {
+		left: 0px;
 	}
 
-	h1::before {
-		position: absolute;
-		content: '';
-		display: inline-block;
-		left: 0px;
-		bottom: 50px;
-		width: 60px;
-		height: 60px;
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center;
-		background-image: url('../assets/icons/icon.svg');
-		background-color: var(--color-violet-light);
-		border-radius: 50%;
-		padding: 10px;
+	.input-container {
+		margin-left: 24px;
+	}
+
+	.button-container input[type='submit'] {
+		max-width: 500px;
+	}
+
+	.button-container button {
+		max-width: 500px;
 	}
 }
 
