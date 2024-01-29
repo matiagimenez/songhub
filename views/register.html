@@ -22,9 +22,11 @@
 							required
 							autocomplete="off"
 							class="input"
+							aria-describedby="username-desc"
+							aria-labelledby="username-label"
 						/>
-						<label for="username">Nombre de usuario</label>
-						<strong><abbr title="required">*</abbr></strong>
+						<label for="username" id="username-label">Nombre de usuario</label>
+						<p class="visually-hidden" id="username-desc">El nombre de usuario solo puede estar conformado por letras y numeros</p>
 					</p>
 					<p class="input-container">
 						<input
@@ -34,23 +36,23 @@
 							required
 							autocomplete="off"
 							class="input"
+							aria-labelledby="email-label"
 						/>
-						<label for="email">Correo electrónico</label>
-						<strong><abbr title="required">*</abbr></strong>
+						<label for="email" id="email-label">Correo electrónico</label>
 					</p>
 					<p class="input-container">
 						<input
-							name="emailConfirmation"
-							id="emailConfirmation"
+							name="email-confirmation"
+							id="email-confirmation"
 							type="email"
 							autocomplete="off"
 							required
 							class="input"
+							aria-labelledby="email-confirmation-label"
 						/>
-						<label for="emailConfirmation"
+						<label for="email-confirmation" id="email-confirmation-label"
 							>Confirmar correo electrónico</label
 						>
-						<strong><abbr title="required">*</abbr></strong>
 					</p>
 					<p class="input-container">
 						<input
@@ -59,22 +61,26 @@
 							type="password"
 							required
 							class="input"
+							aria-describedby="password-desc"
+							aria-labelledby="password-label"
 						/>
-						<label for="password">Contraseña</label>
-						<strong><abbr title="required">*</abbr></strong>
+						<label for="password" id="password-label">Contraseña</label>
+						<p class="visually-hidden" id="password-desc">La contraseña debe incluir letras y numeros</p>
 					</p>
 					<p class="input-container">
 						<input
-							id="passwordConfirmation"
-							name="passwordConfirmation"
+							id="password-confirmation"
+							name="password-confirmation"
 							type="password"
 							required
 							class="input"
+							aria-describedby="password-desc"
+							aria-labelledby="password-confirmation-label"
 						/>
-						<label for="passwordConfirmation"
+						<label for="password-confirmation" id="password-confirmation-label"
 							>Confirmar contraseña</label
 						>
-						<strong><abbr title="required">*</abbr></strong>
+						<p class="visually-hidden" id="password-desc">La contraseña debe incluir letras y numeros</p>
 					</p>
 				</fieldset>
 				<p class="button-container">
