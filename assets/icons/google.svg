@@ -24,7 +24,7 @@
         <g id="btn_google_light_normal" sketch:type="MSArtboardGroup" transform="translate(-1.000000, -1.000000)">
             <g id="button" sketch:type="MSLayerGroup" transform="translate(4.000000, 4.000000)" filter="url(#filter-1)">
                 <g id="button-bg">
-                    <use fill="#FFFFFF" fill-rule="evenodd" sketch:type="MSShapeGroup" xlink:href="#path-2"></use>
+                    <use fill="none" fill-rule="evenodd" sketch:type="MSShapeGroup" xlink:href="#path-2"></use>
                     <use fill="none" xlink:href="#path-2"></use>
                     <use fill="none" xlink:href="#path-2"></use>
                     <use fill="none" xlink:href="#path-2"></use>

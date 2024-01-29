@@ -40,7 +40,7 @@ h1::before {
 	background-image: url('../assets/icons/icon.svg');
 	background-color: var(--color-violet-light);
 	border-radius: 50%;
-	padding: 10px;
+	padding: 16px;
 }
 
 h2 {
@@ -197,6 +197,10 @@ a:focus {
 	box-shadow: none;
 }
 
+.button-container button:hover {
+	background-color: #f1f3f4;
+}
+
 .link-container {
 	padding: 16px;
 	align-self: center;
@@ -224,16 +228,17 @@ a:focus {
 
 	form::after {
 		right: 0;
+		top: 0;
 		width: 45%;
 		height: 100%;
 		position: absolute;
-		top: 0;
 		content: '';
 		display: inline-block;
 		background-image: url('https://i.pinimg.com/564x/c0/a6/8d/c0a68d8895db701afa779956585ed6c4.jpg');
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center;
+		border-radius: 0 10px 10px 0;
 	}
 
 	fieldset {
@@ -276,7 +281,7 @@ a:focus {
 	}
 
 	form {
-		min-height: 85%;
+		min-height: 650px;
 		height: 85%;
 	}
 
@@ -359,18 +364,7 @@ a:focus {
 	}
 }
 
-@media screen and (max-height: 680px) and (min-width: 900px) {
-	main {
-		height: 100vh;
-		padding-top: 0%;
-	}
-
-	form {
-		height: 100%;
-	}
-}
-
-@media screen and (max-height: 600px) {
+@media screen and (max-height: 700px) {
 	main {
 		height: 100%;
 		padding-top: 0;
@@ -380,5 +374,6 @@ a:focus {
 	form {
 		height: 100%;
 		margin-top: 0;
+		border-radius: 0;
 	}
 }

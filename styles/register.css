@@ -8,17 +8,17 @@ body {
 
 main {
 	height: 100vh;
-	padding-top: 5%;
+	padding-top: 32px;
 }
 
 h1 {
 	width: 50%;
 	align-self: flex-start;
 	margin-bottom: 1rem;
-	padding-left: 85px;
+	padding-left: 64px;
 	display: block;
 	color: var(--color-violet-light);
-	font-size: 2.8rem;
+	font-size: 2.6rem;
 	font-weight: bold;
 	position: relative;
 }
@@ -27,7 +27,7 @@ h1::before {
 	position: absolute;
 	content: '';
 	display: inline-block;
-	left: 25px;
+	left: 5px;
 	bottom: -8px;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -35,19 +35,13 @@ h1::before {
 	background-image: url('../assets/icons/icon.svg');
 	background-color: var(--color-violet-light);
 	border-radius: 50%;
-	padding: 10px;
+	padding: 16px;
 	width: 60px;
 	height: 60px;
 }
 
 legend {
 	display: none;
-}
-
-fieldset {
-	background-color: transparent;
-	border-color: transparent;
-	width: 100%;
 }
 
 form {
@@ -59,18 +53,23 @@ form {
 	width: 90%;
 	height: 90%;
 	padding: 2rem;
-	margin-top: 40px;
+	margin-top: 20px;
 	margin: auto;
 	border-radius: 10px;
-	align-content: flex-end;
-	gap: 0.5rem;
 	position: relative;
-	gap: 0.5rem;
+	align-content: flex-end;
+	gap: 12px;
+}
+
+fieldset {
+	background-color: transparent;
+	border-color: transparent;
+	width: 100%;
 }
 
 .input-container {
 	width: 100%;
-	margin-top: 0.8rem;
+	margin-bottom: 16px;
 	margin-left: 0.8rem;
 	position: relative;
 }
@@ -83,7 +82,7 @@ form {
 	position: absolute;
 	color: var(--color-violet-dark);
 	font-size: 1rem;
-	top: 15px;
+	top: 10px;
 	left: 10px;
 	transition: 0.3s;
 	border-radius: 20px;
@@ -91,36 +90,20 @@ form {
 
 .input-container input {
 	width: 90%;
-	margin: 5px 0;
 }
 
 .input-container input:focus ~ label,
 .input-container input:valid ~ label,
 .input-container input.has-value ~ label {
 	background-color: var(--color-white);
-	font-size: 0.8rem;
-	transform: translateY(-15px);
+	font-size: 0.85rem;
+	transform: translateY(-16px);
 	left: 2px;
 	padding: 0 5px;
 }
 
-abbr {
-	text-decoration: none;
-	font-size: 0.8rem;
-	font-weight: bold;
-	margin-left: 0.3rem;
-}
-
-form fieldset a {
-	display: inline-block;
-	width: 90%;
-	text-align: right;
-	padding-top: 0.8rem;
-	margin: auto;
-}
-
 a {
-	font-weight: bold;
+	font-weight: bolder;
 	text-decoration: none;
 	color: var(--color-violet-dark);
 	font-size: 0.95rem;
@@ -128,56 +111,62 @@ a {
 
 a:hover {
 	color: var(--color-violet-dark-black);
+	text-decoration: underline;
 }
 
 a:focus {
 	text-decoration: underline;
-	outline: none;
 	border: none;
 }
 
 .button-container {
-	width: 100%;
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
 	text-align: center;
+	padding-left: 8px;
+	padding-right: 8px;
 }
 
 .button-container input[type='submit'] {
 	background-color: var(--color-violet-dark);
 	padding: 0;
-	width: 75%;
-	margin-right: 15px;
-	display: inline-block;
+	width: 80%;
+	max-width: 400px;
+	display: block;
 	color: var(--color-white);
 	font-weight: bold;
-	outline: none;
 	border: none;
 	height: 2.5rem;
-	border-radius: 5px;
+	border-radius: 6px;
 	cursor: pointer;
-	margin-top: 16px;
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+	border: 1px solid #dadce0;
 }
 
 .button-container button {
 	border: none;
-	outline: none;
+	display: block;
 	background-color: var(--color-white);
 	font-family: var(--font-family);
+	color: var(--color-black);
 	font-weight: 500;
 	font-size: 14px;
-	padding-left: 8px;
-	padding-right: 8px;
 	height: 2.5rem;
-	margin-top: 1rem;
+	margin-top: 8px;
 	padding: 0;
-	width: 75%;
-	margin-right: 15px;
-	display: inline-block;
-	border-radius: 5px;
+	width: 80%;
+	max-width: 400px;
+	border-radius: 6px;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
 	border: 1px solid #dadce0;
 	color: rgba(0, 0, 0, 0.54);
 	text-align: center;
 	cursor: pointer;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .button-container button:hover {
@@ -196,39 +185,42 @@ a:focus {
 }
 
 .link-container {
-	padding: 15px;
+	padding: 16px;
 	align-self: center;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1000px) {
 	main {
 		height: 100vh;
-		padding-top: 5%;
+		padding-top: 72px;
 	}
 
 	h1 {
 		display: block;
+		width: 50%;
 	}
 
 	form {
 		width: 95%;
-		height: 95%;
-		min-height: 95%;
+		margin-top: 0;
+		height: 90%;
+		padding-top: 48px;
 		justify-content: center;
-		border-radius: 10px;
 	}
 
 	form::after {
-		position: absolute;
 		right: 0;
-		content: '';
-		display: inline-block;
+		top: 0;
 		width: 45%;
 		height: 100%;
+		position: absolute;
+		content: '';
+		display: inline-block;
 		background-image: url('https://i.pinimg.com/564x/c0/a6/8d/c0a68d8895db701afa779956585ed6c4.jpg');
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center;
+		border-radius: 0 10px 10px 0;
 	}
 
 	fieldset {
@@ -252,6 +244,8 @@ a:focus {
 
 	.button-container {
 		width: 55%;
+		min-width: 480px;
+		margin-left: 0;
 		align-self: flex-start;
 	}
 
@@ -265,19 +259,37 @@ a:focus {
 @media (min-width: 1300px) {
 	main {
 		height: 100vh;
-		padding-top: 5%;
+		padding-top: 40px;
 	}
 
 	form {
-		min-height: 85%;
+		min-height: 650px;
 		height: 85%;
 	}
+
 	.input-container {
-		margin-left: 1.5rem;
+		margin-left: 24px;
 	}
 
-	.input-container input {
-		width: 90%;
+	.input-container input:focus ~ label,
+	.input-container input:valid ~ label,
+	.input-container input.has-value ~ label {
+		font-size: 0.9rem;
+	}
+
+	.button-container input[type='submit'] {
+		max-width: 500px;
+	}
+
+	.button-container button {
+		max-width: 500px;
+	}
+}
+
+@media (min-width: 1400px) {
+	form {
+		margin-top: 0;
+		height: 95%;
 	}
 }
 
@@ -310,8 +322,8 @@ a:focus {
 	}
 
 	.button-container input[type='submit'] {
-		border: 1px solid var(--color-white);
-		background-color: var(--color-violet-darkest);
+		border: 1px solid var(--color-violet-light-white);
+		background-color: var(--color-violet-dark);
 	}
 
 	a {
@@ -328,14 +340,16 @@ a:focus {
 	}
 }
 
-@media screen and (max-height: 800px) and (min-width: 900px) {
+@media screen and (max-height: 700px) {
 	main {
-		height: 100vh;
-		padding-top: 0%;
+		height: 100%;
+		padding-top: 0;
+		margin-top: 0;
 	}
 
 	form {
 		height: 100%;
-		gap: 0;
+		margin-top: 0;
+		border-radius: 0;
 	}
 }

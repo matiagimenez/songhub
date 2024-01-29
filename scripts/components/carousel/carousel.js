@@ -100,10 +100,10 @@ function animateCarousel() {
 			activeCard.classList.remove('active');
 			if (thumbs.length > 0) {
 				thumbs[activeCardIndex].classList.remove('active-thumb');
-				thumbs[activeCardIndex].setAttribute('aria-checked', 'false');
+				thumbs[activeCardIndex].setAttribute('aria-pressed', false);
 				const cardIndex = card.getAttribute('data-item-index');
 				thumbs[cardIndex].classList.add('active-thumb');
-				thumbs[cardIndex].setAttribute('aria-checked', 'true');
+				thumbs[cardIndex].setAttribute('aria-pressed', true);
 			}
 			card.classList.add('active');
 		});
@@ -137,7 +137,7 @@ function animateCarousel() {
 			id: index,
 			'aria-label': `Ir a la imagen ${index + 1}`,
 			'aria-controls': 'carousel',
-			'aria-checked': 'false',
+			'aria-pressed': false,
 		});
 
 		thumb.addEventListener('click', (event) => {
@@ -147,9 +147,9 @@ function animateCarousel() {
 			cards[id].classList.add('active');
 			const currentActiveThumb = document.querySelector('.active-thumb');
 			currentActiveThumb.classList.remove('active-thumb');
-			currentActiveThumb.setAttribute('aria-checked', 'false');
+			currentActiveThumb.setAttribute('aria-pressed', false);
 			thumb.classList.add('active-thumb');
-			thumb.setAttribute('aria-checked', 'true');
+			thumb.setAttribute('aria-pressed', true);
 		});
 
 		thumbsContainer.appendChild(thumb);
