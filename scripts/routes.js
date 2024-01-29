@@ -27,7 +27,7 @@ export const routes = {
 		},
 		{
 			scriptName: 'like-post',
-			scriptPath: '/scripts/components/post/like_post.js',
+			scriptPath: '../scripts/components/post/like_post.js',
 		}
 	],
 	'/post': [menuScript],

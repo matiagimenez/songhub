@@ -131,9 +131,8 @@ function animateCarousel() {
 		const activeCard = getCurrentActiveCard();
 		const activeCardIndex = activeCard.getAttribute('data-item-index');
 		const thumb = ElementBuilder.createElement('button', '', {
-			class: `thumb ${
-				Number(activeCardIndex) === index && 'active-thumb'
-			}`,
+			class: `thumb ${Number(activeCardIndex) === index && 'active-thumb'
+				}`,
 			id: index,
 			'aria-label': `Ir a la imagen ${index + 1}`,
 			'aria-controls': 'carousel',
