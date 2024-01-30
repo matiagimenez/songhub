@@ -77,13 +77,13 @@ main {
 
 .user-info {
 	display: grid;
-	grid-template-columns: 40px 120px auto;
+	grid-template-columns: 40px 100px auto;
 }
 
 .post-time {
 	margin: 0 0 auto auto;
 	color: var(--color-grey-light);
-	font-size: 14px;
+	font-size: smaller;
 }
 
 .user-img {
@@ -127,6 +127,11 @@ main {
 .stars {
 	padding: 4px 0;
 	color: var(--color-violet-light);
+}
+
+.post a {
+	text-decoration: none;
+	color: inherit;
 }
 
 .post .post-content {
@@ -272,7 +277,7 @@ main {
 	}
 
 	.post .post-content {
-		margin: 1rem 0;
+		padding: 2rem 0;
 	}
 }
 
