@@ -17,7 +17,7 @@ main {
 	align-items: center;
 	margin-left: auto;
 	margin-right: auto;
-	background-color: var(--color-violet-dark-black);
+	background-color: transparent;
 }
 
 .cards-container figure {
@@ -176,18 +176,6 @@ main {
 	border: none;
 }
 
-@media (min-width: 700px) {
-	.cards-container {
-		gap: 4px;
-		max-height: 70vh;
-	}
-
-	.cards-container figure img {
-		width: 120px;
-		transition: all 250ms ease-in-out;
-	}
-}
-
 @media (min-width: 850px) {
 	.cards-container figure img {
 		width: 150px;
@@ -289,10 +277,6 @@ main {
 }
 
 @media (prefers-color-scheme: dark) {
-	.cards-container {
-		background-color: var(--color-black);
-	}
-
 	body {
 		background-color: var(--color-violet-dark-black);
 		color: var(--color-white);
