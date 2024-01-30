@@ -55,7 +55,7 @@ h1 img {
 	flex-direction: column;
 	align-items: left;
 	gap: 24px;
-	width: 270px;
+	width: 280px;
 	background-color: var(--color-violet-darkest);
 	position: absolute;
 	right: 0;
@@ -76,19 +76,24 @@ h1 img {
 	display: none;
 }
 
-.header-nav ul li:first-child a {
+.header-nav ul li.profile-item a {
 	display: flex;
 	align-items: center;
 	justify-content: left;
 }
 
-.header-nav ul li:first-child span {
+.header-nav ul li.profile-item span {
 	text-align: center;
+}
+
+.header-nav ul li.search-item {
+	order: -1;
 }
 
 .header-nav ul li {
 	font-size: 1rem;
 	font-weight: bold;
+	min-height: 30px;
 }
 
 .header-nav ul li:hover {
@@ -99,22 +104,45 @@ h1 img {
 .header-nav ul li a {
 	text-decoration: none;
 	color: var(--color-white);
-	font-size: 0.9rem;
+	font-size: 1rem;
 }
 
-.header-nav ul li img {
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	order: 2;
-	margin-left: 1rem;
+svg {
+	width: 30px;
+	height: 30px;
+	margin-left: 5px;
+}
+
+svg path {
+	stroke: #ffffff;
+}
+
+.header-nav ul li.logout-item:hover svg path {
+	stroke: var(--color-red);
+}
+
+.header-nav ul li.logout-item span {
+	position: relative;
+	bottom: 8px;
+}
+
+.header-nav ul li.logout-item:hover span {
+	text-decoration: underline;
+	text-underline-offset: 4px;
+}
+
+.header-nav ul li.logout-item a {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	vertical-align: middle;
 }
 
 .header-nav ul li form input {
 	position: relative;
 	height: 2rem;
 	font-size: 0.8rem;
-	width: 220px;
+	width: 100%;
 	color: var(--color-white);
 	border: 2px solid var(--color-violet-light-white);
 	padding-right: 0;
@@ -122,6 +150,12 @@ h1 img {
 
 .header-nav ul li form input::placeholder {
 	color: var(--color-grey-light);
+}
+
+@media (min-width: 600px) {
+	.header-nav ul {
+		width: 350px;
+	}
 }
 
 @media (min-width: 900px) {
@@ -151,26 +185,43 @@ h1 img {
 		opacity: 1;
 	}
 
+	.header-nav ul li {
+		display: initial;
+		min-height: auto;
+	}
+
+	.header-nav ul li a {
+		font-size: 0.95rem;
+	}
+
 	.header-nav ul.hidden li {
 		display: initial;
+		min-height: auto;
+	}
+
+	.header-nav ul li.search-item {
+		order: initial;
 	}
 
 	.header-nav ul li span {
 		font-size: 0.9rem;
 	}
 
-	.header-nav ul li:first-child a {
+	.header-nav ul li.logout-item span {
+		display: none;
+	}
+
+	.header-nav ul li.profile-item a {
 		justify-content: center;
 	}
 
-	.header-nav ul li:first-child span {
+	.header-nav ul li.profile-item span {
 		text-align: center;
-		margin-left: 1rem;
-		order: 2;
+		margin-left: 5px;
 	}
 
 	.header-nav ul li form input {
-		width: 215px;
+		width: 240px;
 	}
 }
 
