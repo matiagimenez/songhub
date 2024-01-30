@@ -149,20 +149,26 @@ main {
 }
 
 .post footer {
-	text-align: end;
 	margin-bottom: 1rem;
+	display: grid;
+	grid-template-columns: 40px 60px auto;
+	justify-content: end;
 }
 
-.post footer img,
 .post footer section {
-	display: inline-block;
-	margin: 0 0.4rem;
+	display: grid;
+	grid-template-columns: 40% 60%;
+	width: 80px;
+	place-content: center;
 }
 
 .post footer section img,
 .post footer section p {
-	display: inline;
-	margin: 0;
+	margin: auto;
+}
+
+.post footer section p {
+	margin-left: 0;
 }
 
 .like-container button {
