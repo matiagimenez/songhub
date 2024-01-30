@@ -90,7 +90,7 @@
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 					</p>
-					<input type="button" value="Ver perfil" />
+					<a href="#" class="submit-button">Ver perfil</a>
 				</article>
 				<article class="user">
 					<img
@@ -108,7 +108,7 @@
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 					</p>
-					<input type="button" value="Ver perfil" />
+					<a href="#" class="submit-button">Ver perfil</a>
 				</article>
 				<article class="user">
 					<img
@@ -126,7 +126,7 @@
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 					</p>
-					<input type="button" value="Ver perfil" />
+					<a href="#" class="submit-button">Ver perfil</a>
 				</article>
 				<article class="user">
 					<img
@@ -144,7 +144,7 @@
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 					</p>
-					<input type="button" value="Ver perfil" />
+					<a href="#" class="submit-button">Ver perfil</a>
 				</article>
 				<article class="user">
 					<img
@@ -162,7 +162,7 @@
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 					</p>
-					<input type="button" value="Ver perfil" />
+					<a href="#" class="submit-button">Ver perfil</a>
 				</article>
 				<article class="user">
 					<img
@@ -180,51 +180,9 @@
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 					</p>
-					<input type="button" value="Ver perfil" />
+					<a href="#" class="submit-button">Ver perfil</a>
 				</article>
 			</section>
 		</main>
-
-		<footer class="main-footer">
-			<section>
-				<p>
-					<img
-						src="../assets/icons/icon.svg"
-						alt="Icono de SongHub"
-						height="15px"
-						width="15px"
-					/>
-					<span> &#169; 2023 SongHub Inc. </span>
-				</p>
-				<p>
-					<img
-						src="../assets/icons/spotify.svg"
-						alt="Icono de Spotify"
-						height="15px"
-						width="15px"
-					/>
-					<span> En colaboración con Spotify </span>
-				</p>
-			</section>
-			<nav class="footer-nav">
-				<ul>
-					<li><a href="home.html">Volver al inicio</a></li>
-					<li><a href="terms.html">Terminos y condiciones</a></li>
-				</ul>
-			</nav>
-		</footer>
 	</body>
-	<script>
-		window.addEventListener('load', () => {
-			const contentElement = document.querySelector('html');
-			const isScrollable =
-				contentElement.scrollHeight > contentElement.clientHeight;
-			const footer = document.querySelector('.main-footer');
-			if (!isScrollable) {
-				footer.classList.add('fixed');
-			} else {
-				footer.classList.remove('fixed');
-			}
-		});
-	</script>
 </html>

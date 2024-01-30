@@ -17,6 +17,7 @@
 	color: var(--color-white);
 	font-weight: bold;
 	border: none;
+	text-align: center;
 	height: 2.5rem;
 	border-radius: 6px;
 	cursor: pointer;
