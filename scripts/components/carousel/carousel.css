@@ -108,7 +108,7 @@
 	background-color: #834370;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 650px) {
 	.left {
 		left: 25px;
 	}
@@ -123,6 +123,17 @@
 		width: 200px;
 	}
 
+	.cards-container {
+		gap: 4px;
+		max-height: 70vh;
+	}
+
+	.cards-container figure img {
+		width: 120px;
+		transition: all 300ms ease-in-out;
+		display: block;
+	}
+
 	.cards-container figure.active img {
 		display: block;
 		width: 320px;
@@ -130,10 +141,6 @@
 
 	.cards-container figure.active figcaption {
 		font-size: 1.2rem;
-	}
-
-	.cards-container figure img {
-		display: block;
 	}
 
 	.carousel-button {
@@ -172,11 +179,11 @@
 	}
 
 	.left {
-		left: 15px;
+		left: 50px;
 	}
 
 	.right {
-		right: 15px;
+		right: 50px;
 	}
 }
 
@@ -187,15 +194,19 @@
 		max-width: 550px;
 	}
 
+	.cards-container figure img {
+		width: 170px;
+	}
+
 	.cards-container figure.active figcaption {
 		font-size: 1.4rem;
 	}
 
 	.left {
-		left: 25px;
+		left: 60px;
 	}
 
 	.right {
-		right: 25px;
+		right: 60px;
 	}
 }
