@@ -195,12 +195,6 @@ main {
 	}
 }
 
-.reaction-container button:active {}
-
-.post footer section:hover {
-	color: var(--color-violet-dark);
-}
-
 @media (min-width: 850px) {
 	.cards-container figure img {
 		width: 150px;

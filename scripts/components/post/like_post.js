@@ -1,7 +1,19 @@
+import { ElementBuilder } from '../../utils/ElementBuilder.js';
 const posts = document.querySelectorAll('.post');
+
+const darkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+let star_icon = './../assets/icons/post-icons/star.svg';
+darkMode && (star_icon = './../assets/icons/post-icons/dark_mode_star.svg');
 
 posts.forEach((post) => {
 	const like_button = post.querySelector('.like-container button');
+	const star_img = ElementBuilder.createElement('img', '', {
+		src: star_icon,
+		alt: "like",
+		width: "20px",
+		id: "unlike_star",
+	});
+	like_button.appendChild(star_img);
 	like_button.addEventListener('click', () => {
 		toggleImg(post.id);
 	});
@@ -20,7 +32,7 @@ function toggleImg(post_id) {
 		icon.id = 'like_star';
 		updateLikeCounter(like_counter, true);
 	} else {
-		icon.src = './../assets/icons/post-icons/star.svg';
+		icon.src = star_icon;
 		icon.id = 'unlike_star';
 		updateLikeCounter(like_counter, false);
 	}
