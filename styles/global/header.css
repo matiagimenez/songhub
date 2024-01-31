@@ -183,12 +183,11 @@ svg path {
 
 @media (min-width: 600px) {
 	.header-nav ul {
-		width: 60%;
+		width: 50%;
 	}
 }
 
 @media (min-width: 900px) {
-
 	.header-nav ul {
 		width: auto;
 	}
