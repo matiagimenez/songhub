@@ -6,101 +6,101 @@ body {
 
 .main-footer {
 	background-color: var(--color-violet-darkest);
-	min-height: 100px;
+	min-height: 90px;
 	height: 10vh;
-	max-height: 120px;
+	max-height: 100px;
 	width: 100%;
 	font-family: var(--font-family);
 	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .main-footer section {
 	width: 60%;
-	height: 100%;
 	display: inline-block;
 	padding-top: 0.5rem;
+	position: relative;
+	bottom: 5px;
 }
 
 .main-footer section p {
-	height: 50%;
-	padding: 0rem 1rem;
+	padding-left: 1rem;
+	width: fit-content;
+	margin-top: 2px;
 	display: flex;
 	align-items: center;
+	margin-left: 25px;
+	display: block;
+	color: var(--color-grey-very-light);
+	font-size: 0.75rem;
 }
 
-.main-footer section p:first-child span {
-	margin-left: 0.2rem;
-}
-
-.main-footer section p span {
-	display: inline-block;
-	margin-left: 0.5rem;
-	color: var(--color-grey-light);
-	font-size: 0.7rem;
-	font-weight: bold;
+.main-footer section p:first-child {
+	margin-left: 0;
 }
 
 .main-footer section p img {
-	width: 15px;
-	height: 15px;
+	width: 18px;
+	height: 18px;
+	margin-right: 5px;
+}
+
+.main-footer section p span {
+	position: relative;
+	bottom: 5px;
 }
 
 .footer-nav {
 	display: inline-block;
-	width: 38%;
+	width: 40%;
 	position: relative;
-	bottom: 5px;
+	top: 8px;
 }
 
 .footer-nav ul {
 	height: 100%;
 	width: 100%;
 }
-.footer-nav ul li {
-	display: block;
-	height: 50%;
-}
 
 .footer-nav ul li a {
 	font-size: 0.8rem;
 	display: inline-block;
+	font-weight: bolder;
 	margin-bottom: 0.6rem;
 	vertical-align: middle;
 	width: 100%;
 	color: var(--color-white);
 	text-decoration: none;
+
+	.fixed {
+		position: fixed; /* Si NO HAY scroll vertical (Y) tiene que posicionarse con relative */
+		bottom: 0;
+	}
+}
+
+@media (min-width: 650px) {
+	.main-footer section p {
+		padding-left: 1.5rem;
+	}
 }
 
 @media (min-width: 900px) {
 	.footer-nav ul li a {
-		font-size: 1rem;
-	}
-
-	.main-footer section p span {
-		font-size: 0.9rem;
-	}
-}
-
-@media (min-width: 1000px) {
-	.main-footer section {
-		padding-top: 25px;
+		font-size: 0.85rem;
 	}
 
 	.main-footer section p {
-		display: inline-flex;
-		align-items: flex-end;
+		font-size: 0.82rem;
+		padding-left: 32px;
+		text-align: center;
+		width: auto;
 	}
 
-	.footer-nav {
-		top: 15px;
+	.main-footer section p:nth-child(2) {
+		margin-left: 0;
+		position: relative;
+		right: 6px;
 	}
-
-	.main-footer section p {
-		padding: 0rem 1rem;
-	}
-}
-
-.fixed {
-	position: fixed; /* Si NO HAY scroll vertical (Y) tiene que posicionarse con relative */
-	bottom: 0;
 }

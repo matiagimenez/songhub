@@ -85,6 +85,23 @@
 
 		<main>
 			<header>
+				<form action="">
+					<label for="search-on-page"
+						>Buscar álbum, canción o artista</label
+					>
+					<input
+						type="search"
+						name="search"
+						role="searchbox"
+						id="search-on-page"
+						autocomplete="off"
+						class="input"
+						aria-describedby="search-description"
+					/>
+					<p id="search-description" class="visually-hidden">
+						Los resultados de la búsqueda aparecerán en un momento.
+					</p>
+				</form>
 				<h2>Resultados de la búsqueda para <span>'P'</span></h2>
 				<p>
 					<input
@@ -240,22 +257,14 @@
 			<section>
 				<p>
 					<img
-						src="../assets/icons/icon.svg"
-						alt="Icono de SongHub"
 						height="15px"
 						width="15px"
-					/>
-					<span> &#169; 2023 SongHub Inc. </span>
-				</p>
-				<p>
-					<img
 						src="../assets/icons/spotify.svg"
 						alt="Icono de Spotify"
-						height="15px"
-						width="15px"
 					/>
 					<span> En colaboración con Spotify </span>
 				</p>
+				<p>&#169; 2023 SongHub Inc.</p>
 			</section>
 			<nav class="footer-nav">
 				<ul>
