@@ -191,7 +191,7 @@ main {
 	cursor: pointer;
 	/*box-shadow: inset 0px 0px 20px var(--color-grey-very-light);*/
 	animation: button-shadow 200ms forwards;
-	animation-delay: 50ms;
+	animation-delay: 0ms;
 }
 
 @keyframes button-shadow {
@@ -329,5 +329,12 @@ main {
 
 	.post {
 		margin-top: 1.5rem;
+	}
+
+	@keyframes button-shadow {
+		to {
+			box-shadow: inset 0px 0px 50px var(--color-grey-light);
+			opacity: 40%;
+		}
 	}
 }

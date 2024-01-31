@@ -26,8 +26,16 @@ export const routes = {
 			scriptPath: '../scripts/components/carousel/carousel.js',
 		},
 		{
-			scriptName: 'like-post',
-			scriptPath: '../scripts/components/post/like_post.js',
+			scriptName: 'post-like-container',
+			scriptPath: '../scripts/components/post/post_like_container.js',
+		},
+		{
+			scriptName: 'post-comment-container',
+			scriptPath: '../scripts/components/post/post_comment_container.js',
+		},
+		{
+			scriptName: 'post-share-container',
+			scriptPath: '../scripts/components/post/post_share_container.js',
 		}
 	],
 	'/post': [menuScript],
