@@ -1,5 +1,9 @@
 @import url('variables.css');
 
+.none-scroll {
+	overflow: hidden;
+}
+
 .main-header {
 	position: sticky;
 	z-index: 1000;
@@ -55,7 +59,7 @@ h1 img {
 	flex-direction: column;
 	align-items: left;
 	gap: 24px;
-	width: 280px;
+	width: 80%;
 	background-color: var(--color-violet-darkest);
 	position: absolute;
 	right: 0;
@@ -65,15 +69,40 @@ h1 img {
 	border-right: none;
 	transition: opacity 300ms ease-in-out;
 	opacity: 1;
+	height: 100vh;
 }
 
 .header-nav ul.hidden {
-	top: -1000px;
-	opacity: 0;
+	display: none;
 }
 
-.header-nav ul.hidden li {
-	display: none;
+.header-nav ul.view-menu {
+	animation: menu-to-left 200ms;
+	z-index: 100;
+}
+
+@keyframes menu-to-left {
+	from {
+		transform: translateX(100vh);
+	}
+
+	to {
+		transform: translateX(0);
+	}
+}
+
+.header-nav ul.close-menu {
+	animation: menu-to-right 400ms forwards;
+}
+
+@keyframes menu-to-right {
+	from {
+		transform: translateX(0vh);
+	}
+
+	to {
+		transform: translateX(100vh);
+	}
 }
 
 .header-nav ul li.profile-item a {
@@ -154,11 +183,16 @@ svg path {
 
 @media (min-width: 600px) {
 	.header-nav ul {
-		width: 350px;
+		width: 60%;
 	}
 }
 
 @media (min-width: 900px) {
+
+	.header-nav ul {
+		width: auto;
+	}
+
 	.menu-button {
 		display: none;
 		position: absolute;

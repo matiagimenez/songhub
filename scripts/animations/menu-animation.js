@@ -1,6 +1,7 @@
 const menuButton = document.querySelector('.menu-button');
 const menuButtonContent = document.querySelector('.menu-button span');
 const menu = document.querySelector('.header-nav ul');
+const body = document.body;
 
 function updateMenuVisibility() {
 	if (window.innerWidth < 900) {
@@ -24,7 +25,19 @@ window.onload = function () {
 
 document.addEventListener('click', (event) => {
 	if (event.target === menuButton || event.target === menuButtonContent) {
-		menu.classList.toggle('hidden');
+		if (menu.classList.contains('hidden')) {
+			body.classList.add('none-scroll')
+			menu.classList.remove('close-menu')
+			menu.classList.remove('hidden')
+			menu.classList.add('view-menu')
+		} else {
+			body.classList.remove('none-scroll')
+			menu.classList.remove('view-menu')
+			menu.classList.add('close-menu')
+			setTimeout(function () {
+				menu.classList.add('hidden')
+			}, 400);
+		}
 
 		const ariaExpandedCurrentValue =
 			menuButton.getAttribute('aria-expanded');
@@ -44,7 +57,11 @@ document.addEventListener('click', (event) => {
 
 document.addEventListener('keyup', (event) => {
 	if (event.key === 'Escape') {
-		menu.classList.add('hidden');
+		menu.classList.remove('view-menu')
+		menu.classList.add('close-menu')
+		setTimeout(function () {
+			menu.classList.add('hidden')
+		}, 400);
 		menu.setAttribute('aria-hidden', 'true');
 		menuButton.setAttribute('aria-expanded', 'false');
 	}
