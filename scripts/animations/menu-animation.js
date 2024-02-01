@@ -33,10 +33,14 @@ document.addEventListener('click', (event) => {
 			menu.classList.remove('close-menu')
 			menu.classList.remove('hidden')
 			menu.classList.add('view-menu')
+			menuButton.classList.remove('open-menu-button')
+			menuButton.classList.add('close-menu-button')
 		} else {
 			body.classList.remove('none-scroll')
 			menu.classList.remove('view-menu')
 			menu.classList.add('close-menu')
+			menuButton.classList.remove('close-menu-button')
+			menuButton.classList.add('open-menu-button')
 			setTimeout(function () {
 				menu.classList.add('hidden')
 			}, 400);

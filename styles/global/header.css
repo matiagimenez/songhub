@@ -47,6 +47,18 @@ h1 img {
 	border: none;
 	cursor: pointer;
 	height: 100%;
+	width: 40px;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.open-menu-button {
+	background-image: url('../../assets/icons/open-menu.svg');
+}
+
+.close-menu-button {
+	background-image: url('../../assets/icons/close-menu.svg');
 }
 
 .menu-button span {
