@@ -5,7 +5,10 @@ const body = document.body;
 
 function updateMenuVisibility() {
 	if (window.innerWidth < 900) {
-		menu.classList.add('hidden');
+		menu.classList.add('hidden')
+		body.classList.remove('none-scroll')
+		menu.classList.remove('view-menu')
+		menu.classList.remove('close-menu')
 		menuButton.setAttribute('aria-hidden', 'false');
 		menuButton.setAttribute('aria-expanded', 'false');
 		menu.setAttribute('aria-hidden', 'true');
@@ -39,7 +42,7 @@ document.addEventListener('click', (event) => {
 			}, 400);
 		}
 
-		const ariaExpandedCurrentValue =
+		/*const ariaExpandedCurrentValue =
 			menuButton.getAttribute('aria-expanded');
 		const ariaHiddenCurrentValue = menu.getAttribute('aria-hidden');
 		menuButton.setAttribute(
@@ -51,7 +54,7 @@ document.addEventListener('click', (event) => {
 		const firstItem = document.querySelector(
 			'.header-nav ul li:first-child'
 		);
-		firstItem.focus();
+		firstItem.focus();*/
 	}
 });
 
