@@ -9,6 +9,8 @@ function updateMenuVisibility() {
 		body.classList.remove('none-scroll')
 		menu.classList.remove('view-menu')
 		menu.classList.remove('close-menu')
+		menuButton.classList.remove('close-menu-button')
+		menuButton.classList.add('open-menu-button')
 		menuButton.setAttribute('aria-hidden', 'false');
 		menuButton.setAttribute('aria-expanded', 'false');
 		menu.setAttribute('aria-hidden', 'true');
@@ -66,6 +68,8 @@ document.addEventListener('keyup', (event) => {
 	if (event.key === 'Escape') {
 		menu.classList.remove('view-menu')
 		menu.classList.add('close-menu')
+		menuButton.classList.remove('close-menu-button')
+		menuButton.classList.add('open-menu-button')
 		setTimeout(function () {
 			menu.classList.add('hidden')
 		}, 400);
