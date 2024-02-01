@@ -1,4 +1,4 @@
-import { ElementBuilder } from '../../utils/ElementBuilder.js';
+/*import { ElementBuilder } from '../../utils/ElementBuilder.js';
 const posts = document.querySelectorAll('.post');
 
 const darkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -13,4 +13,4 @@ posts.forEach((post) => {
     width: "20px",
   });
   comment_button.appendChild(comment_img);
-});
+});*/
