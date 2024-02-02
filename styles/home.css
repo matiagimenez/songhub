@@ -370,4 +370,12 @@ main {
 	.share-container button {
 		background-image: url('../assets/icons/post-icons/dark_mode_share.svg');
 	}
+
+	.comment-container button {
+		background-image: url('../assets/icons/post-icons/dark_mode_comment.svg');
+	}
+
+	.like-container .unlike {
+		background-image: url('../assets/icons/post-icons/dark_mode_star.svg');
+	}
 }
