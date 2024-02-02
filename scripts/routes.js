@@ -17,8 +17,20 @@ export const routes = {
 		},
 	],
 	'/explore': [menuScript],
-	'/followers': [menuScript],
-	'/following': [menuScript],
+	'/followers': [
+		menuScript,
+		{
+			scriptName: 'action-button-animation',
+			scriptPath: '../scripts/animations/action-button-animation.js',
+		},
+	],
+	'/following': [
+		menuScript,
+		{
+			scriptName: 'action-button-animation',
+			scriptPath: '../scripts/animations/action-button-animation.js',
+		},
+	],
 	'/home': [
 		menuScript,
 		{
@@ -36,7 +48,7 @@ export const routes = {
 		{
 			scriptName: 'post-share-container',
 			scriptPath: '../scripts/components/post/post_share_container.js',
-		}
+		},
 	],
 	'/post': [menuScript],
 	'/profile-edit': [menuScript],

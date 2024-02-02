@@ -163,7 +163,7 @@
 	}
 
 	.submit-outline-button {
-		border-color: var(--color-violet);
+		border-color: var(--color-violet-light);
 		color: var(--color-violet);
 	}
 }
