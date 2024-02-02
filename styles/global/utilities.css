@@ -28,6 +28,26 @@
 	filter: brightness(85%);
 }
 
+.submit-outline-button {
+	background-color: var(--color-white);
+	padding: 0;
+	max-width: 400px;
+	display: block;
+	color: var(--color-violet-dark);
+	font-weight: bold;
+	border: none;
+	text-align: center;
+	border: 2px solid var(--color-violet-dark);
+	height: 2.5rem;
+	border-radius: 6px;
+	cursor: pointer;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.submit-outline-button:hover {
+	filter: brightness(90%);
+}
+
 .cancel-button {
 	background-color: var(--color-red);
 	padding: 0;
@@ -44,6 +64,26 @@
 
 .cancel-button:hover {
 	filter: brightness(85%);
+}
+
+.cancel-outline-button {
+	background-color: var(--color-white);
+	padding: 0;
+	max-width: 400px;
+	display: block;
+	color: var(--color-red);
+	font-weight: bold;
+	border: none;
+	text-align: center;
+	border: 2px solid var(--color-red);
+	height: 2.5rem;
+	border-radius: 6px;
+	cursor: pointer;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.cancel-outline-button:hover {
+	filter: brightness(90%);
 }
 
 .google-button {
@@ -120,6 +160,11 @@
 
 	.submit-button {
 		background-color: var(--color-violet);
+	}
+
+	.submit-outline-button {
+		border-color: var(--color-violet);
+		color: var(--color-violet);
 	}
 }
 

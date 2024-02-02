@@ -32,7 +32,6 @@ h2 {
 
 .user a {
 	text-decoration: none;
-	color: var(--color-violet-dark);
 	padding-left: 48px;
 	font-weight: bold;
 	display: block;
@@ -48,7 +47,7 @@ h2 {
 	width: fit-content;
 }
 
-.user .submit-button {
+.user .action-button {
 	position: absolute;
 	right: 40px;
 	height: 30px;
@@ -56,7 +55,6 @@ h2 {
 	top: 4px;
 	padding: 0;
 	line-height: 2.5;
-	color: var(--color-white);
 	cursor: pointer;
 	font-size: 0.75rem;
 	font-weight: bolder;
@@ -115,15 +113,6 @@ h2 {
 		width: 70%;
 	}
 
-	.user a {
-		font-size: 1.2rem;
-		top: 20px;
-	}
-
-	.user span {
-		font-size: 1rem;
-	}
-
 	.user p {
 		font-size: 1rem;
 	}
@@ -132,11 +121,6 @@ h2 {
 @media screen and (min-width: 1400px) {
 	h2 {
 		font-size: 2.3rem;
-	}
-
-	.user a {
-		font-size: 1.3rem;
-		top: 20px;
 	}
 
 	.user span {
@@ -167,7 +151,12 @@ h2 {
 	}
 
 	.user a {
-		color: var(--color-white);
+		color: var(--color-violet-lightest);
+	}
+
+	.user a.action-button {
+		border-color: var(--color-violet-light);
+		color: var(--color-violet-light);
 	}
 
 	.user a span {
