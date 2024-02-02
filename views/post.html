@@ -86,7 +86,7 @@
 		</header>
 
 		<main>
-			<article class="post" id="post_1">
+			<article class="post main-post" id="post_1">
 				<figure>
 					<img
 						loading="lazy"
@@ -122,8 +122,7 @@
 						<p class="stars">★★★★★</p>
 					</figcaption>
 				</figure>
-				<a href="post.html">
-					<section class="">
+					<section class="post-content">
 						<p>
 							It has survived not only five centuries, but also
 							the leap into electronic typesetting, remaining
@@ -150,7 +149,6 @@
 							Lorem Ipsum passages, and more recently with deskt.
 						</p>
 					</section>
-				</a>
 				<footer>
 					<section class="reaction-container share-container">
 						<button>
@@ -169,8 +167,8 @@
 				</footer>
 			</article>
 
-			<section>
-				<article class="post">
+			<section class="comments">
+				<article class="post" id="post_1_1">
 					<header class="user-info">
 						<img
 							loading="lazy"
@@ -186,15 +184,17 @@
 							<p class="post-time">hace 8 horas</p>
 						</p>
 					</header>
-					<p>
-						It has survived not only five centuries, but also the
-						leap into electronic typesetting, remaining essentially
-						unchanged. It was popularised in the 1960s with the
-						release of Letraset sheets containing Lorem Ipsum
-						passages, and more recently with desktop publishing
-						software like Aldus PageMaker including versions of
-						Lorem Ipsum.
-					</p>
+					<section class="post-content">
+						<p>
+							It has survived not only five centuries, but also the
+							leap into electronic typesetting, remaining essentially
+							unchanged. It was popularised in the 1960s with the
+							release of Letraset sheets containing Lorem Ipsum
+							passages, and more recently with desktop publishing
+							software like Aldus PageMaker including versions of
+							Lorem Ipsum.
+						</p>
+					</section>
 					<footer>
 						<section class="reaction-container share-container">
 							<button>
@@ -213,7 +213,7 @@
 					</footer>
 				</article>
 
-				<article class="post">
+				<article class="post" id="post_1_2">
 					<header class="user-info">
 						<img
 							loading="lazy"
@@ -229,15 +229,17 @@
 							<p class="post-time">hace 4h</p>
 						</p>
 					</header>
-					<p>
-						It has survived not only five centuries, but also the
-						leap into electronic typesetting, remaining essentially
-						unchanged. It was popularised in the 1960s with the
-						release of Letraset sheets containing Lorem Ipsum
-						passages, and more recently with desktop publishing
-						software like Aldus PageMaker including versions of
-						Lorem Ipsum.
-					</p>
+					<section class="post-content">
+						<p>
+							It has survived not only five centuries, but also the
+							leap into electronic typesetting, remaining essentially
+							unchanged. It was popularised in the 1960s with the
+							release of Letraset sheets containing Lorem Ipsum
+							passages, and more recently with desktop publishing
+							software like Aldus PageMaker including versions of
+							Lorem Ipsum.
+						</p>
+					</section>
 					<footer>
 						<section class="reaction-container share-container">
 							<button>
@@ -256,7 +258,7 @@
 					</footer>
 				</article>
 
-				<article class="post">
+				<article class="post" id="post_1_3">
 					<header class="user-info">
 						<img
 							loading="lazy"
@@ -272,15 +274,17 @@
 							<p class="post-time">hace 4h</p>
 						</p>
 					</header>
-					<p>
-						It has survived not only five centuries, but also the
-						leap into electronic typesetting, remaining essentially
-						unchanged. It was popularised in the 1960s with the
-						release of Letraset sheets containing Lorem Ipsum
-						passages, and more recently with desktop publishing
-						software like Aldus PageMaker including versions of
-						Lorem Ipsum.
-					</p>
+					<section class="post-content">
+						<p>
+							It has survived not only five centuries, but also the
+							leap into electronic typesetting, remaining essentially
+							unchanged. It was popularised in the 1960s with the
+							release of Letraset sheets containing Lorem Ipsum
+							passages, and more recently with desktop publishing
+							software like Aldus PageMaker including versions of
+							Lorem Ipsum.
+						</p>
+					</section>
 					<footer>
 						<section class="reaction-container share-container">
 							<button>
@@ -321,17 +325,5 @@
 			</nav>
 		</footer>
 	</body>
-	<script>
-		window.addEventListener('load', () => {
-			const contentElement = document.querySelector('html');
-			const isScrollable =
-				contentElement.scrollHeight > contentElement.clientHeight;
-			const footer = document.querySelector('.main-footer');
-			if (!isScrollable) {
-				footer.classList.add('fixed');
-			} else {
-				footer.classList.remove('fixed');
-			}
-		});
-	</script>
+	<script src="../scripts/index.js" type="module"></script>
 </html>

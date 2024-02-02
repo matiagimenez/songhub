@@ -47,6 +47,16 @@
 	margin: auto;
 }
 
+.post .post-content {
+	margin-bottom: 1rem;
+}
+
+.post .post-content p {
+	max-height: 4rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
 
 @media (min-width: 850px) {
 	.cards-container figure img {

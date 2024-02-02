@@ -1,5 +1,4 @@
 .post {
-  margin-bottom: 1.5rem;
   cursor: pointer;
   margin-top: 1rem;
   width: 100%;
@@ -9,8 +8,6 @@
 }
 
 .post figure {
-  min-height: 130px;
-  height: 100%;
   display: grid;
   grid-template-columns: 110px auto;
 }
@@ -69,7 +66,7 @@
 }
 
 .post figcaption a:hover {
-  opacity: 80%;
+  opacity: 90%;
 }
 
 .stars {
@@ -82,15 +79,8 @@
   color: inherit;
 }
 
-.post .post-content {
-  margin-bottom: 1rem;
-}
-
-.post .post-content p {
-  max-height: 4rem;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+.post-content {
+  margin: 1rem 0;
 }
 
 .post .post-content p::after {
@@ -104,7 +94,7 @@
 .post footer {
   margin-bottom: 1rem;
   display: grid;
-  grid-template-columns: 40px 60px auto;
+  grid-template-columns: 40px 60px 60px;
   justify-content: end;
 }
 
@@ -180,10 +170,6 @@
 
 @media (min-width: 1000px) {
 
-  .post {
-    margin-bottom: 4rem;
-    margin-bottom: 20px;
-  }
 
   .post figure {
     grid-template-columns: 190px auto;
@@ -243,10 +229,6 @@
 
   .stars {
     padding: 0;
-  }
-
-  .post .post-content {
-    padding: 2rem 0;
   }
 }
 

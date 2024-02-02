@@ -50,7 +50,13 @@ export const routes = {
 			scriptPath: '../scripts/components/post/post_share_container.js',
 		},
 	],
-	'/post': [menuScript],
+	'/post': [
+		menuScript,
+		{
+			scriptName: 'post-like-container',
+			scriptPath: '../scripts/components/post/post_like_container.js',
+		},
+	],
 	'/profile-edit': [menuScript],
 	'/profile': [menuScript],
 	'/search': [menuScript],

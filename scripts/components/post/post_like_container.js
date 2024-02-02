@@ -2,6 +2,7 @@ const posts = document.querySelectorAll('.post');
 
 posts.forEach((post) => {
 	const like_button = post.querySelector('.like-container button');
+	console.log(post.id);
 	like_button.addEventListener('click', () => {
 		toggleImg(post.id);
 	});

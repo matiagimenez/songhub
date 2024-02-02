@@ -1,3 +1,9 @@
 @import url('global/variables.css');
 @import url('global/main.css');
 @import url('global/post.css');
+
+.post {
+  padding: 0 1rem;
+  margin: auto;
+  margin-top: 1rem
+}
