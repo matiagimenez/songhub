@@ -2,13 +2,12 @@
 @import url('global/main.css');
 @import url('global/post.css');
 
-
-main {
+/* main {
   width: 1000px;
-}
+} */
 
 .post {
-  padding: 0 1rem;
-  margin: auto;
-  margin-top: 1rem
+	padding: 0 1rem;
+	margin: auto;
+	margin-top: 1rem;
 }
