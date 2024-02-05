@@ -212,9 +212,6 @@
 
 @media (min-width: 1000px) {
 
-	.post {
-		padding: 0 2rem;
-	}
 
 	.post figure {
 		grid-template-columns: 190px auto;
