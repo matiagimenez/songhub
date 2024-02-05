@@ -38,23 +38,27 @@ export const routes = {
 			scriptPath: '../scripts/components/carousel/carousel.js',
 		},
 		{
-			scriptName: 'post-like-container',
-			scriptPath: '../scripts/components/post/post_like_container.js',
+			scriptName: 'post-like',
+			scriptPath: '../scripts/components/post/post-like.js',
 		},
 		{
-			scriptName: 'post-comment-container',
-			scriptPath: '../scripts/components/post/post_comment_container.js',
+			scriptName: 'post-comment',
+			scriptPath: '../scripts/components/post/post-comment.js',
 		},
 		{
-			scriptName: 'post-share-container',
-			scriptPath: '../scripts/components/post/post_share_container.js',
+			scriptName: 'post-share',
+			scriptPath: '../scripts/components/post/post-share.js',
+		},
+		{
+			scriptName: 'post-content',
+			scriptPath: '../scripts/components/post/post-content.js',
 		},
 	],
 	'/post': [
 		menuScript,
 		{
-			scriptName: 'post-like-container',
-			scriptPath: '../scripts/components/post/post_like_container.js',
+			scriptName: 'post-like',
+			scriptPath: '../scripts/components/post/post-like.js',
 		},
 	],
 	'/profile-edit': [menuScript],
