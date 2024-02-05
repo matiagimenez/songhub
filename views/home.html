@@ -157,10 +157,28 @@
 					</figure>
 				</li>
 			</ul>
+			<!-- se debe cambiar aria-busy="true" cuando se esté cargando/actualizando el feed -->
 
-			<section class="feed">
-				<h2 class="section-title">Últimos posts</h2>
-				<article class="post" id="post_1">
+			<section
+				class="feed"
+				role="feed"
+				aria-labelledby="feed-title"
+				aria-busy="false"
+			>
+				<h2 class="section-title" id="feed-title">Últimos posts</h2>
+				<!-- se debe actualizar aria-setsize="n" siendo n la cantidad de post cargados en el feed.
+				Algo como ir llevando una variable acumuladora con la cantidad de post que se van cargando 
+				y actualizar el valor de aria-setsize con el valor de esa variable acumuladora.
+			-->
+				<article
+					tabindex="0"
+					class="post"
+					id="post_1"
+					aria-posinset="1"
+					aria-setsize="3"
+					aria-labelledby="post-1-song-title post-1-artist-title"
+					aria-describedby="post-content-1"
+				>
 					<figure>
 						<img
 							loading="lazy"
@@ -187,10 +205,12 @@
 							<p class="post-time">hace 8 horas</p>
 						</section>
 						<figcaption>
-							<h3 class="song-title">
+							<h3 class="song-title" id="post-1-song-title">
 								The Dark Side of the Moon
 							</h3>
-							<h4 class="artist-title">Pink Floyd</h4>
+							<h4 class="artist-title" id="post-1-artist-title">
+								Pink Floyd
+							</h4>
 							<a href="./home.html">Increible</a>
 							<a href="./home.html">Rock</a>
 							<a href="./home.html">Internacional</a>
@@ -198,7 +218,7 @@
 						</figcaption>
 					</figure>
 					<a href="post.html">
-						<section class="post-content">
+						<section class="post-content" id="post-content-1">
 							<p>
 								It has survived not only five centuries, but
 								also the leap into electronic typesetting,
@@ -255,7 +275,15 @@
 						</section>
 					</footer>
 				</article>
-				<article class="post" id="post_2">
+				<article
+					tabindex="0"
+					class="post"
+					id="post_2"
+					aria-posinset="2"
+					aria-setsize="3"
+					aria-labelledby="post-2-song-title post-2-artist-title"
+					aria-describedby="post-content-2"
+				>
 					<figure>
 						<img
 							loading="lazy"
@@ -282,15 +310,19 @@
 							<p class="post-time">hace 8 horas</p>
 						</section>
 						<figcaption>
-							<h3 class="song-title">Preacher`s Daughter</h3>
-							<h4 class="artist-title">Ethel Cain</h4>
+							<h3 class="song-title" id="post-2-song-title">
+								Preacher`s Daughter
+							</h3>
+							<h4 class="artist-title" id="post-2-artist-title">
+								Ethel Cain
+							</h4>
 							<a href="./home.html">Chill</a>
 							<a href="./home.html">Internacional</a>
 							<p class="stars">★★★★½</p>
 						</figcaption>
 					</figure>
 					<a href="post.html">
-						<section class="post-content">
+						<section class="post-content" id="post-content-2">
 							<p>
 								It has survived not only five centuries, but
 								also the leap into electronic typesetting,
@@ -319,7 +351,15 @@
 						</section>
 					</footer>
 				</article>
-				<article class="post" id="post_3">
+				<article
+					class="post"
+					id="post_3"
+					tabindex="0"
+					aria-posinset="3"
+					aria-setsize="3"
+					aria-labelledby="post-3-song-title post-3-artist-title"
+					aria-describedby="post-content-3"
+				>
 					<figure>
 						<img
 							loading="lazy"
@@ -345,8 +385,12 @@
 							<p class="post-time">hace 8 horas</p>
 						</section>
 						<figcaption>
-							<h3 class="song-title">Certified Lover Boy</h3>
-							<h4 class="artist-title">Drake</h4>
+							<h3 class="song-title" id="post-3-song-title">
+								Certified Lover Boy
+							</h3>
+							<h4 class="artist-title" id="post-3-artist-title">
+								Drake
+							</h4>
 							<a href="./home.html">Amazing</a>
 							<a href="./home.html">Trap</a>
 							<a href="./home.html">Drake</a>
@@ -354,7 +398,7 @@
 						</figcaption>
 					</figure>
 					<a href="post.html">
-						<section class="post-content">
+						<section class="post-content" id="post-content-3">
 							<p>
 								It has survived not only five centuries, but
 								also the leap into electronic typesetting,
