@@ -89,23 +89,16 @@
 	max-width: 550px;
 }
 
-.read-more {
+.post a.read-more {
 	color: var(--color-violet-dark);
 	font-weight: bold;
 	cursor: pointer;
 	font-size: 0.8rem;
 }
 
-.read-more:hover {
+.post a.read-more:hover {
 	text-decoration: underline;
-}
-
-.post .post-content p::after {
-	/*content: '...';
-	position: absolute;
-	top: 18rem;
-	right: 0;
-	background-color: white;*/
+	text-underline-offset: 2px;
 }
 
 .post footer {
@@ -336,5 +329,9 @@
 
 	.like-container .unlike {
 		background-image: url('../../assets/icons/post-icons/dark_mode_star.svg');
+	}
+
+	.post a.read-more {
+		color: var(--color-violet-light-white);
 	}
 }
