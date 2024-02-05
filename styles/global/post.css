@@ -85,10 +85,19 @@
 
 .post-content {
 	margin: 1rem 0;
+	line-height: 1.3;
+	max-width: 550px;
 }
 
-.post-content p {
-	max-width: 550px;
+.read-more {
+	color: var(--color-violet-dark);
+	font-weight: bold;
+	cursor: pointer;
+	font-size: 0.8rem;
+}
+
+.read-more:hover {
+	text-decoration: underline;
 }
 
 .post .post-content p::after {
@@ -267,6 +276,10 @@
 
 	.stars {
 		padding: 0;
+	}
+
+	.post-content {
+		max-width: 700px;
 	}
 
 	.post footer {
