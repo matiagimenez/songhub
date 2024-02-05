@@ -140,11 +140,7 @@ figure figcaption p:nth-of-type(2) {
 
 .post-section form .tag {
 	font-size: 0.8rem;
-	background-color: var(--color-grey-medium);
 	padding: 0.3rem 0.8rem;
-	border-radius: 15px;
-	font-weight: normal;
-	color: var(--color-white);
 }
 
 .post-section form .tag-button {

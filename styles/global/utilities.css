@@ -143,6 +143,15 @@
 	border: 0;
 }
 
+.tag {
+	background-color: var(--color-grey-medium);
+	font-size: 0.8rem;
+	padding: 0.3rem 0.8rem;
+	border-radius: 15px;
+	font-weight: normal;
+	color: var(--color-white);
+}
+
 @media (prefers-color-scheme: dark) {
 	.input {
 		border-color: var(--color-violet-light-white);
