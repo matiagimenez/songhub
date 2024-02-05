@@ -17,6 +17,7 @@
 	--color-grey-dark: #2e3045; /* Gris oscuro*/
 	--color-green: #14ff00; /* Verde - Exito*/
 	--color-red: #c30303; /* Rojo - Error*/
+	--color-yellow: #ffdd00; /* Rojo - Error*/
 	--font-family: 'Roboto', sans-serif;
 	--content-max-width: 1300px;
 }
