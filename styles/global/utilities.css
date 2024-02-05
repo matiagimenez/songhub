@@ -144,12 +144,11 @@
 }
 
 .tag {
-	background-color: var(--color-grey-medium);
+	background-color: var(--color-grey-very-light);
 	font-size: 0.8rem;
 	padding: 0.3rem 0.8rem;
 	border-radius: 15px;
 	font-weight: normal;
-	color: var(--color-white);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -174,6 +173,10 @@
 	.submit-outline-button {
 		border-color: var(--color-violet-light);
 		color: var(--color-violet);
+	}
+
+	.tag {
+		color: var(--color-violet-dark-black);
 	}
 }
 

@@ -1,8 +1,6 @@
 .post {
 	margin-top: 1rem;
 	width: 100%;
-	min-height: 135px;
-	position: relative;
 	border-bottom: 1px solid var(--color-grey-very-light);
 }
 
@@ -144,7 +142,7 @@
 
 .like-container:hover button:first-child {
 	cursor: pointer;
-	animation: favourite-button-shadow 200ms forwards;
+	animation: favorite-button-shadow 200ms forwards;
 	animation-delay: 0ms;
 }
 
@@ -154,7 +152,7 @@
 	}
 }
 
-@keyframes favourite-button-shadow {
+@keyframes favorite-button-shadow {
 	to {
 		box-shadow: inset 0px 0px 50px var(--color-yellow);
 		opacity: 0.6;
@@ -265,10 +263,6 @@
 
 	.post-content {
 		max-width: 700px;
-	}
-
-	.post footer {
-		margin-right: 2rem;
 	}
 }
 
