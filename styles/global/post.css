@@ -211,6 +211,11 @@
 }
 
 @media (min-width: 1000px) {
+
+	.post {
+		padding: 0 2rem;
+	}
+
 	.post figure {
 		grid-template-columns: 190px auto;
 		row-gap: 0.8rem;
@@ -262,14 +267,14 @@
 	}
 
 	.post-content {
-		max-width: 700px;
+		max-width: 80%;
 	}
 }
 
 @media (min-width: 1400px) {
-	.post-content p {
+	/*.post-content p {
 		max-width: 850px;
-	}
+	}*/
 }
 
 @media (prefers-color-scheme: dark) {
