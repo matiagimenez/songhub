@@ -10,11 +10,42 @@
 }
 
 .post-img {
-	display: inline-block;
+	display: flex;
 	height: 100px;
 	width: 100px;
 	border-radius: 10px;
 	grid-row: span 3;
+	background-image: url("https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg");
+	background-size: contain;
+	overflow: hidden;
+	justify-content: center;
+}
+
+.post-img:hover {
+	cursor: pointer;
+}
+
+.post-img section {
+	background-color: var(--color-violet-dark-black);
+	opacity: 60%;
+	height: 20px;
+	margin-top: 70%;
+	border-radius: 4px;
+	display: grid;
+	grid-template-columns: 50% 50%;
+	place-content: center;
+}
+
+.post-img section button {
+	border: none;
+	background: none;
+	margin: 0 4px;
+	height: 14px;
+}
+
+.post-img section button:hover {
+	cursor: pointer;
+	opacity: 40;
 }
 
 .user-info {
