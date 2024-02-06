@@ -2,10 +2,7 @@
 @import url('global/main.css');
 
 main header {
-	display: flex;
-	flex-direction: column;
-	gap: 4px;
-	padding: 16px;
+	padding: 12px;
 }
 
 header .user {
@@ -13,10 +10,15 @@ header .user {
 }
 
 header .user img {
-	height: 60px;
-	width: 60px;
+	height: 55px;
+	width: 55px;
 	border-radius: 100%;
 	float: left;
+}
+
+header .user-actions {
+	width: 100%;
+	margin-top: 6px;
 }
 
 header .user-actions .action-button {
@@ -57,14 +59,19 @@ header .user-actions .spotify-profile-button {
 }
 
 header .user-actions .share-button {
-	height: 35px;
-	width: 35px;
+	height: 20px;
+	width: 20px;
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
 	position: relative;
-	bottom: 5px;
+	margin-left: 10px;
+	bottom: 15px;
+	background-image: url('../assets/icons/post-icons/share.svg');
+	background-size: cover;
+	background-repeat: no-repeat;
 }
+
 header .user-actions .share-button:hover {
 	transform: scale(1.1);
 }
@@ -79,7 +86,7 @@ header .user-actions .spotify-profile-button span {
 	width: fit-content;
 	text-align: center;
 	position: relative;
-	bottom: 13px;
+	bottom: 11px;
 	height: 100%;
 	font-size: 0.8rem;
 }
@@ -101,6 +108,7 @@ header .user-actions p.profile-button-container {
 
 header .user-stats {
 	width: 100%;
+	margin-top: 6px;
 }
 
 header .user-stats ul li {
@@ -119,7 +127,7 @@ header .user-stats ul li:first-child {
 header .user-stats ul li span {
 	font-weight: bold;
 	display: inline-block;
-	margin-right: 3px;
+	margin-right: 4px;
 }
 
 header .user p .name {
@@ -134,5 +142,96 @@ header .user p .username {
 	display: block;
 	color: var(--color-grey-dark);
 	position: relative;
-	top: 16px;
+	top: 20px;
+}
+
+@media (min-width: 400px) {
+	main header {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		max-width: 800px;
+		margin: auto;
+		padding: 16px 24px;
+	}
+
+	main header .user {
+		width: 50%;
+		display: inline-block;
+	}
+
+	main header .user-stats {
+		width: 50%;
+		display: inline-block;
+		text-align: right;
+		margin: 0;
+	}
+
+	main header .user-stats ul {
+		width: 100%;
+		position: relative;
+		top: 10px;
+	}
+
+	main header .user-stats ul li {
+		display: block;
+		width: 100%;
+		text-align: right;
+		margin: 0;
+		padding: 2px 0;
+	}
+
+	main header .user-actions {
+		width: 100%;
+		margin-top: 24px;
+	}
+
+	main header .user-actions {
+		position: relative;
+	}
+
+	main header .user-actions .share-button {
+		position: absolute;
+		right: 15px;
+		bottom: 18px;
+	}
+}
+
+@media (min-width: 1200px) {
+	main header .user img {
+		height: 75px;
+		width: 75px;
+	}
+
+	main header .user p .name {
+		font-size: 1.2rem;
+		top: 24px;
+	}
+
+	main header .user p .username {
+		font-size: 1rem;
+		top: 26px;
+	}
+
+	main header .user-actions {
+		margin-top: 40px;
+	}
+
+	main header .user-stats ul li {
+		font-size: 1.1rem;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	main header .user p .username {
+		color: var(--color-grey-very-light);
+	}
+
+	main header .user-stats ul li {
+		color: var(--color-white);
+	}
+
+	header .user-actions .share-button {
+		background-image: url('../assets/icons/post-icons/dark_mode_share.svg');
+	}
 }
