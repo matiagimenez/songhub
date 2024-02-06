@@ -130,7 +130,8 @@
 
 .image-border {
 	border-radius: 10px;
-	border: 1px solid var(--color-violet-dark);
+	outline: 2px solid var(--color-violet-dark);
+	outline-offset: 1px;
 }
 
 .visually-hidden {
@@ -164,7 +165,7 @@
 	}
 
 	.image-border {
-		border-color: var(--color-grey-medium);
+		outline-color: var(--color-grey-very-light);
 	}
 
 	.submit-button {
