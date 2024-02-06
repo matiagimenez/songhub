@@ -21,6 +21,7 @@
 	height: 2.5rem;
 	border-radius: 6px;
 	cursor: pointer;
+	border: 2px solid var(--color-violet-dark);
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
@@ -168,6 +169,7 @@
 
 	.submit-button {
 		background-color: var(--color-violet);
+		border: 2px solid var(--color-violet);
 	}
 
 	.submit-outline-button {

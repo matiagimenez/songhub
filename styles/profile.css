@@ -1,0 +1,138 @@
+@import url('global/variables.css');
+@import url('global/main.css');
+
+main header {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	padding: 16px;
+}
+
+header .user {
+	height: 60px;
+}
+
+header .user img {
+	height: 60px;
+	width: 60px;
+	border-radius: 100%;
+	float: left;
+}
+
+header .user-actions .action-button {
+	height: 35px;
+	width: 120px;
+	line-height: 2;
+	padding: 0;
+	cursor: pointer;
+	font-size: 0.8rem;
+	font-weight: bolder;
+	display: inline-block;
+	position: relative;
+	bottom: 12px;
+}
+
+header .user-actions a {
+	display: inline-block;
+	text-decoration: none;
+	height: 35px;
+	width: 110px;
+	line-height: 2.8;
+	font-size: 0.8rem;
+	padding: 0;
+}
+
+header .user-actions .spotify-profile-button {
+	display: inline-block;
+	text-decoration: none;
+	width: 120px;
+	line-height: 2.5;
+	font-weight: normal;
+	font-size: 0.8rem;
+	padding: 0;
+	padding-right: 10px;
+	height: 35px;
+	margin-left: 2px;
+	position: relative;
+}
+
+header .user-actions .share-button {
+	height: 35px;
+	width: 35px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	position: relative;
+	bottom: 5px;
+}
+header .user-actions .share-button:hover {
+	transform: scale(1.1);
+}
+
+header .user-actions .share-button img {
+	height: 20px;
+	width: 20px;
+}
+
+header .user-actions .spotify-profile-button span {
+	display: inline-block;
+	width: fit-content;
+	text-align: center;
+	position: relative;
+	bottom: 13px;
+	height: 100%;
+	font-size: 0.8rem;
+}
+
+header .user-actions .spotify-profile-button img {
+	width: 18px;
+	height: 100%;
+	margin-right: 2px;
+}
+
+header .user p.username-container {
+	display: inline-block;
+	margin-left: 8px;
+}
+
+header .user-actions p.profile-button-container {
+	width: 100%;
+}
+
+header .user-stats {
+	width: 100%;
+	padding-left: 4px;
+}
+
+header .user-stats ul li {
+	padding: 8px 0;
+	display: inline-block;
+	width: fit-content;
+	margin-left: 8px;
+	color: var(--color-violet-darkest);
+}
+
+header .user-stats ul li:first-child {
+	margin-left: 0px;
+}
+
+header .user-stats ul li span {
+	font-weight: bold;
+	display: inline-block;
+	margin-right: 4px;
+}
+
+header .user p .name {
+	font-size: 0.9rem;
+	font-weight: bolder;
+	position: relative;
+	top: 16px;
+}
+
+header .user p .username {
+	font-size: 0.8rem;
+	display: block;
+	color: var(--color-grey-dark);
+	position: relative;
+	top: 16px;
+}

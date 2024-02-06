@@ -62,7 +62,29 @@ export const routes = {
 		},
 	],
 	'/profile-edit': [menuScript],
-	'/profile': [menuScript],
+	'/profile': [
+		menuScript,
+		{
+			scriptName: 'action-button-animation',
+			scriptPath: '../scripts/animations/action-button-animation.js',
+		},
+		{
+			scriptName: 'post-like',
+			scriptPath: '../scripts/components/post/post-like.js',
+		},
+		{
+			scriptName: 'post-comment',
+			scriptPath: '../scripts/components/post/post-comment.js',
+		},
+		{
+			scriptName: 'post-share',
+			scriptPath: '../scripts/components/post/post-share.js',
+		},
+		{
+			scriptName: 'post-content',
+			scriptPath: '../scripts/components/post/post-content.js',
+		},
+	],
 	'/search': [menuScript],
 	'/song': [menuScript],
 };
