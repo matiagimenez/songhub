@@ -211,8 +211,6 @@
 }
 
 @media (min-width: 1000px) {
-
-
 	.post figure {
 		grid-template-columns: 190px auto;
 		row-gap: 0.8rem;
@@ -238,8 +236,8 @@
 	}
 
 	.user-img {
-		height: 30px;
-		width: 30px;
+		height: 35px;
+		width: 35px;
 	}
 
 	.post-time {
@@ -266,12 +264,6 @@
 	.post-content {
 		max-width: 80%;
 	}
-}
-
-@media (min-width: 1400px) {
-	/*.post-content p {
-		max-width: 850px;
-	}*/
 }
 
 @media (prefers-color-scheme: dark) {
