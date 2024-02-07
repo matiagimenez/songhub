@@ -10,14 +10,13 @@
 .song-title {
 	font-weight: bold;
 	width: 100%;
-	font-size: 0.85rem;
+	font-size: 0.95rem;
 	color: var(--color-violet-dark);
-	padding: 4px 0;
 	margin: 4px 0;
 }
 
 .artist-title {
-	font-size: 0.8rem;
+	font-size: 0.9rem;
 	color: var(--color-violet-dark-black);
 }
 

@@ -1,0 +1,322 @@
+@import url('global/variables.css');
+@import url('global/main.css');
+
+main header {
+	padding: 12px;
+}
+
+header .user {
+	height: 60px;
+}
+
+header .user img {
+	height: 55px;
+	width: 55px;
+	border-radius: 100%;
+	float: left;
+}
+
+header .user-actions {
+	width: 100%;
+	margin-top: 6px;
+}
+
+header .user-actions .action-button {
+	height: 35px;
+	width: 120px;
+	line-height: 2;
+	padding: 0;
+	cursor: pointer;
+	font-size: 0.8rem;
+	font-weight: bolder;
+	display: inline-block;
+	position: relative;
+	bottom: 12px;
+}
+
+header .user-actions a {
+	display: inline-block;
+	text-decoration: none;
+	height: 35px;
+	width: 110px;
+	line-height: 2.8;
+	font-size: 0.8rem;
+	padding: 0;
+}
+
+header .user-actions .spotify-profile-button {
+	display: inline-block;
+	text-decoration: none;
+	width: 120px;
+	line-height: 2.5;
+	font-weight: normal;
+	font-size: 0.8rem;
+	padding: 0;
+	padding-right: 10px;
+	height: 35px;
+	margin-left: 2px;
+	position: relative;
+}
+
+header .user-actions .share-button {
+	height: 20px;
+	width: 20px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	position: relative;
+	margin-left: 10px;
+	bottom: 15px;
+	background-image: url('../assets/icons/post-icons/share.svg');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+header .user-actions .share-button:hover {
+	transform: scale(1.1);
+}
+
+header .user-actions .share-button img {
+	height: 20px;
+	width: 20px;
+}
+
+header .user-actions .spotify-profile-button span {
+	display: inline-block;
+	width: fit-content;
+	text-align: center;
+	position: relative;
+	bottom: 11px;
+	height: 100%;
+	font-size: 0.8rem;
+}
+
+header .user-actions .spotify-profile-button img {
+	width: 18px;
+	height: 100%;
+	margin-right: 2px;
+}
+
+header .user p.username-container {
+	display: inline-block;
+	margin-left: 12px;
+}
+
+header .user-actions p.profile-button-container {
+	width: 100%;
+}
+
+header .user-stats {
+	width: 100%;
+	margin-top: 6px;
+}
+
+header .user-stats ul li {
+	padding: 8px 0;
+	display: inline-block;
+	width: fit-content;
+	margin-left: 6px;
+	font-size: 0.85rem;
+	color: var(--color-violet-darkest);
+}
+
+header .user-stats ul li:first-child {
+	margin-left: 0px;
+}
+
+header .user-stats ul li span {
+	font-weight: bold;
+	display: inline-block;
+	margin-right: 4px;
+}
+
+header .user p .name {
+	font-size: 0.9rem;
+	font-weight: bolder;
+	position: relative;
+	top: 14px;
+}
+
+header .user p .username {
+	font-size: 0.8rem;
+	display: block;
+	color: var(--color-grey-dark);
+	position: relative;
+	top: 18px;
+}
+
+.favourites {
+	width: 100%;
+	max-width: 750px;
+	margin: auto;
+	padding: 0 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.favourites article {
+	width: 200px;
+}
+
+.favourites article img {
+	width: 120px;
+	height: 120px;
+	float: left;
+}
+
+.favourites article figcaption {
+	position: relative;
+	left: 12px;
+	top: 8px;
+}
+
+.favourites article figcaption .song-title {
+	padding: 0;
+}
+
+.favourites h2 {
+	width: 100%;
+	max-width: 700px;
+	margin-bottom: 16px;
+}
+
+.recent-activity {
+	width: 100%;
+	max-width: 750px;
+	margin: auto;
+	margin-top: 16px;
+}
+
+@media (min-width: 400px) {
+	main header {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		max-width: 800px;
+		margin: auto;
+		padding: 16px 24px;
+	}
+
+	main header .user {
+		width: 65%;
+		display: inline-block;
+	}
+
+	main header .user-stats {
+		width: 35%;
+		display: inline-block;
+		text-align: right;
+		margin: 0;
+	}
+
+	main header .user-stats ul {
+		width: 100%;
+		position: relative;
+		top: 10px;
+	}
+
+	main header .user-stats ul li {
+		display: block;
+		width: 100%;
+		text-align: right;
+		margin: 0;
+		padding: 2px 0;
+	}
+
+	main header .user-actions {
+		width: 100%;
+		margin-top: 24px;
+	}
+
+	main header .user-actions {
+		position: relative;
+	}
+
+	main header .user-actions .share-button {
+		position: absolute;
+		right: 15px;
+		bottom: 18px;
+	}
+}
+
+@media (min-width: 600px) {
+	.favourites {
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+
+	.favourites article {
+		height: 220px;
+		margin-bottom: 8px;
+	}
+
+	.favourites article img {
+		float: none;
+		height: 150px;
+		width: 150px;
+	}
+
+	.favourites article figcaption {
+		position: relative;
+		left: 0;
+		top: 0;
+		width: 150px;
+	}
+}
+
+@media (min-width: 900px) {
+	.favourites {
+		padding: 0;
+	}
+
+	.favourites article {
+		height: 200px;
+		margin-bottom: 24px;
+		width: 30%;
+	}
+
+	.favourites article img {
+		height: 170px;
+		width: 170px;
+	}
+}
+
+@media (min-width: 1200px) {
+	main header .user img {
+		height: 75px;
+		width: 75px;
+	}
+
+	main header .user p .name {
+		font-size: 1.2rem;
+		top: 24px;
+	}
+
+	main header .user p .username {
+		font-size: 1rem;
+		top: 26px;
+	}
+
+	main header .user-actions {
+		margin-top: 40px;
+	}
+
+	main header .user-stats ul li {
+		font-size: 1.1rem;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	main header .user p .username {
+		color: var(--color-grey-very-light);
+	}
+
+	main header .user-stats ul li {
+		color: var(--color-white);
+	}
+
+	header .user-actions .share-button {
+		background-image: url('../assets/icons/post-icons/dark_mode_share.svg');
+	}
+}
