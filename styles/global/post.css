@@ -26,26 +26,27 @@
 }
 
 .post-img section {
-	background-color: var(--color-violet-dark-black);
+	background-color: var(--color-black);
 	width: 60px;
 	height: 25px;
-	display: grid;
-	grid-template-columns: 50% 50%;
 	margin: auto;
 	border-radius: 4px;
-	margin-top: 70%;
 	z-index: 10;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 50px;
 }
 
 .post-img section button {
-	background-image: url("../../assets/icons/post-icon.svg");
+	background-image: url('../../assets/icons/post-icon.svg');
 	background-size: cover;
 	background-color: transparent;
 }
 
-
 .post-img section a {
-	background-image: url("../../assets/icons/expand-content-svgrepo-com.svg");
+	background-image: url('../../assets/icons/expand-content-svgrepo-com.svg');
 	background-size: cover;
 }
 
@@ -274,14 +275,14 @@
 	}
 
 	.post-img section {
-		width: 100px;
-		height: 40px;
+		width: 80px;
+		height: 35px;
 	}
 
 	.post-img section button,
 	.post-img section a {
-		width: 30px;
-		height: 30px;
+		width: 20px;
+		height: 20px;
 	}
 
 	.user-info {
