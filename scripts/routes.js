@@ -100,6 +100,10 @@ export const routes = {
 			scriptName: 'share-menu',
 			scriptPath: '../scripts/components/share-menu/share-menu.js',
 		},
+		{
+			scriptName: 'hover-img',
+			scriptPath: '../scripts/components/song&album-img/hover-img.js',
+		},
 	],
 	'/search': [
 		{
