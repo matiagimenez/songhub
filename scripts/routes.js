@@ -62,6 +62,10 @@ export const routes = {
 			scriptName: 'post-content',
 			scriptPath: '../scripts/components/post/post-content.js',
 		},
+		{
+			scriptName: 'share-menu',
+			scriptPath: '../scripts/components/share-menu/share-menu.js',
+		},
 	],
 	'/post': [
 		{
@@ -87,6 +91,10 @@ export const routes = {
 		{
 			scriptName: 'post-content',
 			scriptPath: '../scripts/components/post/post-content.js',
+		},
+		{
+			scriptName: 'share-menu',
+			scriptPath: '../scripts/components/share-menu/share-menu.js',
 		},
 	],
 	'/search': [
