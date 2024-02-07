@@ -1,0 +1,25 @@
+.share-menu {
+	width: 150px;
+	height: 60px;
+	padding: 0;
+	background-color: transparent;
+	position: absolute;
+	top: -70px;
+	left: -130px;
+	display: none;
+}
+
+button.share-menu-item {
+	background-color: red;
+	width: 100%;
+	color: white;
+	height: 50%;
+	display: block;
+	background-image: none;
+	cursor: pointer;
+	border-radius: 0;
+}
+
+.open {
+	display: block;
+}

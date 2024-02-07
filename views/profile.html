@@ -121,11 +121,6 @@
 							/>
 							<span> Perfil </span>
 						</button>
-						<button class="share-button">
-							<span class="visually-hidden"
-								>Compartir perfil</span
-							>
-						</button>
 					</p>
 				</section>
 			</header>
@@ -252,15 +247,34 @@
 					aria-describedby="post-content-1"
 				>
 					<figure>
-						<img
-							loading="lazy"
-							class="post-img image-border"
-							height="120px"
-							width="120px"
-							src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
-							alt="Portada del álbum 'The Dark Side of the Moon' de Pink Floyd"
-							class="image-border"
-						/>
+						<section class="post-img">
+							<img
+								loading="lazy"
+								height="100px"
+								width="100px"
+								class="post-img image-border"
+								src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
+								alt="Portada del álbum 'Preacher`s Daughter' de Ethel Cain"
+							/>
+							<section class="hidden">
+								<a href="/">
+									<img
+										src="../assets/icons/expand-content-svgrepo-com.svg"
+										alt="Song info"
+										width="20px"
+										height="20px"
+									/>
+								</a>
+								<button>
+									<img
+										src="../assets/icons/post-icon.svg"
+										alt="Song info"
+										width="20px"
+										height="20px"
+									/>
+								</button>
+							</section>
+						</section>
 						<section class="user-info">
 							<img
 								loading="lazy"
@@ -341,7 +355,7 @@
 							<p>1008</p>
 						</section>
 						<section class="reaction-container share-container">
-							<button>
+							<button class="share-button" data-post-id="1">
 								<span class="visually-hidden"
 									>Compartir post</span
 								>

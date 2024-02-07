@@ -12,7 +12,6 @@
 	width: 100%;
 	font-size: 0.95rem;
 	color: var(--color-violet-dark);
-	padding: 4px 0;
 	margin: 4px 0;
 }
 
@@ -23,11 +22,11 @@
 
 @media (min-width: 1000px) {
 	.section-title {
-		font-size: 1.05rem;
+		font-size: 1.25rem;
 	}
 
 	.song-title {
-		font-size: 1.05rem;
+		font-size: 1.1rem;
 	}
 }
 

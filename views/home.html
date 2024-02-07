@@ -18,7 +18,7 @@
 		<link rel="icon" type="image/x-icon" href="/assets/icons/favicon.svg" />
 		<title>Inicio | SongHub</title>
 	</head>
-	<body>
+	<body id="home">
 		<header class="main-header">
 			<h1>
 				<a href="home.html">
@@ -165,6 +165,16 @@
 				aria-labelledby="feed-title"
 				aria-busy="false"
 			>
+				<a
+					href="search.html"
+					id="create-post"
+					class="create-post submit-button"
+					>Crear un post</a
+				>
+				<a href="#home" class="go-to-top submit-button">
+					<span class="visually-hidden">Ir al inicio del feed</span>
+					<img src="../assets/icons/home.svg" alt="" />
+				</a>
 				<h2 class="section-title" id="feed-title">Últimos posts</h2>
 				<!-- se debe actualizar aria-setsize="n" siendo n la cantidad de post cargados en el feed.
 				Algo como ir llevando una variable acumuladora con la cantidad de post que se van cargando 
@@ -180,15 +190,34 @@
 					aria-describedby="post-content-1"
 				>
 					<figure>
-						<img
-							loading="lazy"
-							class="post-img image-border"
-							height="120px"
-							width="120px"
-							src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
-							alt="Portada del álbum 'The Dark Side of the Moon' de Pink Floyd"
-							class="image-border"
-						/>
+						<section class="post-img">
+							<img
+								loading="lazy"
+								height="100px"
+								width="100px"
+								class="post-img image-border"
+								src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
+								alt="Portada del álbum 'Preacher`s Daughter' de Ethel Cain"
+							/>
+							<section class="hidden">
+								<a href="/">
+									<img
+										src="../assets/icons/expand-content-svgrepo-com.svg"
+										alt="Song info"
+										width="20px"
+										height="20px"
+									/>
+								</a>
+								<button>
+									<img
+										src="../assets/icons/post-icon.svg"
+										alt="Song info"
+										width="20px"
+										height="20px"
+									/>
+								</button>
+							</section>
+						</section>
 						<section class="user-info">
 							<img
 								loading="lazy"
@@ -269,7 +298,7 @@
 							<p>1008</p>
 						</section>
 						<section class="reaction-container share-container">
-							<button class="share-button">
+							<button class="share-button" data-post-id="1">
 								<span class="visually-hidden"
 									>Compartir post</span
 								>
@@ -287,15 +316,35 @@
 					aria-describedby="post-content-2"
 				>
 					<figure>
-						<img
-							loading="lazy"
-							height="120px"
-							width="120px"
-							class="post-img"
-							src="https://i.pinimg.com/236x/73/01/9f/73019f71f5bc1124787d11044d21d12d.jpg"
-							alt="Portada del álbum 'Preacher`s Daughter' de Ethel Cain"
-							class="image-border"
-						/>
+						<section class="post-img">
+							<img
+								loading="lazy"
+								height="120px"
+								width="120px"
+								class="post-img"
+								src="https://i.pinimg.com/236x/73/01/9f/73019f71f5bc1124787d11044d21d12d.jpg"
+								alt="Portada del álbum 'Preacher`s Daughter' de Ethel Cain"
+								class="image-border"
+							/>
+							<section class="hidden">
+								<a href="/">
+									<img
+										src="../assets/icons/expand-content-svgrepo-com.svg"
+										alt="Song info"
+										width="20px"
+										height="20px"
+									/>
+								</a>
+								<button>
+									<img
+										src="../assets/icons/post-icon.svg"
+										alt="Song info"
+										width="20px"
+										height="20px"
+									/>
+								</button>
+							</section>
+						</section>
 						<section class="user-info">
 							<img
 								loading="lazy"
@@ -345,7 +394,7 @@
 							<p>256</p>
 						</section>
 						<section class="reaction-container share-container">
-							<button class="share-button">
+							<button class="share-button" data-post-id="2">
 								<span class="visually-hidden"
 									>Compartir post</span
 								>
@@ -363,14 +412,34 @@
 					aria-describedby="post-content-3"
 				>
 					<figure>
-						<img
-							loading="lazy"
-							class="post-img image-border"
-							height="120px"
-							width="120px"
-							src="https://i.pinimg.com/236x/bf/00/49/bf0049614afb7ec4f5f64bb20834d728.jpg"
-							alt="Portada del álbum 'Certified Lover Boy' de Drake"
-						/>
+						<section class="post-img">
+							<img
+								loading="lazy"
+								class="post-img image-border"
+								height="120px"
+								width="120px"
+								src="https://i.pinimg.com/236x/bf/00/49/bf0049614afb7ec4f5f64bb20834d728.jpg"
+								alt="Portada del álbum 'Certified Lover Boy' de Drake"
+							/>
+							<section class="hidden">
+								<a href="/">
+									<img
+										src="../assets/icons/expand-content-svgrepo-com.svg"
+										alt="Song info"
+										width="20px"
+										height="20px"
+									/>
+								</a>
+								<button>
+									<img
+										src="../assets/icons/post-icon.svg"
+										alt="Song info"
+										width="20px"
+										height="20px"
+									/>
+								</button>
+							</section>
+						</section>
 						<section class="user-info">
 							<img
 								loading="lazy"
@@ -427,7 +496,7 @@
 							<p>10</p>
 						</section>
 						<section class="reaction-container share-container">
-							<button class="share-button">
+							<button class="share-button" data-post-id="3">
 								<span class="visually-hidden"
 									>Compartir post</span
 								>

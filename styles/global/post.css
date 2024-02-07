@@ -10,11 +10,48 @@
 }
 
 .post-img {
-	display: inline-block;
+	display: flex;
 	height: 100px;
 	width: 100px;
 	border-radius: 10px;
 	grid-row: span 3;
+}
+
+.post-img img {
+	position: absolute;
+}
+
+.post-img:hover {
+	cursor: pointer;
+}
+
+.post-img section {
+	background-color: var(--color-violet-dark-black);
+	width: 80%;
+	height: 40px;
+	display: grid;
+	grid-template-columns: 50% 50%;
+	margin: auto;
+	border-radius: 4px;
+	margin-top: 60%;
+}
+
+.post-img section button {
+	display: flex;
+}
+
+.post-img section button,
+.post-img section a {
+	margin: auto;
+	width: 20px;
+	height: 20px;
+	border: none;
+	background: none;
+}
+
+.post-img section button:hover {
+	cursor: pointer;
+	opacity: 40;
 }
 
 .user-info {
@@ -137,6 +174,12 @@
 .reaction-container:hover button:first-child {
 	cursor: pointer;
 	animation: button-shadow 200ms forwards;
+	animation-delay: 0ms;
+}
+
+.reaction-container.share-container:hover button:first-child {
+	cursor: pointer;
+	animation: none;
 	animation-delay: 0ms;
 }
 

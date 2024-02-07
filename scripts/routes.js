@@ -1,8 +1,3 @@
-const menuScript = {
-	scriptName: 'menu-animation',
-	scriptPath: '../scripts/animations/menu-animation.js',
-};
-
 export const routes = {
 	'/login': [
 		{
@@ -16,23 +11,37 @@ export const routes = {
 			scriptPath: '../scripts/animations/input-animation.js',
 		},
 	],
-	'/explore': [menuScript],
+	'/explore': [
+		{
+			scriptName: 'menu-animation',
+			scriptPath: '../scripts/animations/menu-animation.js',
+		},
+	],
 	'/followers': [
-		menuScript,
+		{
+			scriptName: 'menu-animation',
+			scriptPath: '../scripts/animations/menu-animation.js',
+		},
 		{
 			scriptName: 'action-button-animation',
 			scriptPath: '../scripts/animations/action-button-animation.js',
 		},
 	],
 	'/following': [
-		menuScript,
+		{
+			scriptName: 'menu-animation',
+			scriptPath: '../scripts/animations/menu-animation.js',
+		},
 		{
 			scriptName: 'action-button-animation',
 			scriptPath: '../scripts/animations/action-button-animation.js',
 		},
 	],
 	'/home': [
-		menuScript,
+		{
+			scriptName: 'menu-animation',
+			scriptPath: '../scripts/animations/menu-animation.js',
+		},
 		{
 			scriptName: 'expanding-cards',
 			scriptPath: '../scripts/components/carousel/carousel.js',
@@ -41,50 +50,71 @@ export const routes = {
 			scriptName: 'post-like',
 			scriptPath: '../scripts/components/post/post-like.js',
 		},
-		{
-			scriptName: 'post-comment',
-			scriptPath: '../scripts/components/post/post-comment.js',
-		},
-		{
-			scriptName: 'post-share',
-			scriptPath: '../scripts/components/post/post-share.js',
-		},
+		// {
+		// 	scriptName: 'post-comment',
+		// 	scriptPath: '../scripts/components/post/post-comment.js',
+		// },
+		// {
+		// 	scriptName: 'post-share',
+		// 	scriptPath: '../scripts/components/post/post-share.js',
+		// },
 		{
 			scriptName: 'post-content',
 			scriptPath: '../scripts/components/post/post-content.js',
+		},
+		{
+			scriptName: 'share-menu',
+			scriptPath: '../scripts/components/share-menu/share-menu.js',
+		},
+		{
+			scriptName: 'hover-img',
+			scriptPath: '../scripts/components/song&album-img/hover-img.js',
 		},
 	],
 	'/post': [
-		menuScript,
+		{
+			scriptName: 'menu-animation',
+			scriptPath: '../scripts/animations/menu-animation.js',
+		},
 		{
 			scriptName: 'post-like',
 			scriptPath: '../scripts/components/post/post-like.js',
 		},
 	],
-	'/profile-edit': [menuScript],
+	'/profile-edit': [
+		{
+			scriptName: 'menu-animation',
+			scriptPath: '../scripts/animations/menu-animation.js',
+		},
+	],
 	'/profile': [
-		menuScript,
 		{
-			scriptName: 'action-button-animation',
-			scriptPath: '../scripts/animations/action-button-animation.js',
-		},
-		{
-			scriptName: 'post-like',
-			scriptPath: '../scripts/components/post/post-like.js',
-		},
-		{
-			scriptName: 'post-comment',
-			scriptPath: '../scripts/components/post/post-comment.js',
-		},
-		{
-			scriptName: 'post-share',
-			scriptPath: '../scripts/components/post/post-share.js',
+			scriptName: 'menu-animation',
+			scriptPath: '../scripts/animations/menu-animation.js',
 		},
 		{
 			scriptName: 'post-content',
 			scriptPath: '../scripts/components/post/post-content.js',
 		},
+		{
+			scriptName: 'share-menu',
+			scriptPath: '../scripts/components/share-menu/share-menu.js',
+		},
+		{
+			scriptName: 'hover-img',
+			scriptPath: '../scripts/components/song&album-img/hover-img.js',
+		},
 	],
-	'/search': [menuScript],
-	'/song': [menuScript],
+	'/search': [
+		{
+			scriptName: 'menu-animation',
+			scriptPath: '../scripts/animations/menu-animation.js',
+		},
+	],
+	'/song': [
+		{
+			scriptName: 'menu-animation',
+			scriptPath: '../scripts/animations/menu-animation.js',
+		},
+	],
 };

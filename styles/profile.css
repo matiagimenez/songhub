@@ -1,5 +1,6 @@
 @import url('global/variables.css');
 @import url('global/main.css');
+@import url('global/post.css');
 
 main header {
 	padding: 12px;
@@ -56,29 +57,6 @@ header .user-actions .spotify-profile-button {
 	height: 35px;
 	margin-left: 2px;
 	position: relative;
-}
-
-header .user-actions .share-button {
-	height: 20px;
-	width: 20px;
-	background-color: transparent;
-	border: none;
-	cursor: pointer;
-	position: relative;
-	margin-left: 10px;
-	bottom: 15px;
-	background-image: url('../assets/icons/post-icons/share.svg');
-	background-size: cover;
-	background-repeat: no-repeat;
-}
-
-header .user-actions .share-button:hover {
-	transform: scale(1.1);
-}
-
-header .user-actions .share-button img {
-	height: 20px;
-	width: 20px;
 }
 
 header .user-actions .spotify-profile-button span {
@@ -232,12 +210,6 @@ header .user p .username {
 	main header .user-actions {
 		position: relative;
 	}
-
-	main header .user-actions .share-button {
-		position: absolute;
-		right: 15px;
-		bottom: 18px;
-	}
 }
 
 @media (min-width: 600px) {
@@ -314,9 +286,5 @@ header .user p .username {
 
 	main header .user-stats ul li {
 		color: var(--color-white);
-	}
-
-	header .user-actions .share-button {
-		background-image: url('../assets/icons/post-icons/dark_mode_share.svg');
 	}
 }
