@@ -99,7 +99,7 @@ header .user-actions .spotify-profile-button img {
 
 header .user p.username-container {
 	display: inline-block;
-	margin-left: 8px;
+	margin-left: 12px;
 }
 
 header .user-actions p.profile-button-container {
@@ -134,7 +134,7 @@ header .user p .name {
 	font-size: 0.9rem;
 	font-weight: bolder;
 	position: relative;
-	top: 16px;
+	top: 14px;
 }
 
 header .user p .username {
@@ -142,7 +142,50 @@ header .user p .username {
 	display: block;
 	color: var(--color-grey-dark);
 	position: relative;
-	top: 20px;
+	top: 18px;
+}
+
+.favourites {
+	width: 100%;
+	max-width: 750px;
+	margin: auto;
+	padding: 0 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.favourites article {
+	width: 200px;
+}
+
+.favourites article img {
+	width: 120px;
+	height: 120px;
+	float: left;
+}
+
+.favourites article figcaption {
+	position: relative;
+	left: 12px;
+	top: 8px;
+}
+
+.favourites article figcaption .song-title {
+	padding: 0;
+}
+
+.favourites h2 {
+	width: 100%;
+	max-width: 700px;
+	margin-bottom: 16px;
+}
+
+.recent-activity {
+	width: 100%;
+	max-width: 750px;
+	margin: auto;
+	margin-top: 16px;
 }
 
 @media (min-width: 400px) {
@@ -156,12 +199,12 @@ header .user p .username {
 	}
 
 	main header .user {
-		width: 50%;
+		width: 65%;
 		display: inline-block;
 	}
 
 	main header .user-stats {
-		width: 50%;
+		width: 35%;
 		display: inline-block;
 		text-align: right;
 		margin: 0;
@@ -194,6 +237,48 @@ header .user p .username {
 		position: absolute;
 		right: 15px;
 		bottom: 18px;
+	}
+}
+
+@media (min-width: 600px) {
+	.favourites {
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+
+	.favourites article {
+		height: 220px;
+		margin-bottom: 8px;
+	}
+
+	.favourites article img {
+		float: none;
+		height: 150px;
+		width: 150px;
+	}
+
+	.favourites article figcaption {
+		position: relative;
+		left: 0;
+		top: 0;
+		width: 150px;
+	}
+}
+
+@media (min-width: 900px) {
+	.favourites {
+		padding: 0;
+	}
+
+	.favourites article {
+		height: 200px;
+		margin-bottom: 24px;
+		width: 30%;
+	}
+
+	.favourites article img {
+		height: 170px;
+		width: 170px;
 	}
 }
 
