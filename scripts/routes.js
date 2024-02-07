@@ -70,6 +70,10 @@ export const routes = {
 			scriptName: 'hover-img',
 			scriptPath: '../scripts/components/song&album-img/hover-img.js',
 		},
+		{
+			scriptName: 'modal-form',
+			scriptPath: '../scripts/components/modal-form/modal-form.js',
+		},
 	],
 	'/post': [
 		{

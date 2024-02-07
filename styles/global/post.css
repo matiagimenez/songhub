@@ -27,17 +27,26 @@
 
 .post-img section {
 	background-color: var(--color-violet-dark-black);
-	width: 80%;
-	height: 40px;
+	width: 60px;
+	height: 25px;
 	display: grid;
 	grid-template-columns: 50% 50%;
 	margin: auto;
 	border-radius: 4px;
-	margin-top: 60%;
+	margin-top: 70%;
+	z-index: 10;
 }
 
 .post-img section button {
-	display: flex;
+	background-image: url("../../assets/icons/post-icon.svg");
+	background-size: cover;
+	background-color: transparent;
+}
+
+
+.post-img section a {
+	background-image: url("../../assets/icons/expand-content-svgrepo-com.svg");
+	background-size: cover;
 }
 
 .post-img section button,
@@ -46,7 +55,6 @@
 	width: 20px;
 	height: 20px;
 	border: none;
-	background: none;
 }
 
 .post-img section button:hover {
@@ -263,6 +271,17 @@
 		height: 180px;
 		width: 180px;
 		grid-row: 2;
+	}
+
+	.post-img section {
+		width: 100px;
+		height: 40px;
+	}
+
+	.post-img section button,
+	.post-img section a {
+		width: 30px;
+		height: 30px;
 	}
 
 	.user-info {

@@ -81,6 +81,17 @@
 	z-index: 100000;
 }
 
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: var(--opacity-color-violet-dark-black);
+	display: grid;
+	place-content: center;
+}
+
 @media (min-width: 850px) {
 	.cards-container figure img {
 		width: 150px;
