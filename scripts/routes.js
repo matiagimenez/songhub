@@ -50,14 +50,14 @@ export const routes = {
 			scriptName: 'post-like',
 			scriptPath: '../scripts/components/post/post-like.js',
 		},
-		{
-			scriptName: 'post-comment',
-			scriptPath: '../scripts/components/post/post-comment.js',
-		},
-		{
-			scriptName: 'post-share',
-			scriptPath: '../scripts/components/post/post-share.js',
-		},
+		// {
+		// 	scriptName: 'post-comment',
+		// 	scriptPath: '../scripts/components/post/post-comment.js',
+		// },
+		// {
+		// 	scriptName: 'post-share',
+		// 	scriptPath: '../scripts/components/post/post-share.js',
+		// },
 		{
 			scriptName: 'post-content',
 			scriptPath: '../scripts/components/post/post-content.js',
@@ -65,6 +65,10 @@ export const routes = {
 		{
 			scriptName: 'share-menu',
 			scriptPath: '../scripts/components/share-menu/share-menu.js',
+		},
+		{
+			scriptName: 'hover-img',
+			scriptPath: '../scripts/components/song&album-img/hover-img.js',
 		},
 	],
 	'/post': [
