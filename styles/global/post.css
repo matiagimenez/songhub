@@ -185,6 +185,12 @@
 	animation-delay: 0ms;
 }
 
+.reaction-container.share-container:hover button:first-child {
+	cursor: pointer;
+	animation: none;
+	animation-delay: 0ms;
+}
+
 .like-container:hover button:first-child {
 	cursor: pointer;
 	animation: favorite-button-shadow 200ms forwards;
@@ -256,8 +262,6 @@
 }
 
 @media (min-width: 1000px) {
-
-
 	.post figure {
 		grid-template-columns: 190px auto;
 		row-gap: 0.8rem;

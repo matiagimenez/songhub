@@ -133,6 +133,7 @@
 	border: 1px solid var(--color-violet-dark);
 }
 
+/* Invisibiliza el elemento en el DOM. Sin embargo, puede ser procesado por lectores de pantalla */
 .visually-hidden {
 	position: absolute;
 	width: 1px;
@@ -142,6 +143,13 @@
 	overflow: hidden;
 	clip: rect(0, 0, 0, 0);
 	border: 0;
+}
+
+/* Remueve el elemento del DOM */
+.hidden {
+	display: none;
+	opacity: 0;
+	visibility: hidden;
 }
 
 .tag {
