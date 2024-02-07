@@ -15,10 +15,10 @@
 	width: 100px;
 	border-radius: 10px;
 	grid-row: span 3;
-	background-image: url("https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg");
-	background-size: contain;
-	overflow: hidden;
-	justify-content: center;
+}
+
+.post-img img {
+	position: absolute;
 }
 
 .post-img:hover {
@@ -27,20 +27,26 @@
 
 .post-img section {
 	background-color: var(--color-violet-dark-black);
-	opacity: 60%;
-	height: 20px;
-	margin-top: 70%;
-	border-radius: 4px;
+	width: 80%;
+	height: 40px;
 	display: grid;
 	grid-template-columns: 50% 50%;
-	place-content: center;
+	margin: auto;
+	border-radius: 4px;
+	margin-top: 60%;
 }
 
 .post-img section button {
+	display: flex;
+}
+
+.post-img section button,
+.post-img section a {
+	margin: auto;
+	width: 20px;
+	height: 20px;
 	border: none;
 	background: none;
-	margin: 0 4px;
-	height: 14px;
 }
 
 .post-img section button:hover {
