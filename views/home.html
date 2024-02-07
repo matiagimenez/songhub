@@ -18,7 +18,7 @@
 		<link rel="icon" type="image/x-icon" href="/assets/icons/favicon.svg" />
 		<title>Inicio | SongHub</title>
 	</head>
-	<body>
+	<body id="home">
 		<header class="main-header">
 			<h1>
 				<a href="home.html">
@@ -165,6 +165,16 @@
 				aria-labelledby="feed-title"
 				aria-busy="false"
 			>
+				<a
+					href="search.html"
+					id="create-post"
+					class="create-post submit-button"
+					>Crear un post</a
+				>
+				<a href="#home" class="go-to-top submit-button">
+					<span class="visually-hidden">Ir al inicio del feed</span>
+					<img src="../assets/icons/home.svg" alt="" />
+				</a>
 				<h2 class="section-title" id="feed-title">Últimos posts</h2>
 				<!-- se debe actualizar aria-setsize="n" siendo n la cantidad de post cargados en el feed.
 				Algo como ir llevando una variable acumuladora con la cantidad de post que se van cargando 
@@ -188,19 +198,19 @@
 								width="100px"
 								src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
 								alt="Portada del álbum 'The Dark Side of the Moon' de Pink Floyd"
-							/>--> 
+							/>-->
 							<section>
 								<button>
-									<img 
-										src="../assets/icons/expand-content-svgrepo-com.svg" 
+									<img
+										src="../assets/icons/expand-content-svgrepo-com.svg"
 										alt="Song info"
 										width="20px"
 										height="20px"
 									/>
 								</button>
 								<button>
-									<img 
-										src="../assets/icons/post-icon.svg" 
+									<img
+										src="../assets/icons/post-icon.svg"
 										alt="Song info"
 										width="20px"
 										height="20px"

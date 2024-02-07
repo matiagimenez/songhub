@@ -13,6 +13,7 @@
 	background-color: var(--color-violet-dark);
 	padding: 0;
 	max-width: 400px;
+	text-decoration: none;
 	display: block;
 	color: var(--color-white);
 	font-weight: bold;
