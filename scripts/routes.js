@@ -1,8 +1,3 @@
-const menuScript = {
-	scriptName: 'menu-animation',
-	scriptPath: '../scripts/animations/menu-animation.js',
-};
-
 export const routes = {
 	'/login': [
 		{
@@ -16,23 +11,37 @@ export const routes = {
 			scriptPath: '../scripts/animations/input-animation.js',
 		},
 	],
-	'/explore': [menuScript],
+	'/explore': [
+		{
+			scriptName: 'menu-animation',
+			scriptPath: '../scripts/animations/menu-animation.js',
+		},
+	],
 	'/followers': [
-		menuScript,
+		{
+			scriptName: 'menu-animation',
+			scriptPath: '../scripts/animations/menu-animation.js',
+		},
 		{
 			scriptName: 'action-button-animation',
 			scriptPath: '../scripts/animations/action-button-animation.js',
 		},
 	],
 	'/following': [
-		menuScript,
+		{
+			scriptName: 'menu-animation',
+			scriptPath: '../scripts/animations/menu-animation.js',
+		},
 		{
 			scriptName: 'action-button-animation',
 			scriptPath: '../scripts/animations/action-button-animation.js',
 		},
 	],
 	'/home': [
-		menuScript,
+		{
+			scriptName: 'menu-animation',
+			scriptPath: '../scripts/animations/menu-animation.js',
+		},
 		{
 			scriptName: 'expanding-cards',
 			scriptPath: '../scripts/components/carousel/carousel.js',
@@ -59,14 +68,41 @@ export const routes = {
 		},
 	],
 	'/post': [
-		menuScript,
+		{
+			scriptName: 'menu-animation',
+			scriptPath: '../scripts/animations/menu-animation.js',
+		},
 		{
 			scriptName: 'post-like',
 			scriptPath: '../scripts/components/post/post-like.js',
 		},
 	],
-	'/profile-edit': [menuScript],
-	'/profile': [menuScript],
-	'/search': [menuScript],
-	'/song': [menuScript],
+	'/profile-edit': [
+		{
+			scriptName: 'menu-animation',
+			scriptPath: '../scripts/animations/menu-animation.js',
+		},
+	],
+	'/profile': [
+		{
+			scriptName: 'menu-animation',
+			scriptPath: '../scripts/animations/menu-animation.js',
+		},
+		{
+			scriptName: 'post-content',
+			scriptPath: '../scripts/components/post/post-content.js',
+		},
+	],
+	'/search': [
+		{
+			scriptName: 'menu-animation',
+			scriptPath: '../scripts/animations/menu-animation.js',
+		},
+	],
+	'/song': [
+		{
+			scriptName: 'menu-animation',
+			scriptPath: '../scripts/animations/menu-animation.js',
+		},
+	],
 };

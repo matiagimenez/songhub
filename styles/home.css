@@ -45,6 +45,40 @@
 .feed {
 	width: 90%;
 	margin: auto;
+	position: relative;
+}
+
+.feed a.create-post {
+	line-height: 2.5;
+	height: 40px;
+	margin: auto;
+	margin-top: 15px;
+	width: 70%;
+	max-width: 400px;
+}
+
+.feed a.create-post::after {
+	content: '';
+	position: relative;
+	top: 2px;
+	left: 6px;
+	width: 15px;
+	height: 15px;
+	display: inline-block;
+	background-image: url('../assets/icons/edit.svg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.feed .go-to-top {
+	position: fixed;
+	bottom: 60px;
+	right: 20px;
+	width: 60px;
+	height: 60px;
+	line-height: 4.5;
+	z-index: 100000;
 }
 
 @media (min-width: 850px) {
@@ -56,6 +90,20 @@
 @media (min-width: 1000px) {
 	.cards-container figure img {
 		width: 150px;
+	}
+
+	.feed a.create-post {
+		line-height: 3.5;
+		height: 60px;
+		width: 200px;
+		position: fixed;
+		z-index: 100000;
+		right: 30px;
+		bottom: 30px;
+	}
+
+	.feed a.go-to-top {
+		display: none;
 	}
 }
 

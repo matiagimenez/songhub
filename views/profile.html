@@ -4,6 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" href="../assets/icons/favicon.svg" />
+		<link rel="stylesheet" href="../styles/profile.css" />
 		<script src="../scripts/index.js" type="module"></script>
 		<title>Perfil | SongHub</title>
 	</head>
@@ -71,50 +72,66 @@
 					class="menu-button"
 					aria-expanded="false"
 					aria-controls="main-menu"
-				>
-				</button>
+				></button>
 			</nav>
 		</header>
 
 		<main>
 			<header>
-				<section>
+				<section class="user">
 					<img
 						src="https://i.pinimg.com/236x/f4/e4/ff/f4e4ff0e8518813c6d5dde10a4d5164d.jpg"
 						alt="Imagen de perfil"
-						height="150px"
-						width="150px"
+						height="60px"
+						width="60px"
+						class="image-border"
 					/>
-					<h2>Usuario</h2>
-					<input type="button" value="Seguir" />
-					<button>
-						Ver perfil
-						<span
-							><img
-								src="../assets/icons/spotify.svg"
-								alt="Spotify logo"
-						/></span>
-					</button>
+					<p class="username-container">
+						<span class="name">Nombre de usuario</span>
+						<span class="username">@username</span>
+					</p>
 				</section>
 
-				<section>
+				<section class="user-stats">
 					<ul>
-						<li>
-							<p><span>0</span>POSTS</p>
-						</li>
-						<li>
-							<p><span>0</span>SEGUIDORES</p>
-							<p></p>
-						</li>
-						<li>
-							<p><span>0</span>SEGUIDOS</p>
-						</li>
+						<li><span>1K</span>POSTS</li>
+						<li><span>2M</span>SEGUIDORES</li>
+						<li><span>500</span>SEGUIDOS</li>
 					</ul>
+				</section>
+
+				<section class="user-actions">
+					<p class="profile-button-container">
+						<!-- El botón de seguir se renderiza si el perfil no es el del usuario logueado-->
+						<button class="action-button submit-outline-button">
+							Siguiendo
+						</button>
+						<!-- El enlace de editar perfil se renderiza si el perfil  es el del usuario logueado -->
+
+						<!-- <a
+						href="profile-edit.html"
+						class="submit-outline-button"
+					>
+						Editar perfil
+					</a> -->
+						<button class="submit-button spotify-profile-button">
+							<img
+								src="../assets/icons/spotify.svg"
+								alt="Logo de Spotify"
+							/>
+							<span> Perfil </span>
+						</button>
+						<button class="share-button">
+							<span class="visually-hidden"
+								>Compartir perfil</span
+							>
+						</button>
+					</p>
 				</section>
 			</header>
 
-			<section>
-				<h2>Tus álbumes favoritos</h2>
+			<section class="favourites">
+				<h2 class="section-title">Tus álbumes favoritos</h2>
 				<article>
 					<figure>
 						<img
@@ -123,10 +140,11 @@
 							alt="Portada del álbum 'Pulse' de Pink Floyd"
 							width="150px"
 							height="150px"
+							class="image-border"
 						/>
 						<figcaption>
-							<p>Pulse</p>
-							<p>Pink Floyd</p>
+							<h3 class="song-title">Pulse</h3>
+							<h4 class="artist-title">Pink Floyd</h4>
 						</figcaption>
 					</figure>
 				</article>
@@ -139,10 +157,11 @@
 							alt="Portada del álbum 'Punisher' de Phoebe Bridgers"
 							width="150px"
 							height="150px"
+							class="image-border"
 						/>
 						<figcaption>
-							<p>Punisher</p>
-							<p>Phoebe Bridgers</p>
+							<h3 class="song-title">Punisher</h3>
+							<h4 class="artist-title">Phoebe Bridgers</h4>
 						</figcaption>
 					</figure>
 				</article>
@@ -155,49 +174,18 @@
 							alt="Portada del álbum 'Random Acces Memories' de Daft Punk"
 							width="150px"
 							height="150px"
+							class="image-border"
 						/>
 						<figcaption>
-							<p>Random Acces Memories</p>
-							<p>Daft Punk</p>
-						</figcaption>
-					</figure>
-				</article>
-
-				<article>
-					<figure>
-						<img
-							loading="lazy"
-							src="https://i.pinimg.com/564x/dd/ff/e0/ddffe0a469a486bdde609fe2467e75c1.jpg"
-							alt="Portada del álbum 'Led Zeppelin III' de Led Zeppelin"
-							width="150px"
-							height="150px"
-						/>
-						<figcaption>
-							<p>Led Zeppelin III</p>
-							<p>Led Zeppelin</p>
-						</figcaption>
-					</figure>
-				</article>
-
-				<article>
-					<figure>
-						<img
-							loading="lazy"
-							src="https://i.pinimg.com/564x/50/75/92/5075926b9579b1155b7e4366184c0f64.jpg"
-							alt="Portada del álbum 'X100PRE' de Bad Bunny"
-							width="150px"
-							height="150px"
-						/>
-						<figcaption>
-							<p>X100PRE</p>
-							<p>Bad Bunny</p>
+							<h3 class="song-title">Random Acces Memories</h3>
+							<h4 class="artist-title">Daft Punk</h4>
 						</figcaption>
 					</figure>
 				</article>
 			</section>
 
-			<section>
-				<h2>Tus canciones favoritas</h2>
+			<section class="favourites">
+				<h2 class="section-title">Tus canciones favoritas</h2>
 
 				<article>
 					<figure>
@@ -207,10 +195,13 @@
 							alt="Portada del álbum 'Peso Pluma || Music Session' de Bizarrap"
 							width="150px"
 							height="150px"
+							class="image-border"
 						/>
 						<figcaption>
-							<p>Peso Pluma || Music Session</p>
-							<p>Bizarrap</p>
+							<h3 class="song-title">
+								Peso Pluma || Music Session
+							</h3>
+							<h4 class="artist-title">Bizarrap</h4>
 						</figcaption>
 					</figure>
 				</article>
@@ -223,10 +214,11 @@
 							alt="Portada del álbum 'Bad Habit' de Steve Lazy"
 							width="150px"
 							height="150px"
+							class="image-border"
 						/>
 						<figcaption>
-							<p>Bad Habit</p>
-							<p>Steve Lazy</p>
+							<h3 class="song-title">Bad Habit</h3>
+							<h4 class="artist-title">Steve Lazy</h4>
 						</figcaption>
 					</figure>
 				</article>
@@ -239,44 +231,142 @@
 							alt="Portada del álbum 'Comfortably Numb' de Pink Floyd"
 							width="150px"
 							height="150px"
+							class="image-border"
 						/>
 						<figcaption>
-							<p>Comfortably Numb</p>
-							<p>Pink Floyd</p>
+							<h3 class="song-title">Comfortably Numb</h3>
+							<h4 class="artist-title">Pink Floyd</h4>
 						</figcaption>
 					</figure>
 				</article>
-
-				<article>
+			</section>
+			<section class="recent-activity">
+				<h2 class="section-title">Actividad reciente</h2>
+				<article
+					tabindex="0"
+					class="post"
+					id="post_1"
+					aria-posinset="1"
+					aria-setsize="3"
+					aria-labelledby="post-1-song-title post-1-artist-title"
+					aria-describedby="post-content-1"
+				>
 					<figure>
-						<img
-							loading="lazy"
-							src="https://i.pinimg.com/564x/5f/5f/45/5f5f45f7be4f8486ab60ab002c14325c.jpg"
-							alt="Portada del álbum 'Stairway To Heaven' de Led Zeppelin"
-							width="150px"
-							height="150px"
-						/>
+						<section class="post-img image-border">
+							<!--<img
+								loading="lazy"
+								class=""
+								height="100px"
+								width="100px"
+								src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
+								alt="Portada del álbum 'The Dark Side of the Moon' de Pink Floyd"
+							/>-->
+							<section>
+								<button>
+									<img
+										src="../assets/icons/expand-content-svgrepo-com.svg"
+										alt="Song info"
+										width="20px"
+										height="20px"
+									/>
+								</button>
+								<button>
+									<img
+										src="../assets/icons/post-icon.svg"
+										alt="Song info"
+										width="20px"
+										height="20px"
+									/>
+								</button>
+							</section>
+						</section>
+						<section class="user-info">
+							<img
+								loading="lazy"
+								class="user-img"
+								height="25px"
+								width="25px"
+								src="https://i.pinimg.com/236x/94/7f/14/947f14841d26f5dc3541366a987b32f5.jpg"
+								alt="Imagen de perfil de 'Usuario 1'"
+							/>
+							<p class="user-name">
+								<a href="profile.html">Usuario 1</a>
+								<span>$username1</span>
+							</p>
+							<p class="post-time">hace 8 horas</p>
+						</section>
 						<figcaption>
-							<p>Stairway To Heaven</p>
-							<p>Led Zeppelin</p>
+							<h3 class="song-title" id="post-1-song-title">
+								<a href="song.html"
+									>The Dark Side of the Moon</a
+								>
+							</h3>
+							<h4 class="artist-title" id="post-1-artist-title">
+								Pink Floyd
+							</h4>
+							<span class="tag">Increible</span>
+							<span class="tag">Rock</span>
+							<span class="tag">Internacional</span>
+							<p class="stars">★★★★★</p>
 						</figcaption>
 					</figure>
-				</article>
-
-				<article>
-					<figure>
-						<img
-							loading="lazy"
-							src="https://i.pinimg.com/564x/17/8c/ea/178ceaa5c0c24fd3cee2fe08dadf82e6.jpg"
-							alt="Portada del álbum 'Goteo' de Duki"
-							width="150px"
-							height="150px"
-						/>
-						<figcaption>
-							<p>Goteo</p>
-							<p>Duki</p>
-						</figcaption>
-					</figure>
+					<a href="post.html">
+						<section class="post-content" id="post-content-1">
+							<p>
+								It has survived not only five centuries, but
+								also the leap into electronic typesetting,
+								remaining essentially unchanged. It was
+								popularised in the 1960s with the release of
+								Letraset sheets containing Lorem Ipsum passages,
+								and more recently with desktop publishing
+								software like Aldus PageMaker including versions
+								of Lorem Ipsum. t has survived not only five
+								centuries, but also the leap into electronic
+								typesetting, remaining essentially unchanged. It
+								was popularised in the 1960s with the release of
+								Letraset sheets containing Lorem Ipsum passages,
+								and more recently with deskt. It has survived
+								not only five centuries, but also the leap into
+								electronic typesetting, remaining essentially
+								unchanged. It was popularised in the 1960s with
+								the release of Letraset sheets containing Lorem
+								Ipsum passages, and more recently with desktop
+								publishing software like Aldus PageMaker
+								including versions of Lorem Ipsum. t has
+								survived not only five centuries, but also the
+								leap into electronic typesetting, remaining
+								essentially unchanged. It was popularised in the
+								1960s with the release of Letraset sheets
+								containing Lorem Ipsum passages, and more
+								recently with deskt.
+							</p>
+						</section>
+					</a>
+					<footer>
+						<section class="reaction-container comment-container">
+							<button>
+								<span class="visually-hidden"
+									>Comentar post</span
+								>
+							</button>
+							<p>20</p>
+						</section>
+						<section class="reaction-container like-container">
+							<button class="unlike">
+								<span class="visually-hidden"
+									>Dar favorito al post</span
+								>
+							</button>
+							<p>1008</p>
+						</section>
+						<section class="reaction-container share-container">
+							<button>
+								<span class="visually-hidden"
+									>Compartir post</span
+								>
+							</button>
+						</section>
+					</footer>
 				</article>
 			</section>
 		</main>
@@ -302,17 +392,4 @@
 			</nav>
 		</footer>
 	</body>
-	<script>
-		window.addEventListener('load', () => {
-			const contentElement = document.querySelector('html');
-			const isScrollable =
-				contentElement.scrollHeight > contentElement.clientHeight;
-			const footer = document.querySelector('.main-footer');
-			if (!isScrollable) {
-				footer.classList.add('fixed');
-			} else {
-				footer.classList.remove('fixed');
-			}
-		});
-	</script>
 </html>
