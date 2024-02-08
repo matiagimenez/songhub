@@ -19,7 +19,7 @@ body {
 }
 
 .main-footer section {
-	width: 60%;
+	width: 65%;
 	display: inline-block;
 	padding-top: 0.5rem;
 	position: relative;
@@ -55,7 +55,7 @@ body {
 
 .footer-nav {
 	display: inline-block;
-	width: 40%;
+	width: 35%;
 	position: relative;
 	top: 8px;
 }
