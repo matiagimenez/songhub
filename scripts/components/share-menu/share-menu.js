@@ -11,18 +11,19 @@ const shareButtons = document.querySelectorAll('.share-button');
 shareButtons.forEach((button) => {
 	const shareMenu = ElementBuilder.createElement('div', '', {
 		class: 'share-menu',
+		role: 'menu',
 	});
 
 	const copyToClipboardItem = ElementBuilder.createElement(
 		'button',
 		'Copiar link',
-		{ class: 'share-menu-item copy' }
+		{ class: 'share-menu-item copy', role: 'menuitem', tabindex: '0' }
 	);
 
 	const createTweetItem = ElementBuilder.createElement(
 		'button',
 		'Compartir en Twitter',
-		{ class: 'share-menu-item twitter' }
+		{ class: 'share-menu-item twitter', role: 'menuitem', tabindex: '0' }
 	);
 
 	copyToClipboardItem.addEventListener('click', (event) => {
