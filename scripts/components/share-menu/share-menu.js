@@ -12,27 +12,51 @@ shareButtons.forEach((button) => {
 	const shareMenu = ElementBuilder.createElement('div', '', {
 		class: 'share-menu',
 	});
+
 	const copyToClipboardItem = ElementBuilder.createElement(
 		'button',
 		'Copiar link',
 		{ class: 'share-menu-item copy' }
 	);
+
 	const createTweetItem = ElementBuilder.createElement(
 		'button',
 		'Compartir en Twitter',
 		{ class: 'share-menu-item twitter' }
 	);
+
+	copyToClipboardItem.addEventListener('click', (event) => {
+		const postId = button.getAttribute('data-post-id');
+		// const currentUrl = window.location.href;
+		// navigator.clipboard.writeText(currentUrl);
+		const postLink = `http://localhost:3000/post.html?id=${postId}`;
+		navigator.clipboard.writeText(postLink);
+
+		const popUp = ElementBuilder.createElement('div', 'Link copiado', {
+			class: 'popup',
+		});
+		button.appendChild(popUp);
+		setTimeout(() => {
+			button.removeChild(popUp);
+		}, 1200);
+	});
+
+	createTweetItem.addEventListener('click', (event) => {
+		const postId = button.getAttribute('data-post-id');
+		const postContent = button.getAttribute('data-post-content');
+
+		const postLink = `http://localhost:3000/post.html?id=${postId}`;
+		const tweet = `Te puede interesar mi post sobre "${postContent}" en Songhub: 
+						${postLink}`;
+		const tweetUrl = `https://twitter.com/intent/tweet?text=${tweet}`;
+		window.open(tweetUrl, '_blank');
+	});
+
 	shareMenu.appendChild(copyToClipboardItem);
 	shareMenu.appendChild(createTweetItem);
 	button.appendChild(shareMenu);
 
 	button.addEventListener('click', (event) => {
-		shareButtons.forEach((button) => {
-			if (button !== event.target) {
-				button.lastChild.classList.remove('open');
-			}
-		});
-
 		shareMenu.classList.toggle('open');
 		const postId = button.getAttribute('data-post-id');
 		const postLink = `http://localhost:3000/post.html?id=${postId}`;
