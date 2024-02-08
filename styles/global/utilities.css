@@ -162,6 +162,10 @@
 	font-weight: normal;
 }
 
+.none-scroll {
+	overflow: hidden;
+}
+
 @media (prefers-color-scheme: dark) {
 	.input {
 		border-color: var(--color-violet-light-white);

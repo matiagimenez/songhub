@@ -1,9 +1,5 @@
 @import url('variables.css');
 
-.none-scroll {
-	overflow: hidden;
-}
-
 .main-header {
 	position: sticky;
 	z-index: 1000;
