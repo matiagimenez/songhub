@@ -11,6 +11,9 @@ function create_modal() {
   })
 
   const close_button = ElementBuilder.createElement('button', '', { class: "close-button" });
+  close_button.addEventListener('click', () => {
+    close_modal(modal);
+  })
   modal_content.appendChild(close_button);
 
   const main_image = ElementBuilder.createElement('img', '', {
@@ -63,19 +66,31 @@ function create_modal() {
     class: "input"
   })
 
-  const input_tag = ElementBuilder.createElement('input', '+ Add tag', {
-    class: "input",
+  const input_tag = ElementBuilder.createElement('input', '', {
+    class: "input input-tag",
     type: "text",
     name: "tag",
     placeholder: "ej. Trap"
   })
 
-  const tag_button = ElementBuilder.createElement('button', '', {
+  const tags_section = ElementBuilder.createElement('section', '', {
+    class: "tags-section"
+  })
+
+  const tag_button = ElementBuilder.createElement('button', '+ Agregar Tag', {
     class: "tag-button submit-button"
+  })
+
+  tag_button.addEventListener('click', () => {
+    const tag = ElementBuilder.createElement('span', 'Rock', {
+      class: "tag"
+    })
+    tags_section.appendChild(tag);
   })
 
   const actions = ElementBuilder.createElement('p', '', {})
 
+  actions.appendChild(tags_section);
   actions.appendChild(input_tag);
   actions.appendChild(tag_button);
 
@@ -149,6 +164,15 @@ post_form_openers.forEach((opener) => {
     create_post.classList.add("hidden");
     go_to_top.classList.add("hidden");
     main_header.classList.add("hidden");
+    document.body.classList.add("none-scroll")
     create_modal();
   })
 });
+
+function close_modal(modal) {
+  modal.remove();
+  create_post.classList.remove("hidden");
+  go_to_top.classList.remove("hidden");
+  main_header.classList.remove("hidden");
+  document.body.classList.remove("none-scroll")
+}
