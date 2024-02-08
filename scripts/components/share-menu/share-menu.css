@@ -1,25 +1,74 @@
 .share-menu {
-	width: 150px;
-	height: 60px;
+	width: 160px;
+	height: 70px;
 	padding: 0;
-	background-color: transparent;
+	border-radius: 5px;
+	background-color: var(--color-white);
 	position: absolute;
-	top: -70px;
-	left: -130px;
+	box-shadow: 0 0 15px rgba(101, 119, 134, 0.2),
+		0 0 3px 1px rgba(101, 119, 134, 0.15);
+	top: -76px;
+	left: -150px;
+	overflow: hidden;
 	display: none;
 }
 
 button.share-menu-item {
-	background-color: red;
+	background-color: var(--color-white);
 	width: 100%;
-	color: white;
+	min-height: 35px;
+	color: var(--color-grey-dark);
+	border-radius: 0px;
 	height: 50%;
 	display: block;
 	background-image: none;
+	line-height: 2;
 	cursor: pointer;
-	border-radius: 0;
+	font-size: 0.75rem;
+}
+
+button.share-menu-item::after {
+	content: '';
+	display: inline-block;
+	height: 15px;
+	width: 15px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	position: relative;
+	top: 3px;
+	left: 4px;
+}
+
+button.share-menu-item.copy::after {
+	background-image: url('assets/copy_dark.svg');
+}
+
+button.share-menu-item.twitter::after {
+	background-image: url('assets/brand-x_dark.svg');
 }
 
 .open {
 	display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+	.share-menu {
+		background-color: var(--color-violet-dark-black);
+		box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 15px,
+			rgba(255, 255, 255, 0.15) 0px 0px 3px 1px;
+	}
+
+	button.share-menu-item {
+		color: var(--color-white);
+		background-color: var(--color-violet-dark-black);
+	}
+
+	button.share-menu-item.copy::after {
+		background-image: url('assets/copy.svg');
+	}
+
+	button.share-menu-item.twitter::after {
+		background-image: url('assets/brand-x.svg');
+	}
 }
