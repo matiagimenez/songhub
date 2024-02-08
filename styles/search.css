@@ -66,6 +66,11 @@ figure img {
 	overflow: hidden;
 }
 
+figure a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
 figcaption {
 	display: inline-block;
 	vertical-align: top;

@@ -77,8 +77,7 @@
 					class="menu-button"
 					aria-expanded="false"
 					aria-controls="main-menu"
-				>
-				</button>
+				></button>
 			</nav>
 		</header>
 
@@ -139,9 +138,11 @@
 						class="image-border"
 					/>
 					<figcaption>
-						<h3>Pulse</h3>
-						<p>Pink Floyd</p>
-						<p>Álbum</p>
+						<a href="song">
+							<h3>Pulse</h3>
+							<p>Pink Floyd</p>
+							<p>Álbum</p>
+						</a>
 					</figcaption>
 				</figure>
 			</article>
@@ -157,9 +158,11 @@
 						class="image-border"
 					/>
 					<figcaption>
-						<h3>Punisher</h3>
-						<p>Phoebe Bridgers</p>
-						<p>Álbum</p>
+						<a href="song">
+							<h3>Punisher</h3>
+							<p>Phoebe Bridgers</p>
+							<p>Álbum</p>
+						</a>
 					</figcaption>
 				</figure>
 			</article>
@@ -175,9 +178,11 @@
 						class="image-border"
 					/>
 					<figcaption>
-						<h3>Peso Pluma</h3>
-						<p>Bizarrap</p>
-						<p>Canción</p>
+						<a href="song">
+							<h3>Peso Pluma</h3>
+							<p>Bizarrap</p>
+							<p>Canción</p>
+						</a>
 					</figcaption>
 				</figure>
 			</article>
@@ -193,9 +198,11 @@
 						class="image-border"
 					/>
 					<figcaption>
-						<h3>Comfortably Numb</h3>
-						<p>Pink Floyd</p>
-						<p>Canción</p>
+						<a href="song.html">
+							<h3>Comfortably Numb</h3>
+							<p>Pink Floyd</p>
+							<p>Canción</p>
+						</a>
 					</figcaption>
 				</figure>
 			</article>
@@ -210,9 +217,11 @@
 						class="image-border"
 					/>
 					<figcaption>
-						<h3>Polaris</h3>
-						<p>Saiko</p>
-						<p>Canción</p>
+						<a href="song.html">
+							<h3>Polaris</h3>
+							<p>Saiko</p>
+							<p>Canción</p>
+						</a>
 					</figcaption>
 				</figure>
 			</article>
@@ -227,9 +236,11 @@
 						class="image-border"
 					/>
 					<figcaption>
-						<h3>Purpose</h3>
-						<p>Justin Bieber</p>
-						<p>Álbum</p>
+						<a href="song.html">
+							<h3>Purpose</h3>
+							<p>Justin Bieber</p>
+							<p>Álbum</p>
+						</a>
 					</figcaption>
 				</figure>
 			</article>
@@ -244,9 +255,11 @@
 						class="image-border"
 					/>
 					<figcaption>
-						<h3>Paparazzi</h3>
-						<p>Lady Gaga</p>
-						<p>Canción</p>
+						<a href="song.html">
+							<h3>Paparazzi</h3>
+							<p>Lady Gaga</p>
+							<p>Canción</p>
+						</a>
 					</figcaption>
 				</figure>
 			</article>
@@ -273,17 +286,4 @@
 			</nav>
 		</footer>
 	</body>
-	<script>
-		window.addEventListener('load', () => {
-			const contentElement = document.querySelector('html');
-			const isScrollable =
-				contentElement.scrollHeight > contentElement.clientHeight;
-			const footer = document.querySelector('.main-footer');
-			if (!isScrollable) {
-				footer.classList.add('fixed');
-			} else {
-				footer.classList.remove('fixed');
-			}
-		});
-	</script>
 </html>

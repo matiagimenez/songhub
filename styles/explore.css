@@ -28,6 +28,10 @@ article {
 	margin-top: 0.5rem;
 }
 
+article a {
+	text-decoration: none;
+}
+
 figure img {
 	width: 100%;
 	height: 100%;
