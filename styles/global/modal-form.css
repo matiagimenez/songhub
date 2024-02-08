@@ -22,8 +22,8 @@
   border: none;
   background-image: url("/assets/icons/black-close-menu.svg");
   background-size: cover;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   float: inline-end;
   margin: 10px 10px 0 0;
 }
@@ -47,6 +47,10 @@
   margin: 0.5rem 0;
 }
 
+.title {
+  font-size: 1.4rem;
+}
+
 .artist-info img {
   height: 30px;
   width: 30px;
@@ -65,6 +69,16 @@
   padding: 10px;
 }
 
+
+.tags-section {
+  padding: 0.6rem 0;
+  overflow: hidden;
+}
+
+.tags-section span {
+  margin-right: 10px;
+}
+
 .input-tag,
 .tag-button {
   width: 100px;
@@ -74,4 +88,66 @@
 
 .tag-button {
   margin-left: 10px;
+}
+
+.rating {
+  padding: 0.4rem 0;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+}
+
+.rating span,
+.rating label {
+  color: var(--color-violet-dark);
+}
+
+.rating label {
+  font-weight: bold;
+}
+
+.rating span {
+  margin-left: 10px;
+  font-size: 2rem;
+}
+
+.share-container {
+  display: inline-block;
+
+}
+
+.share-button {
+  background: none;
+  border: none;
+  background-image: url('../../assets/icons/post-icons/share.svg');
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+@keyframes button-shadow {
+  to {
+    box-shadow: inset 0px 0px 50px var(--color-violet-light-white);
+  }
+}
+
+.share-button:hover {
+  cursor: pointer;
+  animation: button-shadow 200ms forwards;
+  animation-delay: 0ms;
+}
+
+.submit-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  column-gap: 0.4rem;
+  place-content: center;
+}
+
+.postear-button {
+  background-color: var(--color-green-dark);
+  border-color: var(--color-green-dark);
 }

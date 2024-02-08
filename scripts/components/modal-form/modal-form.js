@@ -25,7 +25,7 @@ function create_modal() {
   })
 
   const type = ElementBuilder.createElement('p', 'Canción', { class: "type-title" })
-  const title = ElementBuilder.createElement('h2', 'Comfortubly Numb', { class: "song-title" })
+  const title = ElementBuilder.createElement('h2', 'Comfortubly Numb', { class: "song-title title" })
 
   const figcaption = ElementBuilder.createElement('figcaption', '', {})
 
@@ -66,6 +66,9 @@ function create_modal() {
     class: "input"
   })
 
+  let tag_text = "";
+  let tags_count = 0;
+
   const input_tag = ElementBuilder.createElement('input', '', {
     class: "input input-tag",
     type: "text",
@@ -73,26 +76,38 @@ function create_modal() {
     placeholder: "ej. Trap"
   })
 
+  input_tag.addEventListener('change', (event) => {
+    tag_text = event.target.value;
+  })
+
   const tags_section = ElementBuilder.createElement('section', '', {
     class: "tags-section"
   })
 
   const tag_button = ElementBuilder.createElement('button', '+ Agregar Tag', {
+    type: "button",
     class: "tag-button submit-button"
   })
 
   tag_button.addEventListener('click', () => {
-    const tag = ElementBuilder.createElement('span', 'Rock', {
-      class: "tag"
-    })
-    tags_section.appendChild(tag);
+    if (tag_text !== "" && tags_count < 3) {
+      const tag = ElementBuilder.createElement('span', tag_text, {
+        class: "tag"
+      })
+      tags_section.appendChild(tag);
+      tag_text = "";
+      input_tag.value = "";
+      tags_count += 1;
+    }
   })
 
-  const actions = ElementBuilder.createElement('p', '', {})
+  const tag_creator = ElementBuilder.createElement('p', '', {
+    class: "tags-creator"
+  })
 
-  actions.appendChild(tags_section);
-  actions.appendChild(input_tag);
-  actions.appendChild(tag_button);
+  tag_creator.appendChild(tags_section);
+  tag_creator.appendChild(input_tag);
+  tag_creator.appendChild(tag_button);
 
 
   const valoración_label = ElementBuilder.createElement('label', 'Valoración', {
@@ -114,24 +129,38 @@ function create_modal() {
   rating.appendChild(input_rate);
 
   const share_span = ElementBuilder.createElement('span', 'share', {
-    class: "material-symbols-outlined"
+    class: "hidden"
   })
   const share_button = ElementBuilder.createElement('button', '', {
     class: 'share-button'
   })
   share_button.appendChild(share_span)
   const share_container = ElementBuilder.createElement('p', '', {
-    class: "share"
+    class: "share-container"
   })
 
   share_container.appendChild(share_button);
 
-  const submit_input = ElementBuilder.createElement('input', '', {
-    type: "sybmit",
-    value: "Realizar post",
-    class: "submit-button"
+
+  const volver_button = ElementBuilder.createElement('button', 'Volver', {
+    class: "cancel-button"
+  })
+  volver_button.addEventListener('click', () => {
+    close_modal(modal);
   })
 
+  const postear_button = ElementBuilder.createElement('input', '', {
+    type: "submit",
+    value: "Postear",
+    class: "submit-button postear-button"
+  })
+
+  const submit_container = ElementBuilder.createElement('section', '', {
+    class: "submit-container"
+  })
+
+  submit_container.appendChild(volver_button);
+  submit_container.appendChild(postear_button);
 
   const form = ElementBuilder.createElement('form', '', {
     action: "",
@@ -139,10 +168,10 @@ function create_modal() {
   })
 
   form.appendChild(textarea);
-  form.appendChild(actions);
+  form.appendChild(tag_creator);
   form.appendChild(rating);
   form.appendChild(share_container);
-  form.appendChild(submit_input);
+  form.appendChild(submit_container);
 
   modal_content.appendChild(figure);
   modal_content.appendChild(form);
@@ -156,13 +185,13 @@ const post_form_openers = document.querySelectorAll(".post-form-opener")
 
 
 const create_post = document.getElementById("create-post");
-const go_to_top = document.getElementById("go-to-top");
+// const go_to_top = document.getElementById("go-to-top");
 const main_header = document.getElementById("main-header");
 
 post_form_openers.forEach((opener) => {
   opener.addEventListener('click', () => {
     create_post.classList.add("hidden");
-    go_to_top.classList.add("hidden");
+    // go_to_top.classList.add("hidden");
     main_header.classList.add("hidden");
     document.body.classList.add("none-scroll")
     create_modal();
@@ -172,7 +201,7 @@ post_form_openers.forEach((opener) => {
 function close_modal(modal) {
   modal.remove();
   create_post.classList.remove("hidden");
-  go_to_top.classList.remove("hidden");
+  // go_to_top.classList.remove("hidden");
   main_header.classList.remove("hidden");
   document.body.classList.remove("none-scroll")
 }

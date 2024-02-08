@@ -30,6 +30,8 @@
 	/* Gris oscuro*/
 	--color-green: #14ff00;
 	/* Verde - Exito*/
+	--color-green-dark: #012600;
+	/* Verde Oscuro*/
 	--color-red: #c30303;
 	/* Rojo - Error*/
 	--color-yellow: #ffdd00;
@@ -38,6 +40,6 @@
 	--content-max-width: 1300px;
 
 	/* Opacity colors */
-	--opacity-color-violet-dark-black: #0f0018b3;
+	--opacity-color-violet-dark-black: #0f0018e2;
 	/* Violeta casi negro opaco*/
 }
