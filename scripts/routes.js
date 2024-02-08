@@ -63,10 +63,6 @@ export const routes = {
 			scriptPath: '../scripts/components/post/post-content.js',
 		},
 		{
-			scriptName: 'share-menu',
-			scriptPath: '../scripts/components/share-menu/share-menu.js',
-		},
-		{
 			scriptName: 'hover-img',
 			scriptPath: '../scripts/components/song&album-img/hover-img.js',
 		},
@@ -83,6 +79,10 @@ export const routes = {
 		{
 			scriptName: 'post-like',
 			scriptPath: '../scripts/components/post/post-like.js',
+		},
+		{
+			scriptName: 'share-menu',
+			scriptPath: '../scripts/components/share-menu/share-menu.js',
 		},
 	],
 	'/profile-edit': [

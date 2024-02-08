@@ -15,18 +15,24 @@ shareButtons.forEach((button) => {
 	const copyToClipboardItem = ElementBuilder.createElement(
 		'button',
 		'Copiar link',
-		{ class: 'share-menu-item' }
+		{ class: 'share-menu-item copy' }
 	);
 	const createTweetItem = ElementBuilder.createElement(
 		'button',
-		'Compartir en twitter',
-		{ class: 'share-menu-item' }
+		'Compartir en Twitter',
+		{ class: 'share-menu-item twitter' }
 	);
 	shareMenu.appendChild(copyToClipboardItem);
 	shareMenu.appendChild(createTweetItem);
 	button.appendChild(shareMenu);
 
 	button.addEventListener('click', (event) => {
+		shareButtons.forEach((button) => {
+			if (button !== event.target) {
+				button.lastChild.classList.remove('open');
+			}
+		});
+
 		shareMenu.classList.toggle('open');
 		const postId = button.getAttribute('data-post-id');
 		const postLink = `http://localhost:3000/post.html?id=${postId}`;
