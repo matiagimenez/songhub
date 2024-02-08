@@ -20,6 +20,12 @@
 	color: var(--color-violet-dark-black);
 }
 
+.type-title {
+	color: var(--color-grey-light);
+	font-size: 0.8rem;
+	font-weight: 300;
+}
+
 @media (min-width: 1000px) {
 	.section-title {
 		font-size: 1.25rem;

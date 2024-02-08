@@ -7,25 +7,28 @@ function create_modal() {
   })
 
   const modal_content = ElementBuilder.createElement('section', '', {
+    class: "modal-content"
   })
+
+  const close_button = ElementBuilder.createElement('button', '', { class: "close-button" });
+  modal_content.appendChild(close_button);
 
   const main_image = ElementBuilder.createElement('img', '', {
     src: "https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg",
     alt: "Portada del álbum 'The Dark Side of the Moon' de Pink Floyd",
-    width: "225px",
-    height: "225px",
+    width: "200px",
+    height: "200px",
     class: "image-border"
   })
 
-  const type = ElementBuilder.createElement('p', 'Canción', {})
-  const title = ElementBuilder.createElement('h2', 'Comfortubly Numb', {})
-  const from = ElementBuilder.createElement('p', 'The Dark Side Of The Moon', {})
+  const type = ElementBuilder.createElement('p', 'Canción', { class: "type-title" })
+  const title = ElementBuilder.createElement('h2', 'Comfortubly Numb', { class: "song-title" })
 
   const figcaption = ElementBuilder.createElement('figcaption', '', {})
 
   figcaption.appendChild(type);
   figcaption.appendChild(title);
-  figcaption.appendChild(from);
+
 
 
   const img = ElementBuilder.createElement('img', '', {
@@ -55,12 +58,13 @@ function create_modal() {
     placeholder: "Agrega una descripción...",
     name: "description",
     id: "description",
-    cols: "70",
+    cols: "40",
     rows: "10",
     class: "input"
   })
 
   const input_tag = ElementBuilder.createElement('input', '+ Add tag', {
+    class: "input",
     type: "text",
     name: "tag",
     placeholder: "ej. Trap"
@@ -135,9 +139,16 @@ function create_modal() {
 
 const post_form_openers = document.querySelectorAll(".post-form-opener")
 
+
+const create_post = document.getElementById("create-post");
+const go_to_top = document.getElementById("go-to-top");
+const main_header = document.getElementById("main-header");
+
 post_form_openers.forEach((opener) => {
   opener.addEventListener('click', () => {
-    console.log('abrir modal')
+    create_post.classList.add("hidden");
+    go_to_top.classList.add("hidden");
+    main_header.classList.add("hidden");
     create_modal();
   })
 });

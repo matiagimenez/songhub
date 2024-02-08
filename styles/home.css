@@ -1,6 +1,7 @@
 @import url('global/variables.css');
 @import url('global/main.css');
 @import url('global/post.css');
+@import url('global/modal-form.css');
 
 .cards-container {
 	margin-top: 20px;
@@ -79,17 +80,6 @@
 	height: 60px;
 	line-height: 4.5;
 	z-index: 100000;
-}
-
-.modal {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	background-color: var(--opacity-color-violet-dark-black);
-	display: grid;
-	place-content: center;
 }
 
 @media (min-width: 850px) {
