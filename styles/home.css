@@ -50,36 +50,20 @@
 }
 
 .feed a.create-post {
-	line-height: 2.3;
-	height: 40px;
-	margin: auto;
-	margin-top: 15px;
-	width: 70%;
-	max-width: 400px;
-}
-
-.feed a.create-post::after {
-	content: '';
-	position: relative;
-	top: 2px;
-	left: 6px;
-	width: 15px;
-	height: 15px;
-	display: inline-block;
-	background-image: url('../assets/icons/edit.svg');
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-}
-
-.feed .go-to-top {
 	position: fixed;
 	bottom: 60px;
 	right: 20px;
+	background-image: url('../assets/icons/edit.svg');
+	background-repeat: no-repeat;
+	background-position: center;
 	width: 60px;
 	height: 60px;
 	line-height: 4.5;
 	z-index: 100000;
+}
+
+.feed .create-post span {
+	display: none;
 }
 
 @media (min-width: 850px) {
@@ -94,17 +78,30 @@
 	}
 
 	.feed a.create-post {
-		line-height: 3.5;
-		height: 60px;
-		width: 200px;
+		line-height: 3;
+		height: 50px;
+		width: 170px;
 		position: fixed;
 		z-index: 100000;
-		right: 30px;
-		bottom: 30px;
+		background-image: none;
 	}
 
-	.feed a.go-to-top {
-		display: none;
+	.feed a.create-post span {
+		display: initial;
+	}
+
+	.feed a.create-post::after {
+		content: '';
+		position: relative;
+		top: 2px;
+		left: 6px;
+		width: 15px;
+		height: 15px;
+		display: inline-block;
+		background-image: url('../assets/icons/edit.svg');
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
 	}
 }
 
