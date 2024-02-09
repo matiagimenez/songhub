@@ -1,5 +1,5 @@
 .section-title {
-	font-size: 1rem;
+	font-size: 1.35rem;
 	font-weight: bold;
 	color: var(--color-violet-dark);
 	border-bottom: 0.8px solid var(--color-violet-dark);
@@ -28,7 +28,7 @@
 
 @media (min-width: 1000px) {
 	.section-title {
-		font-size: 1.25rem;
+		font-size: 1.45rem;
 	}
 
 	.song-title {
