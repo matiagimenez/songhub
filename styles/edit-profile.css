@@ -66,14 +66,24 @@ form fieldset .input-container textarea {
 	padding-bottom: 10px;
 }
 
+.button-container {
+	width: 90%;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 6px;
+}
+
 button.cancel-outline-button {
-	width: 48%;
+	width: 45%;
 	display: inline-block;
 	max-width: 225px;
+	margin-right: 4px;
 }
 
 input[type='submit'].submit-button {
-	width: 48%;
+	width: 52%;
+	min-width: 140px;
 	display: inline-block;
 	max-width: 225px;
 }
