@@ -182,8 +182,8 @@
 	}
 
 	.submit-button {
-		background-color: var(--color-violet);
-		border: 2px solid var(--color-violet);
+		background-color: var(--color-violet-light);
+		border: 2px solid var(--color-violet-light);
 	}
 
 	.submit-outline-button {
