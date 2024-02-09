@@ -1,0 +1,88 @@
+@import url('global/variables.css');
+@import url('global/main.css');
+
+main {
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+form fieldset legend {
+	opacity: 0;
+}
+
+.profile-image-edit {
+	width: 100%;
+	height: 140px;
+	margin-left: 6px;
+	margin-top: 8px;
+}
+
+.profile-image-edit img {
+	float: left;
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+}
+
+form fieldset .load-image,
+form fieldset .remove-image {
+	width: 140px;
+	font-size: 0.8rem;
+	display: block;
+	position: relative;
+	left: 20px;
+	top: 20px;
+}
+
+form fieldset .load-image {
+	margin-bottom: 8px;
+}
+
+form fieldset .input-container {
+	width: 100%;
+	margin-left: 6px;
+	margin-bottom: 16px;
+}
+
+form fieldset .input-container input {
+	width: 90%;
+	max-width: 450px;
+	min-width: 285px;
+}
+
+form fieldset .input-container label {
+	display: block;
+	padding: 8px 1px;
+	font-weight: normal;
+}
+
+form fieldset .input-container textarea {
+	width: 90%;
+	max-width: 450px;
+	min-width: 285px;
+	height: 130px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+@media (min-width: 420px) {
+	.profile-image-edit {
+		height: 170px;
+	}
+
+	.profile-image-edit img {
+		width: 150px;
+		height: 150px;
+	}
+
+	form fieldset .load-image,
+	form fieldset .remove-image {
+		width: 170px;
+		top: 30px;
+	}
+}
+
+@media (min-width: 700px) {
+	/* Grid layout con 2 columnas */
+}

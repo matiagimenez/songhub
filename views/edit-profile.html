@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Editar perfil | SongHub</title>
 		<link rel="icon" href="../assets/icons/favicon.svg" />
+		<link rel="stylesheet" href="../styles/edit-profile.css" />
 		<script src="../scripts/index.js" type="module"></script>
 	</head>
 	<body>
@@ -71,55 +72,81 @@
 					class="menu-button"
 					aria-expanded="false"
 					aria-controls="main-menu"
-				>
-				</button>
+				></button>
 			</nav>
 		</header>
 
 		<main>
-			<h2>Configuración de Perfil</h2>
+			<h2 class="section-title">Información del perfil</h2>
 			<form action="/" method="POST">
 				<fieldset>
 					<legend>Información de perfil</legend>
-					<p>
+					<p class="profile-image-edit">
 						<img
 							src="https://i.pinimg.com/236x/f4/e4/ff/f4e4ff0e8518813c6d5dde10a4d5164d.jpg"
 							alt="Imagen de perfil"
 							height="150px"
 							width="150px"
+							class="image-border"
+						/>
+						<button class="submit-button load-image">
+							Cargar imagen
+						</button>
+						<button class="cancel-outline-button remove-image">
+							Remover
+						</button>
+					</p>
+					<p class="input-container username-edit">
+						<label for="username" class="label"
+							>Nombre de usuario</label
+						>
+						<input
+							class="input"
+							name="username"
+							id="username"
+							type="text"
+							disabled
 						/>
 					</p>
-					<p>
-						<label for="username">Nombre de usuario</label>
-						<input name="username" id="username" type="text" />
-					</p>
-					<p>
-						<label for="firstname">Nombre</label>
-						<input name="firstname" id="firstname" type="text" />
-					</p>
-					<p>
-						<label for="spotifyusername">Nombre Spotify</label>
+					<p class="input-container name-edit">
+						<label for="firstname" class="label">Nombre</label>
 						<input
-							name="spotifyusername"
-							id="spotifyusername"
+							class="input"
+							name="firstname"
+							id="firstname"
 							type="text"
 						/>
 					</p>
-					<p>
-						<label for="email">Correo electrónico</label>
-						<input name="email" id="email" type="email" />
+					<p class="input-container email-edit">
+						<label for="email" class="label"
+							>Correo electrónico</label
+						>
+						<input
+							class="input"
+							name="email"
+							id="email"
+							type="email"
+							disabled
+						/>
 					</p>
-					<p>
-						<label for="country">Pais</label>
-						<input name="country" id="country" type="text" />
+					<p class="input-container country-edit">
+						<label for="country" class="label">Pais</label>
+						<input
+							class="input"
+							name="country"
+							id="country"
+							type="text"
+						/>
 					</p>
-					<p>
-						<label for="biography">Biografía</label>
+					<p class="input-container biography-edit">
+						<label for="biography" class="label">Biografía</label>
 						<textarea
 							name="biography"
 							id="biography"
 							cols="70"
 							rows="10"
+							class="input"
+							maxlength="140"
 						>
 						</textarea>
 					</p>
@@ -307,17 +334,4 @@
 			</nav>
 		</footer>
 	</body>
-	<script>
-		window.addEventListener('load', () => {
-			const contentElement = document.querySelector('html');
-			const isScrollable =
-				contentElement.scrollHeight > contentElement.clientHeight;
-			const footer = document.querySelector('.main-footer');
-			if (!isScrollable) {
-				footer.classList.add('fixed');
-			} else {
-				footer.classList.remove('fixed');
-			}
-		});
-	</script>
 </html>
