@@ -15,7 +15,7 @@
   background-color: var(--color-white);
   border-radius: 20px;
   width: 90vw;
-  max-width: 600px;
+  max-width: 400px;
 }
 
 .close-button {
@@ -167,4 +167,26 @@
 .postear-button {
   background-color: var(--color-green-dark);
   border-color: var(--color-green-dark);
+}
+
+@media (min-width: 750px) {
+  .modal-content {
+    max-width: 900px;
+  }
+
+  .modal-content figure,
+  .modal-content form {
+    margin: 2rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .modal-content figure {
+    display: grid;
+    grid-template-columns: 30% 70%;
+  }
+
+  .modal-content figure img {
+    grid-row: span 3;
+  }
 }
