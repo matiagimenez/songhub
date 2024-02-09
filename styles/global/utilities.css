@@ -11,6 +11,7 @@
 
 .input[disabled] {
 	border-color: var(--color-grey-light);
+	cursor: not-allowed;
 }
 
 .label {
