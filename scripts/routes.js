@@ -108,6 +108,10 @@ export const routes = {
 			scriptName: 'hover-img',
 			scriptPath: '../scripts/components/song&album-img/hover-img.js',
 		},
+		{
+			scriptName: 'action-button-animation',
+			scriptPath: '../scripts/animations/action-button-animation.js',
+		},
 	],
 	'/search': [
 		{
