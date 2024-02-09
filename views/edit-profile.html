@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Editar perfil | SongHub</title>
+		<link rel="icon" href="../assets/icons/favicon.svg" />
+		<link rel="stylesheet" href="../styles/edit-profile.css" />
+		<script src="../scripts/index.js" type="module"></script>
+	</head>
+	<body>
+		<header class="main-header">
+			<h1>
+				<a href="home.html">
+					<img src="../assets/icons/logo.svg" alt="Logo de SongHub" />
+				</a>
+			</h1>
+			<nav class="header-nav">
+				<ul class="hidden" role="menu" id="main-menu">
+					<li role="menuitem" class="search-item">
+						<form action="">
+							<label for="search" class="visually-hidden"
+								>Buscar álbum, canción o artista</label
+							>
+							<input
+								type="search"
+								name="search"
+								role="searchbox"
+								id="search"
+								autocomplete="off"
+								placeholder="Buscar álbum, canción o artista..."
+								class="input"
+								aria-describedby="search-description"
+							/>
+							<p id="search-description" class="visually-hidden">
+								Los resultados de la búsqueda aparecerán en un
+								momento.
+							</p>
+						</form>
+					</li>
+					<li role="menuitem">
+						<a href="home.html">INICIO</a>
+					</li>
+					<li role="menuitem">
+						<a href="explore.html">EXPLORAR</a>
+					</li>
+					<li role="menuitem" class="profile-item">
+						<a href="profile.html"> PERFIL </a>
+					</li>
+					<li role="menuitem" class="logout-item">
+						<a href="#">
+							<span>CERRAR SESION</span>
+							<svg
+								width="800px"
+								height="800px"
+								viewBox="0 0 24 24"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M15 16.5V19C15 20.1046 14.1046 21 13 21H6C4.89543 21 4 20.1046 4 19V5C4 3.89543 4.89543 3 6 3H13C14.1046 3 15 3.89543 15 5V8.0625M11 12H21M21 12L18.5 9.5M21 12L18.5 14.5"
+									stroke="#000000"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</a>
+					</li>
+				</ul>
+				<button
+					class="menu-button"
+					aria-expanded="false"
+					aria-controls="main-menu"
+				></button>
+			</nav>
+		</header>
+
+		<main>
+			<h2 class="section-title">Información del perfil</h2>
+			<form action="/" method="POST">
+				<fieldset>
+					<legend>Información de perfil</legend>
+					<p class="profile-image-edit">
+						<img
+							src="https://i.pinimg.com/236x/f4/e4/ff/f4e4ff0e8518813c6d5dde10a4d5164d.jpg"
+							alt="Imagen de perfil"
+							height="150px"
+							width="150px"
+							class="image-border"
+						/>
+						<button class="submit-button load-image">
+							Cargar imagen
+						</button>
+						<button class="submit-outline-button remove-image">
+							Remover
+						</button>
+					</p>
+					<p class="input-container username-edit">
+						<label for="username" class="label"
+							>Nombre de usuario</label
+						>
+						<input
+							class="input"
+							name="username"
+							id="username"
+							type="text"
+							disabled
+						/>
+					</p>
+					<p class="input-container name-edit">
+						<label for="firstname" class="label">Nombre</label>
+						<input
+							class="input"
+							name="firstname"
+							id="firstname"
+							type="text"
+						/>
+					</p>
+					<p class="input-container email-edit">
+						<label for="email" class="label"
+							>Correo electrónico</label
+						>
+						<input
+							class="input"
+							name="email"
+							id="email"
+							type="email"
+							disabled
+						/>
+					</p>
+					<p class="input-container country-edit">
+						<label for="country" class="label">Pais</label>
+						<input
+							class="input"
+							name="country"
+							id="country"
+							type="text"
+						/>
+					</p>
+					<p class="input-container biography-edit">
+						<label for="biography" class="label">Biografía</label>
+						<textarea
+							name="biography"
+							id="biography"
+							cols="70"
+							rows="10"
+							class="input"
+							maxlength="140"
+						>
+						</textarea>
+					</p>
+				</fieldset>
+				<p class="button-container">
+					<button class="cancel-outline-button">Cancelar</button>
+					<input
+						class="submit-button"
+						type="submit"
+						value="Guardar Cambios"
+					/>
+				</p>
+			</form>
+			<section class="edit-favourites">
+				<h3 class="section-title">Álbumes Favoritos</h3>
+				<figure>
+					<img
+						loading="lazy"
+						src="https://i.pinimg.com/564x/89/28/e3/8928e372651fc60256360ba5e21a7d2f.jpg"
+						alt="Portada del álbum 'Pulse' de Pink Floyd"
+						width="150px"
+						height="150px"
+					/>
+					<figcaption>Pulse - Pink Floyd</figcaption>
+				</figure>
+
+				<figure>
+					<img
+						loading="lazy"
+						src="https://i.pinimg.com/564x/99/41/82/99418264794012ddd044c761919fbb44.jpg"
+						alt="Portada del álbum 'Punisher' de Phoebe Bridgers"
+						width="150px"
+						height="150px"
+					/>
+					<figcaption>Punisher - Phoebe Bridgers</figcaption>
+				</figure>
+
+				<figure>
+					<img
+						loading="lazy"
+						src="https://i.pinimg.com/564x/94/76/b8/9476b8e8cb9368ceba6f90bec0c1b980.jpg"
+						alt="Portada del álbum 'Random Acces Memories' de Daft Punk"
+						width="150px"
+						height="150px"
+					/>
+					<figcaption>Random Acces Memories - Daft Punk</figcaption>
+				</figure>
+				<figure>
+					<img
+						loading="lazy"
+						src="https://i.pinimg.com/564x/dd/ff/e0/ddffe0a469a486bdde609fe2467e75c1.jpg"
+						alt="Portada del álbum 'Led Zeppelin III' de Led Zeppelin"
+						width="150px"
+						height="150px"
+					/>
+					<figcaption>Led Zeppelin III - Led Zeppelin</figcaption>
+				</figure>
+
+				<figure>
+					<img
+						loading="lazy"
+						src="https://i.pinimg.com/564x/50/75/92/5075926b9579b1155b7e4366184c0f64.jpg"
+						alt="Portada del álbum 'X100PRE' de Bad Bunny"
+						width="150px"
+						height="150px"
+					/>
+					<figcaption>X100PRE - Bad Bunny</figcaption>
+				</figure>
+			</section>
+
+			<section class="edit-favourites">
+				<h3 class="section-title">Canciones Favoritas</h3>
+
+				<figure>
+					<img
+						loading="lazy"
+						src="https://i.pinimg.com/564x/3d/65/d5/3d65d5e4af0cde2458b2e7b55869f4e6.jpg"
+						alt="Portada del álbum 'Peso Pluma || Music Session' de Bizarrap"
+						width="150px"
+						height="150px"
+					/>
+					<figcaption>
+						Peso Pluma || Music Session - Bizarrap
+					</figcaption>
+				</figure>
+
+				<figure>
+					<img
+						loading="lazy"
+						src="https://i.pinimg.com/564x/aa/af/30/aaaf30cb2a66f80057d06d8e78b0bd3e.jpg"
+						alt="Portada del álbum 'Bad Habit' de Steve Lazy"
+						width="150px"
+						height="150px"
+					/>
+					<figcaption>Bad Habit - Steve Lazy</figcaption>
+				</figure>
+
+				<figure>
+					<img
+						loading="lazy"
+						src="https://i.pinimg.com/564x/28/83/60/288360836d7d5532e52012bf06981410.jpg"
+						alt="Portada del álbum 'Comfortably Numb' de Pink Floyd"
+						width="150px"
+						height="150px"
+					/>
+					<figcaption>Comfortably Numb - Pink Floyd</figcaption>
+				</figure>
+
+				<figure>
+					<img
+						loading="lazy"
+						src="https://i.pinimg.com/564x/5f/5f/45/5f5f45f7be4f8486ab60ab002c14325c.jpg"
+						alt="Portada del álbum 'Stairway To Heaven' de Led Zeppelin"
+						width="150px"
+						height="150px"
+					/>
+					<figcaption>Stairway To Heaven - Led Zeppelin</figcaption>
+				</figure>
+
+				<figure>
+					<img
+						loading="lazy"
+						src="https://i.pinimg.com/564x/17/8c/ea/178ceaa5c0c24fd3cee2fe08dadf82e6.jpg"
+						alt="Portada de canción 'Goteo' de Duki"
+						width="150px"
+						height="150px"
+					/>
+					<figcaption>Goteo - Duki</figcaption>
+				</figure>
+			</section>
+		</main>
+		<footer class="main-footer">
+			<section>
+				<p>
+					<img
+						height="15px"
+						width="15px"
+						src="../assets/icons/spotify.svg"
+						alt="Icono de Spotify"
+					/>
+					<span> En colaboración con Spotify </span>
+				</p>
+				<p>&#169; 2023 SongHub Inc.</p>
+			</section>
+			<nav class="footer-nav">
+				<ul>
+					<li><a href="home.html">Volver al inicio</a></li>
+					<li><a href="terms.html">Terminos y condiciones</a></li>
+				</ul>
+			</nav>
+		</footer>
+	</body>
+</html>
