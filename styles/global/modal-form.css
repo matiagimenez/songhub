@@ -76,25 +76,41 @@
 }
 
 .tags-section span {
-  margin-right: 10px;
+  margin: 0 10px 4px 0;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+}
+
+.remove-tag-button {
+  background: none;
+  border: none;
+  background-image: url("/assets/icons/black-close-menu.svg");
+  background-size: cover;
+  width: 20px;
+  height: 20px;
 }
 
 .input-tag,
-.tag-button {
+.add-tag-button {
   width: 100px;
   height: 2rem;
   display: inline;
 }
 
-.tag-button {
+.add-tag-button {
   margin-left: 10px;
 }
 
+.rating-share-container {
+  padding: 0.6rem 0;
+  display: grid;
+  grid-template-columns: 80% 20%;
+}
+
 .rating {
-  padding: 0.4rem 0;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  width: fit-content;
 }
 
 .rating span,
@@ -112,20 +128,20 @@
 }
 
 .share-container {
-  display: inline-block;
-
+  margin: auto;
+  margin-right: 0;
 }
 
 .share-button {
   background: none;
   border: none;
   background-image: url('../../assets/icons/post-icons/share.svg');
-  background-size: 24px;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  border-radius: 50%;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
 }
 
 @keyframes button-shadow {

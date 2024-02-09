@@ -86,7 +86,7 @@ function create_modal() {
 
   const tag_button = ElementBuilder.createElement('button', '+ Agregar Tag', {
     type: "button",
-    class: "tag-button submit-button"
+    class: "add-tag-button submit-button"
   })
 
   tag_button.addEventListener('click', () => {
@@ -94,12 +94,28 @@ function create_modal() {
       const tag = ElementBuilder.createElement('span', tag_text, {
         class: "tag"
       })
-      tags_section.appendChild(tag);
-      tag_text = "";
-      input_tag.value = "";
-      tags_count += 1;
+      const remove_tag_button = ElementBuilder.createElement('button', '', {
+        class: "remove-tag-button"
+      })
+      remove_tag_button.addEventListener('click', () => {
+        remove_tag(tag);
+      })
+      tag.appendChild(remove_tag_button);
+      add_tag(tag);
     }
   })
+
+  function add_tag(tag) {
+    tags_section.appendChild(tag);
+    tag_text = "";
+    input_tag.value = "";
+    tags_count += 1;
+  }
+
+  function remove_tag(tag) {
+    tag.remove();
+    tags_count -= 1;
+  }
 
   const tag_creator = ElementBuilder.createElement('p', '', {
     class: "tags-creator"
@@ -132,7 +148,8 @@ function create_modal() {
     class: "hidden"
   })
   const share_button = ElementBuilder.createElement('button', '', {
-    class: 'share-button'
+    class: 'share-button',
+    type: "button"
   })
   share_button.appendChild(share_span)
   const share_container = ElementBuilder.createElement('p', '', {
@@ -141,6 +158,12 @@ function create_modal() {
 
   share_container.appendChild(share_button);
 
+  const rating_share_container = ElementBuilder.createElement('section', '', {
+    class: "rating-share-container"
+  });
+
+  rating_share_container.appendChild(rating)
+  rating_share_container.appendChild(share_container)
 
   const volver_button = ElementBuilder.createElement('button', 'Volver', {
     class: "cancel-button"
@@ -169,8 +192,7 @@ function create_modal() {
 
   form.appendChild(textarea);
   form.appendChild(tag_creator);
-  form.appendChild(rating);
-  form.appendChild(share_container);
+  form.appendChild(rating_share_container);
   form.appendChild(submit_container);
 
   modal_content.appendChild(figure);
