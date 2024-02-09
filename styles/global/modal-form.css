@@ -5,7 +5,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--opacity-color-violet-dark-black);
+  background-color: var(--opacity-color-black);
   display: grid;
   place-content: center;
   z-index: 10;
@@ -15,6 +15,7 @@
   background-color: var(--color-white);
   border-radius: 20px;
   width: 90vw;
+  max-width: 600px;
 }
 
 .close-button {
