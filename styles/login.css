@@ -99,6 +99,7 @@ fieldset {
 
 .input-container input {
 	width: 90%;
+	height: 3rem;
 }
 
 .input-container input:focus ~ label,
