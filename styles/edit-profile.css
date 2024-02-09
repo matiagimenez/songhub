@@ -66,6 +66,27 @@ form fieldset .input-container textarea {
 	padding-bottom: 10px;
 }
 
+button.cancel-outline-button {
+	width: 48%;
+	display: inline-block;
+	max-width: 225px;
+}
+
+input[type='submit'].submit-button {
+	width: 48%;
+	display: inline-block;
+	max-width: 225px;
+}
+
+section.edit-favourites {
+	margin-top: 16px;
+}
+
+section.edit-favourites h3.section-title {
+	font-size: 1.15rem;
+	margin-bottom: 16px;
+}
+
 @media (min-width: 420px) {
 	.profile-image-edit {
 		height: 170px;
