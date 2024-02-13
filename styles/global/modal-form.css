@@ -95,7 +95,7 @@
 }
 
 .tags span {
-  margin: 0 10px 0 0;
+  margin: 0 10px 4px 0;
   display: inline-flex;
   align-items: center;
 }
@@ -241,6 +241,11 @@
   .tags {
     display: inline;
     margin-left: 10px;
+  }
+
+  .max_tags_message {
+    left: 20%;
+    right: 20%;
   }
 
 }

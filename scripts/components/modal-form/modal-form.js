@@ -71,7 +71,8 @@ function create_modal() {
     id: "description",
     cols: "40",
     rows: "10",
-    class: "input"
+    class: "input",
+    required: true
   })
 
   let tag_text = "";
@@ -102,20 +103,22 @@ function create_modal() {
   })
 
   tag_button.addEventListener('click', () => {
-    if (tag_text !== "" && tags_count < 3) {
-      const tag = ElementBuilder.createElement('span', tag_text, {
-        class: "tag"
-      })
-      const remove_tag_button = ElementBuilder.createElement('button', '', {
-        class: "remove-tag-button"
-      })
-      remove_tag_button.addEventListener('click', () => {
-        remove_tag(tag);
-      })
-      tag.appendChild(remove_tag_button);
-      add_tag(tag);
-    } else {
-      view_max_tags_message();
+    if (tag_text !== "") {
+      if (tags_count < 3) {
+        const tag = ElementBuilder.createElement('span', tag_text, {
+          class: "tag"
+        })
+        const remove_tag_button = ElementBuilder.createElement('button', '', {
+          class: "remove-tag-button"
+        })
+        remove_tag_button.addEventListener('click', () => {
+          remove_tag(tag);
+        })
+        tag.appendChild(remove_tag_button);
+        add_tag(tag);
+      } else {
+        view_max_tags_message();
+      }
     }
   })
 
@@ -153,9 +156,10 @@ function create_modal() {
   const stars = ElementBuilder.createElement('span', '★★★★★', {})
   const input_rate = ElementBuilder.createElement('input', '', {
     type: "hidden",
-    value: "3",
+    value: "5",
     name: "rate",
-    id: "rate"
+    id: "rate",
+    required: true
   })
   const rating = ElementBuilder.createElement('p', '', {
     class: "rating"
