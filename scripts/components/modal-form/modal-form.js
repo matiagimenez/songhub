@@ -97,6 +97,10 @@ function create_modal() {
     class: "add-tag-button submit-button"
   })
 
+  const max_tags_message = ElementBuilder.createElement('p', 'No es posible agregar más de 3 etiquetas.', {
+    class: "max_tags_message"
+  })
+
   tag_button.addEventListener('click', () => {
     if (tag_text !== "" && tags_count < 3) {
       const tag = ElementBuilder.createElement('span', tag_text, {
@@ -110,6 +114,8 @@ function create_modal() {
       })
       tag.appendChild(remove_tag_button);
       add_tag(tag);
+    } else {
+      view_max_tags_message();
     }
   })
 
@@ -132,6 +138,13 @@ function create_modal() {
   tag_section.appendChild(input_tag);
   tag_section.appendChild(tag_button);
   tag_section.appendChild(tags);
+
+  function view_max_tags_message() {
+    tag_section.appendChild(max_tags_message);
+    setTimeout(function () {
+      max_tags_message.remove();
+    }, 2000);
+  }
 
 
   const valoración_label = ElementBuilder.createElement('label', 'Valoración', {

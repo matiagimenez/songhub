@@ -12,6 +12,7 @@
 }
 
 .modal-content {
+  position: relative;
   background-color: var(--color-white);
   border-radius: 20px;
   width: 90vw;
@@ -178,6 +179,31 @@
 .postear-button {
   background-color: var(--color-green-dark);
   border-color: var(--color-green-dark);
+}
+
+.max_tags_message {
+  position: absolute;
+  top: 80%;
+  left: 0.4rem;
+  right: 0.4rem;
+  background-color: var(--color-black);
+  color: var(--color-grey-medium);
+  padding: 0.8rem;
+  border-radius: 6px;
+  z-index: 10;
+  opacity: 90%;
+  animation: message-opacity 1s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes message-opacity {
+  from {
+    opacity: 90%;
+  }
+
+  to {
+    opacity: 0%;
+  }
 }
 
 @media (min-width: 750px) {
