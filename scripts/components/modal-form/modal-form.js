@@ -80,8 +80,8 @@ function create_modal() {
     tag_text = event.target.value;
   })
 
-  const tags_section = ElementBuilder.createElement('section', '', {
-    class: "tags-section"
+  const tags = ElementBuilder.createElement('section', '', {
+    class: "tags"
   })
 
   const tag_button = ElementBuilder.createElement('button', '+ Agregar Tag', {
@@ -106,7 +106,7 @@ function create_modal() {
   })
 
   function add_tag(tag) {
-    tags_section.appendChild(tag);
+    tags.appendChild(tag);
     tag_text = "";
     input_tag.value = "";
     tags_count += 1;
@@ -117,13 +117,13 @@ function create_modal() {
     tags_count -= 1;
   }
 
-  const tag_creator = ElementBuilder.createElement('p', '', {
-    class: "tags-creator"
+  const tag_section = ElementBuilder.createElement('p', '', {
+    class: "tags-section"
   })
 
-  tag_creator.appendChild(tags_section);
-  tag_creator.appendChild(input_tag);
-  tag_creator.appendChild(tag_button);
+  tag_section.appendChild(input_tag);
+  tag_section.appendChild(tag_button);
+  tag_section.appendChild(tags);
 
 
   const valoración_label = ElementBuilder.createElement('label', 'Valoración', {
@@ -191,7 +191,7 @@ function create_modal() {
   })
 
   form.appendChild(textarea);
-  form.appendChild(tag_creator);
+  form.appendChild(tag_section);
   form.appendChild(rating_share_container);
   form.appendChild(submit_container);
 
