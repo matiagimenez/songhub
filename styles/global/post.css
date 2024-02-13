@@ -25,43 +25,6 @@
 	cursor: pointer;
 }
 
-.post-img section {
-	background-color: var(--color-black);
-	width: 60px;
-	height: 25px;
-	margin: auto;
-	border-radius: 4px;
-	z-index: 10;
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	top: 50px;
-}
-
-.post-img section button {
-	background-image: url('../../assets/icons/post-icon.svg');
-	background-size: cover;
-	background-color: transparent;
-}
-
-.post-img section a {
-	background-image: url('../../assets/icons/expand-content-svgrepo-com.svg');
-	background-size: cover;
-}
-
-.post-img section button,
-.post-img section a {
-	margin: auto;
-	width: 20px;
-	height: 20px;
-	border: none;
-}
-
-.post-img section button:hover {
-	cursor: pointer;
-	opacity: 40;
-}
 
 .user-info {
 	display: flex;
@@ -275,15 +238,43 @@
 	}
 
 	.post-img section {
+		background-color: var(--color-black);
 		width: 80px;
 		height: 35px;
+		margin: auto;
+		border-radius: 4px;
+		z-index: 10;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		top: 50px;
+	}
+
+	.post-img section button {
+		background-image: url('../../assets/icons/post-icon.svg');
+		background-size: cover;
+		background-color: transparent;
+	}
+
+	.post-img section a {
+		background-image: url('../../assets/icons/expand-content-svgrepo-com.svg');
+		background-size: cover;
 	}
 
 	.post-img section button,
 	.post-img section a {
+		margin: auto;
 		width: 20px;
 		height: 20px;
+		border: none;
 	}
+
+	.post-img section button:hover {
+		cursor: pointer;
+		opacity: 40;
+	}
+
 
 	.user-info {
 		grid-template-columns: 50px auto auto;
@@ -328,6 +319,7 @@
 		max-width: 80%;
 	}
 }
+
 
 @media (prefers-color-scheme: dark) {
 	.user-name a {
