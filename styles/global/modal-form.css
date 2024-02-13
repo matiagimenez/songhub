@@ -29,6 +29,10 @@
   margin: 10px 10px 0 0;
 }
 
+.close-button:hover {
+  cursor: pointer;
+}
+
 .modal-content figure,
 .modal-content form {
   margin: 1rem;
@@ -75,14 +79,6 @@
   margin-top: 0.6rem;
 }
 
-.remove-tag-button {
-  background: none;
-  border: none;
-  background-image: url("/assets/icons/black-close-menu.svg");
-  background-size: cover;
-  width: 20px;
-  height: 20px;
-}
 
 .input-tag,
 .add-tag-button {
@@ -101,11 +97,25 @@
   margin: 0 10px 0 0;
   display: inline-flex;
   align-items: center;
-  width: fit-content;
+}
+
+.remove-tag-button {
+  background: none;
+  border: none;
+  background-image: url("/assets/icons/black-close-menu.svg");
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  margin-left: 4px;
+}
+
+.remove-tag-button:hover {
+  cursor: pointer;
 }
 
 .rating-share-container {
-  margin-bottom: 0.6rem;
+  margin-bottom: 10px;
   display: grid;
   grid-template-columns: 80% 20%;
 }

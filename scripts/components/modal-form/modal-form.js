@@ -6,6 +6,14 @@ function create_modal() {
     class: "modal",
   })
 
+  document.addEventListener('click', (e) => {
+    e.target === modal && close_modal(modal);
+  })
+
+  document.addEventListener('keyup', (e) => {
+    e.key === 'Escape' && close_modal(modal);
+  })
+
   const modal_content = ElementBuilder.createElement('section', '', {
     class: "modal-content"
   })
