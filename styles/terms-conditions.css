@@ -1,0 +1,30 @@
+@import url('global/variables.css');
+@import url('global/main.css');
+
+main section h2.section-title {
+	margin-bottom: 8px;
+}
+
+main header {
+	margin-top: 16px;
+}
+
+main h2 {
+	font-size: 1.6rem;
+	font-weight: bold;
+	padding: 8px 0;
+}
+
+main section p,
+main header p {
+	padding: 8px 0;
+}
+
+main section ul {
+	padding: 8px 40px;
+	list-style: disc;
+}
+
+main section li {
+	padding: 8px 0;
+}

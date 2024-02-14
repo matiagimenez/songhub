@@ -127,8 +127,18 @@ export const routes = {
 	],
 	'/edit-profile': [
 		{
+			scriptName: 'menu-animation',
+			scriptPath: '../scripts/animations/menu-animation.js',
+		},
+		{
 			scriptName: 'remove-favourite-animation',
 			scriptPath: '../scripts/animations/remove-favourite-animation.js',
+		},
+	],
+	'/terms-conditions': [
+		{
+			scriptName: 'menu-animation',
+			scriptPath: '../scripts/animations/menu-animation.js',
 		},
 	],
 };
