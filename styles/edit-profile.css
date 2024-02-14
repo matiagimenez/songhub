@@ -7,6 +7,10 @@ main {
 	margin-right: auto;
 }
 
+form fieldset {
+	max-width: 520px;
+}
+
 form fieldset legend {
 	opacity: 0;
 }
@@ -63,27 +67,30 @@ form fieldset .input-container textarea {
 	min-width: 285px;
 	height: 130px;
 	padding-top: 10px;
+	resize: none;
 	padding-bottom: 10px;
 }
 
 .button-container {
 	width: 90%;
-	margin-left: 8px;
+	text-align: left;
+	margin-left: 4px;
 	margin-top: 6px;
+	max-width: 400px;
 }
 
-button.cancel-outline-button {
+button.submit-outline-button {
 	width: 45%;
 	display: inline-block;
-	max-width: 225px;
-	margin-right: 4px;
+	max-width: 180px;
+	margin-right: 8px;
 }
 
 input[type='submit'].submit-button {
-	width: 52%;
+	width: 45%;
 	min-width: 140px;
 	display: inline-block;
-	max-width: 225px;
+	max-width: 180px;
 }
 
 section.edit-favourites {
@@ -131,6 +138,14 @@ section.edit-favourites section {
 	}
 }
 
+@media (min-width: 550px) {
+	form fieldset .input-container input,
+	form fieldset .input-container textarea {
+		width: 100%;
+		max-width: initial;
+	}
+}
+
 @media (min-width: 800px) {
 	main {
 		display: grid;
@@ -146,6 +161,12 @@ section.edit-favourites section {
 	main form {
 		grid-row: 2/4;
 		grid-column: 1/2;
+	}
+
+	form fieldset .input-container input,
+	form fieldset .input-container textarea {
+		width: 90%;
+		max-width: 450px;
 	}
 
 	main section.edit-favourites {
@@ -176,24 +197,24 @@ section.edit-favourites section {
 	}
 
 	section.edit-favourites section figure img {
-		width: 110px;
-		height: 110px;
+		width: 90px;
+		height: 90px;
 		border-radius: 10px;
 	}
 
-	.button-container {
-		min-width: 90vw;
-		text-align: center;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	button.cancel-outline-button {
-		max-width: 300px;
+	button.submit-outline-button {
+		max-width: 250px;
 	}
 
 	input[type='submit'].submit-button {
-		max-width: 300px;
+		max-width: 250px;
+	}
+}
+
+@media (min-width: 1000px) {
+	section.edit-favourites section figure img {
+		width: 110px;
+		height: 110px;
 	}
 }
 
