@@ -125,4 +125,10 @@ export const routes = {
 			scriptPath: '../scripts/animations/menu-animation.js',
 		},
 	],
+	'/edit-profile': [
+		{
+			scriptName: 'remove-favourite-animation',
+			scriptPath: '../scripts/animations/remove-favourite-animation.js',
+		},
+	],
 };
