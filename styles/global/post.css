@@ -10,7 +10,7 @@
 }
 
 .post-img {
-	display: flex;
+	display: grid;
 	height: 100px;
 	width: 100px;
 	border-radius: 10px;
@@ -24,6 +24,63 @@
 .post-img:hover {
 	cursor: pointer;
 }
+
+
+.post-img section {
+	background-color: var(--color-black);
+	z-index: 10;
+	display: flex;
+}
+
+.post-img section button {
+	background-size: cover;
+	background-color: transparent;
+}
+
+.post-img .more-container {
+	border-radius: 100%;
+	padding: 2px;
+	margin: 6px auto auto 6px;
+}
+
+.post-img .more-container button {
+	background-image: url('../../assets/icons/more-button.svg');
+}
+
+.post-img .buttons-container {
+	width: 80px;
+	height: 35px;
+	margin: auto auto 6px auto;
+	border-radius: 4px;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+}
+
+.post-img .buttons-container button {
+	background-image: url('../../assets/icons/post-icon.svg');
+}
+
+
+.post-img section a {
+	background-image: url('../../assets/icons/expand-content-svgrepo-com.svg');
+	background-size: cover;
+}
+
+.post-img section button,
+.post-img section a {
+	margin: auto;
+	width: 20px;
+	height: 20px;
+	border: none;
+}
+
+.post-img section button:hover,
+.post-img section a:hover {
+	cursor: pointer;
+	opacity: 80%;
+}
+
 
 
 .user-info {
@@ -237,44 +294,9 @@
 		grid-row: 2;
 	}
 
-	.post-img section {
-		background-color: var(--color-black);
-		width: 80px;
-		height: 35px;
-		margin: auto;
-		border-radius: 4px;
-		z-index: 10;
-		position: relative;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		top: 50px;
+	.post-img .more-container {
+		visibility: hidden;
 	}
-
-	.post-img section button {
-		background-image: url('../../assets/icons/post-icon.svg');
-		background-size: cover;
-		background-color: transparent;
-	}
-
-	.post-img section a {
-		background-image: url('../../assets/icons/expand-content-svgrepo-com.svg');
-		background-size: cover;
-	}
-
-	.post-img section button,
-	.post-img section a {
-		margin: auto;
-		width: 20px;
-		height: 20px;
-		border: none;
-	}
-
-	.post-img section button:hover {
-		cursor: pointer;
-		opacity: 40;
-	}
-
 
 	.user-info {
 		grid-template-columns: 50px auto auto;
