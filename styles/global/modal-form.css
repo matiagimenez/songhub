@@ -132,7 +132,7 @@
 }
 
 .rating label {
-  font-weight: bold;
+  font-weight: 400;
 }
 
 .rating span {
@@ -253,5 +253,21 @@
 @media (min-width: 1200px) {
   .postear-button {
     width: 100%;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .modal-content {
+    background-color: var(--color-violet-dark-black);
+    border: 2px solid var(--color-white);
+  }
+
+  .rating span,
+  .rating label {
+    color: var(--color-white);
+  }
+
+  .close-button {
+    background-image: url("/assets/icons/close-menu.svg");
   }
 }
