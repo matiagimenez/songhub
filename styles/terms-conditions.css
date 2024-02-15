@@ -1,6 +1,10 @@
 @import url('global/variables.css');
 @import url('global/main.css');
 
+main {
+	padding: 8px 16px;
+}
+
 main section h2.section-title {
 	margin-bottom: 8px;
 }
