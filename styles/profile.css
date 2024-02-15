@@ -10,6 +10,11 @@ header .user {
 	height: 60px;
 }
 
+header .biography {
+	padding-top: 12px;
+	max-width: 600px;
+}
+
 header .user img {
 	height: 55px;
 	width: 55px;
