@@ -69,6 +69,10 @@ function addLoader() {
 
 	const loader = ElementBuilder.createElement('div', '', {
 		class: 'loader',
+		role: 'progressbar',
+		'aria-valuemin': 0,
+		'aria-valuemax': 100,
+		'aria-valuenow': 0,
 	});
 
 	loader.style.width = '0%';
@@ -131,8 +135,9 @@ function animateCarousel() {
 		const activeCard = getCurrentActiveCard();
 		const activeCardIndex = activeCard.getAttribute('data-item-index');
 		const thumb = ElementBuilder.createElement('button', '', {
-			class: `thumb ${Number(activeCardIndex) === index && 'active-thumb'
-				}`,
+			class: `thumb ${
+				Number(activeCardIndex) === index && 'active-thumb'
+			}`,
 			id: index,
 			'aria-label': `Ir a la imagen ${index + 1}`,
 			'aria-controls': 'carousel',
@@ -206,12 +211,11 @@ const link = ElementBuilder.createElement('link', '', {
 document.head.appendChild(link);
 
 for (const image of images) {
-	console.log(image);
-	console.log(image.complete);
 	if (!image.complete) {
 		image.addEventListener('load', () => {
-			console.log('image loaded');
-			loader.style.width = `${(100 / images.length) * loadCount}%`;
+			const progress = (100 / images.length) * loadCount;
+			loader.style.width = `${progress}%`;
+			loader.setAttribute('aria-valuenow', progress);
 		});
 	}
 }
@@ -221,7 +225,6 @@ for (const card of cards) {
 }
 
 const loader = addLoader();
-console.log(images);
 
 // Cada 50ms verifica si las imagenes fueron cargadas
 const interval = setInterval(() => {
