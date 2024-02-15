@@ -2,7 +2,7 @@
 
 .main-header {
 	position: sticky;
-	z-index: 1000000000;
+	z-index: 1000000;
 	top: 0vh;
 	background-color: var(--color-violet-darkest);
 	height: 80px;
@@ -38,6 +38,7 @@ h1 img {
 	right: 25px;
 	top: 0px;
 	bottom: 0px;
+	z-index: 1000001;
 	background-color: transparent;
 	color: var(--color-white);
 	border: none;

@@ -3,6 +3,10 @@
 @import url('utilities.css');
 @import url('titles.css');
 
+html {
+	overflow-x: hidden;
+}
+
 main {
 	margin-left: auto;
 	margin-right: auto;
