@@ -24,6 +24,15 @@
 	margin: auto;
 }
 
+.cards-container figure figcaption a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.cards-container figure figcaption a:hover {
+	text-decoration: underline;
+}
+
 .cards-container figure img {
 	object-fit: cover;
 	object-position: center;
