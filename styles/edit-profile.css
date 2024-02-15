@@ -258,8 +258,8 @@ section.edit-favourites section {
 
 @media (min-width: 900px) {
 	section.edit-favourites section {
-		grid-template-columns: repeat(3, 120px);
-		grid-auto-rows: 120px;
+		grid-template-columns: repeat(3, 150px);
+		grid-auto-rows: 150px;
 	}
 }
 
@@ -274,8 +274,8 @@ section.edit-favourites section {
 	}
 
 	section.edit-favourites section {
-		grid-template-columns: repeat(3, 140px);
-		grid-auto-rows: 140px;
+		grid-template-columns: repeat(3, 170px);
+		grid-auto-rows: 170px;
 	}
 
 	form fieldset .input-container input,
@@ -291,7 +291,8 @@ section.edit-favourites section {
 	}
 
 	section.edit-favourites section {
-		grid-template-columns: repeat(4, 140px);
+		grid-template-columns: repeat(3, 185px);
+		grid-auto-rows: 185px;
 	}
 }
 
@@ -307,7 +308,7 @@ section.edit-favourites section {
 	}
 
 	section.edit-favourites section {
-		grid-template-columns: repeat(5, 170px);
+		grid-template-columns: repeat(5, 200px);
 		grid-auto-rows: 170px;
 	}
 }
