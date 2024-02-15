@@ -153,10 +153,45 @@ function create_modal() {
   const valoración_label = ElementBuilder.createElement('label', 'Valoración', {
     for: "rate"
   })
-  const stars = ElementBuilder.createElement('span', '★★★★★', {})
+  const stars = ElementBuilder.createElement('section', '', {})
+
+  let starsList = []
+  let score_rating = 0;
+  for (let i = 0; i < 5; i++) {
+    const star = ElementBuilder.createElement('button', '', {
+      class: "rating-star unfilled-star",
+      type: "button"
+    })
+    starsList.push(star);
+    star.addEventListener('mouseover', () => {
+      for (let j = 0; j <= i; j++) {
+        starsList[j].classList.remove('unfilled-star')
+        starsList[j].classList.add('hover-filled-star')
+      }
+    })
+    star.addEventListener('mouseout', () => {
+      for (let j = 0; j <= i; j++) {
+        starsList[j].classList.remove('hover-filled-star')
+        starsList[j].classList.add('unfilled-star')
+      }
+    })
+    star.addEventListener('click', () => {
+      starsList.forEach((s) => {
+        s.classList.remove('hover-filled-star')
+        s.classList.remove('filled-star')
+        s.classList.add('unfilled-star')
+      })
+      for (let j = 0; j <= i; j++) {
+        starsList[j].classList.add('filled-star')
+      }
+      score_rating = i;
+    })
+    stars.appendChild(star)
+  }
+
   const input_rate = ElementBuilder.createElement('input', '', {
     type: "hidden",
-    value: "5",
+    value: score_rating,
     name: "rate",
     id: "rate",
     required: true
