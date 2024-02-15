@@ -133,7 +133,7 @@ header .user p .username {
 }
 
 .favourites article {
-	width: 200px;
+	width: 100%;
 }
 
 .favourites article img {
@@ -219,6 +219,7 @@ header .user p .username {
 
 	.favourites article {
 		height: 220px;
+		width: 200px;
 		margin-bottom: 8px;
 	}
 
