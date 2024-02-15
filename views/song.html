@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="../styles/song.css" />
 		<link rel="icon" href="../assets/icons/favicon.svg" />
 		<script src="../scripts/index.js" type="module"></script>
-		<title>Cancion | SongHub</title>
+		<title>Canción | SongHub</title>
 	</head>
 	<body>
 		<header class="main-header">
@@ -81,72 +81,1371 @@
 		</header>
 
 		<main>
-			<figure>
-				<img
-					src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
-					alt="Portada del álbum 'The Dark Side of the Moon' de Pink Floyd"
-					width="225px"
-					height="225px"
-					class="image-border"
-				/>
-				<figcaption>
-					<p>Canción</p>
-					<h2>Comfortably Numb</h2>
-					<p>The Dark Side Of The Moon</p>
-				</figcaption>
-				<p class="artist-info">
+			<section class="song-section">
+				<figure>
 					<img
-						src="https://i.pinimg.com/236x/20/cc/b2/20ccb24df9750b08d764e574fcec5f5d.jpg"
-						alt="Imagen de perfil de 'Pink Floyd'"
-						height="50px"
-						width="50px"
+						src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
+						alt="Portada del álbum 'The Dark Side of the Moon' de Pink Floyd"
+						width="225px"
+						height="225px"
+						class="image-border"
 					/>
-					<span>Pink Floyd · 1973</span>
-				</p>
-			</figure>
+					<figcaption>
+						<p>Canción</p>
+						<h2>Comfortably Numb</h2>
+						<h3>The Dark Side Of The Moon</h3>
+					</figcaption>
+					<p class="artist-info">
+						<img
+							src="https://i.pinimg.com/236x/20/cc/b2/20ccb24df9750b08d764e574fcec5f5d.jpg"
+							alt="Imagen de perfil de 'Pink Floyd'"
+							height="50px"
+							width="50px"
+						/>
+						<span>Pink Floyd · 1973</span>
+					</p>
+				</figure>
+			</section>
 
-			<section class="post-section">
-				<p class="visibility">
-					<span class="material-symbols-outlined"> lock </span>
-					<span>Privada</span>
-				</p>
-
-				<form action="" method="GET">
-					<textarea
-						placeholder="Agrega una descripción..."
-						name="description"
-						id="description"
-						cols="70"
-						rows="10"
-						class="input"
-					></textarea>
-					<p>
-						<span class="tag">Increible</span>
-						<input type="hidden" name="tag" value="Increible" />
-						<span class="tag">Me gusta</span>
-						<input type="hidden" name="tag" value="Me gusta" />
-						<button class="tag-button submit-button">
-							+ Agregar etiqueta
-						</button>
-					</p>
-					<p class="rating">
-						<label for="rate">Valoración</label>
-						<span>★★★★★</span>
-						<input type="hidden" value="3" name="rate" id="rate" />
-					</p>
-					<p class="share">
-						<button class="share-button">
-							<span class="material-symbols-outlined">
-								share
-							</span>
-						</button>
-					</p>
-					<input
-						type="submit"
-						class="submit-button"
-						value="Realizar post"
-					/>
-				</form>
+			<section class="most-popular-posts">
+				<h2>Publicaciones más populares</h2>
+				<section>
+					<article
+						tabindex="0"
+						class="post"
+						id="post_1"
+						aria-posinset="1"
+						aria-setsize="3"
+						aria-labelledby="post-1-song-title post-1-artist-title"
+						aria-describedby="post-content-1"
+					>
+						<figure>
+							<section class="post-img">
+								<img
+									loading="lazy"
+									height="100px"
+									width="100px"
+									class="post-img image-border"
+									src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
+									alt="Portada del álbum 'Preacher`s Daughter' de Ethel Cain"
+								/>
+								<section class="hidden">
+									<a href="/">
+										<img
+											src="../assets/icons/expand-content-svgrepo-com.svg"
+											alt="Song info"
+											width="20px"
+											height="20px"
+										/>
+									</a>
+									<button>
+										<img
+											src="../assets/icons/post-icon.svg"
+											alt="Song info"
+											width="20px"
+											height="20px"
+										/>
+									</button>
+								</section>
+							</section>
+							<section class="user-info">
+								<img
+									loading="lazy"
+									class="user-img"
+									height="25px"
+									width="25px"
+									src="https://i.pinimg.com/236x/94/7f/14/947f14841d26f5dc3541366a987b32f5.jpg"
+									alt="Imagen de perfil de 'Usuario 1'"
+								/>
+								<p class="user-name">
+									<a href="profile.html">Usuario 1</a>
+									<span>$username1</span>
+								</p>
+								<p class="post-time">hace 8 horas</p>
+							</section>
+							<figcaption>
+								<h3 class="song-title" id="post-1-song-title">
+									<a href="song.html"
+										>The Dark Side of the Moon</a
+									>
+								</h3>
+								<h4
+									class="artist-title"
+									id="post-1-artist-title"
+								>
+									Pink Floyd
+								</h4>
+								<span class="tag">Increible</span>
+								<span class="tag">Rock</span>
+								<span class="tag">Internacional</span>
+								<p class="stars">★★★★★</p>
+							</figcaption>
+						</figure>
+						<a href="post.html">
+							<section class="post-content" id="post-content-1">
+								<p>
+									It has survived not only five centuries, but
+									also the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with desktop
+									publishing software like Aldus PageMaker
+									including versions of Lorem Ipsum. t has
+									survived not only five centuries, but also
+									the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with deskt. It
+									has survived not only five centuries, but
+									also the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with desktop
+									publishing software like Aldus PageMaker
+									including versions of Lorem Ipsum. t has
+									survived not only five centuries, but also
+									the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with deskt.
+								</p>
+							</section>
+						</a>
+						<footer>
+							<section
+								class="reaction-container comment-container"
+							>
+								<button>
+									<span class="visually-hidden"
+										>Comentar post</span
+									>
+								</button>
+								<p>20</p>
+							</section>
+							<section class="reaction-container like-container">
+								<button class="unlike">
+									<span class="visually-hidden"
+										>Dar favorito al post</span
+									>
+								</button>
+								<p>1008</p>
+							</section>
+							<section class="reaction-container share-container">
+								<button class="share-button" data-post-id="1">
+									<span class="visually-hidden"
+										>Compartir post</span
+									>
+								</button>
+							</section>
+						</footer>
+					</article>
+					<article
+						tabindex="0"
+						class="post"
+						id="post_1"
+						aria-posinset="1"
+						aria-setsize="3"
+						aria-labelledby="post-1-song-title post-1-artist-title"
+						aria-describedby="post-content-1"
+					>
+						<figure>
+							<section class="post-img">
+								<img
+									loading="lazy"
+									height="100px"
+									width="100px"
+									class="post-img image-border"
+									src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
+									alt="Portada del álbum 'Preacher`s Daughter' de Ethel Cain"
+								/>
+								<section class="hidden">
+									<a href="/">
+										<img
+											src="../assets/icons/expand-content-svgrepo-com.svg"
+											alt="Song info"
+											width="20px"
+											height="20px"
+										/>
+									</a>
+									<button>
+										<img
+											src="../assets/icons/post-icon.svg"
+											alt="Song info"
+											width="20px"
+											height="20px"
+										/>
+									</button>
+								</section>
+							</section>
+							<section class="user-info">
+								<img
+									loading="lazy"
+									class="user-img"
+									height="25px"
+									width="25px"
+									src="https://i.pinimg.com/236x/94/7f/14/947f14841d26f5dc3541366a987b32f5.jpg"
+									alt="Imagen de perfil de 'Usuario 1'"
+								/>
+								<p class="user-name">
+									<a href="profile.html">Usuario 1</a>
+									<span>$username1</span>
+								</p>
+								<p class="post-time">hace 8 horas</p>
+							</section>
+							<figcaption>
+								<h3 class="song-title" id="post-1-song-title">
+									<a href="song.html"
+										>The Dark Side of the Moon</a
+									>
+								</h3>
+								<h4
+									class="artist-title"
+									id="post-1-artist-title"
+								>
+									Pink Floyd
+								</h4>
+								<span class="tag">Increible</span>
+								<span class="tag">Rock</span>
+								<span class="tag">Internacional</span>
+								<p class="stars">★★★★★</p>
+							</figcaption>
+						</figure>
+						<a href="post.html">
+							<section class="post-content" id="post-content-1">
+								<p>
+									It has survived not only five centuries, but
+									also the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with desktop
+									publishing software like Aldus PageMaker
+									including versions of Lorem Ipsum. t has
+									survived not only five centuries, but also
+									the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with deskt. It
+									has survived not only five centuries, but
+									also the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with desktop
+									publishing software like Aldus PageMaker
+									including versions of Lorem Ipsum. t has
+									survived not only five centuries, but also
+									the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with deskt.
+								</p>
+							</section>
+						</a>
+						<footer>
+							<section
+								class="reaction-container comment-container"
+							>
+								<button>
+									<span class="visually-hidden"
+										>Comentar post</span
+									>
+								</button>
+								<p>20</p>
+							</section>
+							<section class="reaction-container like-container">
+								<button class="unlike">
+									<span class="visually-hidden"
+										>Dar favorito al post</span
+									>
+								</button>
+								<p>1008</p>
+							</section>
+							<section class="reaction-container share-container">
+								<button class="share-button" data-post-id="1">
+									<span class="visually-hidden"
+										>Compartir post</span
+									>
+								</button>
+							</section>
+						</footer>
+					</article>
+					<article
+						tabindex="0"
+						class="post"
+						id="post_1"
+						aria-posinset="1"
+						aria-setsize="3"
+						aria-labelledby="post-1-song-title post-1-artist-title"
+						aria-describedby="post-content-1"
+					>
+						<figure>
+							<section class="post-img">
+								<img
+									loading="lazy"
+									height="100px"
+									width="100px"
+									class="post-img image-border"
+									src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
+									alt="Portada del álbum 'Preacher`s Daughter' de Ethel Cain"
+								/>
+								<section class="hidden">
+									<a href="/">
+										<img
+											src="../assets/icons/expand-content-svgrepo-com.svg"
+											alt="Song info"
+											width="20px"
+											height="20px"
+										/>
+									</a>
+									<button>
+										<img
+											src="../assets/icons/post-icon.svg"
+											alt="Song info"
+											width="20px"
+											height="20px"
+										/>
+									</button>
+								</section>
+							</section>
+							<section class="user-info">
+								<img
+									loading="lazy"
+									class="user-img"
+									height="25px"
+									width="25px"
+									src="https://i.pinimg.com/236x/94/7f/14/947f14841d26f5dc3541366a987b32f5.jpg"
+									alt="Imagen de perfil de 'Usuario 1'"
+								/>
+								<p class="user-name">
+									<a href="profile.html">Usuario 1</a>
+									<span>$username1</span>
+								</p>
+								<p class="post-time">hace 8 horas</p>
+							</section>
+							<figcaption>
+								<h3 class="song-title" id="post-1-song-title">
+									<a href="song.html"
+										>The Dark Side of the Moon</a
+									>
+								</h3>
+								<h4
+									class="artist-title"
+									id="post-1-artist-title"
+								>
+									Pink Floyd
+								</h4>
+								<span class="tag">Increible</span>
+								<span class="tag">Rock</span>
+								<span class="tag">Internacional</span>
+								<p class="stars">★★★★★</p>
+							</figcaption>
+						</figure>
+						<a href="post.html">
+							<section class="post-content" id="post-content-1">
+								<p>
+									It has survived not only five centuries, but
+									also the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with desktop
+									publishing software like Aldus PageMaker
+									including versions of Lorem Ipsum. t has
+									survived not only five centuries, but also
+									the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with deskt. It
+									has survived not only five centuries, but
+									also the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with desktop
+									publishing software like Aldus PageMaker
+									including versions of Lorem Ipsum. t has
+									survived not only five centuries, but also
+									the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with deskt.
+								</p>
+							</section>
+						</a>
+						<footer>
+							<section
+								class="reaction-container comment-container"
+							>
+								<button>
+									<span class="visually-hidden"
+										>Comentar post</span
+									>
+								</button>
+								<p>20</p>
+							</section>
+							<section class="reaction-container like-container">
+								<button class="unlike">
+									<span class="visually-hidden"
+										>Dar favorito al post</span
+									>
+								</button>
+								<p>1008</p>
+							</section>
+							<section class="reaction-container share-container">
+								<button class="share-button" data-post-id="1">
+									<span class="visually-hidden"
+										>Compartir post</span
+									>
+								</button>
+							</section>
+						</footer>
+					</article>
+					<article
+						tabindex="0"
+						class="post"
+						id="post_1"
+						aria-posinset="1"
+						aria-setsize="3"
+						aria-labelledby="post-1-song-title post-1-artist-title"
+						aria-describedby="post-content-1"
+					>
+						<figure>
+							<section class="post-img">
+								<img
+									loading="lazy"
+									height="100px"
+									width="100px"
+									class="post-img image-border"
+									src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
+									alt="Portada del álbum 'Preacher`s Daughter' de Ethel Cain"
+								/>
+								<section class="hidden">
+									<a href="/">
+										<img
+											src="../assets/icons/expand-content-svgrepo-com.svg"
+											alt="Song info"
+											width="20px"
+											height="20px"
+										/>
+									</a>
+									<button>
+										<img
+											src="../assets/icons/post-icon.svg"
+											alt="Song info"
+											width="20px"
+											height="20px"
+										/>
+									</button>
+								</section>
+							</section>
+							<section class="user-info">
+								<img
+									loading="lazy"
+									class="user-img"
+									height="25px"
+									width="25px"
+									src="https://i.pinimg.com/236x/94/7f/14/947f14841d26f5dc3541366a987b32f5.jpg"
+									alt="Imagen de perfil de 'Usuario 1'"
+								/>
+								<p class="user-name">
+									<a href="profile.html">Usuario 1</a>
+									<span>$username1</span>
+								</p>
+								<p class="post-time">hace 8 horas</p>
+							</section>
+							<figcaption>
+								<h3 class="song-title" id="post-1-song-title">
+									<a href="song.html"
+										>The Dark Side of the Moon</a
+									>
+								</h3>
+								<h4
+									class="artist-title"
+									id="post-1-artist-title"
+								>
+									Pink Floyd
+								</h4>
+								<span class="tag">Increible</span>
+								<span class="tag">Rock</span>
+								<span class="tag">Internacional</span>
+								<p class="stars">★★★★★</p>
+							</figcaption>
+						</figure>
+						<a href="post.html">
+							<section class="post-content" id="post-content-1">
+								<p>
+									It has survived not only five centuries, but
+									also the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with desktop
+									publishing software like Aldus PageMaker
+									including versions of Lorem Ipsum. t has
+									survived not only five centuries, but also
+									the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with deskt. It
+									has survived not only five centuries, but
+									also the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with desktop
+									publishing software like Aldus PageMaker
+									including versions of Lorem Ipsum. t has
+									survived not only five centuries, but also
+									the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with deskt.
+								</p>
+							</section>
+						</a>
+						<footer>
+							<section
+								class="reaction-container comment-container"
+							>
+								<button>
+									<span class="visually-hidden"
+										>Comentar post</span
+									>
+								</button>
+								<p>20</p>
+							</section>
+							<section class="reaction-container like-container">
+								<button class="unlike">
+									<span class="visually-hidden"
+										>Dar favorito al post</span
+									>
+								</button>
+								<p>1008</p>
+							</section>
+							<section class="reaction-container share-container">
+								<button class="share-button" data-post-id="1">
+									<span class="visually-hidden"
+										>Compartir post</span
+									>
+								</button>
+							</section>
+						</footer>
+					</article>
+					<article
+						tabindex="0"
+						class="post"
+						id="post_1"
+						aria-posinset="1"
+						aria-setsize="3"
+						aria-labelledby="post-1-song-title post-1-artist-title"
+						aria-describedby="post-content-1"
+					>
+						<figure>
+							<section class="post-img">
+								<img
+									loading="lazy"
+									height="100px"
+									width="100px"
+									class="post-img image-border"
+									src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
+									alt="Portada del álbum 'Preacher`s Daughter' de Ethel Cain"
+								/>
+								<section class="hidden">
+									<a href="/">
+										<img
+											src="../assets/icons/expand-content-svgrepo-com.svg"
+											alt="Song info"
+											width="20px"
+											height="20px"
+										/>
+									</a>
+									<button>
+										<img
+											src="../assets/icons/post-icon.svg"
+											alt="Song info"
+											width="20px"
+											height="20px"
+										/>
+									</button>
+								</section>
+							</section>
+							<section class="user-info">
+								<img
+									loading="lazy"
+									class="user-img"
+									height="25px"
+									width="25px"
+									src="https://i.pinimg.com/236x/94/7f/14/947f14841d26f5dc3541366a987b32f5.jpg"
+									alt="Imagen de perfil de 'Usuario 1'"
+								/>
+								<p class="user-name">
+									<a href="profile.html">Usuario 1</a>
+									<span>$username1</span>
+								</p>
+								<p class="post-time">hace 8 horas</p>
+							</section>
+							<figcaption>
+								<h3 class="song-title" id="post-1-song-title">
+									<a href="song.html"
+										>The Dark Side of the Moon</a
+									>
+								</h3>
+								<h4
+									class="artist-title"
+									id="post-1-artist-title"
+								>
+									Pink Floyd
+								</h4>
+								<span class="tag">Increible</span>
+								<span class="tag">Rock</span>
+								<span class="tag">Internacional</span>
+								<p class="stars">★★★★★</p>
+							</figcaption>
+						</figure>
+						<a href="post.html">
+							<section class="post-content" id="post-content-1">
+								<p>
+									It has survived not only five centuries, but
+									also the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with desktop
+									publishing software like Aldus PageMaker
+									including versions of Lorem Ipsum. t has
+									survived not only five centuries, but also
+									the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with deskt. It
+									has survived not only five centuries, but
+									also the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with desktop
+									publishing software like Aldus PageMaker
+									including versions of Lorem Ipsum. t has
+									survived not only five centuries, but also
+									the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with deskt.
+								</p>
+							</section>
+						</a>
+						<footer>
+							<section
+								class="reaction-container comment-container"
+							>
+								<button>
+									<span class="visually-hidden"
+										>Comentar post</span
+									>
+								</button>
+								<p>20</p>
+							</section>
+							<section class="reaction-container like-container">
+								<button class="unlike">
+									<span class="visually-hidden"
+										>Dar favorito al post</span
+									>
+								</button>
+								<p>1008</p>
+							</section>
+							<section class="reaction-container share-container">
+								<button class="share-button" data-post-id="1">
+									<span class="visually-hidden"
+										>Compartir post</span
+									>
+								</button>
+							</section>
+						</footer>
+					</article>
+				</section>
+			</section>
+			<section class="most-recent-posts">
+				<h2>Publicaciones más recientes</h2>
+				<section>
+					<article
+						tabindex="0"
+						class="post"
+						id="post_1"
+						aria-posinset="1"
+						aria-setsize="3"
+						aria-labelledby="post-1-song-title post-1-artist-title"
+						aria-describedby="post-content-1"
+					>
+						<figure>
+							<section class="post-img">
+								<img
+									loading="lazy"
+									height="100px"
+									width="100px"
+									class="post-img image-border"
+									src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
+									alt="Portada del álbum 'Preacher`s Daughter' de Ethel Cain"
+								/>
+								<section class="hidden">
+									<a href="/">
+										<img
+											src="../assets/icons/expand-content-svgrepo-com.svg"
+											alt="Song info"
+											width="20px"
+											height="20px"
+										/>
+									</a>
+									<button>
+										<img
+											src="../assets/icons/post-icon.svg"
+											alt="Song info"
+											width="20px"
+											height="20px"
+										/>
+									</button>
+								</section>
+							</section>
+							<section class="user-info">
+								<img
+									loading="lazy"
+									class="user-img"
+									height="25px"
+									width="25px"
+									src="https://i.pinimg.com/236x/94/7f/14/947f14841d26f5dc3541366a987b32f5.jpg"
+									alt="Imagen de perfil de 'Usuario 1'"
+								/>
+								<p class="user-name">
+									<a href="profile.html">Usuario 1</a>
+									<span>$username1</span>
+								</p>
+								<p class="post-time">hace 8 horas</p>
+							</section>
+							<figcaption>
+								<h3 class="song-title" id="post-1-song-title">
+									<a href="song.html"
+										>The Dark Side of the Moon</a
+									>
+								</h3>
+								<h4
+									class="artist-title"
+									id="post-1-artist-title"
+								>
+									Pink Floyd
+								</h4>
+								<span class="tag">Increible</span>
+								<span class="tag">Rock</span>
+								<span class="tag">Internacional</span>
+								<p class="stars">★★★★★</p>
+							</figcaption>
+						</figure>
+						<a href="post.html">
+							<section class="post-content" id="post-content-1">
+								<p>
+									It has survived not only five centuries, but
+									also the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with desktop
+									publishing software like Aldus PageMaker
+									including versions of Lorem Ipsum. t has
+									survived not only five centuries, but also
+									the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with deskt. It
+									has survived not only five centuries, but
+									also the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with desktop
+									publishing software like Aldus PageMaker
+									including versions of Lorem Ipsum. t has
+									survived not only five centuries, but also
+									the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with deskt.
+								</p>
+							</section>
+						</a>
+						<footer>
+							<section
+								class="reaction-container comment-container"
+							>
+								<button>
+									<span class="visually-hidden"
+										>Comentar post</span
+									>
+								</button>
+								<p>20</p>
+							</section>
+							<section class="reaction-container like-container">
+								<button class="unlike">
+									<span class="visually-hidden"
+										>Dar favorito al post</span
+									>
+								</button>
+								<p>1008</p>
+							</section>
+							<section class="reaction-container share-container">
+								<button class="share-button" data-post-id="1">
+									<span class="visually-hidden"
+										>Compartir post</span
+									>
+								</button>
+							</section>
+						</footer>
+					</article>
+					<article
+						tabindex="0"
+						class="post"
+						id="post_1"
+						aria-posinset="1"
+						aria-setsize="3"
+						aria-labelledby="post-1-song-title post-1-artist-title"
+						aria-describedby="post-content-1"
+					>
+						<figure>
+							<section class="post-img">
+								<img
+									loading="lazy"
+									height="100px"
+									width="100px"
+									class="post-img image-border"
+									src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
+									alt="Portada del álbum 'Preacher`s Daughter' de Ethel Cain"
+								/>
+								<section class="hidden">
+									<a href="/">
+										<img
+											src="../assets/icons/expand-content-svgrepo-com.svg"
+											alt="Song info"
+											width="20px"
+											height="20px"
+										/>
+									</a>
+									<button>
+										<img
+											src="../assets/icons/post-icon.svg"
+											alt="Song info"
+											width="20px"
+											height="20px"
+										/>
+									</button>
+								</section>
+							</section>
+							<section class="user-info">
+								<img
+									loading="lazy"
+									class="user-img"
+									height="25px"
+									width="25px"
+									src="https://i.pinimg.com/236x/94/7f/14/947f14841d26f5dc3541366a987b32f5.jpg"
+									alt="Imagen de perfil de 'Usuario 1'"
+								/>
+								<p class="user-name">
+									<a href="profile.html">Usuario 1</a>
+									<span>$username1</span>
+								</p>
+								<p class="post-time">hace 8 horas</p>
+							</section>
+							<figcaption>
+								<h3 class="song-title" id="post-1-song-title">
+									<a href="song.html"
+										>The Dark Side of the Moon</a
+									>
+								</h3>
+								<h4
+									class="artist-title"
+									id="post-1-artist-title"
+								>
+									Pink Floyd
+								</h4>
+								<span class="tag">Increible</span>
+								<span class="tag">Rock</span>
+								<span class="tag">Internacional</span>
+								<p class="stars">★★★★★</p>
+							</figcaption>
+						</figure>
+						<a href="post.html">
+							<section class="post-content" id="post-content-1">
+								<p>
+									It has survived not only five centuries, but
+									also the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with desktop
+									publishing software like Aldus PageMaker
+									including versions of Lorem Ipsum. t has
+									survived not only five centuries, but also
+									the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with deskt. It
+									has survived not only five centuries, but
+									also the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with desktop
+									publishing software like Aldus PageMaker
+									including versions of Lorem Ipsum. t has
+									survived not only five centuries, but also
+									the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with deskt.
+								</p>
+							</section>
+						</a>
+						<footer>
+							<section
+								class="reaction-container comment-container"
+							>
+								<button>
+									<span class="visually-hidden"
+										>Comentar post</span
+									>
+								</button>
+								<p>20</p>
+							</section>
+							<section class="reaction-container like-container">
+								<button class="unlike">
+									<span class="visually-hidden"
+										>Dar favorito al post</span
+									>
+								</button>
+								<p>1008</p>
+							</section>
+							<section class="reaction-container share-container">
+								<button class="share-button" data-post-id="1">
+									<span class="visually-hidden"
+										>Compartir post</span
+									>
+								</button>
+							</section>
+						</footer>
+					</article>
+					<article
+						tabindex="0"
+						class="post"
+						id="post_1"
+						aria-posinset="1"
+						aria-setsize="3"
+						aria-labelledby="post-1-song-title post-1-artist-title"
+						aria-describedby="post-content-1"
+					>
+						<figure>
+							<section class="post-img">
+								<img
+									loading="lazy"
+									height="100px"
+									width="100px"
+									class="post-img image-border"
+									src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
+									alt="Portada del álbum 'Preacher`s Daughter' de Ethel Cain"
+								/>
+								<section class="hidden">
+									<a href="/">
+										<img
+											src="../assets/icons/expand-content-svgrepo-com.svg"
+											alt="Song info"
+											width="20px"
+											height="20px"
+										/>
+									</a>
+									<button>
+										<img
+											src="../assets/icons/post-icon.svg"
+											alt="Song info"
+											width="20px"
+											height="20px"
+										/>
+									</button>
+								</section>
+							</section>
+							<section class="user-info">
+								<img
+									loading="lazy"
+									class="user-img"
+									height="25px"
+									width="25px"
+									src="https://i.pinimg.com/236x/94/7f/14/947f14841d26f5dc3541366a987b32f5.jpg"
+									alt="Imagen de perfil de 'Usuario 1'"
+								/>
+								<p class="user-name">
+									<a href="profile.html">Usuario 1</a>
+									<span>$username1</span>
+								</p>
+								<p class="post-time">hace 8 horas</p>
+							</section>
+							<figcaption>
+								<h3 class="song-title" id="post-1-song-title">
+									<a href="song.html"
+										>The Dark Side of the Moon</a
+									>
+								</h3>
+								<h4
+									class="artist-title"
+									id="post-1-artist-title"
+								>
+									Pink Floyd
+								</h4>
+								<span class="tag">Increible</span>
+								<span class="tag">Rock</span>
+								<span class="tag">Internacional</span>
+								<p class="stars">★★★★★</p>
+							</figcaption>
+						</figure>
+						<a href="post.html">
+							<section class="post-content" id="post-content-1">
+								<p>
+									It has survived not only five centuries, but
+									also the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with desktop
+									publishing software like Aldus PageMaker
+									including versions of Lorem Ipsum. t has
+									survived not only five centuries, but also
+									the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with deskt. It
+									has survived not only five centuries, but
+									also the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with desktop
+									publishing software like Aldus PageMaker
+									including versions of Lorem Ipsum. t has
+									survived not only five centuries, but also
+									the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with deskt.
+								</p>
+							</section>
+						</a>
+						<footer>
+							<section
+								class="reaction-container comment-container"
+							>
+								<button>
+									<span class="visually-hidden"
+										>Comentar post</span
+									>
+								</button>
+								<p>20</p>
+							</section>
+							<section class="reaction-container like-container">
+								<button class="unlike">
+									<span class="visually-hidden"
+										>Dar favorito al post</span
+									>
+								</button>
+								<p>1008</p>
+							</section>
+							<section class="reaction-container share-container">
+								<button class="share-button" data-post-id="1">
+									<span class="visually-hidden"
+										>Compartir post</span
+									>
+								</button>
+							</section>
+						</footer>
+					</article>
+					<article
+						tabindex="0"
+						class="post"
+						id="post_1"
+						aria-posinset="1"
+						aria-setsize="3"
+						aria-labelledby="post-1-song-title post-1-artist-title"
+						aria-describedby="post-content-1"
+					>
+						<figure>
+							<section class="post-img">
+								<img
+									loading="lazy"
+									height="100px"
+									width="100px"
+									class="post-img image-border"
+									src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
+									alt="Portada del álbum 'Preacher`s Daughter' de Ethel Cain"
+								/>
+								<section class="hidden">
+									<a href="/">
+										<img
+											src="../assets/icons/expand-content-svgrepo-com.svg"
+											alt="Song info"
+											width="20px"
+											height="20px"
+										/>
+									</a>
+									<button>
+										<img
+											src="../assets/icons/post-icon.svg"
+											alt="Song info"
+											width="20px"
+											height="20px"
+										/>
+									</button>
+								</section>
+							</section>
+							<section class="user-info">
+								<img
+									loading="lazy"
+									class="user-img"
+									height="25px"
+									width="25px"
+									src="https://i.pinimg.com/236x/94/7f/14/947f14841d26f5dc3541366a987b32f5.jpg"
+									alt="Imagen de perfil de 'Usuario 1'"
+								/>
+								<p class="user-name">
+									<a href="profile.html">Usuario 1</a>
+									<span>$username1</span>
+								</p>
+								<p class="post-time">hace 8 horas</p>
+							</section>
+							<figcaption>
+								<h3 class="song-title" id="post-1-song-title">
+									<a href="song.html"
+										>The Dark Side of the Moon</a
+									>
+								</h3>
+								<h4
+									class="artist-title"
+									id="post-1-artist-title"
+								>
+									Pink Floyd
+								</h4>
+								<span class="tag">Increible</span>
+								<span class="tag">Rock</span>
+								<span class="tag">Internacional</span>
+								<p class="stars">★★★★★</p>
+							</figcaption>
+						</figure>
+						<a href="post.html">
+							<section class="post-content" id="post-content-1">
+								<p>
+									It has survived not only five centuries, but
+									also the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with desktop
+									publishing software like Aldus PageMaker
+									including versions of Lorem Ipsum. t has
+									survived not only five centuries, but also
+									the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with deskt. It
+									has survived not only five centuries, but
+									also the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with desktop
+									publishing software like Aldus PageMaker
+									including versions of Lorem Ipsum. t has
+									survived not only five centuries, but also
+									the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with deskt.
+								</p>
+							</section>
+						</a>
+						<footer>
+							<section
+								class="reaction-container comment-container"
+							>
+								<button>
+									<span class="visually-hidden"
+										>Comentar post</span
+									>
+								</button>
+								<p>20</p>
+							</section>
+							<section class="reaction-container like-container">
+								<button class="unlike">
+									<span class="visually-hidden"
+										>Dar favorito al post</span
+									>
+								</button>
+								<p>1008</p>
+							</section>
+							<section class="reaction-container share-container">
+								<button class="share-button" data-post-id="1">
+									<span class="visually-hidden"
+										>Compartir post</span
+									>
+								</button>
+							</section>
+						</footer>
+					</article>
+					<article
+						tabindex="0"
+						class="post"
+						id="post_1"
+						aria-posinset="1"
+						aria-setsize="3"
+						aria-labelledby="post-1-song-title post-1-artist-title"
+						aria-describedby="post-content-1"
+					>
+						<figure>
+							<section class="post-img">
+								<img
+									loading="lazy"
+									height="100px"
+									width="100px"
+									class="post-img image-border"
+									src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
+									alt="Portada del álbum 'Preacher`s Daughter' de Ethel Cain"
+								/>
+								<section class="hidden">
+									<a href="/">
+										<img
+											src="../assets/icons/expand-content-svgrepo-com.svg"
+											alt="Song info"
+											width="20px"
+											height="20px"
+										/>
+									</a>
+									<button>
+										<img
+											src="../assets/icons/post-icon.svg"
+											alt="Song info"
+											width="20px"
+											height="20px"
+										/>
+									</button>
+								</section>
+							</section>
+							<section class="user-info">
+								<img
+									loading="lazy"
+									class="user-img"
+									height="25px"
+									width="25px"
+									src="https://i.pinimg.com/236x/94/7f/14/947f14841d26f5dc3541366a987b32f5.jpg"
+									alt="Imagen de perfil de 'Usuario 1'"
+								/>
+								<p class="user-name">
+									<a href="profile.html">Usuario 1</a>
+									<span>$username1</span>
+								</p>
+								<p class="post-time">hace 8 horas</p>
+							</section>
+							<figcaption>
+								<h3 class="song-title" id="post-1-song-title">
+									<a href="song.html"
+										>The Dark Side of the Moon</a
+									>
+								</h3>
+								<h4
+									class="artist-title"
+									id="post-1-artist-title"
+								>
+									Pink Floyd
+								</h4>
+								<span class="tag">Increible</span>
+								<span class="tag">Rock</span>
+								<span class="tag">Internacional</span>
+								<p class="stars">★★★★★</p>
+							</figcaption>
+						</figure>
+						<a href="post.html">
+							<section class="post-content" id="post-content-1">
+								<p>
+									It has survived not only five centuries, but
+									also the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with desktop
+									publishing software like Aldus PageMaker
+									including versions of Lorem Ipsum. t has
+									survived not only five centuries, but also
+									the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with deskt. It
+									has survived not only five centuries, but
+									also the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with desktop
+									publishing software like Aldus PageMaker
+									including versions of Lorem Ipsum. t has
+									survived not only five centuries, but also
+									the leap into electronic typesetting,
+									remaining essentially unchanged. It was
+									popularised in the 1960s with the release of
+									Letraset sheets containing Lorem Ipsum
+									passages, and more recently with deskt.
+								</p>
+							</section>
+						</a>
+						<footer>
+							<section
+								class="reaction-container comment-container"
+							>
+								<button>
+									<span class="visually-hidden"
+										>Comentar post</span
+									>
+								</button>
+								<p>20</p>
+							</section>
+							<section class="reaction-container like-container">
+								<button class="unlike">
+									<span class="visually-hidden"
+										>Dar favorito al post</span
+									>
+								</button>
+								<p>1008</p>
+							</section>
+							<section class="reaction-container share-container">
+								<button class="share-button" data-post-id="1">
+									<span class="visually-hidden"
+										>Compartir post</span
+									>
+								</button>
+							</section>
+						</footer>
+					</article>
+				</section>
 			</section>
 		</main>
 
