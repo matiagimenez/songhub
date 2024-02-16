@@ -1,0 +1,13 @@
+.icon {
+	font-size: 18px;
+}
+
+.share-icon {
+	color: var(--color-violet-darkest);
+}
+
+@media (prefers-color-scheme: dark) {
+	.share-icon {
+		color: var(--color-white);
+	}
+}

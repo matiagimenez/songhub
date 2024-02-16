@@ -56,19 +56,15 @@ body {
 	font-size: 0.9rem;
 }
 
-.song-section .song-stats button {
+.song-section .song-stats button.share-button {
 	position: absolute;
 	top: 0px;
 	right: 20px;
 	height: 18px;
 	width: 18px;
-	background-image: url('../assets/icons/post-icons/share.svg');
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
+	cursor: pointer;
 	border: none;
 	background-color: transparent;
-	color: var(--color-violet-darkest);
 }
 
 .song-section section.song-stats {
