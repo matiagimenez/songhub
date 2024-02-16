@@ -14,6 +14,27 @@ function create_modal() {
     e.key === 'Escape' && close_modal(modal);
   })
 
+  modal.addEventListener('keydown', function (event) {
+    var modalContent = document.querySelector('.modal-content');
+    var modalElements = modalContent.querySelectorAll('button, input, select, textarea, a[href]');
+    var firstElement = modalElements[0];
+    var lastElement = modalElements[modalElements.length - 1];
+
+    if (event.key === 'Tab') {
+      if (event.shiftKey) {
+        if (document.activeElement === firstElement) {
+          lastElement.focus();
+          event.preventDefault();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          firstElement.focus();
+          event.preventDefault();
+        }
+      }
+    }
+  });
+
   const modal_content = ElementBuilder.createElement('section', '', {
     class: "modal-content"
   })
@@ -85,8 +106,13 @@ function create_modal() {
     placeholder: "ej. Trap"
   })
 
-  input_tag.addEventListener('change', (event) => {
-    tag_text = event.target.value;
+  input_tag.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      createNewTag();
+      event.preventDefault();
+    } else {
+      tag_text = event.target.value;
+    }
   })
 
   const tags = ElementBuilder.createElement('section', '', {
@@ -102,7 +128,7 @@ function create_modal() {
     class: "max_tags_message"
   })
 
-  tag_button.addEventListener('click', () => {
+  function createNewTag() {
     if (tag_text !== "") {
       if (tags_count < 3) {
         const tag = ElementBuilder.createElement('span', tag_text, {
@@ -120,6 +146,10 @@ function create_modal() {
         view_max_tags_message();
       }
     }
+  }
+
+  tag_button.addEventListener('click', () => {
+    createNewTag()
   })
 
   function add_tag(tag) {
@@ -262,6 +292,7 @@ function create_modal() {
   document.body.appendChild(modal);
 
 }
+
 
 const post_form_openers = document.querySelectorAll(".post-form-opener")
 
