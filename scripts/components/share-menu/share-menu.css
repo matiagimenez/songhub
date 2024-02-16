@@ -57,6 +57,7 @@ button.share-menu-item {
 	line-height: 2;
 	cursor: pointer;
 	font-size: 0.75rem;
+	border: none;
 }
 
 button.share-menu-item::after {

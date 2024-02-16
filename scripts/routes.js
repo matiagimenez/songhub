@@ -69,7 +69,7 @@ export const routes = {
 		{
 			scriptName: 'modal-form',
 			scriptPath: '../scripts/components/modal-form/modal-form.js',
-		}
+		},
 	],
 	'/post': [
 		{
@@ -139,6 +139,10 @@ export const routes = {
 		{
 			scriptName: 'modal-form',
 			scriptPath: '../scripts/components/modal-form/modal-form.js',
+		},
+		{
+			scriptName: 'share-menu',
+			scriptPath: '../scripts/components/share-menu/share-menu.js',
 		},
 	],
 	'/edit-profile': [

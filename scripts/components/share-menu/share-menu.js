@@ -28,10 +28,17 @@ shareButtons.forEach((button) => {
 
 	copyToClipboardItem.addEventListener('click', (event) => {
 		const postId = button.getAttribute('data-post-id');
+		const songId = button.getAttribute('data-song-id');
+		let link = '';
 		// const currentUrl = window.location.href;
 		// navigator.clipboard.writeText(currentUrl);
-		const postLink = `http://localhost:3000/post.html?id=${postId}`;
-		navigator.clipboard.writeText(postLink);
+		if (songId) {
+			link = `http://localhost:3000/song.html?id=${songId}`;
+		} else if (postId) {
+			link = `http://localhost:3000/post.html?id=${postId}`;
+		}
+
+		navigator.clipboard.writeText(link);
 
 		const popUp = ElementBuilder.createElement('div', 'Link copiado', {
 			class: 'popup',
@@ -44,11 +51,20 @@ shareButtons.forEach((button) => {
 
 	createTweetItem.addEventListener('click', (event) => {
 		const postId = button.getAttribute('data-post-id');
+		const songId = button.getAttribute('data-song-id');
+		let tweet = '';
+		let link = '';
 		const postContent = button.getAttribute('data-post-content');
+		if (songId) {
+			link = `http://localhost:3000/song.html?id=${songId}`;
+			tweet = `¿Te gustaría dejar tu opinión sobre sobre "${postContent}"? Crea tu post en Songhub: 
+			${link}`;
+		} else if (postId) {
+			link = `http://localhost:3000/post.html?id=${postId}`;
+			tweet = `Te puede interesar mi post sobre "${postContent}" en Songhub: 
+			${postLink}`;
+		}
 
-		const postLink = `http://localhost:3000/post.html?id=${postId}`;
-		const tweet = `Te puede interesar mi post sobre "${postContent}" en Songhub: 
-						${postLink}`;
 		const tweetUrl = `https://twitter.com/intent/tweet?text=${tweet}`;
 		window.open(tweetUrl, '_blank');
 	});
