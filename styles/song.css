@@ -5,3 +5,84 @@
 body {
 	font-family: var(--font-family);
 }
+
+.song-section figure {
+	width: 100%;
+	padding: 8px;
+	margin-top: 16px;
+}
+
+.song-section figure img {
+	height: 190px;
+	width: 190px;
+}
+
+.song-section figure figcaption {
+	margin-top: 12px;
+	color: var(--color-violet-darkest);
+}
+
+.song-section figure figcaption p {
+	font-size: 0.95rem;
+	color: var(--color-black);
+}
+
+.song-section figure figcaption h2 {
+	padding: 4px 0;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.song-section figure figcaption h3 {
+	padding: 4px 0;
+	font-size: 1.2rem;
+}
+
+.song-section figure figcaption p.artist-info {
+	display: flex;
+	padding: 4px 2px;
+	align-items: center;
+	color: var(--color-black);
+}
+
+.song-section figure figcaption p.artist-info img {
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	margin-right: 8px;
+}
+
+.song-section figure figcaption p.artist-info span {
+	font-size: 0.9rem;
+}
+
+.song-section .song-stats button {
+	position: absolute;
+	top: 0px;
+	right: 20px;
+	height: 18px;
+	width: 18px;
+	background-image: url('../assets/icons/post-icons/share.svg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	border: none;
+	background-color: transparent;
+	color: var(--color-violet-darkest);
+}
+
+.song-section section.song-stats {
+	position: relative;
+	max-width: 400px;
+}
+
+@media (prefers-color-scheme: dark) {
+	.song-section figure figcaption {
+		color: var(--color-white);
+	}
+
+	.song-section figure figcaption h2,
+	.song-section figure figcaption h3 {
+		color: var(--color-violet-light-white);
+	}
+}
