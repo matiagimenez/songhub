@@ -118,7 +118,7 @@
 .rating-share-container {
   margin-bottom: 10px;
   display: grid;
-  grid-template-columns: 80% 20%;
+  grid-template-columns: 90% 10%;
 }
 
 .rating {
@@ -136,8 +136,9 @@
 }
 
 .rating section {
-  margin-left: 10px;
+  margin: 0 4px;
 }
+
 
 .rating-star {
   width: 25px;
@@ -147,6 +148,7 @@
   background-size: cover;
   margin: 0;
 }
+
 
 .unfilled-star {
   background-image: url("../../assets/icons/rating-star.svg");
@@ -159,6 +161,8 @@
 .filled-star {
   background-image: url("../../assets/icons/rating-star-scored.svg");
 }
+
+.rating p {}
 
 .rating,
 .rating section:hover,

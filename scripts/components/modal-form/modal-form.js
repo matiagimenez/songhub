@@ -268,10 +268,15 @@ function create_modal() {
       for (let j = 0; j <= i; j++) {
         starsList[j].classList.add('filled-star')
       }
-      score_rating = i;
+      score_rating = i + 1;
+      rating_value.innerText = score_rating + ' stars'
     })
     stars.appendChild(star)
   }
+
+  const rating_value = ElementBuilder.createElement('p', '0 stars', {
+    class: "rating_value"
+  })
 
   const input_rate = ElementBuilder.createElement('input', '', {
     type: "hidden",
@@ -286,6 +291,7 @@ function create_modal() {
 
   rating.appendChild(valoración_label);
   rating.appendChild(stars);
+  rating.appendChild(rating_value);
   rating.appendChild(input_rate);
 
   const share_span = ElementBuilder.createElement('span', 'share', {
