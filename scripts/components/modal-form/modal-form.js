@@ -22,12 +22,6 @@ posts.forEach((post) => {
     class: "post-form-opener"
   })
 
-  create_post.addEventListener('click', () => {
-    main_header.classList.add("hidden");
-    document.body.classList.add("none-scroll")
-    create_modal();
-  })
-
   buttons_container.appendChild(view_song)
   buttons_container.appendChild(create_post)
   const img = post.querySelector('.post-img');
