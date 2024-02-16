@@ -4,17 +4,29 @@ export const routes = {
 			scriptName: 'input-animation',
 			scriptPath: '../scripts/animations/input-animation.js',
 		},
+		{
+			scriptName: 'set-meta-url',
+			scriptPath: '../scripts/other/setMetaUrl.js',
+		},
 	],
 	'/register': [
 		{
 			scriptName: 'input-animation',
 			scriptPath: '../scripts/animations/input-animation.js',
 		},
+		{
+			scriptName: 'set-meta-url',
+			scriptPath: '../scripts/other/setMetaUrl.js',
+		},
 	],
 	'/explore': [
 		{
 			scriptName: 'menu-animation',
 			scriptPath: '../scripts/animations/menu-animation.js',
+		},
+		{
+			scriptName: 'set-meta-url',
+			scriptPath: '../scripts/other/setMetaUrl.js',
 		},
 	],
 	'/followers': [
@@ -26,6 +38,10 @@ export const routes = {
 			scriptName: 'action-button-animation',
 			scriptPath: '../scripts/animations/action-button-animation.js',
 		},
+		{
+			scriptName: 'set-meta-url',
+			scriptPath: '../scripts/other/setMetaUrl.js',
+		},
 	],
 	'/following': [
 		{
@@ -35,6 +51,10 @@ export const routes = {
 		{
 			scriptName: 'action-button-animation',
 			scriptPath: '../scripts/animations/action-button-animation.js',
+		},
+		{
+			scriptName: 'set-meta-url',
+			scriptPath: '../scripts/other/setMetaUrl.js',
 		},
 	],
 	'/home': [
@@ -70,6 +90,10 @@ export const routes = {
 			scriptName: 'modal-form',
 			scriptPath: '../scripts/components/modal-form/modal-form.js',
 		},
+		{
+			scriptName: 'set-meta-url',
+			scriptPath: '../scripts/other/setMetaUrl.js',
+		},
 	],
 	'/post': [
 		{
@@ -84,11 +108,19 @@ export const routes = {
 			scriptName: 'share-menu',
 			scriptPath: '../scripts/components/share-menu/share-menu.js',
 		},
+		{
+			scriptName: 'set-meta-url',
+			scriptPath: '../scripts/other/setMetaUrl.js',
+		},
 	],
 	'/profile-edit': [
 		{
 			scriptName: 'menu-animation',
 			scriptPath: '../scripts/animations/menu-animation.js',
+		},
+		{
+			scriptName: 'set-meta-url',
+			scriptPath: '../scripts/other/setMetaUrl.js',
 		},
 	],
 	'/profile': [
@@ -112,11 +144,19 @@ export const routes = {
 			scriptName: 'action-button-animation',
 			scriptPath: '../scripts/animations/action-button-animation.js',
 		},
+		{
+			scriptName: 'set-meta-url',
+			scriptPath: '../scripts/other/setMetaUrl.js',
+		},
 	],
 	'/search': [
 		{
 			scriptName: 'menu-animation',
 			scriptPath: '../scripts/animations/menu-animation.js',
+		},
+		{
+			scriptName: 'set-meta-url',
+			scriptPath: '../scripts/other/setMetaUrl.js',
 		},
 	],
 	'/song': [
@@ -144,6 +184,10 @@ export const routes = {
 			scriptName: 'share-menu',
 			scriptPath: '../scripts/components/share-menu/share-menu.js',
 		},
+		{
+			scriptName: 'set-meta-url',
+			scriptPath: '../scripts/other/setMetaUrl.js',
+		},
 	],
 	'/edit-profile': [
 		{
@@ -154,11 +198,19 @@ export const routes = {
 			scriptName: 'remove-favourite-animation',
 			scriptPath: '../scripts/animations/remove-favourite-animation.js',
 		},
+		{
+			scriptName: 'set-meta-url',
+			scriptPath: '../scripts/other/setMetaUrl.js',
+		},
 	],
 	'/terms-conditions': [
 		{
 			scriptName: 'menu-animation',
 			scriptPath: '../scripts/animations/menu-animation.js',
+		},
+		{
+			scriptName: 'set-meta-url',
+			scriptPath: '../scripts/other/setMetaUrl.js',
 		},
 	],
 };
