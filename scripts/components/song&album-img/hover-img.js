@@ -32,6 +32,7 @@ posts.forEach((post) => {
 
 function clickImgAction(buttons_container, more_button) {
 	more_button.addEventListener('click', () => {
+		console.log(window.innerWidth)
 		if (window.innerWidth < 1000) {
 			buttons_container.classList.contains('hidden') ? buttons_container.classList.remove('hidden') : buttons_container.classList.add('hidden');
 		}
@@ -39,12 +40,13 @@ function clickImgAction(buttons_container, more_button) {
 }
 
 function hoverImgAction(img, buttons_container) {
-	img.addEventListener('mouseover', () => {
+	img.addEventListener('mouseenter', () => {
+		console.log(window.innerWidth)
 		if (window.innerWidth >= 1000) {
 			buttons_container.classList.remove('hidden');
 		}
 	});
-	img.addEventListener('mouseout', () => {
+	img.addEventListener('mouseleave', () => {
 		if (window.innerWidth >= 1000) {
 			buttons_container.classList.add('hidden');
 		}
