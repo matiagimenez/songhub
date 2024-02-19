@@ -86,10 +86,10 @@ export const routes = {
 			scriptName: 'post-content',
 			scriptPath: '../scripts/components/post/post-content.js',
 		},
-		{
-			scriptName: 'hover-img',
-			scriptPath: '../scripts/components/song&album-img/hover-img.js',
-		},
+		// {
+		// 	scriptName: 'hover-img',
+		// 	scriptPath: '../scripts/components/song&album-img/hover-img.js',
+		// },
 		{
 			scriptName: 'modal-form',
 			scriptPath: '../scripts/components/modal-form/modal-form.js',
@@ -144,10 +144,10 @@ export const routes = {
 			scriptName: 'share-menu',
 			scriptPath: '../scripts/components/share-menu/share-menu.js',
 		},
-		{
-			scriptName: 'hover-img',
-			scriptPath: '../scripts/components/song&album-img/hover-img.js',
-		},
+		// {
+		// 	scriptName: 'hover-img',
+		// 	scriptPath: '../scripts/components/song&album-img/hover-img.js',
+		// },
 		{
 			scriptName: 'action-button-animation',
 			scriptPath: '../scripts/animations/action-button-animation.js',
@@ -184,10 +184,10 @@ export const routes = {
 			scriptName: 'post-content',
 			scriptPath: '../scripts/components/post/post-content.js',
 		},
-		{
-			scriptName: 'hover-img',
-			scriptPath: '../scripts/components/song&album-img/hover-img.js',
-		},
+		// {
+		// 	scriptName: 'hover-img',
+		// 	scriptPath: '../scripts/components/song&album-img/hover-img.js',
+		// },
 		{
 			scriptName: 'modal-form',
 			scriptPath: '../scripts/components/modal-form/modal-form.js',
