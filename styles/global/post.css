@@ -247,6 +247,10 @@
 	background-image: url('../../assets/icons/post-icons/yellow_star.svg');
 }
 
+.reaction-container:hover {
+	cursor: pointer;
+}
+
 @media (min-width: 375px) {
 	.user-info {
 		position: relative;

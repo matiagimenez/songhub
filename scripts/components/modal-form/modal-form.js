@@ -178,8 +178,8 @@ function create_modal() {
     class: "add-tag-button submit-button"
   })
 
-  const max_tags_message = ElementBuilder.createElement('p', 'No es posible agregar más de 3 etiquetas.', {
-    class: "max_tags_message"
+  const error_message = ElementBuilder.createElement('p', '', {
+    class: "error-message"
   })
 
   function createNewTag() {
@@ -197,7 +197,7 @@ function create_modal() {
         tag.appendChild(remove_tag_button);
         add_tag(tag);
       } else {
-        view_max_tags_message();
+        view_error_message('No es posible agregar más de 3 etiquetas.');
       }
     }
   }
@@ -226,10 +226,11 @@ function create_modal() {
   tag_section.appendChild(tag_button);
   tag_section.appendChild(tags);
 
-  function view_max_tags_message() {
-    tag_section.appendChild(max_tags_message);
+  function view_error_message(text) {
+    error_message.innerText = text;
+    tag_section.appendChild(error_message);
     setTimeout(function () {
-      max_tags_message.remove();
+      error_message.remove();
     }, 2000);
   }
 
@@ -265,11 +266,16 @@ function create_modal() {
         s.classList.remove('filled-star')
         s.classList.add('unfilled-star')
       })
-      for (let j = 0; j <= i; j++) {
-        starsList[j].classList.add('filled-star')
+      if ((i + 1) !== score_rating) {
+        for (let j = 0; j <= i; j++) {
+          starsList[j].classList.add('filled-star')
+        }
+        score_rating = i + 1;
+      } else {
+        score_rating = 0;
       }
-      score_rating = i + 1;
       rating_value.innerText = score_rating + ' stars'
+      input_rate.value = score_rating;
     })
     stars.appendChild(star)
   }
@@ -279,12 +285,15 @@ function create_modal() {
   })
 
   const input_rate = ElementBuilder.createElement('input', '', {
-    type: "hidden",
+    type: "number",
+    class: "hidden",
     value: score_rating,
     name: "rate",
     id: "rate",
-    required: true
+    required: true,
+    min: "1"
   })
+
   const rating = ElementBuilder.createElement('p', '', {
     class: "rating"
   })
@@ -326,6 +335,12 @@ function create_modal() {
     type: "submit",
     value: "Postear",
     class: "submit-button postear-button"
+  })
+
+  postear_button.addEventListener('click', () => {
+    if (score_rating === 0) {
+      view_error_message('No es posible postear una canción con 0 estrellas.')
+    }
   })
 
   const submit_container = ElementBuilder.createElement('section', '', {

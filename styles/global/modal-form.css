@@ -211,7 +211,7 @@
   border-color: var(--color-green-dark);
 }
 
-.max_tags_message {
+.error-message {
   position: absolute;
   top: 80%;
   left: 0.4rem;
@@ -273,7 +273,7 @@
     margin-left: 10px;
   }
 
-  .max_tags_message {
+  .error-message {
     left: 20%;
     right: 20%;
   }
