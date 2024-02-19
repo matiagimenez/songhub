@@ -1,5 +1,6 @@
 .post {
 	margin-top: 1rem;
+	padding: 2px;
 	width: 100%;
 	border-bottom: 1px solid var(--color-grey-very-light);
 }
@@ -24,7 +25,6 @@
 .post-img:hover {
 	cursor: pointer;
 }
-
 
 .post-img section {
 	background-color: var(--color-black);
@@ -61,7 +61,6 @@
 	background-image: url('../../assets/icons/post-icon.svg');
 }
 
-
 .post-img section a {
 	background-image: url('../../assets/icons/expand-content-svgrepo-com.svg');
 	background-size: cover;
@@ -80,8 +79,6 @@
 	cursor: pointer;
 	opacity: 80%;
 }
-
-
 
 .user-info {
 	display: flex;
@@ -280,6 +277,10 @@
 	.share-container button {
 		background-size: 16px;
 	}
+
+	.post {
+		padding: 8px;
+	}
 }
 
 @media (min-width: 1000px) {
@@ -341,7 +342,6 @@
 		max-width: 80%;
 	}
 }
-
 
 @media (prefers-color-scheme: dark) {
 	.user-name a {
