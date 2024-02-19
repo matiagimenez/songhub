@@ -73,6 +73,7 @@
 	height: 5rem;
 	padding: 10px;
 	resize: none;
+	font-size: 0.95rem;
 }
 
 .tags-section {
@@ -85,6 +86,7 @@
 	max-width: 200px;
 	height: 2rem;
 	display: inline;
+	font-size: 0.8rem;
 	margin-bottom: 10px;
 }
 
@@ -166,33 +168,10 @@
 	margin-left: 4px;
 }
 
-.share-container {
-	margin: auto;
-	margin-right: 0;
-}
-
-.share-button {
-	background: none;
-	border: none;
-	background-image: url('./assets/post-icons/share.svg');
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-	border-radius: 50%;
-	width: 40px;
-	height: 40px;
-}
-
 @keyframes button-shadow {
 	to {
 		box-shadow: inset 0px 0px 50px var(--color-violet-light-white);
 	}
-}
-
-.share-button:hover {
-	cursor: pointer;
-	animation: button-shadow 200ms forwards;
-	animation-delay: 0ms;
 }
 
 .submit-container {

@@ -178,7 +178,7 @@ function create_modal() {
 		class: 'input input-tag',
 		type: 'text',
 		name: 'tag',
-		placeholder: 'ej. Trap',
+		placeholder: 'Increible, Rock...',
 	});
 
 	input_tag.addEventListener('keydown', (event) => {
@@ -331,31 +331,10 @@ function create_modal() {
 	rating.appendChild(rating_value);
 	rating.appendChild(input_rate);
 
-	const share_span = ElementBuilder.createElement('span', 'share', {
-		class: 'hidden',
-	});
-	const share_button = ElementBuilder.createElement('button', '', {
-		class: 'share-button',
-		type: 'button',
-	});
-	share_button.appendChild(share_span);
-	const share_container = ElementBuilder.createElement('p', '', {
-		class: 'share-container',
-	});
-
-	share_container.appendChild(share_button);
-
-	const rating_share_container = ElementBuilder.createElement('section', '', {
-		class: 'rating-share-container',
-	});
-
-	rating_share_container.appendChild(rating);
-	rating_share_container.appendChild(share_container);
-
-	const volver_button = ElementBuilder.createElement('button', 'Volver', {
+	const back_button = ElementBuilder.createElement('button', 'Volver', {
 		class: 'cancel-button',
 	});
-	volver_button.addEventListener('click', () => {
+	back_button.addEventListener('click', () => {
 		close_modal(modal);
 	});
 
@@ -377,7 +356,7 @@ function create_modal() {
 		class: 'submit-container',
 	});
 
-	submit_container.appendChild(volver_button);
+	submit_container.appendChild(back_button);
 	submit_container.appendChild(postear_button);
 
 	const form = ElementBuilder.createElement('form', '', {
@@ -387,7 +366,6 @@ function create_modal() {
 
 	form.appendChild(textarea);
 	form.appendChild(tag_section);
-	form.appendChild(rating_share_container);
 	form.appendChild(submit_container);
 
 	modal_content.appendChild(figure);
