@@ -56,15 +56,35 @@ body {
 	font-size: 0.9rem;
 }
 
-.song-section .song-stats button.share-button {
+.song-actions {
+	position: relative;
+	max-width: 305px;
+	height: 40px;
+	padding-left: 8px;
+}
+
+.song-actions .submit-button {
+	min-width: 200px;
+}
+
+.song-actions button.share-button,
+.song-actions button.heart-button {
 	position: absolute;
-	top: 0px;
-	right: 20px;
 	height: 18px;
 	width: 18px;
 	cursor: pointer;
 	border: none;
 	background-color: transparent;
+}
+
+.song-actions button.share-button {
+	top: 10px;
+	right: 20px;
+}
+
+.song-actions button.heart-button {
+	top: 10px;
+	right: 56px;
 }
 
 .song-section section.song-stats {
@@ -130,9 +150,17 @@ section.most-recent-posts article:last-child {
 		font-size: 1.4rem;
 	}
 
-	.song-section .song-stats button.share-button {
+	.song-actions .song-stats button.share-button,
+	.song-actions .song-stats button.heart-button {
 		top: 16px;
 		right: 100px;
+	}
+}
+
+@media (min-width: 1000px) {
+	.song-section figure img {
+		height: 220px;
+		width: 220px;
 	}
 }
 
