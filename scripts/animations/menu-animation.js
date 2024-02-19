@@ -29,14 +29,11 @@ window.onload = function () {
 };
 
 document.addEventListener('click', (event) => {
-	console.log(event.target);
 	if (
 		event.target === menuButton ||
 		event.target.classList.contains('open-menu-icon') ||
 		event.target.classList.contains('close-menu-icon')
 	) {
-		console.log('a');
-
 		if (menu.classList.contains('hidden')) {
 			body.classList.add('none-scroll');
 			menu.classList.remove('close-menu');
