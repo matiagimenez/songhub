@@ -18,6 +18,30 @@
 	color: var(--color-white);
 }
 
+.open-menu-icon {
+	font-size: 32px;
+	min-height: 20px;
+	min-width: 20px;
+}
+
+.close-menu-icon {
+	font-size: 22px;
+}
+
+.open-menu-icon,
+.close-menu-icon {
+	color: var(--color-white);
+	background: transparent;
+	z-index: 100;
+	position: relative;
+}
+
+/* .open-menu-icon::before,
+.close-menu-icon::before {
+	position: relative;
+	z-index: -1;
+} */
+
 .heart-icon.active {
 	color: var(--color-red);
 }

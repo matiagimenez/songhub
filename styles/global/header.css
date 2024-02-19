@@ -50,18 +50,6 @@ h1 img {
 	background-repeat: no-repeat;
 }
 
-.open-menu-button {
-	background-image: url('../../assets/icons/open-menu.svg');
-}
-
-.close-menu-button {
-	background-image: url('../../assets/icons/close-menu.svg');
-}
-
-.menu-button span {
-	font-size: 2.2rem;
-}
-
 .header-nav ul {
 	display: flex;
 	padding: 1rem;

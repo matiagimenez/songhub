@@ -1,5 +1,5 @@
 const menuButton = document.querySelector('.menu-button');
-const menuButtonContent = document.querySelector('.menu-button span');
+const menuButtonContent = document.querySelector('.menu-button i');
 const menu = document.querySelector('.header-nav ul');
 const body = document.body;
 const main = document.querySelector('main');
@@ -10,8 +10,6 @@ function updateMenuVisibility() {
 		body.classList.remove('none-scroll');
 		menu.classList.remove('view-menu');
 		menu.classList.remove('close-menu');
-		menuButton.classList.remove('close-menu-button');
-		menuButton.classList.add('open-menu-button');
 		menuButton.setAttribute('aria-hidden', 'false');
 		menuButton.setAttribute('aria-expanded', 'false');
 		menu.setAttribute('aria-hidden', 'true');
@@ -31,21 +29,27 @@ window.onload = function () {
 };
 
 document.addEventListener('click', (event) => {
-	if (event.target === menuButton || event.target === menuButtonContent) {
+	console.log(event.target);
+	if (
+		event.target === menuButton ||
+		event.target.classList.contains('open-menu-icon') ||
+		event.target.classList.contains('close-menu-icon')
+	) {
+		console.log('a');
+
 		if (menu.classList.contains('hidden')) {
 			body.classList.add('none-scroll');
 			menu.classList.remove('close-menu');
 			menu.classList.remove('hidden');
 			menu.classList.add('view-menu');
-			menuButton.classList.remove('open-menu-button');
-			menuButton.classList.add('close-menu-button');
+			menuButton.innerHTML =
+				'<i class="ph-bold ph-x close-menu-icon"></i>';
 			main.style.opacity = 0.3;
 		} else {
 			body.classList.remove('none-scroll');
 			menu.classList.remove('view-menu');
 			menu.classList.add('close-menu');
-			menuButton.classList.remove('close-menu-button');
-			menuButton.classList.add('open-menu-button');
+			menuButton.innerHTML = '<i class="ph ph-list open-menu-icon"></i>';
 			setTimeout(function () {
 				menu.classList.add('hidden');
 			}, 400);
@@ -73,8 +77,8 @@ document.addEventListener('keyup', (event) => {
 		if (event.key === 'Escape') {
 			menu.classList.remove('view-menu');
 			menu.classList.add('close-menu');
-			menuButton.classList.remove('close-menu-button');
-			menuButton.classList.add('open-menu-button');
+			menuButton.innerHTML = '<i class="ph ph-list open-menu-icon"></i>';
+
 			setTimeout(function () {
 				menu.classList.add('hidden');
 			}, 400);
