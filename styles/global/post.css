@@ -303,6 +303,7 @@
 		height: 180px;
 		width: 180px;
 		grid-row: 2;
+		position: initial;
 	}
 
 	.post-img .more-container {
