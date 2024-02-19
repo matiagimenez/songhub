@@ -2,9 +2,23 @@
 	font-size: 20px;
 }
 
-.share-icon,
+.share-icon {
+	color: var(--color-violet-darkest);
+}
 .heart-icon {
 	color: var(--color-violet-darkest);
+}
+
+.heart-icon.active {
+	color: var(--color-red);
+}
+
+.share-icon:hover {
+	filter: brightness(0.8);
+}
+
+.heart-icon:hover {
+	color: var(--color-red);
 }
 
 @media (prefers-color-scheme: dark) {

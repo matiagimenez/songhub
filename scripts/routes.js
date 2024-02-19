@@ -189,6 +189,10 @@ export const routes = {
 			scriptPath: '../scripts/components/share-menu/share-menu.js',
 		},
 		{
+			scriptName: 'favourite-button-animation',
+			scriptPath: '../scripts/animations/favourite-button-animation.js',
+		},
+		{
 			scriptName: 'set-meta-url',
 			scriptPath: '../scripts/other/setMetaUrl.js',
 		},
