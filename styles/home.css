@@ -58,6 +58,10 @@
 	position: relative;
 }
 
+section.feed article:last-child {
+	border-bottom: none;
+}
+
 .feed a.create-post {
 	position: fixed;
 	bottom: 60px;

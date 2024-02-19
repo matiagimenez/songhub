@@ -170,6 +170,10 @@ header .user p .username {
 	margin-top: 16px;
 }
 
+section.recent-activity article:last-child {
+	border-bottom: none;
+}
+
 @media (min-width: 400px) {
 	main header {
 		display: flex;
