@@ -19,11 +19,13 @@ articles.forEach((article) => {
 	const view_song = ElementBuilder.createElement('a', '', {
 		href: '/views/song.html',
 	});
-	view_song.innerHTML = '<i class="ph-fill ph-music-notes icon"></i>';
+	view_song.innerHTML =
+		'<i class="ph-fill ph-music-notes icon song-icon"></i>';
 	const create_post = ElementBuilder.createElement('button', '', {
 		class: 'post-form-opener',
 	});
-	create_post.innerHTML = '<i class="ph-fill ph-note-pencil icon post-icon"></i>';
+	create_post.innerHTML =
+		'<i class="ph-fill ph-note-pencil icon post-icon"></i>';
 
 	buttons_container.appendChild(view_song);
 	buttons_container.appendChild(create_post);
@@ -101,6 +103,7 @@ function create_modal() {
 	const close_button = ElementBuilder.createElement('button', '', {
 		class: 'close-button',
 	});
+	close_button.innerHTML = '<i class="ph-bold ph-x icon close-icon"></i>';
 	close_button.addEventListener('click', () => {
 		close_modal(modal);
 	});

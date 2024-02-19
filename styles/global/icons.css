@@ -2,10 +2,9 @@
 	font-size: 20px;
 }
 
+.share-icon,
+.close-icon,
 .share-icon {
-	color: var(--color-violet-darkest);
-}
-.heart-icon {
 	color: var(--color-violet-darkest);
 }
 
@@ -14,7 +13,8 @@
 	color: var(--color-white);
 }
 
-.post-icon {
+.post-icon,
+.song-icon {
 	color: var(--color-white);
 }
 
@@ -22,9 +22,12 @@
 	font-size: 32px;
 	min-height: 20px;
 	min-width: 20px;
+	color: var(--color-white);
 }
 
 .close-menu-icon {
+	min-height: 20px;
+	min-width: 20px;
 	font-size: 22px;
 }
 
@@ -36,11 +39,11 @@
 	position: relative;
 }
 
-/* .open-menu-icon::before,
+.open-menu-icon::before,
 .close-menu-icon::before {
 	position: relative;
 	z-index: -1;
-} */
+}
 
 .heart-icon.active {
 	color: var(--color-red);
@@ -56,7 +59,8 @@
 
 @media (prefers-color-scheme: dark) {
 	.share-icon,
-	.heart-icon {
+	.close-icon,
+	.share-icon {
 		color: var(--color-white);
 	}
 }
