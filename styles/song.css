@@ -103,6 +103,39 @@ section.most-recent-posts article:last-child {
 	border-bottom: none;
 }
 
+@media (min-width: 600px) {
+	.song-section {
+		position: relative;
+	}
+
+	.song-section figure {
+		display: flex;
+		gap: 24px;
+	}
+
+	.song-section section.song-stats {
+		max-width: 550px;
+	}
+
+	.song-section section.song-stats h2 {
+		font-size: 1.2rem;
+	}
+
+	.song-section section.song-stats p.qualification span.number,
+	.song-section section.song-stats p.posts-amount {
+		font-size: 1rem;
+	}
+	.song-section section.song-stats p.qualification span.stars {
+		min-width: 95px;
+		font-size: 1.4rem;
+	}
+
+	.song-section .song-stats button.share-button {
+		top: 16px;
+		right: 100px;
+	}
+}
+
 @media (prefers-color-scheme: dark) {
 	.song-section figure figcaption {
 		color: var(--color-white);
