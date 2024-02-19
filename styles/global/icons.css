@@ -60,7 +60,9 @@
 @media (prefers-color-scheme: dark) {
 	.share-icon,
 	.close-icon,
-	.share-icon {
+	.share-icon,
+	.heart-icon,
+	.comment-icon {
 		color: var(--color-white);
 	}
 }
