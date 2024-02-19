@@ -9,45 +9,45 @@
 	grid-template-columns: 110px auto;
 }
 
-.post-img {
+.article-img-container {
 	display: grid;
-	height: 100px;
-	width: 100px;
 	border-radius: 10px;
 	grid-row: span 3;
+	width: 100px;
+	height: 100px;
 }
 
-.post-img img {
+.article-img-container img {
 	position: absolute;
 }
 
-.post-img:hover {
+.article-img-container:hover {
 	cursor: pointer;
 }
 
 
-.post-img section {
+.article-img-container section {
 	background-color: var(--color-black);
 	z-index: 10;
 	display: flex;
 }
 
-.post-img section button {
+.article-img-container section button {
 	background-size: cover;
 	background-color: transparent;
 }
 
-.post-img .more-container {
+.article-img-container .more-container {
 	border-radius: 100%;
 	padding: 2px;
 	margin: 6px auto auto 6px;
 }
 
-.post-img .more-container button {
+.article-img-container .more-container button {
 	background-image: url('../../assets/icons/more-button.svg');
 }
 
-.post-img .buttons-container {
+.article-img-container .buttons-container {
 	width: 80px;
 	height: 35px;
 	margin: auto auto 6px auto;
@@ -57,26 +57,26 @@
 	justify-content: center;
 }
 
-.post-img .buttons-container button {
+.article-img-container .buttons-container button {
 	background-image: url('../../assets/icons/post-icon.svg');
 }
 
 
-.post-img section a {
+.article-img-container section a {
 	background-image: url('../../assets/icons/expand-content-svgrepo-com.svg');
 	background-size: cover;
 }
 
-.post-img section button,
-.post-img section a {
+.article-img-container section button,
+.article-img-container section a {
 	margin: auto;
 	width: 20px;
 	height: 20px;
 	border: none;
 }
 
-.post-img section button:hover,
-.post-img section a:hover {
+.article-img-container section button:hover,
+.article-img-container section a:hover {
 	cursor: pointer;
 	opacity: 80%;
 }
@@ -250,7 +250,7 @@
 	background-image: url('../../assets/icons/post-icons/yellow_star.svg');
 }
 
-.reaction-container:hover {
+.action-container:hover {
 	cursor: pointer;
 }
 
@@ -292,13 +292,17 @@
 		row-gap: 0.8rem;
 	}
 
-	.post-img {
-		height: 180px;
-		width: 180px;
+	.article-img-container {
 		grid-row: 2;
 	}
 
-	.post-img .more-container {
+	.article-img-container,
+	.article-img-container img {
+		height: 180px;
+		width: 180px;
+	}
+
+	.article-img-container .more-container {
 		visibility: hidden;
 	}
 
