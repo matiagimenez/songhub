@@ -1,393 +1,410 @@
-import { ElementBuilder } from "../../utils/ElementBuilder.js";
+import { ElementBuilder } from '../../utils/ElementBuilder.js';
 
 const articles = document.querySelectorAll('.add-modal-access');
 
 articles.forEach((article) => {
+	const more_container = ElementBuilder.createElement('section', '', {
+		class: 'more-container',
+	});
+	const more_button = ElementBuilder.createElement('button', '', {
+		class: 'more-button',
+	});
+	more_button.innerHTML =
+		'<i class="ph-fill ph-dots-three-outline icon more-icon"></i>';
+	more_container.appendChild(more_button);
 
-  const more_container = ElementBuilder.createElement('section', '', {
-    class: "more-container"
-  })
-  const more_button = ElementBuilder.createElement('button', '...', {
-    class: "more-button"
-  })
-  more_container.appendChild(more_button)
+	const buttons_container = ElementBuilder.createElement('section', '', {
+		class: 'hidden buttons-container',
+	});
+	const view_song = ElementBuilder.createElement('a', '', {
+		href: '/views/song.html',
+	});
+	view_song.innerHTML = '<i class="ph-fill ph-music-notes icon"></i>';
+	const create_post = ElementBuilder.createElement('button', '', {
+		class: 'post-form-opener',
+	});
+	create_post.innerHTML = '<i class="ph-fill ph-note-pencil icon post-icon"></i>';
 
-  const buttons_container = ElementBuilder.createElement('section', '', {
-    class: "hidden buttons-container"
-  })
-  const view_song = ElementBuilder.createElement('a', '', {
-    href: "/views/song.html"
-  })
-  const create_post = ElementBuilder.createElement('button', '', {
-    class: "post-form-opener"
-  })
-
-  buttons_container.appendChild(view_song)
-  buttons_container.appendChild(create_post)
-  const img = article.querySelector('.article-img-container');
-  img.appendChild(more_container);
-  img.appendChild(buttons_container);
-  hoverImgAction(img, buttons_container);
-  clickImgAction(buttons_container, more_button);
+	buttons_container.appendChild(view_song);
+	buttons_container.appendChild(create_post);
+	const img = article.querySelector('.article-img-container');
+	img.appendChild(more_container);
+	img.appendChild(buttons_container);
+	hoverImgAction(img, buttons_container);
+	clickImgAction(buttons_container, more_button);
 });
 
 function clickImgAction(buttons_container, more_button) {
-  more_button.addEventListener('click', () => {
-    console.log(window.innerWidth)
-    if (window.innerWidth < 1000) {
-      buttons_container.classList.contains('hidden') ? buttons_container.classList.remove('hidden') : buttons_container.classList.add('hidden');
-    }
-  })
+	more_button.addEventListener('click', () => {
+		console.log(window.innerWidth);
+		if (window.innerWidth < 1000) {
+			buttons_container.classList.contains('hidden')
+				? buttons_container.classList.remove('hidden')
+				: buttons_container.classList.add('hidden');
+		}
+	});
 }
 
 function hoverImgAction(img, buttons_container) {
-  img.addEventListener('mouseenter', () => {
-    if (window.innerWidth >= 1000) {
-      buttons_container.classList.remove('hidden');
-    }
-  });
-  img.addEventListener('mouseleave', () => {
-    if (window.innerWidth >= 1000) {
-      buttons_container.classList.add('hidden');
-    }
-  });
+	img.addEventListener('mouseenter', () => {
+		if (window.innerWidth >= 1000) {
+			buttons_container.classList.remove('hidden');
+		}
+	});
+	img.addEventListener('mouseleave', () => {
+		if (window.innerWidth >= 1000) {
+			buttons_container.classList.add('hidden');
+		}
+	});
 }
-
 
 function create_modal() {
+	const modal = ElementBuilder.createElement('section', '', {
+		class: 'modal',
+	});
 
-  const modal = ElementBuilder.createElement('section', '', {
-    class: "modal",
-  })
+	document.addEventListener('click', (e) => {
+		e.target === modal && close_modal(modal);
+	});
 
-  document.addEventListener('click', (e) => {
-    e.target === modal && close_modal(modal);
-  })
+	document.addEventListener('keyup', (e) => {
+		e.key === 'Escape' && close_modal(modal);
+	});
 
-  document.addEventListener('keyup', (e) => {
-    e.key === 'Escape' && close_modal(modal);
-  })
+	modal.addEventListener('keydown', function (event) {
+		var modalContent = document.querySelector('.modal-content');
+		var modalElements = modalContent.querySelectorAll(
+			'button, input, select, textarea, a[href]'
+		);
+		var firstElement = modalElements[0];
+		var lastElement = modalElements[modalElements.length - 1];
 
-  modal.addEventListener('keydown', function (event) {
-    var modalContent = document.querySelector('.modal-content');
-    var modalElements = modalContent.querySelectorAll('button, input, select, textarea, a[href]');
-    var firstElement = modalElements[0];
-    var lastElement = modalElements[modalElements.length - 1];
+		if (event.key === 'Tab') {
+			if (event.shiftKey) {
+				if (document.activeElement === firstElement) {
+					lastElement.focus();
+					event.preventDefault();
+				}
+			} else {
+				if (document.activeElement === lastElement) {
+					firstElement.focus();
+					event.preventDefault();
+				}
+			}
+		}
+	});
 
-    if (event.key === 'Tab') {
-      if (event.shiftKey) {
-        if (document.activeElement === firstElement) {
-          lastElement.focus();
-          event.preventDefault();
-        }
-      } else {
-        if (document.activeElement === lastElement) {
-          firstElement.focus();
-          event.preventDefault();
-        }
-      }
-    }
-  });
+	const modal_content = ElementBuilder.createElement('section', '', {
+		class: 'modal-content',
+	});
 
-  const modal_content = ElementBuilder.createElement('section', '', {
-    class: "modal-content"
-  })
+	const close_button = ElementBuilder.createElement('button', '', {
+		class: 'close-button',
+	});
+	close_button.addEventListener('click', () => {
+		close_modal(modal);
+	});
+	modal_content.appendChild(close_button);
 
-  const close_button = ElementBuilder.createElement('button', '', { class: "close-button" });
-  close_button.addEventListener('click', () => {
-    close_modal(modal);
-  })
-  modal_content.appendChild(close_button);
+	const main_image = ElementBuilder.createElement('img', '', {
+		src: 'https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg',
+		alt: "Portada del álbum 'The Dark Side of the Moon' de Pink Floyd",
+		width: '200px',
+		height: '200px',
+		class: 'image-border',
+	});
 
-  const main_image = ElementBuilder.createElement('img', '', {
-    src: "https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg",
-    alt: "Portada del álbum 'The Dark Side of the Moon' de Pink Floyd",
-    width: "200px",
-    height: "200px",
-    class: "image-border"
-  })
+	const type = ElementBuilder.createElement('p', 'Canción', {
+		class: 'type-title',
+	});
+	const title = ElementBuilder.createElement('h2', 'Comfortubly Numb', {
+		class: 'song-title title',
+	});
 
-  const type = ElementBuilder.createElement('p', 'Canción', { class: "type-title" })
-  const title = ElementBuilder.createElement('h2', 'Comfortubly Numb', { class: "song-title title" })
+	const figcaption = ElementBuilder.createElement('figcaption', '', {});
 
-  const figcaption = ElementBuilder.createElement('figcaption', '', {})
+	figcaption.appendChild(type);
+	figcaption.appendChild(title);
 
-  figcaption.appendChild(type);
-  figcaption.appendChild(title);
+	const img = ElementBuilder.createElement('img', '', {
+		src: 'https://i.pinimg.com/236x/20/cc/b2/20ccb24df9750b08d764e574fcec5f5d.jpg',
+		alt: "Imagen de perfil de 'Pink Floyd'",
+		height: '50px',
+		width: '50px',
+	});
+	const artist_span_name = ElementBuilder.createElement(
+		'span',
+		'Pink Floyd · 1973',
+		{}
+	);
 
+	const artist_info = ElementBuilder.createElement('p', '', {
+		class: 'artist-info',
+	});
 
+	artist_info.appendChild(img);
+	artist_info.appendChild(artist_span_name);
 
-  const img = ElementBuilder.createElement('img', '', {
-    src: "https://i.pinimg.com/236x/20/cc/b2/20ccb24df9750b08d764e574fcec5f5d.jpg",
-    alt: "Imagen de perfil de 'Pink Floyd'",
-    height: "50px",
-    width: "50px",
-  })
-  const artist_span_name = ElementBuilder.createElement('span', 'Pink Floyd · 1973', {})
+	const figure = ElementBuilder.createElement('figure', '', {});
 
-  const artist_info = ElementBuilder.createElement('p', '', {
-    class: 'artist-info'
-  })
+	figure.appendChild(main_image);
+	figure.appendChild(figcaption);
+	figure.appendChild(artist_info);
 
-  artist_info.appendChild(img);
-  artist_info.appendChild(artist_span_name);
+	const textarea = ElementBuilder.createElement('textarea', '', {
+		placeholder: 'Agrega una descripción...',
+		name: 'description',
+		id: 'description',
+		cols: '40',
+		rows: '10',
+		class: 'input',
+		required: true,
+	});
 
+	let tag_text = '';
+	let tags_count = 0;
 
-  const figure = ElementBuilder.createElement('figure', '', {})
+	const input_tag = ElementBuilder.createElement('input', '', {
+		class: 'input input-tag',
+		type: 'text',
+		name: 'tag',
+		placeholder: 'ej. Trap',
+	});
 
-  figure.appendChild(main_image);
-  figure.appendChild(figcaption);
-  figure.appendChild(artist_info);
+	input_tag.addEventListener('keydown', (event) => {
+		if (event.key === 'Enter') {
+			createNewTag();
+			event.preventDefault();
+		} else {
+			tag_text = event.target.value;
+		}
+	});
 
+	const tags = ElementBuilder.createElement('section', '', {
+		class: 'tags',
+	});
 
-  const textarea = ElementBuilder.createElement('textarea', '', {
-    placeholder: "Agrega una descripción...",
-    name: "description",
-    id: "description",
-    cols: "40",
-    rows: "10",
-    class: "input",
-    required: true
-  })
+	const tag_button = ElementBuilder.createElement('button', '+ Agregar Tag', {
+		type: 'button',
+		class: 'add-tag-button submit-button',
+	});
 
-  let tag_text = "";
-  let tags_count = 0;
+	const error_message = ElementBuilder.createElement('p', '', {
+		class: 'error-message',
+	});
 
-  const input_tag = ElementBuilder.createElement('input', '', {
-    class: "input input-tag",
-    type: "text",
-    name: "tag",
-    placeholder: "ej. Trap"
-  })
+	function createNewTag() {
+		if (tag_text !== '') {
+			if (tags_count < 3) {
+				const tag = ElementBuilder.createElement('span', tag_text, {
+					class: 'tag',
+				});
+				const remove_tag_button = ElementBuilder.createElement(
+					'button',
+					'',
+					{
+						class: 'remove-tag-button',
+					}
+				);
+				remove_tag_button.addEventListener('click', () => {
+					remove_tag(tag);
+				});
+				tag.appendChild(remove_tag_button);
+				add_tag(tag);
+			} else {
+				view_error_message('No es posible agregar más de 3 etiquetas.');
+			}
+		}
+	}
 
-  input_tag.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-      createNewTag();
-      event.preventDefault();
-    } else {
-      tag_text = event.target.value;
-    }
-  })
+	tag_button.addEventListener('click', () => {
+		createNewTag();
+	});
 
-  const tags = ElementBuilder.createElement('section', '', {
-    class: "tags"
-  })
+	function add_tag(tag) {
+		tags.appendChild(tag);
+		tag_text = '';
+		input_tag.value = '';
+		tags_count += 1;
+	}
 
-  const tag_button = ElementBuilder.createElement('button', '+ Agregar Tag', {
-    type: "button",
-    class: "add-tag-button submit-button"
-  })
+	function remove_tag(tag) {
+		tag.remove();
+		tags_count -= 1;
+	}
 
-  const error_message = ElementBuilder.createElement('p', '', {
-    class: "error-message"
-  })
+	const tag_section = ElementBuilder.createElement('p', '', {
+		class: 'tags-section',
+	});
 
-  function createNewTag() {
-    if (tag_text !== "") {
-      if (tags_count < 3) {
-        const tag = ElementBuilder.createElement('span', tag_text, {
-          class: "tag"
-        })
-        const remove_tag_button = ElementBuilder.createElement('button', '', {
-          class: "remove-tag-button"
-        })
-        remove_tag_button.addEventListener('click', () => {
-          remove_tag(tag);
-        })
-        tag.appendChild(remove_tag_button);
-        add_tag(tag);
-      } else {
-        view_error_message('No es posible agregar más de 3 etiquetas.');
-      }
-    }
-  }
+	tag_section.appendChild(input_tag);
+	tag_section.appendChild(tag_button);
+	tag_section.appendChild(tags);
 
-  tag_button.addEventListener('click', () => {
-    createNewTag()
-  })
+	function view_error_message(text) {
+		error_message.innerText = text;
+		tag_section.appendChild(error_message);
+		setTimeout(function () {
+			error_message.remove();
+		}, 2000);
+	}
 
-  function add_tag(tag) {
-    tags.appendChild(tag);
-    tag_text = "";
-    input_tag.value = "";
-    tags_count += 1;
-  }
+	const valoración_label = ElementBuilder.createElement(
+		'label',
+		'Valoración',
+		{
+			for: 'rate',
+		}
+	);
+	const stars = ElementBuilder.createElement('section', '', {});
 
-  function remove_tag(tag) {
-    tag.remove();
-    tags_count -= 1;
-  }
+	let starsList = [];
+	let score_rating = 0;
+	for (let i = 0; i < 5; i++) {
+		const star = ElementBuilder.createElement('button', '', {
+			class: 'rating-star unfilled-star',
+			type: 'button',
+		});
+		starsList.push(star);
+		star.addEventListener('mouseover', () => {
+			for (let j = 0; j <= i; j++) {
+				starsList[j].classList.remove('unfilled-star');
+				starsList[j].classList.add('hover-filled-star');
+			}
+		});
+		star.addEventListener('mouseout', () => {
+			for (let j = 0; j <= i; j++) {
+				starsList[j].classList.remove('hover-filled-star');
+				starsList[j].classList.add('unfilled-star');
+			}
+		});
+		star.addEventListener('click', () => {
+			starsList.forEach((s) => {
+				s.classList.remove('hover-filled-star');
+				s.classList.remove('filled-star');
+				s.classList.add('unfilled-star');
+			});
+			if (i + 1 !== score_rating) {
+				for (let j = 0; j <= i; j++) {
+					starsList[j].classList.add('filled-star');
+				}
+				score_rating = i + 1;
+			} else {
+				score_rating = 0;
+			}
+			rating_value.innerText = score_rating + ' stars';
+			input_rate.value = score_rating;
+		});
+		stars.appendChild(star);
+	}
 
-  const tag_section = ElementBuilder.createElement('p', '', {
-    class: "tags-section"
-  })
+	const rating_value = ElementBuilder.createElement('p', '0 stars', {
+		class: 'rating_value',
+	});
 
-  tag_section.appendChild(input_tag);
-  tag_section.appendChild(tag_button);
-  tag_section.appendChild(tags);
+	const input_rate = ElementBuilder.createElement('input', '', {
+		type: 'number',
+		class: 'hidden',
+		value: score_rating,
+		name: 'rate',
+		id: 'rate',
+		required: true,
+		min: '1',
+	});
 
-  function view_error_message(text) {
-    error_message.innerText = text;
-    tag_section.appendChild(error_message);
-    setTimeout(function () {
-      error_message.remove();
-    }, 2000);
-  }
+	const rating = ElementBuilder.createElement('p', '', {
+		class: 'rating',
+	});
 
+	rating.appendChild(valoración_label);
+	rating.appendChild(stars);
+	rating.appendChild(rating_value);
+	rating.appendChild(input_rate);
 
-  const valoración_label = ElementBuilder.createElement('label', 'Valoración', {
-    for: "rate"
-  })
-  const stars = ElementBuilder.createElement('section', '', {})
+	const share_span = ElementBuilder.createElement('span', 'share', {
+		class: 'hidden',
+	});
+	const share_button = ElementBuilder.createElement('button', '', {
+		class: 'share-button',
+		type: 'button',
+	});
+	share_button.appendChild(share_span);
+	const share_container = ElementBuilder.createElement('p', '', {
+		class: 'share-container',
+	});
 
-  let starsList = []
-  let score_rating = 0;
-  for (let i = 0; i < 5; i++) {
-    const star = ElementBuilder.createElement('button', '', {
-      class: "rating-star unfilled-star",
-      type: "button"
-    })
-    starsList.push(star);
-    star.addEventListener('mouseover', () => {
-      for (let j = 0; j <= i; j++) {
-        starsList[j].classList.remove('unfilled-star')
-        starsList[j].classList.add('hover-filled-star')
-      }
-    })
-    star.addEventListener('mouseout', () => {
-      for (let j = 0; j <= i; j++) {
-        starsList[j].classList.remove('hover-filled-star')
-        starsList[j].classList.add('unfilled-star')
-      }
-    })
-    star.addEventListener('click', () => {
-      starsList.forEach((s) => {
-        s.classList.remove('hover-filled-star')
-        s.classList.remove('filled-star')
-        s.classList.add('unfilled-star')
-      })
-      if ((i + 1) !== score_rating) {
-        for (let j = 0; j <= i; j++) {
-          starsList[j].classList.add('filled-star')
-        }
-        score_rating = i + 1;
-      } else {
-        score_rating = 0;
-      }
-      rating_value.innerText = score_rating + ' stars'
-      input_rate.value = score_rating;
-    })
-    stars.appendChild(star)
-  }
+	share_container.appendChild(share_button);
 
-  const rating_value = ElementBuilder.createElement('p', '0 stars', {
-    class: "rating_value"
-  })
+	const rating_share_container = ElementBuilder.createElement('section', '', {
+		class: 'rating-share-container',
+	});
 
-  const input_rate = ElementBuilder.createElement('input', '', {
-    type: "number",
-    class: "hidden",
-    value: score_rating,
-    name: "rate",
-    id: "rate",
-    required: true,
-    min: "1"
-  })
+	rating_share_container.appendChild(rating);
+	rating_share_container.appendChild(share_container);
 
-  const rating = ElementBuilder.createElement('p', '', {
-    class: "rating"
-  })
+	const volver_button = ElementBuilder.createElement('button', 'Volver', {
+		class: 'cancel-button',
+	});
+	volver_button.addEventListener('click', () => {
+		close_modal(modal);
+	});
 
-  rating.appendChild(valoración_label);
-  rating.appendChild(stars);
-  rating.appendChild(rating_value);
-  rating.appendChild(input_rate);
+	const postear_button = ElementBuilder.createElement('input', '', {
+		type: 'submit',
+		value: 'Postear',
+		class: 'submit-button postear-button',
+	});
 
-  const share_span = ElementBuilder.createElement('span', 'share', {
-    class: "hidden"
-  })
-  const share_button = ElementBuilder.createElement('button', '', {
-    class: 'share-button',
-    type: "button"
-  })
-  share_button.appendChild(share_span)
-  const share_container = ElementBuilder.createElement('p', '', {
-    class: "share-container"
-  })
+	postear_button.addEventListener('click', () => {
+		if (score_rating === 0) {
+			view_error_message(
+				'No es posible postear una canción con 0 estrellas.'
+			);
+		}
+	});
 
-  share_container.appendChild(share_button);
+	const submit_container = ElementBuilder.createElement('section', '', {
+		class: 'submit-container',
+	});
 
-  const rating_share_container = ElementBuilder.createElement('section', '', {
-    class: "rating-share-container"
-  });
+	submit_container.appendChild(volver_button);
+	submit_container.appendChild(postear_button);
 
-  rating_share_container.appendChild(rating)
-  rating_share_container.appendChild(share_container)
+	const form = ElementBuilder.createElement('form', '', {
+		action: '',
+		method: 'GET',
+	});
 
-  const volver_button = ElementBuilder.createElement('button', 'Volver', {
-    class: "cancel-button"
-  })
-  volver_button.addEventListener('click', () => {
-    close_modal(modal);
-  })
+	form.appendChild(textarea);
+	form.appendChild(tag_section);
+	form.appendChild(rating_share_container);
+	form.appendChild(submit_container);
 
-  const postear_button = ElementBuilder.createElement('input', '', {
-    type: "submit",
-    value: "Postear",
-    class: "submit-button postear-button"
-  })
+	modal_content.appendChild(figure);
+	modal_content.appendChild(form);
+	modal.appendChild(modal_content);
 
-  postear_button.addEventListener('click', () => {
-    if (score_rating === 0) {
-      view_error_message('No es posible postear una canción con 0 estrellas.')
-    }
-  })
-
-  const submit_container = ElementBuilder.createElement('section', '', {
-    class: "submit-container"
-  })
-
-  submit_container.appendChild(volver_button);
-  submit_container.appendChild(postear_button);
-
-  const form = ElementBuilder.createElement('form', '', {
-    action: "",
-    method: "GET"
-  })
-
-  form.appendChild(textarea);
-  form.appendChild(tag_section);
-  form.appendChild(rating_share_container);
-  form.appendChild(submit_container);
-
-  modal_content.appendChild(figure);
-  modal_content.appendChild(form);
-  modal.appendChild(modal_content);
-
-  document.body.appendChild(modal);
-
+	document.body.appendChild(modal);
 }
 
+const post_form_openers = document.querySelectorAll('.post-form-opener');
 
-const post_form_openers = document.querySelectorAll(".post-form-opener")
-
-
-const create_post = document.getElementById("create-post");
+const create_post = document.getElementById('create-post');
 // const go_to_top = document.getElementById("go-to-top");
-const main_header = document.getElementById("main-header");
+const main_header = document.getElementById('main-header');
 
 post_form_openers.forEach((opener) => {
-  opener.addEventListener('click', () => {
-    create_post.classList.add("hidden");
-    // go_to_top.classList.add("hidden");
-    main_header.classList.add("hidden");
-    document.body.classList.add("none-scroll")
-    create_modal();
-  })
+	opener.addEventListener('click', () => {
+		create_post.classList.add('hidden');
+		// go_to_top.classList.add("hidden");
+		main_header.classList.add('hidden');
+		document.body.classList.add('none-scroll');
+		create_modal();
+	});
 });
 
 function close_modal(modal) {
-  modal.remove();
-  main_header.classList.remove("hidden");
-  document.body.classList.remove("none-scroll")
+	modal.remove();
+	main_header.classList.remove('hidden');
+	document.body.classList.remove('none-scroll');
 }

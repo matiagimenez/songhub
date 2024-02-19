@@ -9,6 +9,15 @@
 	color: var(--color-violet-darkest);
 }
 
+.more-icon {
+	font-size: 14px;
+	color: var(--color-white);
+}
+
+.post-icon {
+	color: var(--color-white);
+}
+
 .heart-icon.active {
 	color: var(--color-red);
 }
