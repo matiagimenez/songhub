@@ -1,8 +1,8 @@
 import { ElementBuilder } from "../../utils/ElementBuilder.js";
 
-const posts = document.querySelectorAll('.post');
+const articles = document.querySelectorAll('.add-modal-access');
 
-posts.forEach((post) => {
+articles.forEach((article) => {
 
   const more_container = ElementBuilder.createElement('section', '', {
     class: "more-container"
@@ -24,7 +24,7 @@ posts.forEach((post) => {
 
   buttons_container.appendChild(view_song)
   buttons_container.appendChild(create_post)
-  const img = post.querySelector('.post-img');
+  const img = article.querySelector('.article-img-container');
   img.appendChild(more_container);
   img.appendChild(buttons_container);
   hoverImgAction(img, buttons_container);
