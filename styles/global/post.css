@@ -195,59 +195,14 @@
 	border-radius: 100%;
 	width: 22px;
 	height: 22px;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: 16px;
-}
-
-.reaction-container:hover button:first-child {
-	cursor: pointer;
-	animation: button-shadow 200ms forwards;
-	animation-delay: 0ms;
-}
-
-.reaction-container.share-container:hover button:first-child {
-	cursor: pointer;
-	animation: none;
-	animation-delay: 0ms;
-}
-
-.like-container:hover button:first-child {
-	cursor: pointer;
-	animation: favorite-button-shadow 200ms forwards;
-	animation-delay: 0ms;
-}
-
-@keyframes button-shadow {
-	to {
-		box-shadow: inset 0px 0px 50px var(--color-violet-light-white);
-	}
-}
-
-@keyframes favorite-button-shadow {
-	to {
-		box-shadow: inset 0px 0px 50px var(--color-yellow);
-		opacity: 0.6;
-	}
-}
-
-.share-container button {
-	background-image: url('../../assets/icons/post-icons/share.svg');
-	background-size: 14px;
 	position: relative;
 	top: 1px;
+	right: 1px;
+	cursor: pointer;
 }
 
-.comment-container button {
-	background-image: url('../../assets/icons/post-icons/comment.svg');
-}
-
-.like-container .unlike {
-	background-image: url('../../assets/icons/post-icons/star.svg');
-}
-
-.like-container .like {
-	background-image: url('../../assets/icons/post-icons/yellow_star.svg');
+.like-container button {
+	top: 3px;
 }
 
 .action-container:hover {
@@ -273,16 +228,8 @@
 }
 
 @media (min-width: 425px) {
-	.reaction-container button {
-		background-size: 18px;
-	}
-
 	.post footer section p {
 		font-size: 0.9rem;
-	}
-
-	.share-container button {
-		background-size: 16px;
 	}
 
 	.post {
@@ -370,25 +317,6 @@
 
 	.post {
 		margin-top: 1.5rem;
-	}
-
-	@keyframes button-shadow {
-		to {
-			box-shadow: inset 0px 0px 50px var(--color-violet-lightest);
-			opacity: 80%;
-		}
-	}
-
-	.share-container button {
-		background-image: url('../../assets/icons/post-icons/dark_mode_share.svg');
-	}
-
-	.comment-container button {
-		background-image: url('../../assets/icons/post-icons/dark_mode_comment.svg');
-	}
-
-	.like-container .unlike {
-		background-image: url('../../assets/icons/post-icons/dark_mode_star.svg');
 	}
 
 	.post a.read-more {

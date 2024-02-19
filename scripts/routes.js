@@ -98,6 +98,10 @@ export const routes = {
 			scriptName: 'set-meta-url',
 			scriptPath: '../scripts/other/setMetaUrl.js',
 		},
+		{
+			scriptName: 'favourite-button-animation',
+			scriptPath: '../scripts/animations/favourite-button-animation.js',
+		},
 	],
 	'/post': [
 		{
@@ -151,6 +155,10 @@ export const routes = {
 		{
 			scriptName: 'set-meta-url',
 			scriptPath: '../scripts/other/setMetaUrl.js',
+		},
+		{
+			scriptName: 'favourite-button-animation',
+			scriptPath: '../scripts/animations/favourite-button-animation.js',
 		},
 	],
 	'/search': [
