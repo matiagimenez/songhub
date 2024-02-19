@@ -1,5 +1,6 @@
 .post {
 	margin-top: 1rem;
+	padding: 2px;
 	width: 100%;
 	border-bottom: 1px solid var(--color-grey-very-light);
 }
@@ -12,6 +13,7 @@
 .article-img-container {
 	display: grid;
 	border-radius: 10px;
+	position: relative;
 	grid-row: span 3;
 	width: 100px;
 	height: 100px;
@@ -25,7 +27,6 @@
 	cursor: pointer;
 }
 
-
 .article-img-container section {
 	background-color: var(--color-black);
 	z-index: 10;
@@ -38,6 +39,10 @@
 }
 
 .article-img-container .more-container {
+	display: block;
+	position: absolute;
+	right: 2px;
+	top: 0;
 	border-radius: 100%;
 	padding: 2px;
 	margin: 6px auto auto 6px;
@@ -45,6 +50,7 @@
 
 .article-img-container .more-container button {
 	background-image: url('../../assets/icons/more-button.svg');
+	transform: rotate(90deg);
 }
 
 .article-img-container .buttons-container {
@@ -60,7 +66,6 @@
 .article-img-container .buttons-container button {
 	background-image: url('../../assets/icons/post-icon.svg');
 }
-
 
 .article-img-container section a {
 	background-image: url('../../assets/icons/expand-content-svgrepo-com.svg');
@@ -80,8 +85,6 @@
 	cursor: pointer;
 	opacity: 80%;
 }
-
-
 
 .user-info {
 	display: flex;
@@ -284,6 +287,10 @@
 	.share-container button {
 		background-size: 16px;
 	}
+
+	.post {
+		padding: 8px;
+	}
 }
 
 @media (min-width: 1000px) {
@@ -294,6 +301,7 @@
 
 	.article-img-container {
 		grid-row: 2;
+		position: initial;
 	}
 
 	.article-img-container,
@@ -349,7 +357,6 @@
 		max-width: 80%;
 	}
 }
-
 
 @media (prefers-color-scheme: dark) {
 	.user-name a {
