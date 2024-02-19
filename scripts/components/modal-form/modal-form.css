@@ -145,21 +145,25 @@
 }
 
 .unfilled-star {
-	background-image: url('../../assets/icons/rating-star.svg');
+	background-image: url('./assets/rating-star.svg');
 }
 
 .hover-filled-star {
-	background-image: url('../../assets/icons/rating-star-hover.svg');
+	background-image: url('./assets/rating-star-hover.svg');
 }
 
 .filled-star {
-	background-image: url('../../assets/icons/rating-star-scored.svg');
+	background-image: url('./assets/rating-star-scored.svg');
 }
 
 .rating,
 .rating section:hover,
 .rating-star:hover {
 	cursor: pointer;
+}
+
+.rating_value {
+	margin-left: 4px;
 }
 
 .share-container {
@@ -170,7 +174,7 @@
 .share-button {
 	background: none;
 	border: none;
-	background-image: url('../../assets/icons/post-icons/share.svg');
+	background-image: url('./assets/post-icons/share.svg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -288,15 +292,11 @@
 		color: var(--color-white);
 	}
 
-	.unfilled-star {
-		background-image: url('../../assets/icons/rating-star-dark-mode.svg');
-	}
-
 	.hover-filled-star {
-		background-image: url('../../assets/icons/rating-star-hover-dark-mode.svg');
+		background-image: url('./assets/rating-star-hover-dark-mode.svg');
 	}
 
 	.filled-star {
-		background-image: url('../../assets/icons/rating-star-scored-dark-mode.svg');
+		background-image: url('./assets/rating-star-scored-dark-mode.svg');
 	}
 }

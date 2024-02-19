@@ -1,5 +1,12 @@
 import { ElementBuilder } from '../../utils/ElementBuilder.js';
 
+const link = ElementBuilder.createElement('link', '', {
+	rel: 'stylesheet',
+	href: '../scripts/components/modal-form/modal-form.css',
+});
+
+document.head.appendChild(link);
+
 const articles = document.querySelectorAll('.add-modal-access');
 
 articles.forEach((article) => {
@@ -295,13 +302,13 @@ function create_modal() {
 			} else {
 				score_rating = 0;
 			}
-			rating_value.innerText = score_rating + ' stars';
+			rating_value.innerText = score_rating + ' estrellas';
 			input_rate.value = score_rating;
 		});
 		stars.appendChild(star);
 	}
 
-	const rating_value = ElementBuilder.createElement('p', '0 stars', {
+	const rating_value = ElementBuilder.createElement('p', '0 estrellas', {
 		class: 'rating_value',
 	});
 
