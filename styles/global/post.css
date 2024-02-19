@@ -28,7 +28,7 @@
 }
 
 .article-img-container section {
-	background-color: var(--color-black);
+	background-color: rgba(0, 0, 0, 0.85);
 	z-index: 10;
 	display: flex;
 }
@@ -44,12 +44,14 @@
 	right: 2px;
 	top: 0;
 	border-radius: 100%;
-	padding: 2px;
+	padding: 1px;
 	margin: 6px auto auto 6px;
 }
 
 .article-img-container .more-container button {
-	background-image: url('../../assets/icons/more-button.svg');
+	text-align: center;
+	position: relative;
+	right: 2px;
 	transform: rotate(90deg);
 }
 
@@ -63,12 +65,7 @@
 	justify-content: center;
 }
 
-.article-img-container .buttons-container button {
-	background-image: url('../../assets/icons/post-icon.svg');
-}
-
 .article-img-container section a {
-	background-image: url('../../assets/icons/expand-content-svgrepo-com.svg');
 	background-size: cover;
 }
 

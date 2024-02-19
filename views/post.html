@@ -27,12 +27,13 @@
 		/>
 		<link rel="icon" type="image/x-icon" href="/assets/icons/favicon.svg" />
 		<link rel="stylesheet" href="../styles/post.css" />
+		<script src="https://unpkg.com/@phosphor-icons/web"></script>
 		<script src="../scripts/index.js" type="module"></script>
 		<title>Post | SongHub</title>
 	</head>
 
 	<body>
-		<header class="main-header">
+		<header class="main-header" id="main-header">
 			<h1>
 				<a href="home.html">
 					<img src="../assets/icons/logo.svg" alt="Logo de SongHub" />
@@ -95,7 +96,9 @@
 					class="menu-button"
 					aria-expanded="false"
 					aria-controls="main-menu"
-				></button>
+				>
+					<i class="ph ph-list open-menu-icon"></i>
+				</button>
 			</nav>
 		</header>
 
@@ -104,12 +107,12 @@
 				<figure>
 					<section class="article-img-container">
 						<img
-						loading="lazy"
-						class="image-border"
-						height="100px"
-						width="100px"
-						src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
-						alt="Portada del álbum 'The Dark Side of the Moon' de Pink Floyd"
+							loading="lazy"
+							class="image-border"
+							height="100px"
+							width="100px"
+							src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
+							alt="Portada del álbum 'The Dark Side of the Moon' de Pink Floyd"
 						/>
 					</section>
 					<section class="user-info">

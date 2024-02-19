@@ -26,12 +26,14 @@
 			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
 		/>
 		<link rel="icon" type="image/x-icon" href="/assets/icons/favicon.svg" />
+		<link rel="stylesheet" href="/styles/search.css" />
 		<script src="../scripts/index.js" type="module"></script>
+		<script src="https://unpkg.com/@phosphor-icons/web"></script>
 		<title>Búsqueda | SongHub</title>
 	</head>
 
 	<body>
-		<header class="main-header">
+		<header class="main-header" id="main-header">
 			<h1>
 				<a href="home.html">
 					<img src="../assets/icons/logo.svg" alt="Logo de SongHub" />
@@ -94,7 +96,9 @@
 					class="menu-button"
 					aria-expanded="false"
 					aria-controls="main-menu"
-				></button>
+				>
+					<i class="ph ph-list open-menu-icon"></i>
+				</button>
 			</nav>
 		</header>
 
