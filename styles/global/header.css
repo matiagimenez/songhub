@@ -102,16 +102,6 @@ h1 img {
 	}
 }
 
-.header-nav ul li.profile-item a {
-	display: flex;
-	align-items: center;
-	justify-content: left;
-}
-
-.header-nav ul li.profile-item span {
-	text-align: center;
-}
-
 .header-nav ul li.search-item {
 	order: -1;
 }
@@ -119,37 +109,38 @@ h1 img {
 .header-nav ul li {
 	font-size: 1rem;
 	font-weight: bold;
-	min-height: 30px;
+	min-height: 40px;
+	line-height: 3;
+	padding-left: 6px;
+	transition: background 200ms ease-in-out;
 }
 
 .header-nav ul li:hover {
 	text-decoration: underline;
 	text-underline-offset: 4px;
+	background-color: rgba(0, 0, 0, 0.25);
 }
 
 .header-nav ul li a {
 	text-decoration: none;
 	color: var(--color-white);
 	font-size: 1rem;
-}
-
-svg {
-	width: 30px;
-	height: 30px;
-	margin-left: 5px;
-}
-
-svg path {
-	stroke: #ffffff;
-}
-
-.header-nav ul li.logout-item:hover svg path {
-	stroke: var(--color-red);
+	width: 100%;
+	height: 100%;
+	display: block;
 }
 
 .header-nav ul li.logout-item span {
+	margin-right: 6px;
+}
+
+.header-nav ul li.logout-item:hover .logout-icon {
+	color: var(--color-red);
+}
+
+.header-nav ul li.logout-item .logout-icon {
 	position: relative;
-	bottom: 8px;
+	top: 5px;
 }
 
 .header-nav ul li.logout-item:hover span {
@@ -161,14 +152,26 @@ svg path {
 	display: inline-block;
 	width: 100%;
 	height: 100%;
-	vertical-align: middle;
+}
+
+.header-nav ul li.search-item {
+	line-height: 2;
+}
+
+.header-nav ul li.search-item:hover {
+	text-decoration: none;
+	background-color: transparent;
+}
+
+.header-nav ul li.search-item label {
+	font-size: 0.9rem;
 }
 
 .header-nav ul li form input {
 	position: relative;
 	height: 2rem;
 	font-size: 0.8rem;
-	width: 100%;
+	width: 95%;
 	color: var(--color-white);
 	border: 2px solid var(--color-violet-light-white);
 	padding-right: 0;
@@ -176,6 +179,7 @@ svg path {
 
 .header-nav ul li form input::placeholder {
 	color: var(--color-grey-light);
+	opacity: 0;
 }
 
 @media (min-width: 600px) {
@@ -218,6 +222,7 @@ svg path {
 	.header-nav ul li {
 		display: initial;
 		min-height: auto;
+		line-height: initial;
 	}
 
 	.header-nav ul li a {
@@ -252,6 +257,10 @@ svg path {
 
 	.header-nav ul li form input {
 		width: 240px;
+	}
+
+	.header-nav ul li form input::placeholder {
+		opacity: 1;
 	}
 }
 

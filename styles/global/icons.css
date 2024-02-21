@@ -13,6 +13,10 @@
 	color: var(--color-white);
 }
 
+.logout-icon {
+	font-size: 24px;
+}
+
 .post-icon,
 .song-icon {
 	color: var(--color-white);
