@@ -18,7 +18,11 @@
 }
 
 .post-time {
-	opacity: 0;
+	color: var(--color-grey-light);
+	font-size: 12px;
+	opacity: 1;
+	position: absolute;
+	right: 24px;
 }
 
 .user-img {
@@ -64,6 +68,7 @@
 .stars {
 	padding: 4px 0;
 	color: var(--color-violet-light);
+	font-size: 1.15rem;
 }
 
 .post a {
@@ -129,7 +134,7 @@
 }
 
 .like-container button {
-	top: 3px;
+	top: 2px;
 }
 
 .action-container:hover {
@@ -141,16 +146,16 @@
 		position: relative;
 	}
 
+	.user-name {
+		width: 100px;
+	}
+
 	.post-time {
 		color: var(--color-grey-light);
 		font-size: 12px;
 		opacity: 1;
 		position: absolute;
-		right: 4px;
-	}
-
-	.user-name {
-		width: 100px;
+		right: 8px;
 	}
 }
 
