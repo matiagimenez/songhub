@@ -383,7 +383,7 @@ const main_header = document.getElementById('main-header');
 
 post_form_openers.forEach((opener) => {
 	opener.addEventListener('click', () => {
-		create_post.classList.add('hidden');
+		create_post !== null && create_post.classList.add('hidden');
 		// go_to_top.classList.add("hidden");
 		main_header.classList.add('hidden');
 		document.body.classList.add('none-scroll');
