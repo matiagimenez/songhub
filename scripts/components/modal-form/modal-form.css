@@ -42,7 +42,7 @@
 	margin-bottom: 1rem;
 }
 
-.artist-info {
+.modal-content .artist-info {
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -56,14 +56,14 @@
 	font-size: 1.4rem;
 }
 
-.artist-info img {
+.modal-content .artist-info img {
 	height: 30px;
 	width: 30px;
 	border-radius: 50%;
 	margin: auto 0;
 }
 
-.artist-info span {
+.modal-content .artist-info span {
 	font-size: 0.8rem;
 	margin-left: 10px;
 }

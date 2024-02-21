@@ -158,12 +158,14 @@ header .user p .username {
 	width: 100%;
 	margin-left: 0.05rem;
 	padding-left: 0.3rem;
-	margin-top: 0.3rem;
+	margin-top: 10px;
 	border-left: 2px solid var(--color-violet-dark);
 }
 
 .favourites article figcaption .song-title {
 	padding: 0;
+	max-width: 160px;
+	font-size: 0.9rem;
 }
 
 .favourites h2 {
@@ -243,7 +245,6 @@ section.recent-activity article:last-child {
 		float: none;
 	}
 
-
 	.favourites article figcaption {
 		position: relative;
 		left: 0;
@@ -266,6 +267,11 @@ section.recent-activity article:last-child {
 	.favourites article img {
 		height: 170px;
 		width: 170px;
+	}
+
+	.favourites article figcaption .song-title {
+		max-width: 170px;
+		font-size: 0.95rem;
 	}
 }
 

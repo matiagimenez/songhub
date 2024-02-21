@@ -30,6 +30,9 @@ function updateMenuVisibility() {
 		document
 			.querySelector('.header-nav ul .search-item form label')
 			.classList.add('visually-hidden');
+		document
+			.querySelector('.header-nav ul li.logout-item span')
+			.classList.add('visually-hidden');
 	}
 }
 

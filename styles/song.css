@@ -42,6 +42,7 @@ body {
 	display: flex;
 	padding: 4px 2px;
 	align-items: center;
+	height: 50px;
 	color: var(--color-black);
 }
 
@@ -166,7 +167,8 @@ section.most-recent-posts article:last-child {
 }
 
 @media (prefers-color-scheme: dark) {
-	.song-section figure figcaption {
+	.song-section figure figcaption,
+	.song-section figure figcaption p {
 		color: var(--color-white);
 	}
 
@@ -174,7 +176,6 @@ section.most-recent-posts article:last-child {
 	.song-section figure figcaption h3 {
 		color: var(--color-violet-light-white);
 	}
-
 
 	.song-section figure figcaption p.artist-info span {
 		color: var(--color-white);

@@ -242,10 +242,6 @@ h1 img {
 		font-size: 0.9rem;
 	}
 
-	.header-nav ul li.logout-item span {
-		display: none;
-	}
-
 	.header-nav ul li.logout-item .logout-icon {
 		top: 1px;
 	}
