@@ -13,26 +13,41 @@ articles.forEach((article) => {
 	const more_container = ElementBuilder.createElement('section', '', {
 		class: 'more-container',
 	});
-	const more_button = ElementBuilder.createElement('button', '', {
-		class: 'more-button',
-	});
-	more_button.innerHTML =
-		'<i class="ph-fill ph-dots-three-outline icon more-icon"></i>';
+	const more_button = ElementBuilder.createElement(
+		'button',
+		`
+			<span class="visually-hidden">Ver más opciones sobre esta canción</span>
+			<i class="ph-fill ph-dots-three-outline icon more-icon"></i>
+		`,
+		{
+			class: 'more-button',
+		}
+	);
 	more_container.appendChild(more_button);
 
 	const buttons_container = ElementBuilder.createElement('section', '', {
 		class: 'hidden buttons-container',
 	});
-	const view_song = ElementBuilder.createElement('a', '', {
-		href: '/views/song.html',
-	});
-	view_song.innerHTML =
-		'<i class="ph-fill ph-music-notes icon song-icon"></i>';
-	const create_post = ElementBuilder.createElement('button', '', {
-		class: 'post-form-opener',
-	});
-	create_post.innerHTML =
-		'<i class="ph-fill ph-note-pencil icon post-icon"></i>';
+	const view_song = ElementBuilder.createElement(
+		'a',
+		`
+			<span class="visually-hidden">Ver información de la canción</span>
+			<i class="ph-fill ph-music-notes icon song-icon"></i>
+		`,
+		{
+			href: '/views/song.html',
+		}
+	);
+	const create_post = ElementBuilder.createElement(
+		'button',
+		`
+			<span class="visually-hidden">Crear una publicación sobre esta canción</span>
+			<i class="ph-fill ph-music-notes icon song-icon"></i>
+		`,
+		{
+			class: 'post-form-opener',
+		}
+	);
 
 	buttons_container.appendChild(view_song);
 	buttons_container.appendChild(create_post);
