@@ -13,12 +13,20 @@ function updateMenuVisibility() {
 		menuButton.setAttribute('aria-hidden', 'false');
 		menuButton.setAttribute('aria-expanded', 'false');
 		menu.setAttribute('aria-hidden', 'true');
+		menuButton.innerHTML = '<i class="ph ph-list open-menu-icon"></i>';
+		main.style.opacity = 1;
+		document
+			.querySelector('.header-nav ul .search-item form label')
+			.classList.remove('visually-hidden');
 	} else {
 		menu.classList.remove('hidden');
 		menuButton.setAttribute('aria-hidden', 'true');
 		menuButton.setAttribute('aria-expanded', 'true');
 		menu.setAttribute('aria-hidden', 'false');
 		main.style.opacity = 1;
+		document
+			.querySelector('.header-nav ul .search-item form label')
+			.classList.add('visually-hidden');
 	}
 }
 
@@ -47,10 +55,10 @@ document.addEventListener('click', (event) => {
 			menu.classList.remove('view-menu');
 			menu.classList.add('close-menu');
 			menuButton.innerHTML = '<i class="ph ph-list open-menu-icon"></i>';
+			main.style.opacity = 1;
 			setTimeout(function () {
 				menu.classList.add('hidden');
 			}, 400);
-			main.style.opacity = 1;
 		}
 
 		const ariaExpandedCurrentValue =

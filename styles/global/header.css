@@ -179,6 +179,7 @@ h1 img {
 
 .header-nav ul li form input::placeholder {
 	color: var(--color-grey-light);
+	opacity: 0;
 }
 
 @media (min-width: 600px) {
@@ -256,6 +257,10 @@ h1 img {
 
 	.header-nav ul li form input {
 		width: 240px;
+	}
+
+	.header-nav ul li form input::placeholder {
+		opacity: 1;
 	}
 }
 
