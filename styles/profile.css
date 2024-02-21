@@ -1,6 +1,7 @@
 @import url('global/variables.css');
 @import url('global/main.css');
 @import url('global/post.css');
+@import url('global/modal-access.css');
 
 main header {
 	padding: 12px;
@@ -139,18 +140,26 @@ header .user p .username {
 
 .favourites article {
 	width: 100%;
+	margin-bottom: 1rem;
+}
+
+.favourites .article-img-container {
+	min-width: 140px;
+	min-height: 140px;
 }
 
 .favourites article img {
-	width: 120px;
-	height: 120px;
+	width: 140px;
+	height: 140px;
 	float: left;
 }
 
 .favourites article figcaption {
-	position: relative;
-	left: 12px;
-	top: 8px;
+	width: 100%;
+	margin-left: 0.05rem;
+	padding-left: 0.3rem;
+	margin-top: 0.3rem;
+	border-left: 2px solid var(--color-violet-dark);
 }
 
 .favourites article figcaption .song-title {
@@ -234,6 +243,10 @@ section.recent-activity article:last-child {
 
 	.favourites article img {
 		float: none;
+	}
+
+	.favourites .article-img-container,
+	.favourites article img {
 		height: 150px;
 		width: 150px;
 	}
@@ -257,6 +270,7 @@ section.recent-activity article:last-child {
 		width: 30%;
 	}
 
+	.favourites .article-img-container,
 	.favourites article img {
 		height: 170px;
 		width: 170px;
@@ -295,5 +309,9 @@ section.recent-activity article:last-child {
 
 	main header .user-stats ul li {
 		color: var(--color-white);
+	}
+
+	.favourites article figcaption {
+		border-left: 2px solid var(--color-white);
 	}
 }

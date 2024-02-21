@@ -160,6 +160,10 @@ export const routes = {
 			scriptName: 'favourite-button-animation',
 			scriptPath: '../scripts/animations/favourite-button-animation.js',
 		},
+		{
+			scriptName: 'modal-form',
+			scriptPath: '../scripts/components/modal-form/modal-form.js',
+		},
 	],
 	'/search': [
 		{
