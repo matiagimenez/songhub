@@ -246,6 +246,10 @@ h1 img {
 		display: none;
 	}
 
+	.header-nav ul li.logout-item .logout-icon {
+		top: 1px;
+	}
+
 	.header-nav ul li.profile-item a {
 		justify-content: center;
 	}
