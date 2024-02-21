@@ -38,6 +38,13 @@ window.onload = function () {
 
 document.addEventListener('click', (event) => {
 	if (
+		!event.target.closest('.header-nav') &&
+		!event.target.closest('.menu-button')
+	) {
+		updateMenuVisibility();
+	}
+
+	if (
 		event.target === menuButton ||
 		event.target.classList.contains('open-menu-icon') ||
 		event.target.classList.contains('close-menu-icon')
