@@ -1,6 +1,7 @@
 @import url('global/variables.css');
 @import url('global/main.css');
 @import url('global/post.css');
+@import url('global/modal-access.css');
 
 .cards-container {
 	margin-top: 20px;
