@@ -134,24 +134,24 @@ header .user p .username {
 	margin: auto;
 	padding: 0 16px;
 	display: flex;
-	flex-direction: column;
-	gap: 6px;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 1rem;
 }
 
 .favourites article {
-	width: 100%;
+	width: 160px;
 	margin-bottom: 1rem;
 }
 
 .favourites .article-img-container {
-	min-width: 140px;
-	min-height: 140px;
+	min-width: 160px;
+	min-height: 160px;
 }
 
 .favourites article img {
-	width: 140px;
-	height: 140px;
-	float: left;
+	width: 100%;
+	height: auto;
 }
 
 .favourites article figcaption {
@@ -236,8 +236,6 @@ section.recent-activity article:last-child {
 	}
 
 	.favourites article {
-		height: 220px;
-		width: 200px;
 		margin-bottom: 8px;
 	}
 
@@ -245,17 +243,11 @@ section.recent-activity article:last-child {
 		float: none;
 	}
 
-	.favourites .article-img-container,
-	.favourites article img {
-		height: 150px;
-		width: 150px;
-	}
 
 	.favourites article figcaption {
 		position: relative;
 		left: 0;
 		top: 0;
-		width: 150px;
 	}
 }
 
