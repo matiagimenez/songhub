@@ -18,11 +18,7 @@
 }
 
 .post-time {
-	color: var(--color-grey-light);
-	font-size: 12px;
-	opacity: 1;
-	position: absolute;
-	right: 24px;
+	opacity: 0;
 }
 
 .user-img {
@@ -155,7 +151,7 @@
 		font-size: 12px;
 		opacity: 1;
 		position: absolute;
-		right: 8px;
+		right: 0px;
 	}
 }
 
@@ -166,6 +162,11 @@
 
 	.post {
 		padding: 8px;
+	}
+
+	.post-time {
+		right: 8px;
+		top: 0;
 	}
 }
 
