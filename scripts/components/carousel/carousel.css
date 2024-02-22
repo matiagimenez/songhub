@@ -114,7 +114,7 @@
 	}
 }
 
-@media (min-width: 500px) {
+@media (min-width: 510px) {
 	.carousel-button {
 		background-image: url('assets/arrow-dark.svg');
 	}
