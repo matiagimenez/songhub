@@ -9,6 +9,7 @@
 	display: grid;
 	place-content: center;
 	z-index: 10;
+	z-index: 1000000;
 }
 
 .modal-content {
