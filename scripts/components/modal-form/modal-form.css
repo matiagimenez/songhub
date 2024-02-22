@@ -8,7 +8,6 @@
 	background-color: var(--opacity-color-black);
 	display: grid;
 	place-content: center;
-	z-index: 10;
 	z-index: 1000000;
 }
 
@@ -71,8 +70,9 @@
 
 .modal-content form textarea {
 	width: 100%;
-	height: 5rem;
+	height: 100px;
 	padding: 10px;
+	max-width: 700px;
 	resize: none;
 	font-size: 0.95rem;
 }
@@ -84,7 +84,7 @@
 .input-tag,
 .add-tag-button {
 	width: 60%;
-	max-width: 215px;
+	max-width: 300px;
 	height: 2rem;
 	display: inline;
 	font-size: 0.8rem;
@@ -92,9 +92,12 @@
 }
 
 .add-tag-button {
-	width: 40%;
-	float: inline-end;
+	max-width: 120px;
+	min-width: 90px;
+	width: 30%;
 	font-size: 0.7rem;
+	margin-left: 5px;
+	font-weight: normal;
 }
 
 .tags span {
@@ -178,16 +181,24 @@
 }
 
 .submit-container {
-	display: grid;
-	grid-template-columns: 40% 60%;
+	display: flex;
 	column-gap: 0.4rem;
-	margin-top: 20px;
+	margin-top: 10px;
 	place-content: center;
 }
 
 .postear-button {
 	background-color: var(--color-green-dark);
 	border-color: var(--color-green-dark);
+	max-width: 320px;
+	min-width: 155px;
+	width: 60%;
+}
+
+.cancel-button {
+	width: 35%;
+	min-width: 90px;
+	max-width: 220px;
 }
 
 .error-message {
@@ -255,6 +266,16 @@
 	.error-message {
 		left: 20%;
 		right: 20%;
+	}
+}
+
+@media (min-width: 900px) {
+	.modal-content {
+		max-width: 750px;
+	}
+
+	.container {
+		text-align: center;
 	}
 }
 
