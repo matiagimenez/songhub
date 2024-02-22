@@ -83,8 +83,8 @@
 
 .input-tag,
 .add-tag-button {
-	width: 48%;
-	max-width: 200px;
+	width: 60%;
+	max-width: 215px;
 	height: 2rem;
 	display: inline;
 	font-size: 0.8rem;
@@ -92,7 +92,9 @@
 }
 
 .add-tag-button {
+	width: 40%;
 	float: inline-end;
+	font-size: 0.7rem;
 }
 
 .tags span {
@@ -177,8 +179,9 @@
 
 .submit-container {
 	display: grid;
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 40% 60%;
 	column-gap: 0.4rem;
+	margin-top: 20px;
 	place-content: center;
 }
 
@@ -264,7 +267,7 @@
 @media (prefers-color-scheme: dark) {
 	.modal-content {
 		background-color: var(--color-violet-dark-black);
-		border: 2px solid var(--color-white);
+		border: 1px solid var(--color-white);
 	}
 
 	.rating span,

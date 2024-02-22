@@ -13,6 +13,10 @@
 	color: var(--color-white);
 }
 
+.close-icon {
+	font-size: 16px;
+}
+
 .logout-icon {
 	font-size: 24px;
 }

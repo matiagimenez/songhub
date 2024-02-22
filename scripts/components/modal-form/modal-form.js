@@ -187,7 +187,6 @@ function create_modal() {
 		class: 'input input-tag',
 		type: 'text',
 		name: 'tag',
-		placeholder: 'Increible, Rock...',
 	});
 
 	input_tag.addEventListener('keydown', (event) => {
@@ -203,7 +202,7 @@ function create_modal() {
 		class: 'tags',
 	});
 
-	const tag_button = ElementBuilder.createElement('button', '+ Agregar Tag', {
+	const tag_button = ElementBuilder.createElement('button', '+ Agregar tag', {
 		type: 'button',
 		class: 'add-tag-button submit-button',
 	});
@@ -340,7 +339,7 @@ function create_modal() {
 	rating.appendChild(rating_value);
 	rating.appendChild(input_rate);
 
-	const back_button = ElementBuilder.createElement('button', 'Volver', {
+	const back_button = ElementBuilder.createElement('button', 'Cancelar', {
 		class: 'cancel-button',
 	});
 	back_button.addEventListener('click', () => {
@@ -349,7 +348,7 @@ function create_modal() {
 
 	const postear_button = ElementBuilder.createElement('input', '', {
 		type: 'submit',
-		value: 'Postear',
+		value: 'Crear post',
 		class: 'submit-button postear-button',
 	});
 
