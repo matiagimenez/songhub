@@ -174,6 +174,10 @@ export const routes = {
 			scriptName: 'set-meta-url',
 			scriptPath: '../scripts/other/setMetaUrl.js',
 		},
+		{
+			scriptName: 'modal-form',
+			scriptPath: '../scripts/components/modal-form/modal-form.js',
+		},
 	],
 	'/song': [
 		{
