@@ -69,9 +69,13 @@
 					<li role="menuitem">
 						<a href="profile.html"> PERFIL </a>
 					</li>
-					<li role="menuitem" class="logout-item">
+					<li
+						role="menuitem"
+						class="logout-item"
+						aria-labelledby="logout-content"
+					>
 						<a href="#">
-							<span>CERRAR SESION</span>
+							<span id="logout-content">CERRAR SESION</span>
 							<i class="ph ph-sign-out icon logout-icon"></i>
 						</a>
 					</li>
@@ -81,6 +85,7 @@
 					aria-expanded="false"
 					aria-controls="main-menu"
 				>
+					<span class="visually-hidden">Abrir menu</span>
 					<i class="ph ph-list open-menu-icon"></i>
 				</button>
 			</nav>

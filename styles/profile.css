@@ -186,8 +186,6 @@ section.recent-activity article:last-child {
 	}
 }
 
-
-
 @media (min-width: 1200px) {
 	main header .user img {
 		height: 75px;

@@ -13,7 +13,10 @@ function updateMenuVisibility() {
 		menuButton.setAttribute('aria-hidden', 'false');
 		menuButton.setAttribute('aria-expanded', 'false');
 		menu.setAttribute('aria-hidden', 'true');
-		menuButton.innerHTML = '<i class="ph ph-list open-menu-icon"></i>';
+		menuButton.innerHTML = `
+			<i class="ph ph-list open-menu-icon"></i>
+			<span class="visually-hidden">Abrir menu</span>	
+		`;
 		main.style.opacity = 1;
 		document
 			.querySelector('.header-nav ul .search-item form label')
@@ -26,6 +29,9 @@ function updateMenuVisibility() {
 		main.style.opacity = 1;
 		document
 			.querySelector('.header-nav ul .search-item form label')
+			.classList.add('visually-hidden');
+		document
+			.querySelector('.header-nav ul li.logout-item span')
 			.classList.add('visually-hidden');
 	}
 }
@@ -54,14 +60,19 @@ document.addEventListener('click', (event) => {
 			menu.classList.remove('close-menu');
 			menu.classList.remove('hidden');
 			menu.classList.add('view-menu');
-			menuButton.innerHTML =
-				'<i class="ph-bold ph-x close-menu-icon"></i>';
+			menuButton.innerHTML = `
+				<i class="ph-bold ph-x close-menu-icon"></i>
+				<span class="visually-hidden">Cerrar menu</span>
+			`;
 			main.style.opacity = 0.3;
 		} else {
 			body.classList.remove('none-scroll');
 			menu.classList.remove('view-menu');
 			menu.classList.add('close-menu');
-			menuButton.innerHTML = '<i class="ph ph-list open-menu-icon"></i>';
+			menuButton.innerHTML = `
+				<i class="ph ph-list open-menu-icon"></i>
+				<span class="visually-hidden">Abrir menu</span>	
+			`;
 			main.style.opacity = 1;
 			setTimeout(function () {
 				menu.classList.add('hidden');
@@ -89,7 +100,10 @@ document.addEventListener('keyup', (event) => {
 		if (event.key === 'Escape') {
 			menu.classList.remove('view-menu');
 			menu.classList.add('close-menu');
-			menuButton.innerHTML = '<i class="ph ph-list open-menu-icon"></i>';
+			menuButton.innerHTML = `
+				<i class="ph ph-list open-menu-icon"></i>
+				<span class="visually-hidden">Abrir menu</span>	
+			`;
 
 			setTimeout(function () {
 				menu.classList.add('hidden');

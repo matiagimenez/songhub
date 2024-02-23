@@ -70,10 +70,6 @@ export const routes = {
 			scriptName: 'expanding-cards',
 			scriptPath: '../scripts/components/carousel/carousel.js',
 		},
-		{
-			scriptName: 'post-like',
-			scriptPath: '../scripts/components/post/post-like.js',
-		},
 		// {
 		// 	scriptName: 'post-comment',
 		// 	scriptPath: '../scripts/components/post/post-comment.js',
@@ -109,16 +105,16 @@ export const routes = {
 			scriptPath: '../scripts/animations/menu-animation.js',
 		},
 		{
-			scriptName: 'post-like',
-			scriptPath: '../scripts/components/post/post-like.js',
-		},
-		{
 			scriptName: 'share-menu',
 			scriptPath: '../scripts/components/share-menu/share-menu.js',
 		},
 		{
 			scriptName: 'set-meta-url',
 			scriptPath: '../scripts/other/setMetaUrl.js',
+		},
+		{
+			scriptName: 'favourite-button-animation',
+			scriptPath: '../scripts/animations/favourite-button-animation.js',
 		},
 	],
 	'/profile-edit': [
@@ -183,10 +179,6 @@ export const routes = {
 		{
 			scriptName: 'menu-animation',
 			scriptPath: '../scripts/animations/menu-animation.js',
-		},
-		{
-			scriptName: 'post-like',
-			scriptPath: '../scripts/components/post/post-like.js',
 		},
 		{
 			scriptName: 'post-content',

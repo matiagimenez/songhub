@@ -71,9 +71,13 @@
 					<li role="menuitem">
 						<a href="profile.html"> PERFIL </a>
 					</li>
-					<li role="menuitem" class="logout-item">
+					<li
+						role="menuitem"
+						class="logout-item"
+						aria-labelledby="logout-content"
+					>
 						<a href="#">
-							<span>CERRAR SESION</span>
+							<span id="logout-content">CERRAR SESION</span>
 							<i class="ph ph-sign-out icon logout-icon"></i>
 						</a>
 					</li>
@@ -83,6 +87,7 @@
 					aria-expanded="false"
 					aria-controls="main-menu"
 				>
+					<span class="visually-hidden">Abrir menu</span>
 					<i class="ph ph-list open-menu-icon"></i>
 				</button>
 			</nav>
@@ -117,10 +122,10 @@
 						<p class="post-time">hace 8 horas</p>
 					</section>
 					<figcaption>
-						<h3 class="song-title" id="post-1-song-title">
+						<h2 class="song-title" id="post-1-song-title">
 							<a href="song.html">The Dark Side of the Moon</a>
-						</h3>
-						<h4 class="artist-title">Pink Floyd</h4>
+						</h2>
+						<h3 class="artist-title">Pink Floyd</h3>
 						<span class="tag">Increible</span>
 						<span class="tag">Rock</span>
 						<span class="tag">Internacional</span>
@@ -156,26 +161,19 @@
 				<footer>
 					<section class="reaction-container comment-container">
 						<button>
+							<i class="ph ph-chats-circle icon comment-icon"></i>
 							<span class="visually-hidden">Comentar post</span>
 						</button>
 						<p>20</p>
 					</section>
 					<section class="reaction-container like-container">
-						<button class="unlike">
+						<button class="heart-button">
+							<i class="ph ph-heart icon heart-icon"></i>
 							<span class="visually-hidden"
 								>Dar favorito al post</span
 							>
 						</button>
 						<p>1008</p>
-					</section>
-					<section class="reaction-container share-container">
-						<button
-							class="share-button"
-							data-post-id="1"
-							data-post-content="The Dark Side of the Moon"
-						>
-							<span class="visually-hidden">Compartir post</span>
-						</button>
 					</section>
 				</footer>
 			</article>
@@ -211,19 +209,23 @@
 					<footer>
 						<section class="reaction-container comment-container">
 							<button>
+								<i
+									class="ph ph-chats-circle icon comment-icon"
+								></i>
 								<span class="visually-hidden"
 									>Comentar post</span
 								>
 							</button>
-							<p>2</p>
+							<p>20</p>
 						</section>
 						<section class="reaction-container like-container">
-							<button class="unlike">
+							<button class="heart-button">
+								<i class="ph ph-heart icon heart-icon"></i>
 								<span class="visually-hidden"
 									>Dar favorito al post</span
 								>
 							</button>
-							<p>5</p>
+							<p>1008</p>
 						</section>
 					</footer>
 				</article>
@@ -258,19 +260,23 @@
 					<footer>
 						<section class="reaction-container comment-container">
 							<button>
+								<i
+									class="ph ph-chats-circle icon comment-icon"
+								></i>
 								<span class="visually-hidden"
 									>Comentar post</span
 								>
 							</button>
-							<p>2</p>
+							<p>20</p>
 						</section>
 						<section class="reaction-container like-container">
-							<button class="unlike">
+							<button class="heart-button">
+								<i class="ph ph-heart icon heart-icon"></i>
 								<span class="visually-hidden"
 									>Dar favorito al post</span
 								>
 							</button>
-							<p>5</p>
+							<p>1008</p>
 						</section>
 					</footer>
 				</article>
@@ -305,19 +311,23 @@
 					<footer>
 						<section class="reaction-container comment-container">
 							<button>
+								<i
+									class="ph ph-chats-circle icon comment-icon"
+								></i>
 								<span class="visually-hidden"
 									>Comentar post</span
 								>
 							</button>
-							<p>2</p>
+							<p>20</p>
 						</section>
 						<section class="reaction-container like-container">
-							<button class="unlike">
+							<button class="heart-button">
+								<i class="ph ph-heart icon heart-icon"></i>
 								<span class="visually-hidden"
 									>Dar favorito al post</span
 								>
 							</button>
-							<p>5</p>
+							<p>1008</p>
 						</section>
 					</footer>
 				</article>

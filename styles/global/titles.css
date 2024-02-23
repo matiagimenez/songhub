@@ -21,7 +21,7 @@
 }
 
 .type-title {
-	color: var(--color-grey-light);
+	color: var(--color-black);
 	font-size: 0.8rem;
 	font-weight: 300;
 }
@@ -48,5 +48,11 @@
 
 	.artist-title {
 		color: var(--color-white);
+	}
+
+	.type-title {
+		color: var(--color-white);
+		font-size: 0.8rem;
+		font-weight: 300;
 	}
 }
