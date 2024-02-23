@@ -19,23 +19,31 @@ article {
   position: relative;
 }
 
-.article-img-container {
-  min-width: 140px;
-  min-height: 140px;
-  /* width: 100%;
-	max-width: 200px;
-	overflow-y: hidden;
-	min-height: auto; */
+.section .article-img-container {
+  /* min-width: 140px;
+  min-height: 140px; */
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+}
+
+.section .article-img-container::before {
+  content: "";
+  display: block;
+  padding-top: 80%;
 }
 
 article a {
   text-decoration: none;
 }
 
+figure {
+  width: 100%;
+}
+
 figure img {
   width: 100%;
   height: auto;
-  border-radius: 10px;
 }
 
 .section article figcaption {
@@ -55,10 +63,6 @@ figure img {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .article-img-container {
-    width: 180px;
-    height: 180px;
-  }
 }
 
 @media (min-width: 1000px) {
@@ -68,6 +72,10 @@ figure img {
 
   main .section {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .section .article-img-container::before {
+    padding-top: 70%;
   }
 }
 

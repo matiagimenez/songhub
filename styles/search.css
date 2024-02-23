@@ -55,12 +55,12 @@ header p label {
 	color: var(--color-grey-dark);
 }
 
-figure a {
+figcaption a {
 	text-decoration: none;
 	cursor: pointer;
 }
 
-@media (min-width: 750px) {
+/* @media (min-width: 750px) {
 	main {
 		display: grid;
 		grid-template-columns: 50% 50%;
@@ -104,7 +104,7 @@ figure a {
 	main header {
 		grid-column: 1/4;
 	}
-}
+} */
 
 @media (prefers-color-scheme: dark) {
 	body {
