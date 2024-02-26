@@ -11,7 +11,7 @@ main {
 	justify-content: center;
 	flex-direction: column;
 	gap: 16px;
-	min-height: calc(100% - 186px);
+	min-height: calc(100% - 180px);
 	overflow: hidden;
 	overflow-y: hidden;
 	position: relative;
@@ -42,7 +42,7 @@ main a {
 	font-weight: bold;
 	color: var(--color-black);
 	position: absolute;
-	left: 0px;
+	left: 5px;
 	top: 40px;
 }
 
