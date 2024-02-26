@@ -229,4 +229,14 @@ export const routes = {
 			scriptPath: '../scripts/other/setMetaUrl.js',
 		},
 	],
+	'/error': [
+		{
+			scriptName: 'menu-animation',
+			scriptPath: '../scripts/animations/menu-animation.js',
+		},
+		{
+			scriptName: 'set-meta-url',
+			scriptPath: '../scripts/other/setMetaUrl.js',
+		},
+	],
 };
