@@ -34,6 +34,7 @@ main h4 {
 }
 
 main a {
+	padding-left: 10px;
 	line-height: 2.2rem;
 	font-size: 1.2rem;
 	display: block;
