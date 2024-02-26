@@ -65,12 +65,17 @@
 	color: var(--color-red);
 }
 
+.back-icon {
+	color: var(--color-black);
+}
+
 @media (prefers-color-scheme: dark) {
 	.share-icon,
 	.close-icon,
 	.share-icon,
 	.heart-icon,
-	.comment-icon {
+	.comment-icon,
+	.back-icon {
 		color: var(--color-white);
 	}
 }
