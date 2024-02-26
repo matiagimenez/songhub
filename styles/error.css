@@ -62,6 +62,7 @@ main img {
 	width: 75%;
 	height: 35%;
 	max-width: 500px;
+	border-radius: 5px;
 	max-height: 400px;
 }
 
