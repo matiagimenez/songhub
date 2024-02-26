@@ -1,13 +1,18 @@
 @import url('global/variables.css');
 @import url('global/main.css');
 
+html {
+	overflow-y: hidden;
+}
+
 main {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
 	gap: 16px;
-	min-height: calc(100% - 179px);
+	min-height: calc(100% - 186px);
+	overflow: hidden;
 	overflow-y: hidden;
 	position: relative;
 }
