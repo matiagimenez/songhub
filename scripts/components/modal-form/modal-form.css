@@ -102,13 +102,13 @@
 
 .tags {
 	min-height: 2rem;
+}
+
+.tags-label {
 	font-weight: normal;
 	color: var(--color-grey-light);
 	font-size: 0.8rem;
 	font-style: italic;
-}
-
-.tags-label {
 	margin-right: 10px;
 	display: inline-flex;
 	margin-top: 10px;

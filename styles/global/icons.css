@@ -69,7 +69,9 @@
 	color: var(--color-black);
 }
 
+
 @media (prefers-color-scheme: dark) {
+
 	.share-icon,
 	.close-icon,
 	.share-icon,
