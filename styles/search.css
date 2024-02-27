@@ -1,7 +1,7 @@
 @import url('global/variables.css');
 @import url('global/main.css');
-@import url('global/modal-access.css');
 @import url('global/grid-section.css');
+@import url('global/modal-access.css');
 
 main {
 	font-family: var(--font-family);
