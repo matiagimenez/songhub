@@ -199,6 +199,10 @@ function create_modal() {
 		}
 	});
 
+	const tags_label = ElementBuilder.createElement('p', 'Tags: ', {
+		class: 'tags-label',
+	});
+	
 	const tags = ElementBuilder.createElement('section', '', {
 		class: 'tags',
 	});
@@ -254,13 +258,14 @@ function create_modal() {
 		tags_count -= 1;
 	}
 
-	const tag_section = ElementBuilder.createElement('p', '', {
+	const tag_section = ElementBuilder.createElement('section', '', {
 		class: 'tags-section',
 	});
 
+	tags.appendChild(tags_label);
+	tag_section.appendChild(tags);
 	tag_section.appendChild(input_tag);
 	tag_section.appendChild(tag_button);
-	tag_section.appendChild(tags);
 
 	function view_error_message(text) {
 		error_message.innerText = text;
