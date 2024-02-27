@@ -96,7 +96,7 @@
 	min-width: 90px;
 	width: 30%;
 	font-size: 0.7rem;
-	margin-left: 5px;
+	margin-left: 6px;
 	font-weight: normal;
 }
 
@@ -107,13 +107,19 @@
 }
 
 .remove-tag-button {
-	background: none;
-	border: none;
-	background-size: cover;
 	width: 20px;
 	height: 20px;
 	border-radius: 100%;
 	margin-left: 4px;
+	border: none;
+	background-color: transparent;
+}
+
+.remove-tag-button i {
+	color: var(--color-violet-dark-black);
+	font-size: 0.8rem;
+	position: relative;
+	top: 1px;
 }
 
 .remove-tag-button:hover {
@@ -216,6 +222,11 @@
 	animation-delay: 1s;
 }
 
+.tags {
+	margin-bottom: 8px;
+	margin-left: 0px;
+}
+
 @keyframes message-opacity {
 	from {
 		opacity: 90%;
@@ -255,11 +266,6 @@
 
 	.add-tag-button {
 		float: none;
-		margin-left: 10px;
-	}
-
-	.tags {
-		display: inline;
 		margin-left: 10px;
 	}
 

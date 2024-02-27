@@ -187,6 +187,7 @@ function create_modal() {
 		class: 'input input-tag',
 		type: 'text',
 		name: 'tag',
+		maxLength: '20',
 	});
 
 	input_tag.addEventListener('keydown', (event) => {
@@ -224,6 +225,8 @@ function create_modal() {
 						class: 'remove-tag-button',
 					}
 				);
+				remove_tag_button.innerHTML =
+					"<i class='ph ph-x close-icon'></i>";
 				remove_tag_button.addEventListener('click', () => {
 					remove_tag(tag);
 				});
@@ -255,9 +258,9 @@ function create_modal() {
 		class: 'tags-section',
 	});
 
+	tag_section.appendChild(tags);
 	tag_section.appendChild(input_tag);
 	tag_section.appendChild(tag_button);
-	tag_section.appendChild(tags);
 
 	function view_error_message(text) {
 		error_message.innerText = text;

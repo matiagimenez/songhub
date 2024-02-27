@@ -1,90 +1,90 @@
 .article-img-container {
-  display: grid;
-  border-radius: 10px;
-  position: relative;
-  grid-row: span 3;
-  width: 100px;
-  height: 100px;
+	display: grid;
+	border-radius: 10px;
+	position: relative;
+	grid-row: span 3;
+	width: 100px;
+	height: 100px;
 }
 
 .article-img-container img {
-  position: absolute;
+	position: absolute;
 }
 
 .article-img-container:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .article-img-container section {
-  background-color: rgba(0, 0, 0, 0.85);
-  z-index: 10;
-  display: flex;
+	background-color: rgba(0, 0, 0, 0.85);
+	z-index: 10;
+	display: flex;
 }
 
 .article-img-container section button {
-  background-size: cover;
-  background-color: transparent;
+	background-size: cover;
+	background-color: transparent;
 }
 
 .article-img-container .more-container {
-  display: block;
-  position: absolute;
-  right: 2px;
-  top: 0;
-  border-radius: 100%;
-  padding: 1px;
-  margin: 6px auto auto 6px;
+	display: block;
+	position: absolute;
+	right: 2px;
+	top: 0;
+	border-radius: 100%;
+	padding: 1px;
+	margin: 6px auto auto 6px;
 }
 
 .article-img-container .more-container button {
-  text-align: center;
-  position: relative;
-  right: 2px;
-  transform: rotate(90deg);
+	text-align: center;
+	position: relative;
+	right: 2px;
+	transform: rotate(90deg);
 }
 
 .article-img-container .buttons-container {
-  width: 80px;
-  height: 35px;
-  margin: auto auto 6px auto;
-  border-radius: 4px;
-  position: relative;
-  align-items: center;
-  justify-content: center;
+	width: 80px;
+	height: 35px;
+	margin: auto auto 6px auto;
+	border-radius: 4px;
+	bottom: 8px;
+	position: relative;
+	align-items: center;
+	justify-content: center;
 }
 
 .article-img-container section a {
-  background-size: cover;
+	background-size: cover;
 }
 
 .article-img-container section button,
 .article-img-container section a {
-  margin: auto;
-  width: 20px;
-  height: 20px;
-  border: none;
+	margin: auto;
+	width: 20px;
+	height: 20px;
+	border: none;
 }
 
 .article-img-container section button:hover,
 .article-img-container section a:hover {
-  cursor: pointer;
-  opacity: 80%;
+	cursor: pointer;
+	opacity: 80%;
 }
 
-
 @media (min-width: 1000px) {
-  .article-img-container {
-    grid-row: 2;
-    position: initial;
-  }
+	.article-img-container {
+		grid-row: 2;
+		position: initial;
+	}
 
-  .article-img-container,
-  .article-img-container img {
-    height: 180px;
-    width: 180px;
-  }
+	.article-img-container,
+	.article-img-container img {
+		height: 180px;
+		width: 180px;
+	}
 
-  .article-img-container .more-container {
-    visibility: hidden;
-  }
+	.article-img-container .more-container {
+		visibility: hidden;
+	}
 }
