@@ -302,6 +302,10 @@
 		color: var(--color-white);
 	}
 
+	.unfilled-star {
+		background-image: url('./assets/rating-star-dark-mode.svg');
+	}
+
 	.hover-filled-star {
 		background-image: url('./assets/rating-star-hover-dark-mode.svg');
 	}

@@ -377,6 +377,7 @@ function create_modal() {
 
 	form.appendChild(textarea);
 	form.appendChild(tag_section);
+	form.appendChild(rating)
 	form.appendChild(submit_container);
 
 	modal_content.appendChild(figure);
