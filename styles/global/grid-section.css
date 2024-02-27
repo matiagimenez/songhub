@@ -1,11 +1,13 @@
 main .section {
-	margin: auto;
 	width: 90%;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	gap: 0.7rem;
+	gap: 8px;
 	padding-bottom: 1.5rem;
 	padding-top: 0.5rem;
+	grid-template-rows: 50px;
+	grid-auto-flow: row;
+	grid-auto-rows: 230px;
 }
 
 .section-title {
@@ -17,13 +19,11 @@ article {
 	margin-top: 0.5rem;
 	width: 100%;
 	position: relative;
+	max-width: 200px;
 }
 
 .section .article-img-container {
-	/* min-width: 140px;
-  min-height: 140px; */
 	width: 100%;
-	max-width: 200px;
 	height: auto;
 }
 
@@ -38,19 +38,27 @@ article a {
 }
 
 figure {
-	width: 100%;
+	min-width: 140px;
+	min-height: 140px;
 }
 
 figure img {
-	height: auto;
+	height: 100%;
+	width: 100%;
 }
 
 .section article figcaption {
 	width: 100%;
 	margin-left: 0.05rem;
 	padding-left: 0.3rem;
-	margin-top: 0.3rem;
+	margin-top: 12px;
 	border-left: 2px solid var(--color-violet-dark);
+}
+
+@media (min-width: 400px) {
+	main .section {
+		grid-auto-rows: 260px;
+	}
 }
 
 @media (min-width: 700px) {
@@ -60,6 +68,7 @@ figure img {
 
 	main .section {
 		grid-template-columns: repeat(3, 1fr);
+		gap: 16px;
 	}
 }
 
@@ -70,6 +79,7 @@ figure img {
 
 	main .section {
 		grid-template-columns: repeat(4, 1fr);
+		gap: 0px;
 	}
 
 	.section .article-img-container::before {
