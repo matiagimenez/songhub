@@ -95,8 +95,8 @@ export const routes = {
 			scriptPath: '../scripts/other/setMetaUrl.js',
 		},
 		{
-			scriptName: 'favourite-button-animation',
-			scriptPath: '../scripts/animations/favourite-button-animation.js',
+			scriptName: 'likes-counter-animation',
+			scriptPath: '../scripts/animations/likes-counter-animation.js',
 		},
 	],
 	'/post': [
@@ -113,8 +113,8 @@ export const routes = {
 			scriptPath: '../scripts/other/setMetaUrl.js',
 		},
 		{
-			scriptName: 'favourite-button-animation',
-			scriptPath: '../scripts/animations/favourite-button-animation.js',
+			scriptName: 'likes-counter-animation',
+			scriptPath: '../scripts/animations/likes-counter-animation.js',
 		},
 	],
 	'/profile-edit': [
@@ -153,8 +153,8 @@ export const routes = {
 			scriptPath: '../scripts/other/setMetaUrl.js',
 		},
 		{
-			scriptName: 'favourite-button-animation',
-			scriptPath: '../scripts/animations/favourite-button-animation.js',
+			scriptName: 'likes-counter-animation',
+			scriptPath: '../scripts/animations/likes-counter-animation.js',
 		},
 		{
 			scriptName: 'modal-form',
@@ -199,6 +199,10 @@ export const routes = {
 		{
 			scriptName: 'favourite-button-animation',
 			scriptPath: '../scripts/animations/favourite-button-animation.js',
+		},
+		{
+			scriptName: 'likes-counter-animation',
+			scriptPath: '../scripts/animations/likes-counter-animation.js',
 		},
 		{
 			scriptName: 'set-meta-url',
