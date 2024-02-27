@@ -83,7 +83,6 @@
 
 .input-tag,
 .add-tag-button {
-	width: 60%;
 	max-width: 300px;
 	height: 2rem;
 	display: inline;
@@ -97,7 +96,12 @@
 	width: 30%;
 	font-size: 0.7rem;
 	margin-left: 6px;
+	margin-right: 10px;
 	font-weight: normal;
+}
+
+.tags {
+	display: inline;
 }
 
 .tags span {

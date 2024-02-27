@@ -258,9 +258,9 @@ function create_modal() {
 		class: 'tags-section',
 	});
 
-	tag_section.appendChild(tags);
 	tag_section.appendChild(input_tag);
 	tag_section.appendChild(tag_button);
+	tag_section.appendChild(tags);
 
 	function view_error_message(text) {
 		error_message.innerText = text;
