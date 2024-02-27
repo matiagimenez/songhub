@@ -16,7 +16,7 @@ main .section {
 
 article {
 	margin: auto;
-	margin-top: 0.5rem;
+	margin-top: 16px;
 	width: 100%;
 	position: relative;
 	max-width: 200px;
