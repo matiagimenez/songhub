@@ -89,29 +89,6 @@ function create_modal() {
 		e.key === 'Escape' && close_modal(modal);
 	});
 
-	modal.addEventListener('keydown', function (event) {
-		var modalContent = document.querySelector('.modal-content');
-		var modalElements = modalContent.querySelectorAll(
-			'button, input, select, textarea, a[href]'
-		);
-		var firstElement = modalElements[0];
-		var lastElement = modalElements[modalElements.length - 1];
-
-		if (event.key === 'Tab') {
-			if (event.shiftKey) {
-				if (document.activeElement === firstElement) {
-					lastElement.focus();
-					event.preventDefault();
-				}
-			} else {
-				if (document.activeElement === lastElement) {
-					firstElement.focus();
-					event.preventDefault();
-				}
-			}
-		}
-	});
-
 	const modal_content = ElementBuilder.createElement('section', '', {
 		class: 'modal-content',
 	});
@@ -389,7 +366,32 @@ function create_modal() {
 	modal_content.appendChild(form);
 	modal.appendChild(modal_content);
 
+
+	modal.addEventListener('keydown', function (event) {
+		var modalContent = document.querySelector('.modal-content');
+		var modalElements = modalContent.querySelectorAll(
+			'button, input, select, textarea, a[href]'
+		);
+		var firstElement = modalElements[0];
+		var lastElement = modalElements[modalElements.length - 1];
+
+		if (event.key === 'Tab') {
+			if (event.shiftKey) {
+				if (document.activeElement === firstElement) {
+					lastElement.focus();
+					event.preventDefault();
+				}
+			} else {
+				if (document.activeElement === lastElement) {
+					firstElement.focus();
+					event.preventDefault();
+				}
+			}
+		}
+	});
+
 	document.body.appendChild(modal);
+	textarea.focus();
 }
 
 const post_form_openers = document.querySelectorAll('.post-form-opener');
