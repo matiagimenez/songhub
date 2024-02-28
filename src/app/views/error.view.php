@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Backend | Home</title>
+    <title> Error | SongHub</title>
 </head>
 
 <body>
-    <h1>Home Page</h1>
+    <?=require "parts/header.view.php"?>
+    <h2><?=$error?></h2>
 </body>
 
 </html>

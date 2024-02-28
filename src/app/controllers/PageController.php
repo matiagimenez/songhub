@@ -7,7 +7,7 @@ class PageController
 
     public function __construct()
     {
-        $this->viewsDirectory = __DIR__ . "/../../";
+        $this->viewsDirectory = __DIR__ . "/../views/";
 
     }
 

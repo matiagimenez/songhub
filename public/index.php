@@ -2,7 +2,8 @@
 
 require __DIR__ . "/../vendor/autoload.php";
 
-use Songhub\App\Controllers\PageController;
+use Songhub\app\controllers\ErrorController;
+use Songhub\app\controllers\PageController;
 
 $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
@@ -18,10 +19,7 @@ if ($path == "/") {
     $controller->login();
 } else if ($path == "/register") {
     $controller->register();
-
 } else {
-    http_response_code(404);
-    $error = "404: Page Not Found";
-    require __DIR__ . '/../src/error.view.php';
-
+    $controller = new ErrorController();
+    $controller->not_found();
 }
