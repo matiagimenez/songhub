@@ -89,29 +89,6 @@ function create_modal() {
 		e.key === 'Escape' && close_modal(modal);
 	});
 
-	modal.addEventListener('keydown', function (event) {
-		var modalContent = document.querySelector('.modal-content');
-		var modalElements = modalContent.querySelectorAll(
-			'button, input, select, textarea, a[href]'
-		);
-		var firstElement = modalElements[0];
-		var lastElement = modalElements[modalElements.length - 1];
-
-		if (event.key === 'Tab') {
-			if (event.shiftKey) {
-				if (document.activeElement === firstElement) {
-					lastElement.focus();
-					event.preventDefault();
-				}
-			} else {
-				if (document.activeElement === lastElement) {
-					firstElement.focus();
-					event.preventDefault();
-				}
-			}
-		}
-	});
-
 	const modal_content = ElementBuilder.createElement('section', '', {
 		class: 'modal-content',
 	});
@@ -187,6 +164,7 @@ function create_modal() {
 		class: 'input input-tag',
 		type: 'text',
 		name: 'tag',
+		maxLength: '20',
 	});
 
 	input_tag.addEventListener('keydown', (event) => {
@@ -198,6 +176,10 @@ function create_modal() {
 		}
 	});
 
+	const tags_label = ElementBuilder.createElement('p', 'Tags: ', {
+		class: 'tags-label',
+	});
+	
 	const tags = ElementBuilder.createElement('section', '', {
 		class: 'tags',
 	});
@@ -224,6 +206,8 @@ function create_modal() {
 						class: 'remove-tag-button',
 					}
 				);
+				remove_tag_button.innerHTML =
+					"<i class='ph ph-x close-icon'></i>";
 				remove_tag_button.addEventListener('click', () => {
 					remove_tag(tag);
 				});
@@ -251,13 +235,14 @@ function create_modal() {
 		tags_count -= 1;
 	}
 
-	const tag_section = ElementBuilder.createElement('p', '', {
+	const tag_section = ElementBuilder.createElement('section', '', {
 		class: 'tags-section',
 	});
 
+	tags.appendChild(tags_label);
+	tag_section.appendChild(tags);
 	tag_section.appendChild(input_tag);
 	tag_section.appendChild(tag_button);
-	tag_section.appendChild(tags);
 
 	function view_error_message(text) {
 		error_message.innerText = text;
@@ -374,13 +359,39 @@ function create_modal() {
 
 	form.appendChild(textarea);
 	form.appendChild(tag_section);
+	form.appendChild(rating)
 	form.appendChild(submit_container);
 
 	modal_content.appendChild(figure);
 	modal_content.appendChild(form);
 	modal.appendChild(modal_content);
 
+
+	modal.addEventListener('keydown', function (event) {
+		var modalContent = document.querySelector('.modal-content');
+		var modalElements = modalContent.querySelectorAll(
+			'button, input, select, textarea, a[href]'
+		);
+		var firstElement = modalElements[0];
+		var lastElement = modalElements[modalElements.length - 1];
+
+		if (event.key === 'Tab') {
+			if (event.shiftKey) {
+				if (document.activeElement === firstElement) {
+					lastElement.focus();
+					event.preventDefault();
+				}
+			} else {
+				if (document.activeElement === lastElement) {
+					firstElement.focus();
+					event.preventDefault();
+				}
+			}
+		}
+	});
+
 	document.body.appendChild(modal);
+	textarea.focus();
 }
 
 const post_form_openers = document.querySelectorAll('.post-form-opener');

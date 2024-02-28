@@ -112,7 +112,8 @@ section.edit-favourites section figure {
 	position: relative;
 }
 
-section.edit-favourites section figure img {
+section.edit-favourites section figure img,
+.empty-favourite {
 	width: 130px;
 	height: 130px;
 	border-radius: 10px;
@@ -139,6 +140,20 @@ section.edit-favourites section {
 	background-size: 30px;
 }
 
+.empty-favourite {
+	display: grid;
+	place-content: center;
+}
+
+.empty-favourite:hover {
+	cursor: pointer;
+	opacity: 70%;
+}
+
+a {
+	text-decoration: none;
+}
+
 @media (min-width: 420px) {
 	.profile-image-edit {
 		height: 170px;
@@ -157,6 +172,7 @@ section.edit-favourites section {
 }
 
 @media (min-width: 550px) {
+
 	form fieldset .input-container input,
 	form fieldset .input-container textarea {
 		width: 100%;
@@ -165,6 +181,7 @@ section.edit-favourites section {
 }
 
 @media (min-width: 650px) {
+
 	form fieldset .load-image,
 	form fieldset .remove-image {
 		width: 120px;
@@ -229,7 +246,8 @@ section.edit-favourites section {
 		width: 100%;
 	}
 
-	section.edit-favourites section figure img {
+	section.edit-favourites section figure img,
+	.empty-favourite {
 		width: 100%;
 		height: 100%;
 		border-radius: 10px;
@@ -309,6 +327,6 @@ section.edit-favourites section {
 
 	section.edit-favourites section {
 		grid-template-columns: repeat(5, 200px);
-		grid-auto-rows: 170px;
+		grid-auto-rows: 200px;
 	}
 }

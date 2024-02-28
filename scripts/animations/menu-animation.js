@@ -21,6 +21,10 @@ function updateMenuVisibility() {
 		document
 			.querySelector('.header-nav ul .search-item form label')
 			.classList.remove('visually-hidden');
+
+		document
+			.querySelector('.header-nav ul .logout-item a span')
+			.classList.remove('visually-hidden');
 	} else {
 		menu.classList.remove('hidden');
 		menuButton.setAttribute('aria-hidden', 'true');

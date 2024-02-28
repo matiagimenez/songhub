@@ -70,7 +70,7 @@ body {
 }
 
 .song-actions button.share-button,
-.song-actions button.heart-button {
+.song-actions button.favourite-button {
 	position: absolute;
 	height: 18px;
 	width: 18px;
@@ -84,7 +84,7 @@ body {
 	right: 20px;
 }
 
-.song-actions button.heart-button {
+.song-actions button.favourite-button {
 	top: 10px;
 	right: 56px;
 }
@@ -154,7 +154,7 @@ section.most-recent-posts article:last-child {
 	}
 
 	.song-actions .song-stats button.share-button,
-	.song-actions .song-stats button.heart-button {
+	.song-actions .song-stats button.favourite-button {
 		top: 16px;
 		right: 100px;
 	}

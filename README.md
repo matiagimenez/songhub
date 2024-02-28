@@ -66,7 +66,9 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
     -   Proporcionar instrucciones detalladas sobre cómo configurar el entorno de desarrollo, instalar las dependencias y ejecutar la aplicación en el entorno de producción.
 
 ### 2. Sitemap
-![Sitemap](https://github.com/matiasgimenezdev/trabajo-integrador-paw/assets/117539520/47ec7584-e111-4e87-9d4b-ea8dc2451659)
+![sitemap](https://github.com/matiasgimenezdev/songhub/assets/117539520/778aafaa-cbfb-4d4b-b9b9-f72e6ea1dc47)
+
+
 
 ### 3. Wireframes
 Se encuentran en el siguiente [proyecto](https://www.figma.com/team_invite/redeem/8gsvLe0YYBM4Q47UAvpgqo) Figma. Es el mismo proyecto que utilizamos para las practicas de la cursada, por lo tanto, hay posibilidad de que algun docente tenga acceso al mismo. 

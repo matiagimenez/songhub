@@ -65,12 +65,31 @@
 	color: var(--color-red);
 }
 
+.back-icon {
+	color: var(--color-black);
+}
+
+.add-favorite-icon {
+	color: var(--color-violet-dark);
+	font-size: 3rem;
+}
+
+@media (min-width: 1000px) {
+	.add-favorite-icon {
+		font-size: 4rem;
+	}
+
+}
+
 @media (prefers-color-scheme: dark) {
+
 	.share-icon,
 	.close-icon,
 	.share-icon,
 	.heart-icon,
-	.comment-icon {
+	.comment-icon,
+	.back-icon,
+	.add-favorite-icon {
 		color: var(--color-white);
 	}
 }

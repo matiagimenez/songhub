@@ -2,6 +2,7 @@
 @import url('global/main.css');
 @import url('global/post.css');
 @import url('global/modal-access.css');
+@import url('global/grid-section.css');
 
 main header {
 	padding: 12px;
@@ -128,55 +129,9 @@ header .user p .username {
 	top: 18px;
 }
 
-.favourites {
-	width: 100%;
-	max-width: 750px;
-	margin: auto;
-	padding: 0 16px;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	gap: 1rem;
-}
-
-.favourites article {
-	width: 160px;
-	margin-bottom: 1rem;
-}
-
-.favourites .article-img-container {
-	min-width: 160px;
-	min-height: 160px;
-}
-
-.favourites article img {
-	width: 100%;
-	height: auto;
-}
-
-.favourites article figcaption {
-	width: 100%;
-	margin-left: 0.05rem;
-	padding-left: 0.3rem;
-	margin-top: 10px;
-	border-left: 2px solid var(--color-violet-dark);
-}
-
-.favourites article figcaption .song-title {
-	padding: 0;
-	max-width: 160px;
-	font-size: 0.9rem;
-}
-
-.favourites h2 {
-	width: 100%;
-	max-width: 700px;
-	margin-bottom: 16px;
-}
-
 .recent-activity {
-	width: 100%;
-	max-width: 750px;
+	width: 90%;
+	/* max-width: 750px; */
 	margin: auto;
 	margin-top: 16px;
 }
@@ -190,7 +145,7 @@ section.recent-activity article:last-child {
 		display: flex;
 		flex-wrap: wrap;
 		flex-direction: row;
-		max-width: 800px;
+		width: 90%;
 		margin: auto;
 		padding: 16px 24px;
 	}
@@ -231,50 +186,6 @@ section.recent-activity article:last-child {
 	}
 }
 
-@media (min-width: 600px) {
-	.favourites {
-		flex-direction: row;
-		flex-wrap: wrap;
-	}
-
-	.favourites article {
-		margin-bottom: 8px;
-	}
-
-	.favourites article img {
-		float: none;
-	}
-
-	.favourites article figcaption {
-		position: relative;
-		left: 0;
-		top: 0;
-	}
-}
-
-@media (min-width: 900px) {
-	.favourites {
-		padding: 0;
-	}
-
-	.favourites article {
-		height: 200px;
-		margin-bottom: 24px;
-		width: 30%;
-	}
-
-	.favourites .article-img-container,
-	.favourites article img {
-		height: 170px;
-		width: 170px;
-	}
-
-	.favourites article figcaption .song-title {
-		max-width: 170px;
-		font-size: 0.95rem;
-	}
-}
-
 @media (min-width: 1200px) {
 	main header .user img {
 		height: 75px;
@@ -307,9 +218,5 @@ section.recent-activity article:last-child {
 
 	main header .user-stats ul li {
 		color: var(--color-white);
-	}
-
-	.favourites article figcaption {
-		border-left: 2px solid var(--color-white);
 	}
 }
