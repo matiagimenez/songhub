@@ -1,5 +1,11 @@
 <?php
 
+require __DIR__ . "/../vendor/autoload.php";
+
+$whoops = new \Whoops\Run;
+$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+$whoops->register();
+
 $menu = [
     ["href" => "/", "text" => "Home"],
     ["href" => "/about", "text" => "Sobre nosotros"],
@@ -7,7 +13,6 @@ $menu = [
     ["href" => "/contact", "text" => "Contacto"],
 ];
 
-echo "<pre>";
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 if ($path == "/") {
