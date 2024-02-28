@@ -2,25 +2,26 @@
 
 require __DIR__ . "/../vendor/autoload.php";
 
+use Songhub\App\Controllers\PageController;
+
 $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
 
-$menu = [
-    ["href" => "/", "text" => "Home"],
-    ["href" => "/about", "text" => "Sobre nosotros"],
-    ["href" => "/services", "text" => "Servicios"],
-    ["href" => "/contact", "text" => "Contacto"],
-];
+$controller = new PageController();
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 if ($path == "/") {
-    $title = htmlspecialchars($_GET["name"] ?? "Nombre");
-    require __DIR__ . '/../src/index.view.php';
-} else if ($path == "/services") {
-    $title = "Servicios";
-    require __DIR__ . '/../src/services.view.php';
+    $controller->home();
+} else if ($path == "/login") {
+    $controller->login();
+} else if ($path == "/register") {
+    $controller->register();
+
 } else {
-    echo "404: Page Not Found";
+    http_response_code(404);
+    $error = "404: Page Not Found";
+    require __DIR__ . '/../src/error.view.php';
+
 }
