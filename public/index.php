@@ -6,8 +6,10 @@ use Exception;
 use Songhub\core\exceptions\RouteNotFoundException;
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$http_method = parse_url($_SERVER["REQUEST_METHOD"], PHP_URL_PATH);
+
 try {
-    $router->direct($path);
+    $router->direct($path, $http_method);
     $logger->info("200: Path found", ["Path" => $path]);
 } catch (RouteNotFoundException $error) {
     $router->direct('/not_found');

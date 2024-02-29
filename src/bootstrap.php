@@ -14,8 +14,9 @@ $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
 
 $router = new Router();
-$router->loadRoutes('/', 'PageController@home');
-$router->loadRoutes('/login', 'PageController@login');
-$router->loadRoutes('/register', 'PageController@register');
-$router->loadRoutes('/not_found', 'ErrorController@notFound');
-$router->loadRoutes('/internal_error', 'ErrorController@internalError');
+$router->get('/', 'PageController@home');
+$router->get('/login', 'PageController@login');
+$router->post('/login', 'AuthController@login');
+$router->get('/register', 'PageController@register');
+$router->get('/not_found', 'ErrorController@notFound');
+$router->get('/internal_error', 'ErrorController@internalError');
