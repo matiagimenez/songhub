@@ -1,7 +1,7 @@
 <nav class="header-nav">
     <ul class="hidden" role="menu" id="main-menu">
         <li role="menuitem" class="search-item">
-            <form action="">
+            <form action="/search" method="GET">
                 <label for="search">Buscar álbum, canción o artista</label>
                 <input type="search" name="search" role="searchbox" placeholder="Buscar álbum, canción o artista"
                     id="search" autocomplete="off" class="input" aria-describedby="search-description" />
