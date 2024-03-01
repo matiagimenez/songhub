@@ -1,14 +1,12 @@
 <?php
-if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
-    $url = "https://";
-} else {
-    $url = "http://";
-}
 
-$url .= $_SERVER['HTTP_HOST'];
+use Songhub\core\Request;
+$request = new Request();
+
+$url = $request->protocol() . "://" . $request->host();
 
 if (str_contains($_SERVER['REQUEST_URI'], "/song") || str_contains($_SERVER['REQUEST_URI'], "/post")) {
-    $url .= $_SERVER['REQUEST_URI'];
+    $url .= $request->path();
 } else {
     $url .= "/";
 }

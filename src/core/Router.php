@@ -2,7 +2,9 @@
 
 namespace Songhub\core;
 
+use Exception;
 use Songhub\core\exceptions\RouteNotFoundException;
+use Songhub\core\Request;
 
 class Router
 {
@@ -13,11 +15,20 @@ class Router
         "DELETE" => [],
     ];
 
+    public string $notFound = "not_found";
+    public string $internalError = "internal_error";
+
+    public function __construct()
+    {
+        $this->get($this->notFound, 'ErrorController@notFound');
+        $this->get($this->internalError, 'ErrorController@internalError');
+    }
+
     /* El segundo parametro incluye el controlador y
     el método que procesaran la petición: 'controller@method' */
-    public function loadRoutes($path, $controller_method, $http_method)
+    public function loadRoutes($path, $controller_method, $httpMethod)
     {
-        $this->routes[$http_method][$path] = $controller_method;
+        $this->routes[$httpMethod][$path] = $controller_method;
     }
 
     public function get($path, $controller_method)
@@ -37,26 +48,41 @@ class Router
         $this->loadRoutes($path, $controller_method, "DELETE");
     }
 
-    public function exists($path, $http_method = "GET")
+    public function exists($path, $httpMethod = "GET")
     {
-        return array_key_exists($path, $this->routes[$http_method]);
+        return array_key_exists($path, $this->routes[$httpMethod]);
     }
 
-    public function getController($path, $http_method = "GET")
+    public function getController($path, $httpMethod = "GET")
     {
-        // Parseamos el string para obtener el controlador y el método
-        return explode('@', $this->routes[$http_method][$path]);
-    }
-
-    public function direct($path, $http_method = "GET")
-    {
-        if (!$this->exists($path, $http_method)) {
+        if (!$this->exists($path, $httpMethod)) {
             throw new RouteNotFoundException("No existe una ruta definida para ese path");
         }
 
-        list($controller, $method) = $this->getController($path, $http_method);
+        // Parseamos el string para obtener el controlador y el método
+        return explode('@', $this->routes[$httpMethod][$path]);
+    }
+
+    private function invoke($controller, $method)
+    {
         $controller = "Songhub\\app\\controllers\\{$controller}";
         $controllerInstance = new $controller;
         $controllerInstance->$method();
+    }
+
+    public function direct(Request $request)
+    {
+        try {
+            list($path, $httpMethod) = $request->route();
+            list($controller, $method) = $this->getController($path, $httpMethod);
+            $this->invoke($controller, $method);
+        } catch (RouteNotFoundException $error) {
+            list($controller, $method) = $this->getController($this->notFound, "GET");
+            $this->invoke($controller, $method);
+        } catch (Exception $error) {
+            list($controller, $method) = $this->getController($this->internalError, "GET");
+            $this->invoke($controller, $method);
+        }
+
     }
 }
