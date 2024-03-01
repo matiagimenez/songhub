@@ -36,21 +36,19 @@ main h4 {
 main a {
 	padding-left: 10px;
 	line-height: 2.2rem;
-	font-size: 1.2rem;
+	font-size: 1rem;
 	display: block;
 	text-decoration: none;
 	font-weight: bold;
 	color: var(--color-black);
 	position: absolute;
 	left: 5px;
-	top: 40px;
+	top: 25px;
 }
 
 main a:hover {
-	transform: translateX(-5px);
 	text-decoration: underline;
 	text-underline-offset: 4px;
-	transition: transform 0.3s ease;
 }
 
 .icon.back-icon {
@@ -62,9 +60,9 @@ main a:hover {
 main img {
 	width: 75%;
 	height: 35%;
-	max-width: 500px;
+	max-width: 400px;
 	border-radius: 5px;
-	max-height: 400px;
+	max-height: 300px;
 }
 
 @media (min-width: 900px) {

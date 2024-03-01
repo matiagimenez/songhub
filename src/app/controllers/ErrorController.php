@@ -14,13 +14,19 @@ class ErrorController
     public function notFound()
     {
         http_response_code(404);
-        $error = '404: Page not found';
+        $errorType = '404';
+        $errorMessage = "PAGE NOT FOUND";
+        $style = "error";
+        $title = "404";
         require $this->viewsDirectory . "error.view.php";
     }
     public function internalError()
     {
         http_response_code(500);
-        $error = '500: Internal server error';
+        $errorType = '500';
+        $errorMessage = 'INTERNAL SERVER ERROR';
+        $style = "error";
+        $title = "500";
         require $this->viewsDirectory . "error.view.php";
     }
 

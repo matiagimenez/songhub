@@ -6,7 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	for (const route in routes) {
 		const scripts = routes[route];
 		for (const script of scripts) {
-			if (route === currentPath || currentPath.includes(route)) {
+			if (
+				route === currentPath ||
+				(currentPath.includes(route) && route !== '/')
+			) {
 				const { scriptName, scriptPath, initFunction } = script;
 				ScriptLoader.loadScript(scriptName, scriptPath, initFunction);
 			}
