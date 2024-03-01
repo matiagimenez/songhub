@@ -155,6 +155,10 @@
 		font-size: 1.2rem;
 	}
 
+	.cards-container li:first-child figure figcaption {
+		left: 75px;
+	}
+
 	.carousel-button {
 		display: none;
 	}
@@ -172,6 +176,12 @@
 
 	.cards-container figure.active figcaption {
 		font-size: 1.3rem;
+	}
+}
+
+@media (min-width: 800px) {
+	.cards-container li:first-child figure figcaption {
+		left: 20px;
 	}
 }
 
