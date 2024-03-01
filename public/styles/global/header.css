@@ -130,8 +130,18 @@ h1 img {
 	display: block;
 }
 
+.header-nav ul li.logout-item button {
+	background-color: transparent;
+	color: red;
+	color: var(--color-white);
+	border: none;
+	cursor: pointer;
+	font-weight: bold;
+}
+
 .header-nav ul li.logout-item span {
 	margin-right: 6px;
+	font-size: 0.95rem;
 }
 
 .header-nav ul li.logout-item:hover .logout-icon {
@@ -141,11 +151,6 @@ h1 img {
 .header-nav ul li.logout-item .logout-icon {
 	position: relative;
 	top: 5px;
-}
-
-.header-nav ul li.logout-item:hover span {
-	text-decoration: underline;
-	text-underline-offset: 4px;
 }
 
 .header-nav ul li.logout-item a {

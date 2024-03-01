@@ -12,19 +12,19 @@
             </form>
         </li>
         <li role="menuitem">
-            <a href="home.html">INICIO</a>
+            <a href="/">INICIO</a>
         </li>
         <li role="menuitem">
-            <a href="explore.html">EXPLORAR</a>
+            <a href="/explore">EXPLORAR</a>
         </li>
         <li role="menuitem">
-            <a href="profile.html"> PERFIL </a>
+            <a href="/profile"> PERFIL </a>
         </li>
         <li role="menuitem" class="logout-item" aria-labelledby="logout-content">
-            <a href="#">
+            <button>
                 <span id="logout-content">CERRAR SESION</span>
                 <i class="ph ph-sign-out icon logout-icon"></i>
-            </a>
+            </button>
         </li>
     </ul>
     <button class="menu-button" aria-expanded="false" aria-controls="main-menu">
