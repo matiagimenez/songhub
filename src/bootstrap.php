@@ -4,10 +4,15 @@ require __DIR__ . "/../vendor/autoload.php";
 
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
+use Songhub\core\Config;
 use Songhub\core\Router;
 
+$config = new Config();
+
 $logger = new Logger("songhub");
-$logger->pushHandler(new StreamHandler(__DIR__ . "/../logs/app.log", Logger::DEBUG));
+$logHandler = new StreamHandler($config->get("LOG_PATH"));
+$logHandler->setLevel($config->get("LOG_LEVEL"));
+$logger->pushHandler($logHandler);
 
 $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
