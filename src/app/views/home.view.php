@@ -63,7 +63,7 @@
             <!-- se debe cambiar aria-busy="true" cuando se esté cargando/actualizando el feed -->
 
             <section class="feed" role="feed" aria-labelledby="feed-title" aria-busy="false">
-                <a href="search.html" id="create-post" class="create-post submit-button"><span>Crear un post</span></a>
+                <a href="/search" id="create-post" class="create-post submit-button"><span>Crear un post</span></a>
 
                 <h2 class="section-title" id="feed-title">Últimos posts</h2>
                 <!-- se debe actualizar aria-setsize="n" siendo n la cantidad de post cargados en el feed.
