@@ -22,6 +22,7 @@ $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
 
 $router = new Router();
+$router->setLogger($logger);
 $router->get('/', 'PageController@home');
 $router->get('/login', 'PageController@login');
 $router->post('/login', 'AuthController@login');

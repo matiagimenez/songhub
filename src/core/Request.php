@@ -16,8 +16,8 @@ class Request
     public function route()
     {
         return [
-            'path' => $this->path(),
-            'httpMethod' => $this->httpMethod(),
+            $this->path(),
+            $this->httpMethod(),
         ];
     }
 

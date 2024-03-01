@@ -5,9 +5,12 @@ namespace Songhub\core;
 use Exception;
 use Songhub\core\exceptions\RouteNotFoundException;
 use Songhub\core\Request;
+use Songhub\core\traits\Loggable;
 
 class Router
 {
+    use Loggable;
+
     public array $routes = [
         "GET" => [],
         "POST" => [],
@@ -75,13 +78,16 @@ class Router
         try {
             list($path, $httpMethod) = $request->route();
             list($controller, $method) = $this->getController($path, $httpMethod);
-            $this->invoke($controller, $method);
+            $this->logger->info("200: Path found", ["Path" => $path]);
         } catch (RouteNotFoundException $error) {
             list($controller, $method) = $this->getController($this->notFound, "GET");
-            $this->invoke($controller, $method);
+            $this->logger->debug("404: Path not found", ["Path" => $path]);
         } catch (Exception $error) {
             list($controller, $method) = $this->getController($this->internalError, "GET");
+            $this->logger->error("500: Internal server error", ["ERROR" => $error]);
+        } finally {
             $this->invoke($controller, $method);
+
         }
 
     }
