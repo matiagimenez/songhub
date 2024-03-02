@@ -10,7 +10,7 @@ use Songhub\core\Router;
 
 $request = new Request();
 
-$config = new Config();
+$config = Config::getInstance();
 
 $logger = new Logger("songhub");
 $logHandler = new StreamHandler($config->get("LOG_PATH"));
