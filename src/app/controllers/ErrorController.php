@@ -1,15 +1,10 @@
 <?php
 namespace Songhub\App\Controllers;
 
-class ErrorController
+use Songhub\core\Controller;
+
+class ErrorController extends Controller
 {
-    public string $viewsDirectory;
-
-    public function __construct()
-    {
-        $this->viewsDirectory = __DIR__ . "/../views/";
-
-    }
 
     public function notFound()
     {

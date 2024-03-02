@@ -1,7 +1,9 @@
 <?php
 namespace Songhub\App\Controllers;
 
-class AuthController
+use Songhub\core\Controller;
+
+class AuthController extends Controller
 {
 
     public function login()

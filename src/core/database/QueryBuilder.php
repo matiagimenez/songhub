@@ -3,20 +3,59 @@
 namespace Songhub\core\Database;
 
 use PDO;
+use PDOException;
+use Songhub\core\LoggerBuilder;
 use Songhub\core\traits\Loggable;
 
 class QueryBuilder
 {
+    private static $instance;
     use Loggable;
+    private PDO $pdo;
 
-    public function __construct(PDO $pdo)
+    private function __construct(PDO $pdo)
     {
+        $logger = LoggerBuilder::getInstance()->getLogger();
+        $this->setLogger($logger);
         $this->pdo = $pdo;
     }
 
-    public function select()
+    public static function getInstance()
+    {
+        if (!isset(self::$instance)) {
+            self::$instance = new self(ConnectionBuilder::getInstance()->getConnection());
+        }
+
+        return self::$instance;
+    }
+
+    public function select(string $table)
     {
         // $this->pdo->prepare("SELECT * FROM {$table}");
+    }
+
+    public function selectByColumn(string $table, $column, $value)
+    {
+
+        try {
+            $query = "SELECT * FROM {$table} WHERE {$column} = :value";
+            $statement = $this->pdo->prepare($query);
+            $statement->bindParam(':value', $value);
+            $statement->setFetchMode(PDO::FETCH_ASSOC);
+            $statement->execute();
+            return $statement->fetchAll();
+        } catch (PDOException $error) {
+            $this->logger->error(
+                "Error al ejecutar el query en la base de datos",
+                [
+                    "Error" => $error->getMessage(),
+                    "Operacion" => 'selectByColumn',
+                    "Tabla" => $table,
+                    "Columna" => $column,
+                    "Valor" => $value,
+                ]
+            );
+        }
     }
     public function insert()
     {
