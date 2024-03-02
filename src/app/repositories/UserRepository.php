@@ -9,11 +9,11 @@ class UserRepository extends Repository
 {
     public $table = "USER";
 
-    public function getUser($username)
+    public function getUser(string $username)
     {
         $user = $this->queryBuilder->selectByColumn($this->table, "username", $username);
         $userInstance = new User();
-        $userInstance->set($user);
+        $userInstance->set(current($user));
         return $userInstance;
 
     }

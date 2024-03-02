@@ -1,7 +1,7 @@
 <?php
 
 use Songhub\core\Request;
-$request = new Request();
+$request = Request::getInstance();
 
 $url = $request->protocol() . "://" . $request->host();
 

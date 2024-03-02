@@ -3,13 +3,19 @@ namespace Songhub\App\Controllers;
 
 use Songhub\app\repositories\UserRepository;
 use Songhub\core\Controller;
+use Songhub\core\Request;
 
 class UserController extends Controller
 {
-    public ?string $repositoryName = UserRepository::class;
+    public function construct()
+    {
+        $this->repositoryName = UserRepository::class;
+    }
 
     public function profile()
     {
+        $username = Request::getInstance()->getParameter("username");
+        $user = $this->repository->getUser($username);
         $title = "Perfil";
         $style = "profile";
         require $this->viewsDirectory . "profile.view.php";

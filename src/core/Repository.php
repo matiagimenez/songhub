@@ -8,7 +8,7 @@ use Songhub\core\traits\Loggable;
 class Repository
 {
     use Loggable;
-    private QueryBuilder $queryBuilder;
+    public QueryBuilder $queryBuilder;
 
     public function setQueryBuilder(QueryBuilder $queryBuilder)
     {

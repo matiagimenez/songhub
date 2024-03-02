@@ -29,9 +29,21 @@ class QueryBuilder
         return self::$instance;
     }
 
-    public function select(string $table)
+    public function select(string $table, $params = [])
     {
-        // $this->pdo->prepare("SELECT * FROM {$table}");
+        try {
+            $where = "1 = 1";
+
+            if (count($params) > 0) {
+                //* Armar el where con los parametros que vienen en $params como clave => valor
+                //! Recordar utilizar bindParam() para evitar inyecciones de SQL
+                $where = "";
+            }
+
+            $query = "SELECT * FROM {$table} WHERE {$where}";
+        } catch (PDOException $error) {
+
+        }
     }
 
     public function selectByColumn(string $table, $column, $value)

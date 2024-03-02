@@ -7,10 +7,16 @@ use Songhub\core\exceptions\InvalidValueException;
 class User
 {
     public $fields = [
+        "id" => null,
         "username" => null,
         "password" => null,
         "email" => null,
     ];
+
+    public function setId($id)
+    {
+        $this->fields["id"] = $id;
+    }
 
     public function setUsername(string $username)
     {

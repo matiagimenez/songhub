@@ -8,7 +8,7 @@ use Songhub\core\LoggerBuilder;
 use Songhub\core\Request;
 use Songhub\core\Router;
 
-$request = new Request();
+$request = Request::getInstance();
 
 $config = Config::getInstance();
 
