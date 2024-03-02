@@ -1,5 +1,13 @@
 # Instrucciones de ejecucion
 
+## Requerimientos
+
+-   PHP (v8.0 o superior)
+-   MySQL (v8.0 o superior)
+-   Composer (v2.5 o superior)
+
+## Pasos a seguir
+
 1. Clonar el repositorio del proyecto
 
 ```bash
@@ -21,10 +29,31 @@ LOG_LEVEL = DEBUG
 
 # Path relativo a la raiz del proyecto donde se quieren resguardar los archivos de logs
 LOG_PATH = "logs/app.log"
+
+# Configuración de la base de datos
+DB_ADAPTER = mysql
+DB_HOSTNAME = localhost
+DB_USERNAME = root
+DB_PASSWORD =
+DB_NAME = songhub
+DB_CHARSET = utf-8
+DB_PORT = 3306
 ```
 
-4. Levantar el servidor standalones
+4. Configurar la variable $PATH para incluir composer. Si se encuentra en Linux, ejecutar el siguiente comando:
 
+```bash
+export PATH=$PATH:~/.config/composer/vendor/bin
 ```
+
+5. Ejecutar la migration de la base de datos
+
+```bash
+phinx migrate -e development
+```
+
+6. Levantar el servidor standalone
+
+```bash
 php - S localhost:8000 -t public/
 ```
