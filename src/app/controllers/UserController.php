@@ -7,14 +7,15 @@ use Songhub\core\Request;
 
 class UserController extends Controller
 {
-    public function construct()
+    public function __construct()
     {
         $this->repositoryName = UserRepository::class;
+        parent::__construct();
     }
 
     public function profile()
     {
-        $username = Request::getInstance()->getParameter("username");
+        $username = Request::getInstance()->getParameter("username", "GET");
         $user = $this->repository->getUser($username);
         $title = "Perfil";
         $style = "profile";
