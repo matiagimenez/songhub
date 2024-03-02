@@ -15,8 +15,8 @@ class Controller
         $this->viewsDirectory = __DIR__ . "/../app/views/";
 
         if (!is_null($this->repositoryName)) {
-            $queryBuilder = QueryBuilder::getInstance();
             $repository = new $this->repositoryName;
+            $queryBuilder = QueryBuilder::getInstance();
             $repository->setQueryBuilder($queryBuilder);
             $this->setRepository($repository);
         }
