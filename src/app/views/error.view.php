@@ -3,7 +3,9 @@
 <?php require "fragments/head.view.php"?>
 
 <body>
-    <?php require "fragments/header.view.php"?>
+    <header class="main-header" id="main-header">
+        <?php require "fragments/header.view.php"?>
+    </header>
     <main>
         <h2>ERROR <?=$errorType?></h2>
         <h3><?=$errorMessage?></h3>

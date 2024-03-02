@@ -8,7 +8,9 @@
 <body>
 
     <body id="home">
-        <?php require "fragments/header.view.php"?>
+        <header class="main-header" id="main-header">
+            <?php require "fragments/header.view.php"?>
+        </header>
         <main>
             <ul class="cards-container" aria-roledescription="carousel" aria-label="Carrusel de discos de música">
                 <li role="listitem" aria-roledescription="slide" aria-labelledby="album-1-title">
