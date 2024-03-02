@@ -31,7 +31,7 @@ return
             'user' => getenv("DB_USERNAME") ?? "root",
             'pass' => getenv("DB_PASSWORD") ?? "",
             'port' => getenv("DB_PORT") ?? "3306",
-            'charset' => getenv("DB_CHARSET") ?? "utf-8",
+            'charset' => getenv("DB_CHARSET") ?? "utf8",
         ],
         'testing' => [
             'adapter' => 'mysql',
