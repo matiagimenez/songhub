@@ -3,7 +3,7 @@
         <img height="15px" width="15px" src="/assets/icons/spotify.svg" alt="Icono de Spotify" />
         <span> En colaboración con Spotify </span>
     </p>
-    <p>&#169; 2023 SongHub Inc.</p>
+    <p>&#169; <?=date("Y")?> SongHub Inc.</p>
 </section>
 <nav class="footer-nav">
     <ul>
