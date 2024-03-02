@@ -196,10 +196,6 @@
 }
 
 @media (min-width: 1150px) {
-	.carousel-button {
-		display: block;
-	}
-
 	.left {
 		left: 50px;
 	}
