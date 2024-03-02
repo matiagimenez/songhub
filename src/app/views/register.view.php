@@ -13,7 +13,7 @@
                 <legend>Informacion de registro</legend>
                 <p class="input-container">
                     <input name="username" id="username" type="text" required autocomplete="off" class="input"
-                        aria-describedby="username-desc" aria-labelledby="username-label" />
+                        aria-describedby="username-desc" aria-labelledby="username-label" maxlength="20" />
                     <label for="username" id="username-label">Nombre de usuario</label>
                 <p class="visually-hidden" id="username-desc">El nombre de usuario solo puede estar conformado por
                     letras y numeros</p>
