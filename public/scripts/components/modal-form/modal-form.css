@@ -108,14 +108,12 @@
 
 .tags-label {
 	font-weight: normal;
-	color: var(--color-grey-light);
-	font-size: 0.8rem;
-	font-style: italic;
+	color: var(--color-violet-dark-black);
+	font-size: 0.85rem;
 	margin-right: 10px;
 	display: inline-flex;
 	margin-top: 6px;
 }
-
 
 .tags span {
 	margin: 0 10px 4px 0;
@@ -241,11 +239,6 @@
 	animation-delay: 1s;
 }
 
-.tags {
-	margin-bottom: 8px;
-	margin-left: 0px;
-}
-
 @keyframes message-opacity {
 	from {
 		opacity: 90%;
@@ -339,5 +332,9 @@
 
 	.filled-star {
 		background-image: url('./assets/rating-star-scored-dark-mode.svg');
+	}
+
+	.tags-label {
+		color: var(--color-white);
 	}
 }
