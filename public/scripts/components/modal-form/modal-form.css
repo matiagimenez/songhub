@@ -17,6 +17,7 @@
 	border-radius: 20px;
 	width: 90vw;
 	max-width: 400px;
+	min-width: 300px;
 }
 
 .close-button {
@@ -81,9 +82,12 @@
 	margin-top: 0.6rem;
 }
 
+.input-tag {
+	max-width: 300px;
+}
+
 .input-tag,
 .add-tag-button {
-	max-width: 300px;
 	height: 2rem;
 	display: inline;
 	font-size: 0.8rem;
@@ -94,9 +98,7 @@
 	max-width: 120px;
 	min-width: 90px;
 	width: 30%;
-	font-size: 0.7rem;
 	margin-left: 6px;
-	margin-right: 10px;
 	font-weight: normal;
 }
 
@@ -156,8 +158,10 @@
 	color: var(--color-violet-dark);
 }
 
-.rating label {
+.rating label,
+.rating_value {
 	font-weight: 400;
+	font-size: small;
 }
 
 .rating section {
@@ -249,6 +253,14 @@
 
 	to {
 		opacity: 0%;
+	}
+}
+
+@media (min-width: 400px) {
+
+	.rating label,
+	.rating_value {
+		font-size: medium;
 	}
 }
 
