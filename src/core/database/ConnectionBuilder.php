@@ -43,7 +43,7 @@ class ConnectionBuilder
 
             $connection = new PDO(
                 "{$adapter}:host={$hostname};dbname={$dbName};
-              port={$port};charset={$charset}",
+                port={$port};charset={$charset}",
                 $username,
                 $password,
                 [
