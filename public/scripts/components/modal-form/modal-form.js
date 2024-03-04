@@ -393,13 +393,14 @@ const post_form_openers = document.querySelectorAll('.post-form-opener');
 const create_post = document.getElementById('create-post');
 // const go_to_top = document.getElementById("go-to-top");
 const main_header = document.getElementById('main-header');
+const html = document.querySelector('html');
 
 post_form_openers.forEach((opener) => {
 	opener.addEventListener('click', () => {
 		create_post !== null && create_post.classList.add('hidden');
 		// go_to_top.classList.add("hidden");
+		html.classList.add('none-scroll');
 		main_header.classList.add('hidden');
-		document.body.classList.add('none-scroll');
 		create_modal();
 	});
 });
@@ -407,5 +408,5 @@ post_form_openers.forEach((opener) => {
 function close_modal(modal) {
 	modal.remove();
 	main_header.classList.remove('hidden');
-	document.body.classList.remove('none-scroll');
+	html.classList.remove('none-scroll');
 }

@@ -1,3 +1,7 @@
+.none-scroll {
+	overflow: hidden;
+}
+
 .modal {
 	font-family: var(--font-family);
 	position: fixed;
