@@ -176,10 +176,6 @@ function create_modal() {
 		}
 	});
 
-	const tags_label = ElementBuilder.createElement('p', 'Tags: ', {
-		class: 'tags-label',
-	});
-	
 	const tags = ElementBuilder.createElement('section', '', {
 		class: 'tags',
 	});
@@ -239,7 +235,6 @@ function create_modal() {
 		class: 'tags-section',
 	});
 
-	tags.appendChild(tags_label);
 	tag_section.appendChild(tags);
 	tag_section.appendChild(input_tag);
 	tag_section.appendChild(tag_button);
@@ -359,13 +354,12 @@ function create_modal() {
 
 	form.appendChild(textarea);
 	form.appendChild(tag_section);
-	form.appendChild(rating)
+	form.appendChild(rating);
 	form.appendChild(submit_container);
 
 	modal_content.appendChild(figure);
 	modal_content.appendChild(form);
 	modal.appendChild(modal_content);
-
 
 	modal.addEventListener('keydown', function (event) {
 		var modalContent = document.querySelector('.modal-content');
