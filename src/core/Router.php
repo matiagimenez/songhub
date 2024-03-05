@@ -51,12 +51,12 @@ class Router
         $this->loadRoutes($path, $controller_method, "DELETE");
     }
 
-    public function exists($path, $httpMethod = "GET")
+    private function exists($path, $httpMethod = "GET")
     {
         return array_key_exists($path, $this->routes[$httpMethod]);
     }
 
-    public function getController($path, $httpMethod = "GET")
+    private function getController($path, $httpMethod = "GET")
     {
         if (!$this->exists($path, $httpMethod)) {
             throw new RouteNotFoundException("No existe una ruta definida para ese path");
