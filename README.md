@@ -69,10 +69,7 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
 ### 3. Wireframes
 Se encuentran en el siguiente [proyecto](https://www.figma.com/team_invite/redeem/8gsvLe0YYBM4Q47UAvpgqo) Figma. Es el mismo proyecto que utilizamos para las practicas de la cursada, por lo tanto, hay posibilidad de que algun docente tenga acceso al mismo. 
 
-### 4. Modelo de datos
-[Link al diagrama](https://drive.google.com/file/d/13X7mGucqO1l9EiWeonvWR7GnOXmyRzrF/view?usp=sharing)
+### 4. [Modelo de datos](https://drive.google.com/file/d/13X7mGucqO1l9EiWeonvWR7GnOXmyRzrF/view?usp=sharing)
 
-
-### 5. Diagrama de clases
-[Link al diagrama](https://drive.google.com/file/d/1HtCK7KejQNIDRchia1vwpbA9fTwMlj8Q/view?usp=sharing)
+### 5. [Diagrama de clases](https://drive.google.com/file/d/1HtCK7KejQNIDRchia1vwpbA9fTwMlj8Q/view?usp=sharing)
 
