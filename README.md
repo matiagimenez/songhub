@@ -75,6 +75,6 @@ Se encuentran en el siguiente [proyecto](https://www.figma.com/team_invite/redee
 Link al [diagrama](https://drive.google.com/file/d/1JAtAWQpGeFHzGS_tqZcFF90B8F1Ll8YN/view?usp=sharing)
 
 ### 5. Diagrama de clases
-Link al [diagrama](https://drive.google.com/file/d/1Ngnn1LoCkaUPK_MKAwmETyU39QI4mxWH/view?usp=sharing)
+Link al [diagrama](https://drive.google.com/file/d/1Ngnn1LoCkaUPK_MKAwmETyU39QI4mxWH/view?usp=drive_link)
 
 
