@@ -1,5 +1,3 @@
-![Diagrama de clases](https://github.com/matiasgimenezdev/songhub/assets/117539520/3d2b6888-1eff-4370-a982-60201770401c)# Trabajo práctico integrador - Programacion en Ambiente Web 2023
-
 ## SongHub: sitio web de reviews de Música (Inspiracion: [Letterbox](https://letterboxd.com/))
 
 ### [Autores](https://github.com/matiasgimenezdev/trabajo-integrador-paw/blob/main/docs/AUTHORS.md)
