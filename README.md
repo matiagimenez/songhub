@@ -72,9 +72,8 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
 Se encuentran en el siguiente [proyecto](https://www.figma.com/team_invite/redeem/8gsvLe0YYBM4Q47UAvpgqo) Figma. Es el mismo proyecto que utilizamos para las practicas de la cursada, por lo tanto, hay posibilidad de que algun docente tenga acceso al mismo. 
 
 ### 4. Modelo de datos
-Link al [diagrama](https://drive.google.com/file/d/1JAtAWQpGeFHzGS_tqZcFF90B8F1Ll8YN/view?usp=sharing)
+![Modelo de datos](https://github.com/matiasgimenezdev/songhub/assets/117539520/3e73970b-3b14-4714-9eba-6db5e03dba60)
 
 ### 5. Diagrama de clases
-Link al [diagrama](https://drive.google.com/file/d/1Ngnn1LoCkaUPK_MKAwmETyU39QI4mxWH/view?usp=drive_link)
-
+![Diagrama de clases](https://github.com/matiasgimenezdev/songhub/assets/117539520/1c1021fb-d89a-4347-8cb5-6082b2754300)
 
