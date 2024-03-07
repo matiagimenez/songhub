@@ -63,21 +63,11 @@ function checkAllImagesLoaded() {
 }
 
 function addLoader() {
-	const loaderContainer = ElementBuilder.createElement('div', '', {
-		class: 'loader-container',
-	});
-
 	const loader = ElementBuilder.createElement('div', '', {
 		class: 'loader',
-		role: 'progressbar',
-		'aria-valuemin': 0,
-		'aria-valuemax': 100,
-		'aria-valuenow': 0,
 	});
 
-	loader.style.width = '0%';
-	loaderContainer.appendChild(loader);
-	cardsContainer.appendChild(loaderContainer);
+	cardsContainer.appendChild(loader);
 	return loader;
 }
 
@@ -85,8 +75,8 @@ function removeLoader() {
 	for (const card of cards) {
 		card.classList.remove('blur');
 	}
-	const loaderContainer = document.querySelector('.loader-container');
-	loaderContainer.style.display = 'none';
+	const loader = document.querySelector('.loader');
+	loader.style.display = 'none';
 }
 
 function getCurrentActiveCard() {
@@ -214,8 +204,7 @@ for (const image of images) {
 	if (!image.complete) {
 		image.addEventListener('load', () => {
 			const progress = (100 / images.length) * loadCount;
-			loader.style.width = `${progress}%`;
-			loader.setAttribute('aria-valuenow', progress);
+			console.log(progress);
 		});
 	}
 }
@@ -224,7 +213,7 @@ for (const card of cards) {
 	card.classList.add('blur');
 }
 
-const loader = addLoader();
+addLoader();
 
 // Cada 50ms verifica si las imagenes fueron cargadas
 const interval = setInterval(() => {
