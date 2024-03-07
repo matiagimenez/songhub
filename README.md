@@ -1,4 +1,4 @@
-![Modelo de datos](https://github.com/matiasgimenezdev/songhub/assets/117539520/4c3a5754-95c2-44a2-a780-91cc9659f303)# Trabajo práctico integrador - Programacion en Ambiente Web 2023
+![Diagrama de clases](https://github.com/matiasgimenezdev/songhub/assets/117539520/3d2b6888-1eff-4370-a982-60201770401c)# Trabajo práctico integrador - Programacion en Ambiente Web 2023
 
 ## SongHub: sitio web de reviews de Música (Inspiracion: [Letterbox](https://letterboxd.com/))
 
@@ -72,9 +72,9 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
 Se encuentran en el siguiente [proyecto](https://www.figma.com/team_invite/redeem/8gsvLe0YYBM4Q47UAvpgqo) Figma. Es el mismo proyecto que utilizamos para las practicas de la cursada, por lo tanto, hay posibilidad de que algun docente tenga acceso al mismo. 
 
 ### 4. Modelo de datos
-![Modelo de datos](https://github.com/matiasgimenezdev/songhub/assets/117539520/1d6b6ab6-fea8-49b6-8505-88f85d6044ad)
+![Modelo de datos](https://github.com/matiasgimenezdev/songhub/assets/117539520/3ce43267-2223-45ea-b7fa-e065d94e500c)
+
 
 ### 5. Diagrama de clases
-![Diagrama de clases](https://github.com/matiasgimenezdev/songhub/assets/117539520/77176843-000a-4466-9645-1624e587d944)
-
+![Diagrama de clases](https://github.com/matiasgimenezdev/songhub/assets/117539520/ed3d3e2b-cf1b-4a09-8b99-351e289ed8fa)
 
