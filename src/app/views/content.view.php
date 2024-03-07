@@ -17,7 +17,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.svg" />
-    <link rel="stylesheet" href="../styles/song.css" />
+    <link rel="stylesheet" href="../styles/content.css" />
     <script src="../scripts/index.js" type="module"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <title>Canción | SongHub</title>

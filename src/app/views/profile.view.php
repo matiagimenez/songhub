@@ -193,7 +193,7 @@
                     </section>
                     <figcaption>
                         <h3 class="song-title" id="post-1-song-title">
-                            <a href="song.html">The Dark Side of the Moon</a>
+                            <a href="/content">The Dark Side of the Moon</a>
                         </h3>
                         <h4 class="artist-title" id="post-1-artist-title">
                             Pink Floyd
@@ -273,7 +273,7 @@
                     </section>
                     <figcaption>
                         <h3 class="song-title" id="post-2-song-title">
-                            <a href="song.html"> Preacher`s Daughter </a>
+                            <a href="/content"> Preacher`s Daughter </a>
                         </h3>
                         <h4 class="artist-title" id="post-2-artist-title">
                             Ethel Cain
@@ -330,7 +330,7 @@
                     </section>
                     <figcaption>
                         <h3 class="song-title" id="post-3-song-title">
-                            <a href="song.html"> Certified Lover Boy </a>
+                            <a href="/content"> Certified Lover Boy </a>
                         </h3>
                         <h4 class="artist-title" id="post-3-artist-title">
                             Drake

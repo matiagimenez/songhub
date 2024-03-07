@@ -33,9 +33,9 @@ shareButtons.forEach((button) => {
 		// const currentUrl = window.location.href;
 		// navigator.clipboard.writeText(currentUrl);
 		if (songId) {
-			link = `http://localhost:3000/song.html?id=${songId}`;
+			link = `http://localhost:3000/content/${songId}`;
 		} else if (postId) {
-			link = `http://localhost:3000/post.html?id=${postId}`;
+			link = `http://localhost:3000/content/${postId}`;
 		}
 
 		navigator.clipboard.writeText(link);
@@ -56,7 +56,7 @@ shareButtons.forEach((button) => {
 		let link = '';
 		const postContent = button.getAttribute('data-post-content');
 		if (songId) {
-			link = `http://localhost:3000/song.html?id=${songId}`;
+			link = `http://localhost:3000/content/${songId}`;
 			tweet = `¿Te gustaría dejar tu opinión sobre sobre "${postContent}"? Crea tu post en Songhub: 
 			${link}`;
 		} else if (postId) {

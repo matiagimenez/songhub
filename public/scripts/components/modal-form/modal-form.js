@@ -28,7 +28,7 @@ articles.forEach((article) => {
 	});
 
 	const view_song = ElementBuilder.createElement('a', '', {
-		href: 'song.html',
+		href: '/content',
 	});
 	view_song.innerHTML = `
 		<i class="ph-fill ph-music-notes icon song-icon"></i>

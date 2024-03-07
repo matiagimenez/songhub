@@ -18,7 +18,7 @@
                         <img src="/assets/images/home/carousel/carousel_image_1.jpg"
                             alt="Portada del álbum 'Starboy' de The Weeknd" width="250" height="300" />
                         <figcaption id="album-1-title">
-                            <a href="song.html" target="_blank">
+                            <a href="/content" target="_blank">
                                 <h2>Starboy</h2>
                                 <h3>The Weeknd</h3>
                             </a>
@@ -30,7 +30,7 @@
                         <img src="/assets/images/home/carousel/carousel_image_2.jpg"
                             alt="Portada del álbum 'Justice' de Justin Bieber" width="250" height="300" />
                         <figcaption id="album-2-title">
-                            <a href="song.html" target="_blank">
+                            <a href="/content" target="_blank">
                                 <h2>Justice</h2>
                                 <h3>Justin Bieber</h3>
                             </a>
@@ -42,7 +42,7 @@
                         <img src="/assets/images/home/carousel/carousel_image_3.jpg"
                             alt="Portada del álbum 'DAMN.' de Kendrick Lamar" width="250" height="300" />
                         <figcaption id="album-3-title">
-                            <a href="song.html" target="_blank">
+                            <a href="/content" target="_blank">
                                 <h2>DAMN.</h2>
                                 <h3>Kendrick Lamar</h3>
                             </a>
@@ -54,7 +54,7 @@
                         <img src="/assets/images/home/carousel/carousel_image_4.jpg"
                             alt="Portada del álbum 'SOS' de SZA" width="250" height="300" />
                         <figcaption id="album-4-title">
-                            <a href="song.html" target="_blank">
+                            <a href="/content" target="_blank">
                                 <h2>SOS</h2>
                                 <h3>SZA</h3>
                             </a>
@@ -92,7 +92,7 @@
                         </section>
                         <figcaption>
                             <h3 class="song-title" id="post-1-song-title">
-                                <a href="song.html">The Dark Side of the Moon</a>
+                                <a href="/content">The Dark Side of the Moon</a>
                             </h3>
                             <h4 class="artist-title" id="post-1-artist-title">
                                 Pink Floyd
@@ -172,7 +172,7 @@
                         </section>
                         <figcaption>
                             <h3 class="song-title" id="post-2-song-title">
-                                <a href="song.html"> Preacher`s Daughter </a>
+                                <a href="/content"> Preacher`s Daughter </a>
                             </h3>
                             <h4 class="artist-title" id="post-2-artist-title">
                                 Ethel Cain
@@ -229,7 +229,7 @@
                         </section>
                         <figcaption>
                             <h3 class="song-title" id="post-3-song-title">
-                                <a href="song.html"> Certified Lover Boy </a>
+                                <a href="/content"> Certified Lover Boy </a>
                             </h3>
                             <h4 class="artist-title" id="post-3-artist-title">
                                 Drake

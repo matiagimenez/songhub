@@ -5,7 +5,7 @@ $request = Request::getInstance();
 
 $url = $request->protocol() . "://" . $request->host();
 
-if (str_contains($_SERVER['REQUEST_URI'], "/song") || str_contains($_SERVER['REQUEST_URI'], "/post")) {
+if (str_contains($_SERVER['REQUEST_URI'], "/content") || str_contains($_SERVER['REQUEST_URI'], "/post")) {
     $url .= $request->path();
 } else {
     $url .= "/";
