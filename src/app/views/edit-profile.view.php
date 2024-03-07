@@ -54,8 +54,7 @@
                 </p>
                 <p class="input-container biography-edit">
                     <label for="biography" class="label">Biografía</label>
-                    <textarea name="biography" id="biography" class="input" maxlength="160" value="">
-						</textarea>
+                    <textarea name="biography" id="biography" class="input" maxlength="160"></textarea>
                 </p>
             </fieldset>
             <p class="button-container">
