@@ -1,4 +1,4 @@
-![Modelo de datos](https://github.com/matiasgimenezdev/songhub/assets/117539520/4c3a5754-95c2-44a2-a780-91cc9659f303)# Trabajo práctico integrador - Programacion en Ambiente Web 2023
+# Trabajo práctico integrador - Programacion en Ambiente Web 2023
 
 ## SongHub: sitio web de reviews de Música (Inspiracion: [Letterbox](https://letterboxd.com/))
 
