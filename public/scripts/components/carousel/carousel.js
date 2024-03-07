@@ -204,7 +204,6 @@ for (const image of images) {
 	if (!image.complete) {
 		image.addEventListener('load', () => {
 			const progress = (100 / images.length) * loadCount;
-			console.log(progress);
 		});
 	}
 }
