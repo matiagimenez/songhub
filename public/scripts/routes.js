@@ -106,7 +106,7 @@ export const routes = {
 			scriptPath: '/scripts/components/modal-form/modal-form.js',
 		},
 	],
-	'/song': [
+	'/content': [
 		{
 			scriptName: 'menu-animation',
 			scriptPath: '/scripts/animations/menu-animation.js',

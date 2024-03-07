@@ -112,7 +112,7 @@
                             class="image-border" />
                     </section>
                     <figcaption>
-                        <a href="song.html">
+                        <a href="/content">
                             <h3 class="song-title">Comfortably Numb</h3>
                             <h4 class="artist-title">Pink Floyd</h4>
 
@@ -129,7 +129,7 @@
                             class="image-border" />
                     </section>
                     <figcaption>
-                        <a href="song.html">
+                        <a href="/content">
                             <h3 class="song-title">Polaris</h3>
                             <h4 class="artist-title">Saiko</h4>
 
@@ -145,7 +145,7 @@
                             class="image-border" />
                     </section>
                     <figcaption>
-                        <a href="song.html">
+                        <a href="/content">
                             <h3 class="song-title">Purpose</h3>
                             <h4 class="artist-title">Justin Bieber</h4>
 
@@ -161,7 +161,7 @@
                             class="image-border" />
                     </section>
                     <figcaption>
-                        <a href="song.html">
+                        <a href="/content">
                             <h3 class="song-title">Paparazzi</h3>
                             <h4 class="artist-title">Lady Gaga</h4>
 

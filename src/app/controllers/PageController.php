@@ -24,5 +24,4 @@ class PageController extends Controller
         $style = "register";
         require $this->viewsDirectory . "register.view.php";
     }
-
 }

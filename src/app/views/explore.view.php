@@ -39,7 +39,7 @@
                             alt="Portada del álbum 'Pulse' de Pink Floyd" class="image-border" />
                     </section>
                     <figcaption>
-                        <a href="song.html">
+                        <a href="/content">
                             <h3 class="song-title">Pulse</h3>
                             <h4 class="artist-title">Pink Floyd</h4>
                         </a>
@@ -55,7 +55,7 @@
                             alt="Portada del álbum 'Punisher' de Phoebe Bridgers" class="image-border" />
                     </section>
                     <figcaption>
-                        <a href="song.html">
+                        <a href="/content">
                             <h3 class="song-title">Punisher</h3>
                             <h4 class="artist-title">Phoebe Bridgers</h4>
                         </a>
@@ -71,7 +71,7 @@
                             alt="Portada del álbum 'Random Acces Memories' de Daft Punk" class="image-border" />
                     </section>
                     <figcaption>
-                        <a href="song.html">
+                        <a href="/content">
                             <h3 class="song-title">
                                 Random Acces Memories
                             </h3>
@@ -89,7 +89,7 @@
                             alt="Portada del álbum 'Led Zeppelin III' de Led Zeppelin" class="image-border" />
                     </section>
                     <figcaption>
-                        <a href="song.html">
+                        <a href="/content">
                             <h3 class="song-title">Led Zeppelin III</h3>
                             <h4 class="artist-title">Led Zeppelin</h4>
                         </a>
@@ -105,7 +105,7 @@
                             alt="Portada del álbum 'Happier Than Ever' de Billie Eilish" class="image-border" />
                     </section>
                     <figcaption>
-                        <a href="song.html">
+                        <a href="/content">
                             <h3 class="song-title">Happier Than Ever</h3>
                             <h4 class="artist-title">Billie Eilish</h4>
                         </a>
@@ -121,7 +121,7 @@
                             alt="Portada del álbum 'X100PRE' de Bad Bunny" class="image-border" />
                     </section>
                     <figcaption>
-                        <a href="song.html">
+                        <a href="/content">
                             <h3 class="song-title">X100PRE</h3>
                             <h4 class="artist-title">Bad Bunny</h4>
                         </a>
@@ -142,7 +142,7 @@
                             class="image-border" />
                     </section>
                     <figcaption>
-                        <a href="song.html">
+                        <a href="/content">
                             <h3 class="song-title">
                                 Peso Pluma || Music Session
                             </h3>
@@ -160,7 +160,7 @@
                             alt="Portada de la cancion 'Bad Habit' de Steve Lazy" class="image-border" />
                     </section>
                     <figcaption>
-                        <a href="song.html">
+                        <a href="/content">
                             <h3 class="song-title">Bad Habit</h3>
                             <h4 class="artist-title">Steve Lazy</h4>
                         </a>
@@ -176,7 +176,7 @@
                             alt="Portada de la cancion 'TV' de Billie Eilish" class="image-border" />
                     </section>
                     <figcaption>
-                        <a href="song.html">
+                        <a href="/content">
                             <h3 class="song-title">TV</h3>
                             <h4 class="artist-title">Billie Eilish</h4>
                         </a>
@@ -192,7 +192,7 @@
                             alt="Portada de la cancion 'Comfortably Numb' de Pink Floyd" class="image-border" />
                     </section>
                     <figcaption>
-                        <a href="song.html">
+                        <a href="/content">
                             <h3 class="song-title">Comfortably Numb</h3>
                             <h4 class="artist-title">Pink Floyd</h4>
                         </a>
@@ -208,7 +208,7 @@
                             alt="Portada de la cancion 'Stairway To Heaven' de Led Zeppelin" class="image-border" />
                     </section>
                     <figcaption>
-                        <a href="song.html">
+                        <a href="/content">
                             <h3 class="song-title">Stairway To Heaven</h3>
                             <h4 class="artist-title">Led Zeppelin</h4>
                         </a>
@@ -224,7 +224,7 @@
                             alt="Portada de la cancion 'Goteo' de Duki" />
                     </section>
                     <figcaption>
-                        <a href="song.html">
+                        <a href="/content">
                             <h3 class="song-title">Goteo</h3>
                             <h4 class="artist-title">Duki</h4>
                         </a>

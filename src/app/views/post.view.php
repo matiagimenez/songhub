@@ -48,7 +48,7 @@
                 </section>
                 <figcaption>
                     <h2 class="song-title" id="post-1-song-title">
-                        <a href="song.html">The Dark Side of the Moon</a>
+                        <a href="/content">The Dark Side of the Moon</a>
                     </h2>
                     <h3 class="artist-title">Pink Floyd</h3>
                     <span class="tag">Increible</span>

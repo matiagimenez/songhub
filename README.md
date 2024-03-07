@@ -1,4 +1,4 @@
-# Trabajo práctico integrador - Programacion en Ambiente Web 2023
+![Modelo de datos](https://github.com/matiasgimenezdev/songhub/assets/117539520/4c3a5754-95c2-44a2-a780-91cc9659f303)# Trabajo práctico integrador - Programacion en Ambiente Web 2023
 
 ## SongHub: sitio web de reviews de Música (Inspiracion: [Letterbox](https://letterboxd.com/))
 
@@ -66,17 +66,15 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
     -   Proporcionar instrucciones detalladas sobre cómo configurar el entorno de desarrollo, instalar las dependencias y ejecutar la aplicación en el entorno de producción.
 
 ### 2. Sitemap
-![sitemap](https://github.com/matiasgimenezdev/songhub/assets/117539520/778aafaa-cbfb-4d4b-b9b9-f72e6ea1dc47)
-
-
+![sitemap](https://github.com/matiasgimenezdev/songhub/assets/117539520/1fc060ff-731d-4397-bda8-a24eb6673d52)
 
 ### 3. Wireframes
 Se encuentran en el siguiente [proyecto](https://www.figma.com/team_invite/redeem/8gsvLe0YYBM4Q47UAvpgqo) Figma. Es el mismo proyecto que utilizamos para las practicas de la cursada, por lo tanto, hay posibilidad de que algun docente tenga acceso al mismo. 
 
 ### 4. Modelo de datos
-Link al [diagrama](https://drive.google.com/file/d/10rYR58VVp8gg7Kd3lUvzr_m5yX_5B9eo/view?usp=sharing)
+![Modelo de datos](https://github.com/matiasgimenezdev/songhub/assets/117539520/1d6b6ab6-fea8-49b6-8505-88f85d6044ad)
 
 ### 5. Diagrama de clases
-Link al [diagrama](https://drive.google.com/file/d/15qIrA1Yu18rwsZVra1lWtVs7T8oYDvXk/view?usp=sharing)
+![Diagrama de clases](https://github.com/matiasgimenezdev/songhub/assets/117539520/77176843-000a-4466-9645-1624e587d944)
 
 
