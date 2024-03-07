@@ -35,20 +35,14 @@
                 <p class="profile-image-edit">
                     <img src="https://i.pinimg.com/236x/f4/e4/ff/f4e4ff0e8518813c6d5dde10a4d5164d.jpg"
                         alt="Imagen de perfil" height="150px" width="150px" class="image-border" />
-                    <button class="submit-button load-image">
-                        Cargar imagen
-                    </button>
-                    <button class="submit-outline-button remove-image">
-                        Remover
-                    </button>
-                </p>
-                <p class="input-container username-edit">
-                    <label for="username" class="label">Nombre de usuario</label>
-                    <input class="input" name="username" id="username" type="text" disabled />
                 </p>
                 <p class="input-container name-edit">
                     <label for="firstname" class="label">Nombre</label>
                     <input class="input" name="firstname" id="firstname" type="text" />
+                </p>
+                <p class="input-container username-edit">
+                    <label for="username" class="label">Nombre de usuario</label>
+                    <input class="input" name="username" id="username" type="text" disabled />
                 </p>
                 <p class="input-container email-edit">
                     <label for="email" class="label">Correo electrónico</label>
@@ -60,7 +54,7 @@
                 </p>
                 <p class="input-container biography-edit">
                     <label for="biography" class="label">Biografía</label>
-                    <textarea name="biography" id="biography" class="input" maxlength="160">
+                    <textarea name="biography" id="biography" class="input" maxlength="160" value="">
 						</textarea>
                 </p>
             </fieldset>
@@ -92,27 +86,10 @@
                     </figcaption>
                 </figure>
 
-                <figure aria-describedby="favourite-song-3">
-                    <img loading="lazy" src="https://i.pinimg.com/564x/94/76/b8/9476b8e8cb9368ceba6f90bec0c1b980.jpg"
-                        alt="Portada del álbum 'Random Acces Memories' de Daft Punk" width="120px" height="120px"
-                        class="image-border" />
-                    <figcaption class="visually-hidden" id="favourite-song-3">
-                        <h4>Random Acces Memories</h4>
-                        <h5>Daft Punk</h5>
-                    </figcaption>
-                </figure>
-
-
-                <a href="/views/search.html">
+                <a href="/search">
                     <article class="empty-favourite image-border">
                         <i class="ph ph-plus-circle icon add-favorite-icon"></i>
-                        <span class="visually-hidden">Add favorite song</span>
-                    </article>
-                </a>
-                <a href="/views/search.html">
-                    <article class="empty-favourite image-border">
-                        <i class="ph ph-plus-circle icon add-favorite-icon"></i>
-                        <span class="visually-hidden">Add favorite song</span>
+                        <span class="visually-hidden">Agregar album favorito</span>
                     </article>
                 </a>
             </section>
@@ -141,28 +118,13 @@
                     </figcaption>
                 </figure>
 
-                <figure aria-describedby="favourite-song-6">
-                    <img loading="lazy" src="https://i.pinimg.com/564x/28/83/60/288360836d7d5532e52012bf06981410.jpg"
-                        alt="Portada del álbum 'Comfortably Numb' de Pink Floyd" width="120px" height="120px"
-                        class="image-border" />
-                    <figcaption class="visually-hidden" id="favourite-song-6">
-                        <h4>Comfortably Numb</h4>
-                        <h5>Pink Floyd</h5>
-                    </figcaption>
-                </figure>
-
-                <a href="/views/search.html">
+                <a href="/search">
                     <article class="empty-favourite image-border">
                         <i class="ph ph-plus-circle icon add-favorite-icon"></i>
                         <span class="visually-hidden">Add favorite song</span>
                     </article>
                 </a>
-                <a href="/views/search.html">
-                    <article class="empty-favourite image-border">
-                        <i class="ph ph-plus-circle icon add-favorite-icon"></i>
-                        <span class="visually-hidden">Add favorite song</span>
-                    </article>
-                </a>
+                
             </section>
         </section>
     </main>

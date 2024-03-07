@@ -31,20 +31,6 @@ form fieldset legend {
 	border-radius: 50%;
 }
 
-form fieldset .load-image,
-form fieldset .remove-image {
-	width: 140px;
-	font-size: 0.8rem;
-	display: block;
-	position: relative;
-	left: 20px;
-	top: 20px;
-}
-
-form fieldset .load-image {
-	margin-bottom: 8px;
-}
-
 form fieldset .input-container {
 	width: 100%;
 	margin-left: 6px;
@@ -67,7 +53,7 @@ form fieldset .input-container textarea {
 	width: 90%;
 	max-width: 450px;
 	min-width: 285px;
-	height: 130px;
+	height: 90px;
 	padding-top: 10px;
 	resize: none;
 	padding-bottom: 10px;
@@ -75,7 +61,7 @@ form fieldset .input-container textarea {
 
 .button-container {
 	position: absolute;
-	bottom: -10px;
+	bottom: 5px;
 	width: 100%;
 	text-align: center;
 }
@@ -163,16 +149,9 @@ a {
 		width: 150px;
 		height: 150px;
 	}
-
-	form fieldset .load-image,
-	form fieldset .remove-image {
-		width: 170px;
-		top: 30px;
-	}
 }
 
 @media (min-width: 550px) {
-
 	form fieldset .input-container input,
 	form fieldset .input-container textarea {
 		width: 100%;
@@ -181,12 +160,6 @@ a {
 }
 
 @media (min-width: 650px) {
-
-	form fieldset .load-image,
-	form fieldset .remove-image {
-		width: 120px;
-	}
-
 	main {
 		display: grid;
 		grid-template-columns: 50% 50%;
@@ -203,10 +176,6 @@ a {
 		grid-row: 2/4;
 		grid-column: 1/2;
 		margin-top: 20px;
-	}
-
-	.button-container {
-		bottom: 0px;
 	}
 
 	form fieldset .input-container input,
@@ -300,6 +269,18 @@ a {
 	form fieldset .input-container textarea {
 		max-width: 500px;
 		width: 100%;
+	}
+
+	form fieldset .username-edit,
+	form fieldset .name-edit {
+		width: 50%;
+		max-width: 240px;
+		display: inline-block;
+	}
+
+	form fieldset .username-edit input,
+	form fieldset .name-edit input {
+		min-width: 0;
 	}
 }
 
