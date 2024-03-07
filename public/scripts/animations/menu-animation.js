@@ -23,7 +23,7 @@ function updateMenuVisibility() {
 			.classList.remove('visually-hidden');
 
 		document
-			.querySelector('.header-nav ul .logout-item a span')
+			.querySelector('.header-nav ul .logout-item button span')
 			.classList.remove('visually-hidden');
 	} else {
 		menu.classList.remove('hidden');
