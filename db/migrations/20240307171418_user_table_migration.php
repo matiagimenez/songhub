@@ -10,13 +10,13 @@ final class UserTableMigration extends AbstractMigration
     {
         $table = $this->table("USER", ['id' => 'USER_ID']);
         $table->addColumn('NAME', 'string', ['limit' => 80, 'null' => true]);
-        $table->addColumn('USERNAME', 'string', ['limit' => 50]);
-        $table->addColumn('EMAIL', 'string', ['limit' => 100]);
-        $table->addColumn('PASSWORD', 'string', ['limit' => 100]);
-        $table->addColumn('SPOTIFY_ID', 'string', ['limit' => 255]);
+        $table->addColumn('USERNAME', 'string', ['limit' => 50, 'null' => false]);
+        $table->addColumn('EMAIL', 'string', ['limit' => 100, 'null' => false]);
+        $table->addColumn('PASSWORD', 'string', ['limit' => 100, 'null' => false]);
+        $table->addColumn('SPOTIFY_ID', 'string', ['limit' => 255, 'null' => false]);
         $table->addColumn('SPOTIFY_AVATAR', 'string', ['limit' => 255, 'null' => true]);
-        $table->addColumn('IS_VERIFIED', 'boolean', ['default' => false]);
-        $table->addColumn('BIOGRAPHY', 'string', ['limit' => 255]);
+        $table->addColumn('IS_VERIFIED', 'boolean', ['default' => false, 'null' => false]);
+        $table->addColumn('BIOGRAPHY', 'string', ['limit' => 255, 'null' => false]);
         $table->create();
     }
 }
