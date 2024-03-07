@@ -41,8 +41,8 @@
 	margin: auto;
 	inset: 0;
 	height: 16px;
-	width: 150px;
-	border-radius: 5px;
+	width: 160px;
+	border-radius: 10px;
 	background-color: white;
 }
 
@@ -232,5 +232,9 @@
 @media (prefers-color-scheme: dark) {
 	.carousel-button {
 		background-image: url('assets/arrow-light.svg');
+	}
+
+	.loader {
+		background-color: #ba93ae;
 	}
 }
