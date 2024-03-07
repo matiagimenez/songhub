@@ -66,9 +66,7 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
     -   Proporcionar instrucciones detalladas sobre cómo configurar el entorno de desarrollo, instalar las dependencias y ejecutar la aplicación en el entorno de producción.
 
 ### 2. Sitemap
-![sitemap](https://github.com/matiasgimenezdev/songhub/assets/117539520/778aafaa-cbfb-4d4b-b9b9-f72e6ea1dc47)
-
-
+![sitemap](https://github.com/matiasgimenezdev/songhub/assets/117539520/35fc1917-425a-4ff6-9ffa-a4d4de52a91a)
 
 ### 3. Wireframes
 Se encuentran en el siguiente [proyecto](https://www.figma.com/team_invite/redeem/8gsvLe0YYBM4Q47UAvpgqo) Figma. Es el mismo proyecto que utilizamos para las practicas de la cursada, por lo tanto, hay posibilidad de que algun docente tenga acceso al mismo. 
