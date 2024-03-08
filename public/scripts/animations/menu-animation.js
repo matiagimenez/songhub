@@ -3,6 +3,26 @@ const menuButtonContent = document.querySelector('.menu-button i');
 const menu = document.querySelector('.header-nav ul');
 const body = document.body;
 const main = document.querySelector('main');
+const menuItems = document.querySelectorAll('.menu-item');
+const firstMenuItem = menuItems[0];
+const lastMenuItem = menuItems[menuItems.length - 1];
+const arrows = ['ArrowUp', 'ArrowDown', 'ArrowRight', 'ArrowLeft'];
+
+firstMenuItem.focus();
+
+firstMenuItem.addEventListener('keydown', (event) => {
+	if(event.key === 'Tab' && event.shiftKey) {
+		lastMenuItem.focus();
+		event.preventDefault()
+	}
+})
+
+lastMenuItem.addEventListener('keydown', (event) => {
+	if(event.key === 'Tab' && !event.shiftKey) {
+		firstMenuItem.focus();
+		event.preventDefault()
+	}
+})
 
 function updateMenuVisibility() {
 	if (window.innerWidth < 900) {
