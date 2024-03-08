@@ -43,11 +43,11 @@
             </fieldset>
             <p class="button-container">
                 <input type="submit" class="submit-button" value="Crear cuenta" />
-                <button class="google-button">
+                <button class="spotify-button">
                     <span>
-                        <img src="/assets/icons/google.svg" alt="Google icon" />
+                        <img src="/assets/icons/spotify.svg" alt="Spotify icon" />
                     </span>
-                    Registrarse con Google
+                    Registrarse con Spotify
                 </button>
             </p>
             <p class="link-container">

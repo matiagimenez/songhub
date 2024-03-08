@@ -34,23 +34,31 @@
 	transition-delay: 100ms;
 }
 
-.loader-container {
-	border: none;
-	outline: none;
+.loader {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: radial-gradient(farthest-side, #1db954 94%, #0000) top/8px 8px
+			no-repeat,
+		conic-gradient(#0000 30%, #1db954);
+	mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+	-webkit-mask: radial-gradient(
+		farthest-side,
+		#0000 calc(100% - 8px),
+		#000 0
+	);
 	position: absolute;
-	margin: auto;
-	inset: 0;
-	height: 16px;
-	width: 150px;
-	border-radius: 5px;
-	background-color: white;
+	top: 50%;
+	left: 50%;
+	/* right: 0; */
+	/* bottom: 0; */
+	animation: s3 1s infinite linear;
 }
 
-.loader {
-	position: absolute;
-	width: 0%;
-	height: 100%;
-	background-color: #723260;
+@keyframes s3 {
+	100% {
+		transform: rotate(1turn);
+	}
 }
 
 .blur {
@@ -131,10 +139,6 @@
 }
 
 @media (min-width: 700px) {
-	.loader-container {
-		width: 200px;
-	}
-
 	.cards-container {
 		gap: 4px;
 		max-height: 70vh;

@@ -46,13 +46,19 @@ DB_PORT = 3306
 export PATH=$PATH:~/.config/composer/vendor/bin
 ```
 
-5. Ejecutar la migration de la base de datos
+5. Crear la base de datos con el nombre utilizado en la variable de entorno DB_NAME. Puede loguearse en su usuario de MySQL y ejecutar el siguiente comando en la CLI.
+
+```bash
+CREATE DATABASE <DB_NAME>
+```
+
+6. Ejecutar la migration de la base de datos
 
 ```bash
 phinx migrate -e development
 ```
 
-6. Levantar el servidor standalone
+7. Levantar el servidor standalone
 
 ```bash
 php - S localhost:8000 -t public/
