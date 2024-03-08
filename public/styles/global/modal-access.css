@@ -72,7 +72,7 @@
 	opacity: 80%;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 900px) {
 	.article-img-container {
 		grid-row: 2;
 		position: initial;

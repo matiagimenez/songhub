@@ -175,7 +175,7 @@ article.post {
 	}
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 900px) {
 	.post figure {
 		grid-template-columns: 190px auto;
 		row-gap: 0.8rem;
