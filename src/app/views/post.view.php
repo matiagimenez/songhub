@@ -101,6 +101,19 @@
             </footer>
         </article>
 
+        <section id="comment-form-container">
+            <section class="user-info">
+                <img loading="lazy" class="user-img" height="25px" width="25px"
+                src="https://i.pinimg.com/236x/94/7f/14/947f14841d26f5dc3541366a987b32f5.jpg"
+                alt="Imagen de perfil de 'Usuario 1'" />
+            </section>
+            <form action="/comment" method="POST">
+                    <p>Responde a <span>@username</span><p>
+                    <input name="text" id="text" type="text" class="input"/>
+                    <input type="submit" class="submit-button" value="Comentar" />
+                </form>
+        </section>
+        
         <section class="comments">
             <article class="post" id="post_1_1">
                 <header class="user-info">

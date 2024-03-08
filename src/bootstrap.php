@@ -25,6 +25,7 @@ $router->setLogger($logger);
 $router->get('/', 'PageController@home');
 $router->get('/login', 'PageController@login');
 $router->get('/register', 'PageController@register');
+$router->get('/post', 'PageController@post');
 
 $router->post('/login', 'AuthController@login');
 

@@ -8,6 +8,40 @@
 	width: 90%;
 }
 
+
+
+#comment-form-container p {}
+
+#comment-form-container {
+	display: flex;
+	margin: 1rem 0;
+}
+
+#comment-form-container section {
+	display: block;
+}
+
+#comment-form-container section img {
+	margin-top: 2rem;
+}
+
+#comment-form-container form {
+	flex: 1;
+	margin: 0.5rem;
+}
+
+#comment-form-container form input[type="text"] {
+	width: 100%;
+	margin: 0.5rem 0;
+}
+
+#comment-form-container form input[type="submit"] {
+	margin: 0.5rem auto;
+	margin-right: 0;
+
+}
+
+
 .comments .post:last-child {
 	border-bottom: 0;
 }

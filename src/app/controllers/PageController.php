@@ -24,4 +24,10 @@ class PageController extends Controller
         $style = "register";
         require $this->viewsDirectory . "register.view.php";
     }
+    public function post()
+    {
+        $title = "Post";
+        $style = "post";
+        require $this->viewsDirectory . "post.view.php";
+    }
 }

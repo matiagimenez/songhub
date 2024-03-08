@@ -9,7 +9,7 @@ postContent.forEach((content) => {
 			'a',
 			'Ver post completo',
 			{
-				href: 'post.html',
+				href: 'post',
 				class: 'read-more',
 			}
 		);
