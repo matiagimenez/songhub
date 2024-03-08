@@ -6,19 +6,19 @@ const main = document.querySelector('main');
 const menuItems = document.querySelectorAll('.menu-item');
 const firstMenuItem = menuItems[0];
 const lastMenuItem = menuItems[menuItems.length - 1];
-const arrows = ['ArrowUp', 'ArrowDown', 'ArrowRight', 'ArrowLeft'];
+export var isMenuOpen = false;
 
 firstMenuItem.focus();
 
 firstMenuItem.addEventListener('keydown', (event) => {
-	if(event.key === 'Tab' && event.shiftKey) {
+	if (event.key === 'Tab' && event.shiftKey) {
 		lastMenuItem.focus();
 		event.preventDefault()
 	}
 })
 
 lastMenuItem.addEventListener('keydown', (event) => {
-	if(event.key === 'Tab' && !event.shiftKey) {
+	if (event.key === 'Tab' && !event.shiftKey) {
 		firstMenuItem.focus();
 		event.preventDefault()
 	}
@@ -33,6 +33,7 @@ function updateMenuVisibility() {
 		menuButton.setAttribute('aria-hidden', 'false');
 		menuButton.setAttribute('aria-expanded', 'false');
 		menu.setAttribute('aria-hidden', 'true');
+		isMenuOpen = false;
 		menuButton.innerHTML = `
 			<i class="ph ph-list open-menu-icon"></i>
 			<span class="visually-hidden">Abrir menu</span>	
@@ -51,12 +52,13 @@ function updateMenuVisibility() {
 		menuButton.setAttribute('aria-expanded', 'true');
 		menu.setAttribute('aria-hidden', 'false');
 		main.style.opacity = 1;
+		isMenuOpen = true;
 		document
-			.querySelector('.header-nav ul .search-item form label')
-			.classList.add('visually-hidden');
+		.querySelector('.header-nav ul .search-item form label')
+		.classList.add('visually-hidden');
 		document
-			.querySelector('.header-nav ul li.logout-item span')
-			.classList.add('visually-hidden');
+		.querySelector('.header-nav ul li.logout-item span')
+		.classList.add('visually-hidden');
 	}
 }
 
@@ -84,9 +86,10 @@ document.addEventListener('click', (event) => {
 			menu.classList.remove('close-menu');
 			menu.classList.remove('hidden');
 			menu.classList.add('view-menu');
+			isMenuOpen = true;
 			menuButton.innerHTML = `
-				<i class="ph-bold ph-x close-menu-icon"></i>
-				<span class="visually-hidden">Cerrar menu</span>
+			<i class="ph-bold ph-x close-menu-icon"></i>
+			<span class="visually-hidden">Cerrar menu</span>
 			`;
 			main.style.opacity = 0.3;
 		} else {
@@ -100,6 +103,7 @@ document.addEventListener('click', (event) => {
 			main.style.opacity = 1;
 			setTimeout(function () {
 				menu.classList.add('hidden');
+				isMenuOpen = false;
 			}, 400);
 		}
 
@@ -125,12 +129,13 @@ document.addEventListener('keyup', (event) => {
 			menu.classList.remove('view-menu');
 			menu.classList.add('close-menu');
 			menuButton.innerHTML = `
-				<i class="ph ph-list open-menu-icon"></i>
-				<span class="visually-hidden">Abrir menu</span>	
+			<i class="ph ph-list open-menu-icon"></i>
+			<span class="visually-hidden">Abrir menu</span>	
 			`;
-
+			
 			setTimeout(function () {
 				menu.classList.add('hidden');
+				isMenuOpen = false;
 			}, 400);
 			menu.setAttribute('aria-hidden', 'true');
 			menuButton.setAttribute('aria-expanded', 'false');

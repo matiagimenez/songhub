@@ -1,4 +1,5 @@
 import { ElementBuilder } from '../../utils/ElementBuilder.js';
+import { isMenuOpen } from '../../animations/menu-animation.js';
 
 const cardsContainer = document.querySelector('.cards-container');
 const cards = document.querySelectorAll('.cards-container figure');
@@ -105,12 +106,14 @@ function animateCarousel() {
 
 	// Agrega interaccion mediante teclado
 	document.addEventListener('keyup', (event) => {
-		if (event.code === 'ArrowLeft') {
-			previousCardChange();
-		}
+		if (!isMenuOpen) {
+			if (event.code === 'ArrowLeft') {
+				previousCardChange();
+			}
 
-		if (event.code === 'ArrowRight') {
-			nextCardChange();
+			if (event.code === 'ArrowRight') {
+				nextCardChange();
+			}
 		}
 	});
 
