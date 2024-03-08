@@ -108,10 +108,12 @@
                 alt="Imagen de perfil de 'Usuario 1'" />
             </section>
             <form action="/comment" method="POST">
-                    <p>Responde a <span>@username</span><p>
-                    <input name="text" id="text" type="text" class="input"/>
+                <p>Responde a <a href="/profile">@username</a><p>
+                <div>
+                    <textarea class='input'required placeholder="Agrega un comentario..."></textarea>
                     <input type="submit" class="submit-button" value="Comentar" />
-                </form>
+                </div>
+            </form>
         </section>
         
         <section class="comments">
