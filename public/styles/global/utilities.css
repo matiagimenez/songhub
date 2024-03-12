@@ -138,7 +138,7 @@
 }
 
 .spotify-button:hover {
-	background-color: #f1f3f4;
+	filter: brightness(85%);
 }
 
 .input:focus {
