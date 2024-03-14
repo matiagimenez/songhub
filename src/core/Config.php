@@ -17,6 +17,9 @@ class Config
         $path = getenv("LOG_PATH") ?? "/logs/app.log";
         $this->configs["LOG_PATH"] = $this->joinPaths(__DIR__, "../..", $path);
 
+        $this->configs['HOST'] = getenv('HOST') ?? 'localhost';
+        $this->configs['PORT'] = getenv('PORT') ?? '8080';
+
         $this->configs['DB_ADAPTER'] = getenv('DB_ADAPTER') ?? 'mysql';
         $this->configs['DB_HOSTNAME'] = getenv('DB_HOSTNAME') ?? 'localhost';
         $this->configs['DB_NAME'] = getenv('DB_NAME') ?? 'songhub';
@@ -24,6 +27,8 @@ class Config
         $this->configs['DB_PASSWORD'] = getenv('DB_PASSWORD') ?? '';
         $this->configs['DB_PORT'] = getenv('DB_PORT') ?? '3306';
         $this->configs['DB_CHARSET'] = getenv('DB_CHARSET') ?? 'utf8';
+
+        $this->configs['SPOTIFY_CLIENT_ID'] = getenv('SPOTIFY_CLIENT_ID') ?? '';
     }
 
     public static function getInstance()
