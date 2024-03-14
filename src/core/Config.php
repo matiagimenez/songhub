@@ -29,6 +29,7 @@ class Config
         $this->configs['DB_CHARSET'] = getenv('DB_CHARSET') ?? 'utf8';
 
         $this->configs['SPOTIFY_CLIENT_ID'] = getenv('SPOTIFY_CLIENT_ID') ?? '';
+        $this->configs['SPOTIFY_CLIENT_SECRET'] = getenv('SPOTIFY_CLIENT_SECRET') ?? '';
     }
 
     public static function getInstance()
