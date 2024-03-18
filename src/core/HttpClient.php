@@ -93,8 +93,8 @@ class HttpClient
                 curl_close($requestHandler);
             }
 
-                    
 
+            //TODO: Agregar obtención de header y body de la respuesta (estoy funciona pero creo que no está bien hecho)
             $httpStatusCode = curl_getinfo($requestHandler, CURLINFO_HTTP_CODE); // Obtener el código de estado HTTP
             $bodyLength = curl_getinfo($requestHandler, CURLINFO_HEADER_SIZE); // Obtener el tamaño de la cabecera HTTP
             $body = substr($response, 0, $bodyLength); // Extraer la cabecera HTTP
