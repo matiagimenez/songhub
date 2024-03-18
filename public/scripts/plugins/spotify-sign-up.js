@@ -1,14 +1,9 @@
 const spotifyButton = document.querySelector('.sign-up-spotify');
 
 const registerWithSpotify = async () => {
-	const userData = {
-		spotify_id: '1234567890',
-		spotify_username: 'testuser',
-	};
-
-	const response = await fetch('/register/spotify');
-	// const data = await response.json();
-	// console.log(data);
+	const response = await fetch('/spotify/authorize');
+	const data = await response.json();
+	console.log(data);
 
 	// Verificar si hay una URL de redirección en el encabezado Location
 	if (response.headers.has('Location')) {
