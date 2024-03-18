@@ -28,6 +28,7 @@ $router->get('/register', 'PageController@register');
 $router->get('/post', 'PageController@post');
 
 $router->post('/login', 'AuthController@login');
+$router->get('/register/spotify', 'AuthController@spotifyAuthorize');
 
 $router->get('/user', 'UserController@profile');
 $router->get('/user/profile', 'UserController@edit');

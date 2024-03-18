@@ -10,6 +10,10 @@ export const routes = {
 			scriptName: 'input-animation',
 			scriptPath: '/scripts/animations/input-animation.js',
 		},
+		{
+			scriptName: 'spotify-sign-up',
+			scriptPath: '/scripts/plugins/spotify-sign-up.js',
+		},
 	],
 	'/explore': [
 		{
