@@ -30,8 +30,8 @@ class AuthController extends Controller
         $parameters = ['client_id' => $client_id,
             'response_type' => 'code',
             'scope' => 'user-read-private user-read-email',
-            'state' => $this->generateRandomState(),
             'redirect_uri' => $redirect_uri,
+            "show_dialog" => true,
         ];
 
         $response = HttpClient::getInstance()->get($url, $parameters);
@@ -66,7 +66,12 @@ class AuthController extends Controller
     public function requestSpotifyTokens()
     {
         $code = Request::getInstance()->getParameter("code", "GET");
-        $state = Request::getInstance()->getParameter("state", "GET");
+        $error = Request::getInstance()->getParameter("error", "GET");
+
+        if (strlen($error) > 0) {
+            header("Location: /register");
+            die;
+        }
 
         $host = Config::getInstance()->get("HOST");
         $port = Config::getInstance()->get("PORT");
@@ -122,17 +127,4 @@ class AuthController extends Controller
         //TODO: Crear cuenta de usuario.
     }
 
-    private function generateRandomState($length = 32)
-    {
-        // Genera una secuencia de bytes aleatorios seguros
-        $randomBytes = openssl_random_pseudo_bytes($length);
-
-        // Convierte los bytes aleatorios en una cadena codificada en base64
-        $state = base64_encode($randomBytes);
-
-        // Elimina cualquier carácter no deseado para que el estado sea URL-safe
-        $state = strtr($state, '+/', '-_');
-
-        return $state;
-    }
 }
