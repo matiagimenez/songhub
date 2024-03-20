@@ -45,12 +45,15 @@ class HttpClient
 
         try {
             $this->logger->info("GET Request to: " . $url);
+
             $response = $this->httpClient->request("GET", $url, $options);
+
             $statusCode = $response->getStatusCode();
             $response->getHeaders();
             $body = $response->getBody();
             $headers = $response->getHeaders();
-            $this->logger->info("GET response from:" . $url, ["status" => $statusCode, "headers" => $headers]);
+
+            $this->logger->info("GET response from:" . $url, ["status" => $statusCode]);
 
             return ["status" => $statusCode, "headers" => $headers, "body" => $body];
         } catch (Exception $e) {
@@ -78,13 +81,16 @@ class HttpClient
 
         try {
             $this->logger->info("POST Request to: ", ["url" => $url]);
+
             $response = $this->httpClient->request('POST', $url, $options);
+
             $statusCode = $response->getStatusCode();
             $body = $response->getBody();
             $headers = $response->getHeaders();
 
-            return ["status" => $statusCode, "body" => $body, "headers" => $headers];
+            $this->logger->info("GET response from:" . $url, ["status" => $statusCode]);
 
+            return ["status" => $statusCode, "body" => $body, "headers" => $headers];
         } catch (Exception $e) {
             $this->logger->debug("Error on POST request to:" . $url, ["exception" => $e]);
         }
