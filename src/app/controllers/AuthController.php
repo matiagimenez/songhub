@@ -37,25 +37,34 @@ class AuthController extends Controller
         $response = HttpClient::getInstance()->get($url, $parameters);
 
         $statusCode = $response["status"];
-        $headers = $response["headers"];
-        $redirect_url = $headers["location"];
-
-        // Enviar una respuesta de redirección al cliente con la URL de redirección
-        $response = json_encode([
-            "ok" => "true",
-            "message" => "Authorization request sent successfully",
-            "url" => $redirect_url,
-        ]);
 
         header('Content-Type: application/json');
         header('Access-Control-Allow-Origin: *');
-        header("Location: " . $redirect_url);
 
-        http_response_code(200);
-        echo json_encode($response);
+        if ($statusCode >= 400) {
+            http_response_code(500);
+            $response = json_encode([
+                "ok" => "false",
+                "message" => "Error sending authorization request",
+            ]);
+
+        } else {
+            http_response_code(200);
+            $headers = $response["headers"];
+            $redirect_url = $headers["location"][0];
+            // header("Location: " . $redirect_url);
+            $response = json_encode([
+                "ok" => "true",
+                "message" => "Authorization request sent successfully",
+                "url" => $redirect_url,
+            ]);
+        }
+
+        echo $response;
     }
 
-    public function requestSpotifyTokens(){
+    public function requestSpotifyTokens()
+    {
         $code = Request::getInstance()->getParameter("code", "GET");
         $state = Request::getInstance()->getParameter("state", "GET");
 
@@ -75,35 +84,42 @@ class AuthController extends Controller
         ];
 
         $headers = [
-            "Content-Type: application/x-www-form-urlencoded", 
-            "Authorization: Basic " . base64_encode($client_id . ":" . $client_secret)
+            "Content-Type" => "application/x-www-form-urlencoded",
+            "Authorization" => "Basic " . base64_encode($client_id . ":" . $client_secret),
         ];
 
         // POST request para obtener los tokens
         $response = HttpClient::getInstance()->post($url, $body, $headers);
+
         $status = $response["status"];
         $body = $response["body"];
 
-        if($status == 200){
-            $this -> requestUserData($body);
+        if ($status == 200) {
+            $user_tokens = json_decode($body, true);
+            $this->requestUserData($user_tokens);
         }
     }
 
-    private function requestUserData($body) {
-        $access_token = $body["access_token"];
-        $refresh_token = $body["refresh_token"];
-        $expires_in = $body["expires_in"];
-        $token_type = $body["token_type"];
+    private function requestUserData($user_tokens)
+    {
 
-        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me", [], ["Authorization: Bearer " . $access_token]);
+        $access_token = $user_tokens["access_token"];
+        $refresh_token = $user_tokens["refresh_token"];
+        $expires_in = $user_tokens["expires_in"];
+        $token_type = $user_tokens["token_type"];
+
+        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me", [], ["Authorization" => $token_type . " " . $access_token]);
+
         $status = $response["status"];
         $headers = $response["headers"];
-        $body = $response["body"];
+        $body = json_decode($response["body"], true);
 
         echo "<pre>";
         var_dump($status, $headers, $body);
         var_dump("Authorization: Bearer " . $access_token);
         die;
+
+        //TODO: Crear cuenta de usuario.
     }
 
     private function generateRandomState($length = 32)
