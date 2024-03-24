@@ -69,15 +69,69 @@ class QueryBuilder
             );
         }
     }
-    public function insert()
+
+    public function insert($table, $data)
     {
-        // $this->pdo->prepare("SELECT * FROM {$table}");
+
+        try {
+            $columns = implode(", ", array_keys($data));
+            $placeholders = ":" . implode(", :", array_keys($data));
+
+            $query = "INSERT INTO {$table} ({$columns}) VALUES ({$placeholders})";
+            $sentencia = $this->pdo->prepare($query);
+            foreach ($data as $column => $value) {
+                $sentencia->bindValue(':' . $column, $value);
+            }
+            $result = $sentencia->execute();
+
+            if ($result != true) {
+                throw new PDOException($sentencia->errorInfo()[2]);
+            }
+
+        } catch (PDOException $e) {
+            $this->logger->info(
+                "Error al ejecutar la consulta: " . $e->getMessage(),
+                [
+                    "Operation" => 'INSERT',
+                    "Table" => $table,
+                ]
+            );
+
+        }
+
     }
+
+    public function update($table, $data)
+    {
+        try {
+            $setValues = [];
+            foreach ($data as $column => $value) {
+                $setValues[] = $column . ' = :' . $column;
+            }
+            $setClause = implode(", ", $setValues);
+            $query = "UPDATE {$table} SET {$setClause} WHERE USERNAME = :USERNAME";
+            $sentencia = $this->pdo->prepare($query);
+
+            foreach ($data as $column => $value) {
+                $sentencia->bindValue(':' . $column, $value);
+            }
+            $sentencia->bindValue(':USERNAME', $data["USERNAME"]);
+            $result = $sentencia->execute();
+            if ($result != true) {
+                throw new PDOException($sentencia->errorInfo()[2]);
+            }
+        } catch (PDOException $e) {
+            $this->logger->info(
+                "Error al ejecutar la consulta: " . $e->getMessage(),
+                [
+                    "Operation" => 'UPDATE',
+                    "Table" => $table,
+                ]
+            );
+        }
+    }
+
     public function delete()
-    {
-        // $this->pdo->prepare("SELECT * FROM {$table}");
-    }
-    public function update()
     {
         // $this->pdo->prepare("SELECT * FROM {$table}");
     }

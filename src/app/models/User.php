@@ -7,24 +7,25 @@ use Songhub\core\exceptions\InvalidValueException;
 class User
 {
     public $fields = [
-        "user_id" => null,
-        "username" => null,
-        "name" => null,
-        "email" => null,
-        "password" => null,
-        "spotify_id" => null,
-        "spotify_avatar" => null,
-        "biography" => null,
-        "is_verified" => null,
+        "USER_ID" => null,
+        "USERNAME" => null,
+        "NAME" => null,
+        "EMAIL" => null,
+        "PASSWORD" => null,
+        "SPOTIFY_ID" => null,
+        "REFRESH_TOKEN" => null,
+        "SPOTIFY_AVATAR" => null,
+        "BIOGRAPHY" => "",
+        "IS_VERIFIED" => 0,
+        "SPOTIFY_URL" => null,
     ];
-
     public function setUserId($user_id)
     {
         $user_id = trim($user_id);
-        $this->fields["user_id"] = $user_id;
+        $this->fields["USER_ID"] = $user_id;
     }
 
-    public function setName(string $name)
+    public function setName(string $name = "")
     {
         $name = trim($name);
         $name = strtolower(trim($name));
@@ -33,18 +34,15 @@ class User
             throw new InvalidValueException("El nombre debe tener un maximo de 60 caracteres");
         }
 
-        if (!preg_match('/^[a-zA-Záéíóú\s]+$/', $name)) {
-            throw new InvalidValueException("El nombre solo puede contener letras");
+        if (strlen($name) === 0) {
+            throw new InvalidValueException("El nombre debe tener al menos un caracter");
         }
 
-        $name = array_map('trim', explode(' ', $name));
+        if (!preg_match('/^[a-zA-Z0-9]+$/', $name)) {
+            throw new InvalidValueException("El nombre solo puede contener letras y números");
+        }
 
-        $name = array_map(function ($word) {
-            return ucfirst(strtolower($word));
-        }, $name);
-
-        $name = implode(' ', $name);
-        $this->fields["name"] = $name;
+        $this->fields["NAME"] = $name;
     }
 
     public function setUsername(string $username)
@@ -63,7 +61,7 @@ class User
             throw new InvalidValueException("El nombre de usuario solo puede contener letras y números");
         }
 
-        $this->fields["username"] = $username;
+        $this->fields["USERNAME"] = $username;
     }
     public function setEmail(string $email, string $email_confirmation = null)
     {
@@ -93,7 +91,7 @@ class User
             }
         }
 
-        $this->fields["email"] = $email;
+        $this->fields["EMAIL"] = $email;
     }
 
     public function setPassword($password, $password_confirmation = "")
@@ -120,17 +118,30 @@ class User
         if (strlen($password_confirmation) > 0) {
             if ($password !== $password_confirmation) {
                 throw new InvalidValueException("Las contraseñas no coinciden");
-            }}
+            }
+        }
 
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $this->fields["password"] = $hashed_password;
+        $this->fields["PASSWORD"] = $hashed_password;
     }
 
     public function setSpotifyId(string $spotify_id)
     {
         $spotify_id = trim($spotify_id);
-        $this->fields["spotify_id"] = $spotify_id;
+        $this->fields["SPOTIFY_ID"] = $spotify_id;
     }
+    public function setSpotifyUrl(string $spotify_url)
+    {
+        $spotify_url = trim($spotify_url);
+        $this->fields["SPOTIFY_URL"] = $spotify_url;
+    }
+
+    public function setRefreshToken(string $refresh_token)
+    {
+        $refresh_token = trim($refresh_token);
+        $this->fields["REFRESH_TOKEN"] = $refresh_token;
+    }
+
     public function setSpotifyAvatar(string $spotify_avatar)
     {
         if (!filter_var($spotify_avatar, FILTER_VALIDATE_URL)) {
@@ -138,9 +149,9 @@ class User
         }
 
         $spotify_avatar = trim($spotify_avatar);
-        $this->fields["spotify_avatar"] = $spotify_avatar;
+        $this->fields["SPOTIFY_AVATAR"] = $spotify_avatar;
     }
-    public function setBiography(string $biography)
+    public function setBiography(string $biography = "")
     {
 
         if (strlen($biography) > 160) {
@@ -148,40 +159,41 @@ class User
         }
 
         $biography = trim($biography);
-        $this->fields["biography"] = $biography;
+        $this->fields["BIOGRAPHY"] = $biography;
     }
-    public function setIsVerified(string $is_verified)
+    public function setIsVerified($is_verified = 0)
     {
-        $isBoolean = filter_var($is_verified, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
-
-        if ($isBoolean === null) {
+        if ($is_verified === null) {
             throw new InvalidValueException("El valor de la verificacion debe ser un booleano");
         }
 
-        $is_verified = $isBoolean ? true : false;
-
-        if (!filter_var($is_verified, FILTER_VALIDATE_BOOLEAN)) {
-            $this->fields["is_verified"] = $is_verified;
+        if ($is_verified !== 0 && $is_verified !== 1) {
+            throw new InvalidValueException("El valor de la verificacion debe ser un booleano");
         }
 
+        $this->fields["IS_VERIFIED"] = $is_verified;
     }
 
     public function set(array $values)
     {
+
         foreach (array_keys($this->fields) as $field) {
+            $field = trim($field);
             if (!isset($values[$field])) {
                 continue;
             }
 
             $property = explode("_", $field);
             if (count($property) > 1) {
-                $method = "set" . ucfirst($property[0]) . ucfirst($property[1]);
+                $method = "set" . ucfirst(strtolower($property[0])) . ucfirst(strtolower($property[1]));
 
             } else {
-                $method = "set" . ucfirst($property[0]);
+                $method = "set" . ucfirst(strtolower($property[0]));
             }
-            $status = $this->$method($values[$field]);
+
+            $this->$method($values[$field]);
         }
+
     }
 
 }

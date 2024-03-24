@@ -1,13 +1,21 @@
 <?php
 namespace Songhub\App\Controllers;
 
+use Songhub\app\repositories\UserRepository;
 use Songhub\core\Config;
 use Songhub\core\Controller;
 use Songhub\core\HttpClient;
+use Songhub\core\Renderer;
 use Songhub\core\Request;
 
 class AuthController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->repositoryName = UserRepository::class;
+        parent::__construct();
+    }
 
     public function login()
     {
@@ -16,6 +24,7 @@ class AuthController extends Controller
         echo "<pre>";
         var_dump($email, $password);
         die;
+        // TODO: Recuperar refresh_token y utilizarlo para obtener la información del usuario.
     }
 
     public function authorizeSpotifyAccount()
@@ -116,15 +125,54 @@ class AuthController extends Controller
         $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me", [], ["Authorization" => $token_type . " " . $access_token]);
 
         $status = $response["status"];
-        $headers = $response["headers"];
         $body = json_decode($response["body"], true);
 
-        echo "<pre>";
-        var_dump($status, $headers, $body);
-        var_dump("Authorization: Bearer " . $access_token);
-        die;
+        if ($status >= 400) {
+            Renderer::getInstance()->internalError();
+            die;
+        }
 
-        //TODO: Crear cuenta de usuario.
+        $userExists = $this->repository->userExists($body["id"]);
+        if (!$userExists) {
+
+            $userData = [
+                "USERNAME" => $body["id"],
+                "NAME" => $body["display_name"],
+                "EMAIL" => $body["email"],
+                "SPOTIFY_ID" => $body["id"],
+                "SPOTIFY_AVATAR" => $body["images"][0]["url"],
+                "SPOTIFY_URL" => $body["external_urls"]["spotify"],
+                "REFRESH_TOKEN" => $refresh_token,
+            ];
+
+            list($status, $message) = $this->repository->createUser($userData);
+
+            if ($status) {
+                Renderer::getInstance()->register();
+
+            } else {
+                Renderer::getInstance()->register();
+
+            }
+        } else {
+            $userData = [
+                "USERNAME" => $body["id"],
+                "SPOTIFY_ID" => $body["id"],
+                "SPOTIFY_AVATAR" => $body["images"][0]["url"],
+                "SPOTIFY_URL" => $body["external_urls"]["spotify"],
+                "REFRESH_TOKEN" => $refresh_token,
+            ];
+
+            list($status, $message) = $this->repository->updateUser($userData);
+            echo "<pre>";
+            var_dump($status, $message);
+            die;
+            if ($status) {
+                Renderer::getInstance()->home();
+            } else {
+                $error = "Error al crear el usuario";
+                Renderer::getInstance()->register($error);
+            }
+        }
     }
-
 }
