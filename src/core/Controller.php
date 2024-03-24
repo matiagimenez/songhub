@@ -7,12 +7,10 @@ use Songhub\core\Repository;
 
 class Controller
 {
-    public string $viewsDirectory;
     public ?string $repositoryName = null;
     public ?Repository $repository = null;
     public function __construct()
     {
-        $this->viewsDirectory = __DIR__ . "/../app/views/";
 
         if (!is_null($this->repositoryName)) {
             $repository = new $this->repositoryName;

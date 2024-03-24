@@ -2,32 +2,23 @@
 namespace Songhub\App\Controllers;
 
 use Songhub\core\Controller;
+use Songhub\core\Renderer;
 
 class PageController extends Controller
 {
 
     public function home()
     {
-        $title = "Inicio";
-        $style = "home";
-        require $this->viewsDirectory . "home.view.php";
+        Renderer::getInstance()->home();
     }
     public function login()
     {
-        $title = "Iniciar sesión";
-        $style = "login";
-        require $this->viewsDirectory . "login.view.php";
+        Renderer::getInstance()->login();
+
     }
     public function register()
     {
-        $title = "Registrarme";
-        $style = "register";
-        require $this->viewsDirectory . "register.view.php";
-    }
-    public function post()
-    {
-        $title = "Post";
-        $style = "post";
-        require $this->viewsDirectory . "post.view.php";
+        Renderer::getInstance()->register();
+
     }
 }
