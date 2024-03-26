@@ -16,12 +16,12 @@ class FollowRepository extends Repository
         // TODO:
         //   Armar un querie para pedir la lista de seguidores
     }
-      
+    
     public function getFollowed(int $follower_id)
     {
         // TODO:
         //   Armar un querie para pedir la lista de seguidos
-      
+    
     }
 
     public function createFollow($followData)
