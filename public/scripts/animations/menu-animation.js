@@ -4,9 +4,9 @@ const menu = document.querySelector('.header-nav ul');
 const body = document.body;
 const main = document.querySelector('main');
 const menuItems = document.querySelectorAll('.menu-item');
+export var isMenuOpen = false;
 const firstMenuItem = menuItems[0];
 const lastMenuItem = menuItems[menuItems.length - 1];
-export var isMenuOpen = false;
 
 firstMenuItem.focus();
 
