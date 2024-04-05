@@ -27,15 +27,17 @@ class Renderer
         require $this->viewsDirectory . "home.view.php";
     }
 
-    public function login($error = "")
+    public function login($message = "", $error = false)
     {
+        echo $message;
         $title = "Iniciar sesión";
         $style = "login";
         require $this->viewsDirectory . "login.view.php";
     }
 
-    public function register($error = "")
+    public function register($message = "", $error = false)
     {
+        echo $message;
         $title = "Registrarme";
         $style = "register";
         require $this->viewsDirectory . "register.view.php";
