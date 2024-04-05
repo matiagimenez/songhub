@@ -32,17 +32,45 @@ class QueryBuilder
     public function select(string $table, $params = [])
     {
         try {
-            $where = "1 = 1";
+            $where = "";
+            $bindings = [];
 
+            //* Armar el where con los parametros que vienen en $params como clave => valor
             if (count($params) > 0) {
-                //* Armar el where con los parametros que vienen en $params como clave => valor
-                //! Recordar utilizar bindParam() para evitar inyecciones de SQL
-                $where = "";
+                foreach ($params as $key => $value) {
+
+                    if ($where !== "") {
+                        $where .= " AND "; // Solo agregamos "AND" si ya hay una condición anterior
+                    }
+
+                    $where .= $key . "= :" . $key;
+                    $bindings[":" . $key] = $value;
+                }
             }
 
             $query = "SELECT * FROM {$table} WHERE {$where}";
-        } catch (PDOException $error) {
 
+            $statement = $this->pdo->prepare($query);
+
+            $statement->setFetchMode(PDO::FETCH_ASSOC);
+
+            $statement->execute($bindings);
+
+            return $statement->fetchAll();
+
+        } catch (PDOException $error) {
+            // Retorna un array vacío en caso de error
+            $this->logger->error(
+                "Error al ejecutar el query en la base de datos",
+                [
+                    "Error" => $error->getMessage(),
+                    "Operacion" => 'selectByColumn',
+                    "Tabla" => $table,
+                    "Columna" => $params,
+                    "Valor" => $value,
+                ]
+            );
+            return [];
         }
     }
 
@@ -67,6 +95,8 @@ class QueryBuilder
                     "Valor" => $value,
                 ]
             );
+            return [];
+
         }
     }
 
