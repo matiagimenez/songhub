@@ -1,5 +1,5 @@
 <?php
-namespace Songhub\App\Controllers;
+namespace Songhub\app\Controllers;
 
 use Songhub\app\repositories\UserRepository;
 use Songhub\core\Config;
@@ -110,16 +110,16 @@ class AuthController extends Controller
 
         if ($status == 200) {
             $user_tokens = json_decode($body, true);
-            $this->requestUserData($user_tokens);
+            header("Location: /login");
+            $this->fetchSpotifyData($user_tokens);
         }
     }
 
-    private function requestUserData($user_tokens)
+    private function fetchSpotifyData($user_tokens)
     {
 
         $access_token = $user_tokens["access_token"];
         $refresh_token = $user_tokens["refresh_token"];
-        $expires_in = $user_tokens["expires_in"];
         $token_type = $user_tokens["token_type"];
 
         $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me", [], ["Authorization" => $token_type . " " . $access_token]);
@@ -132,29 +132,12 @@ class AuthController extends Controller
             die;
         }
 
-        $userExists = $this->repository->userExists($body["id"]);
-        if (!$userExists) {
+        $username = $body["id"];
+        $email = $body["email"];
 
-            $userData = [
-                "USERNAME" => $body["id"],
-                "NAME" => $body["display_name"],
-                "EMAIL" => $body["email"],
-                "SPOTIFY_ID" => $body["id"],
-                "SPOTIFY_AVATAR" => $body["images"][0]["url"],
-                "SPOTIFY_URL" => $body["external_urls"]["spotify"],
-                "REFRESH_TOKEN" => $refresh_token,
-            ];
-
-            list($status, $message) = $this->repository->createUser($userData);
-
-            if ($status) {
-                Renderer::getInstance()->register();
-
-            } else {
-                Renderer::getInstance()->register();
-
-            }
-        } else {
+        // Si existe un usuario con el nombre de usuario de spotify y el email de spotify, entonces actualizamos sus datos (ya está registrado).
+        $userExists = $this->repository->userExists($username, $email);
+        if ($userExists) {
             $userData = [
                 "USERNAME" => $body["id"],
                 "SPOTIFY_ID" => $body["id"],
@@ -164,15 +147,51 @@ class AuthController extends Controller
             ];
 
             list($status, $message) = $this->repository->updateUser($userData);
-            echo "<pre>";
-            var_dump($status, $message);
-            die;
-            if ($status) {
-                Renderer::getInstance()->home();
-            } else {
-                $error = "Error al crear el usuario";
-                Renderer::getInstance()->register($error);
-            }
+        } else {
+            // Si no existe un usuario con el nombre de usuario de spotify y el email de spotify, entonces lo registramos.
+            $this->registerAccountWithSpotify($body, $refresh_token);
         }
+    }
+
+    private function registerAccountWithSpotify($body, $refresh_token)
+    {
+        $username = $body["id"];
+
+        // Si ya existe una cuenta con el username que el usuario tiene en su cuenta de spotify, le agregamos una cadena random. Luego, podrá modificarlo si así desea.
+        $usernameIsUsed = $this->repository->userExists($username);
+
+        if ($usernameIsUsed) {
+            $userData = [
+                "USERNAME" => $body["id"] . $this->generateRandomString(),
+                "NAME" => $body["display_name"],
+                "EMAIL" => $body["email"],
+                "SPOTIFY_ID" => $body["id"],
+                "SPOTIFY_AVATAR" => $body["images"][0]["url"],
+                "SPOTIFY_URL" => $body["external_urls"]["spotify"],
+                "REFRESH_TOKEN" => $refresh_token,
+            ];
+        } else {
+            $userData = [
+                "USERNAME" => $body["id"],
+                "NAME" => $body["display_name"],
+                "EMAIL" => $body["email"],
+                "SPOTIFY_ID" => $body["id"],
+                "SPOTIFY_AVATAR" => $body["images"][0]["url"],
+                "SPOTIFY_URL" => $body["external_urls"]["spotify"],
+                "REFRESH_TOKEN" => $refresh_token,
+            ];
+        }
+
+        $this->repository->createUser($userData);
+    }
+
+    private function generateRandomString($length = 5)
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        return $randomString;
     }
 }
