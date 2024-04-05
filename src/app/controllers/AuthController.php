@@ -61,7 +61,6 @@ class AuthController extends Controller
             http_response_code(200);
             $headers = $response["headers"];
             $redirect_url = $headers["location"][0];
-            // header("Location: " . $redirect_url);
             $response = json_encode([
                 "ok" => "true",
                 "message" => "Authorization request sent successfully",
@@ -78,7 +77,7 @@ class AuthController extends Controller
         $error = Request::getInstance()->getParameter("error", "GET");
 
         if (strlen($error) > 0) {
-            header("Location: /register");
+            header("Location: /redirect?redirect=true");
             die;
         }
 
@@ -110,7 +109,7 @@ class AuthController extends Controller
 
         if ($status == 200) {
             $user_tokens = json_decode($body, true);
-            header("Location: /login");
+            header("Location: /login?redirect=true");
             $this->fetchSpotifyData($user_tokens);
         }
     }
