@@ -25,6 +25,7 @@ class AuthController extends Controller
         var_dump($email, $password);
         die;
         // TODO: Recuperar refresh_token y utilizarlo para obtener la información del usuario.
+        // refreshSpotifyToken();
     }
 
     public function authorizeSpotifyAccount()
@@ -69,6 +70,16 @@ class AuthController extends Controller
         }
 
         echo $response;
+    }
+
+    public function refreshSpotifyToken($refreshToken)
+    {
+
+        $accessToken = " "; // TODO: Obtenerlo usando el refresh token.
+        $userTokens = ["refresh_token" => $refreshToken, "access_token" => $accessToken];
+        header("Location: /home");
+        $this->fetchSpotifyData($userTokens);
+
     }
 
     public function requestSpotifyTokens()
@@ -119,9 +130,8 @@ class AuthController extends Controller
 
         $access_token = $user_tokens["access_token"];
         $refresh_token = $user_tokens["refresh_token"];
-        $token_type = $user_tokens["token_type"];
 
-        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me", [], ["Authorization" => $token_type . " " . $access_token]);
+        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me", [], ["Authorization" => "Bearer " . $access_token]);
 
         $status = $response["status"];
         $body = json_decode($response["body"], true);

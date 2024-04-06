@@ -43,12 +43,6 @@
             </fieldset>
             <p class="button-container">
                 <input type="submit" class="submit-button" value="Crear cuenta" />
-                <button class="spotify-button sign-up-spotify" type="button">
-                    <span>
-                        <img src="/assets/icons/spotify.svg" alt="Spotify icon" />
-                    </span>
-                    Registrarse con Spotify
-                </button>
             </p>
             <p class="link-container">
                 Ya tenes cuenta?

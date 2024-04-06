@@ -28,8 +28,8 @@ $router->get('/register', 'PageController@register');
 $router->get('/post', 'PageController@post');
 
 $router->post('/login', 'AuthController@login');
-$router->get('/spotify/authorize', 'AuthController@authorizeSpotifyAccount');
-$router->get('/spotify/tokens', 'AuthController@requestSpotifyTokens');
+// $router->get('/spotify/authorize', 'AuthController@authorizeSpotifyAccount');
+// $router->get('/spotify/tokens', 'AuthController@requestSpotifyTokens');
 
 $router->get('/user', 'UserController@profile');
 $router->get('/user/profile', 'UserController@edit');

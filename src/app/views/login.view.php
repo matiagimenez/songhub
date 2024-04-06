@@ -28,12 +28,6 @@
             </fieldset>
             <p class="button-container">
                 <input type="submit" class="submit-button" value="Iniciar sesión" />
-                <button class="spotify-button">
-                    <span>
-                        <img src="/assets/icons/spotify.svg" alt="Icono de Spotify " />
-                    </span>
-                    Acceder con Spotify
-                </button>
             </p>
             <p class="link-container">
                 No tenes cuenta?
