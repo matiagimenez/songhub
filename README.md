@@ -20,9 +20,9 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
 
 2. Perfiles de usuario (tiempo estimado: 6 días)
 
-    - Páginas de perfil para cada usuario, donde puedan agregar información personal, una descripcion, una foto de perfil y hasta 5 álbumes favoritos.
+    - Páginas de perfil para cada usuario, donde puedan agregar información personal, una descripcion y hasta 3 álbumes favoritos.
     - Listado de todas los posts realizados por el usuario.
-    - Se podran filtrar los posts por tags agregados al post.
+    - Se podran filtrar los posts por tags asociados.
     - Artistas reconocidos tendran la posibilidad de tener un perfil verificado
 
 3. Búsqueda y navegación (tiempo estimado: 6 dias)
@@ -33,7 +33,7 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
 4. Creación de reviews (tiempo estimado: 7 o más días)
 
     - Un usuario debe poder escribir y publicar reviews sobre canciones o álbumes.
-    - En un post de este estilo debe poder incluir calificaciones, algun comentarios y etiquetas relevantes.
+    - En un post de este estilo debe poder incluir calificaciones, algun comentarios y tags que considere relevantes.
     - Las reviews pueden ser privadas (solo visibles por el usuario) o publicas (visibles por todo el mundo).
 
 5. Interacción social (tiempo estimado: 7 o más días)
