@@ -46,9 +46,9 @@ class Request
     {
         switch (strtoupper($http_method)) {
             case 'GET':
-                return $_GET[$key] ?? null;
+                return htmlspecialchars($_GET[$key] ?? null, ENT_QUOTES);
             case 'POST':
-                return $_POST[$key] ?? null;
+                return htmlspecialchars($_POST[$key] ?? null, ENT_QUOTES);
             // case 'PUT':
             //     return $_POST[$key] ?? null;
             // case 'DELETE':

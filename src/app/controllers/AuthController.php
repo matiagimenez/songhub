@@ -31,9 +31,9 @@ class AuthController extends Controller
     public function register()
     {
 
-        $username = Request::getInstance()->getParameter("username", "POST");
-        $email = Request::getInstance()->getParameter("email", "POST");
-        $emailConfirmation = Request::getInstance()->getParameter("email-confirmation", "POST");
+        $username = $this->sanitizeUserInput(Request::getInstance()->getParameter("username", "POST"));
+        $email = $this->sanitizeUserInput(Request::getInstance()->getParameter("email", "POST"), FILTER_SANITIZE_EMAIL);
+        $emailConfirmation = $this->sanitizeUserInput(Request::getInstance()->getParameter("email-confirmation", "POST"), FILTER_SANITIZE_EMAIL);
         $password = Request::getInstance()->getParameter("password", "POST");
         $passwordConfirmation = Request::getInstance()->getParameter("password-confirmation", "POST");
 
