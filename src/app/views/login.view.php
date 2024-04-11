@@ -12,6 +12,16 @@
                 <h1>Bienvenido</h1>
                 <h2>Por favor, ingresa tus credenciales</h2>
             </header>
+            <?php
+if ($message) {
+    if ($error) {
+        echo "<p class='error-message'> ERROR: " . $message . "</p>";
+    } else {
+        echo "<p class='info-message'>" . $message . "</p>";
+
+    }
+}
+?>
             <fieldset>
                 <legend>Informacion de inicio de sesión</legend>
                 <p class="input-container">
@@ -34,6 +44,17 @@
                 <a href="/register">Registrate aquí</a>
             </p>
         </form>
+        <?php
+if ($message) {
+    if ($error) {
+        echo "<p class='link-container error-message'>" . $message . "</p>";
+    } else {
+        echo "<p class='link-container info-message'>" . $message . "</p>";
+
+    }
+
+}
+?>
     </main>
 </body>
 

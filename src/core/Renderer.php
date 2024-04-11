@@ -29,18 +29,14 @@ class Renderer
 
     public function login($message = "", $error = false)
     {
-        if (strlen($message) > 0) {
-            echo $message;
-        }
-
         $title = "Iniciar sesión";
         $style = "login";
+
         require $this->viewsDirectory . "login.view.php";
     }
 
     public function register($message = "", $error = false)
     {
-        echo $message;
         $title = "Registrarme";
         $style = "register";
         require $this->viewsDirectory . "register.view.php";

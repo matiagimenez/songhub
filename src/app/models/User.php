@@ -100,7 +100,7 @@ class User
             throw new InvalidValueException("La contraseña debe tener un minimo de 8 caracteres");
         }
 
-        if (strlen($password) < 255) {
+        if (strlen($password) > 255) {
             throw new InvalidValueException("La contraseña debe tener un maximo de 255 caracteres");
         }
 

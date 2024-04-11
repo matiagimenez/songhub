@@ -139,6 +139,13 @@ a:focus {
 	align-self: center;
 }
 
+.info-message,
+.error-message {
+	width: 100%;
+	text-align: left;
+	color: var(--color-violet-darkest);
+}
+
 @media (min-width: 1000px) {
 	main {
 		height: 100vh;
@@ -279,6 +286,11 @@ a:focus {
 	h1,
 	h2 {
 		color: var(--color-violet-light-white);
+	}
+
+	.info-message,
+	.error-message {
+		color: white;
 	}
 }
 

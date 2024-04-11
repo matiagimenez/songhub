@@ -25,23 +25,40 @@ class UserRepository extends Repository
         return $userInstance;
     }
 
-    public function userExists(string $username, string $email = "")
+    public function emailIsUsed(string $email)
     {
-        if (strlen($email) > 0) {
-            $user = $this->queryBuilder->select($this->table, ["USERNAME" => $username, "EMAIL" => $email]);
-        } else {
-            $user = $this->queryBuilder->selectByColumn($this->table, "USERNAME", $username);
-        }
+        $user = $this->queryBuilder->selectByColumn($this->table, "EMAIL", $email);
+
+        return count($user) > 0;
+    }
+    public function usernameIsUsed(string $username)
+    {
+        $user = $this->queryBuilder->selectByColumn($this->table, "USERNAME", $username);
 
         return count($user) > 0;
     }
 
     public function createUser($userData)
     {
-        $user = new User();
+
         try {
-            $user->set($userData);
+            if ($this->emailIsUsed($userData["EMAIL"])) {
+                return [false, "El correo electrónico ya se encuentra en uso."];
+            }
+
+            if ($this->usernameIsUsed($userData["USERNAME"])) {
+                return [false, "El nombre de usuario ya se encuentra en uso."];
+            }
+
+            $user = new User();
+
+            $user->setUsername($userData["USERNAME"]);
+            $user->setName($userData["USERNAME"]);
+            $user->setEmail($userData["EMAIL_CONFIRMATION"], $userData["EMAIL"]);
+            $user->setPassword($userData["PASSWORD"], $userData["PASSWORD_CONFIRMATION"]);
+
             $this->queryBuilder->insert($this->table, $user->fields);
+
             return [true, "Usuario registrado con éxito"];
         } catch (InvalidValueException $exception) {
             return [false, $exception->getMessage()];

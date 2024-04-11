@@ -21,14 +21,41 @@ class AuthController extends Controller
     {
         $email = Request::getInstance()->getParameter("email", "POST");
         $password = Request::getInstance()->getParameter("password", "POST");
-        echo "<pre>";
-        var_dump($email, $password);
-        die;
-        // TODO: Recuperar refresh_token y utilizarlo para obtener la información del usuario.
-        // refreshSpotifyToken();
+        // TODO: Chequear que los datos provistos sean validos para el login.
+
+        // Solicita autorización de cuenta de spotify al usuario
+        $this->authorizeSpotifyAccount();
+
     }
 
-    public function authorizeSpotifyAccount()
+    public function register()
+    {
+
+        $username = Request::getInstance()->getParameter("username", "POST");
+        $email = Request::getInstance()->getParameter("email", "POST");
+        $emailConfirmation = Request::getInstance()->getParameter("email-confirmation", "POST");
+        $password = Request::getInstance()->getParameter("password", "POST");
+        $passwordConfirmation = Request::getInstance()->getParameter("password-confirmation", "POST");
+
+        $userData = [
+            "USERNAME" => $username,
+            "EMAIL" => $email,
+            "EMAIL_CONFIRMATION" => $emailConfirmation,
+            "PASSWORD" => $password,
+            "PASSWORD_CONFIRMATION" => $passwordConfirmation,
+        ];
+
+        list($status, $message) = $this->repository->createUser($userData);
+
+        if ($status) {
+            Renderer::getInstance()->login($message);
+        } else {
+            Renderer::getInstance()->register($message, true);
+        }
+
+    }
+
+    private function authorizeSpotifyAccount()
     {
         $host = Config::getInstance()->get("HOST");
         $port = Config::getInstance()->get("PORT");
@@ -46,30 +73,11 @@ class AuthController extends Controller
 
         $response = HttpClient::getInstance()->get($url, $parameters);
 
-        $statusCode = $response["status"];
+        if ($response["status"] >= 300 && $response["status"] < 400) {
 
-        header('Content-Type: application/json');
-        header('Access-Control-Allow-Origin: *');
-
-        if ($statusCode >= 400) {
-            http_response_code(500);
-            $response = json_encode([
-                "ok" => "false",
-                "message" => "Error sending authorization request",
-            ]);
-
-        } else {
-            http_response_code(200);
-            $headers = $response["headers"];
-            $redirect_url = $headers["location"][0];
-            $response = json_encode([
-                "ok" => "true",
-                "message" => "Authorization request sent successfully",
-                "url" => $redirect_url,
-            ]);
+            $redirect_uri = $response["headers"]["location"]["0"];
+            header("Location: " . $redirect_uri);
         }
-
-        echo $response;
     }
 
     public function refreshSpotifyToken($refreshToken)
@@ -88,7 +96,7 @@ class AuthController extends Controller
         $error = Request::getInstance()->getParameter("error", "GET");
 
         if (strlen($error) > 0) {
-            header("Location: /redirect?redirect=true");
+            header("Location: /login?redirect=true");
             die;
         }
 
@@ -127,6 +135,9 @@ class AuthController extends Controller
 
     private function fetchSpotifyData($user_tokens)
     {
+        echo "<pre>";
+        var_dump($_POST);
+        die;
 
         $access_token = $user_tokens["access_token"];
         $refresh_token = $user_tokens["refresh_token"];
@@ -144,7 +155,7 @@ class AuthController extends Controller
         $username = $body["id"];
         $email = $body["email"];
 
-        // Si existe un usuario con el nombre de usuario de spotify y el email de spotify, entonces actualizamos sus datos (ya está registrado).
+        // Si existe un usuario, entonces actualizamos sus datos de spotify (ya está registrado).
         $userExists = $this->repository->userExists($username, $email);
         if ($userExists) {
             $userData = [
@@ -156,51 +167,6 @@ class AuthController extends Controller
             ];
 
             list($status, $message) = $this->repository->updateUser($userData);
-        } else {
-            // Si no existe un usuario con el nombre de usuario de spotify y el email de spotify, entonces lo registramos.
-            $this->registerAccountWithSpotify($body, $refresh_token);
         }
-    }
-
-    private function registerAccountWithSpotify($body, $refresh_token)
-    {
-        $username = $body["id"];
-
-        // Si ya existe una cuenta con el username que el usuario tiene en su cuenta de spotify, le agregamos una cadena random. Luego, podrá modificarlo si así desea.
-        $usernameIsUsed = $this->repository->userExists($username);
-
-        if ($usernameIsUsed) {
-            $userData = [
-                "USERNAME" => $body["id"] . $this->generateRandomString(),
-                "NAME" => $body["display_name"],
-                "EMAIL" => $body["email"],
-                "SPOTIFY_ID" => $body["id"],
-                "SPOTIFY_AVATAR" => $body["images"][0]["url"],
-                "SPOTIFY_URL" => $body["external_urls"]["spotify"],
-                "REFRESH_TOKEN" => $refresh_token,
-            ];
-        } else {
-            $userData = [
-                "USERNAME" => $body["id"],
-                "NAME" => $body["display_name"],
-                "EMAIL" => $body["email"],
-                "SPOTIFY_ID" => $body["id"],
-                "SPOTIFY_AVATAR" => $body["images"][0]["url"],
-                "SPOTIFY_URL" => $body["external_urls"]["spotify"],
-                "REFRESH_TOKEN" => $refresh_token,
-            ];
-        }
-
-        $this->repository->createUser($userData);
-    }
-
-    private function generateRandomString($length = 5)
-    {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, strlen($characters) - 1)];
-        }
-        return $randomString;
     }
 }

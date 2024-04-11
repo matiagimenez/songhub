@@ -7,8 +7,20 @@
 
 <body>
     <main>
+
         <form action="/register" method="POST">
+
             <h1>Registrate</h1>
+            <?php
+if ($message) {
+    if ($error) {
+        echo "<p class='error-message'> ERROR: " . $message . "</p>";
+    } else {
+        echo "<p class='info-message'>" . $message . "</p>";
+
+    }
+}
+?>
             <fieldset>
                 <legend>Informacion de registro</legend>
                 <p class="input-container">
@@ -49,7 +61,8 @@
                 <a href="/login">Inicía sesión aquí</a>
             </p>
         </form>
+
     </main>
 </body>
 
-</html>
+</html>Q
