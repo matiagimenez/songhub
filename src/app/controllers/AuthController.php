@@ -173,12 +173,11 @@ class AuthController extends Controller
             die;
         }
 
-        echo "<pre>";
-        var_dump($status, $message);
-        die;
-
         //TODO: CREAR SESIÓN.
-        //TODO: RENDERIZAR HOME.
+        // Session::getInstance() -> set("access_token", $access_token);
+
+        Renderer::getInstance()->home();
+
     }
 
     private function updateUserData($user_tokens)
