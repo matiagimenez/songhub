@@ -13,7 +13,7 @@
                 <h2>Por favor, ingresa tus credenciales</h2>
             </header>
             <?php
-if ($message) {
+if (strlen($message) > 0) {
     if ($error) {
         echo "<p class='error-message'> ERROR: " . $message . "</p>";
     } else {

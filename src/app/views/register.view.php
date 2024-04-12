@@ -12,7 +12,7 @@
 
             <h1>Registrate</h1>
             <?php
-if ($message) {
+if (strlen($message) > 0) {
     if ($error) {
         echo "<p class='error-message'> ERROR: " . $message . "</p>";
     } else {
