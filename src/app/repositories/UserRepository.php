@@ -11,10 +11,10 @@ class UserRepository extends Repository
 {
     public $table = "USER";
 
-    public function getUser(string $username)
+    public function getUser(string $column, string $value)
     {
 
-        $user = $this->queryBuilder->selectByColumn($this->table, "USERNAME", $username);
+        $user = $this->queryBuilder->selectByColumn($this->table, $column, $value);
 
         if (!$user) {
             return null;
@@ -69,7 +69,7 @@ class UserRepository extends Repository
 
     public function updateUser($userData)
     {
-        $user = $this->getUser($userData["USERNAME"]);
+        $user = $this->getUser("USERNAME", $userData["USERNAME"]);
 
         try {
             $user->set($userData);
@@ -80,5 +80,23 @@ class UserRepository extends Repository
         } catch (Exception $exception) {
             return [false, "Ocurrió un error al actualizar datos del usuario"];
         }
+    }
+
+    public function login($email, $password)
+    {
+        $user = $this->getUser("EMAIL", $email);
+
+        if ($user === null) {
+            return [false, "Correo electrónico o contraseña incorrectos"];
+        }
+
+        $isCorrect = $user->checkPassword($password);
+
+        if (!$isCorrect) {
+            return [false, "Correo electrónico o contraseña incorrectos"];
+        }
+
+        return [true, "Inicio de sesión exitoso"];
+
     }
 }

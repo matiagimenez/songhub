@@ -119,10 +119,13 @@ class User
             if ($password !== $password_confirmation) {
                 throw new InvalidValueException("Las contraseñas no coinciden");
             }
+
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            $this->fields["PASSWORD"] = $hashed_password;
+        } else {
+            $this->fields["PASSWORD"] = $password;
         }
 
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $this->fields["PASSWORD"] = $hashed_password;
     }
 
     public function setSpotifyId(string $spotify_id)
@@ -172,6 +175,15 @@ class User
         }
 
         $this->fields["IS_VERIFIED"] = $is_verified;
+    }
+
+    public function checkPassword($password)
+    {
+        if (!password_verify($password, $this->fields["PASSWORD"])) {
+            return false;
+        }
+
+        return true;
     }
 
     public function set(array $values)

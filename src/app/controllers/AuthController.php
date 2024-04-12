@@ -19,12 +19,23 @@ class AuthController extends Controller
 
     public function login()
     {
-        $email = Request::getInstance()->getParameter("email", "POST");
+        $email = $this->sanitizeUserInput(Request::getInstance()->getParameter("email", "POST"), FILTER_SANITIZE_EMAIL);
         $password = Request::getInstance()->getParameter("password", "POST");
-        // TODO: Chequear que los datos provistos sean validos para el login.
+
+        list($status, $message) = $this->repository->login($email, $password);
+
+        if (!$status) {
+            Renderer::getInstance()->login($message, true);
+        }
+
+        echo "<pre>";
+        var_dump($status, $message);
+        die;
 
         // Solicita autorización de cuenta de spotify al usuario
         $this->authorizeSpotifyAccount();
+
+        // Crear sesión
 
     }
 
