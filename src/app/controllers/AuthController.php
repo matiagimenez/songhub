@@ -4,6 +4,7 @@ namespace Songhub\app\Controllers;
 use Songhub\app\repositories\UserRepository;
 use Songhub\core\Config;
 use Songhub\core\Controller;
+use Songhub\core\Cookie;
 use Songhub\core\HttpClient;
 use Songhub\core\Renderer;
 use Songhub\core\Request;
@@ -29,7 +30,9 @@ class AuthController extends Controller
             die;
         }
 
-        // TODO: Solicitar autorización de cuenta de spotify al usuario
+        //? Resguardo el email/username utilizado para el inicio de sesión.
+        Cookie::getInstance()->set("user_login_identifier", $email, 3600);
+
         $this->authorizeSpotifyAccount();
 
         // TODO:  Crear session
@@ -65,6 +68,7 @@ class AuthController extends Controller
 
     private function authorizeSpotifyAccount()
     {
+
         $host = Config::getInstance()->get("HOST");
         $port = Config::getInstance()->get("PORT");
         $client_id = Config::getInstance()->get("SPOTIFY_CLIENT_ID");
@@ -85,16 +89,6 @@ class AuthController extends Controller
             $redirect_uri = $response["headers"]["location"]["0"];
             header("Location: " . $redirect_uri);
         }
-    }
-
-    public function refreshSpotifyToken($refreshToken)
-    {
-
-        $accessToken = " "; // TODO: Obtenerlo usando el refresh token.
-        $userTokens = ["refresh_token" => $refreshToken, "access_token" => $accessToken];
-        header("Location: /home");
-        $this->fetchSpotifyData($userTokens);
-
     }
 
     public function requestSpotifyTokens()
@@ -128,7 +122,7 @@ class AuthController extends Controller
             "Authorization" => "Basic " . base64_encode($client_id . ":" . $client_secret),
         ];
 
-        // POST request para obtener los tokens
+        //? Solicitod los tokens del usuario a la API de Spotify
         $response = HttpClient::getInstance()->post($url, $body, $headers);
 
         $body = json_decode($response["body"], true);
@@ -142,35 +136,46 @@ class AuthController extends Controller
         $access_token = $body["access_token"];
         $refresh_token = $body["refresh_token"];
 
+        //? Realizo petición a la API para obtener datos de la cuenta del usuario.
         $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me", [], ["Authorization" => "Bearer " . $access_token]);
 
         $status = $response["status"];
         $body = json_decode($response["body"], true);
-
-        echo "<pre>";
-        var_dump($body);
-        die;
 
         if ($status >= 400) {
             Renderer::getInstance()->internalError();
             die;
         }
 
-        //TODO: ACTUALIZAR DATA DEL USUARIO
-        // Si existe un usuario, entonces actualizamos sus cuenta a partir de los datos obtenidos de la cuenta autorizada de Spotify.
-        $userExists = $this->repository->userExists();
-        if ($userExists) {
-            $userData = [
-                "SPOTIFY_ID" => $body["id"],
-                "SPOTIFY_AVATAR" => $body["images"][0]["url"],
-                "SPOTIFY_URL" => $body["external_urls"]["spotify"],
-                "REFRESH_TOKEN" => $refresh_token,
-            ];
+        //? Si existe un usuario, entonces actualizamos sus cuenta a partir de los datos obtenidos de la cuenta autorizada de Spotify.
+        //? Obtengo el identificador que el usuario utilizó para iniciar sesión anteriormente
+        $userLoginIdentifier = Cookie::getInstance()->get("user_login_identifier");
 
-            list($status, $message) = $this->repository->updateUser($userData);
-        } else {
+        //? Elimino la cookie ya que no va a ser reutilizada.
+        Cookie::getInstance()->delete("user_login_identifier");
+
+        if (!$userLoginIdentifier) {
             Renderer::getInstance()->internalError();
+            die;
         }
+
+        $userData = [
+            "SPOTIFY_ID" => $body["id"],
+            "SPOTIFY_AVATAR" => $body["images"][0]["url"],
+            "SPOTIFY_URL" => $body["external_urls"]["spotify"],
+            "REFRESH_TOKEN" => $refresh_token,
+        ];
+
+        list($status, $message) = $this->repository->updateUser("EMAIL", $userLoginIdentifier, $userData);
+
+        if (!$status) {
+            Renderer::getInstance()->internalError();
+            die;
+        }
+
+        echo "<pre>";
+        var_dump($status, $message);
+        die;
 
         //TODO: CREAR SESIÓN.
         //TODO: RENDERIZAR HOME.

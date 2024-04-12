@@ -67,9 +67,9 @@ class UserRepository extends Repository
         }
     }
 
-    public function updateUser($userData)
+    public function updateUser($field, $value, $userData)
     {
-        $user = $this->getUser("USERNAME", $userData["USERNAME"]);
+        $user = $this->getUser($field, $value);
 
         try {
             $user->set($userData);
