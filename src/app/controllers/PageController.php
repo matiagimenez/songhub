@@ -14,13 +14,13 @@ class PageController extends Controller
     }
     public function login()
     {
-        $redirect = Request::getInstance()->getParameter("redirect");
+        // $redirect = Request::getInstance()->getParameter("redirect");
 
-        if (boolval($redirect)) {
-            Renderer::getInstance()->login("Su cuenta fue creada con éxito");
-        } else {
-            Renderer::getInstance()->login();
-        }
+        // if (boolval($redirect)) {
+        //     Renderer::getInstance()->login("ERROR: Ocurrió un");
+        // } else {
+        Renderer::getInstance()->login();
+        // }
 
     }
     public function register()

@@ -29,10 +29,6 @@ class AuthController extends Controller
             die;
         }
 
-        echo "<pre>";
-        var_dump($status, $message);
-        die;
-
         // TODO: Solicitar autorización de cuenta de spotify al usuario
         $this->authorizeSpotifyAccount();
 
@@ -86,7 +82,6 @@ class AuthController extends Controller
         $response = HttpClient::getInstance()->get($url, $parameters);
 
         if ($response["status"] >= 300 && $response["status"] < 400) {
-
             $redirect_uri = $response["headers"]["location"]["0"];
             header("Location: " . $redirect_uri);
         }
@@ -118,7 +113,8 @@ class AuthController extends Controller
         $client_secret = Config::getInstance()->get("SPOTIFY_CLIENT_SECRET");
 
         $url = 'https://accounts.spotify.com/api/token';
-        //? Esta es la URL a la que nos redirige spotify una vez que los tokens fueron generados
+
+        //? Esta URL debe ser la misma que se utilizo al momento de autorizar la aplicación. No habrá una redirección, sino que es solamente a modo de validación.
         $redirect_uri = "http://" . $host . ":" . $port . "/spotify/tokens";
 
         $body = [
@@ -135,43 +131,36 @@ class AuthController extends Controller
         // POST request para obtener los tokens
         $response = HttpClient::getInstance()->post($url, $body, $headers);
 
-        $status = $response["status"];
-        $body = $response["body"];
-
-        if ($status == 200) {
-            $user_tokens = json_decode($body, true);
-            header("Location: /login?redirect=true");
-            $this->fetchSpotifyData($user_tokens);
-        }
-    }
-
-    private function fetchSpotifyData($user_tokens)
-    {
-        echo "<pre>";
-        var_dump($_POST);
-        die;
-
-        $access_token = $user_tokens["access_token"];
-        $refresh_token = $user_tokens["refresh_token"];
-
-        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me", [], ["Authorization" => "Bearer " . $access_token]);
-
-        $status = $response["status"];
         $body = json_decode($response["body"], true);
+        $status = $response["status"];
 
         if ($status >= 400) {
             Renderer::getInstance()->internalError();
             die;
         }
 
-        $username = $body["id"];
-        $email = $body["email"];
+        $access_token = $body["access_token"];
+        $refresh_token = $body["refresh_token"];
 
-        // Si existe un usuario, entonces actualizamos sus datos de spotify (ya está registrado).
-        $userExists = $this->repository->userExists($username, $email);
+        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me", [], ["Authorization" => "Bearer " . $access_token]);
+
+        $status = $response["status"];
+        $body = json_decode($response["body"], true);
+
+        echo "<pre>";
+        var_dump($body);
+        die;
+
+        if ($status >= 400) {
+            Renderer::getInstance()->internalError();
+            die;
+        }
+
+        //TODO: ACTUALIZAR DATA DEL USUARIO
+        // Si existe un usuario, entonces actualizamos sus cuenta a partir de los datos obtenidos de la cuenta autorizada de Spotify.
+        $userExists = $this->repository->userExists();
         if ($userExists) {
             $userData = [
-                "USERNAME" => $body["id"],
                 "SPOTIFY_ID" => $body["id"],
                 "SPOTIFY_AVATAR" => $body["images"][0]["url"],
                 "SPOTIFY_URL" => $body["external_urls"]["spotify"],
@@ -179,6 +168,16 @@ class AuthController extends Controller
             ];
 
             list($status, $message) = $this->repository->updateUser($userData);
+        } else {
+            Renderer::getInstance()->internalError();
         }
+
+        //TODO: CREAR SESIÓN.
+        //TODO: RENDERIZAR HOME.
+    }
+
+    private function updateUserData($user_tokens)
+    {
+
     }
 }
