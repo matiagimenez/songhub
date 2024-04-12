@@ -26,16 +26,17 @@ class AuthController extends Controller
 
         if (!$status) {
             Renderer::getInstance()->login($message, true);
+            die;
         }
 
         echo "<pre>";
         var_dump($status, $message);
         die;
 
-        // Solicita autorización de cuenta de spotify al usuario
+        // TODO: Solicitar autorización de cuenta de spotify al usuario
         $this->authorizeSpotifyAccount();
 
-        // Crear sesión
+        // TODO:  Crear session
 
     }
 
