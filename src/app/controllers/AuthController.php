@@ -8,6 +8,7 @@ use Songhub\core\Cookie;
 use Songhub\core\HttpClient;
 use Songhub\core\Renderer;
 use Songhub\core\Request;
+use Songhub\core\Session;
 
 class AuthController extends Controller
 {
@@ -34,9 +35,13 @@ class AuthController extends Controller
         Cookie::getInstance()->set("user_login_identifier", $email, 3600);
 
         $this->authorizeSpotifyAccount();
+    }
 
-        // TODO:  Crear session
-
+    public function logout()
+    {
+        Session::getInstance()->destroy();
+        header("Location: /");
+        die;
     }
 
     public function register()
@@ -97,7 +102,7 @@ class AuthController extends Controller
         $error = Request::getInstance()->getParameter("error", "GET");
 
         if (strlen($error) > 0) {
-            header("Location: /login?redirect=true");
+            Renderer::getInstance()->internalError();
             die;
         }
 
@@ -122,7 +127,7 @@ class AuthController extends Controller
             "Authorization" => "Basic " . base64_encode($client_id . ":" . $client_secret),
         ];
 
-        //? Solicitod los tokens del usuario a la API de Spotify
+        //? Solicito los tokens del usuario a la API de Spotify
         $response = HttpClient::getInstance()->post($url, $body, $headers);
 
         $body = json_decode($response["body"], true);
@@ -149,12 +154,9 @@ class AuthController extends Controller
 
         //? Si existe un usuario, entonces actualizamos sus cuenta a partir de los datos obtenidos de la cuenta autorizada de Spotify.
         //? Obtengo el identificador que el usuario utilizó para iniciar sesión anteriormente
-        $userLoginIdentifier = Cookie::getInstance()->get("user_login_identifier");
+        $user_login_identifier = Cookie::getInstance()->get("user_login_identifier");
 
-        //? Elimino la cookie ya que no va a ser reutilizada.
-        Cookie::getInstance()->delete("user_login_identifier");
-
-        if (!$userLoginIdentifier) {
+        if (!$user_login_identifier) {
             Renderer::getInstance()->internalError();
             die;
         }
@@ -166,22 +168,19 @@ class AuthController extends Controller
             "REFRESH_TOKEN" => $refresh_token,
         ];
 
-        list($status, $message) = $this->repository->updateUser("EMAIL", $userLoginIdentifier, $userData);
+        list($status, $message) = $this->repository->updateUser("EMAIL", $user_login_identifier, $userData);
 
         if (!$status) {
             Renderer::getInstance()->internalError();
             die;
         }
 
-        //TODO: CREAR SESIÓN.
-        // Session::getInstance() -> set("access_token", $access_token);
+        Session::getInstance()->set("access_token", $access_token);
 
-        Renderer::getInstance()->home();
+        $isAuthenticated = Session::getInstance()->exists("access_token");
 
-    }
-
-    private function updateUserData($user_tokens)
-    {
+        header("Location: /");
 
     }
+
 }

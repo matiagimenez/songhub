@@ -22,6 +22,7 @@ class Renderer
 
     public function home()
     {
+
         $title = "Inicio";
         $style = "home";
         require $this->viewsDirectory . "home.view.php";
@@ -40,6 +41,12 @@ class Renderer
         $title = "Registrarme";
         $style = "register";
         require $this->viewsDirectory . "register.view.php";
+    }
+    public function explore()
+    {
+        $title = "Explorar";
+        $style = "explore";
+        require $this->viewsDirectory . "explore.view.php";
     }
 
     public function notFound()

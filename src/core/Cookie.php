@@ -21,7 +21,12 @@ class Cookie
     //? $expires_in: tiempo en segundos durante los cuales la cookie tendrá validez.
     public function set($key, $value, $expires_in = 3600)
     {
-        setcookie($key, $value, time() + $expires_in, "/", "", false, true);
+        $path = "/";
+        $domain = "";
+        $secure = isset($_SERVER['HTTPS']);
+        $httponly = true;
+
+        setcookie($key, $value, time() + $expires_in, $path, $domain, $secure, $httponly);
     }
 
     public function delete($key)
