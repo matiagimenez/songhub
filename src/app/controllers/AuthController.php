@@ -68,7 +68,18 @@ class AuthController extends Controller
         } else {
             Renderer::getInstance()->register($message, true);
         }
+    }
 
+    public function getAccessToken()
+    {
+        $access_token = Session::getInstance()->getAccessToken();
+
+        if (!$access_token) {
+            $this->refreshAccessToken();
+            $access_token = Session::getInstance()->getAccessToken();
+        }
+
+        return $access_token;
     }
 
     private function authorizeSpotifyAccount()
@@ -140,6 +151,7 @@ class AuthController extends Controller
 
         $access_token = $body["access_token"];
         $refresh_token = $body["refresh_token"];
+        $expires_in = $body["expires_in"];
 
         //? Realizo petición a la API para obtener datos de la cuenta del usuario.
         $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me", [], ["Authorization" => "Bearer " . $access_token]);
@@ -176,10 +188,63 @@ class AuthController extends Controller
         }
 
         Session::getInstance()->set("access_token", $access_token);
-
-        $isAuthenticated = Session::getInstance()->exists("access_token");
+        Session::getInstance()->set("access_token_expire_time", time() + $expires_in);
 
         header("Location: /");
+
+    }
+
+    private function refreshAccessToken()
+    {
+        $user_login_identifier = Cookie::getInstance()->get("user_login_identifier");
+
+        if (!$user_login_identifier) {
+            Renderer::getInstance()->internalError();
+            die;
+        }
+
+        $user = $this->repository->getUser("EMAIL", $user_login_identifier);
+
+        if (!$user) {
+            Renderer::getInstance()->internalError();
+            die;
+        }
+
+        $refresh_token = $user->fields["REFRESH_TOKEN"];
+        $client_id = Config::getInstance()->get("SPOTIFY_CLIENT_ID");
+        $client_secret = Config::getInstance()->get("SPOTIFY_CLIENT_SECRET");
+
+        $url = 'https://accounts.spotify.com/api/token';
+
+        $body = [
+            'grant_type' => "refresh_token",
+            'refresh_token' => $refresh_token,
+            'client_id' => $client_id,
+        ];
+
+        $headers = [
+            "Content-Type" => "application/x-www-form-urlencoded",
+            "Authorization" => "Basic " . base64_encode($client_id . ":" . $client_secret),
+        ];
+
+        //? Renuevo el access_token del usuario con la API de Spotify
+        $response = HttpClient::getInstance()->post($url, $body, $headers);
+
+        $body = json_decode($response["body"], true);
+        $status = $response["status"];
+
+        if ($status !== 200) {
+            Renderer::getInstance()->internalError();
+            die;
+        }
+
+        $new_access_token = $body["access_token"];
+        $expires_in = $body["expires_in"];
+
+        Session::getInstance()->destroy();
+
+        Session::getInstance()->set("access_token", $new_access_token);
+        Session::getInstance()->set("access_token_expire_time", time() + $expires_in);
 
     }
 

@@ -24,6 +24,7 @@ $logger = LoggerBuilder::getInstance()->getLogger();
 $router->setLogger($logger);
 $router->get('/', 'PageController@home');
 $router->get('/login', 'PageController@login');
+$router->get('/register', 'PageController@register');
 $router->get('/post', 'PageController@post');
 
 $router->get('/explore', 'ExploreController@explore');
@@ -32,7 +33,6 @@ $router->post('/login', 'AuthController@login');
 $router->get('/logout', 'AuthController@logout');
 $router->post('/register', 'AuthController@register');
 $router->get('/spotify/tokens', 'AuthController@requestSpotifyTokens');
-$router->get('/spotify/data', 'AuthController@fetchUserData');
 
 $router->get('/user', 'UserController@profile');
 $router->get('/user/profile', 'UserController@edit');
