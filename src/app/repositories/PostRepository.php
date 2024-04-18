@@ -11,24 +11,38 @@ class PostRepository extends Repository
 {
     public $table = "POST";
 
-    public function getPosts(int $post_id)
+    public function getPostsFromUser($user_id)
     {
-        // TODO:
-        //   Armar un querie para pedir la lista de posts de un usuario
+        $posts = $this->queryBuilder->selectByColumn($this->table, "USER_ID", $user_id);
+
+        $userPosts = [];
+
+        if (count($posts) > 0) {
+            foreach ($posts as $post) {
+                $postInstance = new Post();
+                $postInstance->set($post);
+                $userPosts->push($postInstance);
+            }
+        }
+        // echo "<pre>";
+        // var_dump($posts);
+        // die;
+
+        return $userPosts;
     }
-    
+
     public function getPost(int $post_id)
     {
         // TODO:
         //   Armar un querie para pedir un post
-    
+
     }
 
     public function likePost(int $post_id)
     {
         // TODO:
         //   Armar un querie para aumentar en uno la cantidad de likes de un post/comentario
-    
+
     }
 
     public function createPost($postData)

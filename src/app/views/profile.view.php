@@ -1,27 +1,21 @@
+<?php
+use Songhub\core\Session;
+
+$isAuthenticated = Session::getInstance()->exists("username");
+
+if ($isAuthenticated) {
+    $username = Session::getInstance()->get("username");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Descubre una plataforma interactiva donde puedes compartir opiniones sobre música y explorar nuevas recomendaciones.
-                Únete a nuestra comunidad de usuarios para escribir reviews de canciones y álbumes e interactuar con otros amantes de la música.
-                ¡Explora, conecta y descubre la pasión por la música en SongHub!" />
-    <meta property="og:title" content="SongHub" />
-    <meta property="og:description" content="Descubre una plataforma interactiva donde puedes compartir opiniones sobre música y explorar nuevas recomendaciones.
-                Únete a nuestra comunidad de usuarios para escribir reviews de canciones y álbumes e interactuar con otros amantes de la música.
-                ¡Explora, conecta y descubre la pasión por la música en SongHub!" />
-    <meta property="og:image"
-        content="https://images.unsplash.com/photo-1485579149621-3123dd979885?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG11c2ljfGVufDB8fDB8fHww" />
-    <meta property="og:url" content="" id="og-url" />
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.svg" />
-    <link rel="stylesheet" href="../styles/profile.css" />
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <script src="../scripts/index.js" type="module"></script>
-    <title>Perfil | SongHub</title>
+    <?php require "fragments/head.view.php"?>
 </head>
+
 
 <body>
     <header class="main-header" id="main-header">
@@ -30,17 +24,17 @@
     <main>
         <header>
             <section class="user">
-                <img src="https://i.pinimg.com/236x/f4/e4/ff/f4e4ff0e8518813c6d5dde10a4d5164d.jpg"
-                    alt="Imagen de perfil" height="60px" width="60px" class="image-border" />
+                <img src=<?=$user->fields["SPOTIFY_AVATAR"]?> alt="Imagen de perfil" height="60px" width="60px"
+                    class="image-border" />
                 <p class="username-container">
-                    <span class="name">Nombre de usuario</span>
-                    <span class="username">@username</span>
+                    <span class="name"><?=$user->fields["NAME"]?></span>
+                    <span class="username">@<?=$user->fields["USERNAME"]?></span>
                 </p>
             </section>
 
             <section class="user-stats">
                 <ul>
-                    <li><span>1K</span>POSTS</li>
+                    <li><span><?=count($posts)?></span>POSTS</li>
                     <li><span>2M</span>SEGUIDORES</li>
                     <li><span>500</span>SEGUIDOS</li>
                 </ul>
@@ -48,28 +42,24 @@
 
             <section class="user-actions">
                 <p class="profile-button-container">
-                    <!-- El botón de seguir se renderiza si el perfil no es el del usuario logueado-->
+                    <?php if ($username === $user->fields["USERNAME"]): ?>
+                    <a href="profile-edit.html" class="submit-outline-button">
+                        Editar perfil
+                    </a>
+                    <?php else: ?>
                     <button class="action-button submit-outline-button">
                         Siguiendo
                     </button>
-                    <!-- El enlace de editar perfil se renderiza si el perfil  es el del usuario logueado -->
+                    <?php endif?>
 
-                    <!-- <a
-						href="profile-edit.html"
-						class="submit-outline-button"
-					>
-						Editar perfil
-					</a> -->
-                    <button class="submit-button spotify-profile-button">
+                    <a class="submit-button spotify-profile-button" href=<?=$user->fields["SPOTIFY_URL"]?>>
                         <img src="../assets/icons/spotify.svg" alt="Logo de Spotify" />
                         <span> Perfil </span>
-                    </button>
+                    </a>
                 </p>
             </section>
             <p class="biography">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
-                natoque penatibus et magnis dis parturient.
+                <?=$user->fields["BIOGRAPHY"]?>
             </p>
         </header>
 

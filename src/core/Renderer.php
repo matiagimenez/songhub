@@ -68,4 +68,11 @@ class Renderer
         $title = "500";
         require $this->viewsDirectory . "error.view.php";
     }
+
+    public function profile($user, $posts)
+    {
+        $title = "Perfil";
+        $style = "profile";
+        require $this->viewsDirectory . "profile.view.php";
+    }
 }

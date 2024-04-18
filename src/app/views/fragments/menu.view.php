@@ -1,9 +1,9 @@
 <?php
 use Songhub\core\Session;
 
-$isAunthenticated = Session::getInstance()->exists("username");
+$isAuthenticated = Session::getInstance()->exists("username");
 
-if ($isAunthenticated) {
+if ($isAuthenticated) {
     $username = Session::getInstance()->get("username");
 }
 
@@ -11,7 +11,7 @@ if ($isAunthenticated) {
 <nav class="header-nav">
     <ul class="hidden" role="menu" id="main-menu">
 
-        <?php if ($isAunthenticated): ?>
+        <?php if ($isAuthenticated): ?>
         <li role="menuitem" class="search-item">
             <form action="/search" method="GET">
                 <label for="search">Buscar álbum, canción o artista</label>
@@ -29,7 +29,7 @@ if ($isAunthenticated) {
             <a href="/explore" class="menu-item">EXPLORAR</a>
         </li>
         <li role="menuitem">
-            <a href=<?="/profile/" . $username?> class="menu-item"> PERFIL </a>
+            <a href=<?="/user?username=" . $username?> class="menu-item"> PERFIL </a>
         </li>
         <li role="menuitem" class="logout-item" aria-labelledby="logout-content">
             <button class="menu-item logout-button">

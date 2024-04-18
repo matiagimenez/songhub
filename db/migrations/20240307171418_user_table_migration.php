@@ -15,9 +15,6 @@ final class UserTableMigration extends AbstractMigration
         $table->addColumn('PASSWORD', 'string', ['limit' => 255, 'null' => false]);
         $table->addColumn('SPOTIFY_ID', 'string', ['limit' => 255, 'default' => null]);
         $table->addColumn('SPOTIFY_URL', 'string', ['limit' => 255, 'default' => null]);
-        // $table->addColumn('ACCESS_TOKEN', 'string', ['limit' => 255, 'default' => null]);
-        // $table->addColumn('ACCESS_TOKEN_GENERATION_TIME', 'timestamp', ['default' => null]);
-        // $table->addColumn('TOKEN_TYPE', 'string', ['limit' => 255, 'default' => null]);
         $table->addColumn('REFRESH_TOKEN', 'string', ['limit' => 255, 'default' => null]);
         $table->addColumn('SPOTIFY_AVATAR', 'string', ['limit' => 255, 'default' => null]);
         $table->addColumn('IS_VERIFIED', 'boolean', ['default' => false, 'null' => false]);

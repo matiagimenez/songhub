@@ -39,7 +39,6 @@ header .user-actions .action-button {
 	font-weight: bolder;
 	display: inline-block;
 	position: relative;
-	bottom: 12px;
 }
 
 header .user-actions a {
@@ -47,7 +46,7 @@ header .user-actions a {
 	text-decoration: none;
 	height: 35px;
 	width: 110px;
-	line-height: 2.8;
+	line-height: 2.5;
 	font-size: 0.8rem;
 	padding: 0;
 }
@@ -88,6 +87,8 @@ header .user p.username-container {
 
 header .user-actions p.profile-button-container {
 	width: 100%;
+	display: flex;
+	align-items: center;
 }
 
 header .user-stats {
