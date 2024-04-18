@@ -11,17 +11,45 @@ class FollowRepository extends Repository
 {
     public $table = "FOLLOW";
 
-    public function getFollowers(int $followed_id)
+    public function getUserFollowers($followed_id)
     {
-        // TODO:
-        //   Armar un querie para pedir la lista de seguidores
+        $followers = $this->queryBuilder->selectByColumn($this->table, "FOLLOWED_ID", $followed_id);
+
+        $userFollowers = [];
+
+        if (count($followers) > 0) {
+            foreach ($followers as $follower) {
+                $followInstance = new Follow();
+                $followInstance->set($follower);
+                $userFollowers->push($followInstance);
+            }
+        }
+        // echo "<pre>";
+        // var_dump($followers);
+        // die;
+
+        return $userFollowers;
     }
-    
-    public function getFollowed(int $follower_id)
+
+    public function getUserFollowing(int $follower_id)
     {
-        // TODO:
-        //   Armar un querie para pedir la lista de seguidos
-    
+        $following = $this->queryBuilder->selectByColumn($this->table, "FOLLOWER_ID", $follower_id);
+
+        $userFollowing = [];
+
+        if (count($following) > 0) {
+            foreach ($following as $follower) {
+                $followInstance = new Follow();
+                $followInstance->set($follower);
+                $userFollowing->push($followInstance);
+            }
+        }
+        // echo "<pre>";
+        // var_dump($following);
+        // die;
+
+        return $userFollowing;
+
     }
 
     public function createFollow($followData)

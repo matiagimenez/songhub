@@ -35,8 +35,8 @@ if ($isAuthenticated) {
             <section class="user-stats">
                 <ul>
                     <li><span><?=count($posts)?></span>POSTS</li>
-                    <li><span>2M</span>SEGUIDORES</li>
-                    <li><span>500</span>SEGUIDOS</li>
+                    <li><span><?=count($followers)?></span>SEGUIDORES</li>
+                    <li><span><?=count($following)?></span>SEGUIDOS</li>
                 </ul>
             </section>
 
