@@ -1,6 +1,17 @@
-<?php ?>
+<?php
+use Songhub\core\Session;
+
+$isAunthenticated = Session::getInstance()->exists("username");
+
+if ($isAunthenticated) {
+    $username = Session::getInstance()->get("username");
+}
+
+?>
 <nav class="header-nav">
     <ul class="hidden" role="menu" id="main-menu">
+
+        <?php if ($isAunthenticated): ?>
         <li role="menuitem" class="search-item">
             <form action="/search" method="GET">
                 <label for="search">Buscar álbum, canción o artista</label>
@@ -18,7 +29,7 @@
             <a href="/explore" class="menu-item">EXPLORAR</a>
         </li>
         <li role="menuitem">
-            <a href="/profile" class="menu-item"> PERFIL </a>
+            <a href=<?="/profile/" . $username?> class="menu-item"> PERFIL </a>
         </li>
         <li role="menuitem" class="logout-item" aria-labelledby="logout-content">
             <button class="menu-item">
@@ -26,6 +37,14 @@
                 <i class="ph ph-sign-out icon logout-icon"></i>
             </button>
         </li>
+        <?php else: ?>
+        <li role="menuitem">
+            <a href="/login" class="menu-item">INICIAR SESIÓN</a>
+        </li>
+        <li role="menuitem">
+            <a href="/register" class="menu-item">REGISTRARME</a>
+        </li>
+        <?php endif?>
     </ul>
     <button class="menu-button menu-item" aria-expanded="false" aria-controls="main-menu">
         <span class="visually-hidden">Abrir menu</span>
