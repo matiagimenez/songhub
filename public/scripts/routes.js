@@ -25,6 +25,10 @@ export const routes = {
 			scriptName: 'modal-form',
 			scriptPath: '/scripts/components/modal-form/modal-form.js',
 		},
+		{
+			scriptName: 'logout-button',
+			scriptPath: '/scripts/components/logout-button/logout-button.js',
+		},
 	],
 	'/followers': [
 		{
@@ -35,6 +39,10 @@ export const routes = {
 			scriptName: 'action-button-animation',
 			scriptPath: '/scripts/animations/action-button-animation.js',
 		},
+		{
+			scriptName: 'logout-button',
+			scriptPath: '/scripts/components/logout-button/logout-button.js',
+		},
 	],
 	'/following': [
 		{
@@ -44,6 +52,10 @@ export const routes = {
 		{
 			scriptName: 'action-button-animation',
 			scriptPath: '/scripts/animations/action-button-animation.js',
+		},
+		{
+			scriptName: 'logout-button',
+			scriptPath: '/scripts/components/logout-button/logout-button.js',
 		},
 	],
 
@@ -61,14 +73,13 @@ export const routes = {
 			scriptName: 'likes-counter-animation',
 			scriptPath: '/scripts/animations/likes-counter-animation.js',
 		},
-	],
-	'/profile-edit': [
 		{
-			scriptName: 'menu-animation',
-			scriptPath: '/scripts/animations/menu-animation.js',
+			scriptName: 'logout-button',
+			scriptPath: '/scripts/components/logout-button/logout-button.js',
 		},
 	],
-	'/profile': [
+
+	'/user': [
 		{
 			scriptName: 'menu-animation',
 			scriptPath: '/scripts/animations/menu-animation.js',
@@ -98,6 +109,10 @@ export const routes = {
 			scriptName: 'modal-form',
 			scriptPath: '/scripts/components/modal-form/modal-form.js',
 		},
+		{
+			scriptName: 'logout-button',
+			scriptPath: '/scripts/components/logout-button/logout-button.js',
+		},
 	],
 	'/search': [
 		{
@@ -108,6 +123,10 @@ export const routes = {
 		{
 			scriptName: 'modal-form',
 			scriptPath: '/scripts/components/modal-form/modal-form.js',
+		},
+		{
+			scriptName: 'logout-button',
+			scriptPath: '/scripts/components/logout-button/logout-button.js',
 		},
 	],
 	'/content': [
@@ -139,8 +158,12 @@ export const routes = {
 			scriptName: 'likes-counter-animation',
 			scriptPath: '/scripts/animations/likes-counter-animation.js',
 		},
+		{
+			scriptName: 'logout-button',
+			scriptPath: '/scripts/components/logout-button/logout-button.js',
+		},
 	],
-	'/edit-profile': [
+	'/user/profile': [
 		{
 			scriptName: 'menu-animation',
 			scriptPath: '/scripts/animations/menu-animation.js',
@@ -149,17 +172,29 @@ export const routes = {
 			scriptName: 'remove-favourite-animation',
 			scriptPath: '/scripts/animations/remove-favourite-animation.js',
 		},
+		{
+			scriptName: 'logout-button',
+			scriptPath: '/scripts/components/logout-button/logout-button.js',
+		},
 	],
 	'/terms-conditions': [
 		{
 			scriptName: 'menu-animation',
 			scriptPath: '/scripts/animations/menu-animation.js',
 		},
+		{
+			scriptName: 'logout-button',
+			scriptPath: '/scripts/components/logout-button/logout-button.js',
+		},
 	],
 	'/error': [
 		{
 			scriptName: 'menu-animation',
 			scriptPath: '/scripts/animations/menu-animation.js',
+		},
+		{
+			scriptName: 'logout-button',
+			scriptPath: '/scripts/components/logout-button/logout-button.js',
 		},
 	],
 	'/': [
@@ -195,6 +230,10 @@ export const routes = {
 		{
 			scriptName: 'likes-counter-animation',
 			scriptPath: '/scripts/animations/likes-counter-animation.js',
+		},
+		{
+			scriptName: 'logout-button',
+			scriptPath: '/scripts/components/logout-button/logout-button.js',
 		},
 	],
 };

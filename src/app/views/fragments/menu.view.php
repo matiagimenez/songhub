@@ -32,7 +32,7 @@ if ($isAunthenticated) {
             <a href=<?="/profile/" . $username?> class="menu-item"> PERFIL </a>
         </li>
         <li role="menuitem" class="logout-item" aria-labelledby="logout-content">
-            <button class="menu-item">
+            <button class="menu-item logout-button">
                 <span id="logout-content">CERRAR SESION</span>
                 <i class="ph ph-sign-out icon logout-icon"></i>
             </button>
