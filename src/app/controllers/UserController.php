@@ -8,6 +8,7 @@ use Songhub\core\Controller;
 use Songhub\core\database\QueryBuilder;
 use Songhub\core\Renderer;
 use Songhub\core\Request;
+use Songhub\core\Session;
 
 class UserController extends Controller
 {
@@ -40,9 +41,12 @@ class UserController extends Controller
 
     public function edit()
     {
-        $title = "Editar perfil";
-        $style = "edit-profile";
-        require $this->viewsDirectory . "edit-profile.view.php";
+
+        $username = Session::getInstance()->get("username");
+        $user = $this->repository->getUser("USERNAME", $username);
+
+        Renderer::getInstance()->edit($user);
+
     }
 
     public function createUser()

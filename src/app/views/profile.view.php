@@ -43,7 +43,7 @@ if ($isAuthenticated) {
             <section class="user-actions">
                 <p class="profile-button-container">
                     <?php if ($username === $user->fields["USERNAME"]): ?>
-                    <a href="profile-edit.html" class="submit-outline-button">
+                    <a href="/user/profile" class="submit-outline-button">
                         Editar perfil
                     </a>
                     <?php else: ?>

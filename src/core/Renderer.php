@@ -75,4 +75,11 @@ class Renderer
         $style = "profile";
         require $this->viewsDirectory . "profile.view.php";
     }
+
+    public function edit($user)
+    {
+        $title = "Editar perfil";
+        $style = "edit-profile";
+        require $this->viewsDirectory . "edit-profile.view.php";
+    }
 }
