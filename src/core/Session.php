@@ -35,6 +35,7 @@ class Session
         $_SESSION = [];
         Cookie::getInstance()->delete(session_name());
         Cookie::getInstance()->delete("user_login_identifier");
+        Cookie::getInstance()->delete("username");
 
         session_destroy();
     }

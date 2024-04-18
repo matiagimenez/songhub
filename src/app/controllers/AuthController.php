@@ -187,8 +187,11 @@ class AuthController extends Controller
             die;
         }
 
+        $user = $this->repository->getUser("EMAIL", $user_login_identifier);
+
         Session::getInstance()->set("access_token", $access_token);
         Session::getInstance()->set("access_token_expire_time", time() + $expires_in);
+        Session::getInstance()->set("username", $user->fields["USERNAME"]);
 
         header("Location: /");
 
@@ -245,6 +248,7 @@ class AuthController extends Controller
 
         Session::getInstance()->set("access_token", $new_access_token);
         Session::getInstance()->set("access_token_expire_time", time() + $expires_in);
+        Session::getInstance()->set("username", $user["USERNAME"]);
 
     }
 
