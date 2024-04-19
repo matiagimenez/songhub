@@ -1,4 +1,5 @@
 <?php
+
 namespace Songhub\App\Controllers;
 
 use Songhub\app\repositories\FollowRepository;
@@ -21,8 +22,8 @@ class UserController extends Controller
     public function profile()
     {
 
-        $username = Request::getInstance()->getParameter("username", "GET");
-        $username = trim($username);
+        $username = $this->sanitizeUserInput(Request::getInstance()->getParameter("username", "GET"), FILTER_SANITIZE_EMAIL);
+
         $user = $this->repository->getUser("USERNAME", $username);
 
         $queryBuilder = QueryBuilder::getInstance();
@@ -46,7 +47,6 @@ class UserController extends Controller
         $user = $this->repository->getUser("USERNAME", $username);
 
         Renderer::getInstance()->edit($user);
-
     }
 
     public function createUser()
@@ -55,5 +55,4 @@ class UserController extends Controller
     public function updateUser()
     {
     }
-
 }
