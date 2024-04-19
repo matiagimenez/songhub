@@ -1,4 +1,5 @@
 <?php
+
 namespace Songhub\app\Controllers;
 
 use Songhub\app\repositories\UserRepository;
@@ -92,9 +93,11 @@ class AuthController extends Controller
         //? Esta es la URL a la que nos redirige spotify una vez que el usuario fue autorizado
         $redirect_uri = "http://" . $host . ":" . $port . "/spotify/tokens";
 
-        $parameters = ['client_id' => $client_id,
+        $parameters = [
+            'client_id' => $client_id,
             'response_type' => 'code',
-            'scope' => 'user-read-private user-read-email',
+            'scope' => 'user-read-private user-read-email user-top-read user-read-recently-played 
+                user-read-currently-playing playlist-read-private user-library-read user-follow-read',
             'redirect_uri' => $redirect_uri,
             "show_dialog" => true,
         ];
@@ -194,7 +197,6 @@ class AuthController extends Controller
         Session::getInstance()->set("username", $user->fields["USERNAME"]);
 
         header("Location: /");
-
     }
 
     private function refreshAccessToken()
@@ -249,7 +251,5 @@ class AuthController extends Controller
         Session::getInstance()->set("access_token", $new_access_token);
         Session::getInstance()->set("access_token_expire_time", time() + $expires_in);
         Session::getInstance()->set("username", $user["USERNAME"]);
-
     }
-
 }
