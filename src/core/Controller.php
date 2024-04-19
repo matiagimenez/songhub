@@ -18,7 +18,6 @@ class Controller
             $repository->setQueryBuilder($queryBuilder);
             $this->setRepository($repository);
         }
-
     }
 
     public function setRepository(Repository $repository)

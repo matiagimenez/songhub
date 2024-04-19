@@ -60,7 +60,6 @@ class HttpClient
             $this->logger->debug("Error on GET request to" . $url, ["exception" => $e]);
             return "Error";
         }
-
     }
 
     public function post($url, $body = [], $headers = [])
@@ -95,7 +94,5 @@ class HttpClient
         } catch (Exception $e) {
             $this->logger->debug("Error on POST request to:" . $url, ["exception" => $e]);
         }
-
     }
-
 }

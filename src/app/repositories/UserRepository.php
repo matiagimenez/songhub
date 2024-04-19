@@ -97,6 +97,5 @@ class UserRepository extends Repository
         }
 
         return [true, "Inicio de sesión exitoso"];
-
     }
 }
