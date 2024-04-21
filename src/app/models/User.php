@@ -16,7 +16,6 @@ class User
         "REFRESH_TOKEN" => null,
         "SPOTIFY_AVATAR" => null,
         "BIOGRAPHY" => "",
-        "IS_VERIFIED" => 0,
         "SPOTIFY_URL" => null,
     ];
     public function setUserId($user_id)
@@ -125,7 +124,6 @@ class User
         } else {
             $this->fields["PASSWORD"] = $password;
         }
-
     }
 
     public function setSpotifyId(string $spotify_id)
@@ -164,18 +162,6 @@ class User
         $biography = trim($biography);
         $this->fields["BIOGRAPHY"] = $biography;
     }
-    public function setIsVerified($is_verified = 0)
-    {
-        if ($is_verified === null) {
-            throw new InvalidValueException("El valor de la verificacion debe ser un booleano");
-        }
-
-        if ($is_verified !== 0 && $is_verified !== 1) {
-            throw new InvalidValueException("El valor de la verificacion debe ser un booleano");
-        }
-
-        $this->fields["IS_VERIFIED"] = $is_verified;
-    }
 
     public function checkPassword($password)
     {
@@ -198,14 +184,11 @@ class User
             $property = explode("_", $field);
             if (count($property) > 1) {
                 $method = "set" . ucfirst(strtolower($property[0])) . ucfirst(strtolower($property[1]));
-
             } else {
                 $method = "set" . ucfirst(strtolower($property[0]));
             }
 
             $this->$method($values[$field]);
         }
-
     }
-
 }

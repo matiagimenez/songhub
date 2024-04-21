@@ -23,7 +23,6 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
     - Páginas de perfil para cada usuario, donde puedan agregar información personal, una descripcion y hasta 3 álbumes favoritos.
     - Listado de todas los posts realizados por el usuario.
     - Se podran filtrar los posts por tags asociados.
-    - Artistas reconocidos tendran la posibilidad de tener un perfil verificado
 
 3. Búsqueda y navegación (tiempo estimado: 6 dias)
 
@@ -48,7 +47,6 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
 -   Diseño y experiencia de usuario:
     -   Diseñar una interfaz de usuario atractiva y usable que proporcione una experiencia agradable para los usuarios tanto en navegadores móviles como de escritorio.
     -   Implementar un diseño responsivo que se adapte a diferentes tamaños de pantalla y dispositivos.
-    
 -   Seguridad:
 
     -   El sitio web cumplirá con las mejores prácticas de seguridad, como protección contra ataques de inyección SQL y cross-site scripting (XSS).
@@ -64,12 +62,13 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
     -   Proporcionar instrucciones detalladas sobre cómo configurar el entorno de desarrollo, instalar las dependencias y ejecutar la aplicación en el entorno de producción.
 
 ### 2. Sitemap
+
 ![sitemap](https://github.com/matiasgimenezdev/songhub/assets/117539520/1fc060ff-731d-4397-bda8-a24eb6673d52)
 
 ### 3. Wireframes
-Se encuentran en el siguiente [proyecto](https://www.figma.com/team_invite/redeem/8gsvLe0YYBM4Q47UAvpgqo) Figma. Es el mismo proyecto que utilizamos para las practicas de la cursada, por lo tanto, hay posibilidad de que algun docente tenga acceso al mismo. 
+
+Se encuentran en el siguiente [proyecto](https://www.figma.com/team_invite/redeem/8gsvLe0YYBM4Q47UAvpgqo) Figma. Es el mismo proyecto que utilizamos para las practicas de la cursada, por lo tanto, hay posibilidad de que algun docente tenga acceso al mismo.
 
 ### 4. [Modelo de datos](https://drive.google.com/file/d/13X7mGucqO1l9EiWeonvWR7GnOXmyRzrF/view?usp=sharing)
 
 ### 5. [Diagrama de clases](https://drive.google.com/file/d/1HtCK7KejQNIDRchia1vwpbA9fTwMlj8Q/view?usp=sharing)
-

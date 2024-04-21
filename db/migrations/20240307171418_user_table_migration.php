@@ -1,5 +1,6 @@
 <?php
-declare (strict_types = 1);
+
+declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
@@ -17,7 +18,6 @@ final class UserTableMigration extends AbstractMigration
         $table->addColumn('SPOTIFY_URL', 'string', ['limit' => 255, 'default' => null]);
         $table->addColumn('REFRESH_TOKEN', 'string', ['limit' => 255, 'default' => null]);
         $table->addColumn('SPOTIFY_AVATAR', 'string', ['limit' => 255, 'default' => null]);
-        $table->addColumn('IS_VERIFIED', 'boolean', ['default' => false, 'null' => false]);
         $table->addColumn('BIOGRAPHY', 'string', ['limit' => 160, 'null' => false]);
         $table->create();
     }
