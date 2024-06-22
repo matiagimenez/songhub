@@ -38,6 +38,10 @@ DB_PASSWORD =
 DB_NAME = songhub
 DB_CHARSET = utf8
 DB_PORT = 3306
+
+# Generar CLIENT ID de la aplicación en https://developer.spotify.com/dashboard/applications. Ahí mismo se puede obtener la clave secreta.
+SPOTIFY_CLIENT_ID=
+SPOTIFY_CLIENT_SECRET=
 ```
 
 4. Configurar la variable $PATH para incluir composer. Si se encuentra en Linux, ejecutar el siguiente comando:
