@@ -9,8 +9,8 @@ $dotenv->load();
 return
     [
     'paths' => [
-        'migrations' => '%%PHINX_CONFIG_DIR%%/database/migrations',
-        'seeds' => '%%PHINX_CONFIG_DIR%%/database/seeds',
+        'migrations' => '%%PHINX_CONFIG_DIR%%/db/migrations',
+        'seeds' => '%%PHINX_CONFIG_DIR%%/db/seeds',
     ],
     'environments' => [
         'default_migration_table' => 'phinxlog',
