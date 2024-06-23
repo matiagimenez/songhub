@@ -14,31 +14,37 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
 
 1. Registro de usuarios (tiempo estimado: 5 días)
 
-    - Creación de cuentas de usuario con nombre de usuario, dirección de correo electrónico y contraseña.
+    - Creación de cuentas de usuario (nombre de usuario, dirección de correo electrónico y contraseña).
     - Verificación de correo electrónico para validar las cuentas de usuario.
     - Login de usuarios en sus cuentas.
+    - Modificación de password.
+    - Recuperación de password.
 
 2. Perfiles de usuario (tiempo estimado: 6 días)
 
-    - Páginas de perfil para cada usuario, donde puedan agregar información personal, una descripcion y hasta 3 álbumes favoritos.
+    - Páginas de perfil para cada usuario: debe poder agregar información personal, una descripción y hasta 3 álbumes y/o canciones favoritas.
+    - El usuario debe poder editar su avatar. (por defecto, su imagen original es la de la cuenta de Spotify asociada).
     - Listado de todas los posts realizados por el usuario.
-    - Se podran filtrar los posts por tags asociados.
+    - Se podrán filtrar los posts del usuario. Por defecto se ordenan cronológicamente (más recientes) y se podrá filtrar por artista/nombre/valoración.
 
 3. Búsqueda y navegación (tiempo estimado: 6 dias)
 
-    - Funcionalidad de búsqueda para encontrar canciones o álbumes específicos.
-    - Categorización de música por género, artista, álbum y año de lanzamiento.
+    - Funcionalidad de búsqueda para encontrar canciones, álbumes, y artistas.
+    - Filtro de resultado de búsqueda en base a canción, artista, álbum, género y año de lanzamiento.
+    - Resultados separados por sección (canciones y álbumes).
+    - En la página de “Explorar” se muestran recomendaciones personalizadas al usuario en base a su actividad en Spotify.
 
 4. Creación de reviews (tiempo estimado: 7 o más días)
 
-    - Un usuario debe poder escribir y publicar reviews sobre canciones o álbumes.
-    - En un post de este estilo debe poder incluir calificaciones, algun comentarios y tags que considere relevantes.
+    - Un usuario debe poder escribir y publicar reviews sobre canciones o álbumes. Debe poder incluir calificaciones, algunos comentarios y tags que considere relevantes.
     - Las reviews pueden ser privadas (solo visibles por el usuario) o publicas (visibles por todo el mundo).
+    - Si la valoración es mayor a 4 puntos, agregar a los me gusta del usuario en Spotify.
 
 5. Interacción social (tiempo estimado: 7 o más días)
     - Comentarios en las reviews para fomentar la participación y el debate.
-    - Sistema de me gustas/favoritos en los posts realizados por otro usuario.
-    - Compartir las reviews en redes sociales como Twitter ([Twitter API](https://developer.twitter.com/en/docs/twitter-api) para autenticar a los usuarios y publicar tweets en su nombre).
+    - Sistema de me gustas en los posts realizados por otro usuario.
+    - Un usuario debe poder comenzar/dejar de seguir a otro usuario dentro de Songhub.
+    - Compartir las reviews en redes sociales (por ejemplo: Twitter) para fomentar la difusión y generar interacciones.
 
 ##### Tiempo total de trabajo estimado: 1 mes
 
