@@ -31,6 +31,7 @@ class ExploreController extends Controller
         $recommendations = null;
         $userTopTracks = $this->getUserTops();
         $newReleases = $this->getNewReleases();
+        $recentActivity = $this->getUserRecentActivity();
 
         //? Valida si se pudo personalizar la recomendación en base a artistas/tracks TOP del usuario, sino recomienda en base a canciones guardadas.
         if (!$this->validSeeds()) {
@@ -46,9 +47,10 @@ class ExploreController extends Controller
         
 
         echo "<pre>";
-        var_dump($userTopTracks);
-        var_dump($newReleases);
-        var_dump($recommendations);
+        // var_dump($userTopTracks);
+        // var_dump($newReleases);
+        // var_dump($recommendations);
+        var_dump($recentActivity);
         die;
 
         //TODO: Renderizar explore.view.php
@@ -140,8 +142,71 @@ class ExploreController extends Controller
             $userTopTracks[$i]["artist_avatar_url"] = $body["artists"][$i]["images"][1];
         }
         
-        // TODO: Save data to DB
         return $userTopTracks;
+    }
+
+    private function getUserRecentActivity()
+    {
+        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me/player/recently-played", ["limit" => 8], ["Authorization" => "Bearer " . $this->access_token]);
+        $body = json_decode($response["body"], true);
+        $status = $response["status"];
+
+        if ($status >= 300) {
+            Renderer::getInstance()->internalError();
+            die;
+        }
+
+        $recentActivity = [];
+        $ids = "";
+
+        if (count($body["items"]) > 0) {
+            foreach ($body["items"] as $item) {
+                $trackId = $item["track"]["id"];
+                array_push($this->seeds["tracks"], $trackId);
+
+                $track = [
+                    "album_id" => $item["track"]["album"]["id"],
+                    "type" => $item["track"]["album"]["album_type"],
+                    "artist_name" => $item["track"]["album"]["artists"][0]["name"],
+                    "artist_id" => $item["track"]["album"]["artists"][0]["id"],
+                    "artist_spotify_url" => $item["track"]["album"]["artists"][0]["external_urls"]["spotify"],
+                    "artist_api_url" => $item["track"]["album"]["artists"][0]["href"],
+                    "album_spotify_url" => $item["track"]["album"]["external_urls"]["spotify"],
+                    "album_api_url" => $item["track"]["album"]["href"],
+                    "images" => $item["track"]["album"]["images"],
+                    "album_name" => $item["track"]["album"]["name"],
+                    "release_date" => $item["track"]["album"]["release_date"],
+                    "track_spotify_url" => $item["track"]["external_urls"]["spotify"],
+                    "track_api_url" => $item["track"]["href"],
+                    "track_id" => $item["track"]["id"],
+                    "track_name" => $item["track"]["name"],
+                    "track_preview_url" => $item["track"]["preview_url"],
+                ];
+
+                if(strlen($ids) > 0 ){
+                    $ids .= "," . $track["artist_id"];
+                } else {
+                    $ids .= $track["artist_id"];
+                }
+
+                array_push($recentActivity, $track);
+            }
+        }
+        
+        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/artists", ["ids" => $ids], ["Authorization" => "Bearer " . $this->access_token]);
+        $body = json_decode($response["body"], true);
+        $status = $response["status"];
+        
+        if ($status >= 300) {
+            Renderer::getInstance()->internalError();
+            die;
+        }
+        
+        for($i = 0; $i < count($body["artists"]); $i++){
+            $recentActivity[$i]["artist_avatar_url"] = $body["artists"][$i]["images"][1];
+        }
+        
+        return $recentActivity;
     }
 
     private function getUserSavedTracks()
@@ -269,7 +334,6 @@ class ExploreController extends Controller
             $recommendations[$i]["artist_avatar_url"] = $body["artists"][$i]["images"][1];
         }
         
-        // TODO: Save data to DB
         return $recommendations;
     }
 
@@ -326,7 +390,6 @@ class ExploreController extends Controller
             $newReleases[$i]["artist_avatar_url"] = $body["artists"][$i]["images"][1];
         }
 
-        // TODO: Save data to DB
         return $newReleases;
     }
 }
