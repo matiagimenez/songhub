@@ -13,6 +13,11 @@ class PostController extends Controller
         parent::__construct();
     }
 
-    
+    public function createPost()
+    {
+        $postData = Request::getInstance();
+        $postRepository = new PostRepository();
+        $postRepository->createPost($postData);
+    }
 
 }

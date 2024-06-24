@@ -149,7 +149,7 @@ function create_modal() {
 
 	const textarea = ElementBuilder.createElement('textarea', '', {
 		placeholder: 'Agrega una descripción...',
-		name: 'description',
+		name: 'DESCRIPTION',
 		id: 'description',
 		cols: '40',
 		rows: '10',
@@ -304,7 +304,7 @@ function create_modal() {
 		type: 'number',
 		class: 'hidden',
 		value: score_rating,
-		name: 'rate',
+		name: 'RATING',
 		id: 'rate',
 		required: true,
 		min: '1',
@@ -332,12 +332,41 @@ function create_modal() {
 		class: 'submit-button postear-button',
 	});
 
-	postear_button.addEventListener('click', () => {
+	postear_button.addEventListener('click', (event) => {
+
+		event.preventDefault();
+        
+		const formData = new FormData(form);
+		const values = {};
+		formData.forEach((value, key) => {
+				values[key] = value;
+    });
+
 		if (score_rating === 0) {
 			view_error_message(
 				'No es posible postear una canción con 0 estrellas.'
 			);
 		}
+
+		fetch('/post/create', {
+			method: 'POST',
+			headers: {
+					'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(values)
+		})
+			.then(response => response.json())
+			.then(data => {
+					if (data.success) {
+							alert('Post creado exitosamente.');
+							form.reset();
+					} else {
+							errorMessage.textContent = 'Error al crear el post: ' + data.message;
+					}
+		})
+			.catch(error => {
+				errorMessage.textContent = 'Error al crear el post: ' + error.message;
+		});
 	});
 
 	const submit_container = ElementBuilder.createElement('section', '', {

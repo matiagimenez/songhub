@@ -49,7 +49,6 @@ class PostRepository extends Repository
     {
         $post = new Post();
         try {
-
             $post->set($postData);
             $this->queryBuilder->insert($this->table, $post->fields);
             return [true, "Nuevo Post registrado"];

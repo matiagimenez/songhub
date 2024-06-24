@@ -4,7 +4,7 @@ namespace Songhub\app\models;
 
 use Songhub\core\exceptions\InvalidValueException;
 
-class User
+class Post
 {
     public $fields = [
         "POST_ID" => null,
@@ -67,7 +67,6 @@ class User
 
     public function set(array $values)
     {
-
         foreach (array_keys($this->fields) as $field) {
             $field = trim($field);
             if (!isset($values[$field])) {
