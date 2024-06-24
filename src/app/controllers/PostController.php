@@ -15,7 +15,7 @@ class PostController extends Controller
 
     public function createPost()
     {
-        $postData = Request::getInstance();
+        $postData = Request::getInstance()->getPostData();
         $postRepository = new PostRepository();
         $postRepository->createPost($postData);
     }

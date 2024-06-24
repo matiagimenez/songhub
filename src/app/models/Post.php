@@ -21,23 +21,13 @@ class Post
         $this->fields["POST_ID"] = $post_id;
     }
 
-    public function setDate(Date $date)
+    public function setDatetime(string $date)
     {
-      if (!(date_create($date))) {
-        throw new InvalidValueException('Formato de fecha incompatible');
-      }
-  
-      list($year, $month, $day) = explode('-', $date);
-      if (!checkdate($month, $day, $year)) {
-        throw new InvalidValueException('Formato de fecha incompatible');
-      }
-  
-      $currentDate = new DateTime();
-      if ($date < $currentDate->format('Y-m-d')) {
-        throw new InvalidValueException('Formato de fecha incompatible');
-      }
-  
-      $this->fields["DATE"] = $date;
+        if (!strtotime($date)) {
+            throw new InvalidValueException('Formato de fecha incompatible');
+        }
+
+        $this->fields["DATETIME"] = $date;
     }
 
     public function setDescription(string $description)
@@ -67,6 +57,7 @@ class Post
 
     public function set(array $values)
     {
+        // var_dump($values);
         foreach (array_keys($this->fields) as $field) {
             $field = trim($field);
             if (!isset($values[$field])) {
