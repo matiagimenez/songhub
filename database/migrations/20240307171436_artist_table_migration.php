@@ -11,6 +11,9 @@ final class ArtistTableMigration extends AbstractMigration
         $table = $this->table("ARTIST", ['id' => 'ARTIST_ID']);
         $table->addColumn('NAME', 'string', ['limit' => 120, 'null' => false]);
         $table->addColumn('AVATAR_URL', 'string', ['limit' => 255, 'null' => false]);
+        $table->addColumn('SPOTIFY_URL', 'string', ['limit' => 255, 'null' => false]);
+        $table->addColumn('SPOTIFY_API_URL', 'string', ['limit' => 255, 'null' => false]);
+        $table->addColumn('SPOTIFY_ID', 'string', ['limit' => 255, 'null' => false]);
         $table->create();
     }
 }
