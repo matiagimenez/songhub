@@ -28,9 +28,9 @@ class ExploreController extends Controller
 
     public function explore()
     {
-        //? Obtiene TOP de artistas escuchados por el usuario
-        $this->getUserTops();
-
+        $recommendations = null;
+        $userTopTracks = $this->getUserTops();
+        $newReleases = $this->getNewReleases();
 
         //? Valida si se pudo personalizar la recomendación en base a artistas/tracks TOP del usuario, sino recomienda en base a canciones guardadas.
         if (!$this->validSeeds()) {
@@ -42,20 +42,23 @@ class ExploreController extends Controller
             //? Obtiene recomendaciones personalizadas para el usuario
             $recommendations = $this->getRecommendations();
 
-            //TODO: Renderizar explore.view.php
-        } else {
-            //? Recomendamos nuevos lanzamientos al usuario
-            $recommendations = $this->getNewReleases();
-            //TODO: Renderizar explore.view.php
-
         }
+        
+
+        // echo "<pre>";
+        // var_dump($userTopTracks);
+        // var_dump($newReleases);
+        // var_dump($recommendations);
+        // die;
+
+        //TODO: Renderizar explore.view.php
         Renderer::getInstance()->explore();
     }
 
 
     private function getUserTops()
     {
-        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me/top/artists", ["time_range" => "short_term", "limit" => 2], ["Authorization" => "Bearer " . $this->access_token]);
+        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me/top/artists", ["time_range" => "short_term", "limit" => 10], ["Authorization" => "Bearer " . $this->access_token]);
         $body = json_decode($response["body"], true);
         $status = $response["status"];
 
@@ -63,18 +66,21 @@ class ExploreController extends Controller
             Renderer::getInstance()->internalError();
             die;
         }
+
 
         if (count($body["items"]) > 0) {
             foreach ($body["items"] as $artist) {
                 $topArtistId = $artist["id"];
-                $topArtistGenre = $artist["genres"][0];
                 array_push($this->seeds["artists"], $topArtistId);
-                array_push($this->seeds["genres"], $topArtistGenre);
+        
+                foreach ($artist["genres"] as $genre) {
+                    array_push($this->seeds["genres"], $genre);
+                }
             }
         }
 
         //? Obtiene TOP de tracks escuchados por el usuario
-        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me/top/tracks", ["time_range" => "short_term", "limit" => 1], ["Authorization" => "Bearer " . $this->access_token]);
+        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me/top/tracks", ["time_range" => "short_term", "limit" => 10], ["Authorization" => "Bearer " . $this->access_token]);
         $body = json_decode($response["body"], true);
         $status = $response["status"];
 
@@ -82,18 +88,42 @@ class ExploreController extends Controller
             Renderer::getInstance()->internalError();
             die;
         }
+
+        $userTopTracks = [];
 
         if (count($body["items"]) > 0) {
             foreach ($body["items"] as $track) {
                 $topTrackId = $track["id"];
                 array_push($this->seeds["tracks"], $topTrackId);
+                $track = [
+                    "album_id" => $track["album"]["id"],
+                    "type" => $track["album"]["album_type"],
+                    "artist_name" => $track["album"]["artists"][0]["name"],
+                    "artist_id" => $track["album"]["artists"][0]["id"],
+                    "artist_spotify_url" => $track["album"]["external_urls"]["spotify"],
+                    "artist_api_url" => $track["album"]["href"],
+                    "album_spotify_url" => $track["album"]["external_urls"]["spotify"],
+                    "album_api_url" => $track["album"]["href"],
+                    "images" => $track["album"]["images"],
+                    "album_name" => $track["album"]["name"],
+                    "release_date" => $track["album"]["release_date"],
+                    "track_spotify_url" => $track["external_urls"]["spotify"],
+                    "track_api_url" => $track["href"],
+                    "track_id" => $track["id"],
+                    "track_name" => $track["name"],
+                    "track_preview_url" => $track["preview_url"],
+                ];
+
+                array_push($userTopTracks, $track);
             }
         }
+
+        return $userTopTracks;
     }
 
     private function getUserSavedTracks()
     {
-        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me/tracks?limit=5", [], ["Authorization" => "Bearer " . $this->access_token]);
+        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me/tracks?limit=10", [], ["Authorization" => "Bearer " . $this->access_token]);
         $body = json_decode($response["body"], true);
         $status = $response["status"];
 
@@ -118,11 +148,18 @@ class ExploreController extends Controller
 
     private function getRecommendations()
     {
+        /* 
+            En primer lugar, debemos armar el seed que usará Spotify para generar las recomendaciones personalizadas de contenido al usuario 
+            El tamaño límite del seed es de 5. Por lo tanto, elegí 2 artistas, 2 generos y 1 canción dentro del contenido más escuchado por el usuario.
+        */
         $artists = "";
         $genres = "";
-        $tracks = count($this->seeds["tracks"]) > 0 ? $this->seeds["tracks"][0] : "";
+        $tracks = count($this->seeds["tracks"]) > 0 ? $this->seeds["tracks"][array_rand($this->seeds["tracks"])] : ""; // Agrega 1 track al seed de recomendaciones
 
-        foreach ($this->seeds["artists"] as $artistId) {
+        // Agrega 2 artistas al seed de recomendaciones
+        for ($i = 1; $i <= 2; $i++) {
+            $randomIndex = array_rand($this->seeds["artists"]);
+            $artistId = $this->seeds["artists"][$randomIndex];
             if (strlen($artists) > 0) {
                 $artists .= "%2C" . $artistId;
             } else {
@@ -130,7 +167,10 @@ class ExploreController extends Controller
             }
         }
 
-        foreach ($this->seeds["genres"] as $genre) {
+        // Agrega 2 géneros al seed de recomendaciones
+        for ($i = 1; $i <= 2; $i++) {
+            $randomIndex = array_rand($this->seeds["genres"]);
+            $genre = $this->seeds["genres"][$randomIndex];
             $words = explode(" ", $genre);
             $genre = "";
 
@@ -150,6 +190,7 @@ class ExploreController extends Controller
         }
 
         $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/recommendations?seed_artists=$artists&seed_tracks=$tracks&seed_genres=$genres&limit=10", [], ["Authorization" => "Bearer " . $this->access_token]);
+
         $body = json_decode($response["body"], true);
         $status = $response["status"];
 
@@ -158,8 +199,34 @@ class ExploreController extends Controller
             die;
         }
 
-        //TODO: Retornar solo info necesaria de los tracks
-        return $body["tracks"];
+        $recommendations = [];
+
+        if (count($body["tracks"]) > 0) {
+            foreach ($body["tracks"] as $track) {
+                $track = [
+                    "album_id" => $track["album"]["id"],
+                    "type" => $track["album"]["album_type"],
+                    "artist_name" => $track["album"]["artists"][0]["name"],
+                    "artist_id" => $track["album"]["artists"][0]["id"],
+                    "artist_spotify_url" => $track["album"]["external_urls"]["spotify"],
+                    "artist_api_url" => $track["album"]["href"],
+                    "album_spotify_url" => $track["album"]["external_urls"]["spotify"],
+                    "album_api_url" => $track["album"]["href"],
+                    "images" => $track["album"]["images"],
+                    "album_name" => $track["album"]["name"],
+                    "release_date" => $track["album"]["release_date"],
+                    "track_spotify_url" => $track["external_urls"]["spotify"],
+                    "track_api_url" => $track["href"],
+                    "track_id" => $track["id"],
+                    "track_name" => $track["name"],
+                    "track_preview_url" => $track["preview_url"],
+                ];
+
+                array_push($recommendations, $track);
+            }
+        }
+
+        return $recommendations;
     }
 
     private function getNewReleases()
@@ -173,7 +240,28 @@ class ExploreController extends Controller
             die;
         }
 
-        //TODO: Retornar solo info necesaria de los albums
-        return $body["albums"];
+        $newReleases = [];
+
+        if (count($body["albums"]["items"]) > 0) {
+            foreach ($body["albums"]["items"] as $item) {
+                $album = [
+                    "album_id" => $item["id"],
+                    "type" => $item["album_type"],
+                    "artist_name" => $item["artists"][0]["name"],
+                    "artist_id" => $item["artists"][0]["id"],
+                    "artist_spotify_url" => $item["external_urls"]["spotify"],
+                    "artist_api_url" => $item["href"],
+                    "album_spotify_url" => $item["external_urls"]["spotify"],
+                    "album_api_url" => $item["href"],
+                    "images" => $item["images"],
+                    "album_name" => $item["name"],
+                    "release_date" => $item["release_date"],
+                ];
+
+                array_push($newReleases, $album);
+            }
+        }
+
+        return $newReleases;
     }
 }
