@@ -29,8 +29,8 @@ class ContentController extends Controller
 
     public function content()
     {
-        $id = Request::getInstance() -> getParameter("id");
-        $type = Request::getInstance() -> getParameter("type");
+        $id = $this->sanitizeUserInput(Request::getInstance()->getParameter("id", "GET"));
+        $type = $this->sanitizeUserInput(Request::getInstance()->getParameter("type", "GET"));
         $content = $this->fetchContentData($id, $type);
 
         Renderer::getInstance()->content($content);
