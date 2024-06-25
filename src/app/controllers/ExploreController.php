@@ -138,7 +138,7 @@ class ExploreController extends Controller
 
     private function getUserRecentActivity()
     {
-        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me/player/recently-played", ["limit" => 8], ["Authorization" => "Bearer " . $this->access_token]);
+        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me/player/recently-played", ["limit" => 5], ["Authorization" => "Bearer " . $this->access_token]);
         $body = json_decode($response["body"], true);
         $status = $response["status"];
 
