@@ -38,14 +38,17 @@ class Router
     {
         $this->loadRoutes($path, $controller_method, "GET");
     }
+
     public function post($path, $controller_method)
     {
         $this->loadRoutes($path, $controller_method, "POST");
     }
+
     public function put($path, $controller_method)
     {
         $this->loadRoutes($path, $controller_method, "PUT");
     }
+
     public function delete($path, $controller_method)
     {
         $this->loadRoutes($path, $controller_method, "DELETE");
@@ -89,6 +92,5 @@ class Router
             $this->invoke($controller, $method);
 
         }
-
     }
 }

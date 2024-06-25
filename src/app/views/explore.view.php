@@ -35,7 +35,7 @@
                             <img loading="lazy" width="180px" height="180px" src=<?= $item["images"][0]["url"]?> alt="<?= 'Portada de ' . $item["track_name"] . ' del artista ' . $item["artist_name"] ?>" class="image-border" />
                         </section>
                         <figcaption>
-                            <a href=<?= "/content/". $item["track_id"] ?>>
+                            <a href=<?= "/content?id=". $item["track_id"] . "&type=" . $item["type"] ?> >
                                 <h3 class="song-title"><?= $item["track_name"] ?></h3>
                                 <h4 class="artist-title"><?= $item["artist_name"] ?></h4>
                             </a>
@@ -53,7 +53,7 @@
                             <img loading="lazy" width="180px" height="180px" src=<?= $item["images"][0]["url"]?> alt="<?= 'Portada de ' . $item["track_name"] . ' del artista ' . $item["artist_name"] ?>"  class="image-border" />
                         </section>
                         <figcaption>
-                            <a href=<?= "/content/". $item["track_id"] ?>>
+                            <a href=<?= "/content?id=". $item["track_id"] . "&type=" . $item["type"] ?> >
                                 <h3 class="song-title"><?= $item["track_name"] ?></h3>
                                 <h4 class="artist-title"><?= $item["artist_name"] ?></h4>
                             </a>
@@ -71,7 +71,7 @@
                             <img loading="lazy" width="180px" height="180px" src=<?= $item["images"][0]["url"]?> alt="<?= 'Portada de ' . $item["track_name"] . ' del artista ' . $item["artist_name"] ?>"  class="image-border" />
                         </section>
                         <figcaption>
-                            <a href=<?= "/content/". $item["track_id"] ?> >
+                            <a href=<?= "/content?id=". $item["track_id"] . "&type=" . $item["type"] ?> >
                                 <h3 class="song-title"><?= $item["track_name"] ?></h3>
                                 <h4 class="artist-title"><?= $item["artist_name"] ?></h4>
                             </a>
@@ -89,7 +89,7 @@
                             <img loading="lazy" width="180px" height="180px" src=<?= $item["images"][0]["url"]?> alt="<?= 'Portada de ' . $item["album_name"] . ' del artista ' . $item["artist_name"] ?>"  class="image-border" />
                         </section>
                         <figcaption>
-                            <a href=<?= "/content/". $item["album_id"] ?>>
+                            <a href=<?= "/content?id=". $item["album_id"] . "&type=" . $item["type"] ?> >
                                 <h3 class="song-title"><?= $item["album_name"] ?></h3>
                                 <h4 class="artist-title"><?= $item["artist_name"] ?></h4>
                             </a>
