@@ -2,9 +2,14 @@
 	font-size: 20px;
 }
 
+.icon-lg {
+	font-size: 22px;
+}
+
 .share-icon,
 .close-icon,
-.play-icon {
+.play-icon,
+.pause-icon {
 	color: var(--color-violet-darkest);
 }
 
@@ -61,9 +66,16 @@
 	color: var(--color-green-dark);
 }
 
-.share-icon:hover,
-.play-icon:hover {
+.share-icon:hover {
 	filter: brightness(0.8);
+}
+
+.play-icon:hover {
+	color: var(--color-green-dark);
+}
+
+.pause-icon:hover {
+	color: var(--color-red);
 }
 
 .heart-icon:hover {
@@ -88,6 +100,7 @@
 @media (prefers-color-scheme: dark) {
 	.share-icon,
 	.play-icon,
+	.pause-icon,
 	.close-icon,
 	.heart-icon,
 	.comment-icon,

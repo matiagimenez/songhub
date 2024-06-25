@@ -88,14 +88,14 @@
                 </button>
                 <?php if ($content["type"] == "track"): ?>
                     <a class="spotify-button" href=<?= $content["track_spotify_url"] ?> target="_blank">
-                        <i class="ph ph-spotify-logo icon spotify-icon"></i>
+                        <i class="ph ph-spotify-logo icon-lg spotify-icon"></i>
                         <span class="visually-hidden">
                             Ver en spotify
                         </span>
                     </a>
                 <?php else: ?> 
                     <a class="spotify-button" href=<?= $content["album_spotify_url"] ?> target="_blank">
-                        <i class="ph ph-spotify-logo icon spotify-icon"></i>
+                        <i class="ph ph-spotify-logo icon-lg spotify-icon"></i>
                         <span class="visually-hidden">
                             Ver en spotify
                         </span>
@@ -103,7 +103,7 @@
                 <?php endif; ?> 
                 <?php if ($content["type"] == "track"): ?>
                     <button class="track-preview-button">
-                        <i class="ph ph-play-circle icon play-icon"></i>
+                        <i class="ph ph-play-circle icon-lg play-icon"></i>
                         <span class="visually-hidden">
                             Reproducir pre-escucha de la canción
                         </span>
