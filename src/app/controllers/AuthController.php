@@ -76,8 +76,7 @@ class AuthController extends Controller
         $access_token = Session::getInstance()->getAccessToken();
 
         if (!$access_token) {
-            $this->refreshAccessToken();
-            $access_token = Session::getInstance()->getAccessToken();
+            $access_token = $this->refreshAccessToken();
         }
 
         return $access_token;
@@ -251,5 +250,7 @@ class AuthController extends Controller
         Session::getInstance()->set("access_token", $new_access_token);
         Session::getInstance()->set("access_token_expire_time", time() + $expires_in);
         Session::getInstance()->set("username", $user["USERNAME"]);
+
+        return $new_access_token;
     }
 }

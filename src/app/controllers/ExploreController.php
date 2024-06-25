@@ -120,25 +120,12 @@ class ExploreController extends Controller
             }
         }
         
-        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/artists", ["ids" => $ids], ["Authorization" => "Bearer " . $this->access_token]);
-        $body = json_decode($response["body"], true);
-        $status = $response["status"];
-        
-        if ($status >= 300) {
-            Renderer::getInstance()->internalError();
-            die;
-        }
-        
-        for($i = 0; $i < count($body["artists"]); $i++){
-            $userTopTracks[$i]["artist_avatar_url"] = $body["artists"][$i]["images"][1];
-        }
-        
         return $userTopTracks;
     }
 
     private function getUserRecentActivity()
     {
-        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me/player/recently-played", ["limit" => 8], ["Authorization" => "Bearer " . $this->access_token]);
+        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me/player/recently-played", ["limit" => 5], ["Authorization" => "Bearer " . $this->access_token]);
         $body = json_decode($response["body"], true);
         $status = $response["status"];
 
@@ -183,19 +170,7 @@ class ExploreController extends Controller
                 array_push($recentActivity, $track);
             }
         }
-        
-        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/artists", ["ids" => $ids], ["Authorization" => "Bearer " . $this->access_token]);
-        $body = json_decode($response["body"], true);
-        $status = $response["status"];
-        
-        if ($status >= 300) {
-            Renderer::getInstance()->internalError();
-            die;
-        }
-        
-        for($i = 0; $i < count($body["artists"]); $i++){
-            $recentActivity[$i]["artist_avatar_url"] = $body["artists"][$i]["images"][1];
-        }
+    
         
         return $recentActivity;
     }
@@ -312,19 +287,6 @@ class ExploreController extends Controller
             }
         }
         
-        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/artists", ["ids" => $ids], ["Authorization" => "Bearer " . $this->access_token]);
-        $body = json_decode($response["body"], true);
-        $status = $response["status"];
-        
-        if ($status >= 300) {
-            Renderer::getInstance()->internalError();
-            die;
-        }
-        
-        for($i = 0; $i < count($body["artists"]); $i++){
-            $recommendations[$i]["artist_avatar_url"] = $body["artists"][$i]["images"][1];
-        }
-        
         return $recommendations;
     }
 
@@ -366,19 +328,6 @@ class ExploreController extends Controller
 
                 array_push($newReleases, $album);
             }
-        }
-
-        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/artists", ["ids" => $ids], ["Authorization" => "Bearer " . $this->access_token]);
-        $body = json_decode($response["body"], true);
-        $status = $response["status"];
-        
-        if ($status >= 300) {
-            Renderer::getInstance()->internalError();
-            die;
-        }
-        
-        for($i = 0; $i < count($body["artists"]); $i++){
-            $newReleases[$i]["artist_avatar_url"] = $body["artists"][$i]["images"][1];
         }
 
         return $newReleases;
