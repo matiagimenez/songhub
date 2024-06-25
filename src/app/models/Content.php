@@ -13,6 +13,7 @@ class Content
         "SPOTIFY_ID" => null,
         "SPOTIFY_API_URL" => null,
         "SPOTIFY_URL" => null,
+        "SPOTIFY_PREVIEW_URL" => null,
         "TITLE" => null,
         "TYPE" => null,
         "COVER_ID" => null,
@@ -47,6 +48,11 @@ class Content
     public function setSpotifyUrl($spotify_url)
     {
         $this->fields["SPOTIFY_URL"] = $spotify_url;
+    }
+
+    public function setSpotifyPreviewUrl($spotify_preview_url)
+    {
+        $this->fields["SPOTIFY_PREVIEW_URL"] = $spotify_preview_url;
     }
 
     public function setTitle($title)
