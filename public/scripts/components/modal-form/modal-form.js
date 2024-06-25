@@ -419,8 +419,8 @@ function create_modal() {
 	textarea.focus();
 }
 
-const post_form_openers = document.querySelectorAll('.post-form-opener');
 
+const post_form_openers = document.querySelectorAll('.post-form-opener');
 const create_post = document.getElementById('create-post');
 // const go_to_top = document.getElementById("go-to-top");
 const main_header = document.getElementById('main-header');
@@ -432,6 +432,25 @@ post_form_openers.forEach((opener) => {
 		// go_to_top.classList.add("hidden");
 		html.classList.add('none-scroll');
 		main_header.classList.add('hidden');
+
+		const article = opener.closest('article');
+		console.log(article.getAttribute('id'))
+		console.log(article.dataset.type)
+
+		fetch(`/content/data?id=${article.getAttribute('id')}&type=${article.dataset.type}`, {
+			method: 'GET',
+			headers: {
+					'Content-Type': 'application/json'
+			}
+		})
+		.then(response => response.json())
+		.then(data => {
+				console.log(data);
+		})
+		.catch(error => {
+				console.log(error);
+		});
+
 		create_modal();
 	});
 });

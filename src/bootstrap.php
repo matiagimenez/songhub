@@ -30,6 +30,7 @@ $router->get('/post', 'PageController@post');
 $router->get('/explore', 'ExploreController@explore');
 
 $router->get('/content', 'ContentController@content');
+$router->get('/content/data', 'ContentController@getContentData');
 
 $router->post('/login', 'AuthController@login');
 $router->get('/logout', 'AuthController@logout');
