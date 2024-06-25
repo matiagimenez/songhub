@@ -37,7 +37,7 @@ class ContentController extends Controller
     }
 
 
-    private function fetchContentData($id, $type)
+    public function fetchContentData($id, $type)
     {
         if($type == "album") {
             $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/albums/".$id, [], ["Authorization" => "Bearer " . $this->access_token]);
@@ -51,7 +51,7 @@ class ContentController extends Controller
 
             $album = [
                 "album_id" => $body["id"],
-                "type" => $body["album_type"],
+                "type" => "album",
                 "artist_name" => $body["artists"][0]["name"],
                 "artist_id" => $body["artists"][0]["id"],
                 "artist_spotify_url" =>$body["artists"][0]["external_urls"]["spotify"],
@@ -74,11 +74,6 @@ class ContentController extends Controller
 
             $album["artist_avatar_url"] = $body["images"][1];
 
-            echo "<pre>";
-            var_dump($album);
-            die;
-    
-
             return $album;
         }
         
@@ -88,7 +83,7 @@ class ContentController extends Controller
 
         $track = [
             "album_id" => $body["album"]["id"],
-            "type" => $body["album"]["album_type"],
+            "type" => "track",
             "artist_name" => $body["album"]["artists"][0]["name"],
             "artist_id" => $body["album"]["artists"][0]["id"],
             "artist_spotify_url" => $body["album"]["artists"][0]["external_urls"]["spotify"],
@@ -116,10 +111,6 @@ class ContentController extends Controller
         }
 
         $track["artist_avatar_url"] = $body["images"][1];
-        
-        echo "<pre>";
-        var_dump($track);
-        die;
 
         return $track;
     }

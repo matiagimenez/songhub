@@ -162,6 +162,11 @@ export const routes = {
 			scriptName: 'logout-button',
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
 		},
+		{
+			scriptName: 'track-preview-button',
+			scriptPath:
+				'/scripts/components/track-preview-button/track-preview-button.js',
+		},
 	],
 	'/user/profile': [
 		{

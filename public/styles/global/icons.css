@@ -4,7 +4,7 @@
 
 .share-icon,
 .close-icon,
-.share-icon {
+.play-icon {
 	color: var(--color-violet-darkest);
 }
 
@@ -57,7 +57,12 @@
 	color: var(--color-red);
 }
 
-.share-icon:hover {
+.spotify-icon {
+	color: var(--color-green-dark);
+}
+
+.share-icon:hover,
+.play-icon:hover {
 	filter: brightness(0.8);
 }
 
@@ -78,14 +83,12 @@
 	.add-favorite-icon {
 		font-size: 4rem;
 	}
-
 }
 
 @media (prefers-color-scheme: dark) {
-
 	.share-icon,
+	.play-icon,
 	.close-icon,
-	.share-icon,
 	.heart-icon,
 	.comment-icon,
 	.back-icon,
