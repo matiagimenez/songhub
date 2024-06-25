@@ -30,6 +30,7 @@ $router->get('/post', 'PageController@post');
 $router->get('/explore', 'ExploreController@explore');
 
 $router->get('/content', 'ContentController@content');
+$router->get('/content/data', 'ContentController@getContentData');
 
 $router->post('/login', 'AuthController@login');
 $router->get('/logout', 'AuthController@logout');
@@ -40,3 +41,8 @@ $router->get('/user', 'UserController@profile');
 $router->get('/user/profile', 'UserController@edit');
 $router->post('/user/register', 'UserController@createUser');
 $router->put('/user/profile/edit', 'UserController@updateUser');
+
+// $router->get('/user', 'UserController@profile');
+// $router->get('/user/profile', 'UserController@edit');
+$router->post('/post/create', 'PostController@createPost');
+// $router->put('/user/profile/edit', 'UserController@updateUser');
