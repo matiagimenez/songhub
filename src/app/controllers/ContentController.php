@@ -37,7 +37,7 @@ class ContentController extends Controller
     }
 
 
-    private function fetchContentData($id, $type)
+    public function fetchContentData($id, $type)
     {
         if($type == "album") {
             $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/albums/".$id, [], ["Authorization" => "Bearer " . $this->access_token]);
