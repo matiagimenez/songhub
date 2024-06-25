@@ -47,15 +47,28 @@ class PostRepository extends Repository
 
     public function createPost($postData)
     {
+        // Inicia el buffer de salida
+        ob_start();
+        
         $post = new Post();
         try {
             $post->set($postData);
             $this->queryBuilder->insert($this->table, $post->fields);
-            return [true, "Nuevo Post registrado"];
+            http_response_code(201); // Código 201: Created
+            $response = ["success" => true, "message" => "Nuevo Post registrado"];
         } catch (InvalidValueException $exception) {
-            return [false, $exception->getMessage()];
+            http_response_code(400); // Código 400: Bad Request
+            $response = ["success" => false, "message" => $exception->getMessage()];
         } catch (Exception $exception) {
-            return [false, "Error al registrar Post"];
+            http_response_code(500); // Código 500: Internal Server Error
+            $response = ["success" => false, "message" => "Error al registrar Post"];
         }
+
+        // Limpia el buffer de salida y desactívalo
+        ob_end_clean();
+
+        // Envía la respuesta JSON
+        header('Content-Type: application/json');
+        echo json_encode($response);
     }
 }

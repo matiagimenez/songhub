@@ -78,7 +78,7 @@ function hoverImgAction(img, buttons_container) {
 	});
 }
 
-function create_modal() {
+function create_modal(data) {
 	const modal = ElementBuilder.createElement('section', '', {
 		class: 'modal',
 	});
@@ -105,17 +105,18 @@ function create_modal() {
 	modal_content.appendChild(close_button);
 
 	const main_image = ElementBuilder.createElement('img', '', {
-		src: 'https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg',
-		alt: "Portada del álbum 'The Dark Side of the Moon' de Pink Floyd",
+		src: data.images[1].url,
+		alt: `Portada del álbum '${data.album_name}' de Pink Floyd`,
 		width: '200px',
 		height: '200px',
 		class: 'image-border',
 	});
 
-	const type = ElementBuilder.createElement('p', 'Canción', {
+	const type = ElementBuilder.createElement('p', `${data.type === 'album' ? 'Album' : 'Canción'}`, {
 		class: 'type-title',
 	});
-	const title = ElementBuilder.createElement('h2', 'Comfortubly Numb', {
+
+	const title = ElementBuilder.createElement('h2', `${data.type === 'album' ? data.album_name : data.track_name}`, {
 		class: 'song-title title',
 	});
 
@@ -125,14 +126,14 @@ function create_modal() {
 	figcaption.appendChild(title);
 
 	const img = ElementBuilder.createElement('img', '', {
-		src: 'https://i.pinimg.com/236x/20/cc/b2/20ccb24df9750b08d764e574fcec5f5d.jpg',
-		alt: "Imagen de perfil de 'Pink Floyd'",
+		src: data.artist_avatar_url.url,
+		alt: `Imagen de perfil de '${data.artist_name}'`,
 		height: '50px',
 		width: '50px',
 	});
 	const artist_span_name = ElementBuilder.createElement(
 		'span',
-		'Pink Floyd · 1973',
+		`${data.artist_name}`,
 		{}
 	);
 
@@ -165,7 +166,7 @@ function create_modal() {
 	const input_tag = ElementBuilder.createElement('input', '', {
 		class: 'input input-tag',
 		type: 'text',
-		name: 'tag',
+		// name: 'tag',
 		maxLength: '20',
 	});
 
@@ -344,6 +345,15 @@ function create_modal() {
 				values[key] = value;
     });
 
+		// values['CONTENT_ID'] = data.type === 'album' ? data.album_id : data.track_id;
+		values['CONTENT_ID'] = 3;
+		values['USER_ID'] = 2;
+		values['LIKES'] = 0;
+		values['DATETIME'] = '2024-06-25';
+
+		console.log(values)
+		console.log(JSON.stringify(values))
+
 		if (score_rating === 0) {
 			view_error_message(
 				'No es posible postear una canción con 0 estrellas.'
@@ -357,17 +367,13 @@ function create_modal() {
 			},
 			body: JSON.stringify(values)
 		})
-			.then(response => response.json())
-			.then(data => {
-					if (data.success) {
-							alert('Post creado exitosamente.');
-							form.reset();
-					} else {
-							errorMessage.textContent = 'Error al crear el post: ' + data.message;
-					}
+		.then(response => response.json())
+		.then(data => {
+			console.log(data);
+			close_modal(modal)
 		})
-			.catch(error => {
-				errorMessage.textContent = 'Error al crear el post: ' + error.message;
+		.catch(error => {
+				console.error('Error:', error);
 		});
 	});
 
@@ -446,12 +452,12 @@ post_form_openers.forEach((opener) => {
 		.then(response => response.json())
 		.then(data => {
 				console.log(data);
+				create_modal(data);
 		})
 		.catch(error => {
 				console.log(error);
 		});
 
-		create_modal();
 	});
 });
 

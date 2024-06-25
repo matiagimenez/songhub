@@ -14,8 +14,9 @@ class PostController extends Controller
     }
 
     public function createPost()
-    {
-        $postData = Request::getInstance()->getPostData();
+    {   
+        $postData = json_decode(file_get_contents('php://input'), true);
+        error_log('Received POST data: ' . print_r($postData, true));
         $postRepository = new PostRepository();
         $postRepository->createPost($postData);
     }
