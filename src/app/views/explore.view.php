@@ -27,96 +27,77 @@
     </header>
     <main>
         <section class="section">
-            <h2 class="section-title">Recomendaciones para vos</h2>
-
-            <article class="add-modal-access">
-                <figure>
-                    <section class="article-img-container">
-                        <img loading="lazy" width="200px" height="200px" src="https://i.pinimg.com/564x/89/28/e3/8928e372651fc60256360ba5e21a7d2f.jpg" alt="Portada del álbum 'Pulse' de Pink Floyd" class="image-border" />
-                    </section>
-                    <figcaption>
-                        <a href="/content">
-                            <h3 class="song-title">Pulse</h3>
-                            <h4 class="artist-title">Pink Floyd</h4>
-                        </a>
-                    </figcaption>
-                </figure>
-            </article>
-
-            <article class="add-modal-access">
-                <figure>
-                    <section class="article-img-container">
-                        <img width="200px" height="200px" loading="lazy" src="https://i.pinimg.com/564x/99/41/82/99418264794012ddd044c761919fbb44.jpg" alt="Portada del álbum 'Punisher' de Phoebe Bridgers" class="image-border" />
-                    </section>
-                    <figcaption>
-                        <a href="/content">
-                            <h3 class="song-title">Punisher</h3>
-                            <h4 class="artist-title">Phoebe Bridgers</h4>
-                        </a>
-                    </figcaption>
-                </figure>
-            </article>
-
-            <article class="add-modal-access">
-                <figure>
-                    <section class="article-img-container">
-                        <img width="200px" height="200px" loading="lazy" src="https://i.pinimg.com/564x/94/76/b8/9476b8e8cb9368ceba6f90bec0c1b980.jpg" alt="Portada del álbum 'Random Acces Memories' de Daft Punk" class="image-border" />
-                    </section>
-                    <figcaption>
-                        <a href="/content">
-                            <h3 class="song-title">
-                                Random Acces Memories
-                            </h3>
-                            <h4 class="artist-title">Daft Punk</h4>
-                        </a>
-                    </figcaption>
-                </figure>
-            </article>
-
-            <article class="add-modal-access">
-                <figure>
-                    <section class="article-img-container">
-                        <img loading="lazy" width="200px" height="200px" src="https://i.pinimg.com/564x/dd/ff/e0/ddffe0a469a486bdde609fe2467e75c1.jpg" alt="Portada del álbum 'Led Zeppelin III' de Led Zeppelin" class="image-border" />
-                    </section>
-                    <figcaption>
-                        <a href="/content">
-                            <h3 class="song-title">Led Zeppelin III</h3>
-                            <h4 class="artist-title">Led Zeppelin</h4>
-                        </a>
-                    </figcaption>
-                </figure>
-            </article>
-
-            <article class="add-modal-access">
-                <figure>
-                    <section class="article-img-container">
-                        <img loading="lazy" width="200px" height="200px" src="https://i.pinimg.com/564x/54/4b/29/544b2906bb15ffaa689bf096b3d850e4.jpg" alt="Portada del álbum 'Happier Than Ever' de Billie Eilish" class="image-border" />
-                    </section>
-                    <figcaption>
-                        <a href="/content">
-                            <h3 class="song-title">Happier Than Ever</h3>
-                            <h4 class="artist-title">Billie Eilish</h4>
-                        </a>
-                    </figcaption>
-                </figure>
-            </article>
-
-            <article class="add-modal-access">
-                <figure>
-                    <section class="article-img-container">
-                        <img loading="lazy" width="200px" height="200px" src="https://i.pinimg.com/564x/50/75/92/5075926b9579b1155b7e4366184c0f64.jpg" alt="Portada del álbum 'X100PRE' de Bad Bunny" class="image-border" />
-                    </section>
-                    <figcaption>
-                        <a href="/content">
-                            <h3 class="song-title">X100PRE</h3>
-                            <h4 class="artist-title">Bad Bunny</h4>
-                        </a>
-                    </figcaption>
-                </figure>
-            </article>
+            <h2 class="section-title">Tu actividad reciente en Spotify</h2>
+            <?php foreach($recentActivity as $item): ?>
+                <article class="add-modal-access" id=<?= $item["track_id"] ?> >
+                    <figure>
+                        <section class="article-img-container">
+                            <img loading="lazy" width="180px" height="180px" src=<?= $item["images"][0]["url"]?> alt="<?= 'Portada de ' . $item["track_name"] . ' del artista ' . $item["artist_name"] ?>" class="image-border" />
+                        </section>
+                        <figcaption>
+                            <a href=<?= "/content/". $item["track_id"] ?>>
+                                <h3 class="song-title"><?= $item["track_name"] ?></h3>
+                                <h4 class="artist-title"><?= $item["artist_name"] ?></h4>
+                            </a>
+                        </figcaption>
+                    </figure>
+                </article>
+            <?php endforeach; ?>            
         </section>
-
-
+        <section class="section">
+            <h2 class="section-title">Nuestras recomendaciones</h2>
+            <?php foreach($recommendations as $item): ?>
+                <article class="add-modal-access" id=<?= $item["track_id"] ?> >
+                    <figure>
+                        <section class="article-img-container">
+                            <img loading="lazy" width="180px" height="180px" src=<?= $item["images"][0]["url"]?> alt="<?= 'Portada de ' . $item["track_name"] . ' del artista ' . $item["artist_name"] ?>"  class="image-border" />
+                        </section>
+                        <figcaption>
+                            <a href=<?= "/content/". $item["track_id"] ?>>
+                                <h3 class="song-title"><?= $item["track_name"] ?></h3>
+                                <h4 class="artist-title"><?= $item["artist_name"] ?></h4>
+                            </a>
+                        </figcaption>
+                    </figure>
+                </article>
+            <?php endforeach; ?>   
+        </section>
+        <section class="section">
+            <h2 class="section-title">Tu contenido favorito</h2>
+            <?php foreach($userTopTracks as $item): ?>
+                <article class="add-modal-access" id=<?= $item["track_id"] ?> >
+                    <figure>
+                        <section class="article-img-container">
+                            <img loading="lazy" width="180px" height="180px" src=<?= $item["images"][0]["url"]?> alt="<?= 'Portada de ' . $item["track_name"] . ' del artista ' . $item["artist_name"] ?>"  class="image-border" />
+                        </section>
+                        <figcaption>
+                            <a href=<?= "/content/". $item["track_id"] ?> >
+                                <h3 class="song-title"><?= $item["track_name"] ?></h3>
+                                <h4 class="artist-title"><?= $item["artist_name"] ?></h4>
+                            </a>
+                        </figcaption>
+                    </figure>
+                </article>
+            <?php endforeach; ?>   
+        </section>
+        <section class="section">
+            <h2 class="section-title">Nuevos lanzamientos</h2>
+            <?php foreach($newReleases as $item): ?>
+                <article class="add-modal-access" id=<?= $item["album_id"] ?> >
+                    <figure>
+                        <section class="article-img-container">
+                            <img loading="lazy" width="180px" height="180px" src=<?= $item["images"][0]["url"]?> alt="<?= 'Portada de ' . $item["album_name"] . ' del artista ' . $item["artist_name"] ?>"  class="image-border" />
+                        </section>
+                        <figcaption>
+                            <a href=<?= "/content/". $item["album_id"] ?>>
+                                <h3 class="song-title"><?= $item["album_name"] ?></h3>
+                                <h4 class="artist-title"><?= $item["artist_name"] ?></h4>
+                            </a>
+                        </figcaption>
+                    </figure>
+                </article>
+            <?php endforeach; ?>   
+        </section>
     </main>
 
     <footer class="main-footer">

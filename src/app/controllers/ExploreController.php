@@ -45,16 +45,7 @@ class ExploreController extends Controller
 
         }
         
-
-        echo "<pre>";
-        // var_dump($userTopTracks);
-        // var_dump($newReleases);
-        // var_dump($recommendations);
-        var_dump($recentActivity);
-        die;
-
-        //TODO: Renderizar explore.view.php
-        Renderer::getInstance()->explore();
+        Renderer::getInstance()->explore($recentActivity, $newReleases, $recommendations, $userTopTracks);
     }
 
 
