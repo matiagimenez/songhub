@@ -2,9 +2,14 @@
 	font-size: 20px;
 }
 
+.icon-lg {
+	font-size: 22px;
+}
+
 .share-icon,
 .close-icon,
-.share-icon {
+.play-icon,
+.pause-icon {
 	color: var(--color-violet-darkest);
 }
 
@@ -57,8 +62,20 @@
 	color: var(--color-red);
 }
 
+.spotify-icon {
+	color: var(--color-green-dark);
+}
+
 .share-icon:hover {
 	filter: brightness(0.8);
+}
+
+.play-icon:hover {
+	color: var(--color-green-dark);
+}
+
+.pause-icon:hover {
+	color: var(--color-red);
 }
 
 .heart-icon:hover {
@@ -78,14 +95,13 @@
 	.add-favorite-icon {
 		font-size: 4rem;
 	}
-
 }
 
 @media (prefers-color-scheme: dark) {
-
 	.share-icon,
+	.play-icon,
+	.pause-icon,
 	.close-icon,
-	.share-icon,
 	.heart-icon,
 	.comment-icon,
 	.back-icon,

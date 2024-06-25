@@ -177,7 +177,7 @@ class AuthController extends Controller
 
         $userData = [
             "SPOTIFY_ID" => $body["id"],
-            "SPOTIFY_AVATAR" => $body["images"][0]["url"],
+            "SPOTIFY_AVATAR" => $body["images"][1]["url"],
             "SPOTIFY_URL" => $body["external_urls"]["spotify"],
             "REFRESH_TOKEN" => $refresh_token,
         ];

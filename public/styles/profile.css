@@ -18,8 +18,8 @@ header .biography {
 }
 
 header .user img {
-	height: 55px;
-	width: 55px;
+	height: 60px;
+	width: 60px;
 	border-radius: 100%;
 	float: left;
 }
@@ -190,8 +190,8 @@ section.recent-activity article:last-child {
 
 @media (min-width: 1200px) {
 	main header .user img {
-		height: 75px;
-		width: 75px;
+		height: 90px;
+		width: 90px;
 	}
 
 	main header .user p .name {

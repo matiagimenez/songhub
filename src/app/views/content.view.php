@@ -27,21 +27,25 @@
     <header class="main-header" id="main-header">
         <?php require "fragments/header.view.php"?>
     </header>
-
     <main>
         <section class="song-section">
             <figure>
-                <img src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
-                    alt="Portada del álbum 'The Dark Side of the Moon' de Pink Floyd" width="225px" height="225px"
+                <img src=<?= $content["images"][1]["url"] ?>
+                    alt="<?= "Portada del " . $content["type"] . " " . $content["album_name"] . " de " . $content["artist_name"] ?>" width="225px" height="225px"
                     class="image-border" />
                 <figcaption>
-                    <p>Canción</p>
-                    <h2>Comfortably Numb</h2>
-                    <h3>The Dark Side Of The Moon</h3>
+                    <?php if ($content["type"] == "track"): ?>
+                        <p>Canción</p>
+                        <h2><?= $content["track_name"] ?></h2>
+                        <h3><?= $content["album_name"] ?></h3>
+                    <?php else: ?> 
+                        <p>Álbum</p>
+                        <h2><?= $content["album_name"] ?></h2>
+                    <?php endif; ?> 
                     <p class="artist-info">
                         <img src="https://i.pinimg.com/236x/20/cc/b2/20ccb24df9750b08d764e574fcec5f5d.jpg"
                             alt="Imagen de perfil de 'Pink Floyd'" height="50px" width="50px" />
-                        <span>Pink Floyd · 1973</span>
+                        <span><?= $content["artist_name"] ?> · <?= explode("-", $content["release_date"])[0] ?></span>
                     </p>
                 </figcaption>
             </figure>
@@ -61,12 +65,55 @@
                         Agregar canción/álbum como favorita
                     </span>
                 </button>
-                <button class="share-button" data-song-id="1" data-post-content="The Dark Side of the Moon">
+                <?php if ($content["type"] == "track"): ?>
+                    <button class="share-button" data-song-id=<?= $content["track_id"] ?> data-post-content="<?= $content["track_name"] . " de " . $content["artist_name"] ?>" >
+                        <i class="ph ph-share-network icon share-icon"></i>
+                        <span class="visually-hidden">
+                            Compartir información de la canción/álbum
+                        </span>
+                    </button>
+                <?php else: ?> 
+                    <button class="share-button" data-song-id=<?= $content["album_id"] ?> data-post-content="<?= $content["album_name"] . " de " . $content["artist_name"] ?>" >
+                        <i class="ph ph-share-network icon share-icon"></i>
+                        <span class="visually-hidden">
+                            Compartir información de la canción/álbum
+                        </span>
+                    </button>
+                <?php endif; ?> 
+                <button class="share-button" data-song-id=<?= $content["album_id"] ?> data-post-content="<?= $content["album_name"] . " de " . $content["artist_name"] ?>" >
                     <i class="ph ph-share-network icon share-icon"></i>
                     <span class="visually-hidden">
                         Compartir información de la canción/álbum
                     </span>
                 </button>
+                <?php if ($content["type"] == "track"): ?>
+                    <a class="spotify-button" href=<?= $content["track_spotify_url"] ?> target="_blank">
+                        <i class="ph ph-spotify-logo icon-lg spotify-icon"></i>
+                        <span class="visually-hidden">
+                            Ver en spotify
+                        </span>
+                    </a>
+                <?php else: ?> 
+                    <a class="spotify-button" href=<?= $content["album_spotify_url"] ?> target="_blank">
+                        <i class="ph ph-spotify-logo icon-lg spotify-icon"></i>
+                        <span class="visually-hidden">
+                            Ver en spotify
+                        </span>
+                    </a>
+                <?php endif; ?> 
+                <?php if ($content["type"] == "track"): ?>
+                    <button class="track-preview-button">
+                        <i class="ph ph-play-circle icon-lg play-icon"></i>
+                        <span class="visually-hidden">
+                            Reproducir pre-escucha de la canción
+                        </span>
+                    </button>
+                    <audio class="track-preview">
+                        <source src=<?= $content["track_preview_url"]?> type="audio/mp3">
+                        Tu navegador no soporta la etiqueta de audio.
+                    </audio>
+                <?php endif; ?> 
+                
             </section>
         </section>
 
