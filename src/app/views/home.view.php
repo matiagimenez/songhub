@@ -18,7 +18,7 @@
                         <img src="/assets/images/home/carousel/carousel_image_1.jpg"
                             alt="Portada del álbum 'Starboy' de The Weeknd" width="250" height="300" />
                         <figcaption id="album-1-title">
-                            <a href="/content" target="_blank">
+                            <a href="/content?id=2ODvWsOgouMbaA5xf0RkJe&type=album">
                                 <h2>Starboy</h2>
                                 <h3>The Weeknd</h3>
                             </a>
@@ -30,7 +30,7 @@
                         <img src="/assets/images/home/carousel/carousel_image_2.jpg"
                             alt="Portada del álbum 'Justice' de Justin Bieber" width="250" height="300" />
                         <figcaption id="album-2-title">
-                            <a href="/content" target="_blank">
+                            <a href="/content?id=5dGWwsZ9iB2Xc3UKR0gif2&type=album">
                                 <h2>Justice</h2>
                                 <h3>Justin Bieber</h3>
                             </a>
@@ -42,7 +42,7 @@
                         <img src="/assets/images/home/carousel/carousel_image_3.jpg"
                             alt="Portada del álbum 'DAMN.' de Kendrick Lamar" width="250" height="300" />
                         <figcaption id="album-3-title">
-                            <a href="/content" target="_blank">
+                            <a href="/content?id=4eLPsYPBmXABThSJ821sqY&type=album">
                                 <h2>DAMN.</h2>
                                 <h3>Kendrick Lamar</h3>
                             </a>
@@ -54,7 +54,7 @@
                         <img src="/assets/images/home/carousel/carousel_image_4.jpg"
                             alt="Portada del álbum 'SOS' de SZA" width="250" height="300" />
                         <figcaption id="album-4-title">
-                            <a href="/content" target="_blank">
+                            <a href="/content?id=07w0rG5TETcyihsEIZR3qG&type=album">
                                 <h2>SOS</h2>
                                 <h3>SZA</h3>
                             </a>

@@ -92,7 +92,7 @@ class ExploreController extends Controller
                 array_push($this->seeds["tracks"], $topTrackId);
                 $track = [
                     "album_id" => $track["album"]["id"],
-                    "type" => $track["album"]["album_type"],
+                    "type" => "track",
                     "artist_name" => $track["album"]["artists"][0]["name"],
                     "artist_id" => $track["album"]["artists"][0]["id"],
                     "artist_spotify_url" => $track["album"]["artists"][0]["external_urls"]["spotify"],
@@ -144,7 +144,7 @@ class ExploreController extends Controller
 
                 $track = [
                     "album_id" => $item["track"]["album"]["id"],
-                    "type" => $item["track"]["album"]["album_type"],
+                    "type" => "track",
                     "artist_name" => $item["track"]["album"]["artists"][0]["name"],
                     "artist_id" => $item["track"]["album"]["artists"][0]["id"],
                     "artist_spotify_url" => $item["track"]["album"]["artists"][0]["external_urls"]["spotify"],
@@ -260,7 +260,7 @@ class ExploreController extends Controller
             foreach ($body["tracks"] as $track) {
                 $track = [
                     "album_id" => $track["album"]["id"],
-                    "type" => $track["album"]["album_type"],
+                    "type" => "track",
                     "artist_name" => $track["album"]["artists"][0]["name"],
                     "artist_id" => $track["album"]["artists"][0]["id"],
                     "artist_spotify_url" => $track["album"]["artists"][0]["external_urls"]["spotify"],
@@ -308,7 +308,7 @@ class ExploreController extends Controller
             foreach ($body["albums"]["items"] as $item) {
                 $album = [
                     "album_id" => $item["id"],
-                    "type" => $item["album_type"],
+                    "type" => "album",
                     "artist_name" => $item["artists"][0]["name"],
                     "artist_id" => $item["artists"][0]["id"],
                     "artist_spotify_url" => $item["external_urls"]["spotify"],

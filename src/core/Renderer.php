@@ -42,11 +42,19 @@ class Renderer
         $style = "register";
         require $this->viewsDirectory . "register.view.php";
     }
+    
     public function explore($recentActivity, $newReleases, $recommendations, $userTopTracks)
     {
         $title = "Explorar";
         $style = "explore";
         require $this->viewsDirectory . "explore.view.php";
+    }
+
+    public function content($content)
+    {
+        $title = $content["type"] ?? "Contenido";
+        $style = "content";
+        require $this->viewsDirectory . "content.view.php";
     }
 
     public function notFound()
