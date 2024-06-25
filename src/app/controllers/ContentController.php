@@ -39,89 +39,89 @@ class ContentController extends Controller
 
     private function fetchContentData($id, $type)
     {
-        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me/top/artists", ["time_range" => "short_term", "limit" => 10], ["Authorization" => "Bearer " . $this->access_token]);
-        $body = json_decode($response["body"], true);
-        $status = $response["status"];
-
-        if ($status >= 300) {
-            Renderer::getInstance()->internalError();
-            die;
-        }
-
-
-        if (count($body["items"]) > 0) {
-            foreach ($body["items"] as $artist) {
-                $topArtistId = $artist["id"];
-                array_push($this->seeds["artists"], $topArtistId);
-        
-                foreach ($artist["genres"] as $genre) {
-                    array_push($this->seeds["genres"], $genre);
-                }
+        if($type == "album") {
+            $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/albums/".$id, [], ["Authorization" => "Bearer " . $this->access_token]);
+            $body = json_decode($response["body"], true);
+            $status = $response["status"];
+            
+            if ($status >= 300) {
+                Renderer::getInstance()->internalError();
+                die;
             }
-        }
 
-        //? Obtiene TOP de tracks escuchados por el usuario
-        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me/top/tracks", ["time_range" => "short_term", "limit" => 10], ["Authorization" => "Bearer " . $this->access_token]);
-        $body = json_decode($response["body"], true);
-        $status = $response["status"];
+            $album = [
+                "album_id" => $body["id"],
+                "type" => $body["album_type"],
+                "artist_name" => $body["artists"][0]["name"],
+                "artist_id" => $body["artists"][0]["id"],
+                "artist_spotify_url" =>$body["artists"][0]["external_urls"]["spotify"],
+                "artist_api_url" => $body["artists"][0]["href"],
+                "album_spotify_url" => $body["external_urls"]["spotify"],
+                "album_api_url" => $body["href"],
+                "images" => $body["images"],
+                "album_name" => $body["name"],
+                "release_date" => $body["release_date"],
+            ];
 
-        if ($status >= 300) {
-            Renderer::getInstance()->internalError();
-            die;
-        }
+            $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/artists/".$album["artist_id"], [], ["Authorization" => "Bearer " . $this->access_token]);
+            $body = json_decode($response["body"], true);
+            $status = $response["status"];
 
-        $userTopTracks = [];
-
-        $ids = "";
-
-        if (count($body["items"]) > 0) {
-            foreach ($body["items"] as $track) {
-                $topTrackId = $track["id"];
-                array_push($this->seeds["tracks"], $topTrackId);
-                $track = [
-                    "album_id" => $track["album"]["id"],
-                    "type" => $track["album"]["album_type"],
-                    "artist_name" => $track["album"]["artists"][0]["name"],
-                    "artist_id" => $track["album"]["artists"][0]["id"],
-                    "artist_spotify_url" => $track["album"]["artists"][0]["external_urls"]["spotify"],
-                    "artist_api_url" => $track["album"]["artists"][0]["href"],
-                    "album_spotify_url" => $track["album"]["external_urls"]["spotify"],
-                    "album_api_url" => $track["album"]["href"],
-                    "images" => $track["album"]["images"],
-                    "album_name" => $track["album"]["name"],
-                    "release_date" => $track["album"]["release_date"],
-                    "track_spotify_url" => $track["external_urls"]["spotify"],
-                    "track_api_url" => $track["href"],
-                    "track_id" => $track["id"],
-                    "track_name" => $track["name"],
-                    "track_preview_url" => $track["preview_url"],
-                ];
-
-                if(strlen($ids) > 0 ){
-                    $ids .= "," . $track["artist_id"];
-                } else {
-                    $ids .= $track["artist_id"];
-                }
-
-                array_push($userTopTracks, $track);
-                
+            if ($status >= 300) {
+                Renderer::getInstance()->internalError();
+                die;
             }
+
+            $album["artist_avatar_url"] = $body["images"][1];
+
+            echo "<pre>";
+            var_dump($album);
+            die;
+    
+
+            return $album;
         }
         
-        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/artists", ["ids" => $ids], ["Authorization" => "Bearer " . $this->access_token]);
+        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/tracks/".$id, [], ["Authorization" => "Bearer " . $this->access_token]);
         $body = json_decode($response["body"], true);
         $status = $response["status"];
+
+        $track = [
+            "album_id" => $body["album"]["id"],
+            "type" => $body["album"]["album_type"],
+            "artist_name" => $body["album"]["artists"][0]["name"],
+            "artist_id" => $body["album"]["artists"][0]["id"],
+            "artist_spotify_url" => $body["album"]["artists"][0]["external_urls"]["spotify"],
+            "artist_api_url" => $body["album"]["artists"][0]["href"],
+            "album_spotify_url" => $body["album"]["external_urls"]["spotify"],
+            "album_api_url" => $body["album"]["href"],
+            "images" => $body["album"]["images"],
+            "album_name" => $body["album"]["name"],
+            "release_date" => $body["album"]["release_date"],
+            "track_spotify_url" => $body["external_urls"]["spotify"],
+            "track_api_url" => $body["href"],
+            "track_id" => $body["id"],
+            "track_name" => $body["name"],
+            "track_preview_url" => $body["preview_url"],
+        ];
+
+        $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/artists/" . $track["artist_id"], [], ["Authorization" => "Bearer " . $this->access_token]);
+        $body = json_decode($response["body"], true);
+        $status = $response["status"];
+
         
         if ($status >= 300) {
             Renderer::getInstance()->internalError();
             die;
         }
+
+        $track["artist_avatar_url"] = $body["images"][1];
         
-        for($i = 0; $i < count($body["artists"]); $i++){
-            $userTopTracks[$i]["artist_avatar_url"] = $body["artists"][$i]["images"][1];
-        }
-        
-        return $userTopTracks;
+        echo "<pre>";
+        var_dump($track);
+        die;
+
+        return $track;
     }
     
 }
