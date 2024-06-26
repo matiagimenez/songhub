@@ -82,10 +82,7 @@ class ContentController extends Controller
                 die;
             }
           
-//             $album["artist_avatar_url"] = $body["images"][1]["url"];
-
-
-            $album["artist_avatar_url"] = $body["images"][1];
+            $album["artist_avatar_url"] = $body["images"][1]["url"];
 
             return $album;
         }
@@ -124,8 +121,7 @@ class ContentController extends Controller
             die;
         }
 
-        $track["artist_avatar_url"] = $body["images"][1];
-//         $track["artist_avatar_url"] = $body["images"][1]["url"];
+        $track["artist_avatar_url"] = $body["images"][1]["url"];
 
         return $track;
 
