@@ -19,5 +19,4 @@ class Repository
     {
         $this->queryBuilder = $queryBuilder;
     }
-
 }

@@ -11,7 +11,6 @@ class Controller
     public ?Repository $repository = null;
     public function __construct()
     {
-
         if (!is_null($this->repositoryName)) {
             $repository = new $this->repositoryName;
             $queryBuilder = QueryBuilder::getInstance();
