@@ -13,6 +13,12 @@ class PostController extends Controller
         parent::__construct();
     }
 
-    
+    public function createPost()
+    {   
+        $postData = json_decode(file_get_contents('php://input'), true);
+        error_log('Received POST data: ' . print_r($postData, true));
+        $postRepository = new PostRepository();
+        $postRepository->createPost($postData);
+    }
 
 }
