@@ -35,7 +35,7 @@ header .user-actions .action-button {
 	line-height: 2;
 	padding: 0;
 	cursor: pointer;
-	font-size: 0.8rem;
+	font-size: 0.9rem;
 	font-weight: bolder;
 	display: inline-block;
 	position: relative;
@@ -47,7 +47,7 @@ header .user-actions a {
 	height: 35px;
 	width: 110px;
 	line-height: 2.5;
-	font-size: 0.8rem;
+	font-size: 0.85rem;
 	padding: 0;
 }
 
@@ -56,12 +56,15 @@ header .user-actions .spotify-profile-button {
 	text-decoration: none;
 	width: 120px;
 	line-height: 2.5;
-	font-size: 0.8rem;
+	font-size: 0.9rem;
 	padding: 0;
 	padding-right: 10px;
 	height: 35px;
 	margin-left: 2px;
 	position: relative;
+	border-color: transparent;
+	background-color: var(--color-green-dark);
+	color: black;
 }
 
 header .user-actions .spotify-profile-button span {
@@ -69,9 +72,9 @@ header .user-actions .spotify-profile-button span {
 	width: fit-content;
 	text-align: center;
 	position: relative;
-	bottom: 11px;
+	bottom: 12px;
 	height: 100%;
-	font-size: 0.8rem;
+	font-size: 0.85rem;
 }
 
 header .user-actions .spotify-profile-button img {
@@ -102,7 +105,7 @@ header .user-stats ul li {
 	display: inline-block;
 	width: fit-content;
 	margin-left: 6px;
-	font-size: 0.85rem;
+	font-size: 0.9rem;
 	color: var(--color-violet-darkest);
 }
 
@@ -133,7 +136,6 @@ header .user p .username {
 
 .recent-activity {
 	width: 90%;
-	/* max-width: 750px; */
 	margin: auto;
 	margin-top: 16px;
 }
@@ -185,6 +187,12 @@ section.recent-activity article:last-child {
 
 	main header .user-actions {
 		position: relative;
+	}
+}
+
+@media (min-width: 600px) {
+	header .user-stats ul li {
+		font-size: 1rem;
 	}
 }
 

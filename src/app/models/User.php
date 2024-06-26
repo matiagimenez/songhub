@@ -37,8 +37,8 @@ class User
             throw new InvalidValueException("El nombre debe tener al menos un caracter");
         }
 
-        if (!preg_match('/^[a-zA-Z0-9]+$/', $name)) {
-            throw new InvalidValueException("El nombre solo puede contener letras y números");
+        if (!preg_match('/^[a-zA-Z]+$/', $name)) {
+            throw new InvalidValueException("El nombre solo puede contener letras");
         }
 
         $this->fields["NAME"] = $name;
