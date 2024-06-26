@@ -6,6 +6,7 @@ use Exception;
 use Songhub\app\models\User;
 use Songhub\core\exceptions\InvalidValueException;
 use Songhub\core\Repository;
+use Songhub\core\database\QueryBuilder;
 
 class UserRepository extends Repository
 {
@@ -97,5 +98,22 @@ class UserRepository extends Repository
         }
 
         return [true, "Inicio de sesión exitoso"];
+    }
+
+    public function getUserPosts($userId) {
+        $postRepository = new PostRepository();
+        $postRepository->setQueryBuilder(QueryBuilder::getInstance());
+        return $postRepository -> getPostsFromUser($userId);
+    }
+
+    public function getUserAccountStats($userId) {
+        $followRepository = new FollowRepository();
+        $followRepository->setQueryBuilder(QueryBuilder::getInstance());
+
+        $followers = $followRepository->getUserFollowersCount($userId);
+        $following = $followRepository->getUserFollowingCount($userId);
+        $posts = $postRepository -> getPostsFromUser($userId);
+
+        return ["followers" => $followers, "following" => $following];
     }
 }

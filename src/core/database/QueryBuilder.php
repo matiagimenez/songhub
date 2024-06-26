@@ -96,13 +96,11 @@ class QueryBuilder
                 ]
             );
             return [];
-
         }
     }
 
     public function selectByColumnInDescOrder(string $table, $column, $value, $columnBy, $limit)
     {
-
         try {
             $query = "SELECT * FROM {$table} WHERE {$column} = :value ORDER BY {$columnBy} ASC LIMIT {$limit};";
             $statement = $this->pdo->prepare($query);
@@ -122,6 +120,29 @@ class QueryBuilder
                 ]
             );
             return [];
+        }
+    }
+
+    public function count($table, $column, $value) {
+        try {
+            $query = "SELECT COUNT(*) as count FROM {$table} WHERE {$column} = :value";
+            $statement = $this->pdo->prepare($query);
+            $statement->bindParam(':value', $value);
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            return $result['count'];
+        } catch (PDOException $error) {
+            $this->logger->error(
+                "Error al ejecutar el query en la base de datos",
+                [
+                    "Error" => $error->getMessage(),
+                    "Operacion" => 'count',
+                    "Tabla" => $table,
+                    "Columna" => $column,
+                    "Valor" => $value,
+                ]
+            );
+            return 0;
         }
     }
 

@@ -26,18 +26,10 @@ class UserController extends Controller
 
         $user = $this->repository->getUser("USERNAME", $username);
 
-        $queryBuilder = QueryBuilder::getInstance();
+        $posts = $this -> repository->getUserPosts($user->fields["USER_ID"]);
+        $stats = $this -> repository->getUserAccountStats($user->fields["USER_ID"]);
 
-        $postRepository = new PostRepository();
-        $postRepository->setQueryBuilder($queryBuilder);
-        $posts = $postRepository->getPostsFromUser($user->fields["USER_ID"]);
-
-        $followRepository = new FollowRepository();
-        $followRepository->setQueryBuilder($queryBuilder);
-        $followers = $followRepository->getUserFollowers($user->fields["USER_ID"]);
-        $following = $followRepository->getUserFollowing($user->fields["USER_ID"]);
-
-        Renderer::getInstance()->profile($user, $posts, $following, $followers);
+        Renderer::getInstance()->profile($user, $posts, $stats["following"], $stats["followers"]);
     }
 
     public function edit()

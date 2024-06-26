@@ -24,9 +24,6 @@ class FollowRepository extends Repository
                 $userFollowers->push($followInstance);
             }
         }
-        // echo "<pre>";
-        // var_dump($followers);
-        // die;
 
         return $userFollowers;
     }
@@ -44,12 +41,18 @@ class FollowRepository extends Repository
                 $userFollowing->push($followInstance);
             }
         }
-        // echo "<pre>";
-        // var_dump($following);
-        // die;
 
         return $userFollowing;
+    }
 
+    public function getUserFollowersCount(int $followed_id)
+    {
+        return $this->queryBuilder->count($this->table, "FOLLOWER_ID", $followed_id);
+    }
+
+    public function getUserFollowingCount(int $follower_id)
+    {
+        return $this->queryBuilder->count($this->table, "FOLLOWER_ID", $follower_id);
     }
 
     public function createFollow($followData)
