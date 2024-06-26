@@ -31,6 +31,7 @@ class ContentController extends Controller
         Renderer::getInstance()->content($content, $posts["relevant"], $posts["recent"]);
     }
 
+
     public function getContentData() {
         $id = $this->sanitizeUserInput(Request::getInstance()->getParameter("id", "GET"));
         $type = $this->sanitizeUserInput(Request::getInstance()->getParameter("type", "GET"));
@@ -44,7 +45,7 @@ class ContentController extends Controller
     }
 
 
-    public function fetchContentData($id, $type)
+    private function fetchContentData($id, $type)
     {
         $this->access_token = Session::getInstance()->get("access_token");
         
@@ -81,8 +82,10 @@ class ContentController extends Controller
                 die;
             }
           
-            $album["artist_avatar_url"] = $body["images"][1]["url"];
+//             $album["artist_avatar_url"] = $body["images"][1]["url"];
 
+
+            $album["artist_avatar_url"] = $body["images"][1];
 
             return $album;
         }
@@ -121,7 +124,8 @@ class ContentController extends Controller
             die;
         }
 
-        $track["artist_avatar_url"] = $body["images"][1]["url"];
+        $track["artist_avatar_url"] = $body["images"][1];
+//         $track["artist_avatar_url"] = $body["images"][1]["url"];
 
         return $track;
 
