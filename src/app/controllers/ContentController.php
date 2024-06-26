@@ -37,8 +37,8 @@ class ContentController extends Controller
     }
 
 
-<<<<<<< HEAD
-    public function getContentData() {
+    public function getContentData() 
+    {
         $id = $this->sanitizeUserInput(Request::getInstance()->getParameter("id", "GET"));
         $type = $this->sanitizeUserInput(Request::getInstance()->getParameter("type", "GET"));
         
@@ -51,9 +51,6 @@ class ContentController extends Controller
     }
 
     private function fetchContentData($id, $type)
-=======
-    public function fetchContentData($id, $type)
->>>>>>> 5890b4e1accff5b092a0d90381bbead35e3785d5
     {
         if($type == "album") {
             $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/albums/".$id, [], ["Authorization" => "Bearer " . $this->access_token]);
@@ -89,10 +86,7 @@ class ContentController extends Controller
             }
 
             $album["artist_avatar_url"] = $body["images"][1];
-<<<<<<< HEAD
     
-=======
->>>>>>> 5890b4e1accff5b092a0d90381bbead35e3785d5
 
             return $album;
         }
@@ -132,10 +126,7 @@ class ContentController extends Controller
         }
 
         $track["artist_avatar_url"] = $body["images"][1];
-<<<<<<< HEAD
         
-=======
->>>>>>> 5890b4e1accff5b092a0d90381bbead35e3785d5
 
         return $track;
     }

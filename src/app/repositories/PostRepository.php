@@ -49,7 +49,6 @@ class PostRepository extends Repository
     {
         // Inicia el buffer de salida
         ob_start();
-        
         $post = new Post();
         try {
             $post->set($postData);
