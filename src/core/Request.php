@@ -61,15 +61,4 @@ class Request
         }
     }
 
-
-    public function getPostData(){
-        return [
-            "DATETIME" => $this->getParameter("DATETIME", "POST"),
-            "DESCRIPTION" => $this->getParameter("DESCRIPTION", "POST"),
-            "LIKES" => (int) $this->getParameter("LIKES", "POST"),
-            "RATING" => (int) $this->getParameter("RATING", "POST"),
-            "CONTENT_ID" => $this->getParameter("CONTENT_ID", "POST"),
-            "USER_ID" => $this->getParameter("USER_ID", "POST"),
-        ];
-    }
 }

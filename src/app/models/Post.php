@@ -21,11 +21,9 @@ class Post
         $this->fields["POST_ID"] = $post_id;
     }
 
-    public function setDatetime(string $date)
+    public function setDatetime($date)
     {
-        if (!strtotime($date)) {
-            throw new InvalidValueException('Formato de fecha incompatible');
-        }
+        // $date = date("Y-m-d");
 
         $this->fields["DATETIME"] = $date;
     }
@@ -51,13 +49,17 @@ class Post
     }
 
     public function setUserId($user_id)
-    {
+    {   
+        // $queryBuilder = QueryBuilder::getInstance();
+        // $userRepository = new UserRepository();
+        // $userRepository->setQueryBuilder($queryBuilder);
+        // $username = Session::getInstance()->get("username");
+        // $user = $userRepository->getUser("USERNAME", $username);
         $this->fields["USER_ID"] = $user_id;
     }
 
     public function set(array $values)
     {
-        // var_dump($values);
         foreach (array_keys($this->fields) as $field) {
             $field = trim($field);
             if (!isset($values[$field])) {
@@ -74,6 +76,8 @@ class Post
 
             $this->$method($values[$field]);
         }
+
+        $this->setLikes();
 
     }
 

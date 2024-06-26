@@ -347,9 +347,7 @@ function create_modal(data) {
 
 		// values['CONTENT_ID'] = data.type === 'album' ? data.album_id : data.track_id;
 		values['CONTENT_ID'] = 3;
-		values['USER_ID'] = 2;
-		values['LIKES'] = 0;
-		values['DATETIME'] = '2024-06-25';
+		// values['USER_ID'] = 2;
 
 		console.log(values)
 		console.log(JSON.stringify(values))
