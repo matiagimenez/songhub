@@ -61,7 +61,7 @@ form fieldset .input-container textarea {
 
 .button-container {
 	position: absolute;
-	bottom: 5px;
+	bottom: 10px;
 	width: 100%;
 	text-align: center;
 }
@@ -164,7 +164,8 @@ a {
 		display: grid;
 		grid-template-columns: 50% 50%;
 		grid-template-rows: 4rem repeat(2, 1fr);
-		padding-bottom: 60px;
+		padding-bottom: 70px;
+		min-height: 835px;
 	}
 
 	main h2.section-title {
@@ -281,6 +282,10 @@ a {
 	form fieldset .username-edit input,
 	form fieldset .name-edit input {
 		min-width: 0;
+	}
+
+	.button-container {
+		bottom: 25px;
 	}
 }
 

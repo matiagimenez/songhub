@@ -23,7 +23,7 @@ class UserRepository extends Repository
 
         $userInstance = new User();
         $userInstance->set(current($user));
-        return $userInstance;
+        return $userInstance -> fields;
     }
 
     public function emailIsUsed(string $email)
@@ -54,7 +54,7 @@ class UserRepository extends Repository
             $user = new User();
 
             $user->setUsername($userData["USERNAME"]);
-            $user->setName($userData["USERNAME"]);
+            // $user->setName($userData["USERNAME"]);
             $user->setEmail($userData["EMAIL_CONFIRMATION"], $userData["EMAIL"]);
             $user->setPassword($userData["PASSWORD"], $userData["PASSWORD_CONFIRMATION"]);
 

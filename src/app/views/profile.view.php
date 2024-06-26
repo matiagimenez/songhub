@@ -24,11 +24,11 @@ if ($isAuthenticated) {
     <main>
         <header>
             <section class="user">
-                <img src=<?=$user->fields["SPOTIFY_AVATAR"]?> alt="Imagen de perfil" height="60px" width="60px"
+                <img src=<?=$user["SPOTIFY_AVATAR"]?> alt="Imagen de perfil" height="60px" width="60px"
                     class="image-border" />
                 <p class="username-container">
-                    <span class="name"><?=$user->fields["NAME"]?></span>
-                    <span class="username">@<?=$user->fields["USERNAME"]?></span>
+                    <span class="name"><?=$user["NAME"]?></span>
+                    <span class="username">@<?=$user["USERNAME"]?></span>
                 </p>
             </section>
 
@@ -42,7 +42,7 @@ if ($isAuthenticated) {
 
             <section class="user-actions">
                 <p class="profile-button-container">
-                    <?php if ($username === $user->fields["USERNAME"]): ?>
+                    <?php if ($username === $user["USERNAME"]): ?>
                     <a href="/user/profile" class="submit-outline-button">
                         Editar perfil
                     </a>
@@ -52,14 +52,14 @@ if ($isAuthenticated) {
                     </button>
                     <?php endif?>
 
-                    <a class="submit-button spotify-profile-button" href=<?=$user->fields["SPOTIFY_URL"]?>>
+                    <a class="submit-button spotify-profile-button" href=<?=$user["SPOTIFY_URL"]?>>
                         <img src="../assets/icons/spotify.svg" alt="Logo de Spotify" />
                         <span> Perfil </span>
                     </a>
                 </p>
             </section>
             <p class="biography">
-                <?=$user->fields["BIOGRAPHY"]?>
+                <?=$user["BIOGRAPHY"]?>
             </p>
         </header>
 

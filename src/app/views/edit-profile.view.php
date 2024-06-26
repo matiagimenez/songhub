@@ -27,34 +27,39 @@
     <header class="main-header" id="main-header">
         <?php require "fragments/header.view.php"?>
     </header>
+    <?php 
+            // echo "<pre>";
+            // var_dump($user);
+            // die;    
+    ?>
     <main>
         <h2 class="section-title">Información del perfil</h2>
         <form action="/" method="POST">
             <fieldset>
                 <legend>Información de perfil</legend>
                 <p class="profile-image-edit">
-                    <img src="https://i.pinimg.com/236x/f4/e4/ff/f4e4ff0e8518813c6d5dde10a4d5164d.jpg"
-                        alt="Imagen de perfil" height="150px" width="150px" class="image-border" />
+                    <img src=<?= $user["SPOTIFY_AVATAR"] ?>
+                        alt="<?= "Avatar del usuario " . $user["USERNAME"] ?>" height="150px" width="150px" class="image-border" />
                 </p>
                 <p class="input-container name-edit">
                     <label for="firstname" class="label">Nombre</label>
-                    <input class="input" name="firstname" id="firstname" type="text" />
+                    <input class="input" name="firstname" id="firstname" type="text" value="<?= $user["NAME"]?>"/>
                 </p>
                 <p class="input-container username-edit">
                     <label for="username" class="label">Nombre de usuario</label>
-                    <input class="input" name="username" id="username" type="text" disabled />
+                    <input class="input" name="username" id="username" type="text" disabled value="<?= $user["USERNAME"]?>"/>
                 </p>
                 <p class="input-container email-edit">
                     <label for="email" class="label">Correo electrónico</label>
-                    <input class="input" name="email" id="email" type="email" disabled />
+                    <input class="input" name="email" id="email" type="email" disabled value="<?= $user["EMAIL"]?>"/>
                 </p>
                 <p class="input-container country-edit">
                     <label for="country" class="label">Pais</label>
-                    <input class="input" name="country" id="country" type="text" />
+                    <input class="input" name="country" id="country" type="text" value="Argentina"/>
                 </p>
                 <p class="input-container biography-edit">
                     <label for="biography" class="label">Biografía</label>
-                    <textarea name="biography" id="biography" class="input" maxlength="160"></textarea>
+                    <textarea name="biography" id="biography" class="input" maxlength="160"><?= $user["BIOGRAPHY"]?></textarea>
                 </p>
             </fieldset>
             <p class="button-container">
