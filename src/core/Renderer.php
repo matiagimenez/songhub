@@ -50,7 +50,7 @@ class Renderer
         require $this->viewsDirectory . "explore.view.php";
     }
 
-    public function content($content)
+    public function content($content, $mostRelevantPosts)
     {
         $title = $content["type"] ?? "Contenido";
         $style = "content";
