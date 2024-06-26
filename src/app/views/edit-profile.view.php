@@ -38,20 +38,20 @@
             <fieldset>
                 <legend>Información de perfil</legend>
                 <p class="profile-image-edit">
-                    <img src=<?= $user["SPOTIFY_AVATAR"] ?>
-                        alt="<?= "Avatar del usuario " . $user["USERNAME"] ?>" height="150px" width="150px" class="image-border" />
+                    <img src=<?= $user->fields["SPOTIFY_AVATAR"] ?>
+                        alt="<?= "Avatar del usuario " . $user->fields["USERNAME"] ?>" height="150px" width="150px" class="image-border" />
                 </p>
                 <p class="input-container name-edit">
                     <label for="firstname" class="label">Nombre</label>
-                    <input class="input" name="firstname" id="firstname" type="text" value="<?= $user["NAME"]?>"/>
+                    <input class="input" name="firstname" id="firstname" type="text" value="<?= $user->fields["NAME"]?>"/>
                 </p>
                 <p class="input-container username-edit">
                     <label for="username" class="label">Nombre de usuario</label>
-                    <input class="input" name="username" id="username" type="text" disabled value="<?= $user["USERNAME"]?>"/>
+                    <input class="input" name="username" id="username" type="text" disabled value="<?= $user->fields["USERNAME"]?>"/>
                 </p>
                 <p class="input-container email-edit">
                     <label for="email" class="label">Correo electrónico</label>
-                    <input class="input" name="email" id="email" type="email" disabled value="<?= $user["EMAIL"]?>"/>
+                    <input class="input" name="email" id="email" type="email" disabled value="<?= $user->fields["EMAIL"]?>"/>
                 </p>
                 <p class="input-container country-edit">
                     <label for="country" class="label">Pais</label>
@@ -59,7 +59,7 @@
                 </p>
                 <p class="input-container biography-edit">
                     <label for="biography" class="label">Biografía</label>
-                    <textarea name="biography" id="biography" class="input" maxlength="160"><?= $user["BIOGRAPHY"]?></textarea>
+                    <textarea name="biography" id="biography" class="input" maxlength="160"><?= $user->fields["BIOGRAPHY"]?></textarea>
                 </p>
             </fieldset>
             <p class="button-container">

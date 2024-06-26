@@ -33,8 +33,12 @@ class User
             throw new InvalidValueException("El nombre debe tener un maximo de 60 caracteres");
         }
 
-        if (!preg_match('/^[a-zA-Z ]*$/', $name)) {
-            throw new InvalidValueException("El nombre solo puede contener letras y espacios en blanco");
+        if (strlen($name) === 0) {
+            throw new InvalidValueException("El nombre debe tener al menos un caracter");
+        }
+
+        if (!preg_match('/^[a-zA-Z]+$/', $name)) {
+            throw new InvalidValueException("El nombre solo puede contener letras");
         }
 
         $this->fields["NAME"] = $name;
