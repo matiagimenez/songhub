@@ -11,9 +11,9 @@ class PostRepository extends Repository
 {
     public $table = "POST";
 
-    public function getPostsFromUser($user_id)
+    public function getPostsFromUser($userId)
     {
-        $posts = $this->queryBuilder->selectByColumn($this->table, "USER_ID", $user_id);
+        $posts = $this->queryBuilder->selectByColumnInDescOrder($this->table, "USER_ID", $userId, "DATETIME");
 
         $userPosts = [];
 
@@ -29,6 +29,12 @@ class PostRepository extends Repository
         // die;
 
         return $userPosts;
+    }
+
+    public function getPostsCountFromUser($userId)
+    {
+        return $this->queryBuilder->count($this->table, "USER_ID", $userId);
+
     }
 
     public function getPost(int $post_id)

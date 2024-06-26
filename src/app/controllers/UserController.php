@@ -27,6 +27,7 @@ class UserController extends Controller
         $user = $this->repository->getUser("USERNAME", $username);
 
         $posts = $this -> repository->getUserPosts($user->fields["USER_ID"]);
+        $postsCount = $this -> repository->getUserPostsCount($user->fields["USER_ID"]);
         $stats = $this -> repository->getUserAccountStats($user->fields["USER_ID"]);
 
         Renderer::getInstance()->profile($user, $posts, $stats["following"], $stats["followers"]);

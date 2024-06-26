@@ -99,10 +99,15 @@ class QueryBuilder
         }
     }
 
-    public function selectByColumnInDescOrder(string $table, $column, $value, $columnBy, $limit)
+    public function selectByColumnInDescOrder(string $table, $column, $value, $columnBy, $limit = 0)
     {
         try {
-            $query = "SELECT * FROM {$table} WHERE {$column} = :value ORDER BY {$columnBy} ASC LIMIT {$limit};";
+            if($limit > 0) {
+                $query = "SELECT * FROM {$table} WHERE {$column} = :value ORDER BY {$columnBy} ASC LIMIT {$limit};";
+            } else {
+                $query = "SELECT * FROM {$table} WHERE {$column} = :value ORDER BY {$columnBy} ASC;";
+            }
+
             $statement = $this->pdo->prepare($query);
             $statement->bindParam(':value', $value);
             $statement->setFetchMode(PDO::FETCH_ASSOC);

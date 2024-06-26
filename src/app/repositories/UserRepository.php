@@ -106,13 +106,18 @@ class UserRepository extends Repository
         return $postRepository -> getPostsFromUser($userId);
     }
 
+    public function getUserPostsCount($userId) {
+        $postRepository = new PostRepository();
+        $postRepository->setQueryBuilder(QueryBuilder::getInstance());
+        return $postRepository -> getPostsCountFromUser($userId);
+    }
+
     public function getUserAccountStats($userId) {
         $followRepository = new FollowRepository();
         $followRepository->setQueryBuilder(QueryBuilder::getInstance());
 
         $followers = $followRepository->getUserFollowersCount($userId);
         $following = $followRepository->getUserFollowingCount($userId);
-        $posts = $postRepository -> getPostsFromUser($userId);
 
         return ["followers" => $followers, "following" => $following];
     }
