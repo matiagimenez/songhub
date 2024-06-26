@@ -48,10 +48,7 @@ class UserController extends Controller
 
         Renderer::getInstance()->edit($user);
     }
-
-    public function createUser()
-    {
-    }
+    
     public function updateUser()
     {
     }
