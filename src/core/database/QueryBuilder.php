@@ -35,7 +35,7 @@ class QueryBuilder
             $where = "";
             $bindings = [];
 
-            //* Armar el where con los parametros que vienen en $params como clave => valor
+            //* Arma el where con los parametros que vienen en $params como clave => valor
             if (count($params) > 0) {
                 foreach ($params as $key => $value) {
 
@@ -97,6 +97,31 @@ class QueryBuilder
             );
             return [];
 
+        }
+    }
+
+    public function selectByColumnInDescOrder(string $table, $column, $value, $columnBy, $limit)
+    {
+
+        try {
+            $query = "SELECT * FROM {$table} WHERE {$column} = :value ORDER BY {$columnBy} ASC LIMIT {$limit};";
+            $statement = $this->pdo->prepare($query);
+            $statement->bindParam(':value', $value);
+            $statement->setFetchMode(PDO::FETCH_ASSOC);
+            $statement->execute();
+            return $statement->fetchAll();
+        } catch (PDOException $error) {
+            $this->logger->error(
+                "Error al ejecutar el query en la base de datos",
+                [
+                    "Error" => $error->getMessage(),
+                    "Operacion" => 'selectByColumnInAscOrder',
+                    "Tabla" => $table,
+                    "Columna" => $column,
+                    "Valor" => $value,
+                ]
+            );
+            return [];
         }
     }
 

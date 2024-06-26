@@ -7,24 +7,17 @@ use Songhub\core\Renderer;
 use Songhub\core\Request;
 use Songhub\core\Session;
 use Songhub\core\HttpClient;
+use Songhub\app\repositories\ContentRepository;
 
 class ContentController extends Controller
 {
 
     private $access_token = "";
-    private $seeds = null;
-    private $recommendations = null;
 
     public function __construct()
     {
-        $this->access_token = Session::getInstance()->get("access_token");
-
-        //? Este array contiene información que sirve a modo de seed para solicitar las recomendaciones a Spotify API. Límite de contenido de seed = 5
-        $this->seeds = [
-            "tracks" => [],
-            "artists" => [],
-            "genres" => []
-        ];
+        $this->repositoryName = ContentRepository::class;
+        parent::__construct();        
     }
 
     public function content()
@@ -32,13 +25,17 @@ class ContentController extends Controller
         $id = $this->sanitizeUserInput(Request::getInstance()->getParameter("id", "GET"));
         $type = $this->sanitizeUserInput(Request::getInstance()->getParameter("type", "GET"));
         $content = $this->fetchContentData($id, $type);
+        
+        $posts = $this->repository->getContentPosts($id);
 
-        Renderer::getInstance()->content($content);
+        Renderer::getInstance()->content($content, $posts["relevant"], $posts["recent"]);
     }
 
 
     public function fetchContentData($id, $type)
     {
+        $this->access_token = Session::getInstance()->get("access_token");
+        
         if($type == "album") {
             $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/albums/".$id, [], ["Authorization" => "Bearer " . $this->access_token]);
             $body = json_decode($response["body"], true);
@@ -72,7 +69,7 @@ class ContentController extends Controller
                 die;
             }
 
-            $album["artist_avatar_url"] = $body["images"][1];
+            $album["artist_avatar_url"] = $body["images"][1]["url"];
 
             return $album;
         }
@@ -110,9 +107,11 @@ class ContentController extends Controller
             die;
         }
 
-        $track["artist_avatar_url"] = $body["images"][1];
+        $track["artist_avatar_url"] = $body["images"][1]["url"];
 
         return $track;
+
+        
     }
     
 }
