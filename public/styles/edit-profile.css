@@ -37,7 +37,8 @@ form fieldset .input-container {
 	margin-bottom: 16px;
 }
 
-form fieldset .input-container input {
+form fieldset .input-container input,
+form fieldset .input-container select {
 	width: 90%;
 	max-width: 450px;
 	min-width: 285px;
@@ -64,13 +65,17 @@ form fieldset .input-container textarea {
 	bottom: 10px;
 	width: 100%;
 	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-button.submit-outline-button {
+a.submit-outline-button {
 	width: 45%;
 	display: inline-block;
 	max-width: 200px;
 	margin-right: 4px;
+	line-height: 2.3rem;
 }
 
 input[type='submit'].submit-button {
@@ -153,6 +158,7 @@ a {
 
 @media (min-width: 550px) {
 	form fieldset .input-container input,
+	form fieldset .input-container select,
 	form fieldset .input-container textarea {
 		width: 100%;
 		max-width: initial;
@@ -180,6 +186,7 @@ a {
 	}
 
 	form fieldset .input-container input,
+	form fieldset .input-container select,
 	form fieldset .input-container textarea {
 		width: 90%;
 		max-width: 450px;
@@ -223,7 +230,7 @@ a {
 		border-radius: 10px;
 	}
 
-	button.submit-outline-button {
+	a.submit-outline-button {
 		max-width: 250px;
 	}
 
@@ -238,7 +245,7 @@ a {
 		grid-auto-rows: 110px;
 	}
 
-	button.submit-outline-button,
+	a.submit-outline-button,
 	input[type='submit'].submit-button {
 		max-width: 250px;
 	}
@@ -267,6 +274,7 @@ a {
 	}
 
 	form fieldset .input-container input,
+	form fieldset .input-container select,
 	form fieldset .input-container textarea {
 		max-width: 500px;
 		width: 100%;
@@ -306,6 +314,7 @@ a {
 	}
 
 	form fieldset .input-container input,
+	form fieldset .input-container select,
 	form fieldset .input-container textarea {
 		width: 90%;
 		max-width: 600px;

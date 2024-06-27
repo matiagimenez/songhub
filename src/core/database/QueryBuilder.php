@@ -34,6 +34,9 @@ class QueryBuilder
         try {
             $where = "";
             $bindings = [];
+            
+            $query = "SELECT * FROM {$table}";
+
 
             //* Arma el where con los parametros que vienen en $params como clave => valor
             if (count($params) > 0) {
@@ -46,9 +49,10 @@ class QueryBuilder
                     $where .= $key . "= :" . $key;
                     $bindings[":" . $key] = $value;
                 }
+
+                $query = "SELECT * FROM {$table} WHERE {$where}";
             }
 
-            $query = "SELECT * FROM {$table} WHERE {$where}";
 
             $statement = $this->pdo->prepare($query);
 
@@ -64,10 +68,9 @@ class QueryBuilder
                 "Error al ejecutar el query en la base de datos",
                 [
                     "Error" => $error->getMessage(),
-                    "Operacion" => 'selectByColumn',
+                    "Operacion" => 'select',
                     "Tabla" => $table,
                     "Columna" => $params,
-                    "Valor" => $value,
                 ]
             );
             return [];
@@ -177,9 +180,7 @@ class QueryBuilder
                     "Table" => $table,
                 ]
             );
-
         }
-
     }
 
     public function update($table, $data)

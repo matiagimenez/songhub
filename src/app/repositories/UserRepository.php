@@ -121,4 +121,18 @@ class UserRepository extends Repository
 
         return ["followers" => $followers, "following" => $following];
     }
+
+    public function getUserNationality($userId) {
+        $nationalityRepository = new NationalityRepository();
+        $nationalityRepository->setQueryBuilder(QueryBuilder::getInstance());
+
+        $countryRepository = new CountryRepository();
+        $countryRepository->setQueryBuilder(QueryBuilder::getInstance());
+
+        $availableCountries = $countryRepository -> getAvailableCountries();
+        $nationality = $nationalityRepository -> getUserNationality($userId);
+ 
+
+        return ["NATIONALITY" => $nationality, "COUNTRIES" => $availableCountries];
+    }
 }
