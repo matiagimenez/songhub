@@ -79,7 +79,7 @@
                 </p>
             </fieldset>
             <p class="button-container">
-                <button class="submit-outline-button">Volver</button>
+                <a class="submit-outline-button" href="<?= "/user?username=" . $user->fields["USERNAME"] ?>">Volver</a>
                 <input class="submit-button" type="submit" value="Guardar cambios" />
             </p>
         </form>
