@@ -70,12 +70,26 @@ class UserRepository extends Repository
 
     public function updateUser($field, $value, $userData)
     {
-        $user = $this->getUser($field, $value);
-
         try {
+            $user = $this->getUser($field, $value);
             $user->set($userData);
-            $this->queryBuilder->update($this->table, $user->fields);
+            $this->queryBuilder->update($this->table, $user->fields, "USERNAME", $user -> fields["USERNAME"]);
             return [true, "Usuario actualizado con éxito"];
+        } catch (InvalidValueException $exception) {
+            return [false, $exception->getMessage()];
+        } catch (Exception $exception) {
+            return [false, "Ocurrió un error al actualizar datos del usuario"];
+        }
+    }
+
+    public function updateUserNationality($username, $countryId)
+    {
+        try {
+            $user = $this->getUser($field, $value);
+            $nationalityRepository = new NationalityRepository();
+            $nationalityRepository->setQueryBuilder(QueryBuilder::getInstance());
+            $nationalityRepository -> updateUserNationality($user ->fields["USER_ID"], $countryId);
+            return [true, "Nacionalidad del usuario actualizada con éxito"];
         } catch (InvalidValueException $exception) {
             return [false, $exception->getMessage()];
         } catch (Exception $exception) {

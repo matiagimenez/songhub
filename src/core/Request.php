@@ -52,10 +52,6 @@ class Request
                 return htmlspecialchars($_GET[$key] ?? null, ENT_QUOTES);
             case 'POST':
                 return htmlspecialchars($_POST[$key] ?? null, ENT_QUOTES);
-            // case 'PUT':
-            //     return $_POST[$key] ?? null;
-            // case 'DELETE':
-            //     return $_POST[$key] ?? null;
             default:
                 return null;
         }

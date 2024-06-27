@@ -13,7 +13,7 @@ class NationalityRepository extends Repository
 
     public function updateUserNationality(int $userId, int $countryId)
     {
-        
+        $nationality = $this->queryBuilder->update($this->table, ["COUNTRY_ID" => $countryId], "USER_ID", $userId);
     }
 
     public function getUserNationality(int $userId)

@@ -27,7 +27,6 @@ class User
     public function setName(string $name = "")
     {
         $name = trim($name);
-        $name = strtolower(trim($name));
 
         if (strlen($name) > 60) {
             throw new InvalidValueException("El nombre debe tener un maximo de 60 caracteres");
@@ -37,8 +36,8 @@ class User
             throw new InvalidValueException("El nombre debe tener al menos un caracter");
         }
 
-        if (!preg_match('/^[a-zA-Z]+$/', $name)) {
-            throw new InvalidValueException("El nombre solo puede contener letras");
+        if (!preg_match('/^[a-zA-Z0-9]+$/', $name)) {
+            throw new InvalidValueException("El nombre de usuario solo puede contener letras y números");
         }
 
         $this->fields["NAME"] = $name;

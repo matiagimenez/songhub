@@ -53,7 +53,7 @@ if ($isAuthenticated) {
                     <?php endif?>
 
                     <a class="submit-button spotify-profile-button" href=<?=$user->fields["SPOTIFY_URL"]?> target="_blank">
-                        <img src="../assets/icons/spotify.svg" alt="Logo de Spotify" />
+                        <img src="/assets/icons/spotify.svg" alt="Logo de Spotify" />
                         <span> Perfil </span>
                     </a>
                 </p>

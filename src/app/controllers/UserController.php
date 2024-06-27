@@ -19,12 +19,13 @@ class UserController extends Controller
         parent::__construct();
     }
 
-    public function profile()
+    public function profile($user = null)
     {
 
-        $username = $this->sanitizeUserInput(Request::getInstance()->getParameter("username", "GET"), FILTER_SANITIZE_EMAIL);
-
-        $user = $this->repository->getUser("USERNAME", $username);
+        if(!$user){
+            $username = $this->sanitizeUserInput(Request::getInstance()->getParameter("username", "GET"));
+            $user = $this->repository->getUser("USERNAME", $username);
+        }
 
         $posts = $this -> repository->getUserPosts($user->fields["USER_ID"]);
         $postsCount = $this -> repository->getUserPostsCount($user->fields["USER_ID"]);
@@ -45,5 +46,32 @@ class UserController extends Controller
     
     public function updateUser()
     {
+        $username = $this->sanitizeUserInput(Request::getInstance()->getParameter("username", "POST"));
+        $name = $this->sanitizeUserInput(Request::getInstance()->getParameter("name", "POST"));
+        $country = $this->sanitizeUserInput(Request::getInstance()->getParameter("country", "POST"));
+        $biography = $this->sanitizeUserInput(Request::getInstance()->getParameter("biography", "POST"));
+
+        $data = [
+            "NAME" => $name,
+            "BIOGRAPHY" => $biography
+        ];
+
+        $result = $this -> repository -> updateUser("USERNAME", $username, $data);
+
+        if(!$result[0]){
+            Renderer::getInstance()->internalError();
+        }
+
+        // $result = $this -> repository -> updateUserNationality($username, $country);
+        
+        // if(!$result[0]){
+        //     Renderer::getInstance()->internalError();
+        // }
+
+        $user = $this->repository->getUser("USERNAME", $username);
+
+        $this->profile($user);
+        die;
+
     }
 }
