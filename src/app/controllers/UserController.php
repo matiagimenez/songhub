@@ -39,7 +39,7 @@ class UserController extends Controller
         $username = Session::getInstance()->get("username");
         $user = $this->repository->getUser("USERNAME", $username);
 
-        $userNationality = $this->repository->getUserNationality($user->fields["USER_ID"]);
+        $userNationality = $this->repository->getUserNationality($user->fields["COUNTRY_ID"]);
 
         Renderer::getInstance()->edit($user, $userNationality["NATIONALITY"], $userNationality["COUNTRIES"]);
     }
@@ -53,7 +53,8 @@ class UserController extends Controller
 
         $data = [
             "NAME" => $name,
-            "BIOGRAPHY" => $biography
+            "BIOGRAPHY" => $biography,
+            "COUNTRY_ID" => $country
         ];
 
         $result = $this -> repository -> updateUser("USERNAME", $username, $data);
@@ -62,16 +63,8 @@ class UserController extends Controller
             Renderer::getInstance()->internalError();
         }
 
-        // $result = $this -> repository -> updateUserNationality($username, $country);
-        
-        // if(!$result[0]){
-        //     Renderer::getInstance()->internalError();
-        // }
-
         $user = $this->repository->getUser("USERNAME", $username);
 
         $this->profile($user);
-        die;
-
     }
 }

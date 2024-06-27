@@ -66,7 +66,7 @@
                         <?php endif; ?> 
                          
                         <?php foreach ($countries as $country): ?>                     
-                            <?php if($userNationality && $userNationality->fields["COUNTRY_ID"] == $country->fields["COUNTRY_ID"]):?>
+                            <?php if($userNationality && $user->fields["COUNTRY_ID"] == $country->fields["COUNTRY_ID"]):?>
                                 <option value=<?= $country->fields["COUNTRY_ID"]?> selected><?= $country->fields["NAME"] ?></option>
                             <?php else: ?>
                                 <option value=<?= $country->fields["COUNTRY_ID"] ?> > <?= $country->fields["NAME"] ?> </option>
