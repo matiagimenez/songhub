@@ -22,13 +22,19 @@ if ($isAuthenticated) {
         <?php require "fragments/header.view.php"?>
     </header>
     <main>
+        <?php 
+            // echo "<pre>";
+            // var_dump($country);
+            // var_dump($user);
+            // die;
+        ?>
         <header>
             <section class="user">
                 <img src=<?=$user->fields["SPOTIFY_AVATAR"]?> alt="<?= "Avatar del usuario " . $user->fields["USERNAME"] ?>" height="60px" width="60px"
                     class="image-border" />
                 <p class="username-container">
                     <span class="name"><?=$user->fields["NAME"]?></span>
-                    <span class="username">@<?=$user->fields["USERNAME"]?></span>
+                    <span class="username">$<?=$user->fields["USERNAME"]?></span>
                 </p>
             </section>
 
@@ -58,9 +64,16 @@ if ($isAuthenticated) {
                     </a>
                 </p>
             </section>
-            <p class="biography">
-                <?=$user->fields["BIOGRAPHY"]?>
-            </p>
+            <section>
+                <?php if ($user->fields["COUNTRY_ID"]): ?>
+                    <p class="nationality">
+                        <?=$country->fields["NAME"]?>
+                    </p>
+                <?php endif; ?>
+                <p class="biography">
+                    <?=$user->fields["BIOGRAPHY"]?>
+                </p>
+            </section>
         </header>
 
         <section class="section">

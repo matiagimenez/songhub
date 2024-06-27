@@ -38,7 +38,7 @@ class CountryRepository extends Repository
         if(!$country) return null;
 
         $countryInstance = new Country();
-        $countryInstance->set($country);
+        $countryInstance->set($country[0]);
 
         return $countryInstance;
     }

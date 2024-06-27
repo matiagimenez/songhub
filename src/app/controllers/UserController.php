@@ -21,17 +21,18 @@ class UserController extends Controller
 
     public function profile($user = null)
     {
-
         if(!$user){
             $username = $this->sanitizeUserInput(Request::getInstance()->getParameter("username", "GET"));
             $user = $this->repository->getUser("USERNAME", $username);
         }
 
+        $country = $this->repository->getUserNationality($user->fields["COUNTRY_ID"]);
+
         $posts = $this -> repository->getUserPosts($user->fields["USER_ID"]);
         $postsCount = $this -> repository->getUserPostsCount($user->fields["USER_ID"]);
         $stats = $this -> repository->getUserAccountStats($user->fields["USER_ID"]);
 
-        Renderer::getInstance()->profile($user, $posts, $stats["following"], $stats["followers"]);
+        Renderer::getInstance()->profile($user, $country, $posts, $stats["following"], $stats["followers"]);
     }
 
     public function edit()
@@ -39,9 +40,10 @@ class UserController extends Controller
         $username = Session::getInstance()->get("username");
         $user = $this->repository->getUser("USERNAME", $username);
 
-        $userNationality = $this->repository->getUserNationality($user->fields["COUNTRY_ID"]);
+        $country = $this->repository->getUserNationality($user->fields["COUNTRY_ID"]);
+        $availableCountries = $this->repository->getAvailableCountries();
 
-        Renderer::getInstance()->edit($user, $userNationality["NATIONALITY"], $userNationality["COUNTRIES"]);
+        Renderer::getInstance()->edit($user, $country, $availableCountries);
     }
     
     public function updateUser()

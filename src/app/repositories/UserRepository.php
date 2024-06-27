@@ -126,9 +126,15 @@ class UserRepository extends Repository
         $countryRepository->setQueryBuilder(QueryBuilder::getInstance());
 
         $country = $countryRepository ->getCountryById($countryId);
-        $availableCountries = $countryRepository -> getAvailableCountries();
-
  
-        return ["NATIONALITY" => $country, "COUNTRIES" => $availableCountries];
+        return $country;
+    }
+
+    public function getAvailableCountries() {
+        $countryRepository = new CountryRepository();
+        $countryRepository->setQueryBuilder(QueryBuilder::getInstance());
+        $availableCountries = $countryRepository -> getAvailableCountries();
+        
+        return $availableCountries;
     }
 }
