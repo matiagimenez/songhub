@@ -35,11 +35,12 @@ class UserController extends Controller
 
     public function edit()
     {
-
         $username = Session::getInstance()->get("username");
         $user = $this->repository->getUser("USERNAME", $username);
 
-        Renderer::getInstance()->edit($user);
+        $userNationality = $this->repository->getUserNationality($user->fields["USER_ID"]);
+
+        Renderer::getInstance()->edit($user, $userNationality["NATIONALITY"], $userNationality["COUNTRIES"]);
     }
     
     public function updateUser()

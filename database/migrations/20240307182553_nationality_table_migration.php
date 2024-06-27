@@ -11,7 +11,7 @@ final class NationalityTableMigration extends AbstractMigration
         $table->addColumn('USER_ID', 'integer', ['signed' => false, 'null' => false]);
         $table->addColumn('COUNTRY_ID', 'integer', ['signed' => false, 'null' => false]);
         $table->addForeignKey('USER_ID', 'USER', 'USER_ID');
-        $table->addForeignKey('CONTENT_ID', 'CONTENT', 'CONTENT_ID');
+        $table->addForeignKey('COUNTRY_ID', 'COUNTRY', 'COUNTRY_ID');
         $table->create();
     }
 }

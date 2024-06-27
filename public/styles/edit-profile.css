@@ -37,7 +37,8 @@ form fieldset .input-container {
 	margin-bottom: 16px;
 }
 
-form fieldset .input-container input {
+form fieldset .input-container input,
+form fieldset .input-container select {
 	width: 90%;
 	max-width: 450px;
 	min-width: 285px;
@@ -153,6 +154,7 @@ a {
 
 @media (min-width: 550px) {
 	form fieldset .input-container input,
+	form fieldset .input-container select,
 	form fieldset .input-container textarea {
 		width: 100%;
 		max-width: initial;
@@ -180,6 +182,7 @@ a {
 	}
 
 	form fieldset .input-container input,
+	form fieldset .input-container select,
 	form fieldset .input-container textarea {
 		width: 90%;
 		max-width: 450px;
@@ -267,6 +270,7 @@ a {
 	}
 
 	form fieldset .input-container input,
+	form fieldset .input-container select,
 	form fieldset .input-container textarea {
 		max-width: 500px;
 		width: 100%;
@@ -306,6 +310,7 @@ a {
 	}
 
 	form fieldset .input-container input,
+	form fieldset .input-container select,
 	form fieldset .input-container textarea {
 		width: 90%;
 		max-width: 600px;

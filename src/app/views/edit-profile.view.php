@@ -30,6 +30,8 @@
     <?php 
             // echo "<pre>";
             // var_dump($user);
+            // var_dump($userNationality);
+            // var_dump($countries);
             // die;    
     ?>
     <main>
@@ -43,7 +45,7 @@
                 </p>
                 <p class="input-container name-edit">
                     <label for="firstname" class="label">Nombre</label>
-                    <input class="input" name="firstname" id="firstname" type="text" value="<?= $user->fields["NAME"]?>"/>
+                    <input class="input" name="firstname" id="firstname" type="text" value="<?= $user->fields["NAME"]?>" maxlength="60"/>
                 </p>
                 <p class="input-container username-edit">
                     <label for="username" class="label">Nombre de usuario</label>
@@ -55,7 +57,21 @@
                 </p>
                 <p class="input-container country-edit">
                     <label for="country" class="label">Pais</label>
-                    <input class="input" name="country" id="country" type="text" value="Argentina"/>
+                    <select class="input" name="country" id="country">
+                        <?php if($userNationality == null):?>
+                            <option value="0" selected> - - -</option>
+                        <?php else: ?>
+                            <option value="0"> - - -</option>
+                        <?php endif; ?> 
+                         
+                        <?php foreach ($countries as $country): ?>                     
+                            <?php if($userNationality && $userNationality->fields["COUNTRY_ID"] == $country->fields["COUNTRY_ID"]):?>
+                                <option value=<?= $country->fields["COUNTRY_ID"]?> selected><?= $country->fields["NAME"] ?></option>
+                            <?php else: ?>
+                                <option value=<?= $country->fields["COUNTRY_ID"] ?> > <?= $country->fields["NAME"] ?> </option>
+                            <?php endif; ?>
+                        <?php endforeach;?>
+                    </select>
                 </p>
                 <p class="input-container biography-edit">
                     <label for="biography" class="label">Biografía</label>
