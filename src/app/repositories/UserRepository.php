@@ -70,11 +70,10 @@ class UserRepository extends Repository
 
     public function updateUser($field, $value, $userData)
     {
-        $user = $this->getUser($field, $value);
-
         try {
+            $user = $this->getUser($field, $value);
             $user->set($userData);
-            $this->queryBuilder->update($this->table, $user->fields);
+            $this->queryBuilder->update($this->table, $user->fields, "USERNAME", $user -> fields["USERNAME"]);
             return [true, "Usuario actualizado con éxito"];
         } catch (InvalidValueException $exception) {
             return [false, $exception->getMessage()];
@@ -122,17 +121,20 @@ class UserRepository extends Repository
         return ["followers" => $followers, "following" => $following];
     }
 
-    public function getUserNationality($userId) {
-        $nationalityRepository = new NationalityRepository();
-        $nationalityRepository->setQueryBuilder(QueryBuilder::getInstance());
-
+    public function getUserNationality($countryId) {
         $countryRepository = new CountryRepository();
         $countryRepository->setQueryBuilder(QueryBuilder::getInstance());
 
-        $availableCountries = $countryRepository -> getAvailableCountries();
-        $nationality = $nationalityRepository -> getUserNationality($userId);
+        $country = $countryRepository ->getCountryById($countryId);
  
+        return $country;
+    }
 
-        return ["NATIONALITY" => $nationality, "COUNTRIES" => $availableCountries];
+    public function getAvailableCountries() {
+        $countryRepository = new CountryRepository();
+        $countryRepository->setQueryBuilder(QueryBuilder::getInstance());
+        $availableCountries = $countryRepository -> getAvailableCountries();
+        
+        return $availableCountries;
     }
 }

@@ -29,15 +29,17 @@ class CountryRepository extends Repository
         return $availableCountries;
     }
 
-    // public function getCountryById(int $countryId)
-    // {
-    //     $country = $this->queryBuilder->selectByColumn($this->table, "COUNTRY_ID", $countryId);
+    public function getCountryById($countryId)
+    {
+        if(!$countryId) return null;
 
-    //     if(!$country) return null;
+        $country = $this->queryBuilder->selectByColumn($this->table, "COUNTRY_ID", $countryId);
 
-    //     $countryInstance = new Country();
-    //     $countryInstance->set($country);
+        if(!$country) return null;
 
-    //     return $countryInstance;
-    // }
+        $countryInstance = new Country();
+        $countryInstance->set($country[0]);
+
+        return $countryInstance;
+    }
 }

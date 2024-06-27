@@ -41,7 +41,7 @@ form fieldset .input-container input,
 form fieldset .input-container select {
 	width: 90%;
 	max-width: 450px;
-	min-width: 285px;
+	min-width: 250px;
 }
 
 form fieldset .input-container label {
@@ -53,7 +53,7 @@ form fieldset .input-container label {
 form fieldset .input-container textarea {
 	width: 90%;
 	max-width: 450px;
-	min-width: 285px;
+	min-width: 250px;
 	height: 90px;
 	padding-top: 10px;
 	resize: none;
