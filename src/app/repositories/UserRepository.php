@@ -185,4 +185,12 @@ class UserRepository extends Repository
         
         return $availableCountries;
     }
+
+    public function getUserFavorites($userId) {
+        $favoriteRepository = new FavoriteRepository();
+        $favoriteRepository->setQueryBuilder(QueryBuilder::getInstance());
+        $userFavoriteContent = $favoriteRepository -> getUserFavorites($userId);
+        
+        return $userFavoriteContent;
+    }
 }

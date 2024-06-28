@@ -77,14 +77,14 @@ class Renderer
         require $this->viewsDirectory . "error.view.php";
     }
 
-    public function profile($user, $country, $posts, $following, $followers)
+    public function profile($user, $country, $posts, $following, $followers, $favorites)
     {
         $title = "Perfil";
         $style = "profile";
         require $this->viewsDirectory . "profile.view.php";
     }
     
-    public function edit($user, $userNationality, $countries)
+    public function edit($user, $userNationality, $countries, $favorites)
     {
         $title = "Editar perfil";
         $style = "edit-profile";

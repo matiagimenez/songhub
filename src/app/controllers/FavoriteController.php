@@ -11,13 +11,6 @@ class FavoriteController extends Controller
     {
         $this->repositoryName = FavoriteRepository::class;
         parent::__construct();
-    }
-
-
-    public function getUserFavorites($userId) {
-        
-    }
-
-    
+    }    
 
 }
