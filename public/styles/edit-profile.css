@@ -163,6 +163,7 @@ ul.edit-favourites-list .edit-favourite-item button.add-favorite span {
 }
 
 .button-container {
+	width: 90%;
 	text-align: center;
 }
 
@@ -288,12 +289,15 @@ ul.edit-favourites-list .edit-favourite-item button.add-favorite span {
 
 @media (min-width: 1700px) {
 	form fieldset {
-		max-width: 600px;
+		max-width: 650px;
 	}
 
 	.button-container {
 		max-width: 450px;
+		width: 100%;
+
 		margin: auto;
+		text-align: left;
 	}
 
 	form fieldset .input-container input,
