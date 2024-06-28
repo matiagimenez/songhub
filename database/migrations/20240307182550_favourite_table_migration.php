@@ -9,7 +9,7 @@ final class FavouriteTableMigration extends AbstractMigration
     {
         $table = $this->table("FAVORITE", ['id' => false, 'primary_key' => ['CONTENT_ID', 'USER_ID']]);
         $table->addColumn('USER_ID', 'integer', ['signed' => false, 'null' => false]);
-        $table->addColumn('CONTENT_ID', 'integer', ['signed' => false, 'null' => false]);
+        $table->addColumn('CONTENT_ID', 'string', ['limit' => 255, 'null' => false]);
         $table->addForeignKey('USER_ID', 'USER', 'USER_ID');
         $table->addForeignKey('CONTENT_ID', 'CONTENT', 'CONTENT_ID');
         $table->create();

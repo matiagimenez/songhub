@@ -7,7 +7,7 @@ use Songhub\core\exceptions\InvalidValueException;
 class Content
 {
     public $fields = [
-        "CONTENT_ID" => null,
+        "CONTENT_ID" => null, // Id from Spotify
         "AVERAGE_RATING" => null,
         "RELEASE_DATE" => null,
         "SPOTIFY_ID" => null,
@@ -17,7 +17,7 @@ class Content
         "TITLE" => null,
         "TYPE" => null,
         "COVER_ID" => null,
-        "ARTIST_ID" => null,
+        "ARTIST_ID" => null, // Id from Spotify
     ];
 
     public function setContentId($content_id)
