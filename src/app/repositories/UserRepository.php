@@ -13,17 +13,26 @@ class UserRepository extends Repository
     public $table = "USER";
 
     public function getUser(string $column, string $value)
-    {
+    {        
+        try {
+            $user = $this->queryBuilder->selectByColumn($this->table, $column, $value);
+            
+            if (!$user) {
+                return null;
+            }
 
-        $user = $this->queryBuilder->selectByColumn($this->table, $column, $value);
-
-        if (!$user) {
-            return null;
+            $userInstance = new User();
+            $userInstance->set(current($user));
+            return $userInstance;
+        } catch (Exception $exception) {
+            $this->logger->error(
+                "Error al obtener datos del usuario",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'UserRepository - getUser',
+                ]
+            );
         }
-
-        $userInstance = new User();
-        $userInstance->set(current($user));
-        return $userInstance;
     }
 
     public function emailIsUsed(string $email)
@@ -41,7 +50,6 @@ class UserRepository extends Repository
 
     public function createUser($userData)
     {
-
         try {
             if ($this->emailIsUsed($userData["EMAIL"])) {
                 return [false, "El correo electrónico ya se encuentra en uso."];
@@ -62,8 +70,22 @@ class UserRepository extends Repository
 
             return [true, "Usuario registrado con éxito"];
         } catch (InvalidValueException $exception) {
+            $this->logger->error(
+                "Error al crear el usuario",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'UserRepository - createUser',
+                ]
+            );
             return [false, $exception->getMessage()];
         } catch (Exception $exception) {
+            $this->logger->error(
+                "Error al crear el usuario",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'UserRepository - createUser',
+                ]
+            );
             return [false, "Ocurrió un error durante el registro de usuario"];
         }
     }
@@ -76,27 +98,53 @@ class UserRepository extends Repository
             $this->queryBuilder->update($this->table, $user->fields, "USERNAME", $user -> fields["USERNAME"]);
             return [true, "Usuario actualizado con éxito"];
         } catch (InvalidValueException $exception) {
+            $this->logger->error(
+                "Error al actualizar datos del usuario",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'UserRepository - updateUser',
+                ]
+            );
             return [false, $exception->getMessage()];
         } catch (Exception $exception) {
+            $this->logger->error(
+                "Error al actualizar datos del usuario",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'UserRepository - updateUser',
+                ]
+            );
             return [false, "Ocurrió un error al actualizar datos del usuario"];
         }
     }
 
     public function login($email, $password)
     {
-        $user = $this->getUser("EMAIL", $email);
+        try {
+            $user = $this->getUser("EMAIL", $email);
 
-        if ($user === null) {
-            return [false, "Correo electrónico o contraseña incorrectos"];
+            if ($user === null) {
+                return [false, "Correo electrónico o contraseña incorrectos"];
+            }
+    
+            $isCorrect = $user->checkPassword($password);
+    
+            if (!$isCorrect) {
+                return [false, "Correo electrónico o contraseña incorrectos"];
+            }
+    
+            return [true, "Inicio de sesión exitoso"];
+        } catch (Exception $exception) {
+            $this->logger->error(
+                "Error al iniciar sesión",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'UserRepository - login',
+                ]
+            );
+            return [false, "Ocurrió un error al iniciar sesión"];
         }
-
-        $isCorrect = $user->checkPassword($password);
-
-        if (!$isCorrect) {
-            return [false, "Correo electrónico o contraseña incorrectos"];
-        }
-
-        return [true, "Inicio de sesión exitoso"];
+        
     }
 
     public function getUserPosts($userId) {
