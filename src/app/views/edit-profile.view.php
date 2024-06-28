@@ -36,7 +36,7 @@
     ?>
     <main>
         <h2 class="section-title">Información del perfil</h2>
-        <form action="/" method="POST">
+        <form action="/user/profile/edit" method="POST">
             <fieldset>
                 <legend>Información de perfil</legend>
                 <p class="profile-image-edit">
@@ -45,11 +45,12 @@
                 </p>
                 <p class="input-container name-edit">
                     <label for="firstname" class="label">Nombre</label>
-                    <input class="input" name="firstname" id="firstname" type="text" value="<?= $user->fields["NAME"]?>" maxlength="60"/>
+                    <input class="input" name="name" id="name" type="text" value="<?= $user->fields["NAME"]?>" maxlength="60"/>
                 </p>
                 <p class="input-container username-edit">
                     <label for="username" class="label">Nombre de usuario</label>
                     <input class="input" name="username" id="username" type="text" disabled value="<?= $user->fields["USERNAME"]?>"/>
+                    <input class="input" name="username" id="username-hidden" type="hidden" value="<?= $user->fields["USERNAME"]?>"/>
                 </p>
                 <p class="input-container email-edit">
                     <label for="email" class="label">Correo electrónico</label>
@@ -65,7 +66,7 @@
                         <?php endif; ?> 
                          
                         <?php foreach ($countries as $country): ?>                     
-                            <?php if($userNationality && $userNationality->fields["COUNTRY_ID"] == $country->fields["COUNTRY_ID"]):?>
+                            <?php if($userNationality && $user->fields["COUNTRY_ID"] == $country->fields["COUNTRY_ID"]):?>
                                 <option value=<?= $country->fields["COUNTRY_ID"]?> selected><?= $country->fields["NAME"] ?></option>
                             <?php else: ?>
                                 <option value=<?= $country->fields["COUNTRY_ID"] ?> > <?= $country->fields["NAME"] ?> </option>

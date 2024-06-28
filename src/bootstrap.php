@@ -39,10 +39,6 @@ $router->get('/spotify/tokens', 'AuthController@requestSpotifyTokens');
 
 $router->get('/user', 'UserController@profile');
 $router->get('/user/profile', 'UserController@edit');
-$router->post('/user/register', 'UserController@createUser');
-$router->put('/user/profile/edit', 'UserController@updateUser');
+$router->post('/user/profile/edit', 'UserController@updateUser');
 
-// $router->get('/user', 'UserController@profile');
-// $router->get('/user/profile', 'UserController@edit');
 $router->post('/post/create', 'PostController@createPost');
-// $router->put('/user/profile/edit', 'UserController@updateUser');

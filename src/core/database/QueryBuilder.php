@@ -183,7 +183,7 @@ class QueryBuilder
         }
     }
 
-    public function update($table, $data)
+    public function update($table, $data, $primaryKey, $primaryKeyValue)
     {
         try {
             $setValues = [];
@@ -191,13 +191,13 @@ class QueryBuilder
                 $setValues[] = $column . ' = :' . $column;
             }
             $setClause = implode(", ", $setValues);
-            $query = "UPDATE {$table} SET {$setClause} WHERE USERNAME = :USERNAME";
+            $query = "UPDATE {$table} SET {$setClause} WHERE {$primaryKey} = :VALUE";
             $sentencia = $this->pdo->prepare($query);
 
             foreach ($data as $column => $value) {
                 $sentencia->bindValue(':' . $column, $value);
             }
-            $sentencia->bindValue(':USERNAME', $data["USERNAME"]);
+            $sentencia->bindValue(':VALUE', $primaryKeyValue);
             $result = $sentencia->execute();
             if ($result != true) {
                 throw new PDOException($sentencia->errorInfo()[2]);

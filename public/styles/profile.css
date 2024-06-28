@@ -12,14 +12,19 @@ header .user {
 	height: 60px;
 }
 
-header .biography {
-	padding-top: 12px;
+header section .biography {
 	max-width: 600px;
+	padding-top: 16px;
+}
+
+header section .nationality {
+	padding-top: 16px;
+	color: var(--color-grey-dark);
 }
 
 header .user img {
-	height: 60px;
-	width: 60px;
+	height: 65px;
+	width: 65px;
 	border-radius: 100%;
 	float: left;
 }
@@ -120,18 +125,19 @@ header .user-stats ul li span {
 }
 
 header .user p .name {
-	font-size: 0.9rem;
+	font-size: 0.95rem;
 	font-weight: bolder;
 	position: relative;
 	top: 14px;
 }
 
 header .user p .username {
-	font-size: 0.8rem;
+	font-size: 0.9rem;
 	display: block;
 	color: var(--color-grey-dark);
 	position: relative;
-	top: 18px;
+	top: 20px;
+	right: 2px;
 }
 
 .recent-activity {
@@ -209,7 +215,7 @@ section.recent-activity article:last-child {
 
 	main header .user p .username {
 		font-size: 1rem;
-		top: 26px;
+		top: 28px;
 	}
 
 	main header .user-actions {
@@ -223,6 +229,10 @@ section.recent-activity article:last-child {
 
 @media (prefers-color-scheme: dark) {
 	main header .user p .username {
+		color: var(--color-grey-very-light);
+	}
+
+	header section .nationality {
 		color: var(--color-grey-very-light);
 	}
 
