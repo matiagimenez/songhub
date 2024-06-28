@@ -13,6 +13,11 @@ class FavoriteController extends Controller
         parent::__construct();
     }
 
+
+    public function getUserFavorites($userId) {
+        
+    }
+
     
 
 }

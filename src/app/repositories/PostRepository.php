@@ -14,24 +14,50 @@ class PostRepository extends Repository
 {
     public $table = "POST";
 
-    public function getPostsFromUser($user_id)
+    public function getPostsFromUser($userId)
     {
-        $posts = $this->queryBuilder->selectByColumn($this->table, "USER_ID", $user_id);
+        try {
+            $posts = $this->queryBuilder->selectByColumnInDescOrder($this->table, "USER_ID", $userId, "DATETIME");
 
-        $userPosts = [];
-
-        if (count($posts) > 0) {
-            foreach ($posts as $post) {
-                $postInstance = new Post();
-                $postInstance->set($post);
-                $userPosts->push($postInstance);
+            $userPosts = [];
+    
+            if (count($posts) > 0) {
+                foreach ($posts as $post) {
+                    $postInstance = new Post();
+                    $postInstance->set($post);
+                    $userPosts->push($postInstance);
+                }
             }
-        }
-        // echo "<pre>";
-        // var_dump($posts);
-        // die;
+            
+            return $userPosts;
+        } catch (Exception $exception) {
+            $this->logger->error(
+                "Error al obtener los posts del usuario",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'PostRepository - getPostsFromUser',
+                ]
+            );
 
-        return $userPosts;
+            return [];
+        }
+    }
+
+    public function getPostsCountFromUser($userId)
+    {
+        try {
+            return $this->queryBuilder->count($this->table, "USER_ID", $userId);
+        } catch(Exception $exception) {
+            $this->logger->error(
+                "Error al obtener los posts del usuario",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'PostRepository - getPostsCountFromUser',
+                ]
+            );
+            
+            return 0;
+        }
     }
 
     public function getPost(int $post_id)
@@ -94,10 +120,16 @@ class PostRepository extends Repository
                 }
             }
             return $contentPosts;
-        } catch (InvalidValueException $exception) {
-            return $exception->getMessage();
         } catch (Exception $exception) {
-            return "Error al obtener los posts recientes";
+            $this->logger->error(
+                "Error al obtener los posts del content",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'PostRepository - getMostRelevantContentPosts',
+                ]
+            );
+
+            return [];
         }
     }
 
@@ -113,11 +145,18 @@ class PostRepository extends Repository
                     $userPosts->push($postInstance);
                 }
             }
+
             return $contentPosts;
-        } catch (InvalidValueException $exception) {
-            return $exception->getMessage();
         } catch (Exception $exception) {
-            return "Error al obtener los posts recientes";
+            $this->logger->error(
+                "Error al obtener los posts del content",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'PostRepository - getMostRelevantContentPosts',
+                ]
+            );
+            
+            return [];
         }
     }
 }

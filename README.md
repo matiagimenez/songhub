@@ -23,7 +23,6 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
 2. Perfiles de usuario (tiempo estimado: 6 días)
 
     - Páginas de perfil para cada usuario: debe poder agregar información personal, una descripción y hasta 3 álbumes y/o canciones favoritas.
-    - El usuario debe poder editar su avatar. (por defecto, su imagen original es la de la cuenta de Spotify asociada).
     - Listado de todas los posts realizados por el usuario.
     - Se podrán filtrar los posts del usuario. Por defecto se ordenan cronológicamente (más recientes) y se podrá filtrar por artista/nombre/valoración.
 

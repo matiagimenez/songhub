@@ -27,104 +27,175 @@
     <header class="main-header" id="main-header">
         <?php require "fragments/header.view.php"?>
     </header>
+    <?php 
+            // echo "<pre>";
+            // var_dump($user);
+            // var_dump($userNationality);
+            // var_dump($countries);
+            // die;    
+    ?>
     <main>
         <h2 class="section-title">Información del perfil</h2>
-        <form action="/" method="POST">
+        <form action="/user/profile/edit" method="POST">
             <fieldset>
                 <legend>Información de perfil</legend>
                 <p class="profile-image-edit">
-                    <img src="https://i.pinimg.com/236x/f4/e4/ff/f4e4ff0e8518813c6d5dde10a4d5164d.jpg"
-                        alt="Imagen de perfil" height="150px" width="150px" class="image-border" />
+                    <img src=<?= $user->fields["SPOTIFY_AVATAR"] ?>
+                        alt="<?= "Avatar del usuario " . $user->fields["USERNAME"] ?>" height="150px" width="150px" class="image-border" />
                 </p>
                 <p class="input-container name-edit">
                     <label for="firstname" class="label">Nombre</label>
-                    <input class="input" name="firstname" id="firstname" type="text" />
+                    <input class="input" name="name" id="name" type="text" value="<?= $user->fields["NAME"]?>" maxlength="60"/>
                 </p>
                 <p class="input-container username-edit">
                     <label for="username" class="label">Nombre de usuario</label>
-                    <input class="input" name="username" id="username" type="text" disabled />
+                    <input class="input" name="username" id="username" type="text" disabled value="<?= $user->fields["USERNAME"]?>"/>
+                    <input class="input" name="username" id="username-hidden" type="hidden" value="<?= $user->fields["USERNAME"]?>"/>
                 </p>
                 <p class="input-container email-edit">
                     <label for="email" class="label">Correo electrónico</label>
-                    <input class="input" name="email" id="email" type="email" disabled />
+                    <input class="input" name="email" id="email" type="email" disabled value="<?= $user->fields["EMAIL"]?>"/>
                 </p>
                 <p class="input-container country-edit">
                     <label for="country" class="label">Pais</label>
-                    <input class="input" name="country" id="country" type="text" />
+                    <select class="input" name="country" id="country">
+                        <?php if($userNationality == null):?>
+                            <option value="0" selected> - - -</option>
+                        <?php else: ?>
+                            <option value="0"> - - -</option>
+                        <?php endif; ?> 
+                         
+                        <?php foreach ($countries as $country): ?>                     
+                            <?php if($userNationality && $user->fields["COUNTRY_ID"] == $country->fields["COUNTRY_ID"]):?>
+                                <option value=<?= $country->fields["COUNTRY_ID"]?> selected><?= $country->fields["NAME"] ?></option>
+                            <?php else: ?>
+                                <option value=<?= $country->fields["COUNTRY_ID"] ?> > <?= $country->fields["NAME"] ?> </option>
+                            <?php endif; ?>
+                        <?php endforeach;?>
+                    </select>
                 </p>
                 <p class="input-container biography-edit">
                     <label for="biography" class="label">Biografía</label>
-                    <textarea name="biography" id="biography" class="input" maxlength="160"></textarea>
+                    <textarea name="biography" id="biography" class="input" maxlength="160"><?= $user->fields["BIOGRAPHY"]?></textarea>
+                </p>
+                <p class="button-container">
+                    <a class="submit-outline-button" href="<?= "/user?username=" . $user->fields["USERNAME"] ?>">Volver</a>
+                    <input class="submit-button" type="submit" value="Guardar cambios" />
                 </p>
             </fieldset>
-            <p class="button-container">
-                <button class="submit-outline-button">Volver</button>
-                <input class="submit-button" type="submit" value="Guardar cambios" />
-            </p>
         </form>
         <section class="edit-favourites">
             <h3 class="section-title">Álbumes Favoritos</h3>
-            <section>
-                <figure aria-describedby="favourite-song-1">
-                    <img loading="lazy" src="https://i.pinimg.com/564x/89/28/e3/8928e372651fc60256360ba5e21a7d2f.jpg"
-                        alt="Portada del álbum 'Pulse' de Pink Floyd" width="120px" height="120px"
-                        class="image-border" />
-                    <figcaption class="visually-hidden" id="favourite-song-1">
-                        <h4>Pulse</h4>
-                        <h5>Pink Floyd</h5>
-                    </figcaption>
-                </figure>
-
-                <figure aria-describedby="favourite-song-2">
-                    <img loading="lazy" src="https://i.pinimg.com/564x/99/41/82/99418264794012ddd044c761919fbb44.jpg"
-                        alt="Portada del álbum 'Punisher' de Phoebe Bridgers" width="120px" height="120px"
-                        class="image-border" />
-                    <figcaption class="visually-hidden" id="favourite-song-2">
-                        <h4>Punisher</h4>
-                        <h5>Phoebe Bridgers</h5>
-                    </figcaption>
-                </figure>
-
-                <a href="/search">
-                    <article class="empty-favourite image-border">
-                        <i class="ph ph-plus-circle icon add-favorite-icon"></i>
-                        <span class="visually-hidden">Agregar album favorito</span>
-                    </article>
-                </a>
-            </section>
+            <ul class="edit-favourites-list">
+                <li class="edit-favourite-item">
+                    <figure aria-describedby="favourite-song-1">
+                        <img loading="lazy" src="https://i.pinimg.com/564x/89/28/e3/8928e372651fc60256360ba5e21a7d2f.jpg"
+                            alt="Portada del álbum 'Pulse' de Pink Floyd" width="120px" height="120px"
+                            class="image-border" />
+                        <figcaption>
+                            <h4>Pulse</h4>
+                            <h5>Pink Floyd</h5>
+                        </figcaption>
+                        <button class="remove-favorite">
+                            <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
+                            <span class="visually-hidden">Remover de favoritos</span>
+                        </button>
+                    </figure>
+                </li>
+                <li class="edit-favourite-item">
+                    <figure aria-describedby="favourite-song-2">
+                        <img loading="lazy" src="https://i.pinimg.com/564x/99/41/82/99418264794012ddd044c761919fbb44.jpg"
+                            alt="Portada del álbum 'Punisher' de Phoebe Bridgers" width="120px" height="120px"
+                            class="image-border" />
+                        <figcaption>
+                            <h4>Punisher</h4>
+                            <h5>Phoebe Bridgers</h5>
+                        </figcaption>
+                        <button class="remove-favorite">
+                            <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
+                            <span class="visually-hidden">Remover de favoritos</span>
+                        </button>
+                    </figure>
+                </li>
+                <li class="edit-favourite-item">
+                    <figure aria-describedby="favourite-song-2">
+                        <img loading="lazy" src="https://i.pinimg.com/564x/99/41/82/99418264794012ddd044c761919fbb44.jpg"
+                            alt="Portada del álbum 'Punisher' de Phoebe Bridgers" width="120px" height="120px"
+                            class="image-border" />
+                        <figcaption>
+                            <h4>Punisher</h4>
+                            <h5>Phoebe Bridgers</h5>
+                        </figcaption>
+                        <button class="remove-favorite">
+                            <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
+                            <span class="visually-hidden">Remover de favoritos</span>
+                        </button>
+                    </figure>
+                </li>
+                <li class="edit-favourite-item">
+                    <button class="add-favorite">
+                        <span>Agregar álbum a favoritos</span>
+                        <i class="ph ph-music-notes-plus icon add-favorite-icon"></i>
+                    </button>       
+                </li>
+            </ul>
         </section>
 
         <section class="edit-favourites">
             <h3 class="section-title">Canciones Favoritas</h3>
-            <section>
-                <figure aria-describedby="favourite-song-4">
-                    <img loading="lazy" src="https://i.pinimg.com/564x/3d/65/d5/3d65d5e4af0cde2458b2e7b55869f4e6.jpg"
-                        alt="Portada del álbum 'Peso Pluma || Music Session' de Bizarrap" width="120px" height="120px"
-                        class="image-border" />
-                    <figcaption class="visually-hidden" id="favourite-song-4">
-                        <h4>Peso Pluma || Music Session</h4>
-                        <h5>Bizarrap</h5>
-                    </figcaption>
-                </figure>
-
-                <figure aria-describedby="favourite-song-5">
-                    <img loading="lazy" src="https://i.pinimg.com/564x/aa/af/30/aaaf30cb2a66f80057d06d8e78b0bd3e.jpg"
-                        alt="Portada del álbum 'Bad Habit' de Steve Lazy" width="120px" height="120px"
-                        class="image-border" />
-                    <figcaption class="visually-hidden" id="favourite-song-5">
-                        <h4>Bad Habit</h4>
-                        <h5>Steve Lazy</h5>
-                    </figcaption>
-                </figure>
-
-                <a href="/search">
-                    <article class="empty-favourite image-border">
-                        <i class="ph ph-plus-circle icon add-favorite-icon"></i>
-                        <span class="visually-hidden">Add favorite song</span>
-                    </article>
-                </a>
-                
-            </section>
+            <ul class="edit-favourites-list">
+                <li class="edit-favourite-item">
+                    <figure aria-describedby="favourite-song-4">
+                        <img loading="lazy" src="https://i.pinimg.com/564x/3d/65/d5/3d65d5e4af0cde2458b2e7b55869f4e6.jpg"
+                            alt="Portada del álbum 'Peso Pluma || Music Session' de Bizarrap" width="80px" height="80px"
+                            class="image-border" />
+                        <figcaption>
+                            <h4>Peso Pluma</h4>
+                            <h5>Bizarrap</h5>
+                        </figcaption>
+                        <button class="remove-favorite">
+                            <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
+                            <span class="visually-hidden">Remover de favoritos</span>
+                        </button>
+                    </figure>
+                </li>
+                <li class="edit-favourite-item">
+                    <figure aria-describedby="favourite-song-4">
+                        <img loading="lazy" src="https://i.pinimg.com/564x/3d/65/d5/3d65d5e4af0cde2458b2e7b55869f4e6.jpg"
+                            alt="Portada del álbum 'Peso Pluma || Music Session' de Bizarrap" width="80px" height="80px"
+                            class="image-border" />
+                        <figcaption>
+                            <h4>Peso Pluma</h4>
+                            <h5>Bizarrap</h5>
+                        </figcaption>
+                        <button class="remove-favorite">
+                            <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
+                            <span class="visually-hidden">Remover de favoritos</span>
+                        </button>                    
+                    </figure>
+                </li>
+                <li class="edit-favourite-item">
+                    <figure aria-describedby="favourite-song-4">
+                        <img loading="lazy" src="https://i.pinimg.com/564x/3d/65/d5/3d65d5e4af0cde2458b2e7b55869f4e6.jpg"
+                            alt="Portada del álbum 'Peso Pluma || Music Session' de Bizarrap" width="80px" height="80px"
+                            class="image-border" />
+                        <figcaption>
+                            <h4>Peso Pluma</h4>
+                            <h5>Bizarrap</h5>
+                        </figcaption>
+                        <button class="remove-favorite">
+                            <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
+                            <span class="visually-hidden">Remover de favoritos</span>
+                        </button>                    
+                    </figure>
+                </li>
+                <li class="edit-favourite-item">
+                    <button class="add-favorite">
+                        <span>Agregar canción a favoritos</span>
+                        <i class="ph ph-music-notes-plus icon add-favorite-icon"></i>
+                    </button>       
+                </li>
+            </ul>
         </section>
     </main>
     <footer class="main-footer">

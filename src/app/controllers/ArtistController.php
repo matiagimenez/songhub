@@ -20,7 +20,9 @@ class ArtistController extends Controller
 
     public function createArtist($content) {
 
-        $artist["ARTIST_ID"] = $content["artist_spotify_id"];
+        
+        
+        $artist["ARTIST_ID"] = $content["artist_id"];
         $artist["NAME"] = $content["artist_name"];
         $artist["AVATAR_URL"] = $content["artist_avatar_url"];
         $artist["SPOTIFY_URL"] = $content["artist_spotify_url"];

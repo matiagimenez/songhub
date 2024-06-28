@@ -15,9 +15,9 @@ class ContentRepository extends Repository
     public function existsContent($content) {
         $type = $content["type"];
         if ($type == "track") {
-            $content = $this->queryBuilder->selectByColumn($this->table, "SPOTIFY_ID", $content["track_id"]);
+            $content = $this->queryBuilder->selectByColumn($this->table, "CONTENT_ID", $content["track_id"]);
         } else {
-            $content = $this->queryBuilder->selectByColumn($this->table, "SPOTIFY_ID", $content["album_id"]);
+            $content = $this->queryBuilder->selectByColumn($this->table, "CONTENT_ID", $content["album_id"]);
         }
 
         if (empty($content)) {
@@ -57,7 +57,7 @@ class ContentRepository extends Repository
             }
             $content->setTitle($contentData[$type."_name"]);
             $content->setCoverId($contentData["images"][0]["url"]);
-            $content->setArtistId($contentData["artist_spotify_id"]);
+            $content->setArtistId($contentData["artist_id"]);
         
             $this->queryBuilder->insert($this->table, $content->fields);
 
@@ -70,6 +70,31 @@ class ContentRepository extends Repository
     }
 
 
+    public function getContentById($contentId) {
+        try{
+            $content = $this->queryBuilder->selectByColumn($this->table, $column, $value);
+            
+            if (!$content) {
+                return null;
+            }
+
+            $contentInstance = new Content();
+            $contentInstance->set(current($content));
+
+            return $contentInstance;
+
+        } catch (Exception $exception) {
+            $this->logger->error(
+                "Error al obtener los datos del content",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'ContentRepository - getContentById',
+                ]
+            );
+
+            return null;
+        }
+    }
 }
 
 

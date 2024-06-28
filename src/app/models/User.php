@@ -17,17 +17,17 @@ class User
         "SPOTIFY_AVATAR" => null,
         "BIOGRAPHY" => "",
         "SPOTIFY_URL" => null,
+        "COUNTRY_ID" => null,
     ];
-    public function setUserId($user_id)
+    public function setUserId($userId)
     {
-        $user_id = trim($user_id);
-        $this->fields["USER_ID"] = $user_id;
+        $userId = trim($userId);
+        $this->fields["USER_ID"] = $userId;
     }
 
     public function setName(string $name = "")
     {
         $name = trim($name);
-        $name = strtolower(trim($name));
 
         if (strlen($name) > 60) {
             throw new InvalidValueException("El nombre debe tener un maximo de 60 caracteres");
@@ -37,8 +37,8 @@ class User
             throw new InvalidValueException("El nombre debe tener al menos un caracter");
         }
 
-        if (!preg_match('/^[a-zA-Z0-9]+$/', $name)) {
-            throw new InvalidValueException("El nombre solo puede contener letras y números");
+        if (!preg_match('/^[a-zA-Z0-9\s]+$/', $name)) {
+            throw new InvalidValueException("El nombre solo puede contener letras, números y espacios en blanco");
         }
 
         $this->fields["NAME"] = $name;
@@ -62,7 +62,7 @@ class User
 
         $this->fields["USERNAME"] = $username;
     }
-    public function setEmail(string $email, string $email_confirmation = null)
+    public function setEmail(string $email, string $emailConfirmation = null)
     {
 
         $email = strtolower(trim($email));
@@ -83,9 +83,9 @@ class User
         }
 
         // El email de confirmacion solo se pasa al momento de registrarse. En el resto de usos del metodo setEmail, no se tiene en cuenta este segundo parametro.
-        if ($email_confirmation !== null) {
-            $email_confirmation = strtolower(trim($email_confirmation));
-            if ($email !== $email_confirmation) {
+        if ($emailConfirmation !== null) {
+            $emailConfirmation = strtolower(trim($emailConfirmation));
+            if ($email !== $emailConfirmation) {
                 throw new InvalidValueException("Los emails no coinciden");
             }
         }
@@ -93,7 +93,7 @@ class User
         $this->fields["EMAIL"] = $email;
     }
 
-    public function setPassword($password, $password_confirmation = "")
+    public function setPassword($password, $passwordConfirmation = "")
     {
         if (strlen($password) < 8) {
             throw new InvalidValueException("La contraseña debe tener un minimo de 8 caracteres");
@@ -114,43 +114,44 @@ class User
         }
 
         // El password de confirmacion solo se pasa al momento de registrarse. En el resto de usos del metodo setPassword, no se tiene en cuenta este segundo parametro.
-        if (strlen($password_confirmation) > 0) {
-            if ($password !== $password_confirmation) {
+        if (strlen($passwordConfirmation) > 0) {
+            if ($password !== $passwordConfirmation) {
                 throw new InvalidValueException("Las contraseñas no coinciden");
             }
 
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-            $this->fields["PASSWORD"] = $hashed_password;
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $this->fields["PASSWORD"] = $hashedPassword;
         } else {
             $this->fields["PASSWORD"] = $password;
         }
     }
 
-    public function setSpotifyId(string $spotify_id)
+    public function setSpotifyId(string $spotifyId)
     {
-        $spotify_id = trim($spotify_id);
-        $this->fields["SPOTIFY_ID"] = $spotify_id;
-    }
-    public function setSpotifyUrl(string $spotify_url)
-    {
-        $spotify_url = trim($spotify_url);
-        $this->fields["SPOTIFY_URL"] = $spotify_url;
+        $spotify_id = trim($spotifyId);
+        $this->fields["SPOTIFY_ID"] = $spotifyId;
     }
 
-    public function setRefreshToken(string $refresh_token)
+    public function setSpotifyUrl(string $spotifyUrl)
     {
-        $refresh_token = trim($refresh_token);
-        $this->fields["REFRESH_TOKEN"] = $refresh_token;
+        $spotify_url = trim($spotifyUrl);
+        $this->fields["SPOTIFY_URL"] = $spotifyUrl;
     }
 
-    public function setSpotifyAvatar(string $spotify_avatar)
+    public function setRefreshToken(string $refreshToken)
     {
-        if (!filter_var($spotify_avatar, FILTER_VALIDATE_URL)) {
+        $refresh_token = trim($refreshToken);
+        $this->fields["REFRESH_TOKEN"] = $refreshToken;
+    }
+
+    public function setSpotifyAvatar(string $spotifyAvatar)
+    {
+        if (!filter_var($spotifyAvatar, FILTER_VALIDATE_URL)) {
             throw new InvalidValueException("La URL del avatar de spotify no es valida");
         }
 
-        $spotify_avatar = trim($spotify_avatar);
-        $this->fields["SPOTIFY_AVATAR"] = $spotify_avatar;
+        $spotify_avatar = trim($spotifyAvatar);
+        $this->fields["SPOTIFY_AVATAR"] = $spotifyAvatar;
     }
     public function setBiography(string $biography = "")
     {
@@ -170,6 +171,17 @@ class User
         }
 
         return true;
+    }
+
+    public function setCountryId(string $countryId)
+    {
+        $countryId = trim($countryId);
+
+        if($countryId == 0) {
+            $countryId = null;
+        }
+
+        $this->fields["COUNTRY_ID"] = $countryId;
     }
 
     public function set(array $values)

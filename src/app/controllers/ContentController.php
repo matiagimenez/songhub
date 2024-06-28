@@ -100,11 +100,6 @@ class ContentController extends Controller
             }
           
             $album["artist_avatar_url"] = $body["images"][1]["url"];
-            // $album["artist_avatar_url"] = $body["images"][1];
-            $album["artist_name"] = $body["name"];
-            $album["artist_spotify_url"] = $body["external_urls"]["spotify"];
-            $album["artist_api_url"] = $body["href"];
-            $album["artist_spotify_id"] = $body["id"];
 
             return $album;
         }
@@ -144,10 +139,6 @@ class ContentController extends Controller
         }
 
         $track["artist_avatar_url"] = $body["images"][1]["url"];
-        $track["artist_name"] = $body["name"];
-        $track["artist_spotify_url"] = $body["external_urls"]["spotify"];
-        $track["artist_api_url"] = $body["href"];
-        $track["artist_spotify_id"] = $body["id"];
 
         return $track;
 
@@ -156,6 +147,7 @@ class ContentController extends Controller
     
     private function createContent($contentData)
     {   
+
         $artistController = new ArtistController();
         $artistController->createArtist($contentData);
         
