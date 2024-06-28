@@ -7,7 +7,6 @@ use Songhub\core\exceptions\InvalidValueException;
 class Cover
 {
     public $fields = [
-        "COVER_ID" => null,
         "SMALL_COVER_URL" => null,
         "MEDIUM_COVER_URL" => null,
         "LARGE_COVER_URL" => null,

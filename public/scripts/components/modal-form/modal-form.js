@@ -126,7 +126,7 @@ function create_modal(data) {
 	figcaption.appendChild(title);
 
 	const img = ElementBuilder.createElement('img', '', {
-		src: data.artist_avatar_url.url,
+		src: data.artist_avatar_url,
 		alt: `Imagen de perfil de '${data.artist_name}'`,
 		height: '50px',
 		width: '50px',
@@ -345,8 +345,8 @@ function create_modal(data) {
 				values[key] = value;
     });
 
-		// values['CONTENT_ID'] = data.type === 'album' ? data.album_id : data.track_id;
-		values['CONTENT_ID'] = 3;
+		values['CONTENT_ID'] = data.type === 'album' ? data.album_id : data.track_id;
+		// values['CONTENT_ID'] = 3;
 		// values['USER_ID'] = 2;
 
 		console.log(values)

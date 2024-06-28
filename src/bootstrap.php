@@ -46,3 +46,6 @@ $router->put('/user/profile/edit', 'UserController@updateUser');
 // $router->get('/user/profile', 'UserController@edit');
 $router->post('/post/create', 'PostController@createPost');
 // $router->put('/user/profile/edit', 'UserController@updateUser');
+
+
+$router->get('/artist', 'ArtistController@getArtist');

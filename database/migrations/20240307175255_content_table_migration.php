@@ -16,10 +16,10 @@ final class ContentTableMigration extends AbstractMigration
         $table->addColumn('SPOTIFY_PREVIEW_URL', 'string', ['limit' => 255, 'null' => false]);
         $table->addColumn('TITLE', 'string', ['limit' => 120, 'null' => false]);
         $table->addColumn('TYPE', 'char', ['limit' => 1, 'null' => false]);
-        $table->addColumn('COVER_ID', 'integer', ['signed' => false, 'null' => false]);
-        $table->addColumn('ARTIST_ID', 'integer', ['signed' => false, 'null' => false]);
-        $table->addForeignKey('COVER_ID', 'COVER', 'COVER_ID');
-        $table->addForeignKey('ARTIST_ID', 'ARTIST', 'ARTIST_ID');
+        $table->addColumn('COVER_ID', 'string', ['limit' => 255, 'null' => false]);
+        $table->addColumn('ARTIST_ID', 'string', ['limit' => 255, 'null' => false]);
+        $table->addForeignKey('COVER_ID', 'COVER', 'SMALL_COVER_URL', ['delete'=> 'CASCADE', 'update'=> 'NO_ACTION']);
+        $table->addForeignKey('ARTIST_ID', 'ARTIST', 'ARTIST_ID', ['delete'=> 'CASCADE', 'update'=> 'NO_ACTION']);
         $table->create();
     }
 }

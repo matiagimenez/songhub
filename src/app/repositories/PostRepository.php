@@ -6,6 +6,9 @@ use Exception;
 use Songhub\app\models\Post;
 use Songhub\core\exceptions\InvalidValueException;
 use Songhub\core\Repository;
+use Songhub\core\Session;
+use Songhub\app\repositories\UserRepository;
+use Songhub\core\database\QueryBuilder;
 
 class PostRepository extends Repository
 {
@@ -51,6 +54,13 @@ class PostRepository extends Repository
         ob_start();
         $post = new Post();
         try {
+            $queryBuilder = QueryBuilder::getInstance();
+            $userRepository = new UserRepository();
+            $userRepository->setQueryBuilder($queryBuilder);
+            $username = Session::getInstance()->get("username");
+            $user = $userRepository->getUser("USERNAME", $username);
+            $postData["USER_ID"] = $user->fields["USER_ID"];
+            $postData["DATETIME"] = date("Y-m-d");
             $post->set($postData);
             $this->queryBuilder->insert($this->table, $post->fields);
             http_response_code(201); // Código 201: Created

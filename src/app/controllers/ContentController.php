@@ -8,6 +8,8 @@ use Songhub\core\Request;
 use Songhub\core\Session;
 use Songhub\core\HttpClient;
 use Songhub\app\repositories\ContentRepository;
+use Songhub\app\controllers\ArtistController;
+use Songhub\app\controllers\CoverController;
 
 class ContentController extends Controller
 {
@@ -18,6 +20,18 @@ class ContentController extends Controller
     {
         $this->repositoryName = ContentRepository::class;
         parent::__construct();        
+    }
+
+
+    public function existsContent($content_id) {
+        
+        $content = $this->queryBuilder->selectByColumn($this->table, "CONTENT_ID", $content_id);
+
+        if (empty($content)) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public function content()
@@ -31,12 +45,15 @@ class ContentController extends Controller
         Renderer::getInstance()->content($content, $posts["relevant"], $posts["recent"]);
     }
 
-
     public function getContentData() {
         $id = $this->sanitizeUserInput(Request::getInstance()->getParameter("id", "GET"));
         $type = $this->sanitizeUserInput(Request::getInstance()->getParameter("type", "GET"));
         
         $content = $this->fetchContentData($id, $type);
+
+        if(!$this->repository->existsContent($content)) {
+            $this->createContent($content);
+        }
 
         ob_clean();
         header('Content-Type: application/json');
@@ -82,10 +99,12 @@ class ContentController extends Controller
                 die;
             }
           
-//             $album["artist_avatar_url"] = $body["images"][1]["url"];
-
-
-            $album["artist_avatar_url"] = $body["images"][1];
+            $album["artist_avatar_url"] = $body["images"][1]["url"];
+            // $album["artist_avatar_url"] = $body["images"][1];
+            $album["artist_name"] = $body["name"];
+            $album["artist_spotify_url"] = $body["external_urls"]["spotify"];
+            $album["artist_api_url"] = $body["href"];
+            $album["artist_spotify_id"] = $body["id"];
 
             return $album;
         }
@@ -124,12 +143,26 @@ class ContentController extends Controller
             die;
         }
 
-        $track["artist_avatar_url"] = $body["images"][1];
-//         $track["artist_avatar_url"] = $body["images"][1]["url"];
+        $track["artist_avatar_url"] = $body["images"][1]["url"];
+        $track["artist_name"] = $body["name"];
+        $track["artist_spotify_url"] = $body["external_urls"]["spotify"];
+        $track["artist_api_url"] = $body["href"];
+        $track["artist_spotify_id"] = $body["id"];
 
         return $track;
 
         
     }
     
+    private function createContent($contentData)
+    {   
+        $artistController = new ArtistController();
+        $artistController->createArtist($contentData);
+        
+        $coverController = new CoverController();
+        $coverController->createCover($contentData);
+        
+        $this->repository->createContent($contentData);
+    }
+
 }
