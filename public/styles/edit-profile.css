@@ -2,11 +2,12 @@
 @import url('global/main.css');
 
 main {
+	margin-top: 10px;
 	width: 95%;
 	margin-left: auto;
 	margin-right: auto;
 	position: relative;
-	padding-bottom: 70px;
+	padding-bottom: 10px;
 }
 
 form fieldset {
@@ -60,16 +61,6 @@ form fieldset .input-container textarea {
 	padding-bottom: 10px;
 }
 
-.button-container {
-	position: absolute;
-	bottom: 10px;
-	width: 100%;
-	text-align: center;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
 a.submit-outline-button {
 	width: 45%;
 	display: inline-block;
@@ -86,9 +77,9 @@ input[type='submit'].submit-button {
 }
 
 section.edit-favourites {
-	margin-top: 16px;
 	width: 100%;
 	padding: 0 8px;
+	margin-top: 16px;
 }
 
 section.edit-favourites h3.section-title {
@@ -97,52 +88,82 @@ section.edit-favourites h3.section-title {
 	border-bottom: none;
 }
 
-section.edit-favourites section figure {
-	display: inline-block;
-	cursor: pointer;
+a {
+	text-decoration: none;
+}
+
+ul.edit-favourites-list {
+	max-width: 525px;
+	padding-top: 8px;
+}
+
+ul.edit-favourites-list .edit-favourite-item {
+	margin-bottom: 16px;
+}
+
+ul.edit-favourites-list .edit-favourite-item figure {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	gap: 8px;
 	position: relative;
 }
 
-section.edit-favourites section figure img,
-.empty-favourite {
-	width: 130px;
-	height: 130px;
-	border-radius: 10px;
+ul.edit-favourites-list .edit-favourite-item figure figcaption h4 {
+	font-size: 1.1rem;
+	color: var(--color-violet-dark);
+	font-weight: bold;
 }
 
-section.edit-favourites section {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 16px;
+ul.edit-favourites-list .edit-favourite-item figure figcaption h5 {
+	font-size: 1.05rem;
+	margin-top: 5px;
+	color: var(--color-violet-medium);
 }
 
-.remove-favourite::after {
-	content: '';
+ul.edit-favourites-list .edit-favourite-item figure img {
+	width: 65px;
+	height: 65px;
+}
+
+ul.edit-favourites-list .edit-favourite-item button.remove-favorite {
+	width: 40px;
+	background-color: transparent;
+	height: 40px;
+	border: none;
+	border-radius: 5px;
 	position: absolute;
-	inset: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.507);
-	overflow: hidden;
-	border-radius: 10px;
-	background-image: url('../../assets/icons/remove.svg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: 30px;
-}
-
-.empty-favourite {
-	display: grid;
-	place-content: center;
-}
-
-.empty-favourite:hover {
+	right: 0px;
 	cursor: pointer;
-	opacity: 70%;
 }
 
-a {
-	text-decoration: none;
+ul.edit-favourites-list .edit-favourite-item button.add-favorite {
+	background-color: transparent;
+	color: var(--color-green-dark);
+	height: 32px;
+	font-weight: bold;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+ul.edit-favourites-list .edit-favourite-item button.remove-favorite:hover {
+	transform: scale(1.15);
+	transition: transform 100ms linear;
+}
+
+ul.edit-favourites-list .edit-favourite-item button.add-favorite:hover {
+	transform: scale(1.03);
+	transition: transform 150ms linear;
+}
+
+ul.edit-favourites-list .edit-favourite-item button.add-favorite span {
+	position: relative;
+	bottom: 3px;
+}
+
+.button-container {
+	text-align: center;
 }
 
 @media (min-width: 420px) {
@@ -170,7 +191,7 @@ a {
 		display: grid;
 		grid-template-columns: 50% 50%;
 		grid-template-rows: 4rem repeat(2, 1fr);
-		padding-bottom: 70px;
+		padding-bottom: 20px;
 		min-height: 835px;
 	}
 
@@ -197,7 +218,6 @@ a {
 		grid-row: 3/4;
 		display: flex;
 		flex-direction: column;
-		align-self: start;
 	}
 
 	main section.edit-favourites:first-of-type {
@@ -211,25 +231,6 @@ a {
 		margin-bottom: 20px;
 	}
 
-	section.edit-favourites section {
-		gap: 12px;
-		display: grid;
-		grid-template-columns: repeat(3, 90px);
-		grid-auto-rows: 90px;
-	}
-
-	section.edit-favourites section figure {
-		height: 100%;
-		width: 100%;
-	}
-
-	section.edit-favourites section figure img,
-	.empty-favourite {
-		width: 100%;
-		height: 100%;
-		border-radius: 10px;
-	}
-
 	a.submit-outline-button {
 		max-width: 250px;
 	}
@@ -240,11 +241,6 @@ a {
 }
 
 @media (min-width: 800px) {
-	section.edit-favourites section {
-		grid-template-columns: repeat(3, 110px);
-		grid-auto-rows: 110px;
-	}
-
 	a.submit-outline-button,
 	input[type='submit'].submit-button {
 		max-width: 250px;
@@ -260,7 +256,6 @@ a {
 
 @media (min-width: 1200px) {
 	main section.edit-favourites {
-		align-self: start;
 		margin-top: 0;
 	}
 
@@ -268,23 +263,11 @@ a {
 		align-self: center;
 	}
 
-	section.edit-favourites section {
-		grid-template-columns: repeat(3, 170px);
-		grid-auto-rows: 170px;
-	}
-
 	form fieldset .input-container input,
 	form fieldset .input-container select,
 	form fieldset .input-container textarea {
 		max-width: 500px;
 		width: 100%;
-	}
-
-	form fieldset .username-edit,
-	form fieldset .name-edit {
-		width: 50%;
-		max-width: 240px;
-		display: inline-block;
 	}
 
 	form fieldset .username-edit input,
@@ -301,16 +284,16 @@ a {
 	main {
 		grid-template-columns: 40% 60%;
 	}
-
-	section.edit-favourites section {
-		grid-template-columns: repeat(3, 185px);
-		grid-auto-rows: 185px;
-	}
 }
 
 @media (min-width: 1700px) {
 	form fieldset {
 		max-width: 600px;
+	}
+
+	.button-container {
+		max-width: 450px;
+		margin: auto;
 	}
 
 	form fieldset .input-container input,
@@ -319,9 +302,14 @@ a {
 		width: 90%;
 		max-width: 600px;
 	}
+}
 
-	section.edit-favourites section {
-		grid-template-columns: repeat(5, 200px);
-		grid-auto-rows: 200px;
+@media (prefers-color-scheme: dark) {
+	ul.edit-favourites-list .edit-favourite-item figure figcaption h4 {
+		color: var(--color-white);
+	}
+
+	ul.edit-favourites-list .edit-favourite-item figure figcaption h5 {
+		color: var(--color-violet-lightest);
 	}
 }

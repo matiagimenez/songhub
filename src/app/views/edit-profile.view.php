@@ -77,75 +77,124 @@
                     <label for="biography" class="label">Biografía</label>
                     <textarea name="biography" id="biography" class="input" maxlength="160"><?= $user->fields["BIOGRAPHY"]?></textarea>
                 </p>
+                <p class="button-container">
+                    <a class="submit-outline-button" href="<?= "/user?username=" . $user->fields["USERNAME"] ?>">Volver</a>
+                    <input class="submit-button" type="submit" value="Guardar cambios" />
+                </p>
             </fieldset>
-            <p class="button-container">
-                <a class="submit-outline-button" href="<?= "/user?username=" . $user->fields["USERNAME"] ?>">Volver</a>
-                <input class="submit-button" type="submit" value="Guardar cambios" />
-            </p>
         </form>
         <section class="edit-favourites">
             <h3 class="section-title">Álbumes Favoritos</h3>
-            <section>
-                <figure aria-describedby="favourite-song-1">
-                    <img loading="lazy" src="https://i.pinimg.com/564x/89/28/e3/8928e372651fc60256360ba5e21a7d2f.jpg"
-                        alt="Portada del álbum 'Pulse' de Pink Floyd" width="120px" height="120px"
-                        class="image-border" />
-                    <figcaption class="visually-hidden" id="favourite-song-1">
-                        <h4>Pulse</h4>
-                        <h5>Pink Floyd</h5>
-                    </figcaption>
-                </figure>
-
-                <figure aria-describedby="favourite-song-2">
-                    <img loading="lazy" src="https://i.pinimg.com/564x/99/41/82/99418264794012ddd044c761919fbb44.jpg"
-                        alt="Portada del álbum 'Punisher' de Phoebe Bridgers" width="120px" height="120px"
-                        class="image-border" />
-                    <figcaption class="visually-hidden" id="favourite-song-2">
-                        <h4>Punisher</h4>
-                        <h5>Phoebe Bridgers</h5>
-                    </figcaption>
-                </figure>
-
-                <a href="/search">
-                    <article class="empty-favourite image-border">
-                        <i class="ph ph-plus-circle icon add-favorite-icon"></i>
-                        <span class="visually-hidden">Agregar album favorito</span>
-                    </article>
-                </a>
-            </section>
+            <ul class="edit-favourites-list">
+                <li class="edit-favourite-item">
+                    <figure aria-describedby="favourite-song-1">
+                        <img loading="lazy" src="https://i.pinimg.com/564x/89/28/e3/8928e372651fc60256360ba5e21a7d2f.jpg"
+                            alt="Portada del álbum 'Pulse' de Pink Floyd" width="120px" height="120px"
+                            class="image-border" />
+                        <figcaption>
+                            <h4>Pulse</h4>
+                            <h5>Pink Floyd</h5>
+                        </figcaption>
+                        <button class="remove-favorite">
+                            <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
+                            <span class="visually-hidden">Remover de favoritos</span>
+                        </button>
+                    </figure>
+                </li>
+                <li class="edit-favourite-item">
+                    <figure aria-describedby="favourite-song-2">
+                        <img loading="lazy" src="https://i.pinimg.com/564x/99/41/82/99418264794012ddd044c761919fbb44.jpg"
+                            alt="Portada del álbum 'Punisher' de Phoebe Bridgers" width="120px" height="120px"
+                            class="image-border" />
+                        <figcaption>
+                            <h4>Punisher</h4>
+                            <h5>Phoebe Bridgers</h5>
+                        </figcaption>
+                        <button class="remove-favorite">
+                            <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
+                            <span class="visually-hidden">Remover de favoritos</span>
+                        </button>
+                    </figure>
+                </li>
+                <li class="edit-favourite-item">
+                    <figure aria-describedby="favourite-song-2">
+                        <img loading="lazy" src="https://i.pinimg.com/564x/99/41/82/99418264794012ddd044c761919fbb44.jpg"
+                            alt="Portada del álbum 'Punisher' de Phoebe Bridgers" width="120px" height="120px"
+                            class="image-border" />
+                        <figcaption>
+                            <h4>Punisher</h4>
+                            <h5>Phoebe Bridgers</h5>
+                        </figcaption>
+                        <button class="remove-favorite">
+                            <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
+                            <span class="visually-hidden">Remover de favoritos</span>
+                        </button>
+                    </figure>
+                </li>
+                <li class="edit-favourite-item">
+                    <button class="add-favorite">
+                        <span>Agregar álbum a favoritos</span>
+                        <i class="ph ph-music-notes-plus icon add-favorite-icon"></i>
+                    </button>       
+                </li>
+            </ul>
         </section>
 
         <section class="edit-favourites">
             <h3 class="section-title">Canciones Favoritas</h3>
-            <section>
-                <figure aria-describedby="favourite-song-4">
-                    <img loading="lazy" src="https://i.pinimg.com/564x/3d/65/d5/3d65d5e4af0cde2458b2e7b55869f4e6.jpg"
-                        alt="Portada del álbum 'Peso Pluma || Music Session' de Bizarrap" width="120px" height="120px"
-                        class="image-border" />
-                    <figcaption class="visually-hidden" id="favourite-song-4">
-                        <h4>Peso Pluma || Music Session</h4>
-                        <h5>Bizarrap</h5>
-                    </figcaption>
-                </figure>
-
-                <figure aria-describedby="favourite-song-5">
-                    <img loading="lazy" src="https://i.pinimg.com/564x/aa/af/30/aaaf30cb2a66f80057d06d8e78b0bd3e.jpg"
-                        alt="Portada del álbum 'Bad Habit' de Steve Lazy" width="120px" height="120px"
-                        class="image-border" />
-                    <figcaption class="visually-hidden" id="favourite-song-5">
-                        <h4>Bad Habit</h4>
-                        <h5>Steve Lazy</h5>
-                    </figcaption>
-                </figure>
-
-                <a href="/search">
-                    <article class="empty-favourite image-border">
-                        <i class="ph ph-plus-circle icon add-favorite-icon"></i>
-                        <span class="visually-hidden">Add favorite song</span>
-                    </article>
-                </a>
-                
-            </section>
+            <ul class="edit-favourites-list">
+                <li class="edit-favourite-item">
+                    <figure aria-describedby="favourite-song-4">
+                        <img loading="lazy" src="https://i.pinimg.com/564x/3d/65/d5/3d65d5e4af0cde2458b2e7b55869f4e6.jpg"
+                            alt="Portada del álbum 'Peso Pluma || Music Session' de Bizarrap" width="80px" height="80px"
+                            class="image-border" />
+                        <figcaption>
+                            <h4>Peso Pluma</h4>
+                            <h5>Bizarrap</h5>
+                        </figcaption>
+                        <button class="remove-favorite">
+                            <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
+                            <span class="visually-hidden">Remover de favoritos</span>
+                        </button>
+                    </figure>
+                </li>
+                <li class="edit-favourite-item">
+                    <figure aria-describedby="favourite-song-4">
+                        <img loading="lazy" src="https://i.pinimg.com/564x/3d/65/d5/3d65d5e4af0cde2458b2e7b55869f4e6.jpg"
+                            alt="Portada del álbum 'Peso Pluma || Music Session' de Bizarrap" width="80px" height="80px"
+                            class="image-border" />
+                        <figcaption>
+                            <h4>Peso Pluma</h4>
+                            <h5>Bizarrap</h5>
+                        </figcaption>
+                        <button class="remove-favorite">
+                            <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
+                            <span class="visually-hidden">Remover de favoritos</span>
+                        </button>                    
+                    </figure>
+                </li>
+                <li class="edit-favourite-item">
+                    <figure aria-describedby="favourite-song-4">
+                        <img loading="lazy" src="https://i.pinimg.com/564x/3d/65/d5/3d65d5e4af0cde2458b2e7b55869f4e6.jpg"
+                            alt="Portada del álbum 'Peso Pluma || Music Session' de Bizarrap" width="80px" height="80px"
+                            class="image-border" />
+                        <figcaption>
+                            <h4>Peso Pluma</h4>
+                            <h5>Bizarrap</h5>
+                        </figcaption>
+                        <button class="remove-favorite">
+                            <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
+                            <span class="visually-hidden">Remover de favoritos</span>
+                        </button>                    
+                    </figure>
+                </li>
+                <li class="edit-favourite-item">
+                    <button class="add-favorite">
+                        <span>Agregar canción a favoritos</span>
+                        <i class="ph ph-music-notes-plus icon add-favorite-icon"></i>
+                    </button>       
+                </li>
+            </ul>
         </section>
     </main>
     <footer class="main-footer">
