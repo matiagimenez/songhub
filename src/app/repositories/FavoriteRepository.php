@@ -11,24 +11,46 @@ class FavoriteRepository extends Repository
 {
     public $table = "FAVORITE";
 
-    public function getFavorites(int $user_id)
+    public function getUserFavorites(int $userId)
     {
-        // TODO:
-        //   Armar un querie para pedir la lista de favoritos de un usuario
-    }
-
-    public function createFavorite($favoriteData)
-    {
-        $favorite = new Favorite();
         try {
+            $favorites = $this->queryBuilder->selectByColumn($this->table, "USER_ID", $userId);
 
-            $favorite->set($favoriteData);
-            $this->queryBuilder->insert($this->table, $favorite->fields);
-            return [true, "Nuevo Favorite registrado"];
-        } catch (InvalidValueException $exception) {
-            return [false, $exception->getMessage()];
+            $contentRepository = new ContentRepository();
+            $contentRepository->setQueryBuilder($this->queryBuilder);
+
+            $tracks = [];
+            $albums = [];
+            
+            foreach($favorites as $favorite) {
+                $favoriteInstance = new Favorite();
+                $favoriteInstance ->set($favorite);
+                $content = $contentRepository->getContentById($favoriteInstance->fields["CONTENT_ID"]);
+                
+                // Ver el valor de TYPE que se usa al cargar un registro en la tabla CONTENT
+                if ($content->fields["TYPE"] == "a") {
+                    $albums[] = $content;
+                } else {
+                    $tracks[] = $content;
+                }
+            }
+
+            return [
+                "FAVORITE_ALBUMS" => $albums,
+                "FAVORITE_TRACKS" => $tracks,
+            ];
         } catch (Exception $exception) {
-            return [false, "Error al registrar Favorite"];
+            $this->logger->error(
+                "Error al obtener favoritos del usuario",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'FavoriteRepository - getUserFavorites',
+                ]
+            );
+            return [
+                "FAVORITE_ALBUMS" => [],
+                "FAVORITE_TRACKS" => [],
+            ];
         }
     }
 }
