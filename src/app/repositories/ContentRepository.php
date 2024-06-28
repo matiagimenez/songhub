@@ -44,6 +44,7 @@ class ContentRepository extends Repository
             $type = $contentData["type"];
 
             // $content->setAverageRating($contentData["average_rating"]);
+            $content->setContentId($contentData[$type."_id"]);
             $content->setReleaseDate($contentData["release_date"]);
             $content->setSpotifyId($contentData[$type."_id"]);
             $content->setSpotifyApiUrl($contentData[$type."_api_url"]);
@@ -57,12 +58,6 @@ class ContentRepository extends Repository
             $content->setTitle($contentData[$type."_name"]);
             $content->setCoverId($contentData["images"][0]["url"]);
             $content->setArtistId($contentData["artist_spotify_id"]);
-            
-
-            // ob_clean();
-            // header('Content-Type: application/json');
-            // echo json_encode($content);
-            // die;
         
             $this->queryBuilder->insert($this->table, $content->fields);
 

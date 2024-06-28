@@ -346,8 +346,6 @@ function create_modal(data) {
     });
 
 		values['CONTENT_ID'] = data.type === 'album' ? data.album_id : data.track_id;
-		// values['CONTENT_ID'] = 3;
-		// values['USER_ID'] = 2;
 
 		console.log(values)
 		console.log(JSON.stringify(values))

@@ -7,7 +7,8 @@ final class ContentTableMigration extends AbstractMigration
 {
     public function change(): void
     {
-        $table = $this->table("CONTENT", ['id' => 'CONTENT_ID']);
+        $table = $this->table("CONTENT", ['id' => false, 'primary_key' => ['CONTENT_ID']]);
+        $table->addColumn('CONTENT_ID', 'string', ['limit' => 255, 'null' => false]);
         $table->addColumn('AVERAGE_RATING', 'float', ['null' => true]);
         $table->addColumn('RELEASE_DATE', 'string', ['limit' => 10, 'null' => false]);
         $table->addColumn('SPOTIFY_ID', 'string', ['limit' => 255, 'null' => false]);
