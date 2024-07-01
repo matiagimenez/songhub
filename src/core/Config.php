@@ -18,8 +18,12 @@ class Config
         $this->configs["LOG_PATH"] = $this->joinPaths(__DIR__, "../..", $path);
 
         $this->configs['HOST'] = getenv('HOST') ?? 'localhost';
+<<<<<<< HEAD
         // $this->configs['PORT'] = getenv('PORT') ?? '8888';
         $this->configs['PORT'] = '8888';
+=======
+        $this->configs['PORT'] = getenv('PORT') ?? '8888';
+>>>>>>> 77677394b19aa7d9ba870e21d478c9a14b799c3f
 
         $this->configs['DB_ADAPTER'] = getenv('DB_ADAPTER') ?? 'mysql';
         $this->configs['DB_HOSTNAME'] = getenv('DB_HOSTNAME') ?? 'localhost';

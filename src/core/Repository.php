@@ -10,9 +10,13 @@ class Repository
     use Loggable;
     public QueryBuilder $queryBuilder;
 
+    public function __construct()
+    {
+        $this->queryBuilder = QueryBuilder::getInstance();
+    }
+
     public function setQueryBuilder(QueryBuilder $queryBuilder)
     {
         $this->queryBuilder = $queryBuilder;
     }
-
 }

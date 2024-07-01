@@ -32,7 +32,7 @@
                 <article class="add-modal-access" id=<?= $item["track_id"] ?> data-type=<?= $item["type"] ?> >
                     <figure>
                         <section class="article-img-container">
-                            <img loading="lazy" width="180px" height="180px" src=<?= $item["images"][0]["url"]?> alt="<?= 'Portada de ' . $item["track_name"] . ' del artista ' . $item["artist_name"] ?>" class="image-border" />
+                            <img loading="lazy" width="180px" height="180px" src=<?= $item["images"][0]["url"]?> alt="<?= 'Portada del ' . $item["type"] . " " . $item["track_name"] . ' del artista ' . $item["artist_name"] ?>" class="image-border" />
                         </section>
                         <figcaption>
                             <a href=<?= "/content?id=". $item["track_id"] . "&type=" . $item["type"] ?> >
@@ -44,31 +44,33 @@
                 </article>
             <?php endforeach; ?>            
         </section>
-        <section class="section">
-            <h2 class="section-title">Nuestras recomendaciones</h2>
-            <?php foreach($recommendations as $item): ?>
-                <article class="add-modal-access" id=<?= $item["track_id"] ?> data-type=<?= $item["type"] ?> >
-                    <figure>
-                        <section class="article-img-container">
-                            <img loading="lazy" width="180px" height="180px" src=<?= $item["images"][0]["url"]?> alt="<?= 'Portada de ' . $item["track_name"] . ' del artista ' . $item["artist_name"] ?>"  class="image-border" />
-                        </section>
-                        <figcaption>
-                            <a href=<?= "/content?id=". $item["track_id"] . "&type=" . $item["type"] ?> >
-                                <h3 class="song-title"><?= $item["track_name"] ?></h3>
-                                <h4 class="artist-title"><?= $item["artist_name"] ?></h4>
-                            </a>
-                        </figcaption>
-                    </figure>
-                </article>
-            <?php endforeach; ?>   
-        </section>
+        <?php if(count($recommendations) > 0): ?>
+            <section class="section">
+                <h2 class="section-title">Nuestras recomendaciones</h2>
+                <?php foreach($recommendations as $item): ?>
+                    <article class="add-modal-access" id=<?= $item["track_id"] ?> data-type=<?= $item["type"] ?> >
+                        <figure>
+                            <section class="article-img-container">
+                                <img loading="lazy" width="180px" height="180px" src=<?= $item["images"][0]["url"]?> alt="<?= 'Portada del ' . $item["type"] . " " . $item["track_name"]. $item["track_name"] . ' del artista ' . $item["artist_name"] ?>"  class="image-border" />
+                            </section>
+                            <figcaption>
+                                <a href=<?= "/content?id=". $item["track_id"] . "&type=" . $item["type"] ?> >
+                                    <h3 class="song-title"><?= $item["track_name"] ?></h3>
+                                    <h4 class="artist-title"><?= $item["artist_name"] ?></h4>
+                                </a>
+                            </figcaption>
+                        </figure>
+                    </article>
+                <?php endforeach; ?>   
+            </section>
+        <?php endif; ?>
         <section class="section">
             <h2 class="section-title">Tu contenido favorito</h2>
             <?php foreach($userTopTracks as $item): ?>
                 <article class="add-modal-access" id=<?= $item["track_id"] ?> data-type=<?= $item["type"] ?> >
                     <figure>
                         <section class="article-img-container">
-                            <img loading="lazy" width="180px" height="180px" src=<?= $item["images"][0]["url"]?> alt="<?= 'Portada de ' . $item["track_name"] . ' del artista ' . $item["artist_name"] ?>"  class="image-border" />
+                            <img loading="lazy" width="180px" height="180px" src=<?= $item["images"][0]["url"]?> alt="<?= 'Portada del '  . $item["type"] . " " . $item["track_name"] . ' del artista ' . $item["artist_name"] ?>"  class="image-border" />
                         </section>
                         <figcaption>
                             <a href=<?= "/content?id=". $item["track_id"] . "&type=" . $item["type"] ?> >
@@ -86,7 +88,7 @@
                 <article class="add-modal-access" id=<?= $item["album_id"] ?> data-type=<?= $item["type"] ?> >
                     <figure>
                         <section class="article-img-container">
-                            <img loading="lazy" width="180px" height="180px" src=<?= $item["images"][0]["url"]?> alt="<?= 'Portada de ' . $item["album_name"] . ' del artista ' . $item["artist_name"] ?>"  class="image-border" />
+                            <img loading="lazy" width="180px" height="180px" src=<?= $item["images"][0]["url"]?> alt="<?= 'Portada del '  . $item["type"] . " " . $item["album_name"]. ' del artista ' . $item["artist_name"] ?>"  class="image-border" />
                         </section>
                         <figcaption>
                             <a href=<?= "/content?id=". $item["album_id"] . "&type=" . $item["type"] ?> >

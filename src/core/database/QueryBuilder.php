@@ -34,8 +34,11 @@ class QueryBuilder
         try {
             $where = "";
             $bindings = [];
+            
+            $query = "SELECT * FROM {$table}";
 
-            //* Armar el where con los parametros que vienen en $params como clave => valor
+
+            //* Arma el where con los parametros que vienen en $params como clave => valor
             if (count($params) > 0) {
                 foreach ($params as $key => $value) {
 
@@ -46,9 +49,10 @@ class QueryBuilder
                     $where .= $key . "= :" . $key;
                     $bindings[":" . $key] = $value;
                 }
+
+                $query = "SELECT * FROM {$table} WHERE {$where}";
             }
 
-            $query = "SELECT * FROM {$table} WHERE {$where}";
 
             $statement = $this->pdo->prepare($query);
 
@@ -64,10 +68,9 @@ class QueryBuilder
                 "Error al ejecutar el query en la base de datos",
                 [
                     "Error" => $error->getMessage(),
-                    "Operacion" => 'selectByColumn',
+                    "Operacion" => 'select',
                     "Tabla" => $table,
                     "Columna" => $params,
-                    "Valor" => $value,
                 ]
             );
             return [];
@@ -96,7 +99,58 @@ class QueryBuilder
                 ]
             );
             return [];
+        }
+    }
 
+    public function selectByColumnInDescOrder(string $table, $column, $value, $columnBy, $limit = 0)
+    {
+        try {
+            if($limit > 0) {
+                $query = "SELECT * FROM {$table} WHERE {$column} = :value ORDER BY {$columnBy} ASC LIMIT {$limit};";
+            } else {
+                $query = "SELECT * FROM {$table} WHERE {$column} = :value ORDER BY {$columnBy} ASC;";
+            }
+
+            $statement = $this->pdo->prepare($query);
+            $statement->bindParam(':value', $value);
+            $statement->setFetchMode(PDO::FETCH_ASSOC);
+            $statement->execute();
+            return $statement->fetchAll();
+        } catch (PDOException $error) {
+            $this->logger->error(
+                "Error al ejecutar el query en la base de datos",
+                [
+                    "Error" => $error->getMessage(),
+                    "Operacion" => 'selectByColumnInAscOrder',
+                    "Tabla" => $table,
+                    "Columna" => $column,
+                    "Valor" => $value,
+                ]
+            );
+            return [];
+        }
+    }
+
+    public function count($table, $column, $value) {
+        try {
+            $query = "SELECT COUNT(*) as count FROM {$table} WHERE {$column} = :value";
+            $statement = $this->pdo->prepare($query);
+            $statement->bindParam(':value', $value);
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            return $result['count'];
+        } catch (PDOException $error) {
+            $this->logger->error(
+                "Error al ejecutar el query en la base de datos",
+                [
+                    "Error" => $error->getMessage(),
+                    "Operacion" => 'count',
+                    "Tabla" => $table,
+                    "Columna" => $column,
+                    "Valor" => $value,
+                ]
+            );
+            return 0;
         }
     }
 
@@ -126,12 +180,10 @@ class QueryBuilder
                     "Table" => $table,
                 ]
             );
-
         }
-
     }
 
-    public function update($table, $data)
+    public function update($table, $data, $primaryKey, $primaryKeyValue)
     {
         try {
             $setValues = [];
@@ -139,13 +191,13 @@ class QueryBuilder
                 $setValues[] = $column . ' = :' . $column;
             }
             $setClause = implode(", ", $setValues);
-            $query = "UPDATE {$table} SET {$setClause} WHERE USERNAME = :USERNAME";
+            $query = "UPDATE {$table} SET {$setClause} WHERE {$primaryKey} = :VALUE";
             $sentencia = $this->pdo->prepare($query);
 
             foreach ($data as $column => $value) {
                 $sentencia->bindValue(':' . $column, $value);
             }
-            $sentencia->bindValue(':USERNAME', $data["USERNAME"]);
+            $sentencia->bindValue(':VALUE', $primaryKeyValue);
             $result = $sentencia->execute();
             if ($result != true) {
                 throw new PDOException($sentencia->errorInfo()[2]);

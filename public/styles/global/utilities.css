@@ -23,6 +23,19 @@
 	font-size: 1rem;
 }
 
+.input option {
+	color: var(--color-violet-dark);
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+.no-content-msg {
+	color: var(--color-violet-dark);
+	font-weight: bold;
+	font-size: 1.05rem;
+	padding: 24px 0;
+}
+
 .submit-button {
 	background-color: var(--color-violet-dark);
 	padding: 0;
@@ -163,6 +176,10 @@
 		outline-color: var(--color-grey-very-light);
 	}
 
+	.no-content-msg {
+		color: var(--color-white);
+	}
+
 	.submit-button {
 		background-color: var(--color-violet-light);
 		border: 2px solid var(--color-violet-light);
@@ -179,6 +196,11 @@
 
 	.label {
 		color: var(--color-white);
+	}
+
+	.input option {
+		background-color: var(--color-violet-dark);
+		color: var(--color-violet-light-white);
 	}
 }
 

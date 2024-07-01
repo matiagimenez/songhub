@@ -2,9 +2,14 @@
 	font-size: 20px;
 }
 
+.icon-lg {
+	font-size: 22px;
+}
+
 .share-icon,
 .close-icon,
-.share-icon {
+.play-icon,
+.pause-icon {
 	color: var(--color-violet-darkest);
 }
 
@@ -57,8 +62,20 @@
 	color: var(--color-red);
 }
 
+.spotify-icon {
+	color: var(--color-green-dark);
+}
+
 .share-icon:hover {
 	filter: brightness(0.8);
+}
+
+.play-icon:hover {
+	color: var(--color-green-dark);
+}
+
+.pause-icon:hover {
+	color: var(--color-red);
 }
 
 .heart-icon:hover {
@@ -70,26 +87,24 @@
 }
 
 .add-favorite-icon {
-	color: var(--color-violet-dark);
-	font-size: 3rem;
+	color: var(--color-green-dark);
+	font-size: 1.2rem;
 }
 
-@media (min-width: 1000px) {
-	.add-favorite-icon {
-		font-size: 4rem;
-	}
-
+.remove-favorite-icon {
+	color: var(--color-red);
+	font-size: 1.3rem;
+	font-weight: bold;
 }
 
 @media (prefers-color-scheme: dark) {
-
 	.share-icon,
+	.play-icon,
+	.pause-icon,
 	.close-icon,
-	.share-icon,
 	.heart-icon,
 	.comment-icon,
-	.back-icon,
-	.add-favorite-icon {
+	.back-icon {
 		color: var(--color-white);
 	}
 }

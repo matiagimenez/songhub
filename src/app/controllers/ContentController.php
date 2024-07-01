@@ -7,24 +7,31 @@ use Songhub\core\Renderer;
 use Songhub\core\Request;
 use Songhub\core\Session;
 use Songhub\core\HttpClient;
+use Songhub\app\repositories\ContentRepository;
+use Songhub\app\controllers\ArtistController;
+use Songhub\app\controllers\CoverController;
 
 class ContentController extends Controller
 {
 
     private $access_token = "";
-    private $seeds = null;
-    private $recommendations = null;
 
     public function __construct()
     {
-        $this->access_token = Session::getInstance()->get("access_token");
+        $this->repositoryName = ContentRepository::class;
+        parent::__construct();        
+    }
 
-        //? Este array contiene información que sirve a modo de seed para solicitar las recomendaciones a Spotify API. Límite de contenido de seed = 5
-        $this->seeds = [
-            "tracks" => [],
-            "artists" => [],
-            "genres" => []
-        ];
+
+    public function existsContent($content_id) {
+        
+        $content = $this->queryBuilder->selectByColumn($this->table, "CONTENT_ID", $content_id);
+
+        if (empty($content)) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public function content()
@@ -32,13 +39,33 @@ class ContentController extends Controller
         $id = $this->sanitizeUserInput(Request::getInstance()->getParameter("id", "GET"));
         $type = $this->sanitizeUserInput(Request::getInstance()->getParameter("type", "GET"));
         $content = $this->fetchContentData($id, $type);
+        
+        $posts = $this->repository->getContentPosts($id);
 
-        Renderer::getInstance()->content($content);
+        Renderer::getInstance()->content($content, $posts["relevant"], $posts["recent"]);
+    }
+
+    public function getContentData() {
+        $id = $this->sanitizeUserInput(Request::getInstance()->getParameter("id", "GET"));
+        $type = $this->sanitizeUserInput(Request::getInstance()->getParameter("type", "GET"));
+        
+        $content = $this->fetchContentData($id, $type);
+
+        if(!$this->repository->existsContent($content)) {
+            $this->createContent($content);
+        }
+
+        ob_clean();
+        header('Content-Type: application/json');
+        echo json_encode($content);
+        exit;
     }
 
 
     public function fetchContentData($id, $type)
     {
+        $this->access_token = Session::getInstance()->get("access_token");
+        
         if($type == "album") {
             $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/albums/".$id, [], ["Authorization" => "Bearer " . $this->access_token]);
             $body = json_decode($response["body"], true);
@@ -51,7 +78,7 @@ class ContentController extends Controller
 
             $album = [
                 "album_id" => $body["id"],
-                "type" => $body["album_type"],
+                "type" => "album",
                 "artist_name" => $body["artists"][0]["name"],
                 "artist_id" => $body["artists"][0]["id"],
                 "artist_spotify_url" =>$body["artists"][0]["external_urls"]["spotify"],
@@ -71,13 +98,8 @@ class ContentController extends Controller
                 Renderer::getInstance()->internalError();
                 die;
             }
-
-            $album["artist_avatar_url"] = $body["images"][1];
-
-            echo "<pre>";
-            var_dump($album);
-            die;
-    
+          
+            $album["artist_avatar_url"] = $body["images"][1]["url"];
 
             return $album;
         }
@@ -85,10 +107,11 @@ class ContentController extends Controller
         $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/tracks/".$id, [], ["Authorization" => "Bearer " . $this->access_token]);
         $body = json_decode($response["body"], true);
         $status = $response["status"];
+        
 
         $track = [
             "album_id" => $body["album"]["id"],
-            "type" => $body["album"]["album_type"],
+            "type" => "track",
             "artist_name" => $body["album"]["artists"][0]["name"],
             "artist_id" => $body["album"]["artists"][0]["id"],
             "artist_spotify_url" => $body["album"]["artists"][0]["external_urls"]["spotify"],
@@ -115,13 +138,23 @@ class ContentController extends Controller
             die;
         }
 
-        $track["artist_avatar_url"] = $body["images"][1];
-        
-        echo "<pre>";
-        var_dump($track);
-        die;
+        $track["artist_avatar_url"] = $body["images"][1]["url"];
 
         return $track;
+
+        
     }
     
+    private function createContent($contentData)
+    {   
+
+        $artistController = new ArtistController();
+        $artistController->createArtist($contentData);
+        
+        $coverController = new CoverController();
+        $coverController->createCover($contentData);
+        
+        $this->repository->createContent($contentData);
+    }
+
 }

@@ -29,8 +29,13 @@ $router->get('/post', 'PageController@post');
 
 $router->get('/explore', 'ExploreController@explore');
 
+<<<<<<< HEAD
 $router->get('/content', 'ContentController@content');  
 $router->get('/content/get', 'ContentController@fetchContentData');
+=======
+$router->get('/content', 'ContentController@content');
+$router->get('/content/data', 'ContentController@getContentData');
+>>>>>>> 77677394b19aa7d9ba870e21d478c9a14b799c3f
 
 $router->post('/login', 'AuthController@login');
 $router->get('/logout', 'AuthController@logout');
@@ -39,5 +44,16 @@ $router->get('/spotify/tokens', 'AuthController@requestSpotifyTokens');
 
 $router->get('/user', 'UserController@profile');
 $router->get('/user/profile', 'UserController@edit');
-$router->post('/user/register', 'UserController@createUser');
-$router->put('/user/profile/edit', 'UserController@updateUser');
+$router->post('/user/profile/edit', 'UserController@updateUser');
+
+
+// $router->get('/user', 'UserController@profile');
+// $router->get('/user/profile', 'UserController@edit');
+$router->post('/post/create', 'PostController@createPost');
+// $router->put('/user/profile/edit', 'UserController@updateUser');
+
+
+$router->get('/artist', 'ArtistController@getArtist');
+
+$router->post('/post/create', 'PostController@createPost');
+

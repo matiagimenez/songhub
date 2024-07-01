@@ -4,7 +4,7 @@ namespace Songhub\app\models;
 
 use Songhub\core\exceptions\InvalidValueException;
 
-class User
+class Post
 {
     public $fields = [
         "POST_ID" => null,
@@ -21,23 +21,11 @@ class User
         $this->fields["POST_ID"] = $post_id;
     }
 
-    public function setDate(Date $date)
+    public function setDatetime($date)
     {
-      if (!(date_create($date))) {
-        throw new InvalidValueException('Formato de fecha incompatible');
-      }
-  
-      list($year, $month, $day) = explode('-', $date);
-      if (!checkdate($month, $day, $year)) {
-        throw new InvalidValueException('Formato de fecha incompatible');
-      }
-  
-      $currentDate = new DateTime();
-      if ($date < $currentDate->format('Y-m-d')) {
-        throw new InvalidValueException('Formato de fecha incompatible');
-      }
-  
-      $this->fields["DATE"] = $date;
+        // $date = date("Y-m-d");
+
+        $this->fields["DATETIME"] = $date;
     }
 
     public function setDescription(string $description)
@@ -61,13 +49,17 @@ class User
     }
 
     public function setUserId($user_id)
-    {
+    {   
+        // $queryBuilder = QueryBuilder::getInstance();
+        // $userRepository = new UserRepository();
+        // $userRepository->setQueryBuilder($queryBuilder);
+        // $username = Session::getInstance()->get("username");
+        // $user = $userRepository->getUser("USERNAME", $username);
         $this->fields["USER_ID"] = $user_id;
     }
 
     public function set(array $values)
     {
-
         foreach (array_keys($this->fields) as $field) {
             $field = trim($field);
             if (!isset($values[$field])) {
@@ -84,6 +76,8 @@ class User
 
             $this->$method($values[$field]);
         }
+
+        $this->setLikes();
 
     }
 

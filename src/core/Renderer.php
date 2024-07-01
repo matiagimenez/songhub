@@ -50,7 +50,7 @@ class Renderer
         require $this->viewsDirectory . "explore.view.php";
     }
 
-    public function content($content)
+    public function content($content, $mostRelevantPosts)
     {
         $title = $content["type"] ?? "Contenido";
         $style = "content";
@@ -77,14 +77,14 @@ class Renderer
         require $this->viewsDirectory . "error.view.php";
     }
 
-    public function profile($user, $posts, $following, $followers)
+    public function profile($user, $country, $posts, $following, $followers)
     {
         $title = "Perfil";
         $style = "profile";
         require $this->viewsDirectory . "profile.view.php";
     }
-
-    public function edit($user)
+    
+    public function edit($user, $userNationality, $countries)
     {
         $title = "Editar perfil";
         $style = "edit-profile";

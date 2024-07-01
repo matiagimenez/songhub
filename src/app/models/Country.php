@@ -4,43 +4,26 @@ namespace Songhub\app\models;
 
 use Songhub\core\exceptions\InvalidValueException;
 
-class Artist
+class Country
 {
     public $fields = [
-        "ARTIST_ID" => null, // ID from spotify
+        "COUNTRY_ID" => null,
         "NAME" => null,
-        "AVATAR_URL" => null,
-        "SPOTIFY_URL" => null,
-        "SPOTIFY_API_URL" => null
     ];
 
-    public function setArtistId($artist_id)
+    public function setCountryId($countryId)
     {
-        $this->fields["ARTIST_ID"] = $artist_id;
+        $this->fields["COUNTRY_ID"] = $countryId;
     }
 
-    public function setName(string $name)
-    {
-        $this->fields["NAME"] = $name;
-    }
-    
-    public function setAvatarUrl(string $avatar_url)
-    {
-        $this->fields["AVATAR_URL"] = $avatar_url;
-    }
-
-    public function setSpotifyUrl(string $spotify_url)
-    {
-        $this->fields["SPOTIFY_URL"] = $spotify_url;
-    }
-
-    public function setSpotifyApiUrl(string $spotify_api_url)
-    {
-        $this->fields["SPOTIFY_API_URL"] = $spotify_api_url;
+    public function setName($countryName)
+    {  
+      $this->fields["NAME"] = $countryName;
     }
 
     public function set(array $values)
     {
+
         foreach (array_keys($this->fields) as $field) {
             $field = trim($field);
             if (!isset($values[$field])) {

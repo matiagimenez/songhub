@@ -18,7 +18,9 @@ final class UserTableMigration extends AbstractMigration
         $table->addColumn('SPOTIFY_URL', 'string', ['limit' => 255, 'default' => null]);
         $table->addColumn('REFRESH_TOKEN', 'string', ['limit' => 255, 'default' => null]);
         $table->addColumn('SPOTIFY_AVATAR', 'string', ['limit' => 255, 'default' => null]);
+        $table->addColumn('COUNTRY_ID', 'integer', ['signed' => false, 'default' => null]);
         $table->addColumn('BIOGRAPHY', 'string', ['limit' => 160, 'null' => false]);
+        $table->addForeignKey('COUNTRY_ID', 'COUNTRY', 'COUNTRY_ID');
         $table->create();
     }
 }

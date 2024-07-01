@@ -54,15 +54,31 @@ body {
 	margin-right: 8px;
 }
 
-.song-section figure figcaption p.artist-info span {
+.song-section figure figcaption p.artist-info a {
 	font-size: 0.9rem;
+	text-decoration: none;
+}
+
+.song-section figure figcaption p.artist-info a:hover {
+	opacity: 0.9;
+	text-decoration: underline;
+	text-underline-offset: 4px;
 }
 
 .song-actions {
-	position: relative;
+	display: flex;
 	max-width: 305px;
-	height: 40px;
 	padding-left: 8px;
+	flex-direction: column-reverse;
+	gap: 16px;
+}
+
+.song-actions section {
+	text-align: right;
+	display: flex;
+	gap: 12px;
+	padding-right: 4px;
+	justify-content: flex-end;
 }
 
 .song-actions .submit-button {
@@ -70,23 +86,15 @@ body {
 }
 
 .song-actions button.share-button,
-.song-actions button.favourite-button {
-	position: absolute;
+.song-actions button.favourite-button,
+.song-actions button.track-preview-button,
+.song-actions a.spotify-button {
 	height: 18px;
 	width: 18px;
 	cursor: pointer;
 	border: none;
 	background-color: transparent;
-}
-
-.song-actions button.share-button {
-	top: 10px;
-	right: 20px;
-}
-
-.song-actions button.favourite-button {
-	top: 10px;
-	right: 56px;
+	text-decoration: none;
 }
 
 .song-section section.song-stats {
@@ -153,10 +161,16 @@ section.most-recent-posts article:last-child {
 		font-size: 1.4rem;
 	}
 
-	.song-actions .song-stats button.share-button,
-	.song-actions .song-stats button.favourite-button {
-		top: 16px;
-		right: 100px;
+	.song-actions {
+		align-items: center;
+		flex-direction: row;
+		max-width: 450px;
+	}
+
+	.song-actions section {
+		text-align: left;
+		align-items: center;
+		gap: 12px;
 	}
 }
 
@@ -178,7 +192,7 @@ section.most-recent-posts article:last-child {
 		color: var(--color-violet-light-white);
 	}
 
-	.song-section figure figcaption p.artist-info span {
+	.song-section figure figcaption p.artist-info a {
 		color: var(--color-white);
 	}
 
