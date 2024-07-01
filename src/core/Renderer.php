@@ -90,4 +90,11 @@ class Renderer
         $style = "edit-profile";
         require $this->viewsDirectory . "edit-profile.view.php";
     }
+    
+    public function search()
+    {
+        $title = "Search";
+        $style = "search";
+        require $this->viewsDirectory . "search.view.php";
+    }
 }

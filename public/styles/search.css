@@ -3,17 +3,26 @@
 @import url('global/grid-section.css');
 @import url('global/modal-access.css');
 
+
+body {
+	font-family: var(--font-family);
+}
+
 main {
+	padding: 1rem 0;
+}
+
+/* main {
 	font-family: var(--font-family);
 	padding: 1rem;
-}
+} */
 
-main .section {
+/* main .section {
 	grid-template-rows: auto;
 	grid-auto-rows: 230px;
-}
+} */
 
-h2 {
+/* h2 {
 	font-size: 1.2rem;
 	margin-top: 24px;
 	color: var(--color-violet);
@@ -23,6 +32,11 @@ h2 {
 h2 span {
 	color: var(--color-violet-dark);
 	font-style: italic;
+} */
+
+main header {
+	width: 90%;
+	margin: auto;
 }
 
 header p {
@@ -60,16 +74,16 @@ header p label {
 	color: var(--color-grey-dark);
 }
 
-figcaption a {
+/* figcaption a {
 	text-decoration: none;
 	cursor: pointer;
-}
+} */
 
-@media (min-width: 400px) {
+/* @media (min-width: 400px) {
 	main .section {
 		grid-auto-rows: 300px;
 	}
-}
+} */
 
 /* @media (min-width: 750px) {
 	main {
@@ -117,6 +131,7 @@ figcaption a {
 	}
 } */
 
+
 @media (prefers-color-scheme: dark) {
 	body {
 		background-color: var(--color-violet-dark-black);
@@ -135,12 +150,12 @@ figcaption a {
 		accent-color: var(--color-violet-lightest);
 	}
 
-	h2 {
+	/* h2 {
 		color: var(--color-grey-very-light);
 	}
 
 	h2 span {
 		color: var(--color-violet-lightest);
 		font-style: italic;
-	}
+	} */
 }
