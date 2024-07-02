@@ -32,6 +32,10 @@ searchInput.addEventListener("input", function() {
 function setData(data) {
     setTracks(data.tracks);
     setAlbums(data.albums);
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     window.applyModalListeners();
     window.applyPostFormListeners();
 }

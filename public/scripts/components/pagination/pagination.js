@@ -1,5 +1,12 @@
 import { ElementBuilder } from '../../utils/ElementBuilder.js';
 
+// Importa estilos de la Paginacion
+const link = ElementBuilder.createElement('link', '', {
+	rel: 'stylesheet',
+	href: '../scripts/components/pagination/pagination.css',
+});
+document.head.appendChild(link);
+
 // Crea Contenedor de Paginacion
 const paginationContainer = ElementBuilder.createElement('section', '', {
   class: 'pagination-container',

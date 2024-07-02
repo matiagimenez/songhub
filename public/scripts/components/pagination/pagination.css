@@ -1,0 +1,18 @@
+.pagination-container {
+  text-align: center;
+}
+
+.pagination-container button {
+  margin: 0 2px;
+  width: 25px;
+  height: 25px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--color-violet-dark);
+  color: var(--color-white)
+}
+
+.pagination-container button:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
