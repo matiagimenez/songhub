@@ -459,17 +459,28 @@ function applyPostFormListeners() {
 
 			const article = opener.closest('article');
 
-			fetch(
-				`/content/data?id=${article.getAttribute('id')}&type=${
-					article.dataset.type
-				}`,
-				{
-					method: 'GET',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-				}
-			)
+			let content_type = '';
+			let content_id = '';
+
+			if (article) {
+				content_id = article.getAttribute('id');
+				content_type = article.dataset.type;
+			} else {
+				const create_post_button = document.querySelector(
+					'.submit-button.post-form-opener'
+				);
+
+				console.log(create_post_button);
+				content_id = create_post_button.getAttribute('id');
+				content_type = create_post_button.dataset.type;
+			}
+
+			fetch(`/content/data?id=${content_id}&type=${content_type}`, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			})
 				.then((response) => response.json())
 				.then((data) => {
 					createModal(data);
