@@ -24,7 +24,7 @@ class SearchController extends Controller
       $this->access_token = Session::getInstance()->get("access_token");
 
       $response = HttpClient::getInstance()->get(
-          "https://api.spotify.com/v1/search?q=".$query."&type=album%2Cplaylist%2Ctrack%2Cshow%2Cepisode%2Cartist%2Caudiobook&limit=5", 
+          "https://api.spotify.com/v1/search?q=".$query."&type=album%2Ctrack&limit=10", 
           [], 
           ["Authorization" => "Bearer " . $this->access_token]
       );
@@ -33,11 +33,7 @@ class SearchController extends Controller
 
       $result = [
         'tracks' => $body["tracks"]["items"],
-        'albums' => $body["albums"]["items"],
-        'artists' => $body["artists"]["items"],
-        'playlists' => $body["playlists"]["items"],
-        'episodes' => $body["episodes"]["items"],
-        'audiobooks' => $body["audiobooks"]["items"]
+        'albums' => $body["albums"]["items"]
       ];
       
       ob_clean();

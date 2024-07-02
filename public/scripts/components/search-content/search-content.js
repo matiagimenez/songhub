@@ -2,17 +2,22 @@ const searchInput = document.getElementById("search-on-page");
 const tracksResults = document.getElementById("tacks-results");
 const albumsResults = document.getElementById("albums-results");
 
+let debounceTimeout;
+
 searchInput.addEventListener("input", function() {
+    clearTimeout(debounceTimeout);
     const query = searchInput.value;
-    if (query.length > 0) {
-      fetch(`/content/search?search=${query}`)
-          .then(response => response.json())
-          .then(data => {
-              console.log(data);
-              setData(data);
-          })
-          .catch(error => console.error('Error:', error));
-    }
+    debounceTimeout = setTimeout(() => {
+        if (query.length > 0) {
+            fetch(`/content/search?search=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    setData(data);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    }, 300);
 });
 
 function setData(data) {
