@@ -22,6 +22,8 @@ function togglePlayPause() {
 	}
 }
 
-button.addEventListener('click', () => {
-	togglePlayPause();
-});
+if (button) {
+	button.addEventListener('click', () => {
+		togglePlayPause();
+	});
+}
