@@ -19,6 +19,8 @@ searchInput.addEventListener("input", function() {
 function setData(data) {
     setTracks(data.tracks);
     setAlbums(data.albums);
+    window.applyModalListeners();
+    window.applyPostFormListeners();
 }
 
 function setTracks(tracks) {
@@ -51,7 +53,7 @@ function setAlbums(albums) {
   albumsResults.innerHTML = '<h2 class="section-title">Albumes</h2>';
   albums.forEach(item => {
     const article = document.createElement('article');
-    article.classList.add = 'add-modal-access';
+    article.className = 'add-modal-access';
     article.id = item.id;
     article.dataset.type = item.type;
     article.innerHTML = `
