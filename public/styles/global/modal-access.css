@@ -44,13 +44,16 @@
 }
 
 .article-img-container .buttons-container {
-	width: 80px;
+	width: 110px;
+	padding: 0 8px;
 	height: 35px;
 	margin: auto auto 6px auto;
 	border-radius: 4px;
 	bottom: 8px;
+	right: 4px;
 	position: relative;
 	align-items: center;
+	gap: 8px;
 	justify-content: center;
 }
 

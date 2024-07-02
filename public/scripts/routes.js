@@ -29,6 +29,10 @@ export const routes = {
 			scriptName: 'logout-button',
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
 		},
+		{
+			scriptName: 'favourite-button-animation',
+			scriptPath: '/scripts/animations/favourite-button-animation.js',
+		},
 	],
 	'/followers': [
 		{
@@ -230,11 +234,10 @@ export const routes = {
 		// 	scriptName: 'hover-img',
 		// 	scriptPath: '../scripts/components/song&album-img/hover-img.js',
 		// },
-		{
-			scriptName: 'modal-form',
-			scriptPath: '/scripts/components/modal-form/modal-form.js',
-		},
-
+		// {
+		// 	scriptName: 'modal-form',
+		// 	scriptPath: '/scripts/components/modal-form/modal-form.js',
+		// },
 		{
 			scriptName: 'likes-counter-animation',
 			scriptPath: '/scripts/animations/likes-counter-animation.js',
