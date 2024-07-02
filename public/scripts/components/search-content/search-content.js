@@ -8,7 +8,6 @@ searchInput.addEventListener("input", function() {
       fetch(`/content/search?search=${query}`)
           .then(response => response.json())
           .then(data => {
-              // Aquí puedes manejar los datos de la respuesta
               console.log(data);
               setData(data);
           })
