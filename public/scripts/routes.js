@@ -33,6 +33,10 @@ export const routes = {
 			scriptName: 'favourite-button-animation',
 			scriptPath: '/scripts/animations/favourite-button-animation.js',
 		},
+		{
+			scriptName: 'footer-animation',
+			scriptPath: '/scripts/animations/footer-animation.js',
+		},
 	],
 	'/followers': [
 		{
@@ -81,6 +85,10 @@ export const routes = {
 			scriptName: 'logout-button',
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
 		},
+		{
+			scriptName: 'footer-animation',
+			scriptPath: '/scripts/animations/footer-animation.js',
+		},
 	],
 
 	'/user': [
@@ -116,6 +124,10 @@ export const routes = {
 		{
 			scriptName: 'logout-button',
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
+		},
+		{
+			scriptName: 'footer-animation',
+			scriptPath: '/scripts/animations/footer-animation.js',
 		},
 	],
 	'/search': [
@@ -174,6 +186,10 @@ export const routes = {
 			scriptPath:
 				'/scripts/components/track-preview-button/track-preview-button.js',
 		},
+		{
+			scriptName: 'footer-animation',
+			scriptPath: '/scripts/animations/footer-animation.js',
+		},
 	],
 	'/user/profile': [
 		{
@@ -188,6 +204,10 @@ export const routes = {
 			scriptName: 'logout-button',
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
 		},
+		{
+			scriptName: 'footer-animation',
+			scriptPath: '/scripts/animations/footer-animation.js',
+		},
 	],
 	'/terms-conditions': [
 		{
@@ -198,6 +218,10 @@ export const routes = {
 			scriptName: 'logout-button',
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
 		},
+		{
+			scriptName: 'footer-animation',
+			scriptPath: '/scripts/animations/footer-animation.js',
+		},
 	],
 	'/error': [
 		{
@@ -207,6 +231,10 @@ export const routes = {
 		{
 			scriptName: 'logout-button',
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
+		},
+		{
+			scriptName: 'footer-animation',
+			scriptPath: '/scripts/animations/footer-animation.js',
 		},
 	],
 	'/': [
