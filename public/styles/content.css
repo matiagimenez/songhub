@@ -86,7 +86,7 @@ body {
 }
 
 .song-actions button.share-button,
-.song-actions button.favourite-button,
+.song-actions button.favorite-button,
 .song-actions button.track-preview-button,
 .song-actions a.spotify-button {
 	height: 18px;

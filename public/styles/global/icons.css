@@ -80,6 +80,7 @@
 
 .heart-icon:hover {
 	color: var(--color-red);
+	font-weight: bold;
 }
 
 .back-icon {

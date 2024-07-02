@@ -59,7 +59,7 @@
             <section class="song-actions">
                 <button class="submit-button post-form-opener">Crear post</button>
                 <section>
-                    <button class="favourite-button">
+                    <button class="favorite-button">
                         <i class="ph ph-heart icon heart-icon"></i>
                         <span class="visually-hidden">
                             Agregar canción/álbum como favorita
