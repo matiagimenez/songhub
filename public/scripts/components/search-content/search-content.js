@@ -2,24 +2,33 @@ const searchInput = document.getElementById("search-on-page");
 const tracksResults = document.getElementById("tacks-results");
 const albumsResults = document.getElementById("albums-results");
 
-let debounceTimeout;
 
+// Request API search content endpoint
+function searchContent(offset) {
+    fetch(`/content/search?search=${searchInput.value}&offset=${offset}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            setData(data);
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+
+// Utiliza debounce para evitar llamadas innecesarias. Optimizando la busqueda
+let debounceTimeout;
+// Cada vez que cambia el input se lanza una búsqueda. Cada 300ms (Debounce)
 searchInput.addEventListener("input", function() {
     clearTimeout(debounceTimeout);
     const query = searchInput.value;
     debounceTimeout = setTimeout(() => {
         if (query.length > 0) {
-            fetch(`/content/search?search=${query}`)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                    setData(data);
-                })
-                .catch(error => console.error('Error:', error));
+            searchContent(0);
         }
     }, 300);
 });
 
+// Setea los resultados
 function setData(data) {
     setTracks(data.tracks);
     setAlbums(data.albums);
@@ -27,6 +36,7 @@ function setData(data) {
     window.applyPostFormListeners();
 }
 
+// Setea los Tracks
 function setTracks(tracks) {
   tracksResults.innerHTML = '';
   tracksResults.innerHTML = '<h2 class="section-title">Canciones</h2>';
@@ -52,6 +62,8 @@ function setTracks(tracks) {
   });
 }
 
+
+// Setea los Albums
 function setAlbums(albums) {
   albumsResults.innerHTML = '';
   albumsResults.innerHTML = '<h2 class="section-title">Albumes</h2>';
@@ -76,3 +88,5 @@ function setAlbums(albums) {
     albumsResults.appendChild(article);
   });
 }
+
+window.searchContent = searchContent;

@@ -20,11 +20,12 @@ class SearchController extends Controller
     public function searchContent() {
 
       $query = $this->sanitizeUserInput(Request::getInstance()->getParameter("search", "GET"));
+      $offset = $this->sanitizeUserInput(Request::getInstance()->getParameter("offset", "GET"));
 
       $this->access_token = Session::getInstance()->get("access_token");
 
       $response = HttpClient::getInstance()->get(
-          "https://api.spotify.com/v1/search?q=".$query."&type=album%2Ctrack&limit=10", 
+          "https://api.spotify.com/v1/search?q=".$query."&type=album%2Ctrack&limit=10&offset=".$offset, 
           [], 
           ["Authorization" => "Bearer " . $this->access_token]
       );
