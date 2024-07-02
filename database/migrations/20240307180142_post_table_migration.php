@@ -12,7 +12,7 @@ final class PostTableMigration extends AbstractMigration
         $table->addColumn('DESCRIPTION', 'string', ['limit' => 255, 'null' => false]);
         $table->addColumn('LIKES', 'integer', ['default' => 0, 'null' => false]);
         $table->addColumn('RATING', 'float', ['null' => false]);
-        $table->addColumn('CONTENT_ID', 'integer', ['signed' => false, 'null' => false]);
+        $table->addColumn('CONTENT_ID', 'string', ['limit' => 255, 'null' => false]);
         $table->addColumn('USER_ID', 'integer', ['signed' => false, 'null' => false]);
         $table->addForeignKey('CONTENT_ID', 'CONTENT', 'CONTENT_ID');
         $table->addForeignKey('USER_ID', 'USER', 'USER_ID');

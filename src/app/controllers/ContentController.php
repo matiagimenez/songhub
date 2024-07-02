@@ -8,6 +8,8 @@ use Songhub\core\Request;
 use Songhub\core\Session;
 use Songhub\core\HttpClient;
 use Songhub\app\repositories\ContentRepository;
+use Songhub\app\controllers\ArtistController;
+use Songhub\app\controllers\CoverController;
 
 class ContentController extends Controller
 {
@@ -18,6 +20,18 @@ class ContentController extends Controller
     {
         $this->repositoryName = ContentRepository::class;
         parent::__construct();        
+    }
+
+
+    public function existsContent($content_id) {
+        
+        $content = $this->queryBuilder->selectByColumn($this->table, "CONTENT_ID", $content_id);
+
+        if (empty($content)) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public function content()
@@ -31,12 +45,15 @@ class ContentController extends Controller
         Renderer::getInstance()->content($content, $posts["relevant"], $posts["recent"]);
     }
 
-
     public function getContentData() {
         $id = $this->sanitizeUserInput(Request::getInstance()->getParameter("id", "GET"));
         $type = $this->sanitizeUserInput(Request::getInstance()->getParameter("type", "GET"));
         
         $content = $this->fetchContentData($id, $type);
+
+        if(!$this->repository->existsContent($content)) {
+            $this->createContent($content);
+        }
 
         ob_clean();
         header('Content-Type: application/json');
@@ -45,7 +62,7 @@ class ContentController extends Controller
     }
 
 
-    private function fetchContentData($id, $type)
+    public function fetchContentData($id, $type)
     {
         $this->access_token = Session::getInstance()->get("access_token");
         
@@ -128,4 +145,16 @@ class ContentController extends Controller
         
     }
     
+    private function createContent($contentData)
+    {   
+
+        $artistController = new ArtistController();
+        $artistController->createArtist($contentData);
+        
+        $coverController = new CoverController();
+        $coverController->createCover($contentData);
+        
+        $this->repository->createContent($contentData);
+    }
+
 }

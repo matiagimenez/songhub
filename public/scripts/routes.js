@@ -119,7 +119,6 @@ export const routes = {
 			scriptName: 'menu-animation',
 			scriptPath: '/scripts/animations/menu-animation.js',
 		},
-
 		{
 			scriptName: 'modal-form',
 			scriptPath: '/scripts/components/modal-form/modal-form.js',
@@ -127,6 +126,10 @@ export const routes = {
 		{
 			scriptName: 'logout-button',
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
+		},
+		{
+			scriptName: 'search-content',
+			scriptPath: '/scripts/components/search-content/search-content.js',
 		},
 	],
 	'/content': [

@@ -7,52 +7,56 @@ const link = ElementBuilder.createElement('link', '', {
 
 document.head.appendChild(link);
 
-const articles = document.querySelectorAll('.add-modal-access');
+function applyModalListeners() {
+	const articles = document.querySelectorAll('.add-modal-access');
 
-articles.forEach((article) => {
-	const more_container = ElementBuilder.createElement('section', '', {
-		class: 'more-container',
+	articles.forEach((article) => {
+		const more_container = ElementBuilder.createElement('section', '', {
+			class: 'more-container',
+		});
+		const more_button = ElementBuilder.createElement('button', ``, {
+			class: 'more-button',
+		});
+		more_button.innerHTML = `
+			<i class="ph-fill ph-dots-three-outline icon more-icon"></i>
+			<span class="visually-hidden">Ver más opciones sobre esta canción</span>
+		`;
+
+		more_container.appendChild(more_button);
+
+		const buttons_container = ElementBuilder.createElement('section', '', {
+			class: 'hidden buttons-container',
+		});
+
+		const view_song = ElementBuilder.createElement('a', '', {
+			href: `/content?id=${article.getAttribute('id')}&type=${
+				article.dataset.type
+			}`,
+		});
+		view_song.innerHTML = `
+			<i class="ph-fill ph-music-notes icon song-icon"></i>
+			<span class="visually-hidden">Crear una publicación sobre esta canción</span>
+		`;
+
+		const create_post = ElementBuilder.createElement('button', '', {
+			class: 'post-form-opener',
+		});
+		create_post.innerHTML = `
+			<i class="ph-bold ph-note-pencil icon post-icon"></i>
+			<span class="visually-hidden">Ver información de la canción</span>	
+		`;
+
+		buttons_container.appendChild(view_song);
+		buttons_container.appendChild(create_post);
+		const img = article.querySelector('.article-img-container');
+		img.appendChild(more_container);
+		img.appendChild(buttons_container);
+		hoverImgAction(img, buttons_container);
+		clickImgAction(buttons_container, more_button);
 	});
-	const more_button = ElementBuilder.createElement('button', ``, {
-		class: 'more-button',
-	});
-	more_button.innerHTML = `
-		<i class="ph-fill ph-dots-three-outline icon more-icon"></i>
-		<span class="visually-hidden">Ver más opciones sobre esta canción</span>
-	`;
+}
 
-	more_container.appendChild(more_button);
-
-	const buttons_container = ElementBuilder.createElement('section', '', {
-		class: 'hidden buttons-container',
-	});
-
-	const view_song = ElementBuilder.createElement('a', '', {
-		href: `/content?id=${article.getAttribute('id')}&type=${
-			article.dataset.type
-		}`,
-	});
-	view_song.innerHTML = `
-		<i class="ph-fill ph-music-notes icon song-icon"></i>
-		<span class="visually-hidden">Crear una publicación sobre esta canción</span>
-	`;
-
-	const create_post = ElementBuilder.createElement('button', '', {
-		class: 'post-form-opener',
-	});
-	create_post.innerHTML = `
-		<i class="ph-bold ph-note-pencil icon post-icon"></i>
-		<span class="visually-hidden">Ver información de la canción</span>	
-	`;
-
-	buttons_container.appendChild(view_song);
-	buttons_container.appendChild(create_post);
-	const img = article.querySelector('.article-img-container');
-	img.appendChild(more_container);
-	img.appendChild(buttons_container);
-	hoverImgAction(img, buttons_container);
-	clickImgAction(buttons_container, more_button);
-});
+applyModalListeners();
 
 function clickImgAction(buttons_container, more_button) {
 	more_button.addEventListener('click', () => {
@@ -78,7 +82,7 @@ function hoverImgAction(img, buttons_container) {
 	});
 }
 
-function create_modal(data) {
+function createModal(data) {
 	const modal = ElementBuilder.createElement('section', '', {
 		class: 'modal',
 	});
@@ -126,7 +130,7 @@ function create_modal(data) {
 	figcaption.appendChild(title);
 
 	const img = ElementBuilder.createElement('img', '', {
-		src: data.artist_avatar_url.url,
+		src: data.artist_avatar_url,
 		alt: `Imagen de perfil de '${data.artist_name}'`,
 		height: '50px',
 		width: '50px',
@@ -345,9 +349,7 @@ function create_modal(data) {
 				values[key] = value;
     });
 
-		// values['CONTENT_ID'] = data.type === 'album' ? data.album_id : data.track_id;
-		values['CONTENT_ID'] = 3;
-		// values['USER_ID'] = 2;
+		values['CONTENT_ID'] = data.type === 'album' ? data.album_id : data.track_id;
 
 		console.log(values)
 		console.log(JSON.stringify(values))
@@ -423,44 +425,51 @@ function create_modal(data) {
 	textarea.focus();
 }
 
-
-const post_form_openers = document.querySelectorAll('.post-form-opener');
-const create_post = document.getElementById('create-post');
 // const go_to_top = document.getElementById("go-to-top");
 const main_header = document.getElementById('main-header');
 const html = document.querySelector('html');
 
-post_form_openers.forEach((opener) => {
-	opener.addEventListener('click', () => {
-		create_post !== null && create_post.classList.add('hidden');
-		// go_to_top.classList.add("hidden");
-		html.classList.add('none-scroll');
-		main_header.classList.add('hidden');
+function applyPostFormListeners() {
+	const post_form_openers = document.querySelectorAll('.post-form-opener');
+	const create_post = document.getElementById('create-post');
 
-		const article = opener.closest('article');
-		console.log(article.getAttribute('id'))
-		console.log(article.dataset.type)
+	post_form_openers.forEach((opener) => {
+		opener.addEventListener('click', () => {
+			create_post !== null && create_post.classList.add('hidden');
+			// go_to_top.classList.add("hidden");
+			html.classList.add('none-scroll');
+			main_header.classList.add('hidden');
 
-		fetch(`/content/data?id=${article.getAttribute('id')}&type=${article.dataset.type}`, {
-			method: 'GET',
-			headers: {
-					'Content-Type': 'application/json'
-			}
-		})
-		.then(response => response.json())
-		.then(data => {
-				console.log(data);
-				create_modal(data);
-		})
-		.catch(error => {
-				console.log(error);
+			const article = opener.closest('article');
+			console.log(article.getAttribute('id'))
+			console.log(article.dataset.type)
+
+			fetch(`/content/data?id=${article.getAttribute('id')}&type=${article.dataset.type}`, {
+				method: 'GET',
+				headers: {
+						'Content-Type': 'application/json'
+				}
+			})
+			.then(response => response.json())
+			.then(data => {
+					console.log(data);
+					createModal(data);
+			})
+			.catch(error => {
+					console.log(error);
+			});
+
 		});
-
 	});
-});
+}
+
+applyPostFormListeners();
 
 function close_modal(modal) {
 	modal.remove();
 	main_header.classList.remove('hidden');
 	html.classList.remove('none-scroll');
 }
+
+window.applyModalListeners = applyModalListeners;
+window.applyPostFormListeners = applyPostFormListeners;
