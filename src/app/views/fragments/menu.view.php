@@ -5,6 +5,7 @@ $isAuthenticated = Session::getInstance()->exists("username");
 
 if ($isAuthenticated) {
     $username = Session::getInstance()->get("username");
+
 }
 
 ?>
@@ -13,14 +14,16 @@ if ($isAuthenticated) {
 
         <?php if ($isAuthenticated): ?>
         <li role="menuitem" class="search-item">
-            <form action="/search" method="GET">
-                <label for="search">Buscar álbum, canción o artista</label>
+            <!-- <form action="/search" method="GET"> -->
+            <a href="/search" class="menu-item">
+                <!-- <label for="search">Buscar álbum, canción o artista</label> -->
                 <input type="search" name="search" role="searchbox" placeholder="Buscar álbum, canción o artista"
                     id="search" autocomplete="off" class="input menu-item" aria-describedby="search-description" />
                 <p id="search-description" class="visually-hidden">
                     Los resultados de la búsqueda aparecerán en un momento.
                 </p>
-            </form>
+            </a>
+            <!-- </form> -->
         </li>
         <li role="menuitem">
             <a href="/" class="menu-item">INICIO</a>
@@ -33,7 +36,7 @@ if ($isAuthenticated) {
         </li>
         <li role="menuitem" class="logout-item" aria-labelledby="logout-content">
             <button class="menu-item logout-button">
-                <span id="logout-content">CERRAR SESION</span>
+                <!-- <span id="logout-content">CERRAR SESION</span> -->
                 <i class="ph ph-sign-out icon logout-icon"></i>
             </button>
         </li>

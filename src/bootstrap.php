@@ -22,33 +22,39 @@ $whoops->register();
 $router = new Router();
 $logger = LoggerBuilder::getInstance()->getLogger();
 $router->setLogger($logger);
+
+// Pages
 $router->get('/', 'PageController@home');
 $router->get('/login', 'PageController@login');
 $router->get('/register', 'PageController@register');
 $router->get('/post', 'PageController@post');
 
+// Explore
 $router->get('/explore', 'ExploreController@explore');
 
+// Content
 $router->get('/content', 'ContentController@content');
 $router->get('/content/data', 'ContentController@getContentData');
 
+//Search
+$router->get('/search', 'SearchController@search');
+$router->get('/content/search', 'SearchController@searchContent');
+
+// Auth
 $router->post('/login', 'AuthController@login');
 $router->get('/logout', 'AuthController@logout');
 $router->post('/register', 'AuthController@register');
 $router->get('/spotify/tokens', 'AuthController@requestSpotifyTokens');
 
+// User
 $router->get('/user', 'UserController@profile');
 $router->get('/user/profile', 'UserController@edit');
 $router->post('/user/profile/edit', 'UserController@updateUser');
 
-
-// $router->get('/user', 'UserController@profile');
-// $router->get('/user/profile', 'UserController@edit');
+// Post
 $router->post('/post/create', 'PostController@createPost');
-// $router->put('/user/profile/edit', 'UserController@updateUser');
 
-
+// Artist
 $router->get('/artist', 'ArtistController@getArtist');
 
-$router->post('/post/create', 'PostController@createPost');
 
