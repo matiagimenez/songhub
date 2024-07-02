@@ -137,7 +137,7 @@ ul.edit-favourites-list .edit-favourite-item button.remove-favorite {
 	cursor: pointer;
 }
 
-ul.edit-favourites-list .edit-favourite-item button.add-favorite {
+ul.edit-favourites-list .edit-favourite-item a.add-favorite {
 	background-color: transparent;
 	color: var(--color-green-dark);
 	height: 32px;
@@ -148,16 +148,15 @@ ul.edit-favourites-list .edit-favourite-item button.add-favorite {
 }
 
 ul.edit-favourites-list .edit-favourite-item button.remove-favorite:hover {
-	transform: scale(1.15);
+	transform: scale(1.35);
 	transition: transform 100ms linear;
 }
 
-ul.edit-favourites-list .edit-favourite-item button.add-favorite:hover {
-	transform: scale(1.03);
-	transition: transform 150ms linear;
+ul.edit-favourites-list .edit-favourite-item a.add-favorite:hover {
+	text-decoration: underline;
 }
 
-ul.edit-favourites-list .edit-favourite-item button.add-favorite span {
+ul.edit-favourites-list .edit-favourite-item a.add-favorite span {
 	position: relative;
 	bottom: 3px;
 }

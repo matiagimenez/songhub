@@ -133,10 +133,10 @@
                     </figure>
                 </li>
                 <li class="edit-favourite-item">
-                    <button class="add-favorite">
+                    <a href="/explore" class="add-favorite">
                         <span>Agregar álbum a favoritos</span>
                         <i class="ph ph-music-notes-plus icon add-favorite-icon"></i>
-                    </button>       
+                    </a>       
                 </li>
             </ul>
         </section>
@@ -190,10 +190,10 @@
                     </figure>
                 </li>
                 <li class="edit-favourite-item">
-                    <button class="add-favorite">
+                    <a href="/explore" class="add-favorite">
                         <span>Agregar canción a favoritos</span>
                         <i class="ph ph-music-notes-plus icon add-favorite-icon"></i>
-                    </button>       
+                    </a>       
                 </li>
             </ul>
         </section>
