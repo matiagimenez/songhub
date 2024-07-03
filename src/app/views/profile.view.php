@@ -137,7 +137,11 @@ if ($isAuthenticated) {
         <section class="recent-activity">
             <h2 class="section-title">Actividad reciente</h2>
             <?php if(count($posts) == 0): ?>
-                <p class="no-content-msg">El usuario <?= $user->fields["USERNAME"]?> no ha realizado ningún post</p>
+                <?php if ($username === $user->fields["USERNAME"]): ?>
+                    <p class="no-content-msg"> Aún no realizaste ningún post </p>
+                <?php else: ?>
+                    <p class="no-content-msg">El usuario <?= $user->fields["USERNAME"]?> no ha realizado ningún post</p>
+                <?php endif?>
             <?php else: ?>
                 <article tabindex="0" class="post add-modal-access" id="post_1" aria-posinset="1" aria-setsize="3"
                 aria-labelledby="post-1-song-title post-1-artist-title" aria-describedby="post-content-1">
