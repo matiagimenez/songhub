@@ -10,12 +10,6 @@ async function getCurrentUserFavoriteContent() {
 
 async function handleAddFavorite(contentId, contentType, username) {
 	try {
-		const body = {
-			id: contentId,
-			type: contentType,
-		};
-		console.log(body);
-
 		await fetch(`/content/data?id=${contentId}&type=${contentType}`);
 
 		await fetch(`/user/favorites/add?id=${contentId}&type=${contentType}`);

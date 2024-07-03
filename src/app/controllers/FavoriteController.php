@@ -27,11 +27,10 @@ class FavoriteController extends Controller
 
     public function removeCurrentUserFavoriteContent() {
         $userId = $this -> getCurrentUserId();
-        $contentId = $this->sanitizeUserInput(Request::getInstance()->getParameter("content_id", "POST"));
+        $contentId = $this->sanitizeUserInput(Request::getInstance()->getParameter("id", "GET"));
 
-        echo "<pre>";
-        var_dump($userId, $contentId);
-        die;
+
+        $result = $this->repository->removeCurrentUserFavoriteContent($userId, $contentId);
     }
 
     public function getCurrentUserFavoriteContent() {

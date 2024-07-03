@@ -102,7 +102,7 @@
                                 <h4><?= $album->fields["TITLE"] ?></h4>
                                 <h5><?= $album -> fields["ARTIST_NAME"] ?></h5>
                             </figcaption>
-                            <button class="remove-favorite">
+                            <button class="remove-favorite" data-content=<?= $album->fields["CONTENT_ID"]?> >
                                 <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
                                 <span class="visually-hidden">Remover de favoritos</span>
                             </button>
@@ -137,7 +137,7 @@
                                 <h4><?= $track->fields["TITLE"] ?></h4>
                                 <h5><?= $track -> fields["ARTIST_NAME"] ?></h5>
                             </figcaption>
-                            <button class="remove-favorite">
+                            <button class="remove-favorite" data-content=<?= $track->fields["CONTENT_ID"]?> >
                                 <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
                                 <span class="visually-hidden">Remover de favoritos</span>
                             </button>

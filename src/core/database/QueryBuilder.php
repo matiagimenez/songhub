@@ -214,8 +214,38 @@ class QueryBuilder
         }
     }
 
-    public function delete()
+    public function delete($table, $primaryKey, $primaryKeyValues)
     {
-        // $this->pdo->prepare("SELECT * FROM {$table}");
+        try {
+            // Construir la cláusula WHERE con las columnas de la clave primaria
+            $whereClause = [];
+            foreach ($primaryKey as $column) {
+                $whereClause[] = $column . ' = :' . $column;
+            }
+            $whereClause = implode(' AND ', $whereClause);
+    
+            // Construir la consulta SQL
+            $query = "DELETE FROM {$table} WHERE {$whereClause}";
+            $sentencia = $this->pdo->prepare($query);
+    
+            // Vincular los valores de las columnas de la clave primaria
+            foreach ($primaryKeyValues as $column => $value) {
+                $sentencia->bindValue(':' . $column, $value);
+            }
+    
+            // Ejecutar la consulta
+            $result = $sentencia->execute();
+            if ($result != true) {
+                throw new PDOException($sentencia->errorInfo()[2]);
+            }
+        } catch (PDOException $e) {
+            $this->logger->info(
+                "Error al ejecutar la consulta: " . $e->getMessage(),
+                [
+                    "Operation" => 'DELETE',
+                    "Table" => $table,
+                ]
+            );
+        }
     }
 }

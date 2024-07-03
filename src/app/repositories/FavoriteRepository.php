@@ -25,6 +25,32 @@ class FavoriteRepository extends Repository
     }
 
 
+    public function removeCurrentUserFavoriteContent(int $userId, $contentId) { 
+        try {
+            // Nombres de las columnas de la clave primaria
+            $primaryKey = ['USER_ID', 'CONTENT_ID'];
+
+            // Valores de las columnas de la clave primaria
+            $primaryKeyValues = [
+                'USER_ID' => $userId,
+                'CONTENT_ID' => $contentId
+            ];
+
+            $this->queryBuilder->delete($this->table, $primaryKey, $primaryKeyValues);
+            return [true, "Se agrego el contenido como favorito"];
+        } catch (Exception $exception) {
+    
+            $this->logger->error(
+                "Error al remover el favorito del usuario",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'FavoriteRepository - removeCurrentUserFavoriteContent',
+                ]
+            );
+            return [false, "Ocurrió un error al remover el favorito del usuario"];
+        }
+    }
+
     public function addCurrentUserFavoriteContent(int $userId, $contentId, $contentType) { 
         try {
             $favorite = new Favorite();
