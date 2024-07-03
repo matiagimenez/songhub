@@ -9,6 +9,8 @@ if (window.scrollY === 0) {
 }
 
 window.addEventListener('scroll', function () {
+	if (!footer) return;
+
 	let currentScrollTop = window.scrollY;
 	let windowHeight = window.innerHeight;
 	let documentHeight = document.documentElement.scrollHeight;
