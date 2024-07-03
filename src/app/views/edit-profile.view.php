@@ -154,9 +154,6 @@
             </ul>
         </section>
     </main>
-    <footer class="main-footer">
-        <?php require "fragments/footer.view.php"?>
-    </footer>
 </body>
 
 </html>

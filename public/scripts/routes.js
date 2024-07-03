@@ -105,35 +105,17 @@ export const routes = {
 			scriptName: 'share-menu',
 			scriptPath: '/scripts/components/share-menu/share-menu.js',
 		},
-		// {
-		// 	scriptName: 'hover-img',
-		// 	scriptPath: '../scripts/components/song&album-img/hover-img.js',
-		// },
 		{
 			scriptName: 'action-button-animation',
 			scriptPath: '/scripts/animations/action-button-animation.js',
 		},
-
 		{
 			scriptName: 'likes-counter-animation',
 			scriptPath: '/scripts/animations/likes-counter-animation.js',
 		},
 		{
-			scriptName: 'modal-form',
-			scriptPath: '/scripts/components/modal-form/modal-form.js',
-		},
-		{
 			scriptName: 'logout-button',
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
-		},
-		{
-			scriptName: 'footer-animation',
-			scriptPath: '/scripts/animations/footer-animation.js',
-		},
-		{
-			scriptName: 'favorite-button',
-			scriptPath:
-				'/scripts/components/favorite-button/favorite-button.js',
 		},
 	],
 	'/search': [
@@ -204,17 +186,8 @@ export const routes = {
 			scriptPath: '/scripts/animations/menu-animation.js',
 		},
 		{
-			scriptName: 'favorite-button',
-			scriptPath:
-				'/scripts/components/favorite-button/favorite-button.js',
-		},
-		{
 			scriptName: 'logout-button',
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
-		},
-		{
-			scriptName: 'footer-animation',
-			scriptPath: '/scripts/animations/footer-animation.js',
 		},
 	],
 	'/terms-conditions': [
