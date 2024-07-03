@@ -64,7 +64,7 @@
         <!-- se debe cambiar aria-busy="true" cuando se esté cargando/actualizando el feed -->
 
         <section class="feed" role="feed" aria-labelledby="feed-title" aria-busy="false">
-            <a href="/search" id="create-post" class="create-post submit-button"><span>Crear un post</span></a>
+            <a href="/explore" id="create-post" class="create-post submit-button"><span>Crear un post</span></a>
 
             <h2 class="section-title" id="feed-title">Últimos posts</h2>
             <!-- se debe actualizar aria-setsize="n" siendo n la cantidad de post cargados en el feed.
@@ -75,9 +75,11 @@
                 aria-labelledby="post-1-song-title post-1-artist-title" aria-describedby="post-content-1">
                 <figure>
                     <section class="article-img-container">
-                        <img loading="lazy" class="image-border" width="100px" height="100px"
-                            src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
-                            alt="Portada del álbum 'Dark Side of The Moon' Pink Floyd" />
+                        <a href="/content" target="_blank">
+                            <img loading="lazy" class="image-border" width="100px" height="100px"
+                                src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
+                                alt="Portada del álbum 'Dark Side of The Moon' Pink Floyd" />
+                        </a>
                     </section>
                     <section class="user-info">
                         <img loading="lazy" class="user-img" height="25px" width="25px"
@@ -155,9 +157,11 @@
                 aria-labelledby="post-2-song-title post-2-artist-title" aria-describedby="post-content-2">
                 <figure>
                     <section class="article-img-container">
-                        <img loading="lazy" height="100px" width="100px" class="image-border"
-                            src="https://i.pinimg.com/236x/73/01/9f/73019f71f5bc1124787d11044d21d12d.jpg"
-                            alt="Portada del álbum 'Preacher`s Daughter' de Ethel Cain" />
+                        <a href="/content" target="_blank">
+                            <img loading="lazy" height="100px" width="100px" class="image-border"
+                                src="https://i.pinimg.com/236x/73/01/9f/73019f71f5bc1124787d11044d21d12d.jpg"
+                                alt="Portada del álbum 'Preacher`s Daughter' de Ethel Cain" />
+                        </a>
                     </section>
                     <section class="user-info">
                         <img loading="lazy" class="user-img" height="25px" width="25px"
@@ -212,9 +216,11 @@
                 aria-labelledby="post-3-song-title post-3-artist-title" aria-describedby="post-content-3">
                 <figure>
                     <section class="article-img-container">
-                        <img loading="lazy" class="image-border" height="100px" width="100px"
-                            src="https://i.pinimg.com/236x/bf/00/49/bf0049614afb7ec4f5f64bb20834d728.jpg"
-                            alt="Portada del álbum 'Certified Lover Boy' de Drake" />
+                        <a href="/content" target="_blank">
+                            <img loading="lazy" class="image-border" height="100px" width="100px"
+                                src="https://i.pinimg.com/236x/bf/00/49/bf0049614afb7ec4f5f64bb20834d728.jpg"
+                                alt="Portada del álbum 'Certified Lover Boy' de Drake" />
+                        </a>       
                     </section>
                     <section class="user-info">
                         <img loading="lazy" class="user-img" height="25px" width="25px"
