@@ -96,8 +96,10 @@ if ($isAuthenticated) {
                                     class="image-border" />
                             </section>
                             <figcaption id="<?= "Album favorito " . $index ?>">
-                                <h3 class="song-title"><?= $album->fields["TITLE"] ?></h3>
-                                <h4 class="artist-title"><?= $album->fields["ARTIST_NAME"] ?></h4>
+                                <a href="/content?id=<?=$album->fields["CONTENT_ID"]?>&type=album">
+                                    <h3 class="song-title"><?= $album->fields["TITLE"] ?></h3>
+                                    <h4 class="artist-title"><?= $album->fields["ARTIST_NAME"] ?></h4>
+                                </a>   
                             </figcaption>
                         </figure>
                     </article>
@@ -117,17 +119,19 @@ if ($isAuthenticated) {
                 <?php foreach($favorites["FAVORITE_TRACKS"] as $index => $track): ?>
                     <article class="add-modal-access" aria-describedby="<?= "Canción favorita " . $index ?>">
                         <figure>
-                            <section class="article-img-container">
+                            <section>
                                 <img loading="lazy"
-                                    src=<?= $track->fields["COVER_ID"] ?>
-                                    alt="Portada de la canción <?= $track->fields["TITLE"] ?> de <?= $track -> fields["ARTIST_NAME"] ?>"
-                                    width="150px"
-                                    height="150px" 
-                                    class="image-border" />
-                            </section>
+                                src=<?= $track->fields["COVER_ID"] ?>
+                                alt="Portada de la canción <?= $track->fields["TITLE"] ?> de <?= $track -> fields["ARTIST_NAME"] ?>"
+                                width="150px"
+                                height="150px" 
+                                class="image-border" />
+                        </section>
                             <figcaption id="<?= "Canción favorita " . $index ?>">
-                                <h3 class="song-title"><?= $track->fields["TITLE"] ?></h3>
-                                <h4 class="artist-title"><?= $track->fields["ARTIST_NAME"] ?></h4>
+                                <a href="/content?id=<?=$track->fields["CONTENT_ID"]?>&type=track ">
+                                    <h3 class="song-title"><?= $track->fields["TITLE"] ?></h3>
+                                    <h4 class="artist-title"><?= $track->fields["ARTIST_NAME"] ?></h4>
+                                </a>
                             </figcaption>
                         </figure>
                     </article>
