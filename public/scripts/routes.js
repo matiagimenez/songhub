@@ -30,8 +30,9 @@ export const routes = {
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
 		},
 		{
-			scriptName: 'favourite-button-animation',
-			scriptPath: '/scripts/animations/favourite-button-animation.js',
+			scriptName: 'favorite-button',
+			scriptPath:
+				'/scripts/components/favorite-button/favorite-button.js',
 		},
 		{
 			scriptName: 'footer-animation',
@@ -170,8 +171,9 @@ export const routes = {
 			scriptPath: '/scripts/components/share-menu/share-menu.js',
 		},
 		{
-			scriptName: 'favourite-button-animation',
-			scriptPath: '/scripts/animations/favourite-button-animation.js',
+			scriptName: 'favorite-button',
+			scriptPath:
+				'/scripts/components/favorite-button/favorite-button.js',
 		},
 		{
 			scriptName: 'likes-counter-animation',
@@ -197,8 +199,9 @@ export const routes = {
 			scriptPath: '/scripts/animations/menu-animation.js',
 		},
 		{
-			scriptName: 'remove-favourite-animation',
-			scriptPath: '/scripts/animations/remove-favourite-animation.js',
+			scriptName: 'favorite-button',
+			scriptPath:
+				'/scripts/components/favorite-button/favorite-button.js',
 		},
 		{
 			scriptName: 'logout-button',

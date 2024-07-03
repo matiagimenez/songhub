@@ -48,6 +48,7 @@ function applyModalListeners() {
 
 		const favorite = ElementBuilder.createElement('button', '', {
 			class: 'toggle-favorite-content favorite-button',
+			'data-content': article.getAttribute('id'),
 		});
 
 		favorite.innerHTML = `
