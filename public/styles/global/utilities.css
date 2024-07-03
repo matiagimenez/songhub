@@ -32,7 +32,6 @@
 .no-content-msg {
 	color: var(--color-violet-dark);
 	font-weight: bold;
-	font-size: 1.05rem;
 	padding: 24px 0;
 }
 
@@ -155,6 +154,13 @@
 
 .none-scroll {
 	overflow: hidden;
+}
+
+@media (min-width: 500px) {
+	.no-content-msg {
+		font-size: 1.05rem;
+		min-width: 325px;
+	}
 }
 
 @media (prefers-color-scheme: dark) {

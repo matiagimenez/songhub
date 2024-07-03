@@ -130,6 +130,11 @@ export const routes = {
 			scriptName: 'footer-animation',
 			scriptPath: '/scripts/animations/footer-animation.js',
 		},
+		{
+			scriptName: 'favorite-button',
+			scriptPath:
+				'/scripts/components/favorite-button/favorite-button.js',
+		},
 	],
 	'/search': [
 		{

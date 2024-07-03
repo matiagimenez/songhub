@@ -95,6 +95,8 @@
                         <figure aria-describedby="favourite-song-1">
                             <img loading="lazy" src=<?= $album->fields["COVER_ID"] ?>
                                 alt="Portada del álbum <?= $album->fields["TITLE"] ?> de <?= $album -> fields["ARTIST_NAME"] ?>"
+                                width="120px" 
+                                height="120px"
                                 class="image-border" />
                             <figcaption>
                                 <h4><?= $album->fields["TITLE"] ?></h4>
@@ -107,7 +109,6 @@
                         </figure>
                     </li>
                 <?php endforeach; ?>   
-
             <?php endif; ?>
                 <li class="edit-favourite-item">
                     <a href="/explore" class="add-favorite">
@@ -129,6 +130,8 @@
                         <figure aria-describedby="favourite-song-4">
                             <img loading="lazy" src=<?= $track->fields["COVER_ID"] ?>
                                 alt="Portada de la canción <?= $track->fields["TITLE"] ?> de <?= $track -> fields["ARTIST_NAME"] ?>"
+                                width="120px" 
+                                height="120px"
                                 class="image-border" />
                             <figcaption>
                                 <h4><?= $track->fields["TITLE"] ?></h4>
