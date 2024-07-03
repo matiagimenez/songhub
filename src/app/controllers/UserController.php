@@ -52,7 +52,7 @@ class UserController extends Controller
     
     public function updateUser()
     {
-        $username = $this->sanitizeUserInput(Request::getInstance()->getParameter("username", "POST"));
+        $username = Session::getInstance()->get("username");
         $name = $this->sanitizeUserInput(Request::getInstance()->getParameter("name", "POST"));
         $country = $this->sanitizeUserInput(Request::getInstance()->getParameter("country", "POST"));
         $biography = $this->sanitizeUserInput(Request::getInstance()->getParameter("biography", "POST"));

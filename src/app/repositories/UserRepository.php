@@ -189,7 +189,7 @@ class UserRepository extends Repository
     public function getUserFavorites($userId) {
         $favoriteRepository = new FavoriteRepository();
         $favoriteRepository->setQueryBuilder(QueryBuilder::getInstance());
-        $userFavoriteContent = $favoriteRepository -> getUserFavorites($userId);
+        $userFavoriteContent = $favoriteRepository -> getCurrentUserFavoriteContent($userId);
         
         return $userFavoriteContent;
     }

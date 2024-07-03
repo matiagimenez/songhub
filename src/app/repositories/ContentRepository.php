@@ -72,7 +72,7 @@ class ContentRepository extends Repository
 
     public function getContentById($contentId) {
         try{
-            $content = $this->queryBuilder->selectByColumn($this->table, $column, $value);
+            $content = $this->queryBuilder->selectByColumn($this->table, "CONTENT_ID", $contentId);
             
             if (!$content) {
                 return null;

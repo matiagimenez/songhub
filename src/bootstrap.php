@@ -50,6 +50,7 @@ $router->get('/spotify/tokens', 'AuthController@requestSpotifyTokens');
 $router->get('/user', 'UserController@profile');
 $router->get('/user/profile', 'UserController@edit');
 $router->post('/user/profile/edit', 'UserController@updateUser');
+$router->get('/user/favorites', 'FavoriteController@getCurrentUserFavoriteContent');
 
 // Post
 $router->post('/post/create', 'PostController@createPost');
