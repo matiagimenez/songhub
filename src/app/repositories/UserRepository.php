@@ -150,7 +150,9 @@ class UserRepository extends Repository
     public function getUserPosts($userId) {
         $postRepository = new PostRepository();
         $postRepository->setQueryBuilder(QueryBuilder::getInstance());
-        return $postRepository -> getPostsFromUser($userId);
+        // ! Retorno [] de forma temporal  para que no se rompa el perfil
+        return [];
+        // return $postRepository -> getPostsFromUser($userId);
     }
 
     public function getUserPostsCount($userId) {
