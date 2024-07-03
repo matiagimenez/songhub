@@ -3,7 +3,9 @@ const footer = document.querySelector('.main-footer');
 let lastScrollTop = 0;
 
 if (window.scrollY === 0) {
-	footer.classList.add('fixed-footer');
+	if (footer) {
+		footer.classList.add('fixed-footer');
+	}
 }
 
 window.addEventListener('scroll', function () {
