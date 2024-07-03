@@ -12,23 +12,19 @@ async function handleAddFavorite(contentId) {
 	console.log(contentId);
 }
 
-async function handleRemoveFavorite(contentId) {
-	console.log(contentId);
-}
-
 function isUserFavorite(albums, tracks, contentId) {
 	let isFavorite = false;
 
 	if (tracks) {
 		isFavorite =
-			FAVORITE_TRACKS.filter(
+			tracks.filter(
 				(favorite) => favorite.fields['CONTENT_ID'] == contentId
 			).length > 0;
 	}
 
 	if (!isFavorite && albums) {
 		isFavorite =
-			FAVORITE_ALBUMS.filter(
+			albums.filter(
 				(favorite) => favorite.fields['CONTENT_ID'] == contentId
 			).length > 0;
 	}
@@ -36,37 +32,41 @@ function isUserFavorite(albums, tracks, contentId) {
 	return isFavorite;
 }
 
-const favoriteButtons = document.querySelectorAll('.favorite-button');
-const { FAVORITE_ALBUMS, FAVORITE_TRACKS } =
-	await getCurrentUserFavoriteContent();
-
-favoriteButtons.forEach(async (button) => {
-	const heartIcon = button.querySelector('.heart-icon');
-	const contentId = button.dataset.content;
-
-	const isFavorite = isUserFavorite(
-		FAVORITE_ALBUMS,
-		FAVORITE_TRACKS,
-		contentId
+setTimeout(async () => {
+	const favoriteButtons = document.querySelectorAll(
+		'button.toggle-favorite-content'
 	);
 
-	if (isFavorite) {
-		heartIcon.classList.add('ph-fill');
-		heartIcon.classList.add('active');
-	}
+	console.log(favoriteButtons);
+	const { FAVORITE_ALBUMS, FAVORITE_TRACKS } =
+		await getCurrentUserFavoriteContent();
 
-	button.addEventListener('click', (event) => {
-		if (heartIcon.classList.contains('active')) {
-			handleAddFavorite(contentId);
-			heartIcon.classList.remove('ph-fill');
-			heartIcon.classList.remove('active');
-			heartIcon.classList.add('ph');
-		} else {
-			heartIcon.classList.remove('ph');
+	favoriteButtons.forEach(async (button) => {
+		const heartIcon = button.querySelector('.heart-icon');
+		const contentId = button.dataset.content;
+
+		const isFavorite = isUserFavorite(
+			FAVORITE_ALBUMS,
+			FAVORITE_TRACKS,
+			contentId
+		);
+
+		console.log('a: ' + isFavorite);
+
+		if (isFavorite) {
 			heartIcon.classList.add('ph-fill');
 			heartIcon.classList.add('active');
 		}
-	});
-});
 
-getCurrentUserFavoriteContent();
+		button.addEventListener('click', (event) => {
+			if (!heartIcon.classList.contains('active')) {
+				if (!heartIcon.classList.contains('favorite-disabled')) {
+					handleAddFavorite(contentId);
+					heartIcon.classList.remove('ph');
+					heartIcon.classList.add('ph-fill');
+					heartIcon.classList.add('active');
+				}
+			}
+		});
+	});
+}, 2000);

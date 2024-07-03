@@ -5,6 +5,19 @@ const link = ElementBuilder.createElement('link', '', {
 	href: '../scripts/components/modal-form/modal-form.css',
 });
 
+async function getCurrentUserFavoriteContent() {
+	try {
+		const response = await fetch('/user/favorites');
+		const data = await response.json();
+		return data;
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+const { FAVORITE_ALBUMS, FAVORITE_TRACKS } =
+	await getCurrentUserFavoriteContent();
+
 document.head.appendChild(link);
 
 function applyModalListeners() {
@@ -46,15 +59,41 @@ function applyModalListeners() {
 			<span class="visually-hidden">Ver información de la canción</span>	
 		`;
 
-		const favorite = ElementBuilder.createElement('button', '', {
-			class: 'toggle-favorite-content favorite-button',
+		let favorite = ElementBuilder.createElement('button', '', {
+			class: 'toggle-favorite-content',
 			'data-content': article.getAttribute('id'),
+			'data-type': article.dataset.type,
 		});
 
 		favorite.innerHTML = `
 			<i class="ph ph-heart icon-lg heart-icon"></i>
-            <span class="visually-hidden">Agregar o remover contenido como favorito</span>
+			<span class="visually-hidden">Agregar o remover contenido como favorito</span>
 		`;
+
+		if (
+			(FAVORITE_ALBUMS.length >= 3 && article.dataset.type === 'album') ||
+			(FAVORITE_TRACKS.length >= 3 && article.dataset.type === 'track')
+		) {
+			if (
+				!FAVORITE_TRACKS.filter(
+					(favorite) =>
+						favorite.fields['CONTENT_ID'] ===
+						article.getAttribute('id')
+				).length > 0 &&
+				!FAVORITE_ALBUMS.filter(
+					(favorite) =>
+						favorite.fields['CONTENT_ID'] ===
+						article.getAttribute('id')
+				).length > 0
+			) {
+				favorite.classList.add('favorite-disabled');
+				favorite.innerHTML = `
+					<i class="ph ph-heart icon-lg heart-icon favorite-disabled"></i>
+					<span class="visually-hidden">Agregar o remover contenido como favorito</span>
+				`;
+				favorite.disabled = true;
+			}
+		}
 
 		buttons_container.appendChild(view_song);
 		buttons_container.appendChild(create_post);
