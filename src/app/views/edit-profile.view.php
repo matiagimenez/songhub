@@ -31,7 +31,7 @@
             // echo "<pre>";
             // var_dump($user);
             // var_dump($userNationality);
-            // var_dump($countries);
+            // var_dump($favorites);
             // die;    
     ?>
     <main>
@@ -87,51 +87,28 @@
         <section class="edit-favourites">
             <h3 class="section-title">Álbumes Favoritos</h3>
             <ul class="edit-favourites-list">
-                <li class="edit-favourite-item">
-                    <figure aria-describedby="favourite-song-1">
-                        <img loading="lazy" src="https://i.pinimg.com/564x/89/28/e3/8928e372651fc60256360ba5e21a7d2f.jpg"
-                            alt="Portada del álbum 'Pulse' de Pink Floyd" width="120px" height="120px"
-                            class="image-border" />
-                        <figcaption>
-                            <h4>Pulse</h4>
-                            <h5>Pink Floyd</h5>
-                        </figcaption>
-                        <button class="remove-favorite">
-                            <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
-                            <span class="visually-hidden">Remover de favoritos</span>
-                        </button>
-                    </figure>
-                </li>
-                <li class="edit-favourite-item">
-                    <figure aria-describedby="favourite-song-2">
-                        <img loading="lazy" src="https://i.pinimg.com/564x/99/41/82/99418264794012ddd044c761919fbb44.jpg"
-                            alt="Portada del álbum 'Punisher' de Phoebe Bridgers" width="120px" height="120px"
-                            class="image-border" />
-                        <figcaption>
-                            <h4>Punisher</h4>
-                            <h5>Phoebe Bridgers</h5>
-                        </figcaption>
-                        <button class="remove-favorite">
-                            <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
-                            <span class="visually-hidden">Remover de favoritos</span>
-                        </button>
-                    </figure>
-                </li>
-                <li class="edit-favourite-item">
-                    <figure aria-describedby="favourite-song-2">
-                        <img loading="lazy" src="https://i.pinimg.com/564x/99/41/82/99418264794012ddd044c761919fbb44.jpg"
-                            alt="Portada del álbum 'Punisher' de Phoebe Bridgers" width="120px" height="120px"
-                            class="image-border" />
-                        <figcaption>
-                            <h4>Punisher</h4>
-                            <h5>Phoebe Bridgers</h5>
-                        </figcaption>
-                        <button class="remove-favorite">
-                            <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
-                            <span class="visually-hidden">Remover de favoritos</span>
-                        </button>
-                    </figure>
-                </li>
+            <?php if(count($favorites["FAVORITE_ALBUMS"]) == 0): ?>
+                <p class="no-content-msg">No marcaste ningun álbum como favorito </p>
+            <?php else: ?>
+                <?php foreach($favorites["FAVORITE_ALBUMS"] as $album): ?>
+                    <li class="edit-favourite-item">
+                        <figure aria-describedby="favourite-song-1">
+                            <img loading="lazy" src=<?= $album->fields["COVER_ID"] ?>
+                                alt="Portada del álbum <?= $album->fields["TITLE"] ?> de <?= $album -> fields["ARTIST_NAME"] ?>"
+                                class="image-border" />
+                            <figcaption>
+                                <h4><?= $album->fields["TITLE"] ?></h4>
+                                <h5><?= $album -> fields["ARTIST_NAME"] ?></h5>
+                            </figcaption>
+                            <button class="remove-favorite">
+                                <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
+                                <span class="visually-hidden">Remover de favoritos</span>
+                            </button>
+                        </figure>
+                    </li>
+                <?php endforeach; ?>   
+
+            <?php endif; ?>
                 <li class="edit-favourite-item">
                     <a href="/explore" class="add-favorite">
                         <span>Agregar álbum a favoritos</span>
@@ -144,51 +121,27 @@
         <section class="edit-favourites">
             <h3 class="section-title">Canciones Favoritas</h3>
             <ul class="edit-favourites-list">
-                <li class="edit-favourite-item">
-                    <figure aria-describedby="favourite-song-4">
-                        <img loading="lazy" src="https://i.pinimg.com/564x/3d/65/d5/3d65d5e4af0cde2458b2e7b55869f4e6.jpg"
-                            alt="Portada del álbum 'Peso Pluma || Music Session' de Bizarrap" width="80px" height="80px"
-                            class="image-border" />
-                        <figcaption>
-                            <h4>Peso Pluma</h4>
-                            <h5>Bizarrap</h5>
-                        </figcaption>
-                        <button class="remove-favorite">
-                            <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
-                            <span class="visually-hidden">Remover de favoritos</span>
-                        </button>
-                    </figure>
-                </li>
-                <li class="edit-favourite-item">
-                    <figure aria-describedby="favourite-song-4">
-                        <img loading="lazy" src="https://i.pinimg.com/564x/3d/65/d5/3d65d5e4af0cde2458b2e7b55869f4e6.jpg"
-                            alt="Portada del álbum 'Peso Pluma || Music Session' de Bizarrap" width="80px" height="80px"
-                            class="image-border" />
-                        <figcaption>
-                            <h4>Peso Pluma</h4>
-                            <h5>Bizarrap</h5>
-                        </figcaption>
-                        <button class="remove-favorite">
-                            <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
-                            <span class="visually-hidden">Remover de favoritos</span>
-                        </button>                    
-                    </figure>
-                </li>
-                <li class="edit-favourite-item">
-                    <figure aria-describedby="favourite-song-4">
-                        <img loading="lazy" src="https://i.pinimg.com/564x/3d/65/d5/3d65d5e4af0cde2458b2e7b55869f4e6.jpg"
-                            alt="Portada del álbum 'Peso Pluma || Music Session' de Bizarrap" width="80px" height="80px"
-                            class="image-border" />
-                        <figcaption>
-                            <h4>Peso Pluma</h4>
-                            <h5>Bizarrap</h5>
-                        </figcaption>
-                        <button class="remove-favorite">
-                            <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
-                            <span class="visually-hidden">Remover de favoritos</span>
-                        </button>                    
-                    </figure>
-                </li>
+            <?php if(count($favorites["FAVORITE_TRACKS"]) == 0): ?>
+                <p class="no-content-msg">No marcaste ninguna canción como favorita </p>
+            <?php else: ?>
+                <?php foreach($favorites["FAVORITE_TRACKS"] as $track): ?>
+                    <li class="edit-favourite-item">
+                        <figure aria-describedby="favourite-song-4">
+                            <img loading="lazy" src=<?= $track->fields["COVER_ID"] ?>
+                                alt="Portada de la canción <?= $track->fields["TITLE"] ?> de <?= $track -> fields["ARTIST_NAME"] ?>"
+                                class="image-border" />
+                            <figcaption>
+                                <h4><?= $track->fields["TITLE"] ?></h4>
+                                <h5><?= $track -> fields["ARTIST_NAME"] ?></h5>
+                            </figcaption>
+                            <button class="remove-favorite">
+                                <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
+                                <span class="visually-hidden">Remover de favoritos</span>
+                            </button>
+                        </figure>
+                    </li>
+                <?php endforeach; ?>   
+            <?php endif; ?>
                 <li class="edit-favourite-item">
                     <a href="/explore" class="add-favorite">
                         <span>Agregar canción a favoritos</span>

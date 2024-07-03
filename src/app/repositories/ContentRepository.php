@@ -81,6 +81,12 @@ class ContentRepository extends Repository
             $contentInstance = new Content();
             $contentInstance->set(current($content));
 
+            $artistRepository = new ArtistRepository();
+            $artistRepository->setQueryBuilder(QueryBuilder::getInstance());
+            $artist = $artistRepository->getArtistById($contentInstance->fields["ARTIST_ID"]);
+
+            $contentInstance->fields["ARTIST_NAME"] = $artist->fields["NAME"];
+
             return $contentInstance;
 
         } catch (Exception $exception) {
