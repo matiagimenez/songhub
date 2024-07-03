@@ -17,7 +17,15 @@ class FavoriteController extends Controller
         return $this -> repository -> getCurrentUserId();
     }
     
-    public function addFavoriteContent() {
+    public function addCurrentUserFavoriteContent() {
+        $userId = $this -> getCurrentUserId();
+        $contentId = $this->sanitizeUserInput(Request::getInstance()->getParameter("id", "GET"));
+        $contentType = $this->sanitizeUserInput(Request::getInstance()->getParameter("type", "GET"));
+
+        $result = $this->repository->addCurrentUserFavoriteContent($userId, $contentId, $contentType);
+    }
+
+    public function removeCurrentUserFavoriteContent() {
         $userId = $this -> getCurrentUserId();
         $contentId = $this->sanitizeUserInput(Request::getInstance()->getParameter("content_id", "POST"));
 

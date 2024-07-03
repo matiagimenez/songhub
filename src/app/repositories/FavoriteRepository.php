@@ -24,6 +24,38 @@ class FavoriteRepository extends Repository
         return $user -> fields["USER_ID"];
     }
 
+
+    public function addCurrentUserFavoriteContent(int $userId, $contentId, $contentType) { 
+        try {
+            $favorite = new Favorite();
+            $favorite->setUserId($userId);
+            $favorite->setContentId($contentId);
+
+            $userFavorites = $this -> getCurrentUserFavoriteContent($userId);
+
+            if($contentType == "album" && count($userFavorites["FAVORITE_ALBUMS"]) >= 3) {
+                return [false, "Se puede tener hasta 3 albumes favoritos"];
+            }
+
+            if($contentType == "track" && count($userFavorites["FAVORITE_TRACKS"]) >= 3) {
+                return [false, "Se puede tener hasta 3 canciones favoritas"];
+            }
+            
+            $this->queryBuilder->insert($this->table, ["CONTENT_ID" => $contentId, "USER_ID" => $userId]);
+            return [true, "Se agrego el contenido como favorito"];
+        } catch (Exception $exception) {
+    
+            $this->logger->error(
+                "Error al agregar el favorito del usuario",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'FavoriteRepository - addCurrentUserFavoriteContent',
+                ]
+            );
+            return [false, "Ocurrió un error al agregar el favorito del usuario"];
+        }
+    }
+
     public function getCurrentUserFavoriteContent(int $userId)
     {
         try {
@@ -48,8 +80,6 @@ class FavoriteRepository extends Repository
                     $tracks[] = $content;
                 }
             }
-
-
 
             return [
                 "FAVORITE_ALBUMS" => $albums,

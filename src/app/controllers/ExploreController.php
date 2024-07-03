@@ -33,7 +33,9 @@ class ExploreController extends Controller
         $newReleases = $this->getNewReleases();
         $recentActivity = $this->getUserRecentActivity();
         $this->access_token = Session::getInstance()->get("access_token");
+        $username = Session::getInstance()->get("username");
 
+        
         //? Valida si se pudo personalizar la recomendación en base a artistas/tracks TOP del usuario, sino recomienda en base a canciones guardadas.
         if (!$this->validSeeds()) {
             $this->getUserSavedTracks();
@@ -46,7 +48,7 @@ class ExploreController extends Controller
 
         }
         
-        Renderer::getInstance()->explore($recentActivity, $newReleases, $recommendations, $userTopTracks);
+        Renderer::getInstance()->explore($recentActivity, $newReleases, $recommendations, $userTopTracks, $username);
     }
 
 

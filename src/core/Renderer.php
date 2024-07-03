@@ -43,7 +43,7 @@ class Renderer
         require $this->viewsDirectory . "register.view.php";
     }
     
-    public function explore($recentActivity, $newReleases, $recommendations, $userTopTracks)
+    public function explore($recentActivity, $newReleases, $recommendations, $userTopTracks, $username)
     {
         $title = "Explorar";
         $style = "explore";

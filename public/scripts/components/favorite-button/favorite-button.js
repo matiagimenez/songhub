@@ -4,12 +4,27 @@ async function getCurrentUserFavoriteContent() {
 		const data = await response.json();
 		return data;
 	} catch (error) {
-		console.error(error);
+		window.location.replace('/error/internal-error');
 	}
 }
 
-async function handleAddFavorite(contentId) {
-	console.log(contentId);
+async function handleAddFavorite(contentId, contentType, username) {
+	try {
+		const body = {
+			id: contentId,
+			type: contentType,
+		};
+		console.log(body);
+
+		await fetch(`/content/data?id=${contentId}&type=${contentType}`);
+
+		await fetch(`/user/favorites/add?id=${contentId}&type=${contentType}`);
+
+		window.location.replace(`/user?username=${username}`);
+	} catch (error) {
+		console.log(error);
+		window.location.replace('/error/internal-error');
+	}
 }
 
 function isUserFavorite(albums, tracks, contentId) {
@@ -37,21 +52,20 @@ setTimeout(async () => {
 		'button.toggle-favorite-content'
 	);
 
-	console.log(favoriteButtons);
 	const { FAVORITE_ALBUMS, FAVORITE_TRACKS } =
 		await getCurrentUserFavoriteContent();
 
 	favoriteButtons.forEach(async (button) => {
 		const heartIcon = button.querySelector('.heart-icon');
 		const contentId = button.dataset.content;
+		const contentType = button.dataset.type;
+		const username = button.dataset.username;
 
 		const isFavorite = isUserFavorite(
 			FAVORITE_ALBUMS,
 			FAVORITE_TRACKS,
 			contentId
 		);
-
-		console.log('a: ' + isFavorite);
 
 		if (isFavorite) {
 			heartIcon.classList.add('ph-fill');
@@ -61,7 +75,7 @@ setTimeout(async () => {
 		button.addEventListener('click', (event) => {
 			if (!heartIcon.classList.contains('active')) {
 				if (!heartIcon.classList.contains('favorite-disabled')) {
-					handleAddFavorite(contentId);
+					handleAddFavorite(contentId, contentType, username);
 					heartIcon.classList.remove('ph');
 					heartIcon.classList.add('ph-fill');
 					heartIcon.classList.add('active');
@@ -69,4 +83,4 @@ setTimeout(async () => {
 			}
 		});
 	});
-}, 2000);
+}, 500);

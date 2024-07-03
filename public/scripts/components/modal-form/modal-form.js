@@ -63,6 +63,7 @@ function applyModalListeners() {
 			class: 'toggle-favorite-content',
 			'data-content': article.getAttribute('id'),
 			'data-type': article.dataset.type,
+			'data-username': article.dataset.username,
 		});
 
 		favorite.innerHTML = `

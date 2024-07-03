@@ -54,13 +54,6 @@ class Artist
             foreach ($property as $part) {
                 $method .= ucfirst(strtolower($part));
             }
-            
-            // if (count($property) > 1) {
-            //     $method = "set" . ucfirst(strtolower($property[0])) . ucfirst(strtolower($property[1]));
-
-            // } else {
-            //     $method = "set" . ucfirst(strtolower($property[0]));
-            // }
 
             $this->$method($values[$field]);
         }

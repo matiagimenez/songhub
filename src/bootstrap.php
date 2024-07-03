@@ -51,11 +51,17 @@ $router->get('/user', 'UserController@profile');
 $router->get('/user/profile', 'UserController@edit');
 $router->post('/user/profile/edit', 'UserController@updateUser');
 $router->get('/user/favorites', 'FavoriteController@getCurrentUserFavoriteContent');
+$router->get('/user/favorites/add', 'FavoriteController@addCurrentUserFavoriteContent');
+$router->get('/user/favorites/remove', 'FavoriteController@removeCurrentUserFavoriteContent');
 
 // Post
 $router->post('/post/create', 'PostController@createPost');
 
 // Artist
 $router->get('/artist', 'ArtistController@getArtist');
+
+// Artist
+$router->get('/error/internal-error', 'ErrorController@internalError');
+$router->get('/error/not-found', 'ErrorController@notFound');
 
 

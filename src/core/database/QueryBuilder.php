@@ -178,6 +178,7 @@ class QueryBuilder
                 [
                     "Operation" => 'INSERT',
                     "Table" => $table,
+                    "Data" => $data
                 ]
             );
         }
