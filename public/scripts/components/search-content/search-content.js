@@ -1,6 +1,14 @@
 const searchInput = document.getElementById("search-on-page");
+const searchResult = document.getElementById("search-results-section");
 const tracksResults = document.getElementById("tacks-results");
 const albumsResults = document.getElementById("albums-results");
+
+// const exploreSection = document.querySelector(".explore-section");
+const recentActivitySection = document.getElementById("recent-activity-section");
+const recommendationsSection = document.getElementById("recommendations-section");
+const favoritesSection = document.getElementById("favorites-section");
+const newReleasesSection = document.getElementById("new-releases-section");
+const searchResultsSection = document.getElementById("search-results-section");
 
 
 // Request API search content endpoint
@@ -24,12 +32,24 @@ searchInput.addEventListener("input", function() {
     debounceTimeout = setTimeout(() => {
         // Si la cadena de busqueda es mayor a 0 llamamos a la API
         if (query.length > 0) {
+            // exploreSection.style.display = 'none';
+            removeModalAccessClass();
+            recentActivitySection.style.display = 'none';
+            recommendationsSection.style.display = 'none';
+            favoritesSection.style.display = 'none';
+            newReleasesSection.style.display = 'none';
+            searchResultsSection.style.display = 'grid';
             searchContent(0);
             window.createPaginationButtons(1);
         } else {
-            // Sino, limpiamos los resultados
+            // Sino, limpiamos los resultados y mostramos vista de explore
             setData({tracks: [], albums: []});
             window.clearButtons();
+            recentActivitySection.style.display = 'grid';
+            recommendationsSection.style.display = 'grid';
+            favoritesSection.style.display = 'grid';
+            newReleasesSection.style.display = 'grid';
+            searchResultsSection.style.display = 'none';
         }
     }, 300);
 });
@@ -42,8 +62,11 @@ function setData(data) {
         top: 0,
         behavior: "smooth"
     });
-    window.applyModalListeners();
-    window.applyPostFormListeners();
+    const articles = searchResultsSection.querySelectorAll('.add-modal-access');
+    window.applyModalListeners(articles);
+    const post_form_openers = searchResultsSection.querySelectorAll('.post-form-opener');
+    const create_post = searchResultsSection.querySelector('#create-post');
+    window.applyPostFormListeners(post_form_openers, create_post);
 }
 
 // Setea los Tracks
@@ -97,6 +120,13 @@ function setAlbums(albums) {
     `;
     albumsResults.appendChild(article);
   });
+}
+
+function removeModalAccessClass() {
+    const modalElements = document.querySelectorAll('.add-modal-access');
+    modalElements.forEach(element => {
+        element.classList.remove('add-modal-access');
+    });
 }
 
 window.searchContent = searchContent;
