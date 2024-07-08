@@ -22,8 +22,14 @@ searchInput.addEventListener("input", function() {
     clearTimeout(debounceTimeout);
     const query = searchInput.value;
     debounceTimeout = setTimeout(() => {
+        // Si la cadena de busqueda es mayor a 0 llamamos a la API
         if (query.length > 0) {
             searchContent(0);
+            window.createPaginationButtons(1);
+        } else {
+            // Sino, limpiamos los resultados
+            setData({tracks: [], albums: []});
+            window.clearButtons();
         }
     }, 300);
 });
@@ -35,7 +41,7 @@ function setData(data) {
     window.scrollTo({
         top: 0,
         behavior: "smooth"
-      });
+    });
     window.applyModalListeners();
     window.applyPostFormListeners();
 }
