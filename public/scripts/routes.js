@@ -135,6 +135,10 @@ export const routes = {
 			scriptName: 'search-content',
 			scriptPath: '/scripts/components/search-content/search-content.js',
 		},
+		{
+			scriptName: 'pagination',
+			scriptPath: '/scripts/components/pagination/pagination.js',
+		},
 	],
 	'/content': [
 		{
