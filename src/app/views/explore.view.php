@@ -2,23 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Descubre una plataforma interactiva donde puedes compartir opiniones sobre música y explorar nuevas recomendaciones.
-                Únete a nuestra comunidad de usuarios para escribir reviews de canciones y álbumes e interactuar con otros amantes de la música.
-                ¡Explora, conecta y descubre la pasión por la música en SongHub!" />
-    <meta property="og:title" content="SongHub" />
-    <meta property="og:description" content="Descubre una plataforma interactiva donde puedes compartir opiniones sobre música y explorar nuevas recomendaciones.
-                Únete a nuestra comunidad de usuarios para escribir reviews de canciones y álbumes e interactuar con otros amantes de la música.
-                ¡Explora, conecta y descubre la pasión por la música en SongHub!" />
-    <meta property="og:image" content="https://images.unsplash.com/photo-1485579149621-3123dd979885?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG11c2ljfGVufDB8fDB8fHww" />
-    <meta property="og:url" content="" id="og-url" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.svg" />
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link rel="stylesheet" href="../styles/explore.css" />
-    <script src="../scripts/index.js" type="module"></script>
-    <title>Explorar | SongHub</title>
+    <?php require "fragments/head.view.php"?>
 </head>
 
 <body>
@@ -26,7 +10,25 @@
         <?php require "fragments/header.view.php" ?>
     </header>
     <main>
-        <section class="section">
+        <header>
+            <form action="">
+                <label for="search-on-page">Buscar álbum, canción o artista</label>
+                <input type="search" name="search" role="searchbox" id="search-on-page" autocomplete="off" class="input"
+                    aria-describedby="search-description" />
+                <p id="search-description" class="visually-hidden">
+                    Los resultados de la búsqueda aparecerán en un momento.
+                </p>
+            </form>
+        </header>
+        <section id="search-results-section" style="display: none;">
+            <section id="tacks-results" class="section" >
+                <!-- Aquí se insertarán los resultados de la búsqueda -->
+            </section>
+            <section id="albums-results" class="section">
+                <!-- Aquí se insertarán los resultados de la búsqueda -->
+            </section>
+        </section>
+        <section class="section explore-section" id="recent-activity-section">
             <h2 class="section-title">Tu actividad reciente en Spotify</h2>
             <?php foreach($recentActivity as $item): ?>
                 <article class="add-modal-access" id=<?= $item["track_id"] ?> data-type=<?= $item["type"] ?> data-username=<?= $username?> >
@@ -45,7 +47,7 @@
             <?php endforeach; ?>            
         </section>
         <?php if(count($recommendations) > 0): ?>
-            <section class="section">
+            <section class="section explore-section" id="recommendations-section">
                 <h2 class="section-title">Nuestras recomendaciones</h2>
                 <?php foreach($recommendations as $item): ?>
                     <article class="add-modal-access" id=<?= $item["track_id"] ?> data-type=<?= $item["type"]?> data-username=<?= $username?>  >
@@ -64,7 +66,7 @@
                 <?php endforeach; ?>   
             </section>
         <?php endif; ?>
-        <section class="section">
+        <section class="section explore-section" id="favorites-section">
             <h2 class="section-title">Tu contenido favorito</h2>
             <?php foreach($userTopTracks as $item): ?>
                 <article class="add-modal-access" id=<?= $item["track_id"] ?> data-type=<?= $item["type"] ?> data-username=<?= $username?>  >
@@ -82,7 +84,7 @@
                 </article>
             <?php endforeach; ?>   
         </section>
-        <section class="section">
+        <section class="section explore-section" id="new-releases-section">
             <h2 class="section-title">Nuevos lanzamientos</h2>
             <?php foreach($newReleases as $item): ?>
                 <article class="add-modal-access" id=<?= $item["album_id"] ?> data-type=<?= $item["type"] ?> data-username=<?= $username?> >

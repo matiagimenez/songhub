@@ -20,8 +20,7 @@ const { FAVORITE_ALBUMS, FAVORITE_TRACKS } =
 
 document.head.appendChild(link);
 
-function applyModalListeners() {
-	const articles = document.querySelectorAll('.add-modal-access');
+function applyModalListeners(articles) {
 
 	articles.forEach((article) => {
 		const more_container = ElementBuilder.createElement('section', '', {
@@ -108,7 +107,8 @@ function applyModalListeners() {
 	});
 }
 
-applyModalListeners();
+const articles = document.querySelectorAll('.add-modal-access');
+applyModalListeners(articles);
 
 function clickImgAction(buttons_container, more_button) {
 	more_button.addEventListener('click', () => {
@@ -487,9 +487,7 @@ function createModal(data) {
 const main_header = document.getElementById('main-header');
 const html = document.querySelector('html');
 
-function applyPostFormListeners() {
-	const post_form_openers = document.querySelectorAll('.post-form-opener');
-	const create_post = document.getElementById('create-post');
+function applyPostFormListeners(post_form_openers, create_post) {
 
 	post_form_openers.forEach((opener) => {
 		opener.addEventListener('click', () => {
@@ -532,8 +530,9 @@ function applyPostFormListeners() {
 		});
 	});
 }
-
-applyPostFormListeners();
+const post_form_openers = document.querySelectorAll('.post-form-opener');
+const create_post = document.getElementById('create-post');
+applyPostFormListeners(post_form_openers, create_post);
 
 function close_modal(modal) {
 	modal.remove();

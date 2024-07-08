@@ -26,6 +26,14 @@ export const routes = {
 			scriptPath: '/scripts/components/modal-form/modal-form.js',
 		},
 		{
+			scriptName: 'search-content',
+			scriptPath: '/scripts/components/search-content/search-content.js',
+		},
+		{
+			scriptName: 'pagination',
+			scriptPath: '/scripts/components/pagination/pagination.js',
+		},
+		{
 			scriptName: 'logout-button',
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
 		},

@@ -37,7 +37,7 @@ $router->get('/content', 'ContentController@content');
 $router->get('/content/data', 'ContentController@getContentData');
 
 //Search
-$router->get('/search', 'SearchController@search');
+// $router->get('/search', 'SearchController@search');
 $router->get('/content/search', 'SearchController@searchContent');
 
 // Auth

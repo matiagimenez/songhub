@@ -13,18 +13,7 @@ if ($isAuthenticated) {
     <ul class="hidden" role="menu" id="main-menu">
 
         <?php if ($isAuthenticated): ?>
-        <li role="menuitem" class="search-item">
-            <!-- <form action="/search" method="GET"> -->
-            <a href="/search" class="menu-item">
-                <!-- <label for="search">Buscar álbum, canción o artista</label> -->
-                <input type="search" name="search" role="searchbox" placeholder="Buscar álbum, canción o artista"
-                    id="search" autocomplete="off" class="input menu-item" aria-describedby="search-description" />
-                <p id="search-description" class="visually-hidden">
-                    Los resultados de la búsqueda aparecerán en un momento.
-                </p>
-            </a>
-            <!-- </form> -->
-        </li>
+        
         <li role="menuitem">
             <a href="/" class="menu-item">INICIO</a>
         </li>
