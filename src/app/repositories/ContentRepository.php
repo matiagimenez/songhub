@@ -72,7 +72,7 @@ class ContentRepository extends Repository
 
     public function getContentById($contentId) {
         try{
-            $content = $this->queryBuilder->selectByColumn($this->table, $column, $value);
+            $content = $this->queryBuilder->selectByColumn($this->table, "CONTENT_ID", $contentId);
             
             if (!$content) {
                 return null;
@@ -80,6 +80,12 @@ class ContentRepository extends Repository
 
             $contentInstance = new Content();
             $contentInstance->set(current($content));
+
+            $artistRepository = new ArtistRepository();
+            $artistRepository->setQueryBuilder(QueryBuilder::getInstance());
+            $artist = $artistRepository->getArtistById($contentInstance->fields["ARTIST_ID"]);
+
+            $contentInstance->fields["ARTIST_NAME"] = $artist->fields["NAME"];
 
             return $contentInstance;
 

@@ -7,8 +7,8 @@ use Songhub\core\exceptions\InvalidValueException;
 class Favorite
 {
     public $fields = [
-        "CONTENT_ID" => null,
         "USER_ID" => null,
+        "CONTENT_ID" => null,
     ];
 
     public function setUserId($user_id)
@@ -23,7 +23,6 @@ class Favorite
 
     public function set(array $values)
     {
-
         foreach (array_keys($this->fields) as $field) {
             $field = trim($field);
             if (!isset($values[$field])) {
@@ -31,16 +30,14 @@ class Favorite
             }
 
             $property = explode("_", $field);
-            if (count($property) > 1) {
-                $method = "set" . ucfirst(strtolower($property[0])) . ucfirst(strtolower($property[1]));
+            $method = "set";
 
-            } else {
-                $method = "set" . ucfirst(strtolower($property[0]));
+            foreach ($property as $part) {
+                $method .= ucfirst(strtolower($part));
             }
 
             $this->$method($values[$field]);
         }
-
     }
 
 }

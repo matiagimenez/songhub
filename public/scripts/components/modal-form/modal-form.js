@@ -5,6 +5,19 @@ const link = ElementBuilder.createElement('link', '', {
 	href: '../scripts/components/modal-form/modal-form.css',
 });
 
+async function getCurrentUserFavoriteContent() {
+	try {
+		const response = await fetch('/user/favorites');
+		const data = await response.json();
+		return data;
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+const { FAVORITE_ALBUMS, FAVORITE_TRACKS } =
+	await getCurrentUserFavoriteContent();
+
 document.head.appendChild(link);
 
 function applyModalListeners() {
@@ -46,8 +59,47 @@ function applyModalListeners() {
 			<span class="visually-hidden">Ver información de la canción</span>	
 		`;
 
+		let favorite = ElementBuilder.createElement('button', '', {
+			class: 'toggle-favorite-content',
+			'data-content': article.getAttribute('id'),
+			'data-type': article.dataset.type,
+			'data-username': article.dataset.username,
+		});
+
+		favorite.innerHTML = `
+			<i class="ph ph-heart icon-lg heart-icon"></i>
+			<span class="visually-hidden">Agregar o remover contenido como favorito</span>
+		`;
+
+		if (
+			(FAVORITE_ALBUMS.length >= 3 && article.dataset.type === 'album') ||
+			(FAVORITE_TRACKS.length >= 3 && article.dataset.type === 'track')
+		) {
+			if (
+				!FAVORITE_TRACKS.filter(
+					(favorite) =>
+						favorite.fields['CONTENT_ID'] ===
+						article.getAttribute('id')
+				).length > 0 &&
+				!FAVORITE_ALBUMS.filter(
+					(favorite) =>
+						favorite.fields['CONTENT_ID'] ===
+						article.getAttribute('id')
+				).length > 0
+			) {
+				favorite.classList.add('favorite-disabled');
+				favorite.innerHTML = `
+					<i class="ph ph-heart icon-lg heart-icon favorite-disabled"></i>
+					<span class="visually-hidden">Agregar o remover contenido como favorito</span>
+				`;
+				favorite.disabled = true;
+			}
+		}
+
 		buttons_container.appendChild(view_song);
 		buttons_container.appendChild(create_post);
+		buttons_container.appendChild(favorite);
+
 		const img = article.querySelector('.article-img-container');
 		img.appendChild(more_container);
 		img.appendChild(buttons_container);
@@ -60,7 +112,6 @@ applyModalListeners();
 
 function clickImgAction(buttons_container, more_button) {
 	more_button.addEventListener('click', () => {
-		console.log(window.innerWidth);
 		if (window.innerWidth < 1000) {
 			buttons_container.classList.contains('hidden')
 				? buttons_container.classList.remove('hidden')
@@ -116,13 +167,21 @@ function createModal(data) {
 		class: 'image-border',
 	});
 
-	const type = ElementBuilder.createElement('p', `${data.type === 'album' ? 'Album' : 'Canción'}`, {
-		class: 'type-title',
-	});
+	const type = ElementBuilder.createElement(
+		'p',
+		`${data.type === 'album' ? 'Album' : 'Canción'}`,
+		{
+			class: 'type-title',
+		}
+	);
 
-	const title = ElementBuilder.createElement('h2', `${data.type === 'album' ? data.album_name : data.track_name}`, {
-		class: 'song-title title',
-	});
+	const title = ElementBuilder.createElement(
+		'h2',
+		`${data.type === 'album' ? data.album_name : data.track_name}`,
+		{
+			class: 'song-title title',
+		}
+	);
 
 	const figcaption = ElementBuilder.createElement('figcaption', '', {});
 
@@ -340,19 +399,19 @@ function createModal(data) {
 	});
 
 	postear_button.addEventListener('click', (event) => {
-
 		event.preventDefault();
-        
+
 		const formData = new FormData(form);
 		const values = {};
 		formData.forEach((value, key) => {
-				values[key] = value;
-    });
+			values[key] = value;
+		});
 
-		values['CONTENT_ID'] = data.type === 'album' ? data.album_id : data.track_id;
+		values['CONTENT_ID'] =
+			data.type === 'album' ? data.album_id : data.track_id;
 
-		console.log(values)
-		console.log(JSON.stringify(values))
+		console.log(values);
+		console.log(JSON.stringify(values));
 
 		if (score_rating === 0) {
 			view_error_message(
@@ -363,18 +422,17 @@ function createModal(data) {
 		fetch('/post/create', {
 			method: 'POST',
 			headers: {
-					'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify(values)
+			body: JSON.stringify(values),
 		})
-		.then(response => response.json())
-		.then(data => {
-			console.log(data);
-			close_modal(modal)
-		})
-		.catch(error => {
+			.then((response) => response.json())
+			.then((data) => {
+				close_modal(modal);
+			})
+			.catch((error) => {
 				console.error('Error:', error);
-		});
+			});
 	});
 
 	const submit_container = ElementBuilder.createElement('section', '', {
@@ -441,24 +499,36 @@ function applyPostFormListeners() {
 			main_header.classList.add('hidden');
 
 			const article = opener.closest('article');
-			console.log(article.getAttribute('id'))
-			console.log(article.dataset.type)
 
-			fetch(`/content/data?id=${article.getAttribute('id')}&type=${article.dataset.type}`, {
+			let content_type = '';
+			let content_id = '';
+
+			if (article) {
+				content_id = article.getAttribute('id');
+				content_type = article.dataset.type;
+			} else {
+				const create_post_button = document.querySelector(
+					'.submit-button.post-form-opener'
+				);
+
+				console.log(create_post_button);
+				content_id = create_post_button.getAttribute('id');
+				content_type = create_post_button.dataset.type;
+			}
+
+			fetch(`/content/data?id=${content_id}&type=${content_type}`, {
 				method: 'GET',
 				headers: {
-						'Content-Type': 'application/json'
-				}
+					'Content-Type': 'application/json',
+				},
 			})
-			.then(response => response.json())
-			.then(data => {
-					console.log(data);
+				.then((response) => response.json())
+				.then((data) => {
 					createModal(data);
-			})
-			.catch(error => {
+				})
+				.catch((error) => {
 					console.log(error);
-			});
-
+				});
 		});
 	});
 }

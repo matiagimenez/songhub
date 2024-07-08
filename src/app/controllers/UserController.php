@@ -32,7 +32,9 @@ class UserController extends Controller
         $postsCount = $this -> repository->getUserPostsCount($user->fields["USER_ID"]);
         $stats = $this -> repository->getUserAccountStats($user->fields["USER_ID"]);
 
-        Renderer::getInstance()->profile($user, $country, $posts, $stats["following"], $stats["followers"]);
+        $favorites = $this -> repository->getUserFavorites($user->fields["USER_ID"]);
+
+        Renderer::getInstance()->profile($user, $country, $posts, $stats["following"], $stats["followers"], $favorites);
     }
 
     public function edit()
@@ -43,12 +45,14 @@ class UserController extends Controller
         $country = $this->repository->getUserNationality($user->fields["COUNTRY_ID"]);
         $availableCountries = $this->repository->getAvailableCountries();
 
-        Renderer::getInstance()->edit($user, $country, $availableCountries);
+        $favorites = $this -> repository->getUserFavorites($user->fields["USER_ID"]);
+
+        Renderer::getInstance()->edit($user, $country, $availableCountries, $favorites);
     }
     
     public function updateUser()
     {
-        $username = $this->sanitizeUserInput(Request::getInstance()->getParameter("username", "POST"));
+        $username = Session::getInstance()->get("username");
         $name = $this->sanitizeUserInput(Request::getInstance()->getParameter("name", "POST"));
         $country = $this->sanitizeUserInput(Request::getInstance()->getParameter("country", "POST"));
         $biography = $this->sanitizeUserInput(Request::getInstance()->getParameter("biography", "POST"));

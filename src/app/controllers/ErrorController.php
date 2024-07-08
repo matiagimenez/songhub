@@ -11,6 +11,7 @@ class ErrorController extends Controller
     {
         Renderer::getInstance()->notFound();
     }
+    
     public function internalError()
     {
         Renderer::getInstance()->internalError();

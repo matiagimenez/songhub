@@ -24,8 +24,7 @@ if ($isAuthenticated) {
     <main>
         <?php 
             // echo "<pre>";
-            // var_dump($country);
-            // var_dump($user);
+            // var_dump($favorites);
             // die;
         ?>
         <header>
@@ -49,13 +48,13 @@ if ($isAuthenticated) {
             <section class="user-actions">
                 <p class="profile-button-container">
                     <?php if ($username === $user->fields["USERNAME"]): ?>
-                    <a href="/user/profile" class="submit-outline-button">
-                        Editar perfil
-                    </a>
+                        <a href="/user/profile" class="submit-outline-button">
+                            Editar perfil
+                        </a>
                     <?php else: ?>
-                    <button class="action-button submit-outline-button">
-                        Siguiendo
-                    </button>
+                        <button class="action-button submit-outline-button">
+                            Siguiendo
+                        </button>
                     <?php endif?>
 
                     <a class="submit-button spotify-profile-button" href=<?=$user->fields["SPOTIFY_URL"]?> target="_blank">
@@ -78,106 +77,75 @@ if ($isAuthenticated) {
 
         <section class="section">
             <h2 class="section-title">Tus álbumes favoritos</h2>
-            <article class="add-modal-access" aria-describedby="favourite-song-1">
-                <figure>
-                    <section class="article-img-container">
-                        <img loading="lazy"
-                            src="https://i.pinimg.com/564x/89/28/e3/8928e372651fc60256360ba5e21a7d2f.jpg"
-                            alt="Portada del álbum 'Pulse' de Pink Floyd" width="150px" height="150px"
-                            class="image-border" />
-                    </section>
-                    <figcaption id="favourite-song-1">
-                        <h3 class="song-title">Pulse</h3>
-                        <h4 class="artist-title">Pink Floyd</h4>
-                    </figcaption>
-                </figure>
-            </article>
-
-            <article class="add-modal-access" aria-describedby="favourite-song-2">
-                <figure>
-                    <section class="article-img-container">
-                        <img loading="lazy"
-                            src="https://i.pinimg.com/564x/99/41/82/99418264794012ddd044c761919fbb44.jpg"
-                            alt="Portada del álbum 'Punisher' de Phoebe Bridgers" width="150px" height="150px"
-                            class="image-border" />
-                    </section>
-                    <figcaption id="favourite-song-2">
-                        <h3 class="song-title">Punisher</h3>
-                        <h4 class="artist-title">Phoebe Bridgers</h4>
-                    </figcaption>
-                </figure>
-            </article>
-
-            <article class="add-modal-access" aria-describedby="favourite-song-3">
-                <figure>
-                    <section class="article-img-container">
-                        <img loading="lazy"
-                            src="https://i.pinimg.com/564x/94/76/b8/9476b8e8cb9368ceba6f90bec0c1b980.jpg"
-                            alt="Portada del álbum 'Random Acces Memories' de Daft Punk" width="150px" height="150px"
-                            class="image-border" />
-                    </section>
-                    <figcaption id="favourite-song-3">
-                        <h3 class="song-title">Random Acces Memories</h3>
-                        <h4 class="artist-title">Daft Punk</h4>
-                    </figcaption>
-                </figure>
-            </article>
+            <?php if(count($favorites["FAVORITE_ALBUMS"]) == 0): ?>
+                <?php if ($username === $user->fields["USERNAME"]): ?>
+                    <p class="no-content-msg">No marcaste ningun álbum como favorito </p>
+                <?php else: ?>
+                    <p class="no-content-msg">El usuario <?= $username?> no tiene álbumes favoritos </p>
+                <?php endif?>
+            <?php else: ?>
+                <?php foreach($favorites["FAVORITE_ALBUMS"] as $index => $album): ?>
+                    <article class="add-modal-access" aria-describedby="<?= "Album favorito " . $index ?>">
+                        <figure>
+                            <section class="article-img-container">
+                                <img loading="lazy"
+                                    src=<?= $album->fields["COVER_ID"] ?>
+                                    alt="Portada del álbum <?= $album->fields["TITLE"] ?> de <?= $album -> fields["ARTIST_NAME"] ?>" 
+                                    width="150px" 
+                                    height="150px"
+                                    class="image-border" />
+                            </section>
+                            <figcaption id="<?= "Album favorito " . $index ?>">
+                                <a href="/content?id=<?=$album->fields["CONTENT_ID"]?>&type=album">
+                                    <h3 class="song-title"><?= $album->fields["TITLE"] ?></h3>
+                                    <h4 class="artist-title"><?= $album->fields["ARTIST_NAME"] ?></h4>
+                                </a>   
+                            </figcaption>
+                        </figure>
+                    </article>
+                <?php endforeach; ?>   
+            <?php endif; ?>
         </section>
 
         <section class="section">
             <h2 class="section-title">Tus canciones favoritas</h2>
-
-            <article class="add-modal-access" aria-describedby="favourite-song-4">
-                <figure>
-                    <section class="article-img-container">
-                        <img loading="lazy"
-                            src="https://i.pinimg.com/564x/3d/65/d5/3d65d5e4af0cde2458b2e7b55869f4e6.jpg"
-                            alt="Portada del álbum 'Peso Pluma || Music Session' de Bizarrap" width="150px"
-                            height="150px" class="image-border" />
-                    </section>
-                    <figcaption id="favourite-song-4">
-                        <h3 class="song-title">
-                            Peso Pluma || Music Session
-                        </h3>
-                        <h4 class="artist-title">Bizarrap</h4>
-                    </figcaption>
-                </figure>
-            </article>
-
-            <article class="add-modal-access" aria-describedby="favourite-song-5">
-                <figure>
-                    <section class="article-img-container">
-                        <img loading="lazy"
-                            src="https://i.pinimg.com/564x/aa/af/30/aaaf30cb2a66f80057d06d8e78b0bd3e.jpg"
-                            alt="Portada del álbum 'Bad Habit' de Steve Lazy" width="150px" height="150px"
-                            class="image-border" />
-                    </section>
-                    <figcaption id="favourite-song-5">
-                        <h3 class="song-title">Bad Habit</h3>
-                        <h4 class="artist-title">Steve Lazy</h4>
-                    </figcaption>
-                </figure>
-            </article>
-
-            <article class="add-modal-access" aria-describedby="favourite-song-6">
-                <figure>
-                    <section class="article-img-container">
-                        <img loading="lazy"
-                            src="https://i.pinimg.com/564x/28/83/60/288360836d7d5532e52012bf06981410.jpg"
-                            alt="Portada del álbum 'Comfortably Numb' de Pink Floyd" width="150px" height="150px"
-                            class="image-border" />
-                    </section>
-                    <figcaption id="favourite-song-6">
-                        <h3 class="song-title">Comfortably Numb</h3>
-                        <h4 class="artist-title">Pink Floyd</h4>
-                    </figcaption>
-                </figure>
-            </article>
+            <?php if(count($favorites["FAVORITE_TRACKS"]) == 0): ?>
+                <?php if ($username === $user->fields["USERNAME"]): ?>
+                    <p class="no-content-msg">No marcaste ninguna canción como favorita </p>
+                <?php else: ?>
+                    <p class="no-content-msg">El usuario <?= $username?> no tiene canciones favoritas </p>
+                <?php endif?>
+            <?php else: ?>
+                <?php foreach($favorites["FAVORITE_TRACKS"] as $index => $track): ?>
+                    <article class="add-modal-access" aria-describedby="<?= "Canción favorita " . $index ?>">
+                        <figure>
+                            <section>
+                                <img loading="lazy"
+                                src=<?= $track->fields["COVER_ID"] ?>
+                                alt="Portada de la canción <?= $track->fields["TITLE"] ?> de <?= $track -> fields["ARTIST_NAME"] ?>"
+                                width="150px"
+                                height="150px" 
+                                class="image-border" />
+                        </section>
+                            <figcaption id="<?= "Canción favorita " . $index ?>">
+                                <a href="/content?id=<?=$track->fields["CONTENT_ID"]?>&type=track ">
+                                    <h3 class="song-title"><?= $track->fields["TITLE"] ?></h3>
+                                    <h4 class="artist-title"><?= $track->fields["ARTIST_NAME"] ?></h4>
+                                </a>
+                            </figcaption>
+                        </figure>
+                    </article>
+                <?php endforeach; ?>   
+            <?php endif; ?>
         </section>
         <section class="recent-activity">
             <h2 class="section-title">Actividad reciente</h2>
             <?php if(count($posts) == 0): ?>
-                <p class="no-content-msg">El usuario <?= $user->fields["USERNAME"]?> no ha realizado ningún post</p>
+                <?php if ($username === $user->fields["USERNAME"]): ?>
+                    <p class="no-content-msg"> Aún no realizaste ningún post </p>
+                <?php else: ?>
+                    <p class="no-content-msg">El usuario <?= $user->fields["USERNAME"]?> no ha realizado ningún post</p>
+                <?php endif?>
             <?php else: ?>
                 <article tabindex="0" class="post add-modal-access" id="post_1" aria-posinset="1" aria-setsize="3"
                 aria-labelledby="post-1-song-title post-1-artist-title" aria-describedby="post-content-1">
@@ -262,10 +230,6 @@ if ($isAuthenticated) {
             <?php endif; ?>
         </section>
     </main>
-
-    <footer class="main-footer">
-        <?php require "fragments/footer.view.php"?>
-    </footer>
 </body>
 
 </html>

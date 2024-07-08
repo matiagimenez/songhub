@@ -43,4 +43,18 @@ class ArtistRepository extends Repository
 
     }
 
+    public function getArtistById($artistId) {
+
+        $artist = $this->queryBuilder->selectByColumn($this->table, "ARTIST_ID", $artistId);
+        
+        if (!$artist) {
+            return null;
+        }
+
+        $artistInstance = new Artist();
+        $artistInstance->set(current($artist));
+        
+        return $artistInstance;
+    }
+
 }

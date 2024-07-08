@@ -150,7 +150,9 @@ class UserRepository extends Repository
     public function getUserPosts($userId) {
         $postRepository = new PostRepository();
         $postRepository->setQueryBuilder(QueryBuilder::getInstance());
-        return $postRepository -> getPostsFromUser($userId);
+        // ! Retorno [] de forma temporal  para que no se rompa el perfil
+        return [];
+        // return $postRepository -> getPostsFromUser($userId);
     }
 
     public function getUserPostsCount($userId) {
@@ -184,5 +186,13 @@ class UserRepository extends Repository
         $availableCountries = $countryRepository -> getAvailableCountries();
         
         return $availableCountries;
+    }
+
+    public function getUserFavorites($userId) {
+        $favoriteRepository = new FavoriteRepository();
+        $favoriteRepository->setQueryBuilder(QueryBuilder::getInstance());
+        $userFavoriteContent = $favoriteRepository -> getCurrentUserFavoriteContent($userId);
+        
+        return $userFavoriteContent;
     }
 }

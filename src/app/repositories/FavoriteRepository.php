@@ -6,12 +6,83 @@ use Exception;
 use Songhub\app\models\Favorite;
 use Songhub\core\exceptions\InvalidValueException;
 use Songhub\core\Repository;
+use Songhub\core\Session;
+use Songhub\core\database\QueryBuilder;
 
 class FavoriteRepository extends Repository
 {
     public $table = "FAVORITE";
 
-    public function getUserFavorites(int $userId)
+    public function getCurrentUserId() {
+        $username = Session::getInstance()->get("username");
+
+        $userRepository = new UserRepository();
+        $userRepository -> setQueryBuilder(QueryBuilder::getInstance()); 
+
+        $user = $userRepository->getUser("USERNAME", $username);
+
+        return $user -> fields["USER_ID"];
+    }
+
+
+    public function removeCurrentUserFavoriteContent(int $userId, $contentId) { 
+        try {
+            // Nombres de las columnas de la clave primaria
+            $primaryKey = ['USER_ID', 'CONTENT_ID'];
+
+            // Valores de las columnas de la clave primaria
+            $primaryKeyValues = [
+                'USER_ID' => $userId,
+                'CONTENT_ID' => $contentId
+            ];
+
+            $this->queryBuilder->delete($this->table, $primaryKey, $primaryKeyValues);
+            return [true, "Se agrego el contenido como favorito"];
+        } catch (Exception $exception) {
+    
+            $this->logger->error(
+                "Error al remover el favorito del usuario",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'FavoriteRepository - removeCurrentUserFavoriteContent',
+                ]
+            );
+            return [false, "Ocurrió un error al remover el favorito del usuario"];
+        }
+    }
+
+    public function addCurrentUserFavoriteContent(int $userId, $contentId, $contentType) { 
+        try {
+            $favorite = new Favorite();
+            $favorite->setUserId($userId);
+            $favorite->setContentId($contentId);
+
+            $userFavorites = $this -> getCurrentUserFavoriteContent($userId);
+
+            if($contentType == "album" && count($userFavorites["FAVORITE_ALBUMS"]) >= 3) {
+                return [false, "Se puede tener hasta 3 albumes favoritos"];
+            }
+
+            if($contentType == "track" && count($userFavorites["FAVORITE_TRACKS"]) >= 3) {
+                return [false, "Se puede tener hasta 3 canciones favoritas"];
+            }
+            
+            $this->queryBuilder->insert($this->table, ["CONTENT_ID" => $contentId, "USER_ID" => $userId]);
+            return [true, "Se agrego el contenido como favorito"];
+        } catch (Exception $exception) {
+    
+            $this->logger->error(
+                "Error al agregar el favorito del usuario",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'FavoriteRepository - addCurrentUserFavoriteContent',
+                ]
+            );
+            return [false, "Ocurrió un error al agregar el favorito del usuario"];
+        }
+    }
+
+    public function getCurrentUserFavoriteContent(int $userId)
     {
         try {
             $favorites = $this->queryBuilder->selectByColumn($this->table, "USER_ID", $userId);
@@ -21,13 +92,14 @@ class FavoriteRepository extends Repository
 
             $tracks = [];
             $albums = [];
+
+            
             
             foreach($favorites as $favorite) {
                 $favoriteInstance = new Favorite();
                 $favoriteInstance ->set($favorite);
                 $content = $contentRepository->getContentById($favoriteInstance->fields["CONTENT_ID"]);
                 
-                // Ver el valor de TYPE que se usa al cargar un registro en la tabla CONTENT
                 if ($content->fields["TYPE"] == "a") {
                     $albums[] = $content;
                 } else {

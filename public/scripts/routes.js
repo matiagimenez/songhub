@@ -29,6 +29,15 @@ export const routes = {
 			scriptName: 'logout-button',
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
 		},
+		{
+			scriptName: 'favorite-button',
+			scriptPath:
+				'/scripts/components/favorite-button/favorite-button.js',
+		},
+		{
+			scriptName: 'footer-animation',
+			scriptPath: '/scripts/animations/footer-animation.js',
+		},
 	],
 	'/followers': [
 		{
@@ -77,6 +86,10 @@ export const routes = {
 			scriptName: 'logout-button',
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
 		},
+		{
+			scriptName: 'footer-animation',
+			scriptPath: '/scripts/animations/footer-animation.js',
+		},
 	],
 
 	'/user': [
@@ -92,22 +105,13 @@ export const routes = {
 			scriptName: 'share-menu',
 			scriptPath: '/scripts/components/share-menu/share-menu.js',
 		},
-		// {
-		// 	scriptName: 'hover-img',
-		// 	scriptPath: '../scripts/components/song&album-img/hover-img.js',
-		// },
 		{
 			scriptName: 'action-button-animation',
 			scriptPath: '/scripts/animations/action-button-animation.js',
 		},
-
 		{
 			scriptName: 'likes-counter-animation',
 			scriptPath: '/scripts/animations/likes-counter-animation.js',
-		},
-		{
-			scriptName: 'modal-form',
-			scriptPath: '/scripts/components/modal-form/modal-form.js',
 		},
 		{
 			scriptName: 'logout-button',
@@ -145,10 +149,6 @@ export const routes = {
 			scriptName: 'post-content',
 			scriptPath: '/scripts/components/post/post-content.js',
 		},
-		// {
-		// 	scriptName: 'hover-img',
-		// 	scriptPath: '../scripts/components/song&album-img/hover-img.js',
-		// },
 		{
 			scriptName: 'modal-form',
 			scriptPath: '/scripts/components/modal-form/modal-form.js',
@@ -158,8 +158,9 @@ export const routes = {
 			scriptPath: '/scripts/components/share-menu/share-menu.js',
 		},
 		{
-			scriptName: 'favourite-button-animation',
-			scriptPath: '/scripts/animations/favourite-button-animation.js',
+			scriptName: 'favorite-button',
+			scriptPath:
+				'/scripts/components/favorite-button/favorite-button.js',
 		},
 		{
 			scriptName: 'likes-counter-animation',
@@ -174,6 +175,10 @@ export const routes = {
 			scriptPath:
 				'/scripts/components/track-preview-button/track-preview-button.js',
 		},
+		{
+			scriptName: 'footer-animation',
+			scriptPath: '/scripts/animations/footer-animation.js',
+		},
 	],
 	'/user/profile': [
 		{
@@ -181,12 +186,13 @@ export const routes = {
 			scriptPath: '/scripts/animations/menu-animation.js',
 		},
 		{
-			scriptName: 'remove-favourite-animation',
-			scriptPath: '/scripts/animations/remove-favourite-animation.js',
-		},
-		{
 			scriptName: 'logout-button',
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
+		},
+		{
+			scriptName: 'favorite-button',
+			scriptPath:
+				'/scripts/components/favorite-button/remove-favorite-button.js',
 		},
 	],
 	'/terms-conditions': [
@@ -198,6 +204,10 @@ export const routes = {
 			scriptName: 'logout-button',
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
 		},
+		{
+			scriptName: 'footer-animation',
+			scriptPath: '/scripts/animations/footer-animation.js',
+		},
 	],
 	'/error': [
 		{
@@ -207,6 +217,10 @@ export const routes = {
 		{
 			scriptName: 'logout-button',
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
+		},
+		{
+			scriptName: 'footer-animation',
+			scriptPath: '/scripts/animations/footer-animation.js',
 		},
 	],
 	'/': [
@@ -234,11 +248,10 @@ export const routes = {
 		// 	scriptName: 'hover-img',
 		// 	scriptPath: '../scripts/components/song&album-img/hover-img.js',
 		// },
-		{
-			scriptName: 'modal-form',
-			scriptPath: '/scripts/components/modal-form/modal-form.js',
-		},
-
+		// {
+		// 	scriptName: 'modal-form',
+		// 	scriptPath: '/scripts/components/modal-form/modal-form.js',
+		// },
 		{
 			scriptName: 'likes-counter-animation',
 			scriptPath: '/scripts/animations/likes-counter-animation.js',

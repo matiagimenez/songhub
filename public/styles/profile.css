@@ -4,6 +4,10 @@
 @import url('global/modal-access.css');
 @import url('global/grid-section.css');
 
+main {
+	padding-bottom: 72px;
+}
+
 main header {
 	padding: 12px;
 }

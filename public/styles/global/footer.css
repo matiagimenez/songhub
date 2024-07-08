@@ -11,11 +11,19 @@ body {
 	max-height: 90px;
 	width: 100%;
 	font-family: var(--font-family);
-	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-top: 1rem;
+	z-index: 1000000;
+}
+
+.fixed-footer {
+	position: fixed;
+	bottom: 0;
+}
+
+.invisible-footer {
+	display: none;
 }
 
 .main-footer section {
