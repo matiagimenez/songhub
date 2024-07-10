@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class FavouriteTableMigration extends AbstractMigration
+final class FavoriteTableMigration extends AbstractMigration
 {
     public function change(): void
     {

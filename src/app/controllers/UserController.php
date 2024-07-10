@@ -21,6 +21,11 @@ class UserController extends Controller
 
     public function profile($user = null)
     {
+        if(is_null(Session::getInstance()->get("access_token"))) {
+            Renderer::getInstance()->login();
+            exit;
+        }
+
         if(!$user){
             $username = $this->sanitizeUserInput(Request::getInstance()->getParameter("username", "GET"));
             $user = $this->repository->getUser("USERNAME", $username);
@@ -39,6 +44,11 @@ class UserController extends Controller
 
     public function edit()
     {
+        if(is_null(Session::getInstance()->get("access_token"))) {
+            Renderer::getInstance()->login();
+            exit;
+        }
+        
         $username = Session::getInstance()->get("username");
         $user = $this->repository->getUser("USERNAME", $username);
 
