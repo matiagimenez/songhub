@@ -55,7 +55,7 @@ class Session
     public function getAccessToken()
     {
         // Verificar si el access token está presente y no ha expirado
-        if (isset($_SESSION['access_token']) && isset($_SESSION['access_token_expire_time']) && time() < $_SESSION['token_expire_time']) {
+        if (isset($_SESSION['access_token']) && isset($_SESSION['access_token_expire_time']) && time() < $_SESSION['access_token_expire_time']) {
             return $this->get("access_token");
         } else {
             return null;
