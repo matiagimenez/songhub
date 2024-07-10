@@ -38,7 +38,7 @@ class User
         }
 
         if (!preg_match('/^[a-zA-Z0-9\s]+$/', $name)) {
-            throw new InvalidValueException("El nombre solo puede contener letras, números y espacios en blanco");
+            throw new InvalidValueException("El nombre solo puede contener letras y/o números");
         }
 
         $this->fields["NAME"] = $name;
@@ -67,26 +67,26 @@ class User
 
         $email = strtolower(trim($email));
         if (strlen($email) > 128) {
-            throw new InvalidValueException("El email debe tener un maximo de 128 caracteres");
+            throw new InvalidValueException("El correo electrónico debe tener un maximo de 128 caracteres");
         }
 
         if (strlen($email) === 0) {
-            throw new InvalidValueException("El email no es valido");
+            throw new InvalidValueException("El correo electrónico utilizado no es valido");
         }
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            throw new InvalidValueException("El email no es valido");
+            throw new InvalidValueException("El correo electrónico utilizado no es valido");
         }
 
         if (!preg_match('/^[^\s@]+@[^\s@]+\.[^\s@]+$/', $email)) {
-            throw new InvalidValueException("El email no es valido");
+            throw new InvalidValueException("El correo electrónico utilizado no es valido");
         }
 
         // El email de confirmacion solo se pasa al momento de registrarse. En el resto de usos del metodo setEmail, no se tiene en cuenta este segundo parametro.
         if ($emailConfirmation !== null) {
             $emailConfirmation = strtolower(trim($emailConfirmation));
             if ($email !== $emailConfirmation) {
-                throw new InvalidValueException("Los emails no coinciden");
+                throw new InvalidValueException("Los correos electrónicos no coinciden");
             }
         }
 
@@ -96,11 +96,11 @@ class User
     public function setPassword($password, $passwordConfirmation = "")
     {
         if (strlen($password) < 8) {
-            throw new InvalidValueException("La contraseña debe tener un minimo de 8 caracteres");
+            throw new InvalidValueException("La contraseña debe tener un mínimo de 8 caracteres");
         }
 
         if (strlen($password) > 255) {
-            throw new InvalidValueException("La contraseña debe tener un maximo de 255 caracteres");
+            throw new InvalidValueException("La contraseña debe tener un máximo de 255 caracteres");
         }
 
         if (!preg_match("#[0-9]+#", $password)) {
@@ -147,7 +147,7 @@ class User
     public function setSpotifyAvatar(string $spotifyAvatar)
     {
         if (!filter_var($spotifyAvatar, FILTER_VALIDATE_URL)) {
-            throw new InvalidValueException("La URL del avatar de spotify no es valida");
+            throw new InvalidValueException("La URL del avatar de spotify no es válida");
         }
 
         $spotify_avatar = trim($spotifyAvatar);
@@ -157,7 +157,7 @@ class User
     {
 
         if (strlen($biography) > 160) {
-            throw new InvalidValueException("La biografia debe tener un maximo de 160 caracteres");
+            throw new InvalidValueException("La biografía debe tener un maximo de 160 caracteres");
         }
 
         $biography = trim($biography);
