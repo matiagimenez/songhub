@@ -77,7 +77,7 @@ class Renderer
         require $this->viewsDirectory . "error.view.php";
     }
 
-    public function profile($user, $country, $posts, $following, $followers, $favorites)
+    public function profile($user, $country, $posts, $following, $followers, $favorites, $message)
     {
         $title = "Perfil";
         $style = "profile";

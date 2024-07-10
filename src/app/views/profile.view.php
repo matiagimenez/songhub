@@ -62,6 +62,9 @@ if ($isAuthenticated) {
                         <span> Perfil </span>
                     </a>
                 </p>
+                <?php if (strlen($message) > 0): ?>
+                    <p class="info-message"><?=$message?></p>
+                <?php endif;?>
             </section>
             <section>
                 <?php if ($user->fields["COUNTRY_ID"]): ?>

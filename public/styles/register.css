@@ -313,9 +313,9 @@ a:focus {
 		color: var(--color-violet-light-white);
 	}
 
-	.info-message,
-	.error-message {
+	.info-message {
 		color: white;
+		background-color: var(--color-violet);
 	}
 }
 

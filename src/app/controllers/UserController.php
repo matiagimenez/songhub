@@ -19,7 +19,7 @@ class UserController extends Controller
         parent::__construct();
     }
 
-    public function profile($user = null)
+    public function profile($user = null, $message = "")
     {
         if(!$user){
             $username = $this->sanitizeUserInput(Request::getInstance()->getParameter("username", "GET"));
@@ -34,7 +34,7 @@ class UserController extends Controller
 
         $favorites = $this -> repository->getUserFavorites($user->fields["USER_ID"]);
 
-        Renderer::getInstance()->profile($user, $country, $posts, $stats["following"], $stats["followers"], $favorites);
+        Renderer::getInstance()->profile($user, $country, $posts, $stats["following"], $stats["followers"], $favorites, $message);
     }
 
     public function edit($message = "")
@@ -72,6 +72,6 @@ class UserController extends Controller
 
         $user = $this->repository->getUser("USERNAME", $username);
 
-        $this->profile($user);
+        $this->profile($user, "Tu perfil fue actualizado con éxito");
     }
 }
