@@ -10,7 +10,7 @@ body {
 
 main {
 	padding: 1rem 0;
-	padding-bottom: 72px;
+	padding-bottom: 124px;
 }
 
 @media (prefers-color-scheme: dark) {
