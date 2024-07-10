@@ -12,17 +12,12 @@
                 <h1>Bienvenido</h1>
                 <h2>Por favor, ingresa tus credenciales</h2>
             </header>
-            <?php
-if (strlen($message) > 0) {
-    if ($error) {
-        echo "<p class='error-message'> ERROR: " . $message . "</p>";
-    } else {
-        echo "<p class='info-message'>" . $message . "</p>";
-
-    }
-}
-?>
             <fieldset>
+                <?php if (strlen($message) > 0 && $error): ?>
+                    <p class='error-message'><?=$message?></p>
+                <?php else: ?>
+                    <p class='info-message'><?=$message?></p>
+                <?php endif;?>
                 <legend>Informacion de inicio de sesión</legend>
                 <p class="input-container">
                     <input name="email" id="email" type="email" autocomplete="off" placeholder=" " required
@@ -45,15 +40,6 @@ if (strlen($message) > 0) {
             </p>
         </form>
         <?php
-if ($message) {
-    if ($error) {
-        echo "<p class='link-container error-message'>" . $message . "</p>";
-    } else {
-        echo "<p class='link-container info-message'>" . $message . "</p>";
-
-    }
-
-}
 ?>
     </main>
 </body>

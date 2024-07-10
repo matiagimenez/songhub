@@ -11,17 +11,10 @@
         <form action="/register" method="POST">
 
             <h1>Registrate</h1>
-            <?php
-if (strlen($message) > 0) {
-    if ($error) {
-        echo "<p class='error-message'> ERROR: " . $message . "</p>";
-    } else {
-        echo "<p class='info-message'>" . $message . "</p>";
-
-    }
-}
-?>
             <fieldset>
+                <?php if (strlen($message) > 0): ?>
+                    <p class='error-message'><?=$message?></p>
+                <?php endif;?>
                 <legend>Informacion de registro</legend>
                 <p class="input-container">
                     <input name="username" id="username" type="text" required autocomplete="off" class="input"

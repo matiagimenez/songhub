@@ -141,9 +141,23 @@ a:focus {
 
 .info-message,
 .error-message {
-	width: 100%;
-	text-align: left;
-	color: var(--color-violet-darkest);
+	padding: 10px 8px;
+	font-weight: 500;
+	width: 90%;
+	margin-bottom: 24px;
+	margin-left: 16px;
+	border-radius: 5px;
+	font-size: 0.85rem;
+}
+
+.info-message {
+	color: var(--color-white);
+	background-color: var(--color-violet-darkest);
+}
+
+.error-message {
+	color: white;
+	background-color: var(--color-red);
 }
 
 @media (min-width: 1000px) {
@@ -216,6 +230,12 @@ a:focus {
 		width: 55%;
 		text-align: center;
 	}
+
+	.info-message,
+	.error-message {
+		width: 90%;
+		font-size: 1rem;
+	}
 }
 
 @media (min-width: 1300px) {
@@ -237,6 +257,11 @@ a:focus {
 	.input-container input:valid ~ label,
 	.input-container input.has-value ~ label {
 		font-size: 0.9rem;
+	}
+
+	.info-message,
+	.error-message {
+		margin-left: 24px;
 	}
 }
 

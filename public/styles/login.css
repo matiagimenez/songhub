@@ -156,9 +156,23 @@ a:focus {
 
 .info-message,
 .error-message {
-	width: 100%;
-	text-align: left;
-	color: var(--color-violet-darkest);
+	padding: 10px 8px;
+	font-weight: 500;
+	width: 90%;
+	margin-bottom: 24px;
+	margin-left: 16px;
+	border-radius: 5px;
+	font-size: 0.85rem;
+}
+
+.info-message {
+	color: var(--color-white);
+	background-color: var(--color-violet-dark);
+}
+
+.error-message {
+	color: white;
+	background-color: var(--color-red);
 }
 
 @media (min-width: 1000px) {
@@ -179,6 +193,12 @@ a:focus {
 		height: 90%;
 		padding-top: 48px;
 		justify-content: center;
+	}
+
+	.info-message,
+	.error-message {
+		width: 90%;
+		font-size: 1rem;
 	}
 
 	form::after {
@@ -244,6 +264,11 @@ a:focus {
 		left: 0px;
 	}
 
+	.info-message,
+	.error-message {
+		margin-left: 24px;
+	}
+
 	.input-container {
 		margin-left: 24px;
 	}
@@ -305,9 +330,9 @@ a:focus {
 		color: var(--color-violet-light-white);
 	}
 
-	.info-message,
-	.error-message {
-		color: white;
+	.info-message {
+		color: var(--color-white);
+		background-color: var(--color-violet-light);
 	}
 }
 
