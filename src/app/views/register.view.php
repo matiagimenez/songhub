@@ -51,8 +51,6 @@
                 <a href="/login">Inicía sesión aquí</a>
             </p>
         </form>
-
     </main>
 </body>
-
-</html>Q
+</html>

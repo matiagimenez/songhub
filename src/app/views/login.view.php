@@ -37,8 +37,6 @@
                 <a href="/register">Registrate aquí</a>
             </p>
         </form>
-        <?php
-?>
     </main>
 </body>
 
