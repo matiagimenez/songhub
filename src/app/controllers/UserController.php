@@ -19,7 +19,7 @@ class UserController extends Controller
         parent::__construct();
     }
 
-    public function profile($user = null)
+    public function profile($user = null, $message = "")
     {
         if(is_null(Session::getInstance()->get("access_token"))) {
             Renderer::getInstance()->login();
@@ -39,10 +39,10 @@ class UserController extends Controller
 
         $favorites = $this -> repository->getUserFavorites($user->fields["USER_ID"]);
 
-        Renderer::getInstance()->profile($user, $country, $posts, $stats["following"], $stats["followers"], $favorites);
+        Renderer::getInstance()->profile($user, $country, $posts, $stats["following"], $stats["followers"], $favorites, $message);
     }
 
-    public function edit()
+    public function edit($message = "")
     {
         if(is_null(Session::getInstance()->get("access_token"))) {
             Renderer::getInstance()->login();
@@ -57,7 +57,7 @@ class UserController extends Controller
 
         $favorites = $this -> repository->getUserFavorites($user->fields["USER_ID"]);
 
-        Renderer::getInstance()->edit($user, $country, $availableCountries, $favorites);
+        Renderer::getInstance()->edit($user, $country, $availableCountries, $favorites, $message);
     }
     
     public function updateUser()
@@ -73,14 +73,15 @@ class UserController extends Controller
             "COUNTRY_ID" => $country
         ];
 
-        $result = $this -> repository -> updateUser("USERNAME", $username, $data);
+        list($status, $message) = $this -> repository -> updateUser("USERNAME", $username, $data);
 
-        if(!$result[0]){
-            Renderer::getInstance()->internalError();
+        if(!$status){
+            $this->edit($message);
+            exit;
         }
 
         $user = $this->repository->getUser("USERNAME", $username);
 
-        $this->profile($user);
+        $this->profile($user, "Tu perfil fue actualizado con éxito");
     }
 }

@@ -332,7 +332,7 @@ a:focus {
 
 	.info-message {
 		color: var(--color-white);
-		background-color: var(--color-violet-light);
+		background-color: var(--color-violet);
 	}
 }
 

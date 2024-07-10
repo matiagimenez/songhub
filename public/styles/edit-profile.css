@@ -166,6 +166,18 @@ ul.edit-favourites-list .edit-favourite-item a.add-favorite span {
 	text-align: center;
 }
 
+.error-message {
+	padding: 10px 8px;
+	font-weight: 500;
+	width: 90%;
+	margin-bottom: 24px;
+	margin-left: 8px;
+	border-radius: 5px;
+	font-size: 0.85rem;
+	background-color: var(--color-red);
+	color: white;
+}
+
 @media (min-width: 420px) {
 	.profile-image-edit {
 		height: 170px;
@@ -183,6 +195,10 @@ ul.edit-favourites-list .edit-favourite-item a.add-favorite span {
 	form fieldset .input-container textarea {
 		width: 100%;
 		max-width: initial;
+	}
+
+	.error-message {
+		width: 100%;
 	}
 }
 
@@ -209,6 +225,11 @@ ul.edit-favourites-list .edit-favourite-item a.add-favorite span {
 	form fieldset .input-container input,
 	form fieldset .input-container select,
 	form fieldset .input-container textarea {
+		width: 90%;
+		max-width: 450px;
+	}
+
+	.error-message {
 		width: 90%;
 		max-width: 450px;
 	}
@@ -270,6 +291,11 @@ ul.edit-favourites-list .edit-favourite-item a.add-favorite span {
 		width: 100%;
 	}
 
+	.error-message {
+		max-width: 500px;
+		width: 100%;
+	}
+
 	form fieldset .username-edit input,
 	form fieldset .name-edit input {
 		min-width: 0;
@@ -302,6 +328,11 @@ ul.edit-favourites-list .edit-favourite-item a.add-favorite span {
 	form fieldset .input-container input,
 	form fieldset .input-container select,
 	form fieldset .input-container textarea {
+		width: 90%;
+		max-width: 600px;
+	}
+
+	.error-message {
 		width: 90%;
 		max-width: 600px;
 	}

@@ -154,6 +154,20 @@ section.recent-activity article:last-child {
 	border-bottom: none;
 }
 
+.info-message {
+	padding: 10px 8px;
+	font-weight: 500;
+	width: 100%;
+	margin-top: 24px;
+	border-radius: 5px;
+	font-size: 0.85rem;
+}
+
+.info-message {
+	color: var(--color-white);
+	background-color: var(--color-violet-dark);
+}
+
 @media (min-width: 400px) {
 	main header {
 		display: flex;
@@ -242,5 +256,10 @@ section.recent-activity article:last-child {
 
 	main header .user-stats ul li {
 		color: var(--color-white);
+	}
+
+	.info-message {
+		color: var(--color-white);
+		background-color: var(--color-violet);
 	}
 }
