@@ -28,6 +28,11 @@ class ExploreController extends Controller
 
     public function explore()
     {
+        if(is_null(Session::getInstance()->get("access_token"))) {
+            Renderer::getInstance()->login();
+            exit;
+        }
+        
         $recommendations = null;
         $userTopTracks = $this->getUserTops();
         $newReleases = $this->getNewReleases();
