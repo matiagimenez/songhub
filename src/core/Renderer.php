@@ -28,7 +28,7 @@ class Renderer
         require $this->viewsDirectory . "home.view.php";
     }
 
-    public function login($message = "", $error = false)
+    public function login($message = "", $error = false, $email="")
     {
         $title = "Iniciar sesión";
         $style = "login";
@@ -36,7 +36,7 @@ class Renderer
         require $this->viewsDirectory . "login.view.php";
     }
 
-    public function register($message = "", $error = false)
+    public function register($message = "", $error = false, $currentUserData = null)
     {
         $title = "Registrarme";
         $style = "register";

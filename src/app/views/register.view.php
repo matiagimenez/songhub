@@ -4,33 +4,30 @@
 <head>
     <?php require "fragments/head.view.php"?>
 </head>
-
 <body>
     <main>
-
         <form action="/register" method="POST">
-
             <h1>Registrate</h1>
             <fieldset>
                 <?php if (strlen($message) > 0): ?>
-                    <p class='error-message'><?=$message?></p>
+                    <p class="<?= $error ? "error-message" : "info-message" ?>"><?=$message?></p>
                 <?php endif;?>
                 <legend>Informacion de registro</legend>
                 <p class="input-container">
                     <input name="username" id="username" type="text" required autocomplete="off" class="input"
-                        aria-describedby="username-desc" aria-labelledby="username-label" maxlength="20" />
+                        aria-describedby="username-desc" aria-labelledby="username-label" maxlength="20" value="<?=$currentUserData["USERNAME"] ?? ''?>"/>
                     <label for="username" id="username-label">Nombre de usuario</label>
                 <p class="visually-hidden" id="username-desc">El nombre de usuario solo puede estar conformado por
                     letras y numeros</p>
                 </p>
                 <p class="input-container">
                     <input name="email" id="email" type="email" required autocomplete="off" class="input"
-                        aria-labelledby="email-label" />
+                        aria-labelledby="email-label" value="<?=$currentUserData["EMAIL"] ?? ''?>"/>
                     <label for="email" id="email-label">Correo electrónico</label>
                 </p>
                 <p class="input-container">
                     <input name="email-confirmation" id="email-confirmation" type="email" autocomplete="off" required
-                        class="input" aria-labelledby="email-confirmation-label" />
+                        class="input" aria-labelledby="email-confirmation-label" value="<?=$currentUserData["EMAIL_CONFIRMATION"] ?? ''?>"/>
                     <label for="email-confirmation" id="email-confirmation-label">Confirmar correo electrónico</label>
                 </p>
                 <p class="input-container">

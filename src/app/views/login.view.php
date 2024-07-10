@@ -13,15 +13,13 @@
                 <h2>Por favor, ingresa tus credenciales</h2>
             </header>
             <fieldset>
-                <?php if (strlen($message) > 0 && $error): ?>
-                    <p class='error-message'><?=$message?></p>
-                <?php else: ?>
-                    <p class='info-message'><?=$message?></p>
+                <?php if (strlen($message) > 0): ?>
+                    <p class="<?= $error ? "error-message" : "info-message" ?>"><?=$message?></p>
                 <?php endif;?>
                 <legend>Informacion de inicio de sesión</legend>
                 <p class="input-container">
                     <input name="email" id="email" type="email" autocomplete="off" placeholder=" " required
-                        class="input" aria-labelledby="email-label" />
+                        class="input" aria-labelledby="email-label" value="<?=$email ?? ''?>"/>
                     <label for="email" id="email-label">Correo electrónico</label>
                 </p>
                 <p class="input-container">

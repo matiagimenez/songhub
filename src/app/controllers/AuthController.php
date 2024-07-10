@@ -28,7 +28,7 @@ class AuthController extends Controller
         list($status, $message) = $this->repository->login($email, $password);
 
         if (!$status) {
-            Renderer::getInstance()->login($message, true);
+            Renderer::getInstance()->login($message, true, $email);
             die;
         }
 
@@ -67,7 +67,7 @@ class AuthController extends Controller
         if ($status) {
             Renderer::getInstance()->login($message);
         } else {
-            Renderer::getInstance()->register($message, true);
+            Renderer::getInstance()->register($message, true, $userData);
         }
     }
 
