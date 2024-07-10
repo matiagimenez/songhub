@@ -37,7 +37,7 @@ class UserController extends Controller
         Renderer::getInstance()->profile($user, $country, $posts, $stats["following"], $stats["followers"], $favorites);
     }
 
-    public function edit()
+    public function edit($message = "")
     {
         $username = Session::getInstance()->get("username");
         $user = $this->repository->getUser("USERNAME", $username);
@@ -47,7 +47,7 @@ class UserController extends Controller
 
         $favorites = $this -> repository->getUserFavorites($user->fields["USER_ID"]);
 
-        Renderer::getInstance()->edit($user, $country, $availableCountries, $favorites);
+        Renderer::getInstance()->edit($user, $country, $availableCountries, $favorites, $message);
     }
     
     public function updateUser()
@@ -63,10 +63,11 @@ class UserController extends Controller
             "COUNTRY_ID" => $country
         ];
 
-        $result = $this -> repository -> updateUser("USERNAME", $username, $data);
+        list($status, $message) = $this -> repository -> updateUser("USERNAME", $username, $data);
 
-        if(!$result[0]){
-            Renderer::getInstance()->internalError();
+        if(!$status){
+            $this->edit($message);
+            exit;
         }
 
         $user = $this->repository->getUser("USERNAME", $username);

@@ -70,22 +70,8 @@ class UserRepository extends Repository
 
             return [true, "Usuario registrado con éxito"];
         } catch (InvalidValueException $exception) {
-            // $this->logger->error(
-            //     "Error al crear el usuario",
-            //     [
-            //         "Error" => $exception->getMessage(),
-            //         "Operacion" => 'UserRepository - createUser',
-            //     ]
-            // );
             return [false, $exception->getMessage()];
         } catch (Exception $exception) {
-            $this->logger->error(
-                "Error al crear el usuario",
-                [
-                    "Error" => $exception->getMessage(),
-                    "Operacion" => 'UserRepository - createUser',
-                ]
-            );
             return [false, "Ocurrió un error durante el registro de usuario"];
         }
     }
@@ -98,22 +84,8 @@ class UserRepository extends Repository
             $this->queryBuilder->update($this->table, $user->fields, "USERNAME", $user -> fields["USERNAME"]);
             return [true, "Usuario actualizado con éxito"];
         } catch (InvalidValueException $exception) {
-            $this->logger->error(
-                "Error al actualizar datos del usuario",
-                [
-                    "Error" => $exception->getMessage(),
-                    "Operacion" => 'UserRepository - updateUser',
-                ]
-            );
             return [false, $exception->getMessage()];
         } catch (Exception $exception) {
-            $this->logger->error(
-                "Error al actualizar datos del usuario",
-                [
-                    "Error" => $exception->getMessage(),
-                    "Operacion" => 'UserRepository - updateUser',
-                ]
-            );
             return [false, "Ocurrió un error al actualizar datos del usuario"];
         }
     }

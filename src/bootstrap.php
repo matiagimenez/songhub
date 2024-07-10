@@ -49,7 +49,7 @@ $router->get('/spotify/tokens', 'AuthController@requestSpotifyTokens');
 // User
 $router->get('/user', 'UserController@profile');
 $router->get('/user/profile', 'UserController@edit');
-$router->post('/user/profile/edit', 'UserController@updateUser');
+$router->post('/user/profile', 'UserController@updateUser');
 $router->get('/user/favorites', 'FavoriteController@getCurrentUserFavoriteContent');
 $router->get('/user/favorites/add', 'FavoriteController@addCurrentUserFavoriteContent');
 $router->get('/user/favorites/remove', 'FavoriteController@removeCurrentUserFavoriteContent');

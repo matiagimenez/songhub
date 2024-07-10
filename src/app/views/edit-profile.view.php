@@ -36,7 +36,7 @@
     ?>
     <main>
         <h2 class="section-title">Información del perfil</h2>
-        <form action="/user/profile/edit" method="POST">
+        <form action="/user/profile" method="POST">
             <fieldset>
                 <legend>Información de perfil</legend>
                 <p class="profile-image-edit">
@@ -78,6 +78,9 @@
                     <label for="biography" class="label">Biografía</label>
                     <textarea name="biography" id="biography" class="input" maxlength="160"><?= $user->fields["BIOGRAPHY"]?></textarea>
                 </p>
+                <?php if (strlen($message) > 0): ?>
+                    <p class="error-message"><?=$message?></p>
+                <?php endif;?>
                 <p class="button-container">
                     <a class="submit-outline-button" href="<?= "/user?username=" . $user->fields["USERNAME"] ?>">Volver</a>
                     <input class="submit-button" type="submit" value="Guardar cambios" />
