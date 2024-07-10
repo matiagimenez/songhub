@@ -70,13 +70,13 @@ class UserRepository extends Repository
 
             return [true, "Usuario registrado con éxito"];
         } catch (InvalidValueException $exception) {
-            $this->logger->error(
-                "Error al crear el usuario",
-                [
-                    "Error" => $exception->getMessage(),
-                    "Operacion" => 'UserRepository - createUser',
-                ]
-            );
+            // $this->logger->error(
+            //     "Error al crear el usuario",
+            //     [
+            //         "Error" => $exception->getMessage(),
+            //         "Operacion" => 'UserRepository - createUser',
+            //     ]
+            // );
             return [false, $exception->getMessage()];
         } catch (Exception $exception) {
             $this->logger->error(
