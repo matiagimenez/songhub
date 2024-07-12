@@ -161,7 +161,7 @@ function createModal(data) {
 
 	const main_image = ElementBuilder.createElement('img', '', {
 		src: data.images[1].url,
-		alt: `Portada del álbum '${data.album_name}' de Pink Floyd`,
+		alt: `Portada del álbum '${data.album_name}' de ${data.artist_name}`,
 		width: '200px',
 		height: '200px',
 		class: 'image-border',
@@ -522,6 +522,7 @@ function applyPostFormListeners(post_form_openers, create_post) {
 			})
 				.then((response) => response.json())
 				.then((data) => {
+					// console.log(data);
 					createModal(data);
 				})
 				.catch((error) => {
