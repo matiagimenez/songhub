@@ -4,7 +4,7 @@ namespace Songhub\app\models;
 
 use Songhub\core\exceptions\InvalidValueException;
 
-class User
+class Tag
 {
     public $fields = [
       "POST_ID" => null,

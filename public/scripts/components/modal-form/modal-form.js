@@ -153,6 +153,7 @@ function createModal(data) {
 	const close_button = ElementBuilder.createElement('button', '', {
 		class: 'close-button',
 	});
+
 	close_button.innerHTML = '<i class="ph-bold ph-x icon close-icon"></i>';
 	close_button.addEventListener('click', () => {
 		close_modal(modal);
@@ -255,8 +256,11 @@ function createModal(data) {
 		class: 'error-message',
 	});
 
+	let tags_list = [];
+
 	function createNewTag() {
 		if (tag_text !== '') {
+			tags_list.push(tag_text);
 			if (tags_count < 3) {
 				const tag = ElementBuilder.createElement('span', tag_text, {
 					class: 'tag',
@@ -412,8 +416,10 @@ function createModal(data) {
 			values['CONTENT_ID'] =
 				data.type === 'album' ? data.album_id : data.track_id;
 
-			console.log(values);
-			console.log(JSON.stringify(values));
+			values['RATING'] = score_rating;
+			values['TAGS'] = tags_list;
+
+			console.log(values)
 
 			if (score_rating === 0) {
 				view_error_message(
@@ -440,11 +446,11 @@ function createModal(data) {
 		}
 });
 
-		const submit_container = ElementBuilder.createElement('section', '', {
-			class: 'submit-container',
-		});
-		
-		submit_container.appendChild(back_button);
+	const submit_container = ElementBuilder.createElement('section', '', {
+		class: 'submit-container',
+	});
+	
+	submit_container.appendChild(back_button);
 	submit_container.appendChild(postear_button);
 
 	const form = ElementBuilder.createElement('form', '', {
