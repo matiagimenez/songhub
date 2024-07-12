@@ -401,45 +401,50 @@ function createModal(data) {
 	postear_button.addEventListener('click', (event) => {
 		event.preventDefault();
 
-		const formData = new FormData(form);
-		const values = {};
-		formData.forEach((value, key) => {
-			values[key] = value;
-		});
+		if (textarea.value.length > 0) {
 
-		values['CONTENT_ID'] =
-			data.type === 'album' ? data.album_id : data.track_id;
-
-		console.log(values);
-		console.log(JSON.stringify(values));
-
-		if (score_rating === 0) {
-			view_error_message(
-				'No es posible postear una canción con 0 estrellas.'
-			);
-		}
-
-		fetch('/post/create', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(values),
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				close_modal(modal);
-			})
-			.catch((error) => {
-				console.error('Error:', error);
+			const formData = new FormData(form);
+			const values = {};
+			formData.forEach((value, key) => {
+				values[key] = value;
 			});
-	});
 
-	const submit_container = ElementBuilder.createElement('section', '', {
-		class: 'submit-container',
-	});
+			values['CONTENT_ID'] =
+				data.type === 'album' ? data.album_id : data.track_id;
 
-	submit_container.appendChild(back_button);
+			console.log(values);
+			console.log(JSON.stringify(values));
+
+			if (score_rating === 0) {
+				view_error_message(
+					'No es posible postear una canción con 0 estrellas.'
+				);
+			} else {
+				fetch('/post/create', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(values),
+				})
+				.then((response) => response.json())
+				.then((data) => {
+					close_modal(modal);
+				})
+				.catch((error) => {
+					console.error('Error:', error);
+				});
+			}
+		} else {
+			view_error_message('No es posible postear una cancion sin texto.');
+		}
+});
+
+		const submit_container = ElementBuilder.createElement('section', '', {
+			class: 'submit-container',
+		});
+		
+		submit_container.appendChild(back_button);
 	submit_container.appendChild(postear_button);
 
 	const form = ElementBuilder.createElement('form', '', {
