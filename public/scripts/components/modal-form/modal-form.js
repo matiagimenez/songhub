@@ -153,6 +153,7 @@ function createModal(data) {
 	const close_button = ElementBuilder.createElement('button', '', {
 		class: 'close-button',
 	});
+
 	close_button.innerHTML = '<i class="ph-bold ph-x icon close-icon"></i>';
 	close_button.addEventListener('click', () => {
 		close_modal(modal);
@@ -233,12 +234,14 @@ function createModal(data) {
 		maxLength: '20',
 	});
 
+	input_tag.addEventListener('input', (event) => {
+    tag_text = event.target.value;
+	});
+
 	input_tag.addEventListener('keydown', (event) => {
 		if (event.key === 'Enter') {
-			createNewTag();
-			event.preventDefault();
-		} else {
-			tag_text = event.target.value;
+				createNewTag();
+				event.preventDefault();
 		}
 	});
 
@@ -255,9 +258,12 @@ function createModal(data) {
 		class: 'error-message',
 	});
 
+	let tags_list = [];
+
 	function createNewTag() {
 		if (tag_text !== '') {
 			if (tags_count < 3) {
+				tags_list.push(tag_text);
 				const tag = ElementBuilder.createElement('span', tag_text, {
 					class: 'tag',
 				});
@@ -293,8 +299,10 @@ function createModal(data) {
 	}
 
 	function remove_tag(tag) {
-		tag.remove();
+		tags_list = tags_list.filter((t) => t !== tag.textContent.trim());
+		tags.removeChild(tag);
 		tags_count -= 1;
+		// TODO: Quitar tag de la lista de tags
 	}
 
 	const tag_section = ElementBuilder.createElement('section', '', {
@@ -412,8 +420,10 @@ function createModal(data) {
 			values['CONTENT_ID'] =
 				data.type === 'album' ? data.album_id : data.track_id;
 
-			console.log(values);
-			console.log(JSON.stringify(values));
+			values['RATING'] = score_rating;
+			values['TAGS'] = tags_list;
+
+			console.log(values)
 
 			if (score_rating === 0) {
 				view_error_message(
@@ -440,11 +450,11 @@ function createModal(data) {
 		}
 });
 
-		const submit_container = ElementBuilder.createElement('section', '', {
-			class: 'submit-container',
-		});
-		
-		submit_container.appendChild(back_button);
+	const submit_container = ElementBuilder.createElement('section', '', {
+		class: 'submit-container',
+	});
+	
+	submit_container.appendChild(back_button);
 	submit_container.appendChild(postear_button);
 
 	const form = ElementBuilder.createElement('form', '', {

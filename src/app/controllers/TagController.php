@@ -13,6 +13,17 @@ class TagController extends Controller
         parent::__construct();
     }
 
-    
+    public function createTags($tags, $postID)
+    {
+        foreach ($tags as $tag) {
+            $this->createTag($tag, $postID);
+        }
+    }
+
+    private function createTag($tag, $postID) {
+        $tagData["POST_ID"] = $postID;
+        $tagData["TEXT"] = $tag;
+        $this->repository->createTag($tagData);
+    }
 
 }
