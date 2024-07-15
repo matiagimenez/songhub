@@ -172,6 +172,9 @@ class QueryBuilder
                 throw new PDOException($sentencia->errorInfo()[2]);
             }
 
+            $lastInsertId = $this->pdo->lastInsertId();
+            return $lastInsertId;
+
         } catch (PDOException $e) {
             $this->logger->info(
                 "Error al ejecutar la consulta: " . $e->getMessage(),

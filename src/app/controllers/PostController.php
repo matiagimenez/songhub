@@ -20,12 +20,14 @@ class PostController extends Controller
         error_log('Received POST data: ' . print_r($postData, true));
         
         $postRepository = new PostRepository();
-        $postRepository->createPost($postData);
+        $response = $postRepository->createPost($postData);
+
+        $postID = $response["post_id"];
 
         $tagController = new TagController();
         // TODO:
         //   Recuperar El ID del Post
-        //$tagController->createTags($postData["TAGS"], $postData["CONTENT_ID"]);
+        $tagController->createTags($postData["TAGS"], $postID);
     }
 
 }

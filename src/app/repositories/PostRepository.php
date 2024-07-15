@@ -88,9 +88,9 @@ class PostRepository extends Repository
             $postData["USER_ID"] = $user->fields["USER_ID"];
             $postData["DATETIME"] = date("Y-m-d");
             $post->set($postData);
-            $this->queryBuilder->insert($this->table, $post->fields);
+            $postID = $this->queryBuilder->insert($this->table, $post->fields);
             http_response_code(201); // Código 201: Created
-            $response = ["success" => true, "message" => "Nuevo Post registrado"];
+            $response = ["success" => true, "message" => "Nuevo Post registrado", "post_id" => $postID];
         } catch (InvalidValueException $exception) {
             http_response_code(400); // Código 400: Bad Request
             $response = ["success" => false, "message" => $exception->getMessage()];
@@ -105,6 +105,8 @@ class PostRepository extends Repository
         // Envía la respuesta JSON
         header('Content-Type: application/json');
         echo json_encode($response);
+
+        return $response;
     }
 
     public function getMostRelevantContentPosts($contentId){
