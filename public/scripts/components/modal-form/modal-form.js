@@ -239,7 +239,7 @@ function createModal(data) {
 			createNewTag();
 			event.preventDefault();
 		} else {
-			tag_text = event.target.value;
+			tag_text = input_tag.target.value;
 		}
 	});
 
@@ -299,6 +299,7 @@ function createModal(data) {
 	function remove_tag(tag) {
 		tag.remove();
 		tags_count -= 1;
+		// TODO: Quitar tag de la lista de tags
 	}
 
 	const tag_section = ElementBuilder.createElement('section', '', {
