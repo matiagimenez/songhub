@@ -234,12 +234,14 @@ function createModal(data) {
 		maxLength: '20',
 	});
 
+	input_tag.addEventListener('input', (event) => {
+    tag_text = event.target.value;
+	});
+
 	input_tag.addEventListener('keydown', (event) => {
 		if (event.key === 'Enter') {
-			createNewTag();
-			event.preventDefault();
-		} else {
-			tag_text = input_tag.target.value;
+				createNewTag();
+				event.preventDefault();
 		}
 	});
 
@@ -260,8 +262,8 @@ function createModal(data) {
 
 	function createNewTag() {
 		if (tag_text !== '') {
-			tags_list.push(tag_text);
 			if (tags_count < 3) {
+				tags_list.push(tag_text);
 				const tag = ElementBuilder.createElement('span', tag_text, {
 					class: 'tag',
 				});
@@ -297,7 +299,8 @@ function createModal(data) {
 	}
 
 	function remove_tag(tag) {
-		tag.remove();
+		tags_list = tags_list.filter((t) => t !== tag.textContent.trim());
+		tags.removeChild(tag);
 		tags_count -= 1;
 		// TODO: Quitar tag de la lista de tags
 	}
