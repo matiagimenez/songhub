@@ -104,7 +104,24 @@ class Renderer
     {
         $title = "Perfil";
         $style = "profile";
-        require $this->viewsDirectory . "profile.view.php";
+        $username = $this->getUsername();
+
+        $template = $this->templateLoader->load('profile.twig');
+
+        echo $template->render([
+            'title' => $title,
+            'style' => $style,
+            'country' => $country,
+            'posts' => $posts,
+            'user' => $user,
+            'username' => $username,
+            'following' => $following,
+            'followers' => $followers,
+            'favorites' => $favorites,
+            'message' => $message,
+            'show_footer' => false
+        ]);
+
     }
     
     public function edit($user, $userNationality, $countries, $favorites, $message)
