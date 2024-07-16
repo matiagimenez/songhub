@@ -1,14 +1,22 @@
 <?php
 namespace Songhub\core;
+use Twig\Loader\FilesystemLoader;
+use Twig\Environment;
+
 
 class Renderer
 {
     private static $instance;
     public string $viewsDirectory;
+    private Environment $templateLoader;
 
     private function __construct()
     {
         $this->viewsDirectory = __DIR__ . "/../app/views/";
+        $loader = new FilesystemLoader(__DIR__."/../app/views/");
+        $this -> templateLoader = new Environment($loader, [
+            'cache' => __DIR__."/../../cache/twig",
+        ]);
     }
 
     public static function getInstance()
@@ -47,7 +55,19 @@ class Renderer
     {
         $title = "Explorar";
         $style = "explore";
-        require $this->viewsDirectory . "explore.view.php";
+
+        $template = $this->templateLoader->load('explore.twig');
+
+        echo $template->render([
+            'title' => $title,
+            'style' => $style,
+            'username' => $username,
+            'recentActivity' => $recentActivity,
+            'recommendations' => $recommendations,
+            'userTopTracks' => $userTopTracks,
+            'newReleases' => $newReleases,
+            'show_footer' => false
+        ]);
     }
 
     public function content($content, $mostRelevantPosts)
@@ -60,28 +80,48 @@ class Renderer
     public function notFound()
     {
         http_response_code(404);
-        $errorType = '404';
-        $errorMessage = "PAGE NOT FOUND";
-        $style = "error";
-        $title = "404";
-        require $this->viewsDirectory . "error.view.php";
+        $type = '404';
+        $message = "RESOURCE NOT FOUND";
+        $username = $this->getUsername();
+
+        $template = $this->templateLoader->load('error.twig');
+        echo $template->render(['message' => $message,'type' => $type, 'title' => 'Not found', 'style' => 'error', "show_footer" => true, "username" => $username]);
     }
 
     public function internalError()
     {
         http_response_code(500);
-        $errorType = '500';
-        $errorMessage = 'INTERNAL SERVER ERROR';
-        $style = "error";
-        $title = "500";
-        require $this->viewsDirectory . "error.view.php";
+        $type = '500';
+        $message = 'INTERNAL SERVER ERROR';
+        $username = $this->getUsername();
+
+        $template = $this->templateLoader->load('error.twig');
+        echo $template->render(['message' => $message,'type' => $type, 'title' => 'Server error', 'style' => 'error', "show_footer" => true, "username" => $username]);
     }
+    
 
     public function profile($user, $country, $posts, $following, $followers, $favorites, $message)
     {
         $title = "Perfil";
         $style = "profile";
-        require $this->viewsDirectory . "profile.view.php";
+        $username = $this->getUsername();
+
+        $template = $this->templateLoader->load('profile.twig');
+
+        echo $template->render([
+            'title' => $title,
+            'style' => $style,
+            'country' => $country,
+            'posts' => $posts,
+            'user' => $user,
+            'username' => $username,
+            'following' => $following,
+            'followers' => $followers,
+            'favorites' => $favorites,
+            'message' => $message,
+            'show_footer' => false
+        ]);
+
     }
     
     public function edit($user, $userNationality, $countries, $favorites, $message)
@@ -90,11 +130,19 @@ class Renderer
         $style = "edit-profile";
         require $this->viewsDirectory . "edit-profile.view.php";
     }
-    
-    public function search()
-    {
-        $title = "Search";
-        $style = "search";
-        require $this->viewsDirectory . "search.view.php";
-    }
+
+    private function isAuthenticated () {
+        return Session::getInstance()->exists("username");
+    } 
+
+    private function getUsername () {        
+        $is_authenticated = $this->isAuthenticated();
+        $username = null;
+
+        if($is_authenticated) {
+            $username = Session::getInstance()->get("username");
+        }
+        
+        return $username;
+    } 
 }

@@ -1,0 +1,99 @@
+{% extends 'base.twig' %}
+
+{% block main %}
+    <header>
+        <form action="">
+            <label for="search-on-page">Buscar álbum, canción o artista</label>
+            <input type="search" name="search" role="searchbox" id="search-on-page" autocomplete="off" class="input"
+                aria-describedby="search-description" />
+            <p id="search-description" class="visually-hidden">
+                Los resultados de la búsqueda aparecerán en un momento.
+            </p>
+        </form>
+    </header>
+    <section id="search-results-section" style="display: none;">
+        <section id="tracks-results" class="section">
+            <!-- Aquí se insertarán los resultados de la búsqueda -->
+        </section>
+        <section id="albums-results" class="section">
+            <!-- Aquí se insertarán los resultados de la búsqueda -->
+        </section>
+    </section>
+    <section class="section explore-section" id="recent-activity-section">
+        <h2 class="section-title">Tu actividad reciente en Spotify</h2>
+        {% for item in recentActivity %}
+            <article class="add-modal-access" id="{{ item.track_id }}" data-type="{{ item.type }}" data-username="{{ username }}">
+                <figure>
+                    <section class="article-img-container">
+                        <img loading="lazy" width="180px" height="180px" src="{{ item.images[0].url }}" alt="Portada del {{ item.type }} {{ item.track_name }} del artista {{ item.artist_name }}" class="image-border" />
+                    </section>
+                    <figcaption>
+                        <a href="/content?id={{ item.track_id }}&type={{ item.type }}">
+                            <h3 class="song-title">{{ item.track_name }}</h3>
+                            <h4 class="artist-title">{{ item.artist_name }}</h4>
+                        </a>
+                    </figcaption>
+                </figure>
+            </article>
+        {% endfor %}
+    </section>
+
+    {% if recommendations|length > 0 %}
+        <section class="section explore-section" id="recommendations-section">
+            <h2 class="section-title">Nuestras recomendaciones</h2>
+            {% for item in recommendations %}
+                <article class="add-modal-access" id="{{ item.track_id }}" data-type="{{ item.type }}" data-username="{{ username }}">
+                    <figure>
+                        <section class="article-img-container">
+                            <img loading="lazy" width="180px" height="180px" src="{{ item.images[0].url }}" alt="Portada del {{ item.type }} {{ item.track_name }} del artista {{ item.artist_name }}" class="image-border" />
+                        </section>
+                        <figcaption>
+                            <a href="/content?id={{ item.track_id }}&type={{ item.type }}">
+                                <h3 class="song-title">{{ item.track_name }}</h3>
+                                <h4 class="artist-title">{{ item.artist_name }}</h4>
+                            </a>
+                        </figcaption>
+                    </figure>
+                </article>
+            {% endfor %}
+        </section>
+    {% endif %}
+
+    <section class="section explore-section" id="favorites-section">
+        <h2 class="section-title">Tu contenido favorito</h2>
+        {% for item in userTopTracks %}
+            <article class="add-modal-access" id="{{ item.track_id }}" data-type="{{ item.type }}" data-username="{{ username }}">
+                <figure>
+                    <section class="article-img-container">
+                        <img loading="lazy" width="180px" height="180px" src="{{ item.images[0].url }}" alt="Portada del {{ item.type }} {{ item.track_name }} del artista {{ item.artist_name }}" class="image-border" />
+                    </section>
+                    <figcaption>
+                        <a href="/content?id={{ item.track_id }}&type={{ item.type }}">
+                            <h3 class="song-title">{{ item.track_name }}</h3>
+                            <h4 class="artist-title">{{ item.artist_name }}</h4>
+                        </a>
+                    </figcaption>
+                </figure>
+            </article>
+        {% endfor %}
+    </section>
+
+    <section class="section explore-section" id="new-releases-section">
+        <h2 class="section-title">Nuevos lanzamientos</h2>
+        {% for item in newReleases %}
+            <article class="add-modal-access" id="{{ item.album_id }}" data-type="{{ item.type }}" data-username="{{ username }}">
+                <figure>
+                    <section class="article-img-container">
+                        <img loading="lazy" width="180px" height="180px" src="{{ item.images[0].url }}" alt="Portada del {{ item.type }} {{ item.album_name }} del artista {{ item.artist_name }}" class="image-border" />
+                    </section>
+                    <figcaption>
+                        <a href="/content?id={{ item.album_id }}&type={{ item.type }}">
+                            <h3 class="song-title">{{ item.album_name }}</h3>
+                            <h4 class="artist-title">{{ item.artist_name }}</h4>
+                        </a>
+                    </figcaption>
+                </figure>
+            </article>
+        {% endfor %}
+    </section>
+{% endblock %}

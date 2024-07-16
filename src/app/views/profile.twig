@@ -1,0 +1,165 @@
+{% extends 'base.twig' %}
+
+{% block main %}
+    <header>
+        <section class="user">
+            <img src="{{ user.fields.SPOTIFY_AVATAR }}" alt="Avatar del usuario {{ user.fields.USERNAME }}" height="60px" width="60px" class="image-border" />
+            <p class="username-container">
+                <span class="name">{{ user.fields.NAME }}</span>
+                <span class="username">{{ user.fields.USERNAME }}</span>
+            </p>
+        </section>
+
+        <section class="user-stats">
+            <ul>
+                <li><span>{{ posts|length }}</span> POSTS</li>
+                <li><span>{{ followers }}</span> SEGUIDORES</li>
+                <li><span>{{ following }}</span> SEGUIDOS</li>
+            </ul>
+        </section>
+
+        <section class="user-actions">
+            <p class="profile-button-container">
+                {% if username == user.fields.USERNAME %}
+                    <a href="/user/profile" class="submit-outline-button">Editar perfil</a>
+                {% else %}
+                    <button class="action-button submit-outline-button">Siguiendo</button>
+                {% endif %}
+
+                <a class="submit-button spotify-profile-button" href="{{ user.fields.SPOTIFY_URL }}" target="_blank">
+                    <img src="/assets/icons/spotify.svg" alt="Logo de Spotify" />
+                    <span> Perfil </span>
+                </a>
+            </p>
+            {% if message is not empty %}
+                <p class="info-message">{{ message }}</p>
+            {% endif %}
+        </section>
+        <section>
+            {% if user.fields.COUNTRY_ID %}
+                <p class="nationality">{{ country.fields.NAME }}</p>
+            {% endif %}
+            <p class="biography">{{ user.fields.BIOGRAPHY }}</p>
+        </section>
+    </header>
+
+    <section class="section">
+        <h2 class="section-title">Tus álbumes favoritos</h2>
+        {% if favorites.FAVORITE_ALBUMS|length == 0 %}
+            <p class="no-content-msg">
+                {% if username == user.fields.USERNAME %}
+                    No marcaste ningun álbum como favorito
+                {% else %}
+                    El usuario {{ username }} no tiene álbumes favoritos
+                {% endif %}
+            </p>
+        {% else %}
+            {% for album in favorites.FAVORITE_ALBUMS %}
+                <article class="add-modal-access" aria-describedby="Album favorito {{ loop.index }}">
+                    <figure>
+                        <section class="article-img-container">
+                            <img loading="lazy" src="{{ album.fields.COVER_ID }}" alt="Portada del álbum {{ album.fields.TITLE }} de {{ album.fields.ARTIST_NAME }}" width="150px" height="150px" class="image-border" />
+                        </section>
+                        <figcaption id="Album favorito {{ loop.index }}">
+                            <a href="/content?id={{ album.fields.CONTENT_ID }}&type=album">
+                                <h3 class="song-title">{{ album.fields.TITLE }}</h3>
+                                <h4 class="artist-title">{{ album.fields.ARTIST_NAME }}</h4>
+                            </a>   
+                        </figcaption>
+                    </figure>
+                </article>
+            {% endfor %}
+        {% endif %}
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Tus canciones favoritas</h2>
+        {% if favorites.FAVORITE_TRACKS|length == 0 %}
+            <p class="no-content-msg">
+                {% if username == user.fields.USERNAME %}
+                    No marcaste ninguna canción como favorita
+                {% else %}
+                    El usuario {{ username }} no tiene canciones favoritas
+                {% endif %}
+            </p>
+        {% else %}
+            {% for track in favorites.FAVORITE_TRACKS %}
+                <article class="add-modal-access" aria-describedby="Canción favorita {{ loop.index }}">
+                    <figure>
+                        <section>
+                            <img loading="lazy" src="{{ track.fields.COVER_ID }}" alt="Portada de la canción {{ track.fields.TITLE }} de {{ track.fields.ARTIST_NAME }}" width="150px" height="150px" class="image-border" />
+                        </section>
+                        <figcaption id="Canción favorita {{ loop.index }}">
+                            <a href="/content?id={{ track.fields.CONTENT_ID }}&type=track">
+                                <h3 class="song-title">{{ track.fields.TITLE }}</h3>
+                                <h4 class="artist-title">{{ track.fields.ARTIST_NAME }}</h4>
+                            </a>
+                        </figcaption>
+                    </figure>
+                </article>
+            {% endfor %}
+        {% endif %}
+    </section>
+
+    <section class="recent-activity">
+        <h2 class="section-title">Actividad reciente</h2>
+        {% if posts|length == 0 %}
+            <p class="no-content-msg">
+                {% if username == user.fields.USERNAME %}
+                    Aún no realizaste ningún post
+                {% else %}
+                    El usuario {{ user.fields.USERNAME }} no ha realizado ningún post
+                {% endif %}
+            </p>
+        {% else %}
+            {% for post in posts %}
+                <article tabindex="0" class="post add-modal-access" id="post_{{ loop.index }}" aria-posinset="{{ loop.index }}" aria-setsize="{{ posts|length }}" aria-labelledby="post-{{ loop.index }}-song-title post-{{ loop.index }}-artist-title" aria-describedby="post-content-{{ loop.index }}">
+                    <figure>
+                        <section class="article-img-container">
+                            <img loading="lazy" class="image-border" width="100px" height="100px" src="{{ post.album_cover }}" alt="Portada del álbum '{{ post.album_title }}' {{ post.artist_name }}" />
+                        </section>
+                        <section class="user-info">
+                            <img loading="lazy" class="user-img" height="25px" width="25px" src="{{ post.user_avatar }}" alt="Imagen de perfil de '{{ post.user_name }}'" />
+                            <p class="user-name">
+                                <a href="profile.html">{{ post.user_name }}</a>
+                                <span>{{ post.username }}</span>
+                            </p>
+                            <p class="post-time">{{ post.time_ago }}</p>
+                        </section>
+                        <figcaption>
+                            <h3 class="song-title" id="post-{{ loop.index }}-song-title">
+                                <a href="/content">{{ post.song_title }}</a>
+                            </h3>
+                            <h4 class="artist-title" id="post-{{ loop.index }}-artist-title">{{ post.artist_name }}</h4>
+                            {% for tag in post.tags %}
+                                <span class="tag">{{ tag }}</span>
+                            {% endfor %}
+                            <p class="stars">{{ post.rating }}</p>
+                        </figcaption>
+                    </figure>
+                    <a href="post.html">
+                        <section class="post-content" id="post-content-{{ loop.index }}">
+                            <p>{{ post.content }}</p>
+                        </section>
+                    </a>
+                    <footer>
+                        <section class="reaction-container comment-container">
+                            <button>
+                                <i class="ph ph-chats-circle icon comment-icon"></i>
+                                <span class="visually-hidden">Comentar post</span>
+                            </button>
+                            <p>{{ post.comments_count }}</p>
+                        </section>
+                        <section class="reaction-container like-container">
+                            <button class="heart-button">
+                                <i class="ph ph-heart icon heart-icon"></i>
+                                <span class="visually-hidden">Dar favorito al post</span>
+                            </button>
+                            <p>{{ post.likes_count }}</p>
+                        </section>
+                    </footer>
+                </article>
+            {% endfor %}
+        {% endif %}
+    </section>
+{% endblock %}
