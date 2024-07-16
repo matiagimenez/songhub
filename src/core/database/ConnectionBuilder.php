@@ -6,6 +6,7 @@ use PDO;
 use PDOException;
 use Songhub\core\Config;
 use Songhub\core\LoggerBuilder;
+use Songhub\core\Renderer;
 use Songhub\core\traits\Loggable;
 
 class ConnectionBuilder
@@ -58,7 +59,8 @@ class ConnectionBuilder
             return $connection;
         } catch (PDOException $error) {
             $this->logger->error("Internal server error", ["Error" => $error]);
-            die("Error interno del servidor - Consulte al administrador de sistemas.");
+            Renderer::getInstance() -> internalError();
+            die;
         }
     }
 
