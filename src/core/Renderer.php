@@ -55,7 +55,19 @@ class Renderer
     {
         $title = "Explorar";
         $style = "explore";
-        require $this->viewsDirectory . "explore.view.php";
+
+        $template = $this->templateLoader->load('explore.twig');
+
+        echo $template->render([
+            'title' => $title,
+            'style' => $style,
+            'username' => $username,
+            'recentActivity' => $recentActivity,
+            'recommendations' => $recommendations,
+            'userTopTracks' => $userTopTracks,
+            'newReleases' => $newReleases,
+            'show_footer' => false
+        ]);
     }
 
     public function content($content, $mostRelevantPosts)
