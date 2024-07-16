@@ -5,7 +5,6 @@ $isAuthenticated = Session::getInstance()->exists("username");
 
 if ($isAuthenticated) {
     $username = Session::getInstance()->get("username");
-
 }
 
 ?>

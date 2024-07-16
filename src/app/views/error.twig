@@ -1,0 +1,9 @@
+{% extends 'base.twig' %}
+
+{% block main %}
+    <h2>ERROR {{ type }}</h2>
+    <h3>{{ message }}</h3>
+    <h4>Oops! Algo salió mal</h4>
+    <img src="/assets/images/error/error.jpg" alt="Error. Imagen de glitch" width="500" height="300" />
+    <a href="/">Volver al inicio</a>
+{% endblock %}

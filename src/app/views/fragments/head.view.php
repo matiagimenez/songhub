@@ -33,3 +33,4 @@ if (str_contains($_SERVER['REQUEST_URI'], "/content") || str_contains($_SERVER['
 <title>
     <?=$title?> | SongHub
 </title>
+

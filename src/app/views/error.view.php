@@ -7,8 +7,8 @@
         <?php require "fragments/header.view.php"?>
     </header>
     <main>
-        <h2>ERROR <?=$errorType?></h2>
-        <h3><?=$errorMessage?></h3>
+        <h2>ERROR <?=$type?></h2>
+        <h3><?=$message?></h3>
         <h4>Opps! Algo salió mal</h4>
         <img src="/assets/images/error/error.jpg" alt="Error. Imagen de glitch" width="500" height="300" />
         <a href="/">
