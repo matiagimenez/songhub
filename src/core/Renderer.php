@@ -30,10 +30,16 @@ class Renderer
 
     public function home()
     {
+        $username = $this->getUsername();
+        $template = $this->templateLoader->load('home.twig');
 
-        $title = "Inicio";
-        $style = "home";
-        require $this->viewsDirectory . "home.view.php";
+        echo $template->render([
+            'title' => "Inicio",
+            'style' => "home",
+            'username' => $username,
+            'show_footer' => false, 
+            "show_header" => true
+        ]);
     }
 
     public function login($message = "", $error = false, $email="")
