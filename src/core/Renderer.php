@@ -105,6 +105,21 @@ class Renderer
         ]);
     }
 
+    public function post()
+    {
+        $username = $this->getUsername();
+
+        $template = $this->templateLoader->load('post.twig');
+
+        echo $template->render([
+            'title' => "Post",
+            'style' => "post",
+            'username' => $username,
+            'show_footer' => true, 
+            "show_header" => true
+        ]);
+    }
+
     public function notFound()
     {
         http_response_code(404);

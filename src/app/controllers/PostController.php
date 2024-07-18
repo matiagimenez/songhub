@@ -4,6 +4,7 @@ namespace Songhub\App\Controllers;
 use Songhub\app\repositories\PostRepository;
 use Songhub\core\Controller;
 use Songhub\core\Request;
+use Songhub\core\Renderer;
 use Songhub\app\controllers\TagController;
 
 class PostController extends Controller
@@ -12,6 +13,12 @@ class PostController extends Controller
     {
         $this->repositoryName = PostRepository::class;
         parent::__construct();
+    }
+
+
+    public function post()
+    {
+        Renderer::getInstance()->post();
     }
 
     public function createPost()

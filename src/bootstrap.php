@@ -27,7 +27,6 @@ $router->setLogger($logger);
 $router->get('/', 'PageController@home');
 $router->get('/login', 'PageController@login');
 $router->get('/register', 'PageController@register');
-$router->get('/post', 'PageController@post');
 $router->get('/terms-conditions', 'PageController@terms_conditions');
 
 // Explore
@@ -57,6 +56,7 @@ $router->get('/user/favorites/remove', 'FavoriteController@removeCurrentUserFavo
 
 // Post
 $router->post('/post/create', 'PostController@createPost');
+$router->get('/post', 'PostController@post');
 
 // Artist
 $router->get('/artist', 'ArtistController@getArtist');

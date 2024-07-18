@@ -8,6 +8,10 @@
 	width: 90%;
 }
 
+article.post {
+	border-bottom: none;
+}
+
 #comment-form-container p {
 	color: var(--color-grey-light);
 }
