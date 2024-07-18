@@ -65,4 +65,8 @@ $router->get('/error/internal-error', 'ErrorController@internalError');
 $router->get('/error/not-found', 'ErrorController@notFound');
 
 
+$router->get('/following', 'FollowController@following');
+$router->get('/followers', 'FollowController@followers');
+
+
 

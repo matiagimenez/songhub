@@ -54,6 +54,18 @@ class Renderer
         echo $template->render(['title' => 'Registrarme', 'style' => 'register', "show_footer" => false, "show_header" => false, "error" => $error, "message" => $message, "currentUserData" => $currentUserData]);
     }
     
+    public function following()
+    {
+        $template = $this->templateLoader->load('following.twig');
+        echo $template->render(['title' => 'Seguidos', 'style' => 'follow', "show_footer" => false, "show_header" => true]);
+    }
+
+    public function followers()
+    {
+        $template = $this->templateLoader->load('followers.twig');
+        echo $template->render(['title' => 'Seguidores', 'style' => 'follow', "show_footer" => false, "show_header" => true]); 
+    }
+    
     public function explore($recentActivity, $newReleases, $recommendations, $userTopTracks, $username)
     {
         $title = "Explorar";

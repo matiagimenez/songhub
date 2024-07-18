@@ -1,11 +1,6 @@
 {% extends 'base.twig' %}
 
 {% block main %}
-    <header class="main-header" id="main-header">
-        {% include 'fragments/header.twig' %}
-    </header>
-
-    <main>
         <ul class="cards-container" aria-roledescription="carousel" aria-label="Carrusel de discos de música">
             <li role="listitem" aria-roledescription="slide" aria-labelledby="album-1-title">
                 <figure class="active" data-item-index="0">
@@ -268,5 +263,4 @@
                 </footer>
             </article>
         </section>
-    </main>
 {% endblock %}
