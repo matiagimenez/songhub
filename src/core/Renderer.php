@@ -70,9 +70,21 @@ class Renderer
 
     public function content($content, $mostRelevantPosts)
     {
-        $title = $content["type"] ?? "Contenido";
+        $title = ucfirst($content["type"] ?? "Contenido");
         $style = "content";
-        require $this->viewsDirectory . "content.view.php";
+        $username = $this->getUsername();
+
+        $template = $this->templateLoader->load('content.twig');
+
+        echo $template->render([
+            'title' => $title,
+            'style' => $style,
+            'content' => $content,
+            'mostRelevantPosts' => $mostRelevantPosts,
+            'username' => $username,
+            'show_footer' => true, 
+            "show_header" => true
+        ]);
     }
 
     public function notFound()
