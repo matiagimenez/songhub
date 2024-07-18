@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
+{% extends 'base.twig' %}
 
-<head>
-    <?php require "fragments/head.view.php"?>
-</head>
-
-<body>
+{% block main %}
     <main>
         <form action="/login" method="POST">
             <header>
@@ -13,13 +8,13 @@
                 <h2>Por favor, ingresa tus credenciales</h2>
             </header>
             <fieldset>
-                <?php if (strlen($message) > 0): ?>
-                    <p class="<?= $error ? "error-message" : "info-message" ?>"><?=$message?></p>
-                <?php endif;?>
-                <legend>Informacion de inicio de sesión</legend>
+                {% if message|length > 0 %}
+                    <p class="{{ error ? 'error-message' : 'info-message' }}">{{ message }}</p>
+                {% endif %}
+                <legend>Información de inicio de sesión</legend>
                 <p class="input-container">
                     <input name="email" id="email" type="email" autocomplete="off" placeholder=" " required
-                        class="input" aria-labelledby="email-label" value="<?=$email ?? ''?>"/>
+                        class="input" aria-labelledby="email-label" value="{{ email | default('') }}"/>
                     <label for="email" id="email-label">Correo electrónico</label>
                 </p>
                 <p class="input-container">
@@ -33,11 +28,9 @@
                 <input type="submit" class="submit-button" value="Iniciar sesión" />
             </p>
             <p class="link-container">
-                No tenes cuenta?
-                <a href="/register">Registrate aquí</a>
+                ¿No tienes cuenta?
+                <a href="/register">Regístrate aquí</a>
             </p>
         </form>
     </main>
-</body>
-
-</html>
+{% endblock %}

@@ -32,7 +32,9 @@
 </head>
 
 <body>
-    {% include 'fragments/header.twig' %}
+    {% if show_header is not defined or show_header %}
+        {% include 'fragments/header.twig' %}
+    {% endif %}
 
     <main>
         {% block main %}{% endblock %}

@@ -38,17 +38,14 @@ class Renderer
 
     public function login($message = "", $error = false, $email="")
     {
-        $title = "Iniciar sesión";
-        $style = "login";
-
-        require $this->viewsDirectory . "login.view.php";
+        $template = $this->templateLoader->load('login.twig');
+        echo $template->render(['title' => 'Iniciar sesión', 'style' => 'login', "show_footer" => false, "show_header" => false, "error" => $error, "message" => $message, "email" => $email]);
     }
 
     public function register($message = "", $error = false, $currentUserData = null)
     {
-        $title = "Registrarme";
-        $style = "register";
-        require $this->viewsDirectory . "register.view.php";
+        $template = $this->templateLoader->load('register.twig');
+        echo $template->render(['title' => 'Registrarme', 'style' => 'register', "show_footer" => false, "show_header" => false, "error" => $error, "message" => $message, "currentUserData" => $currentUserData]);
     }
     
     public function explore($recentActivity, $newReleases, $recommendations, $userTopTracks, $username)
@@ -66,7 +63,8 @@ class Renderer
             'recommendations' => $recommendations,
             'userTopTracks' => $userTopTracks,
             'newReleases' => $newReleases,
-            'show_footer' => false
+            'show_footer' => true, 
+            "show_header" => true
         ]);
     }
 
@@ -85,7 +83,7 @@ class Renderer
         $username = $this->getUsername();
 
         $template = $this->templateLoader->load('error.twig');
-        echo $template->render(['message' => $message,'type' => $type, 'title' => 'Not found', 'style' => 'error', "show_footer" => true, "username" => $username]);
+        echo $template->render(['message' => $message,'type' => $type, 'title' => 'Not found', 'style' => 'error', "show_footer" => true, "show_header" => false, "username" => $username]);
     }
 
     public function internalError()
@@ -96,7 +94,15 @@ class Renderer
         $username = $this->getUsername();
 
         $template = $this->templateLoader->load('error.twig');
-        echo $template->render(['message' => $message,'type' => $type, 'title' => 'Server error', 'style' => 'error', "show_footer" => true, "username" => $username]);
+        echo $template->render(['message' => $message,'type' => $type, 'title' => 'Server error', 'style' => 'error', "show_footer" => true, "show_header" => false, "username" => $username]);
+    }
+    
+    public function terms_conditions()
+    {
+        $username = $this->getUsername();
+
+        $template = $this->templateLoader->load('terms-conditions.twig');
+        echo $template->render(['title' => 'Términos y condiciones', 'style' => 'terms-conditions', "show_header" => true, "show_footer" => true, "username" => $username]);
     }
     
 
@@ -119,7 +125,8 @@ class Renderer
             'followers' => $followers,
             'favorites' => $favorites,
             'message' => $message,
-            'show_footer' => false
+            'show_footer' => false, 
+            "show_header" => false
         ]);
 
     }

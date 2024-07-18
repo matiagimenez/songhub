@@ -28,6 +28,7 @@ $router->get('/', 'PageController@home');
 $router->get('/login', 'PageController@login');
 $router->get('/register', 'PageController@register');
 $router->get('/post', 'PageController@post');
+$router->get('/terms-conditions', 'PageController@terms_conditions');
 
 // Explore
 $router->get('/explore', 'ExploreController@explore');
@@ -60,8 +61,8 @@ $router->post('/post/create', 'PostController@createPost');
 // Artist
 $router->get('/artist', 'ArtistController@getArtist');
 
-// Artist
 $router->get('/error/internal-error', 'ErrorController@internalError');
 $router->get('/error/not-found', 'ErrorController@notFound');
+
 
 

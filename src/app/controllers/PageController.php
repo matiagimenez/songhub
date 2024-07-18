@@ -11,13 +11,20 @@ class PageController extends Controller
     {
         Renderer::getInstance()->home();
     }
+
     public function login()
     {
         Renderer::getInstance()->login();
     }
+
     public function register()
     {
         Renderer::getInstance()->register();
+    }
+
+    public function terms_conditions()
+    {
+        Renderer::getInstance()->terms_conditions();
     }
 
 }
