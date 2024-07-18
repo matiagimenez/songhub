@@ -150,6 +150,11 @@ header .user p .username {
 	margin-top: 16px;
 }
 
+section.section article figure section img {
+	max-height: 220px;
+	max-width: 220px;
+}
+
 section.recent-activity article:last-child {
 	border-bottom: none;
 }

@@ -126,7 +126,7 @@ class Renderer
             'favorites' => $favorites,
             'message' => $message,
             'show_footer' => false, 
-            "show_header" => false
+            "show_header" => true
         ]);
 
     }
@@ -135,7 +135,22 @@ class Renderer
     {
         $title = "Editar perfil";
         $style = "edit-profile";
-        require $this->viewsDirectory . "edit-profile.view.php";
+        $username = $this->getUsername();
+
+        $template = $this->templateLoader->load('edit-profile.twig');
+
+        echo $template->render([
+            'title' => $title,
+            'style' => $style,
+            'username' => $username,
+            'favorites' => $favorites,
+            'user' => $user,
+            'countries' => $countries,
+            'userNationality' => $userNationality,
+            'message' => $message,
+            'show_footer' => false, 
+            "show_header" => true
+        ]);
     }
 
     private function isAuthenticated () {

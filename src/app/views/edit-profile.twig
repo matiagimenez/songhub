@@ -1,0 +1,124 @@
+{% extends 'base.twig' %}
+
+{% block main %}
+    <h2 class="section-title">Información del perfil</h2>
+    <form action="/user/profile" method="POST">
+        <fieldset>
+            <legend>Información de perfil</legend>
+            <p class="profile-image-edit">
+                <img src="{{ user.fields['SPOTIFY_AVATAR'] }}"
+                     alt="Avatar del usuario {{ user.fields['USERNAME'] }}"
+                     height="150px" width="150px" class="image-border" />
+            </p>
+            <p class="input-container name-edit">
+                <label for="firstname" class="label">Nombre</label>
+                <input class="input" name="name" id="name" type="text" value="{{ user.fields['NAME'] }}" maxlength="60"/>
+            </p>
+            <p class="input-container username-edit">
+                <label for="username" class="label">Nombre de usuario</label>
+                <input class="input" name="username" id="username" type="text" disabled value="{{ user.fields['USERNAME'] }}"/>
+                <input class="input" name="username" id="username-hidden" type="hidden" value="{{ user.fields['USERNAME'] }}"/>
+            </p>
+            <p class="input-container email-edit">
+                <label for="email" class="label">Correo electrónico</label>
+                <input class="input" name="email" id="email" type="email" disabled value="{{ user.fields['EMAIL'] }}"/>
+            </p>
+            <p class="input-container country-edit">
+                <label for="country" class="label">País</label>
+                <select class="input" name="country" id="country">
+                    {% if userNationality is null %}
+                        <option value="0" selected> - - -</option>
+                    {% else %}
+                        <option value="0"> - - -</option>
+                    {% endif %}
+                    {% for country in countries %}
+                        {% if userNationality and user.fields['COUNTRY_ID'] == country.fields['COUNTRY_ID'] %}
+                            <option value="{{ country.fields['COUNTRY_ID'] }}" selected>{{ country.fields['NAME'] }}</option>
+                        {% else %}
+                            <option value="{{ country.fields['COUNTRY_ID'] }}">{{ country.fields['NAME'] }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </p>
+            <p class="input-container biography-edit">
+                <label for="biography" class="label">Biografía</label>
+                <textarea name="biography" id="biography" class="input" maxlength="160">{{ user.fields['BIOGRAPHY'] }}</textarea>
+            </p>
+            {% if message|length > 0 %}
+                <p class="error-message">{{ message }}</p>
+            {% endif %}
+            <p class="button-container">
+                <a class="submit-outline-button" href="/user?username={{ user.fields['USERNAME'] }}">Volver</a>
+                <input class="submit-button" type="submit" value="Guardar cambios" />
+            </p>
+        </fieldset>
+    </form>
+
+    <section class="edit-favourites">
+        <h3 class="section-title">Álbumes Favoritos</h3>
+        <ul class="edit-favourites-list">
+            {% if favorites['FAVORITE_ALBUMS']|length == 0 %}
+                <p class="no-content-msg">No has marcado ningún álbum como favorito</p>
+            {% else %}
+                {% for album in favorites['FAVORITE_ALBUMS'] %}
+                    <li class="edit-favourite-item">
+                        <figure aria-describedby="favourite-song-1">
+                            <img loading="lazy" src="{{ album.fields['COVER_ID'] }}"
+                                 alt="Portada del álbum {{ album.fields['TITLE'] }} de {{ album.fields['ARTIST_NAME'] }}"
+                                 width="120px" height="120px"
+                                 class="image-border" />
+                            <figcaption>
+                                <h4>{{ album.fields['TITLE'] }}</h4>
+                                <h5>{{ album.fields['ARTIST_NAME'] }}</h5>
+                            </figcaption>
+                            <button class="remove-favorite" data-content="{{ album.fields['CONTENT_ID'] }}">
+                                <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
+                                <span class="visually-hidden">Remover de favoritos</span>
+                            </button>
+                        </figure>
+                    </li>
+                {% endfor %}
+            {% endif %}
+            <li class="edit-favourite-item">
+                <a href="/explore" class="add-favorite">
+                    <span>Agregar álbum a favoritos</span>
+                    <i class="ph ph-music-notes-plus icon add-favorite-icon"></i>
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <section class="edit-favourites">
+        <h3 class="section-title">Canciones Favoritas</h3>
+        <ul class="edit-favourites-list">
+            {% if favorites['FAVORITE_TRACKS']|length == 0 %}
+                <p class="no-content-msg">No has marcado ninguna canción como favorita</p>
+            {% else %}
+                {% for track in favorites['FAVORITE_TRACKS'] %}
+                    <li class="edit-favourite-item">
+                        <figure aria-describedby="favourite-song-4">
+                            <img loading="lazy" src="{{ track.fields['COVER_ID'] }}"
+                                 alt="Portada de la canción {{ track.fields['TITLE'] }} de {{ track.fields['ARTIST_NAME'] }}"
+                                 width="120px" height="120px"
+                                 class="image-border" />
+                            <figcaption>
+                                <h4>{{ track.fields['TITLE'] }}</h4>
+                                <h5>{{ track.fields['ARTIST_NAME'] }}</h5>
+                            </figcaption>
+                            <button class="remove-favorite" data-content="{{ track.fields['CONTENT_ID'] }}">
+                                <i class="ph ph-trash-simple icon remove-favorite-icon"></i>
+                                <span class="visually-hidden">Remover de favoritos</span>
+                            </button>
+                        </figure>
+                    </li>
+                {% endfor %}
+            {% endif %}
+            <li class="edit-favourite-item">
+                <a href="/explore" class="add-favorite">
+                    <span>Agregar canción a favoritos</span>
+                    <i class="ph ph-music-notes-plus icon add-favorite-icon"></i>
+                </a>
+            </li>
+        </ul>
+    </section>
+{% endblock %}
