@@ -25,10 +25,18 @@ function searchContent(offset) {
 		.catch((error) => console.error('Error:', error));
 }
 
+// Prevent Default cuando se presiona Enter
+searchInput.addEventListener('keydown', function (event) {
+	if (event.key === 'Enter') {
+		event.preventDefault();
+	}
+});
+
 // Utiliza debounce para evitar llamadas innecesarias. Optimizando la busqueda
 let debounceTimeout;
 // Cada vez que cambia el input se lanza una búsqueda. Cada 300ms (Debounce)
 searchInput.addEventListener('input', function () {
+	
 	clearTimeout(debounceTimeout);
 	const query = searchInput.value;
 	debounceTimeout = setTimeout(() => {
@@ -53,7 +61,7 @@ searchInput.addEventListener('input', function () {
 			newReleasesSection.style.display = 'grid';
 			searchResultsSection.style.display = 'none';
 		}
-	}, 300);
+	}, 500);
 });
 
 // Setea los resultados
