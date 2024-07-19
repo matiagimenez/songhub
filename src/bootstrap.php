@@ -28,6 +28,7 @@ $router->get('/', 'PageController@home');
 $router->get('/login', 'PageController@login');
 $router->get('/register', 'PageController@register');
 $router->get('/terms-conditions', 'PageController@terms_conditions');
+$router->get('/edit-password', 'PageController@edit_password');
 
 // Explore
 $router->get('/explore', 'ExploreController@explore');

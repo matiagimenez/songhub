@@ -1,7 +1,14 @@
 {% extends 'base.twig' %}
 
 {% block main %}
-    <h2 class="section-title">Información del perfil</h2>
+    <h2 class="section-title">
+        Información del perfil
+       <a href="/edit-password" class="edit-password-link">
+            <span class="visually-hidden"> Modificar tu contraseña </span>
+            <i class="ph ph-nut icon-xl config-icon"></i>
+        </a>
+    </h2>
+ 
     <form action="/user/profile" method="POST">
         <fieldset>
             <legend>Información de perfil</legend>

@@ -10,6 +10,13 @@ main {
 	padding-bottom: 10px;
 }
 
+.edit-password-link {
+	color: white;
+	position: relative;
+	top: 4px;
+	left: 12px;
+}
+
 form fieldset {
 	max-width: 520px;
 }

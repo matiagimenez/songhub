@@ -27,4 +27,9 @@ class PageController extends Controller
         Renderer::getInstance()->terms_conditions();
     }
 
+    public function edit_password()
+    {
+        Renderer::getInstance()->edit_password();
+    }
+
 }
