@@ -115,7 +115,7 @@ class Renderer
             'title' => "Post",
             'style' => "post",
             'username' => $username,
-            'show_footer' => true, 
+            'show_footer' => false, 
             "show_header" => true
         ]);
     }
@@ -128,7 +128,7 @@ class Renderer
         $username = $this->getUsername();
 
         $template = $this->templateLoader->load('error.twig');
-        echo $template->render(['message' => $message,'type' => $type, 'title' => 'Not found', 'style' => 'error', "show_footer" => true, "show_header" => false, "username" => $username]);
+        echo $template->render(['message' => $message,'type' => $type, 'title' => 'Not found', 'style' => 'error', "show_footer" => true, "show_header" => true, "username" => $username]);
     }
 
     public function internalError()
@@ -139,7 +139,7 @@ class Renderer
         $username = $this->getUsername();
 
         $template = $this->templateLoader->load('error.twig');
-        echo $template->render(['message' => $message,'type' => $type, 'title' => 'Server error', 'style' => 'error', "show_footer" => true, "show_header" => false, "username" => $username]);
+        echo $template->render(['message' => $message,'type' => $type, 'title' => 'Server error', 'style' => 'error', "show_footer" => true, "show_header" => true, "username" => $username]);
     }
     
     public function terms_conditions()
