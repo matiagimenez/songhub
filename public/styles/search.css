@@ -57,17 +57,26 @@ header form div {
 }
 
 header form div button {
-	background-color: var(--color-violet);
-	color: var(--color-grey-very-light);
+	background-color: var(--color-grey-very-light);
+	color: var(--color-grey-dark);
 	border: none;
 	border-radius: 40px;
 	padding: 0.6rem 0.8rem;
 	margin-right: 6px;
+	box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 header form div button:hover {
 	cursor: pointer;
-	filter: brightness(85%);
+}
+
+header form div button.active {
+	background-color: var(--color-grey-light);
+	color: var(--color-white);
+}
+
+header form div button.inactive:hover {
+	opacity: 90%;
 }
 
 

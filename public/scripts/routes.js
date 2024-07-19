@@ -46,6 +46,10 @@ export const routes = {
 			scriptName: 'footer-animation',
 			scriptPath: '/scripts/animations/footer-animation.js',
 		},
+		{
+			scriptName: 'search-filters',
+			scriptPath: '/scripts/components/explore-search/search-filters.js',
+		}
 	],
 	'/followers': [
 		{
