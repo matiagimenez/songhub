@@ -25,6 +25,17 @@ function searchContent(offset) {
 		.catch((error) => console.error('Error:', error));
 }
 
+function searchProfiles() {
+	console.log('Buscando Perfiles...');
+	// fetch(`/user/search?search=${searchInput.value}`)
+	// 	.then((response) => response.json())
+	// 	.then((data) => {
+	// 		console.log(data);
+	// 		setData(data);
+	// 	})
+	// 	.catch((error) => console.error('Error:', error));
+}
+
 // Prevent Default cuando se presiona Enter
 searchInput.addEventListener('keydown', function (event) {
 	if (event.key === 'Enter') {
@@ -38,31 +49,32 @@ let debounceTimeout;
 searchInput.addEventListener('input', function () {
 	
 	clearTimeout(debounceTimeout);
-	const query = searchInput.value;
 	debounceTimeout = setTimeout(() => {
-		// Si la cadena de busqueda es mayor a 0 llamamos a la API
-		if (query.length > 0) {
-			// exploreSection.style.display = 'none';
-			removeModalAccessClass();
-			recentActivitySection.style.display = 'none';
-			recommendationsSection.style.display = 'none';
-			favoritesSection.style.display = 'none';
-			newReleasesSection.style.display = 'none';
-			searchResultsSection.style.display = 'grid';
-			searchContent(0);
-			window.createPaginationButtons(1);
-		} else {
-			// Sino, limpiamos los resultados y mostramos vista de explore
-			setData({ tracks: [], albums: [] });
-			window.clearButtons();
-			recentActivitySection.style.display = 'grid';
-			recommendationsSection.style.display = 'grid';
-			favoritesSection.style.display = 'grid';
-			newReleasesSection.style.display = 'grid';
-			searchResultsSection.style.display = 'none';
-		}
+		searchManagement();
 	}, 500);
 });
+
+function searchManagement() {
+	// Si la cadena de busqueda es mayor a 0 llamamos a la API
+	if (searchInput.value.length > 0) {
+		removeModalAccessClass();
+		recentActivitySection.style.display = 'none';
+		recommendationsSection.style.display = 'none';
+		favoritesSection.style.display = 'none';
+		newReleasesSection.style.display = 'none';
+		searchResultsSection.style.display = 'grid';
+		window.isActiveContent ? searchContent(0) : searchProfiles();
+		window.createPaginationButtons(1);
+	} else { // Sino, limpiamos los resultados y mostramos vista de explore
+		setData({ tracks: [], albums: [] });
+		window.clearButtons();
+		recentActivitySection.style.display = 'grid';
+		recommendationsSection.style.display = 'grid';
+		favoritesSection.style.display = 'grid';
+		newReleasesSection.style.display = 'grid';
+		searchResultsSection.style.display = 'none';
+	}
+}
 
 // Setea los resultados
 function setData(data) {
@@ -140,3 +152,5 @@ function removeModalAccessClass() {
 }
 
 window.searchContent = searchContent;
+window.searchProfiles = searchProfiles;
+window.searchManagement = searchManagement;
