@@ -3,6 +3,7 @@ namespace Songhub\App\Controllers;
 
 use Songhub\core\Controller;
 use Songhub\core\Renderer;
+use Songhub\core\Session;
 
 class PageController extends Controller
 {
@@ -29,6 +30,11 @@ class PageController extends Controller
 
     public function edit_password()
     {
+        if(is_null(Session::getInstance()->get("access_token"))) {
+            $this->login();
+            exit;
+        }
+
         Renderer::getInstance()->edit_password();
     }
 
