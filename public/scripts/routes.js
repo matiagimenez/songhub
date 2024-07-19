@@ -231,6 +231,24 @@ export const routes = {
 			scriptPath: '/scripts/animations/footer-animation.js',
 		},
 	],
+	'/error': [
+		{
+			scriptName: 'menu-animation',
+			scriptPath: '/scripts/animations/menu-animation.js',
+		},
+		{
+			scriptName: 'logout-button',
+			scriptPath: '/scripts/components/logout-button/logout-button.js',
+		},
+		{
+			scriptName: 'footer-animation',
+			scriptPath: '/scripts/animations/footer-animation.js',
+		},
+		{
+			scriptName: 'password-animation',
+			scriptPath: '/scripts/animations/password-animation.js',
+		},
+	],
 	'/': [
 		{
 			scriptName: 'menu-animation',

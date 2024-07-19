@@ -10,7 +10,8 @@
 	font-size: 24px;
 }
 
-.config-icon {
+.config-icon,
+.password-icon {
 	color: var(--color-grey-dark);
 }
 
@@ -121,7 +122,8 @@
 		color: var(--color-white);
 	}
 
-	.config-icon {
+	.config-icon,
+	.password-icon {
 		color: var(--color-grey-very-light);
 	}
 }
