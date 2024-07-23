@@ -2,6 +2,7 @@ const searchInput = document.getElementById('search-on-page');
 const searchResult = document.getElementById('search-results-section');
 const tracksResults = document.getElementById('tracks-results');
 const albumsResults = document.getElementById('albums-results');
+const profilesResults = document.getElementById('profiles-results');
 
 // const exploreSection = document.querySelector(".explore-section");
 const recentActivitySection = document.getElementById(
@@ -13,6 +14,7 @@ const recommendationsSection = document.getElementById(
 const favoritesSection = document.getElementById('favorites-section');
 const newReleasesSection = document.getElementById('new-releases-section');
 const searchResultsSection = document.getElementById('search-results-section');
+const profilesResultsSection = document.getElementById('profiles-results-section');
 
 // Request API search content endpoint
 function fetchContent(offset) {
@@ -31,7 +33,7 @@ function fetchProfiles() {
 		.then((response) => response.json())
 		.then((data) => {
 			console.log(data);
-			// setData(data);
+			setData(data);
 		})
 		.catch((error) => console.error('Error:', error));
 }
@@ -55,6 +57,7 @@ searchInput.addEventListener('input', function () {
 });
 
 function searchContent() {
+	profilesResultsSection.style.display = 'none';
 	fetchContent(0);
 	searchResultsSection.style.display = 'grid';
 	window.createPaginationButtons(1);
@@ -64,7 +67,7 @@ function searchProfiles() {
 	window.clearButtons();
 	searchResultsSection.style.display = 'none';
 	fetchProfiles();
-	// profilesResultsSection.style.display = 'grid';
+	profilesResultsSection.style.display = 'grid';
 }
 
 function searchManagement() {
@@ -84,17 +87,45 @@ function searchManagement() {
 		favoritesSection.style.display = 'grid';
 		newReleasesSection.style.display = 'grid';
 		searchResultsSection.style.display = 'none';
+		profilesResultsSection.style.display = 'none';
 	}
 }
 
 // Setea los resultados
 function setData(data) {
-	setTracks(data.tracks);
-	setAlbums(data.albums);
+	window.isActiveContent ? setContent(data) : setProfiles(data);
 	window.scrollTo({
 		top: 0,
 		behavior: 'smooth',
 	});
+}
+
+function setProfiles(data) {
+	profilesResults.innerHTML = '';
+	profilesResults.innerHTML = '<h2 class="section-title">Perfiles</h2>';
+	data.forEach((item) => {
+		console.log(item);
+		const article = document.createElement('article');
+		article.id = item.fields.ID;
+		article.innerHTML = `
+        <figure>
+            <section class="profile-img-container" id="${item.fields.ID}" >
+                <img loading="lazy" width="180px" height="180px" src="${item.fields.SPOTIFY_AVATAR}" alt="Foto de perfil de ${item.fields.NAME}" class="profile-img" />
+            </section>
+            <figcaption>
+                <a href="/">
+                    <h3 class="song-title">${item.fields.NAME}</h3>
+                </a>
+            </figcaption>
+        </figure>
+    `;
+		profilesResults.appendChild(article);
+	});
+}
+
+function setContent(data) {
+	setTracks(data.tracks);
+	setAlbums(data.albums);
 	const articles = searchResultsSection.querySelectorAll('.add-modal-access');
 	window.applyModalListeners(articles);
 	const post_form_openers =
@@ -162,6 +193,6 @@ function removeModalAccessClass() {
 	});
 }
 
-window.searchContent = searchContent;
+window.fetchContent = fetchContent;
 window.searchProfiles = searchProfiles;
 window.searchManagement = searchManagement;

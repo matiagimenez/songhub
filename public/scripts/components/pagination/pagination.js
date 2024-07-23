@@ -89,7 +89,7 @@ function createPaginationButtons(currentPage) {
 // Cuando se clickea un botón, cambia el offset de la consulta y llama a la API
 function addButtonsListeners(button, pageNumber) {
   button.addEventListener('click', () => {
-    window.searchContent((pageNumber - 1) * 10);
+    window.fetchContent((pageNumber - 1) * 10);
     createPaginationButtons(pageNumber);
   });
 }
