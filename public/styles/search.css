@@ -12,28 +12,6 @@ main {
 	padding: 1rem 0;
 }
 
-/* main {
-	font-family: var(--font-family);
-	padding: 1rem;
-} */
-
-/* main .section {
-	grid-template-rows: auto;
-	grid-auto-rows: 230px;
-} */
-
-/* h2 {
-	font-size: 1.2rem;
-	margin-top: 24px;
-	color: var(--color-violet);
-	font-weight: bold;
-}
-
-h2 span {
-	color: var(--color-violet-dark);
-	font-style: italic;
-} */
-
 main header {
 	width: 90%;
 	margin: auto;
@@ -74,62 +52,32 @@ header p label {
 	color: var(--color-grey-dark);
 }
 
-/* figcaption a {
-	text-decoration: none;
+header form div {
+	margin-top: 0.5rem;
+}
+
+header form div button {
+	background-color: var(--color-grey-very-light);
+	color: var(--color-grey-dark);
+	border: none;
+	border-radius: 40px;
+	padding: 0.6rem 0.8rem;
+	margin-right: 6px;
+	box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+header form div button:hover {
 	cursor: pointer;
-} */
-
-/* @media (min-width: 400px) {
-	main .section {
-		grid-auto-rows: 300px;
-	}
-} */
-
-/* @media (min-width: 750px) {
-	main {
-		display: grid;
-		grid-template-columns: 50% 50%;
-		grid-template-rows: 165px;
-		grid-auto-flow: row;
-		grid-auto-rows: 180px;
-	}
-
-	main header {
-		grid-column: 1/3;
-	}
 }
 
-@media (min-width: 1200px) {
-	main {
-		grid-template-columns: repeat(3, 1fr);
-		grid-auto-rows: 200px;
-	}
-
-	main header {
-		grid-column: 1/4;
-	}
-
-	main header h2 {
-		font-size: 1.3rem;
-	}
-
-	main p label {
-		font-size: 1.1rem;
-	}
-
+header form div button.active {
+	background-color: var(--color-grey-light);
+	color: var(--color-white);
 }
 
-@media (min-width: 1600px) {
-	main {
-		grid-template-rows: 10%;
-		grid-auto-rows: 250px;
-		grid-template-columns: repeat(3, 1fr);
-	}
-
-	main header {
-		grid-column: 1/4;
-	}
-} */
+header form div button.inactive:hover {
+	opacity: 90%;
+}
 
 
 @media (prefers-color-scheme: dark) {
@@ -150,12 +98,4 @@ header p label {
 		accent-color: var(--color-violet-lightest);
 	}
 
-	/* h2 {
-		color: var(--color-grey-very-light);
-	}
-
-	h2 span {
-		color: var(--color-violet-lightest);
-		font-style: italic;
-	} */
 }

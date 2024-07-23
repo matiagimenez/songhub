@@ -13,6 +13,28 @@ main {
 	padding-bottom: 124px;
 }
 
+#profiles-results article {
+	background-color: var(--color-grey-very-light);
+	text-align: center;
+	padding: 0rem 0.2rem;
+	border-radius: 10px;
+	box-shadow: 1px 1px 8px rgba(14, 14, 14, 0.645);
+}
+
+#profiles-results article:hover {
+	cursor: pointer;
+	opacity: 90%;
+}
+
+.profile-img {
+	border-radius: 100%;
+	padding: 1rem;
+}
+
+#profiles-results article figcaption {
+	border: none;
+}
+
 @media (prefers-color-scheme: dark) {
 	body {
 		background-color: var(--color-violet-dark-black);
@@ -25,5 +47,9 @@ main {
 
 	figcaption {
 		border-color: var(--color-white);
+	}
+
+	#profiles-results article {
+		background-color: var(--color-grey-dark);
 	}
 }
