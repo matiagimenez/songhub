@@ -35,6 +35,31 @@ class UserRepository extends Repository
         }
     }
 
+    public function searchProfiles(string $value)
+    {        
+        try {
+            $users = $this->queryBuilder->selectByColumnLike($this->table, 'USERNAME', $value);
+            
+            if (!$users) {
+                return null;
+            }
+
+            foreach ($users as $key => $user) {
+                $users[$key] = new User();
+                $users[$key]->set($user);
+            }
+            return $users;
+        } catch (Exception $exception) {
+            $this->logger->error(
+                "Error al obtener datos del usuario",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'UserRepository - searchProfiles',
+                ]
+            );
+        }
+    }
+
     public function emailIsUsed(string $email)
     {
         $user = $this->queryBuilder->selectByColumn($this->table, "EMAIL", $email);

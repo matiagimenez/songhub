@@ -15,7 +15,7 @@ const newReleasesSection = document.getElementById('new-releases-section');
 const searchResultsSection = document.getElementById('search-results-section');
 
 // Request API search content endpoint
-function searchContent(offset) {
+function fetchContent(offset) {
 	fetch(`/content/search?search=${searchInput.value}&offset=${offset}`)
 		.then((response) => response.json())
 		.then((data) => {
@@ -25,15 +25,15 @@ function searchContent(offset) {
 		.catch((error) => console.error('Error:', error));
 }
 
-function searchProfiles() {
+function fetchProfiles() {
 	console.log('Buscando Perfiles...');
-	// fetch(`/user/search?search=${searchInput.value}`)
-	// 	.then((response) => response.json())
-	// 	.then((data) => {
-	// 		console.log(data);
-	// 		setData(data);
-	// 	})
-	// 	.catch((error) => console.error('Error:', error));
+	fetch(`/user/profile/search?username=${searchInput.value}`)
+		.then((response) => response.json())
+		.then((data) => {
+			console.log(data);
+			// setData(data);
+		})
+		.catch((error) => console.error('Error:', error));
 }
 
 // Prevent Default cuando se presiona Enter
@@ -54,6 +54,19 @@ searchInput.addEventListener('input', function () {
 	}, 500);
 });
 
+function searchContent() {
+	fetchContent(0);
+	searchResultsSection.style.display = 'grid';
+	window.createPaginationButtons(1);
+}
+
+function searchProfiles() {
+	window.clearButtons();
+	searchResultsSection.style.display = 'none';
+	fetchProfiles();
+	// profilesResultsSection.style.display = 'grid';
+}
+
 function searchManagement() {
 	// Si la cadena de busqueda es mayor a 0 llamamos a la API
 	if (searchInput.value.length > 0) {
@@ -62,9 +75,7 @@ function searchManagement() {
 		recommendationsSection.style.display = 'none';
 		favoritesSection.style.display = 'none';
 		newReleasesSection.style.display = 'none';
-		searchResultsSection.style.display = 'grid';
-		window.isActiveContent ? searchContent(0) : searchProfiles();
-		window.createPaginationButtons(1);
+		window.isActiveContent ? searchContent() : searchProfiles();
 	} else { // Sino, limpiamos los resultados y mostramos vista de explore
 		setData({ tracks: [], albums: [] });
 		window.clearButtons();

@@ -102,6 +102,33 @@ class QueryBuilder
         }
     }
 
+    public function selectByColumnLike(string $table, $column, $value)
+    {
+        try {
+            $query = "SELECT * FROM {$table} WHERE {$column} LIKE :value";
+            $value = "%{$value}%";
+            
+            $statement = $this->pdo->prepare($query);
+            $statement->bindParam(':value', $value);
+            $statement->setFetchMode(PDO::FETCH_ASSOC);
+            $statement->execute();
+            
+            return $statement->fetchAll();
+        } catch (PDOException $error) {
+            $this->logger->error(
+                "Error al ejecutar el query en la base de datos",
+                [
+                    "Error" => $error->getMessage(),
+                    "Operacion" => 'selectByColumnLike',
+                    "Tabla" => $table,
+                    "Columna" => $column,
+                    "Valor" => $value,
+                ]
+            );
+            return [];
+        }
+    }
+
     public function selectByColumnInDescOrder(string $table, $column, $value, $columnBy, $limit = 0)
     {
         try {
