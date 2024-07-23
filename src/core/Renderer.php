@@ -141,6 +141,14 @@ class Renderer
         $template = $this->templateLoader->load('error.twig');
         echo $template->render(['message' => $message,'type' => $type, 'title' => 'Server error', 'style' => 'error', "show_footer" => true, "show_header" => true, "username" => $username]);
     }
+
+    public function edit_password($message = "")
+    {
+        $username = $this->getUsername();
+
+        $template = $this->templateLoader->load('edit-password.twig');
+        echo $template->render(['title' => 'Configuración', 'style' => 'edit-password', "message" => $message, "show_footer" => true, "show_header" => true, "username" => $username]);
+    }
     
     public function terms_conditions()
     {

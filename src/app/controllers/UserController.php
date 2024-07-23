@@ -59,6 +59,32 @@ class UserController extends Controller
 
         Renderer::getInstance()->edit($user, $country, $availableCountries, $favorites, $message);
     }
+
+    public function edit_password() {
+        $username = Session::getInstance()->get("username");
+        $oldPassword = $this->sanitizeUserInput(Request::getInstance()->getParameter("old-password", "POST"));
+        $newPassword = $this->sanitizeUserInput(Request::getInstance()->getParameter("new-password", "POST"));
+        $newPasswordConfirmation = $this->sanitizeUserInput(Request::getInstance()->getParameter("new-password-confirmation", "POST"));
+
+        $data = [
+            "OLD_PASSWORD" => $oldPassword,
+            "NEW_PASSWORD" => $newPassword,
+            "NEW_PASSWORD_CONFIRMATION" =>  $newPasswordConfirmation,
+        ];
+
+        list($status, $message) = $this -> repository -> updateUserPassword("USERNAME", $username, $data);
+
+        if(!$status){
+            Renderer::getInstance()->edit_password($message);
+            exit;
+        }
+        
+
+        $user = $this->repository->getUser("USERNAME", $username);
+
+        $this->profile($user, $message);
+    }   
+    
     
     public function updateUser()
     {

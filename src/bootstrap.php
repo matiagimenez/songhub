@@ -28,6 +28,7 @@ $router->get('/', 'PageController@home');
 $router->get('/login', 'PageController@login');
 $router->get('/register', 'PageController@register');
 $router->get('/terms-conditions', 'PageController@terms_conditions');
+$router->get('/edit-password', 'PageController@edit_password');
 
 // Explore
 $router->get('/explore', 'ExploreController@explore');
@@ -51,6 +52,7 @@ $router->get('/user', 'UserController@profile');
 $router->get('/user/profile', 'UserController@edit');
 $router->post('/user/profile', 'UserController@updateUser');
 $router->get('/user/profile/search', 'UserController@searchProfiles');
+$router->post('/user/edit-password', 'UserController@edit_password');
 $router->get('/user/favorites', 'FavoriteController@getCurrentUserFavoriteContent');
 $router->get('/user/favorites/add', 'FavoriteController@addCurrentUserFavoriteContent');
 $router->get('/user/favorites/remove', 'FavoriteController@removeCurrentUserFavoriteContent');

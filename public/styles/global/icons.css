@@ -6,11 +6,24 @@
 	font-size: 22px;
 }
 
+.icon-xl {
+	font-size: 24px;
+}
+
+.config-icon,
+.password-icon {
+	color: var(--color-grey-dark);
+}
+
 .share-icon,
 .close-icon,
 .play-icon,
 .pause-icon {
 	color: var(--color-violet-darkest);
+}
+
+.config-icon:hover {
+	opacity: 0.9;
 }
 
 .more-icon {
@@ -107,5 +120,10 @@
 	.comment-icon,
 	.back-icon {
 		color: var(--color-white);
+	}
+
+	.config-icon,
+	.password-icon {
+		color: var(--color-grey-very-light);
 	}
 }
