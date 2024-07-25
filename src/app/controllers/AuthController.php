@@ -10,6 +10,7 @@ use Songhub\core\HttpClient;
 use Songhub\core\Renderer;
 use Songhub\core\Request;
 use Songhub\core\Session;
+use Songhub\core\Mailer;
 
 class AuthController extends Controller
 {
@@ -252,5 +253,32 @@ class AuthController extends Controller
         Session::getInstance()->set("username", $user["USERNAME"]);
 
         return $new_access_token;
+    }
+
+
+    public function sendEmailForPasswordRecovery() {
+        $mailer = Mailer::getInstance();
+        $host = Config::getInstance()->get("HOST");
+        $port = Config::getInstance()->get("PORT");
+        
+        //? Esta es la URL a la que se redirige al usuario para recuperar su contraseña
+        $redirect_uri = "http://" . $host . ":" . $port . "/login";
+
+        # TODO: Utilizar el mail indicado por el usuario.
+        $to = "songhubpaw@gmail.com"; 
+        $subject = "Recuperar acceso | Songhub";
+        $body = "
+            <h1>Reestablecé tu contraseña!</h1>
+            <p>Realizá el cambio de tu contraseña para seguir navegando y realizando reseñas en Songhub</p>
+            <a href='$redirect_uri'>Reestablecer contraseña</a>
+        ";
+
+        $wasSent = $mailer -> sendEmail($to,$subject, $body);
+
+        if($wasSent) {
+            echo "Email sent";
+        } else {
+            echo "Error: email not sent";
+        }
     }
 }

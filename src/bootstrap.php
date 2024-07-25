@@ -46,6 +46,7 @@ $router->post('/login', 'AuthController@login');
 $router->get('/logout', 'AuthController@logout');
 $router->post('/register', 'AuthController@register');
 $router->get('/spotify/tokens', 'AuthController@requestSpotifyTokens');
+$router->get('/password-recovery', 'AuthController@sendEmailForPasswordRecovery');
 
 // User
 $router->get('/user', 'UserController@profile');

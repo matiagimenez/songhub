@@ -4,12 +4,13 @@ namespace Songhub\core;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+use Songhub\core\traits\Loggable;
 
 class Mailer
 {
     use Loggable;
     private static $instance;
-    private $mailer;
+    private static $mail;
     private $user;
     private $password;
 
@@ -24,20 +25,20 @@ class Mailer
     {
         if (!isset(self::$instance)) {
             self::$instance = new self();
-            $mailer = new PHPMailer(true);
+            self::$mail = new PHPMailer(true);
 
             $config = Config::getInstance();
 
             $smtp_user = $config->get("SMTP_USER");
 
             // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                  // Enable verbose debug output
-            $mail->isSMTP();                                        //Send using SMTP
-            $mail->Host       = $config->get("SMTP_HOST");          //Set the SMTP server to send through
-            $mail->SMTPAuth   = true;                               //Enable SMTP authentication
-            $mail->Username   = $config->get("SMTP_USER");                         //SMTP username
-            $mail->Password   = $config->get("SMTP_PASSWORD");                     //SMTP password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;        //Enable implicit TLS encryption
-            $mail->Port       = 465;                                //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+            self::$mail ->isSMTP();                                        //Send using SMTP
+            self::$mail ->Host       = $config->get("SMTP_HOST");          //Set the SMTP server to send through
+            self::$mail ->SMTPAuth   = true;                               //Enable SMTP authentication
+            self::$mail ->Username   = $config->get("SMTP_USER");                         //SMTP username
+            self::$mail ->Password   = $config->get("SMTP_PASSWORD");                     //SMTP password
+            self::$mail ->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;        //Enable implicit TLS encryption
+            self::$mail ->Port       = 465;                                //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         }
 
         return self::$instance;
@@ -47,15 +48,15 @@ class Mailer
         try {
 
             $config = Config::getInstance();
-            $mail->setFrom($config->get("SMTP_USER"), 'Songhub');
+            self::$mail->setFrom($config->get("SMTP_USER"), 'Songhub');
 
-            $mail->addAddress('to@example.com');
+            self::$mail->addAddress($to);
 
-            $mail->isHTML(true);                                  
-            $mail->Subject = 'Here is the subject';
-            $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+            self::$mail->isHTML(true);                                  
+            self::$mail->Subject = $subject;
+            self::$mail->Body    = $body;
         
-            $mail->send();
+            self::$mail->send();
 
             $this->logger->info("Message sent to " . $to);
             return true;
