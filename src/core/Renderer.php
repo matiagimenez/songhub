@@ -149,6 +149,12 @@ class Renderer
         $template = $this->templateLoader->load('edit-password.twig');
         echo $template->render(['title' => 'Configuración', 'style' => 'edit-password', "message" => $message, "show_footer" => true, "show_header" => true, "username" => $username]);
     }
+
+    public function password_recovery($message = "", $error = false, $confirmation = false)
+    {
+        $template = $this->templateLoader->load('password-recovery.twig');
+        echo $template->render(['title' => 'Configuración', 'style' => 'password-recovery', "message" => $message, "show_footer" => true, "show_header" => true, "username" => null, "confirmation" => $confirmation, "error"=>$error]);
+    }
     
     public function terms_conditions()
     {
@@ -207,7 +213,7 @@ class Renderer
     }
 
     private function isAuthenticated () {
-        return Session::getInstance()->exists("username");
+        return !is_null(Session::getInstance()->get("access_token"));
     } 
 
     private function getUsername () {        
