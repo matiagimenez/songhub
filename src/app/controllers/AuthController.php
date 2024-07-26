@@ -10,6 +10,7 @@ use Songhub\core\HttpClient;
 use Songhub\core\Renderer;
 use Songhub\core\Request;
 use Songhub\core\Session;
+use Songhub\core\Mailer;
 
 class AuthController extends Controller
 {
@@ -253,4 +254,105 @@ class AuthController extends Controller
 
         return $new_access_token;
     }
+
+    public function sendConfirmationEmail() {
+        $mailer = Mailer::getInstance();
+        $host = Config::getInstance()->get("HOST");
+        $port = Config::getInstance()->get("PORT");
+
+        $email = $this->sanitizeUserInput(Request::getInstance()->getParameter("confirmation-email", "POST"));
+        $token = $this->generateToken();
+        $user = $this->repository->getUser("EMAIL", $email);
+
+        if(!$user) {
+            Renderer::getInstance()->password_recovery("No existe un usuario registrado con ese correo.", true);
+            die;
+        }
+
+        $username = $user->fields["USERNAME"];
+
+        Session::getInstance()->destroy();
+        Session::getInstance()->set("token", $token);
+        Session::getInstance()->set("username", $username);
+        
+
+        //? Esta es la URL a la que se redirige al usuario para recuperar su contraseña
+        $redirect_uri = "http://" . $host . ":" . $port . "/email-confirmation?token={$token}";
+
+
+        $to = $email; 
+        $subject = "Recuperar acceso | Songhub";
+        $body = "
+            <h1>Reestablecé tu contraseña!</h1>
+            <p>Solicitó restablecer la contraseña para restaurar el acceso a su cuenta {$email}</p>
+            <p>
+                Si no solicitó restablecer la contraseña para su cuenta, alguien puede haber ingresado la dirección de correo electrónico por error. Si ese es el caso, ignore este mensaje.
+            </p>
+            <a href='$redirect_uri'>Reestablecer contraseña</a>
+            <p>
+                Atentamente,
+            </p>
+            <p>
+                El equipo de Songhub
+            </p>
+        ";
+
+        $wasSent = $mailer -> sendEmail($to,$subject, $body);
+
+        if($wasSent) {
+            Renderer::getInstance()->password_recovery("El correo fue enviado con éxito. Revise su bandeja de entrada.");
+        } else {
+            Renderer::getInstance()->internalError();
+        }
+    }
+    
+
+    private function generateToken() {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $token = '';
+        
+        for ($i = 0; $i < 60; $i++) {
+            $index = rand(0, strlen($characters) - 1);
+            $token .= $characters[$index];
+        }
+        
+        return $token;
+    }
+
+    public function recover_password() {
+        $username = Session::getInstance()->get("username");
+        Session::getInstance()->destroy(); // Destruyo la sesión porque ya no es necesaria
+
+        $newPassword = $this->sanitizeUserInput(Request::getInstance()->getParameter("new-password", "POST"));
+        $newPasswordConfirmation = $this->sanitizeUserInput(Request::getInstance()->getParameter("new-password-confirmation", "POST"));
+
+
+        $data = [
+            "NEW_PASSWORD" => $newPassword,
+            "NEW_PASSWORD_CONFIRMATION" =>  $newPasswordConfirmation,
+        ];
+
+        list($status, $message) = $this -> repository -> recoverUserPassword("USERNAME", $username, $data);
+
+
+        if(!$status){
+            Renderer::getInstance()->password_recovery($message, true, true);
+            exit;
+        }
+
+        Renderer::getInstance()->password_recovery($message, false, true);
+    }
+
+    public function passwordRecovery() {
+        $username = Session::getInstance()->get("username");
+        $token = Session::getInstance()->get("token");
+        $request_token = Request::getInstance()->getParameter("token");
+
+        if($token != $request_token || is_null($token) || is_null($request_token)){
+            Renderer::getInstance()->notFound();
+            exit;
+        }
+        
+        Renderer::getInstance()->password_recovery("", false, true);
+    }   
 }

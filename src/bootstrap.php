@@ -29,6 +29,8 @@ $router->get('/login', 'PageController@login');
 $router->get('/register', 'PageController@register');
 $router->get('/terms-conditions', 'PageController@terms_conditions');
 $router->get('/edit-password', 'PageController@edit_password');
+$router->get('/password-recovery', 'PageController@passwordRecovery');
+
 
 // Explore
 $router->get('/explore', 'ExploreController@explore');
@@ -46,6 +48,10 @@ $router->post('/login', 'AuthController@login');
 $router->get('/logout', 'AuthController@logout');
 $router->post('/register', 'AuthController@register');
 $router->get('/spotify/tokens', 'AuthController@requestSpotifyTokens');
+$router->post('/password-recovery', 'AuthController@sendConfirmationEmail');
+$router->get('/email-confirmation', 'AuthController@passwordRecovery');
+$router->post('/new-password', 'AuthController@recover_password');
+
 
 // User
 $router->get('/user', 'UserController@profile');

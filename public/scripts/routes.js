@@ -49,7 +49,7 @@ export const routes = {
 		{
 			scriptName: 'search-filters',
 			scriptPath: '/scripts/components/explore-search/search-filters.js',
-		}
+		},
 	],
 	'/followers': [
 		{
@@ -234,15 +234,29 @@ export const routes = {
 			scriptName: 'footer-animation',
 			scriptPath: '/scripts/animations/footer-animation.js',
 		},
+		{
+			scriptName: 'password-animation',
+			scriptPath: '/scripts/animations/password-animation.js',
+		},
 	],
-	'/error': [
+	'/user/password-recovery': [
 		{
 			scriptName: 'menu-animation',
 			scriptPath: '/scripts/animations/menu-animation.js',
 		},
 		{
-			scriptName: 'logout-button',
-			scriptPath: '/scripts/components/logout-button/logout-button.js',
+			scriptName: 'footer-animation',
+			scriptPath: '/scripts/animations/footer-animation.js',
+		},
+		{
+			scriptName: 'password-animation',
+			scriptPath: '/scripts/animations/password-animation.js',
+		},
+	],
+	'/edit-password': [
+		{
+			scriptName: 'menu-animation',
+			scriptPath: '/scripts/animations/menu-animation.js',
 		},
 		{
 			scriptName: 'footer-animation',

@@ -18,7 +18,7 @@ class Config
         $this->configs["LOG_PATH"] = $this->joinPaths(__DIR__, "../..", $path);
 
         $this->configs['HOST'] = getenv('HOST') ?? 'localhost';
-        $this->configs['PORT'] = '8888';
+        $this->configs['PORT'] = getenv('PORT') ?? '8888';
 
         $this->configs['DB_ADAPTER'] = getenv('DB_ADAPTER') ?? 'mysql';
         $this->configs['DB_HOSTNAME'] = getenv('DB_HOSTNAME') ?? 'localhost';
@@ -30,6 +30,10 @@ class Config
 
         $this->configs['SPOTIFY_CLIENT_ID'] = getenv('SPOTIFY_CLIENT_ID') ?? '';
         $this->configs['SPOTIFY_CLIENT_SECRET'] = getenv('SPOTIFY_CLIENT_SECRET') ?? '';
+
+        $this->configs['SMTP_HOST'] = getenv('SMTP_HOST') ?? 'smtp.gmail.com';
+        $this->configs['SMTP_USER'] = getenv('SMTP_USER') ?? 'songhubpaw@gmail.com';
+        $this->configs['SMTP_PASSWORD'] = getenv('SMTP_PASSWORD') ?? '';
     }
 
     public static function getInstance()

@@ -160,6 +160,26 @@ class UserRepository extends Repository
         }
     }
 
+    public function recoverUserPassword($field, $value, $data)
+    {
+        try {
+            $user = $this->getUser($field, $value);
+
+            if ($data["NEW_PASSWORD"] != $data["NEW_PASSWORD_CONFIRMATION"]) {
+                return [false, "Las contraseñas no coinciden"];
+            }
+
+            $user -> setPassword($data["NEW_PASSWORD"], $data["NEW_PASSWORD_CONFIRMATION"]);
+
+            $this->queryBuilder->update($this->table, $user->fields, "USERNAME", $user -> fields["USERNAME"]);
+            return [true, "Tu contraseña fue actualizada con éxito"];
+        } catch (InvalidValueException $exception) {
+            return [false, $exception->getMessage()];
+        } catch (Exception $exception) {
+            return [false, "Ocurrió un error al actualizar datos del usuario"];
+        }
+    }
+
     public function login($email, $password)
     {
         try {

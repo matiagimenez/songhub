@@ -83,8 +83,7 @@ class UserController extends Controller
         $user = $this->repository->getUser("USERNAME", $username);
 
         $this->profile($user, $message);
-    }   
-    
+    }
     
     public function updateUser()
     {

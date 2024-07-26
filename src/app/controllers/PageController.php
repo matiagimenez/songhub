@@ -38,4 +38,10 @@ class PageController extends Controller
         Renderer::getInstance()->edit_password();
     }
 
+    
+    public function passwordRecovery()
+    {
+        Renderer::getInstance()->password_recovery("", false);
+    }
+
 }

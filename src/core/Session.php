@@ -33,6 +33,9 @@ class Session
         $this->start();
 
         $_SESSION = [];
+        $_SESSION["username"] = null;
+        $_SESSION["user_login_identifier"] = null;
+
         Cookie::getInstance()->delete(session_name());
         Cookie::getInstance()->delete("user_login_identifier");
         Cookie::getInstance()->delete("username");
