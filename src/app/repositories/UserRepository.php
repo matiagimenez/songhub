@@ -152,7 +152,7 @@ class UserRepository extends Repository
             $user -> setPassword($data["NEW_PASSWORD"], $data["NEW_PASSWORD_CONFIRMATION"]);
 
             $this->queryBuilder->update($this->table, $user->fields, "USERNAME", $user -> fields["USERNAME"]);
-            return [true, "Tu contraseña fue actualizada con éxito"];
+            return [true, "Tu contraseña fue actualizada con éxito."];
         } catch (InvalidValueException $exception) {
             return [false, $exception->getMessage()];
         } catch (Exception $exception) {
@@ -172,7 +172,7 @@ class UserRepository extends Repository
             $user -> setPassword($data["NEW_PASSWORD"], $data["NEW_PASSWORD_CONFIRMATION"]);
 
             $this->queryBuilder->update($this->table, $user->fields, "USERNAME", $user -> fields["USERNAME"]);
-            return [true, "Tu contraseña fue actualizada con éxito"];
+            return [true, "Tu contraseña fue actualizada con éxito."];
         } catch (InvalidValueException $exception) {
             return [false, $exception->getMessage()];
         } catch (Exception $exception) {
