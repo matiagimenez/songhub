@@ -114,7 +114,9 @@ class UserController extends Controller
     public function searchProfiles()
     {
         $username = $this->sanitizeUserInput(Request::getInstance()->getParameter("username", "GET"));
+        
         $users = $this->repository->searchProfiles($username);
+        
         ob_clean();
         header('Content-Type: application/json');
         echo json_encode($users);

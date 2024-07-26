@@ -42,12 +42,8 @@ class UserRepository extends Repository
             
             if (!$users) {
                 return null;
-            }
+            } 
 
-            foreach ($users as $key => $user) {
-                $users[$key] = new User();
-                $users[$key]->set($user);
-            }
             return $users;
         } catch (Exception $exception) {
             $this->logger->error(

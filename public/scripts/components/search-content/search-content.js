@@ -106,15 +106,15 @@ function setProfiles(data) {
 	data.forEach((item) => {
 		console.log(item);
 		const article = document.createElement('article');
-		article.id = item.fields.ID;
+		article.id = item.USER_ID;
 		article.innerHTML = `
         <figure>
-            <section class="profile-img-container" id="${item.fields.ID}" >
-                <img loading="lazy" width="180px" height="180px" src="${item.fields.SPOTIFY_AVATAR}" alt="Foto de perfil de ${item.fields.NAME}" class="profile-img" />
+            <section class="profile-img-container" id="${item.USER_ID}" >
+                <img loading="lazy" width="180px" height="180px" src="${item.SPOTIFY_AVATAR}" alt="Foto de perfil de ${item.USERNAME}" class="profile-img" />
             </section>
             <figcaption>
                 <a href="/">
-                    <h3 class="song-title">${item.fields.NAME}</h3>
+                    <h3 class="song-title">${item.USERNAME}</h3>
                 </a>
             </figcaption>
         </figure>
