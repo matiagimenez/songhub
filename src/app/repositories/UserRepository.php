@@ -35,16 +35,38 @@ class UserRepository extends Repository
         }
     }
 
-    public function searchProfiles(string $value)
+    public function searchProfiles(string $value, int $offset)
     {        
         try {
             $users = $this->queryBuilder->selectByColumnLike($this->table, 'USERNAME', $value);
-            
+
             if (!$users) {
                 return null;
-            } 
+            }
 
-            return $users;
+            $articles = 10;
+            
+            $usersCount = count($users);
+            $lastPage = ceil($usersCount/$articles);
+            $currentPage = ceil(($offset + 1) / $articles); 
+            $users = 
+                array_slice(
+                    $users, 
+                    $offset, 
+                    $currentPage == $lastPage ? $usersCount - $offset : $articles
+                );
+            $fisrtPage = 1;
+
+            $response = [
+                "users" => $users,
+                "last_page" => $lastPage,
+                "first_page" => $fisrtPage,
+                "current_page" => $currentPage,
+                "offset" => $offset,
+                "total" => $usersCount,
+            ];
+
+            return $response;
         } catch (Exception $exception) {
             $this->logger->error(
                 "Error al obtener datos del usuario",

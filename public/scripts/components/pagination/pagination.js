@@ -13,12 +13,11 @@ const paginationContainer = ElementBuilder.createElement('section', '', {
 });
 
 // Variables de configuración
-const totalPages = 100;
 const visiblePages = 7;
 const halfVisiblePages = Math.floor(visiblePages / 2);
 
 // Función para crear los botones de paginación
-function createPaginationButtons(currentPage) {
+function createPaginationButtons(currentPage, totalPages) {
   paginationContainer.innerHTML = '';
 
   const createPageButton = (pageNumber) => {
@@ -28,7 +27,7 @@ function createPaginationButtons(currentPage) {
     button.innerHTML = pageNumber;
     button.disabled = pageNumber === currentPage;
     pageNumber === currentPage && button.classList.add('selected-button');
-    addButtonsListeners(button, pageNumber);
+    addButtonsListeners(button, pageNumber, totalPages);
     return button;
   };
 
@@ -37,7 +36,7 @@ function createPaginationButtons(currentPage) {
       class: 'pagination-button',
     });
     button.innerHTML = '<';
-    addButtonsListeners(button, currentPage - 1);
+    addButtonsListeners(button, currentPage - 1, totalPages);
     paginationContainer.appendChild(button);
   };
   
@@ -46,7 +45,7 @@ function createPaginationButtons(currentPage) {
       class: 'pagination-button',
     });
     button.innerHTML = '>';
-    addButtonsListeners(button, currentPage + 1);
+    addButtonsListeners(button, currentPage + 1, totalPages);
     paginationContainer.appendChild(button);
   };
 
@@ -87,10 +86,10 @@ function createPaginationButtons(currentPage) {
 }
 
 // Cuando se clickea un botón, cambia el offset de la consulta y llama a la API
-function addButtonsListeners(button, pageNumber) {
+function addButtonsListeners(button, pageNumber, totalPages) {
   button.addEventListener('click', () => {
-    window.fetchContent((pageNumber - 1) * 10);
-    createPaginationButtons(pageNumber);
+    window.searchManagement((pageNumber - 1) * 10);
+    createPaginationButtons(pageNumber, totalPages);
   });
 }
 
