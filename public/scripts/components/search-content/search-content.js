@@ -21,7 +21,6 @@ function fetchContent(offset) {
 	fetch(`/content/search?search=${searchInput.value}&offset=${offset}`)
 		.then((response) => response.json())
 		.then((data) => {
-			console.log(data);
 			setData(data);
 		})
 		.catch((error) => console.error('Error:', error));
@@ -32,7 +31,6 @@ function fetchProfiles(offset) {
 	fetch(`/user/profile/search?username=${searchInput.value}&offset=${offset}`)
 		.then((response) => response.json())
 		.then((data) => {
-			console.log(data);
 			setData(data);
 		})
 		.catch((error) => console.error('Error:', error));
@@ -57,15 +55,17 @@ searchInput.addEventListener('input', function () {
 });
 
 function searchContent(offset) {
-	window.clearButtons();
+	if(offset == 0) {
+		window.clearButtons()
+		window.createPaginationButtons(1,100);
+	}
 	profilesResultsSection.style.display = 'none';
 	fetchContent(offset);
 	searchResultsSection.style.display = 'grid';
-	window.createPaginationButtons(1,100);
 }
 
 function searchProfiles(offset) {
-	window.clearButtons();
+	offset == 0 && window.clearButtons();
 	searchResultsSection.style.display = 'none';
 	fetchProfiles(offset);
 	profilesResultsSection.style.display = 'grid';
@@ -79,10 +79,9 @@ function searchManagement(offset = 0) {
 		recommendationsSection.style.display = 'none';
 		favoritesSection.style.display = 'none';
 		newReleasesSection.style.display = 'none';
-		window.createPaginationButtons(1);
 		window.isActiveContent ? searchContent(offset) : searchProfiles(offset);
 	} else { // Sino, limpiamos los resultados y mostramos vista de explore
-		setData({ tracks: [], albums: [] });
+		window.isActiveContent ? setData({ tracks: [], albums: [] }) : setData({ users: [] });
 		window.clearButtons();
 		recentActivitySection.style.display = 'grid';
 		recommendationsSection.style.display = 'grid';
@@ -107,7 +106,6 @@ function setProfiles(data) {
 	profilesResults.innerHTML = '';
 	profilesResults.innerHTML = '<h2 class="section-title">Perfiles</h2>';
 	data.users.forEach((item) => {
-		console.log(item);
 		const article = document.createElement('article');
 		article.id = item.USER_ID;
 		article.innerHTML = `
