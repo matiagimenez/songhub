@@ -21,18 +21,16 @@ function fetchContent(offset) {
 	fetch(`/content/search?search=${searchInput.value}&offset=${offset}`)
 		.then((response) => response.json())
 		.then((data) => {
-			console.log(data);
 			setData(data);
 		})
 		.catch((error) => console.error('Error:', error));
 }
 
-function fetchProfiles() {
+function fetchProfiles(offset) {
 	console.log('Buscando Perfiles...');
-	fetch(`/user/profile/search?username=${searchInput.value}`)
+	fetch(`/user/profile/search?username=${searchInput.value}&offset=${offset}`)
 		.then((response) => response.json())
 		.then((data) => {
-			console.log(data);
 			setData(data);
 		})
 		.catch((error) => console.error('Error:', error));
@@ -56,21 +54,24 @@ searchInput.addEventListener('input', function () {
 	}, 500);
 });
 
-function searchContent() {
+function searchContent(offset) {
+	if(offset == 0) {
+		window.clearButtons()
+		window.createPaginationButtons(1,100);
+	}
 	profilesResultsSection.style.display = 'none';
-	fetchContent(0);
+	fetchContent(offset);
 	searchResultsSection.style.display = 'grid';
-	window.createPaginationButtons(1);
 }
 
-function searchProfiles() {
-	window.clearButtons();
+function searchProfiles(offset) {
+	offset == 0 && window.clearButtons();
 	searchResultsSection.style.display = 'none';
-	fetchProfiles();
+	fetchProfiles(offset);
 	profilesResultsSection.style.display = 'grid';
 }
 
-function searchManagement() {
+function searchManagement(offset = 0) {
 	// Si la cadena de busqueda es mayor a 0 llamamos a la API
 	if (searchInput.value.length > 0) {
 		removeModalAccessClass();
@@ -78,9 +79,9 @@ function searchManagement() {
 		recommendationsSection.style.display = 'none';
 		favoritesSection.style.display = 'none';
 		newReleasesSection.style.display = 'none';
-		window.isActiveContent ? searchContent() : searchProfiles();
+		window.isActiveContent ? searchContent(offset) : searchProfiles(offset);
 	} else { // Sino, limpiamos los resultados y mostramos vista de explore
-		setData({ tracks: [], albums: [] });
+		window.isActiveContent ? setData({ tracks: [], albums: [] }) : setData({ users: [] });
 		window.clearButtons();
 		recentActivitySection.style.display = 'grid';
 		recommendationsSection.style.display = 'grid';
@@ -101,20 +102,20 @@ function setData(data) {
 }
 
 function setProfiles(data) {
+	window.createPaginationButtons(data.current_page, data.last_page);
 	profilesResults.innerHTML = '';
 	profilesResults.innerHTML = '<h2 class="section-title">Perfiles</h2>';
-	data.forEach((item) => {
-		console.log(item);
+	data.users.forEach((item) => {
 		const article = document.createElement('article');
-		article.id = item.fields.ID;
+		article.id = item.USER_ID;
 		article.innerHTML = `
         <figure>
-            <section class="profile-img-container" id="${item.fields.ID}" >
-                <img loading="lazy" width="180px" height="180px" src="${item.fields.SPOTIFY_AVATAR}" alt="Foto de perfil de ${item.fields.NAME}" class="profile-img" />
+            <section class="profile-img-container" id="${item.USER_ID}" >
+                <img loading="lazy" width="180px" height="180px" src="${item.SPOTIFY_AVATAR}" alt="Foto de perfil de ${item.USERNAME}" class="profile-img" />
             </section>
             <figcaption>
                 <a href="/">
-                    <h3 class="song-title">${item.fields.NAME}</h3>
+                    <h3 class="song-title">${item.USERNAME}</h3>
                 </a>
             </figcaption>
         </figure>
