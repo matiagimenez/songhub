@@ -35,6 +35,30 @@ class UserRepository extends Repository
         }
     }
 
+    public function getUserVisit(string $column, string $value)
+    {        
+        try {
+            $user = $this->queryBuilder->selectByColumn($this->table, $column, $value);
+            
+            if (!$user) {
+                return null;
+            }
+
+            $userInstance = new User();
+            $userInstance->set($user[0]);
+
+            return $userInstance;
+        } catch (Exception $exception) {
+            $this->logger->error(
+                "Error al obtener datos del usuario",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'UserRepository - getUser',
+                ]
+            );
+        }
+    }
+
     public function searchProfiles(string $value, int $offset)
     {        
         try {
