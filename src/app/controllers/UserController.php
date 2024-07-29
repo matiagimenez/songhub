@@ -19,49 +19,35 @@ class UserController extends Controller
         parent::__construct();
     }
 
-    public function profile($user = null, $message = "")
-    {
-        if(is_null(Session::getInstance()->get("access_token"))) {
-            Renderer::getInstance()->login();
-            exit;
-        }
-
-        if(!$user){
-            $username = $this->sanitizeUserInput(Request::getInstance()->getParameter("username", "GET"));
-            $user = $this->repository->getUser("USERNAME", $username);
-        }
-
-        $country = $this->repository->getUserNationality($user->fields["COUNTRY_ID"]);
-
-        $posts = $this -> repository->getUserPosts($user->fields["USER_ID"]);
-        $postsCount = $this -> repository->getUserPostsCount($user->fields["USER_ID"]);
-        $stats = $this -> repository->getUserAccountStats($user->fields["USER_ID"]);
-
-        $favorites = $this -> repository->getUserFavorites($user->fields["USER_ID"]);
-
-        Renderer::getInstance()->profile($user, $country, $posts, $stats["following"], $stats["followers"], $favorites, $message);
+    public function profile($user = null, $message = "") {
+        $this->renderProfile('getUser', $user, $message);
     }
 
-    public function visit($user = null, $message = "")
-    {
-        if(is_null(Session::getInstance()->get("access_token"))) {
+    public function visit($user = null, $message = "") {
+        $this->renderProfile('getUserVisit', $user, $message);
+    }
+
+    private function renderProfile($userMethod, $user, $message) {
+        if (is_null(Session::getInstance()->get("access_token"))) {
             Renderer::getInstance()->login();
             exit;
         }
 
-        if(!$user){
+        if (!$user) {
             $username = $this->sanitizeUserInput(Request::getInstance()->getParameter("username", "GET"));
+            $user = $this->repository->$userMethod("USERNAME", $username);
+        }
 
-            $user = $this->repository->getUserVisit("USERNAME", $username);
+        if (!$user || !isset($user->fields)) {
+            echo "Error: Usuario no encontrado o datos del usuario incompletos.";
+            exit;
         }
 
         $country = $this->repository->getUserNationality($user->fields["COUNTRY_ID"]);
-
-        $posts = $this -> repository->getUserPosts($user->fields["USER_ID"]);
-        $postsCount = $this -> repository->getUserPostsCount($user->fields["USER_ID"]);
-        $stats = $this -> repository->getUserAccountStats($user->fields["USER_ID"]);
-
-        $favorites = $this -> repository->getUserFavorites($user->fields["USER_ID"]);
+        $posts = $this->repository->getUserPosts($user->fields["USER_ID"]);
+        $postsCount = $this->repository->getUserPostsCount($user->fields["USER_ID"]);
+        $stats = $this->repository->getUserAccountStats($user->fields["USER_ID"]);
+        $favorites = $this->repository->getUserFavorites($user->fields["USER_ID"]);
 
         Renderer::getInstance()->profile($user, $country, $posts, $stats["following"], $stats["followers"], $favorites, $message);
     }
