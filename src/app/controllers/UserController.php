@@ -42,6 +42,30 @@ class UserController extends Controller
         Renderer::getInstance()->profile($user, $country, $posts, $stats["following"], $stats["followers"], $favorites, $message);
     }
 
+    public function visit($user = null, $message = "")
+    {
+        if(is_null(Session::getInstance()->get("access_token"))) {
+            Renderer::getInstance()->login();
+            exit;
+        }
+
+        if(!$user){
+            $username = $this->sanitizeUserInput(Request::getInstance()->getParameter("username", "GET"));
+
+            $user = $this->repository->getUserVisit("USERNAME", $username);
+        }
+
+        $country = $this->repository->getUserNationality($user->fields["COUNTRY_ID"]);
+
+        $posts = $this -> repository->getUserPosts($user->fields["USER_ID"]);
+        $postsCount = $this -> repository->getUserPostsCount($user->fields["USER_ID"]);
+        $stats = $this -> repository->getUserAccountStats($user->fields["USER_ID"]);
+
+        $favorites = $this -> repository->getUserFavorites($user->fields["USER_ID"]);
+
+        Renderer::getInstance()->profile($user, $country, $posts, $stats["following"], $stats["followers"], $favorites, $message);
+    }
+
     public function edit($message = "")
     {
         if(is_null(Session::getInstance()->get("access_token"))) {

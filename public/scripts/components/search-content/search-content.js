@@ -110,11 +110,13 @@ function setProfiles(data) {
 		article.id = item.USER_ID;
 		article.innerHTML = `
         <figure>
-            <section class="profile-img-container" id="${item.USER_ID}" >
-                <img loading="lazy" width="180px" height="180px" src="${item.SPOTIFY_AVATAR}" alt="Foto de perfil de ${item.USERNAME}" class="profile-img" />
-            </section>
+						<a href="/user/visit?username=${item.USERNAME}">
+							<section class="profile-img-container" id="${item.USER_ID}" >
+									<img loading="lazy" width="180px" height="180px" src="${item.SPOTIFY_AVATAR}" alt="Foto de perfil de ${item.USERNAME}" class="profile-img" />
+							</section>
+						</a>
             <figcaption>
-                <a href="/">
+                <a href="/user/visit?username=${item.USERNAME}">
                     <h3 class="song-title">${item.USERNAME}</h3>
                 </a>
             </figcaption>

@@ -49,6 +49,7 @@ $router->get('/spotify/tokens', 'AuthController@requestSpotifyTokens');
 
 // User
 $router->get('/user', 'UserController@profile');
+$router->get('/user/visit', 'UserController@visit');
 $router->get('/user/profile', 'UserController@edit');
 $router->post('/user/profile', 'UserController@updateUser');
 $router->get('/user/profile/search', 'UserController@searchProfiles');
