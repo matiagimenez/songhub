@@ -64,6 +64,10 @@ export const routes = {
 			scriptName: 'logout-button',
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
 		},
+		{
+			scriptName: 'follow-handler',
+			scriptPath: '/scripts/components/follow-handler/follow-handler.js',
+		}
 	],
 	'/following': [
 		{
@@ -78,6 +82,10 @@ export const routes = {
 			scriptName: 'logout-button',
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
 		},
+		{
+			scriptName: 'follow-handler',
+			scriptPath: '/scripts/components/follow-handler/follow-handler.js',
+		}
 	],
 
 	'/post': [
@@ -206,6 +214,10 @@ export const routes = {
 			scriptPath:
 				'/scripts/components/favorite-button/remove-favorite-button.js',
 		},
+		{
+			scriptName: 'follow-handler',
+			scriptPath: '/scripts/components/follow-handler/follow-handler.js',
+		}
 	],
 	'/terms-conditions': [
 		{

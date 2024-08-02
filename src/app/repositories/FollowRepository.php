@@ -59,7 +59,6 @@ class FollowRepository extends Repository
     {
         $follow = new Follow();
         try {
-
             $follow->set($followData);
             $this->queryBuilder->insert($this->table, $follow->fields);
             return [true, "Nuevo follow registrado"];
@@ -70,15 +69,15 @@ class FollowRepository extends Repository
         }
     }
 
-    // public function deleteFollow($follower_id, $followed_id)
-    // {
-    //     try {
-    //         $this->queryBuilder->deleteByColumn($this->table, "FOLLOWER_ID", $follower_id, "FOLLOWED_ID", $followed_id);
-    //         return [true, "Seguidor eliminado"];
-    //     } catch (Exception $exception) {
-    //         return [false, "Ocurrio un error al eliminar el seguidor"];
-    //     }
-    // }
+    public function deleteFollow($follower_id, $followed_id)
+    {
+        try {
+            $this->queryBuilder->deleteByColumn($this->table, "FOLLOWER_ID", $follower_id, "FOLLOWED_ID", $followed_id);
+            return [true, "Seguidor eliminado"];
+        } catch (Exception $exception) {
+            return [false, "Ocurrio un error al eliminar el seguidor"];
+        }
+    }
 
     public function isFollowing($follower_id, $followed_id) {
         $a = $this->queryBuilder->selectByColumns($this->table, "FOLLOWER_ID", $follower_id, "FOLLOWED_ID", $followed_id);

@@ -24,9 +24,9 @@
                     <a href="/user/profile" class="submit-outline-button">Editar perfil</a>
                 {% else %}
                     {% if isFollowing %}
-                        <button class="action-button submit-outline-button">Siguiendo</button>
+                        <button id="{{user.fields.USER_ID}}" class="action-button submit-outline-button">Siguiendo</button>
                     {% else %}
-                        <button class="action-button submit-button">Seguir</button>
+                        <button id="{{user.fields.USER_ID}}" class="action-button submit-button">Seguir</button>
                     {% endif %}
                 {% endif %}
 
