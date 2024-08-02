@@ -1,5 +1,24 @@
 {% extends 'base.twig' %}
 
+{% block extra_head %}
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": {{ user.fields.NAME }},
+            "username": {{ user.fields.USERNAME }},
+            "image": {{ user.fields.SPOTIFY_AVATAR }},
+            "address": {
+                "@type": "PostalAddress",
+                "addressCountry": {{ country.fields.NAME }}
+            },
+            "sameAs": [
+                {{ user.fields.SPOTIFY_URL }}
+            ],
+            "description": {{ user.fields.BIOGRAPHY }},
+        }
+    </script>
+{% endblock %}
 {% block main %}
     <header>
         <section class="user">
