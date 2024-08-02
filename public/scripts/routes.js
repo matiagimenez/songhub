@@ -126,16 +126,20 @@ export const routes = {
 			scriptPath: '/scripts/components/share-menu/share-menu.js',
 		},
 		{
-			scriptName: 'action-button-animation',
-			scriptPath: '/scripts/animations/action-button-animation.js',
-		},
-		{
 			scriptName: 'likes-counter-animation',
 			scriptPath: '/scripts/animations/likes-counter-animation.js',
 		},
 		{
 			scriptName: 'logout-button',
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
+		},
+		{
+			scriptName: 'follow-handler',
+			scriptPath: '/scripts/components/follow-handler/follow-handler.js',
+		},
+		{
+			scriptName: 'action-button-animation',
+			scriptPath: '/scripts/animations/action-button-animation.js',
 		},
 	],
 	'/search': [
@@ -214,10 +218,10 @@ export const routes = {
 			scriptPath:
 				'/scripts/components/favorite-button/remove-favorite-button.js',
 		},
-		{
-			scriptName: 'follow-handler',
-			scriptPath: '/scripts/components/follow-handler/follow-handler.js',
-		}
+		// {
+		// 	scriptName: 'follow-handler',
+		// 	scriptPath: '/scripts/components/follow-handler/follow-handler.js',
+		// }
 	],
 	'/terms-conditions': [
 		{
