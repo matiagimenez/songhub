@@ -48,8 +48,11 @@ class UserController extends Controller
         $postsCount = $this->repository->getUserPostsCount($user->fields["USER_ID"]);
         $stats = $this->repository->getUserAccountStats($user->fields["USER_ID"]);
         $favorites = $this->repository->getUserFavorites($user->fields["USER_ID"]);
+        $username = Session::getInstance()->get("username");
+        $currUser = $this->repository->getUser("USERNAME", $username);
+        $isFollowing = $this->repository->isFollowing($currUser->fields["USER_ID"], $user->fields["USER_ID"]);
 
-        Renderer::getInstance()->profile($user, $country, $posts, $stats["following"], $stats["followers"], $favorites, $message);
+        Renderer::getInstance()->profile($user, $country, $posts, $stats["following"], $stats["followers"], $favorites, $isFollowing, $message);
     }
 
     public function edit($message = "")

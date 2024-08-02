@@ -281,4 +281,10 @@ class UserRepository extends Repository
         
         return $userFavoriteContent;
     }
+
+    public function isFollowing($userA, $userB) {
+        $followRepository = new FollowRepository();
+        $followRepository->setQueryBuilder(QueryBuilder::getInstance());
+        return $followRepository -> isFollowing($userA, $userB);
+    }
 }

@@ -158,6 +158,33 @@ class QueryBuilder
         }
     }
 
+    public function selectByColumns(string $table, $column1, $value1, $column2, $value2)
+    {
+        try {
+            $query = "SELECT * FROM {$table} WHERE {$column1} = {$value1} AND {$column2} = {$value2}";
+            // $value = "%{$value}%";
+            
+            $statement = $this->pdo->prepare($query);
+            // $statement->bindParam(':value', $value);
+            $statement->setFetchMode(PDO::FETCH_ASSOC);
+            $statement->execute();
+            
+            return $statement->fetchAll();
+        } catch (PDOException $error) {
+            $this->logger->error(
+                "Error al ejecutar el query en la base de datos",
+                [
+                    "Error" => $error->getMessage(),
+                    "Operacion" => 'selectByColumnLike',
+                    "Tabla" => $table,
+                    "Columna" => $column1,
+                    "Valor" => $value1,
+                ]
+            );
+            return [];
+        }
+    }
+
     public function count($table, $column, $value) {
         try {
             $query = "SELECT COUNT(*) as count FROM {$table} WHERE {$column} = :value";

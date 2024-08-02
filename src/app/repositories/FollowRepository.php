@@ -69,4 +69,20 @@ class FollowRepository extends Repository
             return [false, "Error al registrar follow"];
         }
     }
+
+    // public function deleteFollow($follower_id, $followed_id)
+    // {
+    //     try {
+    //         $this->queryBuilder->deleteByColumn($this->table, "FOLLOWER_ID", $follower_id, "FOLLOWED_ID", $followed_id);
+    //         return [true, "Seguidor eliminado"];
+    //     } catch (Exception $exception) {
+    //         return [false, "Ocurrio un error al eliminar el seguidor"];
+    //     }
+    // }
+
+    public function isFollowing($follower_id, $followed_id) {
+        $a = $this->queryBuilder->selectByColumns($this->table, "FOLLOWER_ID", $follower_id, "FOLLOWED_ID", $followed_id);
+        return count($a) > 0;
+        
+    }
 }
