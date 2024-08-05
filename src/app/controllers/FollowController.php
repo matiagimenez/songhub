@@ -31,11 +31,17 @@ class FollowController extends Controller
     {
         $followedUserName = $this->sanitizeUserInput(Request::getInstance()->getParameter("user", "GET"));
         $userRepository = new UserRepository();
-        // $followedUser = $userRepository->getUser("USERNAME", $followedUserName);
         $currUser = $userRepository->getUser("USERNAME", Session::getInstance()->get("username"));
         $followData = ["FOLLOWER_ID" => $currUser->fields["USER_ID"], "FOLLOWED_ID" => $followedUserName];
         $this->repository->createFollow($followData);
-        // $userRepository->updateUser();
-        // $this->renderProfile("getUser", null, "Siguiendo");
+    }
+    
+    public function unfollow()
+    {
+        $unfollowedUserName = $this->sanitizeUserInput(Request::getInstance()->getParameter("user", "GET"));
+        $userRepository = new UserRepository();
+        $currUser = $userRepository->getUser("USERNAME", Session::getInstance()->get("username"));
+        $unfollowData = ["FOLLOWER_ID" => $currUser->fields["USER_ID"], "FOLLOWED_ID" => $unfollowedUserName];
+        $this->repository->deleteFollow($unfollowData);
     }
 }

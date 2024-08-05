@@ -1,13 +1,12 @@
 document.addEventListener('click', (event) => {
-    console.log('a');
+
     if (!event.target.classList.contains('action-button')) return;
-    console.log('b');
     
 	const currentButton = event.target;
     
 	if (currentButton.classList.contains('submit-button')) {
         
-        fetch('/follow/user/add?user='+currentButton.id)
+        fetch('/follow/user?user='+currentButton.id)
         .then((response) => response.json())
         .then((data) => {
             console.log('Success:', data);
@@ -16,7 +15,7 @@ document.addEventListener('click', (event) => {
 	}
 
 	if (currentButton.classList.contains('cancel-outline-button')) {
-		fetch('/unfollow/user/remove', {
+		fetch('/unfollow/user?user='+currentButton.id, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -24,6 +23,9 @@ document.addEventListener('click', (event) => {
             body: JSON.stringify({ user: currentButton.id })
         })
         .then((response) => response.json())
+        .then((data) => {
+            console.log('Success:', data);
+        })
         .catch((error) => console.error('Error:', error));
 	}
 });
