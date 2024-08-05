@@ -165,7 +165,7 @@ class Renderer
     }
     
 
-    public function profile($user, $country, $posts, $following, $followers, $favorites, $message)
+    public function profile($user, $country, $posts, $following, $followers, $favorites, $isFollowing, $message)
     {
         $title = "Perfil";
         $style = "profile";
@@ -183,6 +183,7 @@ class Renderer
             'following' => $following,
             'followers' => $followers,
             'favorites' => $favorites,
+            'isFollowing' => $isFollowing,
             'message' => $message,
             'show_footer' => false, 
             "show_header" => true
