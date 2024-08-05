@@ -47,7 +47,7 @@ class FollowRepository extends Repository
 
     public function getUserFollowersCount(int $followed_id)
     {
-        return $this->queryBuilder->count($this->table, "FOLLOWER_ID", $followed_id);
+        return $this->queryBuilder->count($this->table, "FOLLOWED_ID", $followed_id);
     }
 
     public function getUserFollowingCount(int $follower_id)

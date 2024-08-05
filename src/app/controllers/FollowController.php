@@ -29,12 +29,13 @@ class FollowController extends Controller
 
     public function follow()
     {
-        $user = $this->sanitizeUserInput(Request::getInstance()->getParameter("user", "GET"));
+        $followedUserName = $this->sanitizeUserInput(Request::getInstance()->getParameter("user", "GET"));
         $userRepository = new UserRepository();
-        // $userRepository->setQueryBuilder(QueryBuilder::getInstance());
+        // $followedUser = $userRepository->getUser("USERNAME", $followedUserName);
         $currUser = $userRepository->getUser("USERNAME", Session::getInstance()->get("username"));
-        $followData = ["FOLLOWER_ID" => $currUser->fields["USER_ID"], "FOLLOWED_ID" => $user];
+        $followData = ["FOLLOWER_ID" => $currUser->fields["USER_ID"], "FOLLOWED_ID" => $followedUserName];
         $this->repository->createFollow($followData);
+        // $userRepository->updateUser();
         // $this->renderProfile("getUser", null, "Siguiendo");
     }
 }
