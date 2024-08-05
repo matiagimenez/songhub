@@ -57,4 +57,17 @@ class Request
         }
     }
 
+    // Función para generar respuestas genéricas
+    public static function sendResponse(int $code, string $message, array $data = [])
+    {
+        header('Content-Type: application/json');
+        http_response_code($code);
+        echo json_encode([
+            "success" => $code >= 200 && $code < 300, // Considera como éxito si el código es entre 200 y 299
+            "message" => $message,
+            "data" => $data
+        ]);
+        exit();
+    }
+
 }

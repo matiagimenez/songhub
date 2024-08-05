@@ -29,19 +29,63 @@ class FollowController extends Controller
 
     public function follow()
     {
-        $followedUserName = $this->sanitizeUserInput(Request::getInstance()->getParameter("user", "GET"));
+        $followedUserID = $this->sanitizeUserInput(Request::getInstance()->getParameter("user", "GET"));
         $userRepository = new UserRepository();
+        
+        // Obtener el usuario seguido
+        $followedUser = $userRepository->getUser("USER_ID", $followedUserID);
+        
+        // Verificar si el usuario seguido existe
+        if (!$followedUser) {
+            Request::sendResponse(404, "Usuario seguido no encontrado");
+            return;
+        }
+    
+        // Obtener el usuario actual
         $currUser = $userRepository->getUser("USERNAME", Session::getInstance()->get("username"));
-        $followData = ["FOLLOWER_ID" => $currUser->fields["USER_ID"], "FOLLOWED_ID" => $followedUserName];
-        $this->repository->createFollow($followData);
-    }
+        
+        // Preparar los datos para el seguimiento
+        $followData = [
+            "FOLLOWER_ID" => $currUser->fields["USER_ID"],
+            "FOLLOWED_ID" => $followedUser->fields["USER_ID"] // Usar el ID del usuario seguido
+        ];
+        
+        // Crear el seguimiento
+        $success = $this->repository->createFollow($followData);
+    
+        if ($success) {
+            Request::sendResponse(200, "Follow registrado", [
+                "user_id" => $followData["FOLLOWED_ID"]
+            ]);
+        } else {
+            Request::sendResponse(500, "Error al registrar el follow");
+        }
+    }    
     
     public function unfollow()
     {
-        $unfollowedUserName = $this->sanitizeUserInput(Request::getInstance()->getParameter("user", "GET"));
+        $unfollowedUserID = $this->sanitizeUserInput(Request::getInstance()->getParameter("user", "GET"));
         $userRepository = new UserRepository();
+
+        // Obtener el usuario
+        $unfollowedUser = $userRepository->getUser("USER_ID", $unfollowedUserID);
+        
+        // Verificar si el usuario existe
+        if (!$unfollowedUser) {
+            Request::sendResponse(404, "Usuario no encontrado");
+            return;
+        }
+
         $currUser = $userRepository->getUser("USERNAME", Session::getInstance()->get("username"));
-        $unfollowData = ["FOLLOWER_ID" => $currUser->fields["USER_ID"], "FOLLOWED_ID" => $unfollowedUserName];
-        $this->repository->deleteFollow($unfollowData);
+        $unfollowData = ["FOLLOWER_ID" => $currUser->fields["USER_ID"], "FOLLOWED_ID" => $unfollowedUserID];
+        $success = $this->repository->deleteFollow($unfollowData);
+
+        if ($success) {
+            Request::sendResponse(200, "Se eliminó el follow correctamente", [
+                "user_id" => $unfollowData["FOLLOWED_ID"]
+            ]);
+        } else {
+            Request::sendResponse(500, "Error al dejar de seguir al usuario");
+        }
     }
 }
