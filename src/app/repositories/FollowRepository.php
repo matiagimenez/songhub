@@ -61,26 +61,9 @@ class FollowRepository extends Repository
         try {
             $follow->set($followData);
             $this->queryBuilder->insert($this->table, $follow->fields);
-
-            // Respuesta exitosa
-            header('Content-Type: application/json');
-            http_response_code(201);
-            echo json_encode([
-                "success" => true,
-                "message" => "Follow registrado",
-                "data" => [
-                    "user_id" => $followData["FOLLOWED_ID"]
-                ]
-            ]);
+            return true;
         } catch (PDOException $exception) {
-            // Respuesta de error
-            header('Content-Type: application/json');
-            http_response_code(500);
-            echo json_encode([
-                "success" => false,
-                "message" => "Ocurrió un error al seguir el usuario",
-                "error" => $exception->getMessage()
-            ]);
+            return false;
         }
     }
 
@@ -95,15 +78,7 @@ class FollowRepository extends Repository
                     'FOLLOWED_ID' => $unfollowData["FOLLOWED_ID"]
                 ]
             );
-            header('Content-Type: application/json');
-            http_response_code(200);
-            echo json_encode([
-                "success" => true,
-                "message" => "Follow eliminado",
-                "data" => [
-                    "user_id" => $unfollowData["FOLLOWED_ID"]
-                ]
-            ]);
+            return true;
         } catch (PDOException $exception) {
             $this->logger->error(
                 "Error al eliminar el seguidor: " . $exception->getMessage(),
@@ -112,12 +87,7 @@ class FollowRepository extends Repository
                     "Data" => $unfollowData,
                 ]
             );
-            header('Content-Type: application/json');
-            http_response_code(500);
-            echo json_encode([
-                "success" => false,
-                "message" => "Ocurrió un error al eliminar el seguidor"
-            ]);
+            return false;
         }
     }
 
