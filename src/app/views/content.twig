@@ -1,4 +1,39 @@
 {% extends 'base.twig' %}
+{% block extra_head %}
+    <script type="application/ld+json">
+        {% if content.type == 'track' %}
+            {
+                "@context": "https://schema.org",
+                "@type": "MusicRecording",
+                "name": {{ content.track_name }},
+                "byArtist": {
+                    "@type": "MusicGroup",
+                    "name": {{ content.artist_name }}
+                },
+                "album": {
+                    "@type": "MusicAlbum",
+                    "name": {{ content.album_name }}
+                },
+                "datePublished": {{ content.release_date }},
+                "url": {{ content.track_spotify_url }},
+                "image": {{ content.images[1].url }},
+            }
+        {% else %}
+            {
+                "@context": "https://schema.org",
+                "@type": "MusicAlbum",
+                "name": {{ content.album_name }},
+                "byArtist": {
+                    "@type": "MusicGroup",
+                    "name": {{ content.artist_name }}
+                },
+                "datePublished": {{ content.release_date }},
+                "url": {{ content.track_spotify_url }},
+                "image": {{ content.images[1].url }},
+            }
+        {% endif %}
+    </script>
+{% endblock %}
 {% block main %}
     <section class="song-section">
         <figure>

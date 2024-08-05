@@ -1,5 +1,70 @@
 {% extends 'base.twig' %}
-
+{% block extra_head %}
+    <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                    "@type": "MusicAlbum",
+                    "name": "Starboy",
+                    "byArtist": {
+                        "@type": "MusicGroup",
+                        "name": "The Weeknd"
+                    },
+                    "url": "https://open.spotify.com/intl-es/album/2ODvWsOgouMbaA5xf0RkJe",
+                    "image": "https://i.scdn.co/image/ab67616d00001e024718e2b124f79258be7bc452"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                    "@type": "MusicAlbum",
+                    "name": "Justice",
+                    "byArtist": {
+                        "@type": "MusicGroup",
+                        "name": "Justin Bieber"
+                    },
+                    "url": "https://open.spotify.com/intl-es/album/5dGWwsZ9iB2Xc3UKR0gif2",
+                    "image": "https://i.scdn.co/image/ab67616d00001e02e6f407c7f3a0ec98845e4431"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                    "@type": "MusicAlbum",
+                    "name": "DAMN.",
+                    "byArtist": {
+                        "@type": "MusicGroup",
+                        "name": "Kendrick Lamar"
+                    },
+                    "url": "https://open.spotify.com/intl-es/album/4eLPsYPBmXABThSJ821sqY",
+                    "image": "https://i.scdn.co/image/ab67616d00001e028b52c6b9bc4e43d873869699"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 4,
+                "item": {
+                    "@type": "MusicAlbum",
+                    "name": "SOS",
+                    "byArtist": {
+                        "@type": "MusicGroup",
+                        "name": "SZA"
+                    },
+                    "url": "https://open.spotify.com/intl-es/album/07w0rG5TETcyihsEIZR3qG",
+                    "image": "https://i.scdn.co/image/ab67616d00001e0270dbc9f47669d120ad874ec1"
+                }
+            }
+        ]
+        }
+    </script>
+{% endblock %}
 {% block main %}
         <ul class="cards-container" aria-roledescription="carousel" aria-label="Carrusel de discos de música">
             <li role="listitem" aria-roledescription="slide" aria-labelledby="album-1-title">
