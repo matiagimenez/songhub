@@ -117,20 +117,20 @@ ul.edit-favourites-list .edit-favourite-item figure {
 }
 
 ul.edit-favourites-list .edit-favourite-item figure figcaption h4 {
-	font-size: 1.1rem;
+	font-size: 1.05rem;
 	color: var(--color-violet-dark);
 	font-weight: bold;
 }
 
 ul.edit-favourites-list .edit-favourite-item figure figcaption h5 {
-	font-size: 1.05rem;
+	font-size: 1rem;
 	margin-top: 5px;
 	color: var(--color-violet-medium);
 }
 
 ul.edit-favourites-list .edit-favourite-item figure img {
-	width: 65px;
-	height: 65px;
+	width: 80px;
+	height: 80px;
 }
 
 ul.edit-favourites-list .edit-favourite-item button.remove-favorite {
@@ -272,6 +272,11 @@ ul.edit-favourites-list .edit-favourite-item a.add-favorite span {
 	a.submit-outline-button,
 	input[type='submit'].submit-button {
 		max-width: 250px;
+	}
+
+	ul.edit-favourites-list .edit-favourite-item figure img {
+		width: 100px;
+		height: 100px;
 	}
 }
 
