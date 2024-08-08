@@ -164,10 +164,6 @@ class PostRepository extends Repository
                         'table' => 'ARTIST',
                         'condition' => 'CONTENT.ARTIST_ID = ARTIST.ARTIST_ID'
                     ],
-                    [
-                        'table' => 'USER',
-                        'condition' => 'POST.USER_ID = USER.USER_ID'
-                    ],
                 ],
                 'POST.CONTENT_ID', // Especifica la tabla aquí
                 $contentId,
@@ -179,10 +175,14 @@ class PostRepository extends Repository
             $tagRepository = new TagRepository();
             $tagRepository->setQueryBuilder($this->queryBuilder);
     
+            $userRepository = new UserRepository();
+            $userRepository->setQueryBuilder($this->queryBuilder);
+
             foreach ($posts as &$post) {
                 $tags = $tagRepository->getTags($post["POST_ID"]);
                 $post["TAGS"] = $tags;
                 $post['TIME_AGO'] = $this->timeAgo($post['DATETIME']);
+                $post['USER'] = $userRepository->getUser("USER_ID", $post["USER_ID"]);
             }
     
             return $posts;
@@ -212,10 +212,6 @@ class PostRepository extends Repository
                         'table' => 'ARTIST',
                         'condition' => 'CONTENT.ARTIST_ID = ARTIST.ARTIST_ID'
                     ],
-                    [
-                        'table' => 'USER',
-                        'condition' => 'POST.USER_ID = USER.USER_ID'
-                    ],
                 ],
                 'POST.CONTENT_ID', // Especifica la tabla aquí
                 $contentId,
@@ -225,11 +221,15 @@ class PostRepository extends Repository
     
             $tagRepository = new TagRepository();
             $tagRepository->setQueryBuilder($this->queryBuilder);
+
+            $userRepository = new UserRepository();
+            $userRepository->setQueryBuilder($this->queryBuilder);
     
             foreach ($posts as &$post) {
                 $tags = $tagRepository->getTags($post["POST_ID"]);
                 $post["TAGS"] = $tags;
                 $post['TIME_AGO'] = $this->timeAgo($post['DATETIME']);
+                $post['USER'] = $userRepository->getUser("USER_ID", $post["USER_ID"]);
             }
     
             return $posts;

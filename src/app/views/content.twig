@@ -133,10 +133,10 @@
                             <img loading="lazy" class="image-border" width="100px" height="100px" src="{{ post.COVER_ID }}" alt="Portada del álbum '{{ post.TITLE }}' {{ post.NAME }}" />
                         </section>
                         <section class="user-info">
-                            <img loading="lazy" class="user-img" height="25px" width="25px" src="{{ post.SPOTIFY_AVATAR }}" alt="Imagen de perfil de '{{ post.USERNAME }}'" />
+                            <img loading="lazy" class="user-img" height="25px" width="25px" src="{{ post.USER.fields.SPOTIFY_AVATAR }}" alt="Imagen de perfil de '{{ post.USER.fields.USERNAME }}'" />
                             <p class="user-name">
-                                <a href="/user?username={{post.USERNAME}}">{{ post.NAME }}</a>
-                                <span>${{ post.USERNAME }}</span>
+                                <a href="/user?username={{post.USER.fields.USERNAME}}">{{ post.USER.fields.NAME }}</a>
+                                <span>${{ post.USER.fields.USERNAME }}</span>
                             </p>
                             <p class="post-time">{{ post.TIME_AGO }}</p>
                         </section>
@@ -197,10 +197,10 @@
                             <img loading="lazy" class="image-border" width="100px" height="100px" src="{{ post.COVER_ID }}" alt="Portada del álbum '{{ post.TITLE }}' {{ post.NAME }}" />
                         </section>
                         <section class="user-info">
-                            <img loading="lazy" class="user-img" height="25px" width="25px" src="{{ post.SPOTIFY_AVATAR }}" alt="Imagen de perfil de '{{ post.USERNAME }}'" />
+                            <img loading="lazy" class="user-img" height="25px" width="25px" src="{{ post.USER.fields.SPOTIFY_AVATAR }}" alt="Imagen de perfil de '{{ post.USER.fields.USERNAME }}'" />
                             <p class="user-name">
-                                <a href="/user?username={{post.USERNAME}}">{{ post.NAME }}</a>
-                                <span>${{ post.USERNAME }}</span>
+                                <a href="/user?username={{post.USER.fields.USERNAME}}">{{ post.USER.fields.NAME }}</a>
+                                <span>${{ post.USER.fields.USERNAME }}</span>
                             </p>
                             <p class="post-time">{{ post.TIME_AGO }}</p>
                         </section>
