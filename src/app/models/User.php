@@ -47,6 +47,8 @@ class User
     public function setUsername(string $username)
     {
         $username = trim($username);
+        $username = strtolower(trim($username));
+
 
         if (strlen($username) > 30) {
             throw new InvalidValueException("El nombre de usuario debe tener un maximo de 30 caracteres");
