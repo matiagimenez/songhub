@@ -9,6 +9,7 @@ use Songhub\core\Repository;
 use Songhub\core\Session;
 use Songhub\app\repositories\UserRepository;
 use Songhub\core\database\QueryBuilder;
+use DateTime;
 
 class PostRepository extends Repository
 {
@@ -41,6 +42,7 @@ class PostRepository extends Repository
             foreach ($posts as &$post) {
                 $tags = $tagRepository->getTags($post["POST_ID"]);
                 $post["TAGS"] = $tags;
+                $post['TIME_AGO'] = $this->timeAgo($post['DATETIME']);
             }
 
             return $posts;
@@ -174,5 +176,22 @@ class PostRepository extends Repository
             
             return [];
         }
+    }
+
+    private function timeAgo($datetime, $full = false) {
+        $timestamp = strtotime($datetime);
+        $difference = time() - $timestamp;
+        $periods = array('segundo', 'minuto', 'hora', 'día', 'semana', 'mes', 'año');
+        $lengths = array('60', '60', '24', '7', '4.35', '30', '365');
+        
+        for ($j = 0; $difference >= $lengths[$j] && $j < count($lengths) - 1; $j++) {
+            $difference /= $lengths[$j];
+        }
+        
+        $difference = round($difference);
+        $period = $periods[$j];
+        $result = ($difference > 1 ? $difference . ' ' . $period . 's' : '1 ' . $period);
+        
+        return 'hace ' . $result;
     }
 }
