@@ -45,7 +45,12 @@ class ContentController extends Controller
         $type = $this->sanitizeUserInput(Request::getInstance()->getParameter("type", "GET"));
         $content = $this->fetchContentData($id, $type);
         
-        $posts = $this->repository->getContentPosts($id);
+        //! TODO: Comento esto porque está fallando
+        // $posts = $this->repository->getContentPosts($id);
+        $posts = [
+            "relevant" => [],
+            "recent" => []
+        ];
 
         Renderer::getInstance()->content($content, $posts["relevant"], $posts["recent"]);
     }

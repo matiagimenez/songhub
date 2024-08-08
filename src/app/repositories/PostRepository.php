@@ -17,19 +17,33 @@ class PostRepository extends Repository
     public function getPostsFromUser($userId)
     {
         try {
-            $posts = $this->queryBuilder->selectByColumnInDescOrder($this->table, "USER_ID", $userId, "DATETIME");
+            $posts = $this->queryBuilder->selectWithMultipleJoinsInDescOrder(
+                $this->table,
+                [
+                    [
+                        'table' => 'CONTENT',
+                        'condition' => 'POST.CONTENT_ID = CONTENT.CONTENT_ID'
+                    ],
+                    [
+                        'table' => 'ARTIST',
+                        'condition' => 'CONTENT.ARTIST_ID = ARTIST.ARTIST_ID'
+                    ],
+                ],
+                "USER_ID",
+                $userId,
+                "DATETIME",
+                10
+            );
 
-            $userPosts = [];
-    
-            if (count($posts) > 0) {
-                foreach ($posts as $post) {
-                    $postInstance = new Post();
-                    $postInstance->set($post);
-                    $userPosts->push($postInstance);
-                }
+            $tagRepository = new TagRepository();
+            $tagRepository->setQueryBuilder($this->queryBuilder);
+
+            foreach ($posts as &$post) {
+                $tags = $tagRepository->getTags($post["POST_ID"]);
+                $post["TAGS"] = $tags;
             }
-            
-            return $userPosts;
+
+            return $posts;
         } catch (Exception $exception) {
             $this->logger->error(
                 "Error al obtener los posts del usuario",

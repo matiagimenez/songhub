@@ -136,49 +136,56 @@
             </p>
         {% else %}
             {% for post in posts %}
-                <article tabindex="0" class="post add-modal-access" id="post_{{ loop.index }}" aria-posinset="{{ loop.index }}" aria-setsize="{{ posts|length }}" aria-labelledby="post-{{ loop.index }}-song-title post-{{ loop.index }}-artist-title" aria-describedby="post-content-{{ loop.index }}">
+                <article tabindex="0" class="post add-modal-access" id="post-{{ post.POST_ID }}" aria-posinset="{{ loop.index }}" aria-setsize="{{ posts|length }}" aria-labelledby="post-{{ post.POST_ID }}-song-title post-{{ post.POST_ID }}-artist-title" aria-describedby="post-content-{{ post.POST_ID }}">
                     <figure>
                         <section class="article-img-container">
-                            <img loading="lazy" class="image-border" width="100px" height="100px" src="{{ post.album_cover }}" alt="Portada del álbum '{{ post.album_title }}' {{ post.artist_name }}" />
+                            <img loading="lazy" class="image-border" width="100px" height="100px" src="{{ post.COVER_ID }}" alt="Portada del álbum '{{ post.TITLE }}' {{ post.NAME }}" />
                         </section>
                         <section class="user-info">
-                            <img loading="lazy" class="user-img" height="25px" width="25px" src="{{ post.user_avatar }}" alt="Imagen de perfil de '{{ post.user_name }}'" />
+                            <img loading="lazy" class="user-img" height="25px" width="25px" src="{{ user.fields.SPOTIFY_AVATAR }}" alt="Imagen de perfil de '{{ user.fields.USERNAME }}'" />
                             <p class="user-name">
-                                <a href="profile.html">{{ post.user_name }}</a>
-                                <span>{{ post.username }}</span>
+                                <a href="/user?username={{user.fields.USERNAME}}">{{ user.fields.NAME }}</a>
+                                <span>${{ user.fields.USERNAME }}</span>
                             </p>
-                            <p class="post-time">{{ post.time_ago }}</p>
+                            <p class="post-time">{{ post.DATETIME }}</p>
                         </section>
                         <figcaption>
-                            <h3 class="song-title" id="post-{{ loop.index }}-song-title">
-                                <a href="/content">{{ post.song_title }}</a>
+                            <h3 class="song-title" id="post-{{ post.POST_ID }}-song-title">
+                                <a href="/content?id={{post.CONTENT_ID}}&type={{ post.TYPE == 't' ? 'track' : 'album' }}">{{ post.TITLE }}</a>
                             </h3>
-                            <h4 class="artist-title" id="post-{{ loop.index }}-artist-title">{{ post.artist_name }}</h4>
-                            {% for tag in post.tags %}
-                                <span class="tag">{{ tag }}</span>
+                            <h4 class="artist-title" id="post-{{ post.POST_ID }}-artist-title">{{ post.NAME }}</h4>
+                            {% for tag in post.TAGS %}
+                                <span class="tag">{{ tag.TEXT }}</span>
                             {% endfor %}
-                            <p class="stars">{{ post.rating }}</p>
+                            <p class="stars">
+                                {% for i in 1..5 %}
+                                    {% if i <= post.RATING %}
+                                        ★
+                                    {% else %}
+                                        ☆
+                                    {% endif %}
+                                {% endfor %}
+                            </p>
                         </figcaption>
                     </figure>
-                    <a href="post.html">
-                        <section class="post-content" id="post-content-{{ loop.index }}">
-                            <p>{{ post.content }}</p>
+                    <a href="/post?id={{post.POST_ID}}">
+                        <section class="post-content" id="post-content-{{ post.POST_ID }}">
+                            <p>{{ post.DESCRIPTION }}</p>
                         </section>
                     </a>
                     <footer>
                         <section class="reaction-container comment-container">
-                            <button>
+                            <a href="/post?id={{post.POST_ID}}">
                                 <i class="ph ph-chats-circle icon comment-icon"></i>
                                 <span class="visually-hidden">Comentar post</span>
-                            </button>
-                            <p>{{ post.comments_count }}</p>
+                            </a>
                         </section>
                         <section class="reaction-container like-container">
                             <button class="heart-button">
                                 <i class="ph ph-heart icon heart-icon"></i>
                                 <span class="visually-hidden">Dar favorito al post</span>
                             </button>
-                            <p>{{ post.likes_count }}</p>
+                            <p>{{ post.LIKES }}</p>
                         </section>
                     </footer>
                 </article>
