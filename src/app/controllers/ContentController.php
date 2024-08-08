@@ -44,7 +44,8 @@ class ContentController extends Controller
         $id = $this->sanitizeUserInput(Request::getInstance()->getParameter("id", "GET"));
         $type = $this->sanitizeUserInput(Request::getInstance()->getParameter("type", "GET"));
         $content = $this->fetchContentData($id, $type);
-        
+        $stats = $this->repository->getAverageRating($id);
+
         //! TODO: Comento esto porque está fallando
         // $posts = $this->repository->getContentPosts($id);
         $posts = [
@@ -52,7 +53,8 @@ class ContentController extends Controller
             "recent" => []
         ];
 
-        Renderer::getInstance()->content($content, $posts["relevant"], $posts["recent"]);
+
+        Renderer::getInstance()->content($content, $posts["relevant"], $posts["recent"], $stats["average"], $stats["count"]);
     }
 
     public function getContentData() {

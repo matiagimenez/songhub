@@ -32,8 +32,7 @@ class PostController extends Controller
         $postID = $response["post_id"];
 
         $tagController = new TagController();
-        // TODO:
-        //   Recuperar El ID del Post
+ 
         $tagController->createTags($postData["TAGS"], $postID);
     }
 

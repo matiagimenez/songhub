@@ -36,6 +36,23 @@ class ContentRepository extends Repository
        return ["recent" => $mostRecentPosts, "relevant" => $mostRelevantPosts];
     }
 
+    public function getAverageRating($contentId) {
+        $postRepository = new PostRepository();
+        $postRepository->setQueryBuilder(QueryBuilder::getInstance());
+        $posts = $postRepository->getPostsFromContent($contentId);
+    
+        $count = count($posts);
+        $sum = 0;
+
+        foreach($posts as $post) {
+            $sum += $post["RATING"];
+        }
+
+        $average = round($sum / $count, 2);
+
+        return ["average" => $average, "count" => $count ];
+    }
+
 
     public function createContent($contentData) {
         try {
