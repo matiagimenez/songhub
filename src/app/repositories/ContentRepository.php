@@ -31,7 +31,7 @@ class ContentRepository extends Repository
        $postRepository = new PostRepository();
        $postRepository->setQueryBuilder(QueryBuilder::getInstance());
        $mostRelevantPosts = $postRepository->getMostRelevantContentPosts($contentId);
-       $mostRecentPosts = $postRepository->getMostRelevantContentPosts($contentId);
+       $mostRecentPosts = $postRepository->getMostRecentContentPosts($contentId);
 
        return ["recent" => $mostRecentPosts, "relevant" => $mostRelevantPosts];
     }
@@ -64,7 +64,6 @@ class ContentRepository extends Repository
 
             $type = $contentData["type"];
 
-            // $content->setAverageRating($contentData["average_rating"]);
             $content->setContentId($contentData[$type."_id"]);
             $content->setReleaseDate($contentData["release_date"]);
             $content->setSpotifyId($contentData[$type."_id"]);

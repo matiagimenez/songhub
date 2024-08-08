@@ -46,12 +46,11 @@ class ContentController extends Controller
         $content = $this->fetchContentData($id, $type);
         $stats = $this->repository->getAverageRating($id);
 
-        //! TODO: Comento esto porque está fallando
-        // $posts = $this->repository->getContentPosts($id);
-        $posts = [
-            "relevant" => [],
-            "recent" => []
-        ];
+        $posts = $this->repository->getContentPosts($id);
+     
+        echo "<pre>";
+        var_dump($posts);
+        die;
 
 
         Renderer::getInstance()->content($content, $posts["relevant"], $posts["recent"], $stats["average"], $stats["count"]);

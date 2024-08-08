@@ -67,7 +67,7 @@ class PostRepository extends Repository
             if (count($posts) > 0) {
                 foreach ($posts as $post) {
                     $postInstance = new Post();
-                    $postInstance->set($posts);
+                    $postInstance->set($post);
                     $contentPosts[] = $postInstance;
                 }
             }
@@ -151,20 +151,37 @@ class PostRepository extends Repository
         return $response;
     }
 
-    public function getMostRelevantContentPosts($contentId){
+    public function getMostRelevantContentPosts($contentId) {
         try {
-            $posts = $this->queryBuilder->selectByColumnInDescOrder($this->table, "CONTENT_ID", $contentId, "LIKES", 3);
-            $contentPosts = [];
+            $posts = $this->queryBuilder->selectWithMultipleJoinsInDescOrder(
+                $this->table,
+                [
+                    [
+                        'table' => 'CONTENT',
+                        'condition' => 'POST.CONTENT_ID = CONTENT.CONTENT_ID'
+                    ],
+                    [
+                        'table' => 'ARTIST',
+                        'condition' => 'CONTENT.ARTIST_ID = ARTIST.ARTIST_ID'
+                    ],
+                ],
+                'POST.CONTENT_ID', // Especifica la tabla aquí
+                $contentId,
+                'LIKES',
+                3
+            );
     
-            if (count($posts) > 0) {
-                foreach ($posts as $post) {
-                    $postInstance = new Post();
-                    $postInstance->set($posts);
-                    $contentPosts[] = $postInstance;
-
-                }
+    
+            $tagRepository = new TagRepository();
+            $tagRepository->setQueryBuilder($this->queryBuilder);
+    
+            foreach ($posts as &$post) {
+                $tags = $tagRepository->getTags($post["POST_ID"]);
+                $post["TAGS"] = $tags;
+                $post['TIME_AGO'] = $this->timeAgo($post['DATETIME']);
             }
-            return $contentPosts;
+    
+            return $posts;
         } catch (Exception $exception) {
             $this->logger->error(
                 "Error al obtener los posts del content",
@@ -173,38 +190,54 @@ class PostRepository extends Repository
                     "Operacion" => 'PostRepository - getMostRelevantContentPosts',
                 ]
             );
-
+    
             return [];
         }
     }
 
-    public function getMostRecentContentPosts($contentId){
+    public function getMostRecentContentPosts($contentId) {
         try {
-            $posts = $this->queryBuilder->selectByColumnInDescOrder($this->table, "CONTENT_ID", $contentId, "DATETIME", 3);
-            $contentPosts = [];
+            $posts = $this->queryBuilder->selectWithMultipleJoinsInDescOrder(
+                $this->table,
+                [
+                    [
+                        'table' => 'CONTENT',
+                        'condition' => 'POST.CONTENT_ID = CONTENT.CONTENT_ID'
+                    ],
+                    [
+                        'table' => 'ARTIST',
+                        'condition' => 'CONTENT.ARTIST_ID = ARTIST.ARTIST_ID'
+                    ],
+                ],
+                'POST.CONTENT_ID', // Especifica la tabla aquí
+                $contentId,
+                'POST.DATETIME', // Asegúrate de que está especificado con su tabla
+                3
+            );
     
-            if (count($posts) > 0) {
-                foreach ($posts as $post) {
-                    $postInstance = new Post();
-                    $postInstance->set($post);
-                    $contentPosts[] = $postInstance;
-                }
+            $tagRepository = new TagRepository();
+            $tagRepository->setQueryBuilder($this->queryBuilder);
+    
+            foreach ($posts as &$post) {
+                $tags = $tagRepository->getTags($post["POST_ID"]);
+                $post["TAGS"] = $tags;
+                $post['TIME_AGO'] = $this->timeAgo($post['DATETIME']);
             }
-
-            return $contentPosts;
+    
+            return $posts;
         } catch (Exception $exception) {
             $this->logger->error(
                 "Error al obtener los posts del content",
                 [
                     "Error" => $exception->getMessage(),
-                    "Operacion" => 'PostRepository - getMostRelevantContentPosts',
+                    "Operacion" => 'PostRepository - getMostRecentContentPosts',
                 ]
             );
-            
+    
             return [];
         }
     }
-
+    
     private function timeAgo($datetime, $full = false) {
         $timestamp = strtotime($datetime);
         $difference = time() - $timestamp;

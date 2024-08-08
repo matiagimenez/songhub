@@ -133,6 +133,35 @@ class QueryBuilder
     {
         try {
             if($limit > 0) {
+                $query = "SELECT * FROM {$table} WHERE {$column} = :value ORDER BY {$columnBy} DESC LIMIT {$limit};";
+            } else {
+                $query = "SELECT * FROM {$table} WHERE {$column} = :value ORDER BY {$columnBy} DESC;";
+            }
+
+            $statement = $this->pdo->prepare($query);
+            $statement->bindParam(':value', $value);
+            $statement->setFetchMode(PDO::FETCH_ASSOC);
+            $statement->execute();
+            return $statement->fetchAll();
+        } catch (PDOException $error) {
+            $this->logger->error(
+                "Error al ejecutar el query en la base de datos",
+                [
+                    "Error" => $error->getMessage(),
+                    "Operacion" => 'selectByColumnInDescOrder',
+                    "Tabla" => $table,
+                    "Columna" => $column,
+                    "Valor" => $value,
+                ]
+            );
+            return [];
+        }
+    }
+
+    public function selectByColumnInAscOrder(string $table, $column, $value, $columnBy, $limit = 0)
+    {
+        try {
+            if($limit > 0) {
                 $query = "SELECT * FROM {$table} WHERE {$column} = :value ORDER BY {$columnBy} ASC LIMIT {$limit};";
             } else {
                 $query = "SELECT * FROM {$table} WHERE {$column} = :value ORDER BY {$columnBy} ASC;";
