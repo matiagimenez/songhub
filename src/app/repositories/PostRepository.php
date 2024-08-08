@@ -59,6 +59,32 @@ class PostRepository extends Repository
         }
     }
 
+    public function getPostsFromContent($contentId){
+        try {
+            $posts = $this->queryBuilder->selectByColumn($this->table, "CONTENT_ID", $contentId);
+            $contentPosts = [];
+    
+            if (count($posts) > 0) {
+                foreach ($posts as $post) {
+                    $postInstance = new Post();
+                    $postInstance->set($posts);
+                    $contentPosts[] = $postInstance;
+                }
+            }
+            return $posts;
+        } catch (Exception $exception) {
+            $this->logger->error(
+                "Error al obtener los posts del content",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'PostRepository - getMostRelevantContentPosts',
+                ]
+            );
+
+            return [];
+        }
+    }
+
     public function getPostsCountFromUser($userId)
     {
         try {
@@ -102,7 +128,7 @@ class PostRepository extends Repository
             $username = Session::getInstance()->get("username");
             $user = $userRepository->getUser("USERNAME", $username);
             $postData["USER_ID"] = $user->fields["USER_ID"];
-            $postData["DATETIME"] = date("Y-m-d");
+            $postData["DATETIME"] = date("Y-m-d H:i:s");
             $post->set($postData);
             $postID = $this->queryBuilder->insert($this->table, $post->fields);
             http_response_code(201); // Código 201: Created
@@ -134,7 +160,8 @@ class PostRepository extends Repository
                 foreach ($posts as $post) {
                     $postInstance = new Post();
                     $postInstance->set($posts);
-                    $userPosts->push($postInstance);
+                    $contentPosts[] = $postInstance;
+
                 }
             }
             return $contentPosts;
@@ -160,7 +187,7 @@ class PostRepository extends Repository
                 foreach ($posts as $post) {
                     $postInstance = new Post();
                     $postInstance->set($post);
-                    $userPosts->push($postInstance);
+                    $contentPosts[] = $postInstance;
                 }
             }
 
