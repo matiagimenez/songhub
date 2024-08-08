@@ -164,6 +164,10 @@ class PostRepository extends Repository
                         'table' => 'ARTIST',
                         'condition' => 'CONTENT.ARTIST_ID = ARTIST.ARTIST_ID'
                     ],
+                    [
+                        'table' => 'USER',
+                        'condition' => 'POST.USER_ID = USER.USER_ID'
+                    ],
                 ],
                 'POST.CONTENT_ID', // Especifica la tabla aquí
                 $contentId,
@@ -207,6 +211,10 @@ class PostRepository extends Repository
                     [
                         'table' => 'ARTIST',
                         'condition' => 'CONTENT.ARTIST_ID = ARTIST.ARTIST_ID'
+                    ],
+                    [
+                        'table' => 'USER',
+                        'condition' => 'POST.USER_ID = USER.USER_ID'
                     ],
                 ],
                 'POST.CONTENT_ID', // Especifica la tabla aquí

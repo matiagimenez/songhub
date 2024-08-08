@@ -103,7 +103,7 @@ class Renderer
             'averageRating' => $averageRating,
             'postsCount' => $postsCount,
             'username' => $username,
-            'show_footer' => true, 
+            'show_footer' => false, 
             "show_header" => true
         ]);
     }

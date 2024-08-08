@@ -127,88 +127,59 @@
                 <p class="no-content-msg">No hay ningún post relacionado a este contenido</p>
             {% else %}
                 {% for post in mostRelevantPosts %}
-                    <article tabindex="0" class="post add-modal-access" id="post_{{ loop.index }}" aria-posinset="{{ loop.index }}" aria-setsize="{{ mostRelevantPosts|length }}"
-                        aria-labelledby="post-{{ loop.index }}-song-title post-{{ loop.index }}-artist-title" aria-describedby="post-content-{{ loop.index }}">
-                        <figure>
-                            <section class="article-img-container">
-                                <img loading="lazy" class="image-border" width="100px" height="100px"
-                                    src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
-                                    alt="Portada del álbum 'Dark Side of The Moon' Pink Floyd" />
-                            </section>
-                            <section class="user-info">
-                                <img loading="lazy" class="user-img" height="25px" width="25px"
-                                    src="https://i.pinimg.com/236x/94/7f/14/947f14841d26f5dc3541366a987b32f5.jpg"
-                                    alt="Imagen de perfil de 'Usuario 1'" />
-                                <p class="user-name">
-                                    <a href="profile.html">Usuario 1</a>
-                                    <span>$username1</span>
-                                </p>
-                                <p class="post-time">hace 8 horas</p>
-                            </section>
-                            <figcaption>
-                                <h3 class="song-title" id="post-{{ loop.index }}-song-title">
-                                    <a href="song.html">The Dark Side of the Moon</a>
-                                </h3>
-                                <h4 class="artist-title" id="post-{{ loop.index }}-artist-title">
-                                    Pink Floyd
-                                </h4>
-                                <span class="tag">Increible</span>
-                                <span class="tag">Rock</span>
-                                <span class="tag">Internacional</span>
-                                <p class="stars">★★★★★</p>
-                            </figcaption>
-                        </figure>
-                        <section class="post-content" id="post-content-{{ loop.index }}">
-                            <a href="post.html">
-                                <p>
-                                    It has survived not only five centuries, but
-                                    also the leap into electronic typesetting,
-                                    remaining essentially unchanged. It was
-                                    popularised in the 1960s with the release of
-                                    Letraset sheets containing Lorem Ipsum
-                                    passages, and more recently with desktop
-                                    publishing software like Aldus PageMaker
-                                    including versions of Lorem Ipsum. t has
-                                    survived not only five centuries, but also
-                                    the leap into electronic typesetting,
-                                    remaining essentially unchanged. It was
-                                    popularised in the 1960s with the release of
-                                    Letraset sheets containing Lorem Ipsum
-                                    passages, and more recently with deskt. It
-                                    has survived not only five centuries, but
-                                    also the leap into electronic typesetting,
-                                    remaining essentially unchanged. It was
-                                    popularised in the 1960s with the release of
-                                    Letraset sheets containing Lorem Ipsum
-                                    passages, and more recently with desktop
-                                    publishing software like Aldus PageMaker
-                                    including versions of Lorem Ipsum. t has
-                                    survived not only five centuries, but also
-                                    the leap into electronic typesetting,
-                                    remaining essentially unchanged. It was
-                                    popularised in the 1960s with the release of
-                                    Letraset sheets containing Lorem Ipsum
-                                    passages, and more recently with deskt.
-                                </p>
+                    <article tabindex="0" class="post add-modal-access" id="post-{{ post.POST_ID }}" aria-posinset="{{ loop.index }}" aria-setsize="{{ posts|length }}" aria-labelledby="post-{{ post.POST_ID }}-song-title post-{{ post.POST_ID }}-artist-title" aria-describedby="post-content-{{ post.POST_ID }}">
+                    <figure>
+                        <section class="article-img-container">
+                            <img loading="lazy" class="image-border" width="100px" height="100px" src="{{ post.COVER_ID }}" alt="Portada del álbum '{{ post.TITLE }}' {{ post.NAME }}" />
+                        </section>
+                        <section class="user-info">
+                            <img loading="lazy" class="user-img" height="25px" width="25px" src="{{ post.SPOTIFY_AVATAR }}" alt="Imagen de perfil de '{{ post.USERNAME }}'" />
+                            <p class="user-name">
+                                <a href="/user?username={{post.USERNAME}}">{{ post.NAME }}</a>
+                                <span>${{ post.USERNAME }}</span>
+                            </p>
+                            <p class="post-time">{{ post.TIME_AGO }}</p>
+                        </section>
+                        <figcaption>
+                            <h3 class="song-title" id="post-{{ post.POST_ID }}-song-title">
+                                <a href="/content?id={{post.CONTENT_ID}}&type={{ post.TYPE == 't' ? 'track' : 'album' }}">{{ post.TITLE }}</a>
+                            </h3>
+                            <h4 class="artist-title" id="post-{{ post.POST_ID }}-artist-title">{{ post.NAME }}</h4>
+                            {% for tag in post.TAGS %}
+                                <span class="tag">{{ tag.TEXT }}</span>
+                            {% endfor %}
+                            <p class="stars">
+                                {% for i in 1..5 %}
+                                    {% if i <= post.RATING %}
+                                        ★
+                                    {% else %}
+                                        ☆
+                                    {% endif %}
+                                {% endfor %}
+                            </p>
+                        </figcaption>
+                    </figure>
+                    <a href="/post?id={{post.POST_ID}}">
+                        <section class="post-content" id="post-content-{{ post.POST_ID }}">
+                            <p>{{ post.DESCRIPTION }}</p>
+                        </section>
+                    </a>
+                    <footer>
+                        <section class="reaction-container comment-container">
+                            <a href="/post?id={{post.POST_ID}}">
+                                <i class="ph ph-chats-circle icon comment-icon"></i>
+                                <span class="visually-hidden">Comentar post</span>
                             </a>
                         </section>
-                        <footer>
-                            <section class="reaction-container comment-container">
-                                <button>
-                                    <i class="ph ph-chats-circle icon comment-icon"></i>
-                                    <span class="visually-hidden">Comentar post</span>
-                                </button>
-                                <p>20</p>
-                            </section>
-                            <section class="reaction-container like-container">
-                                <button class="heart-button">
-                                    <i class="ph ph-heart icon heart-icon"></i>
-                                    <span class="visually-hidden">Dar favorito al post</span>
-                                </button>
-                                <p>1008</p>
-                            </section>
-                        </footer>
-                    </article>
+                        <section class="reaction-container like-container">
+                            <button class="heart-button">
+                                <i class="ph ph-heart icon heart-icon"></i>
+                                <span class="visually-hidden">Dar favorito al post</span>
+                            </button>
+                            <p>{{ post.LIKES }}</p>
+                        </section>
+                    </footer>
+                </article>
                 {% endfor %}
             {% endif %}
         </section>
@@ -220,85 +191,56 @@
             <p class="no-content-msg">No hay ningún post relacionado a este contenido</p>
         {% else %}
             {% for post in mostRecentPosts %}
-                 <article tabindex="0" class="post add-modal-access" id="post_1" aria-posinset="1" aria-setsize="3"
-                    aria-labelledby="post-1-song-title post-1-artist-title" aria-describedby="post-content-1">
+                 <article tabindex="0" class="post add-modal-access" id="post-{{ post.POST_ID }}" aria-posinset="{{ loop.index }}" aria-setsize="{{ posts|length }}" aria-labelledby="post-{{ post.POST_ID }}-song-title post-{{ post.POST_ID }}-artist-title" aria-describedby="post-content-{{ post.POST_ID }}">
                     <figure>
                         <section class="article-img-container">
-                            <img loading="lazy" class="image-border" width="100px" height="100px"
-                                src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
-                                alt="Portada del álbum 'Dark Side of The Moon' Pink Floyd" />
+                            <img loading="lazy" class="image-border" width="100px" height="100px" src="{{ post.COVER_ID }}" alt="Portada del álbum '{{ post.TITLE }}' {{ post.NAME }}" />
                         </section>
                         <section class="user-info">
-                            <img loading="lazy" class="user-img" height="25px" width="25px"
-                                src="https://i.pinimg.com/236x/94/7f/14/947f14841d26f5dc3541366a987b32f5.jpg"
-                                alt="Imagen de perfil de 'Usuario 1'" />
+                            <img loading="lazy" class="user-img" height="25px" width="25px" src="{{ post.SPOTIFY_AVATAR }}" alt="Imagen de perfil de '{{ post.USERNAME }}'" />
                             <p class="user-name">
-                                <a href="profile.html">Usuario 1</a>
-                                <span>$username1</span>
+                                <a href="/user?username={{post.USERNAME}}">{{ post.NAME }}</a>
+                                <span>${{ post.USERNAME }}</span>
                             </p>
-                            <p class="post-time">hace 8 horas</p>
+                            <p class="post-time">{{ post.TIME_AGO }}</p>
                         </section>
                         <figcaption>
-                            <h3 class="song-title" id="post-1-song-title">
-                                <a href="song.html">The Dark Side of the Moon</a>
+                            <h3 class="song-title" id="post-{{ post.POST_ID }}-song-title">
+                                <a href="/content?id={{post.CONTENT_ID}}&type={{ post.TYPE == 't' ? 'track' : 'album' }}">{{ post.TITLE }}</a>
                             </h3>
-                            <h4 class="artist-title" id="post-1-artist-title">
-                                Pink Floyd
-                            </h4>
-                            <span class="tag">Increible</span>
-                            <span class="tag">Rock</span>
-                            <span class="tag">Internacional</span>
-                            <p class="stars">★★★★★</p>
+                            <h4 class="artist-title" id="post-{{ post.POST_ID }}-artist-title">{{ post.NAME }}</h4>
+                            {% for tag in post.TAGS %}
+                                <span class="tag">{{ tag.TEXT }}</span>
+                            {% endfor %}
+                            <p class="stars">
+                                {% for i in 1..5 %}
+                                    {% if i <= post.RATING %}
+                                        ★
+                                    {% else %}
+                                        ☆
+                                    {% endif %}
+                                {% endfor %}
+                            </p>
                         </figcaption>
                     </figure>
-                    <a href="post.html">
-                        <section class="post-content" id="post-content-1">
-                            <p>
-                                It has survived not only five centuries, but
-                                also the leap into electronic typesetting,
-                                remaining essentially unchanged. It was
-                                popularised in the 1960s with the release of
-                                Letraset sheets containing Lorem Ipsum
-                                passages, and more recently with desktop
-                                publishing software like Aldus PageMaker
-                                including versions of Lorem Ipsum. t has
-                                survived not only five centuries, but also
-                                the leap into electronic typesetting,
-                                remaining essentially unchanged. It was
-                                popularised in the 1960s with the release of
-                                Letraset sheets containing Lorem Ipsum
-                                passages, and more recently with deskt. It
-                                has survived not only five centuries, but
-                                also the leap into electronic typesetting,
-                                remaining essentially unchanged. It was
-                                popularised in the 1960s with the release of
-                                Letraset sheets containing Lorem Ipsum
-                                passages, and more recently with desktop
-                                publishing software like Aldus PageMaker
-                                including versions of Lorem Ipsum. t has
-                                survived not only five centuries, but also
-                                the leap into electronic typesetting,
-                                remaining essentially unchanged. It was
-                                popularised in the 1960s with the release of
-                                Letraset sheets containing Lorem Ipsum
-                                passages, and more recently with deskt.
-                            </p>
+                    <a href="/post?id={{post.POST_ID}}">
+                        <section class="post-content" id="post-content-{{ post.POST_ID }}">
+                            <p>{{ post.DESCRIPTION }}</p>
                         </section>
                     </a>
                     <footer>
                         <section class="reaction-container comment-container">
-                            <button>
+                            <a href="/post?id={{post.POST_ID}}">
                                 <i class="ph ph-chats-circle icon comment-icon"></i>
                                 <span class="visually-hidden">Comentar post</span>
-                            </button>
-                            <p>20</p>
+                            </a>
                         </section>
                         <section class="reaction-container like-container">
                             <button class="heart-button">
                                 <i class="ph ph-heart icon heart-icon"></i>
                                 <span class="visually-hidden">Dar favorito al post</span>
                             </button>
-                            <p>1008</p>
+                            <p>{{ post.LIKES }}</p>
                         </section>
                     </footer>
                 </article>
