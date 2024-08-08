@@ -60,11 +60,23 @@ class PostRepository extends Repository
         }
     }
 
-    public function getPost(int $post_id)
+    public function getPost($post_id)
     {
-        // TODO:
-        //   Armar un querie para pedir un post
-
+        $postInstance = new Post();
+        try {
+            $post = $this->queryBuilder->selectByColumn($this->table, "POST_ID", $post_id);
+            $postItem = $post[0];
+            $postInstance->set($postItem);    
+            return $postInstance->fields;
+        } catch (Exception $exception) {
+            $this->logger->error(
+                "Error al obtener el post",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'PostRepository - getPost',
+                ]
+            );
+        }
     }
 
     public function likePost(int $post_id)

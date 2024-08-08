@@ -18,7 +18,9 @@ class PostController extends Controller
 
     public function post()
     {
-        Renderer::getInstance()->post();
+        $post_id = $this->sanitizeUserInput(Request::getInstance()->getParameter("id", "GET"));
+        $post = $this->repository->getPost($post_id);
+        Renderer::getInstance()->post($post);
     }
 
     public function createPost()
