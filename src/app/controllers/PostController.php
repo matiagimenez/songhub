@@ -34,6 +34,9 @@ class PostController extends Controller
         $tagController = new TagController();
  
         $tagController->createTags($postData["TAGS"], $postID);
+
+        header('Location: /');
+        exit; 
     }
 
 }
