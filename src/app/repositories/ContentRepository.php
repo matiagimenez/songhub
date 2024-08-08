@@ -48,7 +48,11 @@ class ContentRepository extends Repository
             $sum += $post["RATING"];
         }
 
-        $average = round($sum / $count, 2);
+        if($count > 0) {
+            $average = round($sum / $count, 2);
+        } else {
+            $average = 0;
+        }
 
         return ["average" => $average, "count" => $count ];
     }
