@@ -57,11 +57,10 @@
             </figcaption>
         </figure>
         <section class="song-stats">
-            <h2>Valoración</h2>
-            <p class="posts-amount">10k posts</p>
-            <p class="qualification">
-                <span class="stars">★★★★★</span>
-                <span class="number">4.2</span>
+            <h2>Valoración promedio </h2>
+            <p class="posts-amount">{{averageRating}}</p>
+            <p class="post-count">
+                {{postsCount}} posts
             </p>
         </section>
         <section class="song-actions">
@@ -217,10 +216,10 @@
 
     <section class="most-recent-posts">
         <h2 class="section-title">Publicaciones más recientes</h2>
-        {% if mostRelevantPosts is empty %}
+        {% if mostRecentPosts is empty %}
             <p class="no-content-msg">No hay ningún post relacionado a este contenido</p>
         {% else %}
-            {% for post in mostRelevantPosts %}
+            {% for post in mostRecentPosts %}
                  <article tabindex="0" class="post add-modal-access" id="post_1" aria-posinset="1" aria-setsize="3"
                     aria-labelledby="post-1-song-title post-1-artist-title" aria-describedby="post-content-1">
                     <figure>

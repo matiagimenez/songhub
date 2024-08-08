@@ -44,10 +44,16 @@ class ContentController extends Controller
         $id = $this->sanitizeUserInput(Request::getInstance()->getParameter("id", "GET"));
         $type = $this->sanitizeUserInput(Request::getInstance()->getParameter("type", "GET"));
         $content = $this->fetchContentData($id, $type);
-        
-        $posts = $this->repository->getContentPosts($id);
+        $stats = $this->repository->getAverageRating($id);
 
-        Renderer::getInstance()->content($content, $posts["relevant"], $posts["recent"]);
+        $posts = $this->repository->getContentPosts($id);
+     
+        echo "<pre>";
+        var_dump($posts);
+        die;
+
+
+        Renderer::getInstance()->content($content, $posts["relevant"], $posts["recent"], $stats["average"], $stats["count"]);
     }
 
     public function getContentData() {

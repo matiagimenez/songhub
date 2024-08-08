@@ -86,7 +86,7 @@ class Renderer
         ]);
     }
 
-    public function content($content, $mostRelevantPosts)
+    public function content($content, $mostRelevantPosts, $mostRecentPosts, $averageRating, $postsCount)
     {
         $title = ucfirst($content["type"] ?? "Contenido");
         $style = "content";
@@ -99,6 +99,9 @@ class Renderer
             'style' => $style,
             'content' => $content,
             'mostRelevantPosts' => $mostRelevantPosts,
+            'mostRecentPosts' => $mostRecentPosts,
+            'averageRating' => $averageRating,
+            'postsCount' => $postsCount,
             'username' => $username,
             'show_footer' => true, 
             "show_header" => true

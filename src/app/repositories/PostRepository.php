@@ -9,6 +9,7 @@ use Songhub\core\Repository;
 use Songhub\core\Session;
 use Songhub\app\repositories\UserRepository;
 use Songhub\core\database\QueryBuilder;
+use DateTime;
 
 class PostRepository extends Repository
 {
@@ -17,25 +18,66 @@ class PostRepository extends Repository
     public function getPostsFromUser($userId)
     {
         try {
-            $posts = $this->queryBuilder->selectByColumnInDescOrder($this->table, "USER_ID", $userId, "DATETIME");
+            $posts = $this->queryBuilder->selectWithMultipleJoinsInDescOrder(
+                $this->table,
+                [
+                    [
+                        'table' => 'CONTENT',
+                        'condition' => 'POST.CONTENT_ID = CONTENT.CONTENT_ID'
+                    ],
+                    [
+                        'table' => 'ARTIST',
+                        'condition' => 'CONTENT.ARTIST_ID = ARTIST.ARTIST_ID'
+                    ],
+                ],
+                "USER_ID",
+                $userId,
+                "DATETIME",
+                10
+            );
 
-            $userPosts = [];
-    
-            if (count($posts) > 0) {
-                foreach ($posts as $post) {
-                    $postInstance = new Post();
-                    $postInstance->set($post);
-                    $userPosts->push($postInstance);
-                }
+            $tagRepository = new TagRepository();
+            $tagRepository->setQueryBuilder($this->queryBuilder);
+
+            foreach ($posts as &$post) {
+                $tags = $tagRepository->getTags($post["POST_ID"]);
+                $post["TAGS"] = $tags;
+                $post['TIME_AGO'] = $this->timeAgo($post['DATETIME']);
             }
-            
-            return $userPosts;
+
+            return $posts;
         } catch (Exception $exception) {
             $this->logger->error(
                 "Error al obtener los posts del usuario",
                 [
                     "Error" => $exception->getMessage(),
                     "Operacion" => 'PostRepository - getPostsFromUser',
+                ]
+            );
+
+            return [];
+        }
+    }
+
+    public function getPostsFromContent($contentId){
+        try {
+            $posts = $this->queryBuilder->selectByColumn($this->table, "CONTENT_ID", $contentId);
+            $contentPosts = [];
+    
+            if (count($posts) > 0) {
+                foreach ($posts as $post) {
+                    $postInstance = new Post();
+                    $postInstance->set($post);
+                    $contentPosts[] = $postInstance;
+                }
+            }
+            return $posts;
+        } catch (Exception $exception) {
+            $this->logger->error(
+                "Error al obtener los posts del content",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'PostRepository - getMostRelevantContentPosts',
                 ]
             );
 
@@ -98,7 +140,7 @@ class PostRepository extends Repository
             $username = Session::getInstance()->get("username");
             $user = $userRepository->getUser("USERNAME", $username);
             $postData["USER_ID"] = $user->fields["USER_ID"];
-            $postData["DATETIME"] = date("Y-m-d");
+            $postData["DATETIME"] = date("Y-m-d H:i:s");
             $post->set($postData);
             $postID = $this->queryBuilder->insert($this->table, $post->fields);
             http_response_code(201); // Código 201: Created
@@ -121,19 +163,37 @@ class PostRepository extends Repository
         return $response;
     }
 
-    public function getMostRelevantContentPosts($contentId){
+    public function getMostRelevantContentPosts($contentId) {
         try {
-            $posts = $this->queryBuilder->selectByColumnInDescOrder($this->table, "CONTENT_ID", $contentId, "LIKES", 3);
-            $contentPosts = [];
+            $posts = $this->queryBuilder->selectWithMultipleJoinsInDescOrder(
+                $this->table,
+                [
+                    [
+                        'table' => 'CONTENT',
+                        'condition' => 'POST.CONTENT_ID = CONTENT.CONTENT_ID'
+                    ],
+                    [
+                        'table' => 'ARTIST',
+                        'condition' => 'CONTENT.ARTIST_ID = ARTIST.ARTIST_ID'
+                    ],
+                ],
+                'POST.CONTENT_ID', // Especifica la tabla aquí
+                $contentId,
+                'LIKES',
+                3
+            );
     
-            if (count($posts) > 0) {
-                foreach ($posts as $post) {
-                    $postInstance = new Post();
-                    $postInstance->set($posts);
-                    $userPosts->push($postInstance);
-                }
+    
+            $tagRepository = new TagRepository();
+            $tagRepository->setQueryBuilder($this->queryBuilder);
+    
+            foreach ($posts as &$post) {
+                $tags = $tagRepository->getTags($post["POST_ID"]);
+                $post["TAGS"] = $tags;
+                $post['TIME_AGO'] = $this->timeAgo($post['DATETIME']);
             }
-            return $contentPosts;
+    
+            return $posts;
         } catch (Exception $exception) {
             $this->logger->error(
                 "Error al obtener los posts del content",
@@ -142,35 +202,68 @@ class PostRepository extends Repository
                     "Operacion" => 'PostRepository - getMostRelevantContentPosts',
                 ]
             );
-
+    
             return [];
         }
     }
 
-    public function getMostRecentContentPosts($contentId){
+    public function getMostRecentContentPosts($contentId) {
         try {
-            $posts = $this->queryBuilder->selectByColumnInDescOrder($this->table, "CONTENT_ID", $contentId, "DATETIME", 3);
-            $contentPosts = [];
+            $posts = $this->queryBuilder->selectWithMultipleJoinsInDescOrder(
+                $this->table,
+                [
+                    [
+                        'table' => 'CONTENT',
+                        'condition' => 'POST.CONTENT_ID = CONTENT.CONTENT_ID'
+                    ],
+                    [
+                        'table' => 'ARTIST',
+                        'condition' => 'CONTENT.ARTIST_ID = ARTIST.ARTIST_ID'
+                    ],
+                ],
+                'POST.CONTENT_ID', // Especifica la tabla aquí
+                $contentId,
+                'POST.DATETIME', // Asegúrate de que está especificado con su tabla
+                3
+            );
     
-            if (count($posts) > 0) {
-                foreach ($posts as $post) {
-                    $postInstance = new Post();
-                    $postInstance->set($post);
-                    $userPosts->push($postInstance);
-                }
+            $tagRepository = new TagRepository();
+            $tagRepository->setQueryBuilder($this->queryBuilder);
+    
+            foreach ($posts as &$post) {
+                $tags = $tagRepository->getTags($post["POST_ID"]);
+                $post["TAGS"] = $tags;
+                $post['TIME_AGO'] = $this->timeAgo($post['DATETIME']);
             }
-
-            return $contentPosts;
+    
+            return $posts;
         } catch (Exception $exception) {
             $this->logger->error(
                 "Error al obtener los posts del content",
                 [
                     "Error" => $exception->getMessage(),
-                    "Operacion" => 'PostRepository - getMostRelevantContentPosts',
+                    "Operacion" => 'PostRepository - getMostRecentContentPosts',
                 ]
             );
-            
+    
             return [];
         }
+    }
+    
+    private function timeAgo($datetime, $full = false) {
+        $timestamp = strtotime($datetime);
+        $difference = time() - $timestamp;
+        $periods = array('segundo', 'minuto', 'hora', 'día', 'semana', 'mes', 'año');
+        $lengths = array('60', '60', '24', '7', '4.35', '30', '365');
+        
+        for ($j = 0; $difference >= $lengths[$j] && $j < count($lengths) - 1; $j++) {
+            $difference /= $lengths[$j];
+        }
+        
+        $difference = round($difference);
+        $period = $periods[$j];
+        $result = ($difference > 1 ? $difference . ' ' . $period . 's' : '1 ' . $period);
+        
+        return 'hace ' . $result;
     }
 }

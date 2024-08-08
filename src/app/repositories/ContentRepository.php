@@ -31,9 +31,30 @@ class ContentRepository extends Repository
        $postRepository = new PostRepository();
        $postRepository->setQueryBuilder(QueryBuilder::getInstance());
        $mostRelevantPosts = $postRepository->getMostRelevantContentPosts($contentId);
-       $mostRecentPosts = $postRepository->getMostRelevantContentPosts($contentId);
+       $mostRecentPosts = $postRepository->getMostRecentContentPosts($contentId);
 
        return ["recent" => $mostRecentPosts, "relevant" => $mostRelevantPosts];
+    }
+
+    public function getAverageRating($contentId) {
+        $postRepository = new PostRepository();
+        $postRepository->setQueryBuilder(QueryBuilder::getInstance());
+        $posts = $postRepository->getPostsFromContent($contentId);
+    
+        $count = count($posts);
+        $sum = 0;
+
+        foreach($posts as $post) {
+            $sum += $post["RATING"];
+        }
+
+        if($count > 0) {
+            $average = round($sum / $count, 2);
+        } else {
+            $average = 0;
+        }
+
+        return ["average" => $average, "count" => $count ];
     }
 
 
@@ -43,7 +64,6 @@ class ContentRepository extends Repository
 
             $type = $contentData["type"];
 
-            // $content->setAverageRating($contentData["average_rating"]);
             $content->setContentId($contentData[$type."_id"]);
             $content->setReleaseDate($contentData["release_date"]);
             $content->setSpotifyId($contentData[$type."_id"]);

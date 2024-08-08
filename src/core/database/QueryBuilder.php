@@ -133,6 +133,35 @@ class QueryBuilder
     {
         try {
             if($limit > 0) {
+                $query = "SELECT * FROM {$table} WHERE {$column} = :value ORDER BY {$columnBy} DESC LIMIT {$limit};";
+            } else {
+                $query = "SELECT * FROM {$table} WHERE {$column} = :value ORDER BY {$columnBy} DESC;";
+            }
+
+            $statement = $this->pdo->prepare($query);
+            $statement->bindParam(':value', $value);
+            $statement->setFetchMode(PDO::FETCH_ASSOC);
+            $statement->execute();
+            return $statement->fetchAll();
+        } catch (PDOException $error) {
+            $this->logger->error(
+                "Error al ejecutar el query en la base de datos",
+                [
+                    "Error" => $error->getMessage(),
+                    "Operacion" => 'selectByColumnInDescOrder',
+                    "Tabla" => $table,
+                    "Columna" => $column,
+                    "Valor" => $value,
+                ]
+            );
+            return [];
+        }
+    }
+
+    public function selectByColumnInAscOrder(string $table, $column, $value, $columnBy, $limit = 0)
+    {
+        try {
+            if($limit > 0) {
                 $query = "SELECT * FROM {$table} WHERE {$column} = :value ORDER BY {$columnBy} ASC LIMIT {$limit};";
             } else {
                 $query = "SELECT * FROM {$table} WHERE {$column} = :value ORDER BY {$columnBy} ASC;";
@@ -184,6 +213,53 @@ class QueryBuilder
             return [];
         }
     }
+
+
+    public function selectWithMultipleJoinsInDescOrder(
+        string $table,
+        array $joins, // Array de tablas a unir y sus condiciones
+        string $column,
+        $value,
+        string $orderByColumn,
+        int $limit = 0
+    ) {
+        try {
+            // Construir la parte del JOIN de la consulta
+            $joinQuery = "";
+            foreach ($joins as $join) {
+                $joinQuery .= " JOIN {$join['table']} ON {$join['condition']}";
+            }
+    
+            // Construir la consulta completa
+            $query = "SELECT * FROM {$table}{$joinQuery} 
+                      WHERE {$column} = :value 
+                      ORDER BY {$orderByColumn} DESC";
+            
+            if ($limit > 0) {
+                $query .= " LIMIT {$limit}";
+            }
+    
+            $statement = $this->pdo->prepare($query);
+            $statement->bindParam(':value', $value);
+            $statement->setFetchMode(PDO::FETCH_ASSOC);
+            $statement->execute();
+            
+            return $statement->fetchAll();
+        } catch (PDOException $error) {
+            $this->logger->error(
+                "Error al ejecutar el query en la base de datos",
+                [
+                    "Error" => $error->getMessage(),
+                    "Operacion" => 'selectWithMultipleJoinsInDescOrder',
+                    "Tabla" => $table,
+                    "Joins" => $joins,
+                    "Columna" => $column,
+                    "Valor" => $value,
+                ]
+            );
+            return [];
+        }
+    }    
 
     public function count($table, $column, $value) {
         try {

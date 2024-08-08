@@ -13,8 +13,15 @@ class TagRepository extends Repository
 
     public function getTags(int $post_id)
     {
-        // TODO:
-        //   Armar un querie para pedir la lista de tags de un post
+        try {
+            $tags = $this->queryBuilder->selectByColumn($this->table, "POST_ID", $post_id);
+
+            return $tags;
+        } catch (InvalidValueException $exception) {
+            return [false, $exception->getMessage()];
+        } catch (Exception $exception) {
+            return [false, "Error al obtener los tags del post " . $post_id];
+        }
     }
 
     public function createTag($tagData)

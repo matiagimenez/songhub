@@ -145,8 +145,8 @@
 
 .tag {
 	background-color: var(--color-grey-very-light);
-	font-size: 0.8rem;
-	padding: 2px 8px;
+	font-size: 0.78rem;
+	padding: 4px 6px;
 	border-radius: 15px;
 	font-weight: normal;
 }

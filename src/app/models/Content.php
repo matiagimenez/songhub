@@ -8,7 +8,7 @@ class Content
 {
     public $fields = [
         "CONTENT_ID" => null, // Id from Spotify
-        "AVERAGE_RATING" => null,
+        // "AVERAGE_RATING" => null,
         "RELEASE_DATE" => null,
         "SPOTIFY_ID" => null,
         "SPOTIFY_API_URL" => null,
@@ -25,10 +25,10 @@ class Content
         $this->fields["CONTENT_ID"] = $content_id;
     }
 
-    public function setAverageRating($average_rating)
-    {
-        $this->fields["AVERAGE_RATING"] = $average_rating;
-    }
+    // public function setAverageRating($average_rating)
+    // {
+    //     $this->fields["AVERAGE_RATING"] = $average_rating;
+    // }
 
     public function setReleaseDate($release_date)
     {

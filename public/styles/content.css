@@ -57,6 +57,7 @@ body {
 .song-section figure figcaption p.artist-info a {
 	font-size: 0.9rem;
 	text-decoration: none;
+	color: var(--color-black);
 }
 
 .song-section figure figcaption p.artist-info a:hover {
@@ -110,22 +111,17 @@ body {
 }
 
 .song-section section.song-stats p.posts-amount,
-.song-section section.song-stats p.qualification span.number {
-	font-size: 0.95rem;
+.song-section section.song-stats p.post-count span.number {
+	font-size: 1rem;
 	color: var(--color-black);
 	display: inline-block;
-	margin-left: 2px;
 }
 
-.song-section section.song-stats p.qualification {
-	margin-top: 2px;
-}
-
-.song-section section.song-stats p.qualification span.stars {
-	color: var(--color-violet-darkest);
-	min-width: 77px;
-	font-size: 1.2rem;
-	display: inline-block;
+.song-section section.song-stats p.post-count {
+	margin-top: 8px;
+	display: block;
+	font-weight: bold;
+	color: var(--color-violet);
 }
 
 section.most-popular-posts article:last-child,
@@ -151,12 +147,12 @@ section.most-recent-posts article:last-child {
 		font-size: 1.2rem;
 	}
 
-	.song-section section.song-stats p.qualification span.number,
+	.song-section section.song-stats p.post-count span.number,
 	.song-section section.song-stats p.posts-amount {
 		font-size: 1rem;
 	}
 
-	.song-section section.song-stats p.qualification span.stars {
+	.song-section section.song-stats p.post-count span.stars {
 		min-width: 95px;
 		font-size: 1.4rem;
 	}
@@ -196,12 +192,16 @@ section.most-recent-posts article:last-child {
 		color: var(--color-white);
 	}
 
+	.song-section section.song-stats p.post-count {
+		color: var(--color-violet-light-white);
+	}
+
 	.song-section section.song-stats p.posts-amount,
-	.song-section section.song-stats p.qualification span.number {
+	.song-section section.song-stats p.post-count span.number {
 		color: var(--color-white);
 	}
 
-	.song-section section.song-stats p.qualification span.stars {
+	.song-section section.song-stats p.post-count span.stars {
 		color: var(--color-violet-lightest);
 	}
 }
