@@ -149,4 +149,43 @@ class PostController extends Controller
         Renderer::getInstance()->home(true, $posts);
     }
 
+    public function getMoreUserFeedPosts() {
+        $page = $this->sanitizeUserInput(Request::getInstance()->getParameter("page", "GET"));
+        $page = (is_numeric($page) && $page > 0) ? (int)$page : 0;
+
+        if(is_null(Session::getInstance()->get("access_token"))) {
+            Renderer::getInstance()->login();
+            exit;
+        }
+
+        $user = $this->getCurrentUser();
+
+        $posts = $this->repository->getUserFeedPosts($user->fields["USER_ID"], $page);
+
+        
+        ob_clean();
+        header('Content-Type: application/json');
+        echo json_encode($posts);
+        exit;
+    }
+
+    public function getMoreUserProfilePosts() {
+        $page = $this->sanitizeUserInput(Request::getInstance()->getParameter("page", "GET"));
+        $page = (is_numeric($page) && $page > 0) ? (int)$page : 0;
+
+        if(is_null(Session::getInstance()->get("access_token"))) {
+            Renderer::getInstance()->login();
+            exit;
+        }
+
+        $user = $this->getCurrentUser();
+
+        $posts = $this->repository->getPostsFromUser($user->fields["USER_ID"], $page);
+        
+        ob_clean();
+        header('Content-Type: application/json');
+        echo json_encode($posts);
+        exit;
+    }
+
 }

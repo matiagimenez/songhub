@@ -15,9 +15,12 @@ class PostRepository extends Repository
 {
     public $table = "POST";
 
-    public function getPostsFromUser($userId)
+    public function getPostsFromUser($userId, $page = 0)
     {
         try {
+            $limit = 10;
+            $offset = $page * $limit;
+
             $posts = $this->queryBuilder->selectWithMultipleJoinsInDescOrder(
                 $this->table,
                 [
@@ -33,7 +36,8 @@ class PostRepository extends Repository
                 "USER_ID",
                 $userId,
                 "DATETIME",
-                10
+                $limit,
+                $offset
             );
 
             $tagRepository = new TagRepository();
@@ -283,8 +287,11 @@ class PostRepository extends Repository
         }
     }
 
-    public function getUserFeedPosts($userId) {
+    public function getUserFeedPosts($userId, $page = 0) {
         try {
+            $limit = 10;
+            $offset = $page * $limit;
+
             $posts = $this->queryBuilder->selectWithMultipleJoinsInDescOrder(
                 $this->table,
                 [
@@ -304,13 +311,10 @@ class PostRepository extends Repository
                 'FOLLOW.FOLLOWER_ID',
                 $userId,
                 'POST.DATETIME',
-                10
+                $limit,
+                $offset
             );
 
-            // echo "<pre>";
-            // var_dump($posts);
-            // die;
-    
             $tagRepository = new TagRepository();
             $tagRepository->setQueryBuilder($this->queryBuilder);
 

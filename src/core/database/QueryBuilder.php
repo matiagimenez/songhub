@@ -221,7 +221,8 @@ class QueryBuilder
         string $column,
         $value,
         string $orderByColumn,
-        int $limit = 0
+        int $limit = 0,
+        int $offset = -1 
     ) {
         try {
             // Construir la parte del JOIN de la consulta
@@ -237,6 +238,10 @@ class QueryBuilder
             
             if ($limit > 0) {
                 $query .= " LIMIT {$limit}";
+            }
+
+            if ($offset >= 0) {
+                $query .= " OFFSET {$offset}";
             }
     
             $statement = $this->pdo->prepare($query);

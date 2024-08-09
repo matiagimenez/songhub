@@ -67,6 +67,8 @@ $router->get('/user/favorites/remove', 'FavoriteController@removeCurrentUserFavo
 // Post
 $router->post('/post/create', 'PostController@createPost');
 $router->get('/post', 'PostController@post');
+$router->get('/post/following', 'PostController@getMoreUserFeedPosts');
+$router->get('/post/profile', 'PostController@getMoreUserProfilePosts');
 $router->get('/', 'PostController@feed');
 
 // Artist

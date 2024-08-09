@@ -48,11 +48,6 @@ class ContentController extends Controller
 
         $posts = $this->repository->getContentPosts($id);
      
-        // echo "<pre>";
-        // var_dump($posts);
-        // die;
-
-
         Renderer::getInstance()->content($content, $posts["relevant"], $posts["recent"], $stats["average"], $stats["count"]);
     }
 
