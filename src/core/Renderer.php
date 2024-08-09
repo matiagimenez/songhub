@@ -108,7 +108,7 @@ class Renderer
         ]);
     }
 
-    public function post()
+    public function post($post, $currentUser)
     {
         $username = $this->getUsername();
 
@@ -118,6 +118,8 @@ class Renderer
             'title' => "Post",
             'style' => "post",
             'username' => $username,
+            'post' => $post,
+            'currentUser' => $currentUser,
             'show_footer' => false, 
             "show_header" => true
         ]);

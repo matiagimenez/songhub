@@ -1,212 +1,193 @@
 {% extends 'base.twig' %}
+{% set maxStars = 5 %}
 
 {% block main %}
-        <article class="post add-modal-access main-post" id="post_1">
-            <figure>
-                <section class="article-img-container">
-                    <img loading="lazy" class="image-border" height="100px" width="100px"
-                        src="https://i.pinimg.com/564x/2f/18/9e/2f189e3be4ef04ab12a0a125efe4e67e.jpg"
-                        alt="Portada del álbum 'The Dark Side of the Moon' de Pink Floyd" />
-                </section>
-                <section class="user-info">
-                    <img loading="lazy" class="user-img" height="25px" width="25px"
-                        src="https://i.pinimg.com/236x/94/7f/14/947f14841d26f5dc3541366a987b32f5.jpg"
-                        alt="Imagen de perfil de 'Usuario 1'" />
-                    <p class="user-name">
-                        <a href="profile.html">Usuario 1</a>
-                        <span>$username1</span>
-                    </p>
-                    <p class="post-time">hace 8 horas</p>
-                </section>
-                <figcaption>
-                    <h2 class="song-title" id="post-1-song-title">
-                        <a href="/content">The Dark Side of the Moon</a>
-                    </h2>
-                    <h3 class="artist-title">Pink Floyd</h3>
-                    <span class="tag">Increible</span>
-                    <span class="tag">Rock</span>
-                    <span class="tag">Internacional</span>
-                    <p class="stars">★★★★★</p>
-                </figcaption>
-            </figure>
-            <section class="post-content">
-                <p>
-                    It has survived not only five centuries, but also the
-                    leap into electronic typesetting, remaining essentially
-                    unchanged. It was popularised in the 1960s with the
-                    release of Letraset sheets containing Lorem Ipsum
-                    passages, and more recently with desktop publishing
-                    software like Aldus PageMaker including versions of
-                    Lorem Ipsum. t has survived not only five centuries, but
-                    also the leap into electronic typesetting, remaining
-                    essentially unchanged. It was popularised in the 1960s
-                    with the release of Letraset sheets containing Lorem
-                    Ipsum passages, and more recently with deskt. It has
-                    survived not only five centuries, but also the leap into
-                    electronic typesetting, remaining essentially unchanged.
-                    It was popularised in the 1960s with the release of
-                    Letraset sheets containing Lorem Ipsum passages, and
-                    more recently with desktop publishing software like
-                    Aldus PageMaker including versions of Lorem Ipsum. t has
-                    survived not only five centuries, but also the leap into
-                    electronic typesetting, remaining essentially unchanged.
-                    It was popularised in the 1960s with the release of
-                    Letraset sheets containing Lorem Ipsum passages, and
-                    more recently with deskt.
-                </p>
-            </section>
-            <footer>
-                <section class="reaction-container comment-container">
-                    <button>
-                        <i class="ph ph-chats-circle icon comment-icon"></i>
-                        <span class="visually-hidden">Comentar post</span>
-                    </button>
-                    <p>20</p>
-                </section>
-                <section class="reaction-container like-container">
-                    <button class="heart-button">
-                        <i class="ph ph-heart icon heart-icon"></i>
-                        <span class="visually-hidden">Dar favorito al post</span>
-                    </button>
-                    <p>1008</p>
-                </section>
-            </footer>
-        </article>
+	<article class="post add-modal-access main-post" id="{{ post.id }}">
+		<figure>
+			<section class="article-img-container">
+				<img loading="lazy" class="image-border" height="100px" width="100px" src="{{ post.cover.id }}" alt="Portada del álbum {{ post.content.title }} de {{ post.artist.name }}"/>
+			</section>
+			<section class="user-info">
+				<img loading="lazy" class="user-img" height="25px" width="25px" src="{{ post.user.avatar }}" alt="Imagen de perfil de {{ post.user.username }}"/>
+				<p class="user-name">
+					<a href="profile.html">{{ post.user.username }}</a>
+					<span>@{{ post.user.username }}</span>
+				</p>
+				<p class="post-time">{{ post.timeAgo }}</p>
+			</section>
+			<figcaption>
+				<h2 class="song-title" id="post-1-song-title">
+					<a href="/content">{{ post.content.title }}</a>
+				</h2>
+				<h3 class="artist-title">{{ post.artist.name }}</h3>
+				{% for tag in post.tags %}
+					<span class="tag">{{ tag.TEXT }}</span>
+				{% endfor %}
+				<p class="stars">
+					{% for i in 1..maxStars %}
+						{% if i <= post.rating %}
+							<span>★</span>
+							<!-- Filled star -->
+						{% else %}
+							<span>☆</span>
+							<!-- Unfilled star -->
+						{% endif %}
+					{% endfor %}
+				</p>
+			</figcaption>
+		</figure>
+		<section class="post-content">
+			<p>
+				{{ post.description }}
+			</p>
+		</section>
+		<footer>
+			<section class="reaction-container comment-container">
+				<button>
+					<i class="ph ph-chats-circle icon comment-icon"></i>
+					<span class="visually-hidden">Comentar post</span>
+				</button>
+				<p>20</p>
+			</section>
+			<section class="reaction-container like-container">
+				<button class="heart-button">
+					<i class="ph ph-heart icon heart-icon"></i>
+					<span class="visually-hidden">Dar favorito al post</span>
+				</button>
+				<p>{{ post.likes }}</p>
+			</section>
+		</footer>
+	</article>
 
-        <section id="comment-form-container">
-            <section class="user-info">
-                <img loading="lazy" class="user-img" height="25px" width="25px"
-                src="https://i.pinimg.com/236x/94/7f/14/947f14841d26f5dc3541366a987b32f5.jpg"
-                alt="Imagen de perfil de 'Usuario 1'" />
-            </section>
-            <form action="/comment" method="POST">
-                <p>Responde a <a href="/profile">@username</a><p>
-                <div>
-                    <textarea class='input'required placeholder="Agrega un comentario..."></textarea>
-                    <input type="submit" class="submit-button" value="Comentar" />
-                </div>
-            </form>
-        </section>
-        
-        <section class="comments">
-            <article class="post" id="post_1_1">
-                <header class="user-info">
-                    <img loading="lazy" class="user-img"
-                        src="https://i.pinimg.com/236x/2d/92/d0/2d92d085613a400e12fbadacc019e0e2.jpg"
-                        alt="Imagen de perfil de 'Usuario 2'" height="50px" width="50px" />
-                    <p class="user-name">
-                        <a href="profile.html">Usuario 2</a>
-                        <span>@username2</span>
-                        <span class="post-time">hace 8 horas</span>
-                    </p>
-                </header>
-                <section class="post-content">
-                    <p>
-                        It has survived not only five centuries, but also
-                        the leap into electronic typesetting, remaining
-                        essentially unchanged. It was popularised in the
-                        1960s with the release of Letraset sheets containing
-                        Lorem Ipsum passages, and more recently with desktop
-                        publishing software like Aldus PageMaker including
-                        versions of Lorem Ipsum.
-                    </p>
-                </section>
-                <footer>
-                    <section class="reaction-container comment-container">
-                        <button>
-                            <i class="ph ph-chats-circle icon comment-icon"></i>
-                            <span class="visually-hidden">Comentar post</span>
-                        </button>
-                        <p>20</p>
-                    </section>
-                    <section class="reaction-container like-container">
-                        <button class="heart-button">
-                            <i class="ph ph-heart icon heart-icon"></i>
-                            <span class="visually-hidden">Dar favorito al post</span>
-                        </button>
-                        <p>1008</p>
-                    </section>
-                </footer>
-            </article>
+	<section id="comment-form-container">
+		<section class="user-info">
+			<img loading="lazy" class="user-img" height="25px" width="25px" src="{{ currentUser.avatar }}" alt="Imagen de perfil de {{ currentUser.username }}"/>
+		</section>
+		<form action="/comment" method="POST">
+			<p>Responde a
+				<a href="/profile">@{{ post.user.username }}</a>
+			</p>
+			<p>
+				<div>
+					<textarea class='input' required placeholder="Agrega un comentario..."></textarea>
+					<input type="submit" class="submit-button" value="Comentar"/></div>
+			</p>
+		</form>
+	</section>
 
-            <article class="post" id="post_1_2">
-                <header class="user-info">
-                    <img loading="lazy" class="user-img"
-                        src="https://i.pinimg.com/564x/d4/36/ba/d436bae8fa33079d14e74b2213c0183a.jpg"
-                        alt="Imagen de perfil de 'Usuario 3'" height="50px" width="50px" />
-                    <p class="user-name">
-                        <a href="profile.html">Usuario 3</a>
-                        <span>@username3</span>
-                        <span class="post-time">hace 4h</span>
-                    </p>
-                </header>
-                <section class="post-content">
-                    <p>
-                        It has survived not only five centuries, but also
-                        the leap into electronic typesetting, remaining
-                        essentially unchanged. It was popularised in the
-                        1960s with the release of Letraset sheets containing
-                        Lorem Ipsum passages, and more recently with desktop
-                        publishing software like Aldus PageMaker including
-                        versions of Lorem Ipsum.
-                    </p>
-                </section>
-                <footer>
-                    <section class="reaction-container comment-container">
-                        <button>
-                            <i class="ph ph-chats-circle icon comment-icon"></i>
-                            <span class="visually-hidden">Comentar post</span>
-                        </button>
-                        <p>20</p>
-                    </section>
-                    <section class="reaction-container like-container">
-                        <button class="heart-button">
-                            <i class="ph ph-heart icon heart-icon"></i>
-                            <span class="visually-hidden">Dar favorito al post</span>
-                        </button>
-                        <p>1008</p>
-                    </section>
-                </footer>
-            </article>
+	<section class="comments">
+		<article class="post" id="post_1_1">
+			<header class="user-info">
+				<img loading="lazy" class="user-img" src="https://i.pinimg.com/236x/2d/92/d0/2d92d085613a400e12fbadacc019e0e2.jpg" alt="Imagen de perfil de 'Usuario 2'" height="50px" width="50px"/>
+				<p class="user-name">
+					<a href="profile.html">Usuario 2</a>
+					<span>@username2</span>
+					<span class="post-time">hace 8 horas</span>
+				</p>
+			</header>
+			<section class="post-content">
+				<p>
+					It has survived not only five centuries, but also
+																																																																											                        the leap into electronic typesetting, remaining
+																																																																											                        essentially unchanged. It was popularised in the
+																																																																											                        1960s with the release of Letraset sheets containing
+																																																																											                        Lorem Ipsum passages, and more recently with desktop
+																																																																											                        publishing software like Aldus PageMaker including
+																																																																											                        versions of Lorem Ipsum.
+				</p>
+			</section>
+			<footer>
+				<section class="reaction-container comment-container">
+					<button>
+						<i class="ph ph-chats-circle icon comment-icon"></i>
+						<span class="visually-hidden">Comentar post</span>
+					</button>
+					<p>20</p>
+				</section>
+				<section class="reaction-container like-container">
+					<button class="heart-button">
+						<i class="ph ph-heart icon heart-icon"></i>
+						<span class="visually-hidden">Dar favorito al post</span>
+					</button>
+					<p>1008</p>
+				</section>
+			</footer>
+		</article>
 
-            <article class="post" id="post_1_3">
-                <header class="user-info">
-                    <img loading="lazy" class="user-img"
-                        src="https://i.pinimg.com/564x/d4/36/ba/d436bae8fa33079d14e74b2213c0183a.jpg"
-                        alt="Imagen de perfil de 'Usuario 3'" height="50px" width="50px" />
-                    <p class="user-name">
-                        <a href="profile.html">Usuario 3</a>
-                        <span>@username3</span>
-                        <span class="post-time">hace 4h</span>
-                    </p>
-                </header>
-                <section class="post-content">
-                    <p>
-                        It has survived not only five centuries, but also
-                        the leap into electronic typesetting, remaining
-                        essentially unchanged. It was popularised in the
-                        1960s with the release of Letraset sheets containing
-                        Lorem Ipsum passages, and more recently with desktop
-                        publishing software like Aldus PageMaker including
-                        versions of Lorem Ipsum.
-                    </p>
-                </section>
-                <footer>
-                    <section class="reaction-container comment-container">
-                        <button>
-                            <i class="ph ph-chats-circle icon comment-icon"></i>
-                            <span class="visually-hidden">Comentar post</span>
-                        </button>
-                        <p>20</p>
-                    </section>
-                    <section class="reaction-container like-container">
-                        <button class="heart-button">
-                            <i class="ph ph-heart icon heart-icon"></i>
-                            <span class="visually-hidden">Dar favorito al post</span>
-                        </button>
-                        <p>1008</p>
-                    </section>
-                </footer>
-            </article>
-        </section>
+		<article class="post" id="post_1_2">
+			<header class="user-info">
+				<img loading="lazy" class="user-img" src="https://i.pinimg.com/564x/d4/36/ba/d436bae8fa33079d14e74b2213c0183a.jpg" alt="Imagen de perfil de 'Usuario 3'" height="50px" width="50px"/>
+				<p class="user-name">
+					<a href="profile.html">Usuario 3</a>
+					<span>@username3</span>
+					<span class="post-time">hace 4h</span>
+				</p>
+			</header>
+			<section class="post-content">
+				<p>
+					It has survived not only five centuries, but also
+																																																																											                        the leap into electronic typesetting, remaining
+																																																																											                        essentially unchanged. It was popularised in the
+																																																																											                        1960s with the release of Letraset sheets containing
+																																																																											                        Lorem Ipsum passages, and more recently with desktop
+																																																																											                        publishing software like Aldus PageMaker including
+																																																																											                        versions of Lorem Ipsum.
+				</p>
+			</section>
+			<footer>
+				<section class="reaction-container comment-container">
+					<button>
+						<i class="ph ph-chats-circle icon comment-icon"></i>
+						<span class="visually-hidden">Comentar post</span>
+					</button>
+					<p>20</p>
+				</section>
+				<section class="reaction-container like-container">
+					<button class="heart-button">
+						<i class="ph ph-heart icon heart-icon"></i>
+						<span class="visually-hidden">Dar favorito al post</span>
+					</button>
+					<p>1008</p>
+				</section>
+			</footer>
+		</article>
+
+		<article class="post" id="post_1_3">
+			<header class="user-info">
+				<img loading="lazy" class="user-img" src="https://i.pinimg.com/564x/d4/36/ba/d436bae8fa33079d14e74b2213c0183a.jpg" alt="Imagen de perfil de 'Usuario 3'" height="50px" width="50px"/>
+				<p class="user-name">
+					<a href="profile.html">Usuario 3</a>
+					<span>@username3</span>
+					<span class="post-time">hace 4h</span>
+				</p>
+			</header>
+			<section class="post-content">
+				<p>
+					It has survived not only five centuries, but also
+																																																																											                        the leap into electronic typesetting, remaining
+																																																																											                        essentially unchanged. It was popularised in the
+																																																																											                        1960s with the release of Letraset sheets containing
+																																																																											                        Lorem Ipsum passages, and more recently with desktop
+																																																																											                        publishing software like Aldus PageMaker including
+																																																																											                        versions of Lorem Ipsum.
+				</p>
+			</section>
+			<footer>
+				<section class="reaction-container comment-container">
+					<button>
+						<i class="ph ph-chats-circle icon comment-icon"></i>
+						<span class="visually-hidden">Comentar post</span>
+					</button>
+					<p>20</p>
+				</section>
+				<section class="reaction-container like-container">
+					<button class="heart-button">
+						<i class="ph ph-heart icon heart-icon"></i>
+						<span class="visually-hidden">Dar favorito al post</span>
+					</button>
+					<p>1008</p>
+				</section>
+			</footer>
+		</article>
+	</section>
 {% endblock %}
