@@ -19,7 +19,44 @@ class PostController extends Controller
     public function post()
     {
         $post_id = $this->sanitizeUserInput(Request::getInstance()->getParameter("id", "GET"));
-        $post = $this->repository->getPost($post_id);
+        $response = $this->repository->getPost($post_id);
+
+        $content = [
+            "spotifyId" => $response["SPOTIFY_ID"],
+            "averageRating" => $response["RATING"],
+            "title" => $response["TITLE"],
+            "releaseDate" => $response["RELEASE_DATE"],
+            "spotifyPreviewUrl" => $response["SPOTIFY_PREVIEW_URL"],
+            "type" => $response["TYPE"],
+        ];
+
+        $artist = [
+            "id" => $response["ARTIST_ID"],
+            "name" => $response["NAME"],
+        ];
+
+        $cover = [
+            "id" => $response["COVER_ID"],  
+        ];
+
+        $posterUser = [
+            "id" => $response["USER_ID"],
+            "username" => $response["USERNAME"],
+            "avatar" => $response["SPOTIFY_AVATAR"],
+        ];
+
+        $post = [
+            "id" => $response["POST_ID"],
+            "datetime" => $response["DATETIME"],
+            "description" => $response["DESCRIPTION"],
+            "likes" => $response["LIKES"],
+            "rating" => $response["RATING"],
+            "content" => $content,
+            "artist" => $artist,
+            "cover" => $cover,
+            "user" => $posterUser
+        ];
+
         Renderer::getInstance()->post($post);
     }
 
@@ -34,7 +71,8 @@ class PostController extends Controller
         $postID = $response["post_id"];
 
         $tagController = new TagController();
- 
+        // TODO:
+        //   Recuperar El ID del Post
         $tagController->createTags($postData["TAGS"], $postID);
     }
 

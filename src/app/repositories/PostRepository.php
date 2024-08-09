@@ -106,10 +106,35 @@ class PostRepository extends Repository
     {
         $postInstance = new Post();
         try {
-            $post = $this->queryBuilder->selectByColumn($this->table, "POST_ID", $post_id);
-            $postItem = $post[0];
-            $postInstance->set($postItem);    
-            return $postInstance->fields;
+            // $post = $this->queryBuilder->selectByColumn($this->table, "POST_ID", $post_id);
+            $post = $this->queryBuilder->selectWithMultipleJoinsInDescOrder(
+                $this->table,
+                [
+                    [
+                        'table' => 'USER',
+                        'condition' => 'POST.USER_ID = USER.USER_ID'
+                    ],
+                    [
+                        'table' => 'CONTENT',
+                        'condition' => 'POST.CONTENT_ID = CONTENT.CONTENT_ID'
+                    ],
+                    [
+                        'table' => 'ARTIST',
+                        'condition' => 'CONTENT.ARTIST_ID = ARTIST.ARTIST_ID'
+                    ],
+                ],
+                'POST.POST_ID', // Especifica la tabla aquí
+                $post_id,
+                'POST.POST_ID', // Asegúrate de que está especificado con su tabla
+                1
+            );
+            // ob_clean();
+            // header('Content-Type: application/json');
+            // echo json_encode($post);
+            // exit;
+            // $postItem = $post[0];
+            // $postInstance->set($postItem);    
+            return $post[0];
         } catch (Exception $exception) {
             $this->logger->error(
                 "Error al obtener el post",
