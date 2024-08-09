@@ -24,7 +24,6 @@ $logger = LoggerBuilder::getInstance()->getLogger();
 $router->setLogger($logger);
 
 // Pages
-$router->get('/', 'PageController@home');
 $router->get('/login', 'PageController@login');
 $router->get('/register', 'PageController@register');
 $router->get('/terms-conditions', 'PageController@terms_conditions');
@@ -68,6 +67,7 @@ $router->get('/user/favorites/remove', 'FavoriteController@removeCurrentUserFavo
 // Post
 $router->post('/post/create', 'PostController@createPost');
 $router->get('/post', 'PostController@post');
+$router->get('/', 'PostController@feed');
 
 // Artist
 $router->get('/artist', 'ArtistController@getArtist');

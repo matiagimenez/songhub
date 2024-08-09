@@ -21,6 +21,12 @@ class PostController extends Controller
 
     public function post()
     {
+
+        if(is_null(Session::getInstance()->get("access_token"))) {
+            Renderer::getInstance()->login();
+            exit;
+        }
+
         $post_id = $this->sanitizeUserInput(Request::getInstance()->getParameter("id", "GET"));
         $response = $this->repository->getPost($post_id);
 
@@ -127,6 +133,20 @@ class PostController extends Controller
 
         header('Location: /');
         exit; 
+    }
+
+    public function feed()
+    {
+        if(is_null(Session::getInstance()->get("access_token"))) {
+            Renderer::getInstance()->home(false);
+            exit;
+        }
+
+        $user = $this->getCurrentUser();
+
+        $posts = $this->repository->getUserFeedPosts($user->fields["USER_ID"]);
+
+        Renderer::getInstance()->home(true, $posts);
     }
 
 }

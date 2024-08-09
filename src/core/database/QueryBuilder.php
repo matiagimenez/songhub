@@ -261,6 +261,8 @@ class QueryBuilder
         }
     }    
 
+   
+
     public function count($table, $column, $value) {
         try {
             $query = "SELECT COUNT(*) as count FROM {$table} WHERE {$column} = :value";

@@ -59,6 +59,29 @@
 	position: relative;
 }
 
+.feed p.not-logged-msg,
+.feed p.no-content-msg {
+	margin-top: 24px;
+	font-weight: bold;
+	width: 100%;
+	text-align: center;
+}
+
+.feed p.not-logged-msg .log-in,
+.feed p.no-content-msg .explore {
+	display: block;
+	margin-top: 12px;
+	font-size: 1.05rem;
+	text-decoration: none;
+	color: var(--color-violet-dark);
+}
+
+.feed p.not-logged-msg .log-in:hover,
+.feed p.no-content-msg .explore:hover {
+	text-decoration: underline;
+	opacity: 0.9;
+}
+
 section.feed article:last-child {
 	border-bottom: none;
 }
@@ -135,5 +158,12 @@ section.feed article:last-child {
 
 	.feed {
 		width: 85%;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	.feed p.not-logged-msg .log-in,
+	.feed p.no-content-msg .explore {
+		color: var(--color-violet-lightest);
 	}
 }

@@ -282,6 +282,62 @@ class PostRepository extends Repository
             return [];
         }
     }
+
+    public function getUserFeedPosts($userId) {
+        try {
+            $posts = $this->queryBuilder->selectWithMultipleJoinsInDescOrder(
+                $this->table,
+                [
+                    [
+                        'table' => 'CONTENT',
+                        'condition' => 'POST.CONTENT_ID = CONTENT.CONTENT_ID'
+                    ],
+                    [
+                        'table' => 'ARTIST',
+                        'condition' => 'CONTENT.ARTIST_ID = ARTIST.ARTIST_ID'
+                    ],
+                    [
+                        'table' => 'FOLLOW',
+                        'condition' => 'POST.USER_ID = FOLLOW.FOLLOWED_ID'
+                    ],
+                ],
+                'FOLLOW.FOLLOWER_ID',
+                $userId,
+                'POST.DATETIME',
+                10
+            );
+
+            // echo "<pre>";
+            // var_dump($posts);
+            // die;
+    
+            $tagRepository = new TagRepository();
+            $tagRepository->setQueryBuilder($this->queryBuilder);
+
+            $userRepository = new UserRepository();
+            $userRepository->setQueryBuilder($this->queryBuilder);
+    
+            foreach ($posts as &$post) {
+                $tags = $tagRepository->getTags($post["POST_ID"]);
+                $post["TAGS"] = $tags;
+                $post['TIME_AGO'] = $this->timeAgo($post['DATETIME']);
+                $post['USER'] = $userRepository->getUser("USER_ID", $post["USER_ID"]);
+            }
+    
+            return $posts;
+        } catch (Exception $exception) {
+            $this->logger->error(
+                "Error al obtener los posts del content",
+                [
+                    "Error" => $exception->getMessage(),
+                    "Operacion" => 'PostRepository - getMostRecentContentPosts',
+                ]
+            );
+    
+            return [];
+        }
+    }
+
     
     private function timeAgo($datetime, $full = false) {
         $timestamp = strtotime($datetime);

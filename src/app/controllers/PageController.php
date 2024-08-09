@@ -7,12 +7,6 @@ use Songhub\core\Session;
 
 class PageController extends Controller
 {
-
-    public function home()
-    {
-        Renderer::getInstance()->home();
-    }
-
     public function login()
     {
         Renderer::getInstance()->login();

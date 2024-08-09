@@ -28,7 +28,7 @@ class Renderer
         return self::$instance;
     }
 
-    public function home()
+    public function home($isLoggedIn, $posts = [])
     {
         $username = $this->getUsername();
         $template = $this->templateLoader->load('home.twig');
@@ -36,9 +36,11 @@ class Renderer
         echo $template->render([
             'title' => "Inicio",
             'style' => "home",
+            'posts' => $posts,
             'username' => $username,
             'show_footer' => false, 
-            "show_header" => true
+            "show_header" => true,
+            "show_feed" => $isLoggedIn
         ]);
     }
 

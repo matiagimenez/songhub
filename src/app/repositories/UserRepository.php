@@ -133,7 +133,9 @@ class UserRepository extends Repository
             $user->setEmail($userData["EMAIL_CONFIRMATION"], $userData["EMAIL"]);
             $user->setPassword($userData["PASSWORD"], $userData["PASSWORD_CONFIRMATION"]);
 
-            $this->queryBuilder->insert($this->table, $user->fields);
+            $id = $this->queryBuilder->insert($this->table, $user->fields);
+
+            $this->queryBuilder->insert("FOLLOW", ["FOLLOWER_ID" => $id, "FOLLOWED_ID" => $id]);
 
             return [true, "Usuario registrado con éxito"];
         } catch (InvalidValueException $exception) {
