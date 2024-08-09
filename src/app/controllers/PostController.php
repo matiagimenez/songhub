@@ -50,10 +50,13 @@ class PostController extends Controller
 
         $time_ago = $this->timeAgo($response["DATETIME"]);
 
+        $tags = $this->getPostTags($post_id);
+
         $post = [
             "id" => $response["POST_ID"],
             "timeAgo" => $time_ago,
             "description" => $response["DESCRIPTION"],
+            "tags" => $tags,
             "likes" => $response["LIKES"],
             "rating" => $response["RATING"],
             "content" => $content,
@@ -103,6 +106,12 @@ class PostController extends Controller
         }
     }
 
+    private function getPostTags($post_id) {
+        $tagController = new TagController();
+        $tags = $tagController->getTags($post_id);
+        return $tags;
+    }
+
     public function createPost()
     {   
         $postData = json_decode(file_get_contents('php://input'), true);
@@ -114,8 +123,6 @@ class PostController extends Controller
         $postID = $response["post_id"];
 
         $tagController = new TagController();
-        // TODO:
-        //   Recuperar El ID del Post
         $tagController->createTags($postData["TAGS"], $postID);
     }
 

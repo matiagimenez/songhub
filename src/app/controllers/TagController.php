@@ -26,4 +26,10 @@ class TagController extends Controller
         $this->repository->createTag($tagData);
     }
 
+    public function getTags($post_id)
+    {
+        $tags = $this->repository->getTags($post_id);
+        return $tags;
+    }
+
 }
