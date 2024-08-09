@@ -56,7 +56,7 @@ class UserController extends Controller
         // var_dump($posts);
         // die;
 
-        Renderer::getInstance()->profile($user, $country, $posts, $stats["following"], $stats["followers"], $favorites, $isFollowing, $message);
+        Renderer::getInstance()->profile($user, $country, $posts, $stats["following"], $stats["followers"], $favorites, $isFollowing, $message, $postsCount);
     }
 
     public function edit($message = "")
