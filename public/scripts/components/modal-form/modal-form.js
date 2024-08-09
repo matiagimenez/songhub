@@ -21,7 +21,6 @@ const { FAVORITE_ALBUMS, FAVORITE_TRACKS } =
 document.head.appendChild(link);
 
 function applyModalListeners(articles) {
-
 	articles.forEach((article) => {
 		const more_container = ElementBuilder.createElement('section', '', {
 			class: 'more-container',
@@ -235,13 +234,13 @@ function createModal(data) {
 	});
 
 	input_tag.addEventListener('input', (event) => {
-    tag_text = event.target.value;
+		tag_text = event.target.value;
 	});
 
 	input_tag.addEventListener('keydown', (event) => {
 		if (event.key === 'Enter') {
-				createNewTag();
-				event.preventDefault();
+			createNewTag();
+			event.preventDefault();
 		}
 	});
 
@@ -410,7 +409,6 @@ function createModal(data) {
 		event.preventDefault();
 
 		if (textarea.value.length > 0) {
-
 			const formData = new FormData(form);
 			const values = {};
 			formData.forEach((value, key) => {
@@ -423,7 +421,7 @@ function createModal(data) {
 			values['RATING'] = score_rating;
 			values['TAGS'] = tags_list;
 
-			console.log(values)
+			console.log(values);
 
 			if (score_rating === 0) {
 				view_error_message(
@@ -437,23 +435,24 @@ function createModal(data) {
 					},
 					body: JSON.stringify(values),
 				})
-				.then((response) => response.json())
-				.then((data) => {
-					close_modal(modal);
-				})
-				.catch((error) => {
-					console.error('Error:', error);
-				});
+					.then((response) => response.json())
+					.then((data) => {
+						close_modal(modal);
+						window.location.href = '/';
+					})
+					.catch((error) => {
+						console.error('Error:', error);
+					});
 			}
 		} else {
 			view_error_message('No es posible postear una cancion sin texto.');
 		}
-});
+	});
 
 	const submit_container = ElementBuilder.createElement('section', '', {
 		class: 'submit-container',
 	});
-	
+
 	submit_container.appendChild(back_button);
 	submit_container.appendChild(postear_button);
 
@@ -503,7 +502,6 @@ const main_header = document.getElementById('main-header');
 const html = document.querySelector('html');
 
 function applyPostFormListeners(post_form_openers, create_post) {
-
 	post_form_openers.forEach((opener) => {
 		opener.addEventListener('click', () => {
 			create_post !== null && create_post.classList.add('hidden');
