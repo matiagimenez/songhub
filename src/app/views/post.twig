@@ -12,7 +12,7 @@
 					<a href="profile.html">{{ post.user.username }}</a>
 					<span>@{{ post.user.username }}</span>
 				</p>
-				<p class="post-time">hace 8 horas</p>
+				<p class="post-time">{{ post.timeAgo }}</p>
 			</section>
 			<figcaption>
 				<h2 class="song-title" id="post-1-song-title">
@@ -51,7 +51,7 @@
 
 	<section id="comment-form-container">
 		<section class="user-info">
-			<img loading="lazy" class="user-img" height="25px" width="25px" src="https://i.pinimg.com/236x/94/7f/14/947f14841d26f5dc3541366a987b32f5.jpg" alt="Imagen de perfil de 'Usuario 1'"/>
+			<img loading="lazy" class="user-img" height="25px" width="25px" src="{{ currentUser.avatar }}" alt="Imagen de perfil de {{ currentUser.username }}"/>
 		</section>
 		<form action="/comment" method="POST">
 			<p>Responde a
@@ -78,12 +78,12 @@
 			<section class="post-content">
 				<p>
 					It has survived not only five centuries, but also
-															                        the leap into electronic typesetting, remaining
-															                        essentially unchanged. It was popularised in the
-															                        1960s with the release of Letraset sheets containing
-															                        Lorem Ipsum passages, and more recently with desktop
-															                        publishing software like Aldus PageMaker including
-															                        versions of Lorem Ipsum.
+																														                        the leap into electronic typesetting, remaining
+																														                        essentially unchanged. It was popularised in the
+																														                        1960s with the release of Letraset sheets containing
+																														                        Lorem Ipsum passages, and more recently with desktop
+																														                        publishing software like Aldus PageMaker including
+																														                        versions of Lorem Ipsum.
 				</p>
 			</section>
 			<footer>
@@ -116,12 +116,12 @@
 			<section class="post-content">
 				<p>
 					It has survived not only five centuries, but also
-															                        the leap into electronic typesetting, remaining
-															                        essentially unchanged. It was popularised in the
-															                        1960s with the release of Letraset sheets containing
-															                        Lorem Ipsum passages, and more recently with desktop
-															                        publishing software like Aldus PageMaker including
-															                        versions of Lorem Ipsum.
+																														                        the leap into electronic typesetting, remaining
+																														                        essentially unchanged. It was popularised in the
+																														                        1960s with the release of Letraset sheets containing
+																														                        Lorem Ipsum passages, and more recently with desktop
+																														                        publishing software like Aldus PageMaker including
+																														                        versions of Lorem Ipsum.
 				</p>
 			</section>
 			<footer>
@@ -154,12 +154,12 @@
 			<section class="post-content">
 				<p>
 					It has survived not only five centuries, but also
-															                        the leap into electronic typesetting, remaining
-															                        essentially unchanged. It was popularised in the
-															                        1960s with the release of Letraset sheets containing
-															                        Lorem Ipsum passages, and more recently with desktop
-															                        publishing software like Aldus PageMaker including
-															                        versions of Lorem Ipsum.
+																														                        the leap into electronic typesetting, remaining
+																														                        essentially unchanged. It was popularised in the
+																														                        1960s with the release of Letraset sheets containing
+																														                        Lorem Ipsum passages, and more recently with desktop
+																														                        publishing software like Aldus PageMaker including
+																														                        versions of Lorem Ipsum.
 				</p>
 			</section>
 			<footer>
