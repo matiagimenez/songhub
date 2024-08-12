@@ -67,7 +67,7 @@ export const routes = {
 		{
 			scriptName: 'follow-handler',
 			scriptPath: '/scripts/components/follow-handler/follow-handler.js',
-		}
+		},
 	],
 	'/following': [
 		{
@@ -85,7 +85,7 @@ export const routes = {
 		{
 			scriptName: 'follow-handler',
 			scriptPath: '/scripts/components/follow-handler/follow-handler.js',
-		}
+		},
 	],
 
 	'/post': [
@@ -140,6 +140,10 @@ export const routes = {
 		{
 			scriptName: 'action-button-animation',
 			scriptPath: '/scripts/animations/action-button-animation.js',
+		},
+		{
+			scriptName: 'feed',
+			scriptPath: '/scripts/components/feed/feed.js',
 		},
 	],
 	'/search': [
@@ -304,14 +308,10 @@ export const routes = {
 			scriptName: 'post-content',
 			scriptPath: '/scripts/components/post/post-content.js',
 		},
-		// {
-		// 	scriptName: 'hover-img',
-		// 	scriptPath: '../scripts/components/song&album-img/hover-img.js',
-		// },
-		// {
-		// 	scriptName: 'modal-form',
-		// 	scriptPath: '/scripts/components/modal-form/modal-form.js',
-		// },
+		{
+			scriptName: 'feed',
+			scriptPath: '/scripts/components/feed/feed.js',
+		},
 		{
 			scriptName: 'likes-counter-animation',
 			scriptPath: '/scripts/animations/likes-counter-animation.js',

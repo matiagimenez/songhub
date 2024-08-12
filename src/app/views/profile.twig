@@ -123,7 +123,6 @@
             {% endfor %}
         {% endif %}
     </section>
-    <!-- se debe cambiar aria-busy="true" cuando se esté cargando/actualizando el feed -->
     <section class="recent-activity feed">
         <h2 class="section-title">Actividad reciente</h2>
         {% if posts|length == 0 %}
@@ -136,9 +135,6 @@
             </p>
         {% else %}
             {% for post in posts %}
-                    <!-- se debe actualizar aria-setsize="n" siendo n la cantidad de post cargados en el feed.
-                        Algo como ir llevando una variable acumuladora con la cantidad de post que se van cargando
-                                y actualizar el valor de aria-setsize con el valor de esa variable acumuladora. -->
                 <article tabindex="0" class="post add-modal-access" id="post-{{ post.POST_ID }}" aria-posinset="{{ loop.index }}" aria-setsize="{{ posts|length }}" aria-labelledby="post-{{ post.POST_ID }}-song-title post-{{ post.POST_ID }}-artist-title" aria-describedby="post-content-{{ post.POST_ID }}">
                     <figure>
                         <section class="article-img-container">
