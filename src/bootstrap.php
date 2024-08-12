@@ -77,11 +77,17 @@ $router->get('/artist', 'ArtistController@getArtist');
 $router->get('/error/internal-error', 'ErrorController@internalError');
 $router->get('/error/not-found', 'ErrorController@notFound');
 
-
+// Follow
 $router->get('/following', 'FollowController@following');
 $router->get('/followers', 'FollowController@followers');
 $router->get('/follow/user', 'FollowController@follow');
 $router->delete('/unfollow/user', 'FollowController@unfollow');
+
+// Comment
+$router->get('/comment', 'CommentController@comment');
+$router->post('/comment/create', 'CommentController@createComment');
+$router->get('/comment/delete', 'CommentController@deleteComment');
+$router->get('/comment/edit', 'CommentController@editComment');
 
 
 

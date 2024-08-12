@@ -6,6 +6,7 @@ use Songhub\core\Request;
 use Songhub\core\Renderer;
 use Songhub\core\Session;
 use Songhub\app\repositories\PostRepository;
+use Songhub\app\repositories\CommentRepository;
 use Songhub\app\repositories\UserRepository;
 use Songhub\app\controllers\TagController;
 use DateTime;
@@ -29,7 +30,7 @@ class PostController extends Controller
 
         $post_id = $this->sanitizeUserInput(Request::getInstance()->getParameter("id", "GET"));
         $response = $this->repository->getPost($post_id);
-
+        
         $content = [
             "spotifyId" => $response["SPOTIFY_ID"],
             "averageRating" => $response["RATING"],
@@ -38,26 +39,28 @@ class PostController extends Controller
             "spotifyPreviewUrl" => $response["SPOTIFY_PREVIEW_URL"],
             "type" => $response["TYPE"],
         ];
-
+        
         $artist = [
             "id" => $response["ARTIST_ID"],
             "name" => $response["NAME"],
         ];
-
+        
         $cover = [
             "id" => $response["COVER_ID"],  
         ];
-
+        
         $posterUser = [
             "id" => $response["USER_ID"],
             "username" => $response["USERNAME"],
             "avatar" => $response["SPOTIFY_AVATAR"],
         ];
-
+        
         $time_ago = $this->timeAgo($response["DATETIME"]);
-
+        
         $tags = $this->getPostTags($post_id);
-
+        
+        $comments = $this->getPostComments($post_id);
+        
         $post = [
             "id" => $response["POST_ID"],
             "timeAgo" => $time_ago,
@@ -68,7 +71,8 @@ class PostController extends Controller
             "content" => $content,
             "artist" => $artist,
             "cover" => $cover,
-            "user" => $posterUser
+            "user" => $posterUser,
+            "comments" => $comments
         ];
 
         $userInstance = $this->getCurrentUser();
@@ -80,6 +84,37 @@ class PostController extends Controller
         ];
 
         Renderer::getInstance()->post($post, $currentUser);
+    }
+
+    private function getPostComments($post_id)
+    {
+        $commentRepository = new CommentRepository();
+        $comments = $commentRepository->getComments($post_id);
+
+        $userRepository = new UserRepository();
+        $response = [];
+        foreach ($comments as $comment)
+        {
+            $user = $userRepository->getUser("USER_ID", $comment["USER_ID"]);
+
+            $commentUser = [
+                "id" => $user->fields["USER_ID"],
+                "username" => $user->fields["USERNAME"],
+                "avatar" => $user->fields["SPOTIFY_AVATAR"]
+            ];
+            
+            $time_ago = $this->timeAgo($comment["DATETIME"]);
+
+            $commentData = [
+                "id" => $comment["COMMENT_ID"],
+                "text" => $comment["TEXT"],
+                "datetime" => $time_ago,
+                "likes" => $comment["LIKES"],
+                "user" => $commentUser,
+            ];
+            array_push($response, $commentData);
+        }
+        return $response;
     }
 
     public function getCurrentUser()
