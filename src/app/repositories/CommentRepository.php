@@ -13,8 +13,14 @@ class CommentRepository extends Repository
 
     public function getComments(int $post_id)
     {
-        // TODO:
-        //   Armar un querie para pedir la lista de comentarios de un post
+        try {
+            $comments = $this->queryBuilder->selectByColumn($this->table, "POST_ID", $post_id);
+            return $comments;
+        } catch (InvalidValueException $exception) {
+            return [false, $exception->getMessage()];
+        } catch (Exception $exception) {
+            return [false, "Error al registrar Comment"];
+        }
     }
     
     public function getComment(int $comment_id)
@@ -36,7 +42,7 @@ class CommentRepository extends Repository
         $comment = new Comment();
         try {
 
-            $Comment->set($commentData);
+            $comment->set($commentData);
             $this->queryBuilder->insert($this->table, $comment->fields);
             return [true, "Nuevo Comment registrado"];
         } catch (InvalidValueException $exception) {

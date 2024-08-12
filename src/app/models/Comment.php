@@ -4,7 +4,7 @@ namespace Songhub\app\models;
 
 use Songhub\core\exceptions\InvalidValueException;
 
-class User
+class Comment
 {
     public $fields = [
       "COMMENT_ID" => null,
@@ -25,23 +25,9 @@ class User
         $this->fields["LIKES"] = $likes;
       }
       
-      public function setDate(Date $date)
-      {
-        if (!(date_create($date))) {
-          throw new InvalidValueException('Formato de fecha incompatible');
-        }
-        
-        list($year, $month, $day) = explode('-', $date);
-        if (!checkdate($month, $day, $year)) {
-          throw new InvalidValueException('Formato de fecha incompatible');
-        }
-        
-        $currentDate = new DateTime();
-        if ($date < $currentDate->format('Y-m-d')) {
-          throw new InvalidValueException('Formato de fecha incompatible');
-        }
-        
-        $this->fields["DATE"] = $date;
+      public function setDatetime($date)
+      {        
+        $this->fields["DATETIME"] = $date;
       }
       
       public function setText(string $text)

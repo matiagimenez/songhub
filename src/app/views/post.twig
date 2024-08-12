@@ -10,7 +10,7 @@
 			<section class="user-info">
 				<img loading="lazy" class="user-img" height="25px" width="25px" src="{{ post.user.avatar }}" alt="Imagen de perfil de {{ post.user.username }}"/>
 				<p class="user-name">
-					<a href="profile.html">{{ post.user.username }}</a>
+					<a href="user?username={{ post.user.username }}">{{ post.user.username }}</a>
 					<span>@{{ post.user.username }}</span>
 				</p>
 				<p class="post-time">{{ post.timeAgo }}</p>
@@ -63,131 +63,53 @@
 		<section class="user-info">
 			<img loading="lazy" class="user-img" height="25px" width="25px" src="{{ currentUser.avatar }}" alt="Imagen de perfil de {{ currentUser.username }}"/>
 		</section>
-		<form action="/comment" method="POST">
+		<form action="/comment/create" method="POST">
 			<p>Responde a
-				<a href="/profile">@{{ post.user.username }}</a>
+				<a href="/user?username={{ post.user.username }}">@{{ post.user.username }}</a>
 			</p>
 			<p>
 				<div>
-					<textarea class='input' required placeholder="Agrega un comentario..."></textarea>
-					<input type="submit" class="submit-button" value="Comentar"/></div>
+					<textarea name="text" class='input' required placeholder="Agrega un comentario..."></textarea>
+					<input type="hidden" name="post_id" value="{{ post.id }}">
+					<input type="submit" class="submit-button" value="Comentar"/>
+				</div>
 			</p>
 		</form>
 	</section>
 
 	<section class="comments">
-		<article class="post" id="post_1_1">
-			<header class="user-info">
-				<img loading="lazy" class="user-img" src="https://i.pinimg.com/236x/2d/92/d0/2d92d085613a400e12fbadacc019e0e2.jpg" alt="Imagen de perfil de 'Usuario 2'" height="50px" width="50px"/>
-				<p class="user-name">
-					<a href="profile.html">Usuario 2</a>
-					<span>@username2</span>
-					<span class="post-time">hace 8 horas</span>
-				</p>
-			</header>
-			<section class="post-content">
-				<p>
-					It has survived not only five centuries, but also
-																																																																											                        the leap into electronic typesetting, remaining
-																																																																											                        essentially unchanged. It was popularised in the
-																																																																											                        1960s with the release of Letraset sheets containing
-																																																																											                        Lorem Ipsum passages, and more recently with desktop
-																																																																											                        publishing software like Aldus PageMaker including
-																																																																											                        versions of Lorem Ipsum.
-				</p>
-			</section>
-			<footer>
-				<section class="reaction-container comment-container">
-					<button>
-						<i class="ph ph-chats-circle icon comment-icon"></i>
-						<span class="visually-hidden">Comentar post</span>
-					</button>
-					<p>20</p>
+		{% for comment in post.comments %}
+			<article class="post" id="{{ comment.COMMENT_ID }}">
+				<header class="user-info">
+					<img loading="lazy" class="user-img" src="https://i.pinimg.com/236x/2d/92/d0/2d92d085613a400e12fbadacc019e0e2.jpg" alt="Imagen de perfil de 'Usuario 2'" height="50px" width="50px"/>
+					<p class="user-name">
+						<a href="profile.html">Usuario 2</a>
+						<span>@username2</span>
+						<span class="post-time">hace 8 horas</span>
+					</p>
+				</header>
+				<section class="post-content">
+					<p>
+						{{ comment.TEXT }}
+					</p>
 				</section>
-				<section class="reaction-container like-container">
-					<button class="heart-button">
-						<i class="ph ph-heart icon heart-icon"></i>
-						<span class="visually-hidden">Dar favorito al post</span>
-					</button>
-					<p>1008</p>
-				</section>
-			</footer>
-		</article>
-
-		<article class="post" id="post_1_2">
-			<header class="user-info">
-				<img loading="lazy" class="user-img" src="https://i.pinimg.com/564x/d4/36/ba/d436bae8fa33079d14e74b2213c0183a.jpg" alt="Imagen de perfil de 'Usuario 3'" height="50px" width="50px"/>
-				<p class="user-name">
-					<a href="profile.html">Usuario 3</a>
-					<span>@username3</span>
-					<span class="post-time">hace 4h</span>
-				</p>
-			</header>
-			<section class="post-content">
-				<p>
-					It has survived not only five centuries, but also
-																																																																											                        the leap into electronic typesetting, remaining
-																																																																											                        essentially unchanged. It was popularised in the
-																																																																											                        1960s with the release of Letraset sheets containing
-																																																																											                        Lorem Ipsum passages, and more recently with desktop
-																																																																											                        publishing software like Aldus PageMaker including
-																																																																											                        versions of Lorem Ipsum.
-				</p>
-			</section>
-			<footer>
-				<section class="reaction-container comment-container">
-					<button>
-						<i class="ph ph-chats-circle icon comment-icon"></i>
-						<span class="visually-hidden">Comentar post</span>
-					</button>
-					<p>20</p>
-				</section>
-				<section class="reaction-container like-container">
-					<button class="heart-button">
-						<i class="ph ph-heart icon heart-icon"></i>
-						<span class="visually-hidden">Dar favorito al post</span>
-					</button>
-					<p>1008</p>
-				</section>
-			</footer>
-		</article>
-
-		<article class="post" id="post_1_3">
-			<header class="user-info">
-				<img loading="lazy" class="user-img" src="https://i.pinimg.com/564x/d4/36/ba/d436bae8fa33079d14e74b2213c0183a.jpg" alt="Imagen de perfil de 'Usuario 3'" height="50px" width="50px"/>
-				<p class="user-name">
-					<a href="profile.html">Usuario 3</a>
-					<span>@username3</span>
-					<span class="post-time">hace 4h</span>
-				</p>
-			</header>
-			<section class="post-content">
-				<p>
-					It has survived not only five centuries, but also
-																																																																											                        the leap into electronic typesetting, remaining
-																																																																											                        essentially unchanged. It was popularised in the
-																																																																											                        1960s with the release of Letraset sheets containing
-																																																																											                        Lorem Ipsum passages, and more recently with desktop
-																																																																											                        publishing software like Aldus PageMaker including
-																																																																											                        versions of Lorem Ipsum.
-				</p>
-			</section>
-			<footer>
-				<section class="reaction-container comment-container">
-					<button>
-						<i class="ph ph-chats-circle icon comment-icon"></i>
-						<span class="visually-hidden">Comentar post</span>
-					</button>
-					<p>20</p>
-				</section>
-				<section class="reaction-container like-container">
-					<button class="heart-button">
-						<i class="ph ph-heart icon heart-icon"></i>
-						<span class="visually-hidden">Dar favorito al post</span>
-					</button>
-					<p>1008</p>
-				</section>
-			</footer>
-		</article>
+				<footer>
+					<section class="reaction-container comment-container">
+						<button>
+							<i class="ph ph-chats-circle icon comment-icon"></i>
+							<span class="visually-hidden">Comentar post</span>
+						</button>
+						<p>20</p>
+					</section>
+					<section class="reaction-container like-container">
+						<button class="heart-button">
+							<i class="ph ph-heart icon heart-icon"></i>
+							<span class="visually-hidden">Dar favorito al post</span>
+						</button>
+						<p>{{ comment.LIKES }}</p>
+					</section>
+				</footer>
+			</article>
+		{% endfor %}
 	</section>
 {% endblock %}

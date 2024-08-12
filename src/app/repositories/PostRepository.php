@@ -128,10 +128,6 @@ class PostRepository extends Repository
                 'POST.POST_ID', // Asegúrate de que está especificado con su tabla
                 1
             );
-            // ob_clean();
-            // header('Content-Type: application/json');
-            // echo json_encode($post);
-            // exit;
             // $postItem = $post[0];
             // $postInstance->set($postItem);    
             return $post[0];
