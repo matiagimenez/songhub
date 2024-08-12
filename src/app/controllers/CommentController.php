@@ -44,16 +44,31 @@ class CommentController extends Controller
         $currUser = $userRepository->getUser("USERNAME", Session::getInstance()->get("username"));
         return $currUser;
     }
+    
+    // public function getComments($post_id)
+    // {
+    //     $comments = $this->repository->getComments($post_id);
+    //     $userRepository = new UserRepository();
+    //     $response = [];
+    //     foreach ($comments as $comment)
+    //     {
+    //         $user = $userRepository->getUser("USER_ID", $comment["USER_ID"]);
 
-    public function getComments($post_id)
-    {
-        $comments = $this->repository->getComments($post_id);
-        foreach ($comments as $comment)
-        {
-            $user = $this->repository->getUser("USER_ID", $comment["USER_ID"]);
-            $comment["USER"] = $user;
-        }
-        echo json_encode($comments);
-        exit;
-    }
+    //         $commentUser = [
+    //             "id" => $user->fields["USER_ID"],
+    //             "username" => $user->fields["USERNAME"],
+    //             "avatar" => $user->fields["SPOTIFY_AVATAR"]
+    //         ];
+
+    //         $commentData = [
+    //             "id" => $comment["COMMENT_ID"],
+    //             "text" => $comment["TEXT"],
+    //             "datetime" => $comment["DATETIME"],
+    //             "likes" => $comment["LIKES"],
+    //             "user" => $commentUser,
+    //         ];
+    //         array_push($response, $commentData);
+    //     }
+    //     return $response;
+    // }
 }

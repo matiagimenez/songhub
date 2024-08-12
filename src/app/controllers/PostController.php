@@ -84,7 +84,31 @@ class PostController extends Controller
     {
         $commentRepository = new CommentRepository();
         $comments = $commentRepository->getComments($post_id);
-        return $comments;
+
+        $userRepository = new UserRepository();
+        $response = [];
+        foreach ($comments as $comment)
+        {
+            $user = $userRepository->getUser("USER_ID", $comment["USER_ID"]);
+
+            $commentUser = [
+                "id" => $user->fields["USER_ID"],
+                "username" => $user->fields["USERNAME"],
+                "avatar" => $user->fields["SPOTIFY_AVATAR"]
+            ];
+            
+            $time_ago = $this->timeAgo($comment["DATETIME"]);
+
+            $commentData = [
+                "id" => $comment["COMMENT_ID"],
+                "text" => $comment["TEXT"],
+                "datetime" => $time_ago,
+                "likes" => $comment["LIKES"],
+                "user" => $commentUser,
+            ];
+            array_push($response, $commentData);
+        }
+        return $response;
     }
 
     public function getCurrentUser()

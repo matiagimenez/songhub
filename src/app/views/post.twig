@@ -79,18 +79,18 @@
 
 	<section class="comments">
 		{% for comment in post.comments %}
-			<article class="post" id="{{ comment.COMMENT_ID }}">
+			<article class="post" id="{{ comment.id }}">
 				<header class="user-info">
-					<img loading="lazy" class="user-img" src="https://i.pinimg.com/236x/2d/92/d0/2d92d085613a400e12fbadacc019e0e2.jpg" alt="Imagen de perfil de 'Usuario 2'" height="50px" width="50px"/>
+					<img loading="lazy" class="user-img" src="{{ comment.user.avatar }}" alt="Imagen de perfil de {{ comment.user.username }}" height="50px" width="50px"/>
 					<p class="user-name">
-						<a href="profile.html">Usuario 2</a>
-						<span>@username2</span>
-						<span class="post-time">hace 8 horas</span>
+						<a href="/user?username={{ comment.user.username }}">{{ comment.user.username }}</a>
+						<span>@{{ comment.user.username }}</span>
+						<span class="post-time">{{ comment.datetime }}</span>
 					</p>
 				</header>
 				<section class="post-content">
 					<p>
-						{{ comment.TEXT }}
+						{{ comment.text }}
 					</p>
 				</section>
 				<footer>
@@ -106,7 +106,7 @@
 							<i class="ph ph-heart icon heart-icon"></i>
 							<span class="visually-hidden">Dar favorito al post</span>
 						</button>
-						<p>{{ comment.LIKES }}</p>
+						<p>{{ comment.likes }}</p>
 					</section>
 				</footer>
 			</article>

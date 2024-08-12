@@ -14,7 +14,8 @@ class CommentRepository extends Repository
     public function getComments(int $post_id)
     {
         try {
-            $comments = $this->queryBuilder->selectByColumn($this->table, "POST_ID", $post_id);
+            // $comments = $this->queryBuilder->selectByColumn($this->table, "POST_ID", $post_id);
+            $comments = $this->queryBuilder->selectByColumnInDescOrder($this->table, "POST_ID", $post_id, "DATETIME");
             return $comments;
         } catch (InvalidValueException $exception) {
             return [false, $exception->getMessage()];
