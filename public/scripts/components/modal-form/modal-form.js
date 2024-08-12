@@ -262,10 +262,14 @@ function createModal(data) {
 	function createNewTag() {
 		if (tag_text !== '') {
 			if (tags_count < 3) {
-				tags_list.push(tag_text);
-				const tag = ElementBuilder.createElement('span', tag_text, {
-					class: 'tag',
-				});
+				tags_list.push(tag_text.toLowerCase());
+				const tag = ElementBuilder.createElement(
+					'span',
+					tag_text.toLowerCase(),
+					{
+						class: 'tag',
+					}
+				);
 				const remove_tag_button = ElementBuilder.createElement(
 					'button',
 					'',
@@ -301,7 +305,6 @@ function createModal(data) {
 		tags_list = tags_list.filter((t) => t !== tag.textContent.trim());
 		tags.removeChild(tag);
 		tags_count -= 1;
-		// TODO: Quitar tag de la lista de tags
 	}
 
 	const tag_section = ElementBuilder.createElement('section', '', {
