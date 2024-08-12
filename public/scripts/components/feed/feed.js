@@ -140,6 +140,11 @@ window.addEventListener('scroll', () => {
 				feed.appendChild(postElement);
 			});
 
+			const posts = document.querySelectorAll('article.post');
+			posts.forEach((post) => {
+				post.setAttribute('aria-setsize', totalPosts);
+			});
+
 			feed.setAttribute('aria-busy', false);
 		} catch (error) {
 			console.error(error);
