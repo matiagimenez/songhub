@@ -3,6 +3,7 @@ import { ElementBuilder } from '../../utils/ElementBuilder.js';
 let postCount = 10;
 let totalPosts = 10;
 let currentPage = 0;
+let endOfTheFeed = false;
 
 const link = ElementBuilder.createElement('link', '', {
 	rel: 'stylesheet',
@@ -53,11 +54,11 @@ window.addEventListener('scroll', () => {
 			const response = await fetch(`${endpoint}?page=${currentPage + 1}`);
 			const data = await response.json();
 
-			console.log(data);
 			removeLoader();
 
 			if (data.length === 0) {
 				feed.setAttribute('aria-busy', false);
+				endOfTheFeed = true;
 				return;
 			}
 
@@ -152,6 +153,9 @@ window.addEventListener('scroll', () => {
 	// Verifico si el scroll está en el final de página
 	if (scrollPosition >= totalHeight && !isLoading) {
 		console.log('Reached the bottom of the page');
+
+		if (endOfTheFeed) return;
+
 		addLoader();
 		fetchPosts();
 	}
