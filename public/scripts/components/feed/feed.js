@@ -154,7 +154,8 @@ window.addEventListener('scroll', () => {
 	}
 
 	const scrollPosition = Math.ceil(window.scrollY + window.innerHeight);
-	const totalHeight = document.documentElement.scrollHeight;
+	/* Si el usuario se encuentra en los últimos 50px de página, se dispara la recarga */
+	const totalHeight = document.documentElement.scrollHeight - 50;
 	const isLoading = document.querySelector('div.feed-loader');
 
 	// Verifico si el scroll está en el final de página
