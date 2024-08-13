@@ -47,11 +47,13 @@ window.addEventListener('scroll', () => {
 
 		if (!endpoint) return;
 
-		console.log(`Fetching posts to ${endpoint}...`);
 		feed.setAttribute('aria-busy', true);
+
+		console.log(`Fetching posts to ${endpoint}?page=${currentPage + 1}...`);
 
 		try {
 			const response = await fetch(`${endpoint}?page=${currentPage + 1}`);
+
 			const data = await response.json();
 
 			removeLoader();
@@ -151,14 +153,12 @@ window.addEventListener('scroll', () => {
 		}
 	}
 
-	const scrollPosition = window.scrollY + window.innerHeight;
+	const scrollPosition = Math.ceil(window.scrollY + window.innerHeight);
 	const totalHeight = document.documentElement.scrollHeight;
 	const isLoading = document.querySelector('div.feed-loader');
 
 	// Verifico si el scroll está en el final de página
 	if (scrollPosition >= totalHeight && !isLoading) {
-		console.log('Reached the bottom of the page');
-
 		if (endOfTheFeed) return;
 
 		addLoader();
