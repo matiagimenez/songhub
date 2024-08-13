@@ -43,10 +43,16 @@ class PostRepository extends Repository
             $tagRepository = new TagRepository();
             $tagRepository->setQueryBuilder($this->queryBuilder);
 
+            $userRepository = new UserRepository();
+            $userRepository->setQueryBuilder($this->queryBuilder);
+
+            $user = $userRepository->getUser("USER_ID", $userId);
+
             foreach ($posts as &$post) {
                 $tags = $tagRepository->getTags($post["POST_ID"]);
                 $post["TAGS"] = $tags;
                 $post['TIME_AGO'] = $this->timeAgo($post['DATETIME']);
+                $post['USER'] = $user;
             }
 
             return $posts;
