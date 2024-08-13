@@ -220,6 +220,7 @@ function createModal(data) {
 		cols: '40',
 		rows: '10',
 		class: 'input',
+		maxlength: 255,
 		required: true,
 	});
 
