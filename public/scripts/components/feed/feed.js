@@ -54,7 +54,7 @@ window.addEventListener('scroll', () => {
 			const response = await fetch(`${endpoint}?page=${currentPage + 1}`);
 			const data = await response.json();
 
-			removeLoader();
+			// removeLoader();
 
 			if (data.length === 0) {
 				feed.setAttribute('aria-busy', false);
@@ -100,7 +100,7 @@ window.addEventListener('scroll', () => {
                             <img loading="lazy" class="user-img" height="25px" width="25px" src="${post.USER.fields.SPOTIFY_AVATAR}" alt="Imagen de perfil de '{{ post.USER.fields.USERNAME }}'" />
                             <p class="user-name">
                             	<a href="/user?username=${post.USER.fields.USERNAME}">${post.USER.fields.NAME}</a>
-                                <span>${post.USER.fields.USERNAME}</span>
+                                <span>$${post.USER.fields.USERNAME}</span>
                             </p>
                             <p class="post-time">${post.TIME_AGO}</p>
                         </section>
