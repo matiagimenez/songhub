@@ -118,10 +118,6 @@ export const routes = {
 			scriptPath: '/scripts/animations/menu-animation.js',
 		},
 		{
-			scriptName: 'post-content',
-			scriptPath: '/scripts/components/post/post-content.js',
-		},
-		{
 			scriptName: 'share-menu',
 			scriptPath: '/scripts/components/share-menu/share-menu.js',
 		},
@@ -172,10 +168,6 @@ export const routes = {
 		{
 			scriptName: 'menu-animation',
 			scriptPath: '/scripts/animations/menu-animation.js',
-		},
-		{
-			scriptName: 'post-content',
-			scriptPath: '/scripts/components/post/post-content.js',
 		},
 		{
 			scriptName: 'modal-form',
@@ -304,10 +296,6 @@ export const routes = {
 		// 	scriptName: 'post-share',
 		// 	scriptPath: '../scripts/components/post/post-share.js',
 		// },
-		{
-			scriptName: 'post-content',
-			scriptPath: '/scripts/components/post/post-content.js',
-		},
 		{
 			scriptName: 'feed',
 			scriptPath: '/scripts/components/feed/feed.js',
