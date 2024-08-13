@@ -54,7 +54,7 @@ window.addEventListener('scroll', () => {
 			const response = await fetch(`${endpoint}?page=${currentPage + 1}`);
 			const data = await response.json();
 
-			// removeLoader();
+			removeLoader();
 
 			if (data.length === 0) {
 				feed.setAttribute('aria-busy', false);
