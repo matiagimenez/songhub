@@ -38,6 +38,7 @@ class Renderer
             'style' => "home",
             'posts' => $posts,
             'username' => $username,
+            "currentUrl" => "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"],
             'show_footer' => false, 
             "show_header" => true,
             "show_feed" => $isLoggedIn
@@ -47,25 +48,25 @@ class Renderer
     public function login($message = "", $error = false, $email="")
     {
         $template = $this->templateLoader->load('login.twig');
-        echo $template->render(['title' => 'Iniciar sesión', 'style' => 'login', "show_footer" => false, "show_header" => false, "error" => $error, "message" => $message, "email" => $email]);
+        echo $template->render(['title' => 'Iniciar sesión', 'style' => 'login', "currentUrl" => "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"], "show_footer" => false, "show_header" => false, "error" => $error, "message" => $message, "email" => $email]);
     }
 
     public function register($message = "", $error = false, $currentUserData = null)
     {
         $template = $this->templateLoader->load('register.twig');
-        echo $template->render(['title' => 'Registrarme', 'style' => 'register', "show_footer" => false, "show_header" => false, "error" => $error, "message" => $message, "currentUserData" => $currentUserData]);
+        echo $template->render(['title' => 'Registrarme', 'style' => 'register', "currentUrl" => "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"], "show_footer" => false, "show_header" => false, "error" => $error, "message" => $message, "currentUserData" => $currentUserData]);
     }
     
     public function following()
     {
         $template = $this->templateLoader->load('following.twig');
-        echo $template->render(['title' => 'Seguidos', 'style' => 'follow', "show_footer" => false, "show_header" => true]);
+        echo $template->render(['title' => 'Seguidos', 'style' => 'follow', "currentUrl" => "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"], "show_footer" => false, "show_header" => true]);
     }
 
     public function followers()
     {
         $template = $this->templateLoader->load('followers.twig');
-        echo $template->render(['title' => 'Seguidores', 'style' => 'follow', "show_footer" => false, "show_header" => true]); 
+        echo $template->render(['title' => 'Seguidores', 'style' => 'follow', "currentUrl" => "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"], "show_footer" => false, "show_header" => true]); 
     }
     
     public function explore($recentActivity, $newReleases, $recommendations, $userTopTracks, $username)
@@ -83,6 +84,7 @@ class Renderer
             'recommendations' => $recommendations,
             'userTopTracks' => $userTopTracks,
             'newReleases' => $newReleases,
+            "currentUrl" => "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"],
             'show_footer' => true, 
             "show_header" => true
         ]);
@@ -96,8 +98,6 @@ class Renderer
 
         $template = $this->templateLoader->load('content.twig');
 
-        $url = "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
-
         echo $template->render([
             'title' => $title,
             'style' => $style,
@@ -107,7 +107,7 @@ class Renderer
             'averageRating' => $averageRating,
             'postsCount' => $postsCount,
             'username' => $username,
-            "currentUrl" => $url,
+            "currentUrl" => "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"],
             'show_footer' => false, 
             "show_header" => true
         ]);
@@ -125,6 +125,7 @@ class Renderer
             'username' => $username,
             'post' => $post,
             'currentUser' => $currentUser,
+            "currentUrl" => "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"],
             'show_footer' => false, 
             "show_header" => true
         ]);
@@ -138,7 +139,7 @@ class Renderer
         $username = $this->getUsername();
 
         $template = $this->templateLoader->load('error.twig');
-        echo $template->render(['message' => $message,'type' => $type, 'title' => 'Not found', 'style' => 'error', "show_footer" => true, "show_header" => true, "username" => $username]);
+        echo $template->render(['message' => $message,'type' => $type, 'title' => 'Not found', 'style' => 'error', "currentUrl" => "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"], "show_footer" => true, "show_header" => true, "username" => $username]);
     }
 
     public function internalError()
@@ -149,7 +150,7 @@ class Renderer
         $username = $this->getUsername();
 
         $template = $this->templateLoader->load('error.twig');
-        echo $template->render(['message' => $message,'type' => $type, 'title' => 'Server error', 'style' => 'error', "show_footer" => true, "show_header" => true, "username" => $username]);
+        echo $template->render(['message' => $message,'type' => $type, 'title' => 'Server error', 'style' => 'error', "currentUrl" => "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"], "show_footer" => true, "show_header" => true, "username" => $username]);
     }
 
     public function edit_password($message = "")
@@ -157,13 +158,13 @@ class Renderer
         $username = $this->getUsername();
 
         $template = $this->templateLoader->load('edit-password.twig');
-        echo $template->render(['title' => 'Configuración', 'style' => 'edit-password', "message" => $message, "show_footer" => true, "show_header" => true, "username" => $username]);
+        echo $template->render(['title' => 'Configuración', 'style' => 'edit-password', "message" => $message, "currentUrl" => "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"], "show_footer" => true, "show_header" => true, "username" => $username]);
     }
 
     public function password_recovery($message = "", $error = false, $confirmation = false)
     {
         $template = $this->templateLoader->load('password-recovery.twig');
-        echo $template->render(['title' => 'Configuración', 'style' => 'password-recovery', "message" => $message, "show_footer" => true, "show_header" => true, "username" => null, "confirmation" => $confirmation, "error"=>$error]);
+        echo $template->render(['title' => 'Configuración', 'style' => 'password-recovery', "message" => $message, "currentUrl" => "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"], "show_footer" => true, "show_header" => true, "username" => null, "confirmation" => $confirmation, "error"=>$error]);
     }
     
     public function terms_conditions()
@@ -171,7 +172,7 @@ class Renderer
         $username = $this->getUsername();
 
         $template = $this->templateLoader->load('terms-conditions.twig');
-        echo $template->render(['title' => 'Términos y condiciones', 'style' => 'terms-conditions', "show_header" => true, "show_footer" => true, "username" => $username]);
+        echo $template->render(['title' => 'Términos y condiciones', 'style' => 'terms-conditions', "currentUrl" => "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"], "show_header" => true, "show_footer" => true, "username" => $username]);
     }
     
 
@@ -195,6 +196,7 @@ class Renderer
             'postsCount' => $postsCount,
             'favorites' => $favorites,
             'isFollowing' => $isFollowing,
+            "currentUrl" => "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"],
             'message' => $message,
             'show_footer' => false, 
             "show_header" => true
@@ -219,6 +221,7 @@ class Renderer
             'countries' => $countries,
             'userNationality' => $userNationality,
             'message' => $message,
+            "currentUrl" => "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"],
             'show_footer' => false, 
             "show_header" => true
         ]);
