@@ -94,11 +94,6 @@ export const routes = {
 			scriptPath: '/scripts/animations/menu-animation.js',
 		},
 		{
-			scriptName: 'share-menu',
-			scriptPath: '/scripts/components/share-menu/share-menu.js',
-		},
-
-		{
 			scriptName: 'likes-counter-animation',
 			scriptPath: '/scripts/animations/likes-counter-animation.js',
 		},
@@ -116,10 +111,6 @@ export const routes = {
 		{
 			scriptName: 'menu-animation',
 			scriptPath: '/scripts/animations/menu-animation.js',
-		},
-		{
-			scriptName: 'share-menu',
-			scriptPath: '/scripts/components/share-menu/share-menu.js',
 		},
 		{
 			scriptName: 'likes-counter-animation',
@@ -172,10 +163,6 @@ export const routes = {
 		{
 			scriptName: 'modal-form',
 			scriptPath: '/scripts/components/modal-form/modal-form.js',
-		},
-		{
-			scriptName: 'share-menu',
-			scriptPath: '/scripts/components/share-menu/share-menu.js',
 		},
 		{
 			scriptName: 'favorite-button',

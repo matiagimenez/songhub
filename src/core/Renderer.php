@@ -96,6 +96,8 @@ class Renderer
 
         $template = $this->templateLoader->load('content.twig');
 
+        $url = "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+
         echo $template->render([
             'title' => $title,
             'style' => $style,
@@ -105,6 +107,7 @@ class Renderer
             'averageRating' => $averageRating,
             'postsCount' => $postsCount,
             'username' => $username,
+            "currentUrl" => $url,
             'show_footer' => false, 
             "show_header" => true
         ]);

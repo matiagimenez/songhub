@@ -1,5 +1,5 @@
 {% extends 'base.twig' %}
-{% block extra_head %}
+{% block extra_head %}    
     <script type="application/ld+json">
         {% if content.type == 'track' %}
             {
@@ -102,19 +102,17 @@
                     </a>
                 {% endif %}
                 {% if content.type == 'track' %}
-                    <button class="share-button" data-song-id="{{ content.track_id }}" data-post-content="{{ content.track_name ~ ' de ' ~ content.artist_name }}">
-                        <i class="ph ph-share-network icon share-icon"></i>
+                    <a class="share-post" target="_blank" href="https://x.com/intent/post?text=¿Te gustaría dejar tu opinión sobre sobre {{ content.track_name ~ ' de ' ~ content.artist_name }}? Crea tu post en Songhub: {{currentUrl}}">
                         <span class="visually-hidden">
-                            Compartir información de la canción
+                            Compartir información de la canción en X (Twitter)
                         </span>
-                    </button>
+                    </a>
                 {% else %}
-                    <button class="share-button" data-song-id="{{ content.album_id }}" data-post-content="{{ content.album_name ~ ' de ' ~ content.artist_name }}">
-                        <i class="ph ph-share-network icon share-icon"></i>
+                    <a class="share-post" target="_blank" href="https://x.com/intent/post?text=¿Te gustaría dejar tu opinión sobre sobre {{ content.album_name ~ ' de ' ~ content.artist_name }}? Crea tu post en Songhub: {{currentUrl}}">
                         <span class="visually-hidden">
-                            Compartir información del álbum
+                            Compartir información del album en X (Twitter)
                         </span>
-                    </button>
+                    </a>
                 {% endif %}
             </section>
         </section>

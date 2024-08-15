@@ -86,7 +86,7 @@ body {
 	min-width: 200px;
 }
 
-.song-actions button.share-button,
+.song-actions a.share-post,
 .song-actions button.favorite-button,
 .song-actions button.track-preview-button,
 .song-actions a.spotify-button {
@@ -96,6 +96,16 @@ body {
 	border: none;
 	background-color: transparent;
 	text-decoration: none;
+}
+
+.song-actions a.share-post {
+	background-image: url('/assets/icons/brand-x_dark.svg');
+	background-position: center;
+	background-size: cover;
+}
+
+.song-actions a.share-post:hover {
+	transform: scale(1.05);
 }
 
 .song-section section.song-stats {
@@ -203,5 +213,9 @@ section.most-recent-posts article:last-child {
 
 	.song-section section.song-stats p.post-count span.stars {
 		color: var(--color-violet-lightest);
+	}
+
+	.song-actions a.share-post {
+		background-image: url('/assets/icons/brand-x.svg');
 	}
 }
