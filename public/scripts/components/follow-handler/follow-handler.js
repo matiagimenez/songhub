@@ -9,7 +9,6 @@ document.addEventListener('click', (event) => {
 		fetch('/follow/user?user=' + currentButton.id)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
 				if (data.success) {
 					followersCount.innerText =
 						parseInt(followersCount.textContent) + 1;
@@ -32,7 +31,6 @@ document.addEventListener('click', (event) => {
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
 				if (data.success) {
 					followersCount.innerText =
 						parseInt(followersCount.textContent) - 1;
