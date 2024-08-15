@@ -83,6 +83,9 @@ class PostController extends Controller
           "avatar" => $userInstance->fields["SPOTIFY_AVATAR"],
         ];
 
+        // echo json_encode($post);
+        // exit;
+
         Renderer::getInstance()->post($post, $currentUser);
     }
 
