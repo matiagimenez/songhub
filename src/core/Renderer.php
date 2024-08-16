@@ -57,20 +57,20 @@ class Renderer
         echo $template->render(['title' => 'Registrarme', 'style' => 'register', "currentUrl" => "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"], "show_footer" => false, "show_header" => false, "error" => $error, "message" => $message, "currentUserData" => $currentUserData]);
     }
     
-    public function following($following)
+    public function following($following, $currentUser)
     {
         $username = $this->getUsername();
 
         $template = $this->templateLoader->load('following.twig');
-        echo $template->render(['title' => 'Seguidos', 'style' => 'follow', 'username' => $username, "following" => $following, "currentUrl" => "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"], "show_footer" => false, "show_header" => true]);
+        echo $template->render(['title' => 'Seguidos', 'style' => 'follow', 'currentUser' => $currentUser, 'username' => $username, "following" => $following, "currentUrl" => "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"], "show_footer" => false, "show_header" => true]);
     }
 
-    public function followers($followers)
+    public function followers($followers, $currentUser)
     {
         $username = $this->getUsername();
 
         $template = $this->templateLoader->load('followers.twig');
-        echo $template->render(['title' => 'Seguidores', 'style' => 'follow', 'username' => $username,"followers" => $followers, "currentUrl" => "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"], "show_footer" => false, "show_header" => true]); 
+        echo $template->render(['title' => 'Seguidores', 'style' => 'follow', 'currentUser' => $currentUser, 'username' => $username,"followers" => $followers, "currentUrl" => "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"], "show_footer" => false, "show_header" => true]); 
     }
     
     public function explore($recentActivity, $newReleases, $recommendations, $userTopTracks, $username)

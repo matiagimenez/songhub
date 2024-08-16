@@ -4,10 +4,10 @@
         <h2>Seguidores</h2>
         <section class="users">
             {% if followers|length == 1 %}
-                    <p class="no-followers-msg"> El usuario {{username}} no es seguido por ningun usuario</p>
+                    <p class="no-followers-msg"> El usuario {{currentUser}} no es seguido por ningun usuario</p>
             {% else %}
                 {% for user in followers %}
-                    {% if user.USERNAME != username %}
+                    {% if user.USERNAME != currentUser %}
                         <article class="user">
                             <img loading="lazy" height="70px" width="70px"
                                 src="{{user.SPOTIFY_AVATAR}}"
@@ -16,7 +16,9 @@
                             <p>
                                 {{user.BIOGRAPHY}}
                             </p>
-                            <button class="submit-button action-button">Seguir</button>
+                            {% if user.USERNAME != username %}
+                                <button id="{{user.USER_ID}}" class="submit-button action-button">Seguir</button>
+                            {% endif %}
                         </article> 
                     {% endif %}
                 {% endfor %}

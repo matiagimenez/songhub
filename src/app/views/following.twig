@@ -4,10 +4,10 @@
         <h2>Siguiendo</h2>
         <section class="users">
             {% if following|length == 1 %}
-                <p class="no-following-msg"> El usuario {{username}} no sigue a ningun usuario</p>
+                <p class="no-following-msg"> El usuario {{currentUser}} no sigue a ningun usuario</p>
             {% else %}
                 {% for user in following %}
-                    {% if user.USERNAME != username %}
+                    {% if user.USERNAME != currentUser %}
                         <article class="user">
                             <img loading="lazy" height="70px" width="70px"
                                 src="{{user.SPOTIFY_AVATAR}}"
@@ -16,7 +16,9 @@
                             <p>
                                 {{user.BIOGRAPHY}}
                             </p>
-                            <button id="{{user.USER_ID}}" class="action-button submit-outline-button unfollow">Siguiendo</button>
+                            {% if user.USERNAME != username %}
+                                <button id="{{user.USER_ID}}" class="action-button submit-outline-button unfollow">Siguiendo</button>
+                            {% endif %}
                         </article>             
                     {% endif %}
                 {% endfor %}

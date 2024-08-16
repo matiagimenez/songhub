@@ -31,7 +31,7 @@ class FollowController extends Controller
 
         $followers = $this->repository->getUserFollowers($user -> fields["USER_ID"]);
 
-        Renderer::getInstance()->followers($followers);
+        Renderer::getInstance()->followers($followers, $username);
     }
 
     public function following()
@@ -48,7 +48,7 @@ class FollowController extends Controller
 
         $following = $this->repository->getUserFollowing($user -> fields["USER_ID"]);
 
-        Renderer::getInstance()->following($following);
+        Renderer::getInstance()->following($following, $username);
     }
 
     public function follow()
