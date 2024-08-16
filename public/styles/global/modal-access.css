@@ -9,6 +9,8 @@
 
 .article-img-container img {
 	position: absolute;
+	width: 200px;
+	height: 200px;
 }
 
 .article-img-container:hover {
@@ -29,9 +31,9 @@
 .article-img-container .more-container {
 	display: block;
 	position: absolute;
-	right: 2px;
+	right: 4px;
 	top: 0;
-	border-radius: 100%;
+	border-radius: 5px;
 	padding: 1px;
 	margin: 6px auto auto 6px;
 }
@@ -49,8 +51,8 @@
 	height: 35px;
 	margin: auto auto 6px auto;
 	border-radius: 4px;
-	bottom: 55px;
-	right: 6px;
+	bottom: 65px;
+	right: 0px;
 	position: relative;
 	align-items: center;
 	gap: 12px;
@@ -75,16 +77,32 @@
 	opacity: 80%;
 }
 
+@media (min-width: 700px) {
+	.article-img-container img {
+		position: absolute;
+		width: 200px;
+		height: 180px;
+	}
+}
+
 @media (min-width: 900px) {
 	.article-img-container {
 		grid-row: 2;
 		position: initial;
 	}
 
+	.article-img-container .buttons-container {
+		bottom: 55px;
+	}
+}
+
+@media (min-width: 1000px) {
 	.article-img-container,
 	.article-img-container img {
 		height: 180px;
 		width: 180px;
+		max-width: 180px;
+		max-height: 180px;
 	}
 
 	.article-img-container .more-container {
