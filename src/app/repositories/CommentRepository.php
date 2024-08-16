@@ -14,9 +14,13 @@ class CommentRepository extends Repository
     public function getComments(int $post_id)
     {
         try {
-            // $comments = $this->queryBuilder->selectByColumn($this->table, "POST_ID", $post_id);
             $comments = $this->queryBuilder->selectByColumnInDescOrder($this->table, "POST_ID", $post_id, "DATETIME");
-            return $comments;
+            $response = [];
+            foreach ($comments as $key => $comment) {
+                $comment["LIKED"] = $this->isLikedComment($comment["USER_ID"]);
+                array_push($response, $comment);
+            }
+            return $response;
         } catch (InvalidValueException $exception) {
             return [false, $exception->getMessage()];
         } catch (Exception $exception) {
