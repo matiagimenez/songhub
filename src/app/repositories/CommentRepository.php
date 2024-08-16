@@ -33,22 +33,39 @@ class CommentRepository extends Repository
     
     public function likeComment($user_id,$comment_id, $post_id)
     {
-        $isLiked = $this->queryBuilder->count("COMMENT_LIKE", "USER_ID", $user_id) > 0;
+        $isLiked = $this->isLikedComment($user_id);
         try {
             $data = [
                 "USER_ID" => $user_id,
                 "COMMENT_ID" => $comment_id,
                 "POST_ID" => $post_id,
             ];
-            // echo json_encode($data);
-            // exit;
-            !$isLiked ? $this->queryBuilder->insert("COMMENT_LIKE", $data) : $this->queryBuilder->deleteWithManyPK("COMMENT_LIKE",["USER_ID", "COMMENT_ID", "POST_ID"], $data);
+            !$isLiked ? $this->queryBuilder->insert("COMMENT_LIKE", $data) : $this->deleteComment($user_id, $comment_id, $post_id);
             $conditions = [
                 "COMMENT_ID" => $comment_id,
                 "POST_ID" => $post_id,
             ];
             $operation = !$isLiked ? "LIKES + 1" : "LIKES - 1";
             $this->queryBuilder->updateWithConditions($this->table, ["LIKES" => $operation], $conditions);
+            return [true, "Comentario actualizado"];
+        } catch (Exception $exception) {
+            return [false, "Error al registrar Comment"];
+        }
+    }
+    
+    public function isLikedComment($user_id) {
+        return $this->queryBuilder->count("COMMENT_LIKE", "USER_ID", $user_id) > 0;
+    }
+
+    public function deleteComment($user_id, $comment_id, $post_id)
+    {
+        try {
+            $data = [
+                "USER_ID" => $user_id,
+                "COMMENT_ID" => $comment_id,
+                "POST_ID" => $post_id,
+            ];
+            $this->queryBuilder->deleteWithManyPK("COMMENT_LIKE",["USER_ID", "COMMENT_ID", "POST_ID"], $data);
             return [true, "Comentario actualizado"];
         } catch (Exception $exception) {
             return [false, "Error al registrar Comment"];
