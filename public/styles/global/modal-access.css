@@ -49,11 +49,11 @@
 	height: 35px;
 	margin: auto auto 6px auto;
 	border-radius: 4px;
-	bottom: 8px;
-	right: 4px;
+	bottom: 55px;
+	right: 6px;
 	position: relative;
 	align-items: center;
-	gap: 8px;
+	gap: 12px;
 	justify-content: center;
 }
 
