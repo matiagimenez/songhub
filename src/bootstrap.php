@@ -88,6 +88,8 @@ $router->get('/comment', 'CommentController@comment');
 $router->post('/comment/create', 'CommentController@createComment');
 $router->get('/comment/delete', 'CommentController@deleteComment');
 $router->get('/comment/edit', 'CommentController@editComment');
+$router->put('/comment/like', 'CommentController@likeComment');
+$router->put('/comment/unlike', 'CommentController@unlikeComment');
 
 
 

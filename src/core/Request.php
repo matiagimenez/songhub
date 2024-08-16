@@ -52,6 +52,11 @@ class Request
                 return htmlspecialchars($_GET[$key] ?? null, ENT_QUOTES);
             case 'POST':
                 return htmlspecialchars($_POST[$key] ?? null, ENT_QUOTES);
+            case 'PUT':
+            case 'PATCH':
+                $input = file_get_contents('php://input');
+                $data = json_decode($input, true);
+                return htmlspecialchars($data[$key] ?? null, ENT_QUOTES);
             default:
                 return null;
         }

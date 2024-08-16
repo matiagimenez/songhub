@@ -403,6 +403,47 @@ class QueryBuilder
         }
     }
 
+    public function updateWithConditions($table, $data, $conditions)
+    {
+        try {
+            // Construir la cláusula SET
+            $setValues = [];
+            foreach ($data as $column => $value) {
+                $setValues[] = $column . ' = ' . $value; // No se usan bound parameters para operaciones como LIKES + 1
+            }
+            $setClause = implode(", ", $setValues);
+
+            // Construir la cláusula WHERE
+            $whereConditions = [];
+            foreach ($conditions as $column => $value) {
+                $whereConditions[] = $column . ' = :' . $column;
+            }
+            $whereClause = implode(" AND ", $whereConditions);
+
+            // Preparar la consulta
+            $query = "UPDATE {$table} SET {$setClause} WHERE {$whereClause}";
+            $sentencia = $this->pdo->prepare($query);
+
+            // Bind de valores para las condiciones
+            foreach ($conditions as $column => $value) {
+                $sentencia->bindValue(':' . $column, $value);
+            }
+
+            $result = $sentencia->execute();
+            if ($result != true) {
+                throw new PDOException($sentencia->errorInfo()[2]);
+            }
+        } catch (PDOException $e) {
+            $this->logger->info(
+                "Error al ejecutar la consulta: " . $e->getMessage(),
+                [
+                    "Operation" => 'UPDATE',
+                    "Table" => $table,
+                ]
+            );
+        }
+    }
+
     public function delete($table, $primaryKey, $primaryKeyValues)
     {
         try {
@@ -425,6 +466,41 @@ class QueryBuilder
             // Ejecutar la consulta
             $result = $sentencia->execute();
             if ($result != true) {
+                throw new PDOException($sentencia->errorInfo()[2]);
+            }
+        } catch (PDOException $e) {
+            $this->logger->info(
+                "Error al ejecutar la consulta: " . $e->getMessage(),
+                [
+                    "Operation" => 'DELETE',
+                    "Table" => $table,
+                ]
+            );
+        }
+    }
+
+    public function deleteWithManyPK($table, $primaryKey, $primaryKeyValues)
+    {
+        try {
+            // Construir la cláusula WHERE con las columnas de la clave primaria
+            $whereClause = [];
+            foreach ($primaryKey as $column) {
+                $whereClause[] = $column . ' = :' . $column;
+            }
+            $whereClause = implode(' AND ', $whereClause);
+
+            // Construir la consulta SQL
+            $query = "DELETE FROM {$table} WHERE {$whereClause}";
+            $sentencia = $this->pdo->prepare($query);
+
+            // Vincular los valores de las columnas de la clave primaria
+            foreach ($primaryKeyValues as $column => $value) {
+                $sentencia->bindValue(':' . $column, $value);
+            }
+
+            // Ejecutar la consulta
+            $result = $sentencia->execute();
+            if (!$result) {
                 throw new PDOException($sentencia->errorInfo()[2]);
             }
         } catch (PDOException $e) {
