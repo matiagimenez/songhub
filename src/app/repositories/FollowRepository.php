@@ -13,7 +13,7 @@ class FollowRepository extends Repository
 
     public function getUserFollowing($follower_id)
     {
-        $followers = $this->queryBuilder->selectWithMultipleJoins(
+        $following = $this->queryBuilder->selectWithMultipleJoins(
             $this->table,
             [
                 [
@@ -25,7 +25,7 @@ class FollowRepository extends Repository
             $follower_id,
         );
 
-        return $followers;
+        return $following;
     }
 
     public function getUserFollowers(int $followed_id)

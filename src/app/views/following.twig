@@ -3,20 +3,24 @@
 {% block main %}
         <h2>Siguiendo</h2>
         <section class="users">
-            {% for user in following %}
-                <article class="user">
-                    <img loading="lazy" height="70px" width="70px"
-                        src="{{user.SPOTIFY_AVATAR}}"
-                        alt="Imagen de perfil de {{user.USERNAME}}" />
-                    <a href="/user?username={{user.USERNAME}}">{{user.NAME}} <span>${{user.USERNAME}}</span></a>
-                    <p>
-                        {{user.BIOGRAPHY}}
-                    </p>
+            {% if following|length == 1 %}
+                <p class="no-following-msg"> El usuario {{username}} no sigue a ningun usuario</p>
+            {% else %}
+                {% for user in following %}
                     {% if user.USERNAME != username %}
-                        <button id="{{user.USER_ID}}" class="action-button submit-outline-button unfollow">Siguiendo</button>
+                        <article class="user">
+                            <img loading="lazy" height="70px" width="70px"
+                                src="{{user.SPOTIFY_AVATAR}}"
+                                alt="Imagen de perfil de {{user.USERNAME}}" />
+                            <a href="/user?username={{user.USERNAME}}">{{user.NAME}} <span>${{user.USERNAME}}</span></a>
+                            <p>
+                                {{user.BIOGRAPHY}}
+                            </p>
+                            <button id="{{user.USER_ID}}" class="action-button submit-outline-button unfollow">Siguiendo</button>
+                        </article>             
                     {% endif %}
-                </article>             
-            {% endfor %}
+                {% endfor %}
+            {% endif %}
         </section>
 {% endblock %}
                 
