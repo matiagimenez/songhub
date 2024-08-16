@@ -13,7 +13,7 @@
                         {{user.BIOGRAPHY}}
                     </p>
                     {% if user.USERNAME != username %}
-                        <button class="action-button submit-outline-button">Siguiendo</button>
+                        <button id="{{user.USER_ID}}" class="action-button submit-outline-button unfollow">Siguiendo</button>
                     {% endif %}
                 </article>             
             {% endfor %}

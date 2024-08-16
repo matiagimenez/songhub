@@ -10,8 +10,10 @@ document.addEventListener('click', (event) => {
 			.then((response) => response.json())
 			.then((data) => {
 				if (data.success) {
-					followersCount.innerText =
-						parseInt(followersCount.textContent) + 1;
+					if (followersCount) {
+						followersCount.innerText =
+							parseInt(followersCount.textContent) + 1;
+					}
 					currentButton.classList.remove('follow');
 					currentButton.classList.add('unfollow');
 					currentButton.classList.remove('submit-button');
@@ -32,8 +34,11 @@ document.addEventListener('click', (event) => {
 			.then((response) => response.json())
 			.then((data) => {
 				if (data.success) {
-					followersCount.innerText =
-						parseInt(followersCount.textContent) - 1;
+					if (followersCount) {
+						followersCount.innerText =
+							parseInt(followersCount.textContent) - 1;
+					}
+
 					currentButton.classList.remove('unfollow');
 					currentButton.classList.add('follow');
 					currentButton.classList.add('submit-button');
