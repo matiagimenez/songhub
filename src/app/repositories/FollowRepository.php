@@ -11,38 +11,38 @@ class FollowRepository extends Repository
 {
     public $table = "FOLLOW";
 
-    public function getUserFollowers($followed_id)
+    public function getUserFollowing($follower_id)
     {
-        $followers = $this->queryBuilder->selectByColumn($this->table, "FOLLOWED_ID", $followed_id);
+        $followers = $this->queryBuilder->selectWithMultipleJoins(
+            $this->table,
+            [
+                [
+                    'table' => 'USER',
+                    'condition' => 'USER.USER_ID = FOLLOW.FOLLOWED_ID'
+                ],
+            ],
+            "FOLLOWER_ID",
+            $follower_id,
+        );
 
-        $userFollowers = [];
-
-        if (count($followers) > 0) {
-            foreach ($followers as $follower) {
-                $followInstance = new Follow();
-                $followInstance->set($follower);
-                $userFollowers->push($followInstance);
-            }
-        }
-
-        return $userFollowers;
+        return $followers;
     }
 
-    public function getUserFollowing(int $follower_id)
+    public function getUserFollowers(int $followed_id)
     {
-        $following = $this->queryBuilder->selectByColumn($this->table, "FOLLOWER_ID", $follower_id);
+        $followers = $this->queryBuilder->selectWithMultipleJoins(
+            $this->table,
+            [
+                [
+                    'table' => 'USER',
+                    'condition' => 'USER.USER_ID = FOLLOW.FOLLOWER_ID'
+                ],
+            ],
+            "FOLLOWED_ID",
+            $followed_id,
+        );
 
-        $userFollowing = [];
-
-        if (count($following) > 0) {
-            foreach ($following as $follower) {
-                $followInstance = new Follow();
-                $followInstance->set($follower);
-                $userFollowing->push($followInstance);
-            }
-        }
-
-        return $userFollowing;
+        return $followers;
     }
 
     public function getUserFollowersCount(int $followed_id)

@@ -122,6 +122,11 @@ header .user-stats ul li:first-child {
 	margin-left: 0px;
 }
 
+header .user-stats ul li a {
+	text-decoration: none;
+	color: inherit;
+}
+
 header .user-stats ul li span {
 	font-weight: bold;
 	display: inline-block;

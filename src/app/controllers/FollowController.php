@@ -19,12 +19,36 @@ class FollowController extends Controller
 
     public function followers()
     {
-        Renderer::getInstance()->followers();
+        if(is_null(Session::getInstance()->get("access_token"))) {
+            Renderer::getInstance()->login();
+            exit;
+        }
+
+        $username = $this->sanitizeUserInput(Request::getInstance()->getParameter("username", "GET"));
+        
+        $userRepository = new UserRepository();
+        $user = $userRepository->getUser("USERNAME", $username);
+
+        $followers = $this->repository->getUserFollowers($user -> fields["USER_ID"]);
+
+        Renderer::getInstance()->followers($followers);
     }
 
     public function following()
     {
-        Renderer::getInstance()->following();
+        if(is_null(Session::getInstance()->get("access_token"))) {
+            Renderer::getInstance()->login();
+            exit;
+        }
+
+        $username = $this->sanitizeUserInput(Request::getInstance()->getParameter("username", "GET"));
+        
+        $userRepository = new UserRepository();
+        $user = $userRepository->getUser("USERNAME", $username);
+
+        $following = $this->repository->getUserFollowing($user -> fields["USER_ID"]);
+
+        Renderer::getInstance()->following($following);
     }
 
     public function follow()

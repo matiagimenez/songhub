@@ -32,8 +32,8 @@
         <section class="user-stats">
             <ul>
                 <li><span>{{ postsCount }}</span> POSTS</li>
-                <li><span id="followers-count">{{ followers }}</span> SEGUIDORES</li>
-                <li><span>{{ following }}</span> SEGUIDOS</li>
+                <li><a href="/followers?username={{user.fields.USERNAME}}"><span id="followers-count">{{ followers }}</span>SEGUIDORES</a></li>
+                <li><a href="/following?username={{user.fields.USERNAME}}"><span>{{ following }}</span> SEGUIDOS </a></li>
             </ul>
         </section>
 

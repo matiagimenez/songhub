@@ -265,6 +265,55 @@ class QueryBuilder
             return [];
         }
     }    
+    
+    public function selectWithMultipleJoins(
+        string $table,
+        array $joins,
+        string $column,
+        $value,
+        int $limit = 0,
+        int $offset = -1 
+    ) {
+        try {
+            // Construir la parte del JOIN de la consulta
+            $joinQuery = "";
+            foreach ($joins as $join) {
+                $joinQuery .= " JOIN {$join['table']} ON {$join['condition']}";
+            }
+    
+            // Construir la consulta completa
+            $query = "SELECT * FROM {$table}{$joinQuery} 
+                      WHERE {$column} = :value";
+            
+            if ($limit > 0) {
+                $query .= " LIMIT {$limit}";
+            }
+
+            if ($offset >= 0) {
+                $query .= " OFFSET {$offset}";
+            }
+    
+            $statement = $this->pdo->prepare($query);
+            $statement->bindParam(':value', $value);
+            $statement->setFetchMode(PDO::FETCH_ASSOC);
+            $statement->execute();
+            
+            return $statement->fetchAll();
+        } catch (PDOException $error) {
+            $this->logger->error(
+                "Error al ejecutar el query en la base de datos",
+                [
+                    "Error" => $error->getMessage(),
+                    "Operacion" => 'selectWithMultipleJoins',
+                    "Tabla" => $table,
+                    "Joins" => $joins,
+                    "Columna" => $column,
+                    "Valor" => $value,
+                ]
+            );
+            return [];
+        }
+    }    
 
    
 
