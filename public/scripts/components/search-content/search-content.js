@@ -14,7 +14,9 @@ const recommendationsSection = document.getElementById(
 const favoritesSection = document.getElementById('favorites-section');
 const newReleasesSection = document.getElementById('new-releases-section');
 const searchResultsSection = document.getElementById('search-results-section');
-const profilesResultsSection = document.getElementById('profiles-results-section');
+const profilesResultsSection = document.getElementById(
+	'profiles-results-section'
+);
 
 // Request API search content endpoint
 function fetchContent(offset) {
@@ -47,7 +49,6 @@ searchInput.addEventListener('keydown', function (event) {
 let debounceTimeout;
 // Cada vez que cambia el input se lanza una búsqueda. Cada 300ms (Debounce)
 searchInput.addEventListener('input', function () {
-	
 	clearTimeout(debounceTimeout);
 	debounceTimeout = setTimeout(() => {
 		searchManagement();
@@ -55,9 +56,9 @@ searchInput.addEventListener('input', function () {
 });
 
 function searchContent(offset) {
-	if(offset == 0) {
-		window.clearButtons()
-		window.createPaginationButtons(1,100);
+	if (offset == 0) {
+		window.clearButtons();
+		window.createPaginationButtons(1, 100);
 	}
 	profilesResultsSection.style.display = 'none';
 	fetchContent(offset);
@@ -80,8 +81,11 @@ function searchManagement(offset = 0) {
 		favoritesSection.style.display = 'none';
 		newReleasesSection.style.display = 'none';
 		window.isActiveContent ? searchContent(offset) : searchProfiles(offset);
-	} else { // Sino, limpiamos los resultados y mostramos vista de explore
-		window.isActiveContent ? setData({ tracks: [], albums: [] }) : setData({ users: [] });
+	} else {
+		// Sino, limpiamos los resultados y mostramos vista de explore
+		window.isActiveContent
+			? setData({ tracks: [], albums: [] })
+			: setData({ users: [] });
 		window.clearButtons();
 		recentActivitySection.style.display = 'grid';
 		recommendationsSection.style.display = 'grid';
@@ -117,7 +121,8 @@ function setProfiles(data) {
 						</a>
             <figcaption>
                 <a href="/user/visit?username=${item.USERNAME}">
-                    <h3 class="song-title">${item.USERNAME}</h3>
+                    <h3 class="song-title">${item.NAME}</h3>
+                    <h4 class="artist-title">$${item.USERNAME}</h4>
                 </a>
             </figcaption>
         </figure>

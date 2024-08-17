@@ -19,6 +19,7 @@ main {
 	padding: 0rem 0.2rem;
 	border-radius: 10px;
 	box-shadow: 1px 1px 8px rgba(14, 14, 14, 0.645);
+	min-height: 200px;
 }
 
 #profiles-results article:hover {
@@ -26,8 +27,12 @@ main {
 	opacity: 90%;
 }
 
+section#profiles-results {
+	grid-auto-rows: 210px;
+}
+
 .profile-img {
-	border-radius: 100%;
+	border-radius: 16px;
 	padding: 1rem;
 }
 

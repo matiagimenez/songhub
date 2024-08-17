@@ -1,22 +1,24 @@
 .pagination-container {
-  text-align: center;
+	text-align: center;
 }
 
 .pagination-container button {
-  margin: 0 2px;
-  width: 25px;
-  height: 25px;
-  border: none;
-  border-radius: 5px;
-  background-color: var(--color-violet-dark);
-  color: var(--color-white)
+	margin: 0 2px;
+	width: 25px;
+	height: 25px;
+	border: none;
+	opacity: 75%;
+	border-radius: 5px;
+	background-color: var(--color-violet-dark);
+	color: var(--color-white);
 }
 
 .pagination-container button:hover {
-  cursor: pointer;
-  opacity: 80%;
+	cursor: pointer;
+	opacity: 90%;
 }
 
-.selected-button {
-  opacity: 50%;
+.pagination-container button.selected-button {
+	opacity: 100%;
+	font-weight: bold;
 }
