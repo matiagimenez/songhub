@@ -105,8 +105,8 @@ export const routes = {
 			scriptPath: '/scripts/animations/likes-counter-animation.js',
 		},
 		{
-			scriptName: 'comment-like',
-			scriptPath: '/scripts/components/likes/comment-like.js',
+			scriptName: 'likes-handler',
+			scriptPath: '/scripts/components/likes-handler/likes-handler.js',
 		},
 		{
 			scriptName: 'logout-button',
@@ -302,5 +302,9 @@ export const routes = {
 			scriptName: 'logout-button',
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
 		},
+		{
+			scriptName: 'likes-handler',
+			scriptPath: '/scripts/components/likes-handler/likes-handler.js',
+		}
 	],
 };

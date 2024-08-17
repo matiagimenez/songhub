@@ -70,6 +70,7 @@ $router->get('/post', 'PostController@post');
 $router->get('/post/following', 'PostController@getMoreUserFeedPosts');
 $router->get('/post/profile', 'PostController@getMoreUserProfilePosts');
 $router->get('/', 'PostController@feed');
+$router->post('/post/like', 'PostController@likePost');
 
 // Artist
 $router->get('/artist', 'ArtistController@getArtist');
@@ -90,8 +91,7 @@ $router->get('/comment', 'CommentController@comment');
 $router->post('/comment/create', 'CommentController@createComment');
 $router->get('/comment/delete', 'CommentController@deleteComment');
 $router->get('/comment/edit', 'CommentController@editComment');
-$router->put('/comment/like', 'CommentController@likeComment');
-$router->put('/comment/unlike', 'CommentController@unlikeComment');
+$router->post('/comment/like', 'CommentController@likeComment');
 
 
 

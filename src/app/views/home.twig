@@ -1,192 +1,190 @@
 {% extends 'base.twig' %}
 {% block extra_head %}
-    <script type="application/ld+json">
-        {
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "item": {
-                    "@type": "MusicAlbum",
-                    "name": "Starboy",
-                    "byArtist": {
-                        "@type": "MusicGroup",
-                        "name": "The Weeknd"
-                    },
-                    "url": "https://open.spotify.com/intl-es/album/2ODvWsOgouMbaA5xf0RkJe",
-                    "image": "https://i.scdn.co/image/ab67616d00001e024718e2b124f79258be7bc452"
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "item": {
-                    "@type": "MusicAlbum",
-                    "name": "Justice",
-                    "byArtist": {
-                        "@type": "MusicGroup",
-                        "name": "Justin Bieber"
-                    },
-                    "url": "https://open.spotify.com/intl-es/album/5dGWwsZ9iB2Xc3UKR0gif2",
-                    "image": "https://i.scdn.co/image/ab67616d00001e02e6f407c7f3a0ec98845e4431"
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 3,
-                "item": {
-                    "@type": "MusicAlbum",
-                    "name": "DAMN.",
-                    "byArtist": {
-                        "@type": "MusicGroup",
-                        "name": "Kendrick Lamar"
-                    },
-                    "url": "https://open.spotify.com/intl-es/album/4eLPsYPBmXABThSJ821sqY",
-                    "image": "https://i.scdn.co/image/ab67616d00001e028b52c6b9bc4e43d873869699"
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 4,
-                "item": {
-                    "@type": "MusicAlbum",
-                    "name": "SOS",
-                    "byArtist": {
-                        "@type": "MusicGroup",
-                        "name": "SZA"
-                    },
-                    "url": "https://open.spotify.com/intl-es/album/07w0rG5TETcyihsEIZR3qG",
-                    "image": "https://i.scdn.co/image/ab67616d00001e0270dbc9f47669d120ad874ec1"
-                }
-            }
-        ]
-        }
-    </script>
+	<script type="application/ld+json">
+		{
+				        "@context": "https://schema.org",
+				        "@type": "ItemList",
+				        "itemListElement": [
+				            {
+				                "@type": "ListItem",
+				                "position": 1,
+				                "item": {
+				                    "@type": "MusicAlbum",
+				                    "name": "Starboy",
+				                    "byArtist": {
+				                        "@type": "MusicGroup",
+				                        "name": "The Weeknd"
+				                    },
+				                    "url": "https://open.spotify.com/intl-es/album/2ODvWsOgouMbaA5xf0RkJe",
+				                    "image": "https://i.scdn.co/image/ab67616d00001e024718e2b124f79258be7bc452"
+				                }
+				            },
+				            {
+				                "@type": "ListItem",
+				                "position": 2,
+				                "item": {
+				                    "@type": "MusicAlbum",
+				                    "name": "Justice",
+				                    "byArtist": {
+				                        "@type": "MusicGroup",
+				                        "name": "Justin Bieber"
+				                    },
+				                    "url": "https://open.spotify.com/intl-es/album/5dGWwsZ9iB2Xc3UKR0gif2",
+				                    "image": "https://i.scdn.co/image/ab67616d00001e02e6f407c7f3a0ec98845e4431"
+				                }
+				            },
+				            {
+				                "@type": "ListItem",
+				                "position": 3,
+				                "item": {
+				                    "@type": "MusicAlbum",
+				                    "name": "DAMN.",
+				                    "byArtist": {
+				                        "@type": "MusicGroup",
+				                        "name": "Kendrick Lamar"
+				                    },
+				                    "url": "https://open.spotify.com/intl-es/album/4eLPsYPBmXABThSJ821sqY",
+				                    "image": "https://i.scdn.co/image/ab67616d00001e028b52c6b9bc4e43d873869699"
+				                }
+				            },
+				            {
+				                "@type": "ListItem",
+				                "position": 4,
+				                "item": {
+				                    "@type": "MusicAlbum",
+				                    "name": "SOS",
+				                    "byArtist": {
+				                        "@type": "MusicGroup",
+				                        "name": "SZA"
+				                    },
+				                    "url": "https://open.spotify.com/intl-es/album/07w0rG5TETcyihsEIZR3qG",
+				                    "image": "https://i.scdn.co/image/ab67616d00001e0270dbc9f47669d120ad874ec1"
+				                }
+				            }
+				        ]
+				        }
+	</script>
 {% endblock %}
 {% block main %}
-        <ul class="cards-container" aria-roledescription="carousel" aria-label="Carrusel de discos de música">
-            <li role="listitem" aria-roledescription="slide" aria-labelledby="album-1-title">
-                <figure class="active" data-item-index="0">
-                    <img src="/assets/images/home/carousel/carousel_image_1.jpg"
-                        alt="Portada del álbum 'Starboy' de The Weeknd" width="250" height="300" />
-                    <figcaption id="album-1-title">
-                        <a href="/content?id=2ODvWsOgouMbaA5xf0RkJe&type=album">
-                            <h2>Starboy</h2>
-                            <h3>The Weeknd</h3>
-                        </a>
-                    </figcaption>
-                </figure>
-            </li>
-            <li role="listitem" aria-labelledby="album-2-title" aria-roledescription="slide">
-                <figure data-item-index="1">
-                    <img src="/assets/images/home/carousel/carousel_image_2.jpg"
-                        alt="Portada del álbum 'Justice' de Justin Bieber" width="250" height="300" />
-                    <figcaption id="album-2-title">
-                        <a href="/content?id=5dGWwsZ9iB2Xc3UKR0gif2&type=album">
-                            <h2>Justice</h2>
-                            <h3>Justin Bieber</h3>
-                        </a>
-                    </figcaption>
-                </figure>
-            </li>
-            <li role="listitem" aria-labelledby="album-3-title" aria-roledescription="slide">
-                <figure data-item-index="2">
-                    <img src="/assets/images/home/carousel/carousel_image_3.jpg"
-                        alt="Portada del álbum 'DAMN.' de Kendrick Lamar" width="250" height="300" />
-                    <figcaption id="album-3-title">
-                        <a href="/content?id=4eLPsYPBmXABThSJ821sqY&type=album">
-                            <h2>DAMN.</h2>
-                            <h3>Kendrick Lamar</h3>
-                        </a>
-                    </figcaption>
-                </figure>
-            </li>
-            <li role="listitem" aria-labelledby="album-4-title" aria-roledescription="slide">
-                <figure data-item-index="3">
-                    <img src="/assets/images/home/carousel/carousel_image_4.jpg"
-                        alt="Portada del álbum 'SOS' de SZA" width="250" height="300" />
-                    <figcaption id="album-4-title">
-                        <a href="/content?id=07w0rG5TETcyihsEIZR3qG&type=album">
-                            <h2>SOS</h2>
-                            <h3>SZA</h3>
-                        </a>
-                    </figcaption>
-                </figure>
-            </li>
-        </ul>
-            <section class="feed" role="feed" aria-labelledby="feed-title" aria-busy="false">
-                <h2 class="section-title" id="feed-title">Últimos posts</h2>
-                {% if show_feed  %}
-                    <a href="/explore" id="create-post" class="create-post submit-button"><span>Crear un post</span></a>
-                    {% if posts|length == 0 %}
-                        <p class="no-content-msg">
-                            No hay actividad reciente
-                            <a href="/explore" class="explore">Buscar usuarios</a>
-                        </p>
-                    {% else %}
-                        {% for post in posts %}
-                            <article tabindex="0" class="post add-modal-access" id="post-{{ post.POST_ID }}" aria-posinset="{{ loop.index }}" aria-setsize="{{ posts|length }}" aria-labelledby="post-{{ post.POST_ID }}-song-title post-{{ post.POST_ID }}-artist-title" aria-describedby="post-content-{{ post.POST_ID }}">
-                                <figure>
-                                    <section class="article-img-container">
-                                        <img loading="lazy" class="image-border" width="100px" height="100px" src="{{ post.COVER_ID }}" alt="Portada del álbum '{{ post.TITLE }}' {{ post.NAME }}" />
-                                    </section>
-                                    <section class="user-info">
-                                        <img loading="lazy" class="user-img" height="25px" width="25px" src="{{ post.USER.fields.SPOTIFY_AVATAR }}" alt="Imagen de perfil de '{{ post.USER.fields.USERNAME }}'" />
-                                        <p class="user-name">
-                                            <a href="/user?username={{post.USER.fields.USERNAME}}">{{ post.USER.fields.NAME }}</a>
-                                            <span>${{ post.USER.fields.USERNAME }}</span>
-                                        </p>
-                                        <p class="post-time">{{ post.TIME_AGO }}</p>
-                                    </section>
-                                    <figcaption>
-                                        <h3 class="song-title" id="post-{{ post.POST_ID }}-song-title">
-                                            <a href="/content?id={{post.CONTENT_ID}}&type={{ post.TYPE == 't' ? 'track' : 'album' }}">{{ post.TITLE }}</a>
-                                        </h3>
-                                        <h4 class="artist-title" id="post-{{ post.POST_ID }}-artist-title">{{ post.NAME }}</h4>
-                                        {% for tag in post.TAGS %}
-                                            <span class="tag">{{ tag.TEXT }}</span>
-                                        {% endfor %}
-                                        <p class="stars">
-                                            {% for i in 1..5 %}
-                                                {% if i <= post.RATING %}
-                                                    ★
-                                                {% else %}
-                                                    ☆
-                                                {% endif %}
-                                            {% endfor %}
-                                        </p>
-                                    </figcaption>
-                                </figure>
-                                <a href="/post?id={{post.POST_ID}}">
-                                    <section class="post-content" id="post-content-{{ post.POST_ID }}">
-                                        <p>{{ post.DESCRIPTION }}</p>
-                                    </section>
-                                </a>
-                                <footer>
-                                    <section class="reaction-container comment-container">
-                                        <a href="/post?id={{post.POST_ID}}">
-                                            <i class="ph ph-chats-circle icon comment-icon"></i>
-                                            <span class="visually-hidden">Comentar post</span>
-                                        </a>
-                                    </section>
-                                    <section class="reaction-container like-container">
-                                        <button class="heart-button">
-                                            <i class="ph ph-heart icon heart-icon"></i>
-                                            <span class="visually-hidden">Dar favorito al post</span>
-                                        </button>
-                                        <p>{{ post.LIKES }}</p>
-                                    </section>
-                                </footer>
-                            </article>
-                        {% endfor %}
-                    {% endif %}
-                {% else %}
-                    <p class="not-logged-msg">
-                        Necesitás estar logueado para ver la actividad de otros usuarios
-                        <a href="/login" class="log-in">Iniciar sesión</a>
-                    </p>
-                {% endif %}
-        </section>
+	<ul class="cards-container" aria-roledescription="carousel" aria-label="Carrusel de discos de música">
+		<li role="listitem" aria-roledescription="slide" aria-labelledby="album-1-title">
+			<figure class="active" data-item-index="0">
+				<img src="/assets/images/home/carousel/carousel_image_1.jpg" alt="Portada del álbum 'Starboy' de The Weeknd" width="250" height="300"/>
+				<figcaption id="album-1-title">
+					<a href="/content?id=2ODvWsOgouMbaA5xf0RkJe&type=album">
+						<h2>Starboy</h2>
+						<h3>The Weeknd</h3>
+					</a>
+				</figcaption>
+			</figure>
+		</li>
+		<li role="listitem" aria-labelledby="album-2-title" aria-roledescription="slide">
+			<figure data-item-index="1">
+				<img src="/assets/images/home/carousel/carousel_image_2.jpg" alt="Portada del álbum 'Justice' de Justin Bieber" width="250" height="300"/>
+				<figcaption id="album-2-title">
+					<a href="/content?id=5dGWwsZ9iB2Xc3UKR0gif2&type=album">
+						<h2>Justice</h2>
+						<h3>Justin Bieber</h3>
+					</a>
+				</figcaption>
+			</figure>
+		</li>
+		<li role="listitem" aria-labelledby="album-3-title" aria-roledescription="slide">
+			<figure data-item-index="2">
+				<img src="/assets/images/home/carousel/carousel_image_3.jpg" alt="Portada del álbum 'DAMN.' de Kendrick Lamar" width="250" height="300"/>
+				<figcaption id="album-3-title">
+					<a href="/content?id=4eLPsYPBmXABThSJ821sqY&type=album">
+						<h2>DAMN.</h2>
+						<h3>Kendrick Lamar</h3>
+					</a>
+				</figcaption>
+			</figure>
+		</li>
+		<li role="listitem" aria-labelledby="album-4-title" aria-roledescription="slide">
+			<figure data-item-index="3">
+				<img src="/assets/images/home/carousel/carousel_image_4.jpg" alt="Portada del álbum 'SOS' de SZA" width="250" height="300"/>
+				<figcaption id="album-4-title">
+					<a href="/content?id=07w0rG5TETcyihsEIZR3qG&type=album">
+						<h2>SOS</h2>
+						<h3>SZA</h3>
+					</a>
+				</figcaption>
+			</figure>
+		</li>
+	</ul>
+	<section class="feed" role="feed" aria-labelledby="feed-title" aria-busy="false">
+		<h2 class="section-title" id="feed-title">Últimos posts</h2>
+		{% if show_feed  %}
+			<a href="/explore" id="create-post" class="create-post submit-button">
+				<span>Crear un post</span>
+			</a>
+			{% if posts|length == 0 %}
+				<p class="no-content-msg">
+					No hay actividad reciente
+					<a href="/explore" class="explore">Buscar usuarios</a>
+				</p>
+			{% else %}
+				{% for post in posts %}
+					<article tabindex="0" class="post add-modal-access" id="post-{{ post.POST_ID }}" aria-posinset="{{ loop.index }}" aria-setsize="{{ posts|length }}" aria-labelledby="post-{{ post.POST_ID }}-song-title post-{{ post.POST_ID }}-artist-title" aria-describedby="post-content-{{ post.POST_ID }}">
+						<figure>
+							<section class="article-img-container">
+								<img loading="lazy" class="image-border" width="100px" height="100px" src="{{ post.COVER_ID }}" alt="Portada del álbum '{{ post.TITLE }}' {{ post.NAME }}"/>
+							</section>
+							<section class="user-info">
+								<img loading="lazy" class="user-img" height="25px" width="25px" src="{{ post.USER.fields.SPOTIFY_AVATAR }}" alt="Imagen de perfil de '{{ post.USER.fields.USERNAME }}'"/>
+								<p class="user-name">
+									<a href="/user?username={{post.USER.fields.USERNAME}}">{{ post.USER.fields.NAME }}</a>
+									<span>${{ post.USER.fields.USERNAME }}</span>
+								</p>
+								<p class="post-time">{{ post.TIME_AGO }}</p>
+							</section>
+							<figcaption>
+								<h3 class="song-title" id="post-{{ post.POST_ID }}-song-title">
+									<a href="/content?id={{post.CONTENT_ID}}&type={{ post.TYPE == 't' ? 'track' : 'album' }}">{{ post.TITLE }}</a>
+								</h3>
+								<h4 class="artist-title" id="post-{{ post.POST_ID }}-artist-title">{{ post.NAME }}</h4>
+								{% for tag in post.TAGS %}
+									<span class="tag">{{ tag.TEXT }}</span>
+								{% endfor %}
+								<p class="stars">
+									{% for i in 1..5 %}
+										{% if i <= post.RATING %}
+											★
+										{% else %}
+											☆
+										{% endif %}
+									{% endfor %}
+								</p>
+							</figcaption>
+						</figure>
+						<a href="/post?id={{post.POST_ID}}">
+							<section class="post-content" id="post-content-{{ post.POST_ID }}">
+								<p>{{ post.DESCRIPTION }}</p>
+							</section>
+						</a>
+						<footer>
+							<section class="reaction-container comment-container">
+								<a href="/post?id={{post.POST_ID}}">
+									<i class="ph ph-chats-circle icon comment-icon"></i>
+									<span class="visually-hidden">Comentar post</span>
+								</a>
+							</section>
+							<section class="reaction-container like-container">
+								<button class="heart-button" post-id="{{post.POST_ID}}">
+									<i class="{{ post.LIKED ? " ph-fill active " : " ph " }} ph-heart icon heart-icon"></i>
+									<span class="visually-hidden">Dar favorito al post</span>
+								</button>
+								<p>{{ post.LIKES }}</p>
+							</section>
+						</footer>
+					</article>
+				{% endfor %}
+			{% endif %}
+		{% else %}
+			<p class="not-logged-msg">
+				Necesitás estar logueado para ver la actividad de otros usuarios
+				<a href="/login" class="log-in">Iniciar sesión</a>
+			</p>
+		{% endif %}
+	</section>
 {% endblock %}

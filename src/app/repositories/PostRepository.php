@@ -112,11 +112,10 @@ class PostRepository extends Repository
         }
     }
 
-    public function getPost($post_id)
+    public function getPost($post_id, $user_id)
     {
         $postInstance = new Post();
         try {
-            // $post = $this->queryBuilder->selectByColumn($this->table, "POST_ID", $post_id);
             $post = $this->queryBuilder->selectWithMultipleJoinsInDescOrder(
                 $this->table,
                 [
@@ -138,8 +137,8 @@ class PostRepository extends Repository
                 'POST.POST_ID', // Asegúrate de que está especificado con su tabla
                 1
             );
-            // $postItem = $post[0];
-            // $postInstance->set($postItem);    
+            $isLiked = $this->isLikedPost($user_id);
+            $post[0]["LIKED"] = $isLiked;
             return $post[0];
         } catch (Exception $exception) {
             $this->logger->error(
@@ -152,11 +151,26 @@ class PostRepository extends Repository
         }
     }
 
-    public function likePost(int $post_id)
-    {
-        // TODO:
-        //   Armar un querie para aumentar en uno la cantidad de likes de un post/comentario
+    public function likePost($post_id, $user_id)
+    {   
+        try {
+            $isLiked = $this->isLikedPost($user_id);
+            $data = [
+                "USER_ID" => $user_id,
+                "POST_ID" => $post_id
+            ];
+            !$isLiked ? $this->queryBuilder->insert("POST_LIKE", $data) : $this->queryBuilder->deleteWithManyPK("POST_LIKE",["USER_ID", "POST_ID"], $data);
+            $operation = !$isLiked ? "LIKES + 1" : "LIKES - 1";
+            $condition = ["POST_ID" => $post_id];
+            $this->queryBuilder->updateWithConditions($this->table, ["LIKES" => $operation], $condition);
+            return [true, "Comentario actualizado"];
+        } catch (Exception $exception) {
+            return [false, "Error al registrar Comment"];
+        }
+    }
 
+    public function isLikedPost($user_id) {
+        return $this->queryBuilder->count("POST_LIKE", "USER_ID", $user_id) > 0;
     }
 
     public function createPost($postData)
@@ -328,6 +342,7 @@ class PostRepository extends Repository
                 $post["TAGS"] = $tags;
                 $post['TIME_AGO'] = $this->timeAgo($post['DATETIME']);
                 $post['USER'] = $userRepository->getUser("USER_ID", $post["USER_ID"]);
+                $post["LIKED"] = $this->isLikedPost($userId);
             }
     
             return $posts;
