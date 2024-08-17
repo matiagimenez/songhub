@@ -11,8 +11,11 @@ class FollowRepository extends Repository
 {
     public $table = "FOLLOW";
 
-    public function getUserFollowing($follower_id)
+    public function getUserFollowing($follower_id, $page = 0)
     {
+        $limit = 10;
+        $offset = $page * $limit;
+
         $following = $this->queryBuilder->selectWithMultipleJoins(
             $this->table,
             [
@@ -23,13 +26,18 @@ class FollowRepository extends Repository
             ],
             "FOLLOWER_ID",
             $follower_id,
+            $limit,
+            $offset
         );
 
         return $following;
     }
 
-    public function getUserFollowers(int $followed_id)
+    public function getUserFollowers(int $followed_id, $page = 0)
     {
+        $limit = 10;
+        $offset = $page * $limit;
+
         $followers = $this->queryBuilder->selectWithMultipleJoins(
             $this->table,
             [
@@ -40,6 +48,8 @@ class FollowRepository extends Repository
             ],
             "FOLLOWED_ID",
             $followed_id,
+            $limit,
+            $offset
         );
 
         return $followers;

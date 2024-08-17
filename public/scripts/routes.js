@@ -51,7 +51,7 @@ export const routes = {
 			scriptPath: '/scripts/components/explore-search/search-filters.js',
 		},
 	],
-	'/followers': [
+	'/user/followers': [
 		{
 			scriptName: 'menu-animation',
 			scriptPath: '/scripts/animations/menu-animation.js',
@@ -68,8 +68,12 @@ export const routes = {
 			scriptName: 'follow-handler',
 			scriptPath: '/scripts/components/follow-handler/follow-handler.js',
 		},
+		{
+			scriptName: 'follow-list',
+			scriptPath: '/scripts/components/follow-list/follow-list.js',
+		},
 	],
-	'/following': [
+	'/user/following': [
 		{
 			scriptName: 'menu-animation',
 			scriptPath: '/scripts/animations/menu-animation.js',
@@ -86,8 +90,11 @@ export const routes = {
 			scriptName: 'follow-handler',
 			scriptPath: '/scripts/components/follow-handler/follow-handler.js',
 		},
+		{
+			scriptName: 'follow-list',
+			scriptPath: '/scripts/components/follow-list/follow-list.js',
+		},
 	],
-
 	'/post': [
 		{
 			scriptName: 'menu-animation',
@@ -107,7 +114,7 @@ export const routes = {
 		},
 	],
 
-	'/user': [
+	'/user?': [
 		{
 			scriptName: 'menu-animation',
 			scriptPath: '/scripts/animations/menu-animation.js',

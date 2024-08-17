@@ -78,8 +78,10 @@ $router->get('/error/internal-error', 'ErrorController@internalError');
 $router->get('/error/not-found', 'ErrorController@notFound');
 
 // Follow
-$router->get('/following', 'FollowController@following');
-$router->get('/followers', 'FollowController@followers');
+$router->get('/following', 'FollowController@getMoreUserFollowing');
+$router->get('/followers', 'FollowController@getMoreUserFollowers');
+$router->get('/user/followers', 'FollowController@followers');
+$router->get('/user/following', 'FollowController@following');
 $router->get('/follow/user', 'FollowController@follow');
 $router->delete('/unfollow/user', 'FollowController@unfollow');
 

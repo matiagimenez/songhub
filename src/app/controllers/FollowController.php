@@ -112,4 +112,46 @@ class FollowController extends Controller
             Request::sendResponse(500, "Error al dejar de seguir al usuario");
         }
     }
+
+    public function getMoreUserFollowing() {
+        $username = $this->sanitizeUserInput(Request::getInstance()->getParameter("username", "GET"));
+        $page = $this->sanitizeUserInput(Request::getInstance()->getParameter("page", "GET"));
+        $page = (is_numeric($page) && $page > 0) ? (int)$page : 0;
+
+        if(is_null(Session::getInstance()->get("access_token"))) {
+            Renderer::getInstance()->login();
+            exit;
+        }
+
+        $userRepository = new UserRepository();
+        $user = $userRepository->getUser("USERNAME", $username);
+
+        $following = $this->repository->getUserFollowing($user -> fields["USER_ID"], $page);
+
+        ob_clean();
+        header('Content-Type: application/json');
+        echo json_encode(["data" => $following, "username" => Session::getInstance()->get("username")]);
+        exit;
+    }
+
+    public function getMoreUserFollowers() {
+        $username = $this->sanitizeUserInput(Request::getInstance()->getParameter("username", "GET"));
+        $page = $this->sanitizeUserInput(Request::getInstance()->getParameter("page", "GET"));
+        $page = (is_numeric($page) && $page > 0) ? (int)$page : 0;
+
+        if(is_null(Session::getInstance()->get("access_token"))) {
+            Renderer::getInstance()->login();
+            exit;
+        }
+
+        $userRepository = new UserRepository();
+        $user = $userRepository->getUser("USERNAME", $username);
+
+        $followers = $this->repository->getUserFollowers($user -> fields["USER_ID"], $page);
+
+        ob_clean();
+        header('Content-Type: application/json');
+        echo json_encode(["data" => $followers, "username" => Session::getInstance()->get("username")]);
+        exit;
+    }
 }

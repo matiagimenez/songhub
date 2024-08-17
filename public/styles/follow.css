@@ -8,6 +8,7 @@ main {
 
 .users {
 	margin: auto;
+	position: relative;
 }
 
 h2 {
@@ -135,7 +136,7 @@ h2 {
 	}
 
 	.user p {
-		font-size: 1.1rem;
+		font-size: 1rem;
 	}
 }
 

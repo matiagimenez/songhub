@@ -2,13 +2,13 @@
 
 {% block main %}
         <h2>Siguiendo</h2>
-        <section class="users">
+        <section class="users" role="feed" aria-busy="false">
             {% if following|length == 1 %}
                 <p class="no-following-msg"> El usuario {{currentUser}} no sigue a ningun usuario</p>
             {% else %}
                 {% for user in following %}
                     {% if user.USERNAME != currentUser %}
-                        <article class="user">
+                        <article class="user"  aria-posinset="{{ loop.index - 1 }}" aria-setsize="{{ following|length - 1}}">
                             <img loading="lazy" height="70px" width="70px"
                                 src="{{user.SPOTIFY_AVATAR}}"
                                 alt="Imagen de perfil de {{user.USERNAME}}" />
