@@ -44,31 +44,12 @@ class CommentController extends Controller
         $currUser = $userRepository->getUser("USERNAME", Session::getInstance()->get("username"));
         return $currUser;
     }
-    
-    // public function getComments($post_id)
-    // {
-    //     $comments = $this->repository->getComments($post_id);
-    //     $userRepository = new UserRepository();
-    //     $response = [];
-    //     foreach ($comments as $comment)
-    //     {
-    //         $user = $userRepository->getUser("USER_ID", $comment["USER_ID"]);
 
-    //         $commentUser = [
-    //             "id" => $user->fields["USER_ID"],
-    //             "username" => $user->fields["USERNAME"],
-    //             "avatar" => $user->fields["SPOTIFY_AVATAR"]
-    //         ];
-
-    //         $commentData = [
-    //             "id" => $comment["COMMENT_ID"],
-    //             "text" => $comment["TEXT"],
-    //             "datetime" => $comment["DATETIME"],
-    //             "likes" => $comment["LIKES"],
-    //             "user" => $commentUser,
-    //         ];
-    //         array_push($response, $commentData);
-    //     }
-    //     return $response;
-    // }
+    public function likeComment()
+    {
+        $comment_id = $this->sanitizeUserInput(Request::getInstance()->getParameter("comment_id", "PUT"));
+        $post_id = $this->sanitizeUserInput(Request::getInstance()->getParameter("post_id", "PUT"));
+        $currentUser = $this->getCurrentUser();
+        $this->repository->likeComment($currentUser->fields["USER_ID"], $comment_id, $post_id);
+    }
 }

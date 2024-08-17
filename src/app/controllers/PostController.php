@@ -83,9 +83,6 @@ class PostController extends Controller
           "avatar" => $userInstance->fields["SPOTIFY_AVATAR"],
         ];
 
-        // echo json_encode($post);
-        // exit;
-
         Renderer::getInstance()->post($post, $currentUser);
     }
 
@@ -114,6 +111,7 @@ class PostController extends Controller
                 "datetime" => $time_ago,
                 "likes" => $comment["LIKES"],
                 "user" => $commentUser,
+                "liked" => $comment["LIKED"] ?? false
             ];
             array_push($response, $commentData);
         }

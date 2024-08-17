@@ -13,8 +13,8 @@ final class CommentTableMigration extends AbstractMigration
         $table->addColumn('LIKES', 'integer', ['default' => 0, 'null' => false]);
         $table->addColumn('POST_ID', 'integer', ['signed' => false, 'null' => false]);
         $table->addColumn('USER_ID', 'integer', ['signed' => false, 'null' => false]);
-        $table->addForeignKey('POST_ID', 'POST', 'POST_ID');
-        $table->addForeignKey('USER_ID', 'USER', 'USER_ID');
+        $table->addForeignKey('POST_ID', 'POST', 'POST_ID', ['delete' => 'CASCADE', 'update' => 'NO_ACTION']);
+        $table->addForeignKey('USER_ID', 'USER', 'USER_ID', ['delete' => 'CASCADE', 'update' => 'NO_ACTION']);
         $table->create();
     }
 }
