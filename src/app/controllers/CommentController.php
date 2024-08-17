@@ -47,8 +47,9 @@ class CommentController extends Controller
 
     public function likeComment()
     {
-        $comment_id = $this->sanitizeUserInput(Request::getInstance()->getParameter("comment_id", "PUT"));
-        $post_id = $this->sanitizeUserInput(Request::getInstance()->getParameter("post_id", "PUT"));
+        $commentData = json_decode(file_get_contents("php://input"), true);
+        $comment_id = $this->sanitizeUserInput($commentData['comment_id'] ?? null);
+        $post_id = $this->sanitizeUserInput($commentData['post_id'] ?? null);
         $currentUser = $this->getCurrentUser();
         $this->repository->likeComment($currentUser->fields["USER_ID"], $comment_id, $post_id);
     }

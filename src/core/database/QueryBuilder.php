@@ -409,7 +409,7 @@ class QueryBuilder
             // Construir la cláusula SET
             $setValues = [];
             foreach ($data as $column => $value) {
-                $setValues[] = $column . ' = ' . $value; // No se usan bound parameters para operaciones como LIKES + 1
+                $setValues[] = $column . ' = ' . $value;
             }
             $setClause = implode(", ", $setValues);
 

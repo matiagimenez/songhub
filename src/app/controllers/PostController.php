@@ -29,7 +29,9 @@ class PostController extends Controller
         }
 
         $post_id = $this->sanitizeUserInput(Request::getInstance()->getParameter("id", "GET"));
-        $response = $this->repository->getPost($post_id);
+        $userInstance = $this->getCurrentUser();
+        
+        $response = $this->repository->getPost($post_id, $userInstance->fields["USER_ID"]);
         
         $content = [
             "spotifyId" => $response["SPOTIFY_ID"],
@@ -72,10 +74,10 @@ class PostController extends Controller
             "artist" => $artist,
             "cover" => $cover,
             "user" => $posterUser,
-            "comments" => $comments
+            "comments" => $comments,
+            "liked" => $response["LIKED"] ?? false
         ];
 
-        $userInstance = $this->getCurrentUser();
 
         $currentUser = [
           "id" => $userInstance->fields["USER_ID"],
@@ -222,6 +224,14 @@ class PostController extends Controller
         header('Content-Type: application/json');
         echo json_encode($posts);
         exit;
+    }
+
+    public function likePost()
+    {
+        $currentUser = $this->getCurrentUser();
+        $postData = json_decode(file_get_contents("php://input"), true);
+        $post_id = $this->sanitizeUserInput($postData['post_id'] ?? null);
+        $this->repository->likePost($post_id, $currentUser->fields["USER_ID"]);
     }
 
 }

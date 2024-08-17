@@ -35,7 +35,7 @@ class CommentRepository extends Repository
     
     }
     
-    public function likeComment($user_id,$comment_id, $post_id)
+    public function likeComment($user_id, $comment_id, $post_id)
     {
         $isLiked = $this->isLikedComment($user_id);
         try {
