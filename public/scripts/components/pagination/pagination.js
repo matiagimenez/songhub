@@ -9,7 +9,7 @@ document.head.appendChild(link);
 
 // Crea Contenedor de Paginacion
 const paginationContainer = ElementBuilder.createElement('section', '', {
-  class: 'pagination-container',
+	class: 'pagination-container',
 });
 
 // Variables de configuración
@@ -18,83 +18,97 @@ const halfVisiblePages = Math.floor(visiblePages / 2);
 
 // Función para crear los botones de paginación
 function createPaginationButtons(currentPage, totalPages) {
-  paginationContainer.innerHTML = '';
+	paginationContainer.innerHTML = '';
 
-  const createPageButton = (pageNumber) => {
-    const button = ElementBuilder.createElement('button', '', {
-      class: 'pagination-button',
-    });
-    button.innerHTML = pageNumber;
-    button.disabled = pageNumber === currentPage;
-    pageNumber === currentPage && button.classList.add('selected-button');
-    addButtonsListeners(button, pageNumber, totalPages);
-    return button;
-  };
+	const createPageButton = (pageNumber) => {
+		const button = ElementBuilder.createElement('button', '', {
+			class: 'pagination-button',
+		});
+		button.innerHTML = pageNumber;
+		button.disabled = pageNumber === currentPage;
+		pageNumber === currentPage && button.classList.add('selected-button');
+		addButtonsListeners(button, pageNumber, totalPages);
+		return button;
+	};
 
-  const createLeftArrow = () => {
-    const button = ElementBuilder.createElement('button', '', {
-      class: 'pagination-button',
-    });
-    button.innerHTML = '<';
-    addButtonsListeners(button, currentPage - 1, totalPages);
-    paginationContainer.appendChild(button);
-  };
-  
-  const createRightArrow = () => {
-    const button = ElementBuilder.createElement('button', '', {
-      class: 'pagination-button',
-    });
-    button.innerHTML = '>';
-    addButtonsListeners(button, currentPage + 1, totalPages);
-    paginationContainer.appendChild(button);
-  };
+	const createLeftArrow = () => {
+		const button = ElementBuilder.createElement('button', '', {
+			class: 'pagination-button arrow',
+		});
+		button.innerHTML = '<i class="ph ph-caret-left"></i>';
+		addButtonsListeners(button, currentPage - 1, totalPages);
+		paginationContainer.appendChild(button);
+	};
 
-  // Calculo el start y el end de la paginación
-  let startPage = Math.max(1, currentPage - halfVisiblePages);
-  let endPage = Math.min(totalPages, currentPage + halfVisiblePages);
+	const createRightArrow = () => {
+		const button = ElementBuilder.createElement('button', '', {
+			class: 'pagination-button arrow',
+		});
+		button.innerHTML = '<i class="ph ph-caret-right"></i>';
+		addButtonsListeners(button, currentPage + 1, totalPages);
+		paginationContainer.appendChild(button);
+	};
 
-  // Ajusto si están fuera de rango
-  if (currentPage - halfVisiblePages <= 0) {
-    endPage = Math.min(totalPages, endPage + (halfVisiblePages - currentPage + 1));
-  }
-  if (currentPage + halfVisiblePages > totalPages) {
-    startPage = Math.max(1, startPage - (currentPage + halfVisiblePages - totalPages));
-  }
+	// Calculo el start y el end de la paginación
+	let startPage = Math.max(1, currentPage - halfVisiblePages);
+	let endPage = Math.min(totalPages, currentPage + halfVisiblePages);
 
-  // Creo la primera página y los ... si hace falta
-  currentPage > 1 && createLeftArrow();
-  if (startPage > 1) {
-    paginationContainer.appendChild(createPageButton(1));
-    if (startPage > 2) {
-      paginationContainer.appendChild(ElementBuilder.createElement('span', '...', { class: 'pagination-dots' }));
-    }
-  }
+	// Ajusto si están fuera de rango
+	if (currentPage - halfVisiblePages <= 0) {
+		endPage = Math.min(
+			totalPages,
+			endPage + (halfVisiblePages - currentPage + 1)
+		);
+	}
+	if (currentPage + halfVisiblePages > totalPages) {
+		startPage = Math.max(
+			1,
+			startPage - (currentPage + halfVisiblePages - totalPages)
+		);
+	}
 
-  // Crea botones
-  for (let i = startPage; i <= endPage; i++) {
-    paginationContainer.appendChild(createPageButton(i));
-  }
-  
-  // Creo última página y los ... si hace falta
-  if (endPage < totalPages) {
-    if (endPage < totalPages - 1) {
-      paginationContainer.appendChild(ElementBuilder.createElement('span', '...', { class: 'pagination-dots' }));
-    }
-    paginationContainer.appendChild(createPageButton(totalPages));
-  }
-  currentPage < totalPages && createRightArrow();
+	// Creo la primera página y los ... si hace falta
+	currentPage > 1 && createLeftArrow();
+	if (startPage > 1) {
+		paginationContainer.appendChild(createPageButton(1));
+		if (startPage > 2) {
+			paginationContainer.appendChild(
+				ElementBuilder.createElement('span', '...', {
+					class: 'pagination-dots',
+				})
+			);
+		}
+	}
+
+	// Crea botones
+	for (let i = startPage; i <= endPage; i++) {
+		paginationContainer.appendChild(createPageButton(i));
+	}
+
+	// Creo última página y los ... si hace falta
+	if (endPage < totalPages) {
+		if (endPage < totalPages - 1) {
+			paginationContainer.appendChild(
+				ElementBuilder.createElement('span', '...', {
+					class: 'pagination-dots',
+				})
+			);
+		}
+		paginationContainer.appendChild(createPageButton(totalPages));
+	}
+	currentPage < totalPages && createRightArrow();
 }
 
 // Cuando se clickea un botón, cambia el offset de la consulta y llama a la API
 function addButtonsListeners(button, pageNumber, totalPages) {
-  button.addEventListener('click', () => {
-    window.searchManagement((pageNumber - 1) * 10);
-    createPaginationButtons(pageNumber, totalPages);
-  });
+	button.addEventListener('click', () => {
+		window.searchManagement((pageNumber - 1) * 10);
+		createPaginationButtons(pageNumber, totalPages);
+	});
 }
 
 function clearButtons() {
-  paginationContainer.innerHTML = '';
+	paginationContainer.innerHTML = '';
 }
 
 // Agrega Contenedor de Paginacion al Main
