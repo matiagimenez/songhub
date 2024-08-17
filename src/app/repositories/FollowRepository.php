@@ -38,6 +38,18 @@ class FollowRepository extends Repository
         $limit = 10;
         $offset = $page * $limit;
 
+        $following = $this->queryBuilder->selectWithMultipleJoins(
+            $this->table,
+            [
+                [
+                    'table' => 'USER',
+                    'condition' => 'USER.USER_ID = FOLLOW.FOLLOWED_ID'
+                ],
+            ],
+            "FOLLOWER_ID",
+            $followed_id,
+        );
+
         $followers = $this->queryBuilder->selectWithMultipleJoins(
             $this->table,
             [
@@ -51,6 +63,10 @@ class FollowRepository extends Repository
             $limit,
             $offset
         );
+
+        foreach ($followers as &$follower) {
+            $follower["FOLLOWING"] = $this->isFollowing($followed_id, $follower["USER_ID"]);
+        }
 
         return $followers;
     }
@@ -106,6 +122,5 @@ class FollowRepository extends Repository
     public function isFollowing($follower_id, $followed_id) {
         $a = $this->queryBuilder->selectByColumns($this->table, "FOLLOWER_ID", $follower_id, "FOLLOWED_ID", $followed_id);
         return count($a) > 0;
-        
     }
 }

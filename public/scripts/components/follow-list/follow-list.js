@@ -75,21 +75,23 @@ window.addEventListener('scroll', () => {
 					}
 				);
 
-				userElement.innerHTML = `
-					<img loading="lazy" height="70px" width="70px" src="${
-						user.SPOTIFY_AVATAR
-					}" alt="Imagen de perfil de ${user.USERNAME}" />
-					<a href="/user?username=${user.USERNAME}">${user.NAME} <span>${
-					user.USERNAME
-				}</span></a>
+				let userElementContent = `
+					<img loading="lazy" height="70px" width="70px" src="${user.SPOTIFY_AVATAR}" alt="Imagen de perfil de ${user.USERNAME}" />
+					<a href="/user?username=${user.USERNAME}">${user.NAME} <span>${user.USERNAME}</span></a>
 					<p>
 						${user.BIOGRAPHY}
 					</p>
-					${
-						user.USERNAME !== username &&
-						`<button id="${user.USER_ID}" class="submit-button action-button">Seguir</button>`
-					}
 				`;
+
+				if (user.USERNAME !== username) {
+					if (user.FOLLOWING) {
+						userElementContent += `<button id="${user.USER_ID}" class="action-button submit-outline-button unfollow">Siguiendo</button>`;
+					} else {
+						userElementContent += `<button id="${user.USER_ID}" class="submit-button action-button follow">Seguir</button>`;
+					}
+				}
+
+				userElement.innerHTML = userElementContent;
 
 				users.appendChild(userElement);
 			});

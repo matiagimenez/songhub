@@ -17,7 +17,11 @@
                                 {{user.BIOGRAPHY}}
                             </p>
                             {% if user.USERNAME != username %}
-                                <button id="{{user.USER_ID}}" class="submit-button action-button">Seguir</button>
+                                {% if user.FOLLOWING %}
+                                    <button id="{{user.USER_ID}}" class="action-button submit-outline-button unfollow">Siguiendo</button>
+                                {% else %}
+                                    <button id="{{user.USER_ID}}" class="submit-button action-button follow">Seguir</button>
+                                {% endif %}
                             {% endif %}
                         </article> 
                     {% endif %}
