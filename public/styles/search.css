@@ -90,7 +90,7 @@ header form div button.inactive:hover {
 	}
 
 	header form label {
-		color: var(--color-grey-very-light);
+		color: var(--color-white);
 	}
 
 	header p input[type='radio'] {
