@@ -3,7 +3,6 @@
 @import url('global/grid-section.css');
 @import url('global/modal-access.css');
 
-
 body {
 	font-family: var(--font-family);
 }
@@ -53,16 +52,17 @@ header p label {
 }
 
 header form div {
-	margin-top: 0.5rem;
+	margin-top: 16px;
 }
 
 header form div button {
-	background-color: var(--color-grey-very-light);
-	color: var(--color-grey-dark);
+	background-color: var(--color-grey-dark);
+	color: var(--color-grey-very-light);
 	border: none;
-	border-radius: 40px;
+	border-radius: 10px;
+	font-size: 0.78rem;
 	padding: 0.6rem 0.8rem;
-	margin-right: 6px;
+	margin-right: 4px;
 	box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
@@ -71,14 +71,14 @@ header form div button:hover {
 }
 
 header form div button.active {
-	background-color: var(--color-grey-light);
+	background-color: var(--color-violet-dark);
 	color: var(--color-white);
+	font-weight: bold;
 }
 
 header form div button.inactive:hover {
 	opacity: 90%;
 }
-
 
 @media (prefers-color-scheme: dark) {
 	body {
@@ -97,5 +97,4 @@ header form div button.inactive:hover {
 		background-color: var(--color-white);
 		accent-color: var(--color-violet-lightest);
 	}
-
 }
