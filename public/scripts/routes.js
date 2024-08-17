@@ -10,10 +10,6 @@ export const routes = {
 			scriptName: 'input-animation',
 			scriptPath: '/scripts/animations/input-animation.js',
 		},
-		{
-			scriptName: 'spotify-sign-up',
-			scriptPath: '/scripts/plugins/spotify-sign-up.js',
-		},
 	],
 	'/explore': [
 		{
@@ -240,10 +236,6 @@ export const routes = {
 			scriptName: 'footer-animation',
 			scriptPath: '/scripts/animations/footer-animation.js',
 		},
-		{
-			scriptName: 'password-animation',
-			scriptPath: '/scripts/animations/password-animation.js',
-		},
 	],
 	'/user/password-recovery': [
 		{
@@ -305,6 +297,6 @@ export const routes = {
 		{
 			scriptName: 'likes-handler',
 			scriptPath: '/scripts/components/likes-handler/likes-handler.js',
-		}
+		},
 	],
 };
