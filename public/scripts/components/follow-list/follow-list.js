@@ -7,9 +7,6 @@ let endOfTheList = false;
 const urlParams = new URLSearchParams(window.location.search);
 const currentUser = urlParams.get('username');
 
-console.log(`usersCount ${usersCount}`);
-console.log(`totalUsers ${totalUsers}`);
-
 const link = ElementBuilder.createElement('link', '', {
 	rel: 'stylesheet',
 	href: '../scripts/components/follow-list/follow-list.css',

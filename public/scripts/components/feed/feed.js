@@ -49,8 +49,6 @@ window.addEventListener('scroll', () => {
 
 		feed.setAttribute('aria-busy', true);
 
-		console.log(`Fetching posts to ${endpoint}?page=${currentPage + 1}...`);
-
 		try {
 			const response = await fetch(`${endpoint}?page=${currentPage + 1}`);
 
