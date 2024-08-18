@@ -159,6 +159,8 @@ function setProfiles(data) {
 			profilesResults.appendChild(article);
 		});
 	} else {
+		if (!searchInput.value) return;
+
 		const noResultsMessage = ElementBuilder.createElement(
 			'p',
 			'No se encontraron resultados en la búsqueda',
