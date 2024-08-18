@@ -113,7 +113,7 @@ class PostController extends Controller
                 "datetime" => $time_ago,
                 "likes" => $comment["LIKES"],
                 "user" => $commentUser,
-                "liked" => $comment["LIKED"] ?? false
+                "liked" => $comment["LIKED"]
             ];
             array_push($response, $commentData);
         }
