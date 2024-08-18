@@ -85,6 +85,10 @@ article.post {
 	text-decoration: none;
 }
 
+.post-content p {
+	line-break: anywhere;
+}
+
 .post a {
 	text-decoration: none;
 }
