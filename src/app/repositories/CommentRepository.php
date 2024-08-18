@@ -15,12 +15,10 @@ class CommentRepository extends Repository
     {
         try {
             $comments = $this->queryBuilder->selectByColumnInDescOrder($this->table, "POST_ID", $post_id, "DATETIME");
-            $response = [];
-            foreach ($comments as $key => $comment) {
-                $comment["LIKED"] = $this->isLikedComment($comment["USER_ID"]);
-                array_push($response, $comment);
+            foreach ($comments as &$comment) {
+                $comment["LIKED"] = $this->isLikedComment($comment["USER_ID"], $post_id, $comment["COMMENT_ID"]);
             }
-            return $response;
+            return $comments;
         } catch (InvalidValueException $exception) {
             return [false, $exception->getMessage()];
         } catch (Exception $exception) {
@@ -37,7 +35,7 @@ class CommentRepository extends Repository
     
     public function likeComment($user_id, $comment_id, $post_id)
     {
-        $isLiked = $this->isLikedComment($user_id);
+        $isLiked = $this->isLikedComment($user_id, $post_id, $comment_id);
         try {
             $data = [
                 "USER_ID" => $user_id,
@@ -57,8 +55,14 @@ class CommentRepository extends Repository
         }
     }
     
-    public function isLikedComment($user_id) {
-        return $this->queryBuilder->count("COMMENT_LIKE", "USER_ID", $user_id) > 0;
+    public function isLikedComment($user_id, $post_id, $comment_id) {
+        $params = [
+            "USER_ID" => $user_id,
+            "POST_ID" => $post_id,
+            "COMMENT_ID" => $comment_id
+        ];
+        $like = $this->queryBuilder->select("COMMENT_LIKE", $params);
+        return !empty($like);
     }
 
     public function deleteComment($user_id, $comment_id, $post_id)
