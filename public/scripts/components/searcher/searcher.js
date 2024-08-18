@@ -31,6 +31,7 @@ function fetchContent(offset) {
 	const loader = ElementBuilder.createElement('div', '', {
 		class: 'search-loader',
 	});
+
 	tracksResults.appendChild(loader);
 
 	fetch(`/content/search?search=${searchInput.value}&offset=${offset}`)
@@ -68,7 +69,7 @@ searchInput.addEventListener('keydown', function (event) {
 	}
 });
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', (event) => {
 	event.preventDefault();
 });
 
@@ -136,26 +137,37 @@ function setProfiles(data) {
 	window.createPaginationButtons(data.current_page, data.last_page);
 	profilesResults.innerHTML = '';
 	profilesResults.innerHTML = '<h2 class="section-title">Perfiles</h2>';
-	data.users.forEach((item) => {
-		const article = document.createElement('article');
-		article.id = item.USER_ID;
-		article.innerHTML = `
-        <figure>
-						<a href="/user/visit?username=${item.USERNAME}">
-							<section class="profile-img-container" id="${item.USER_ID}" >
-									<img loading="lazy" width="180px" height="180px" src="${item.SPOTIFY_AVATAR}" alt="Foto de perfil de ${item.USERNAME}" class="profile-img" />
-							</section>
-						</a>
-            <figcaption>
-                <a href="/user/visit?username=${item.USERNAME}">
-                    <h3 class="song-title">${item.NAME}</h3>
-                    <h4 class="artist-title">$${item.USERNAME}</h4>
-                </a>
-            </figcaption>
-        </figure>
-    `;
-		profilesResults.appendChild(article);
-	});
+	if (data.users.length > 0) {
+		data.users.forEach((item) => {
+			const article = ElementBuilder.createElement('article', '');
+			article.id = item.USER_ID;
+			article.innerHTML = `
+			<figure>
+							<a href="/user/visit?username=${item.USERNAME}">
+								<section class="profile-img-container" id="${item.USER_ID}" >
+										<img loading="lazy" width="180px" height="180px" src="${item.SPOTIFY_AVATAR}" alt="Foto de perfil de ${item.USERNAME}" class="profile-img" />
+								</section>
+							</a>
+				<figcaption>
+					<a href="/user/visit?username=${item.USERNAME}">
+						<h3 class="song-title">${item.NAME}</h3>
+						<h4 class="artist-title">$${item.USERNAME}</h4>
+					</a>
+				</figcaption>
+			</figure>
+		`;
+			profilesResults.appendChild(article);
+		});
+	} else {
+		const noResultsMessage = ElementBuilder.createElement(
+			'p',
+			'No se encontraron resultados en la búsqueda',
+			{
+				class: 'no-results-message',
+			}
+		);
+		profilesResults.appendChild(noResultsMessage);
+	}
 }
 
 function setContent(data) {

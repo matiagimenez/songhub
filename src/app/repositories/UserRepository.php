@@ -64,27 +64,27 @@ class UserRepository extends Repository
         try {
             $users = $this->queryBuilder->selectByColumnLike($this->table, 'USERNAME', $value);
 
-            if (!$users) {
-                return null;
-            }
-
             $articles = 10;
             
             $usersCount = count($users);
             $lastPage = ceil($usersCount/$articles);
             $currentPage = ceil(($offset + 1) / $articles); 
-            $users = 
+
+            if(count($users) > 0) {
+                $users = 
                 array_slice(
                     $users, 
                     $offset, 
                     $currentPage == $lastPage ? $usersCount - $offset : $articles
                 );
-            $fisrtPage = 1;
+            }
+            
+            $firstPage = 1;
 
             $response = [
                 "users" => $users,
                 "last_page" => $lastPage,
-                "first_page" => $fisrtPage,
+                "first_page" => $firstPage,
                 "current_page" => $currentPage,
                 "offset" => $offset,
                 "total" => $usersCount,
