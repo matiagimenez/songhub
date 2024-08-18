@@ -137,7 +137,7 @@ class PostRepository extends Repository
                 'POST.POST_ID', // Asegúrate de que está especificado con su tabla
                 1
             );
-            $isLiked = $this->isLikedPost($user_id);
+            $isLiked = $this->isLikedPost($user_id, $post_id);
             $post[0]["LIKED"] = $isLiked;
             return $post[0];
         } catch (Exception $exception) {
@@ -154,7 +154,7 @@ class PostRepository extends Repository
     public function likePost($post_id, $user_id)
     {   
         try {
-            $isLiked = $this->isLikedPost($user_id);
+            $isLiked = $this->isLikedPost($user_id, $post_id);
             $data = [
                 "USER_ID" => $user_id,
                 "POST_ID" => $post_id
@@ -169,8 +169,13 @@ class PostRepository extends Repository
         }
     }
 
-    public function isLikedPost($user_id) {
-        return $this->queryBuilder->count("POST_LIKE", "USER_ID", $user_id) > 0;
+    public function isLikedPost($user_id, $post_id) {
+        $params = [
+            "USER_ID" => $user_id,
+            "POST_ID" => $post_id
+        ];
+        $like = $this->queryBuilder->select("POST_LIKE", $params);
+        return !empty($like);
     }
 
     public function createPost($postData)
@@ -342,7 +347,7 @@ class PostRepository extends Repository
                 $post["TAGS"] = $tags;
                 $post['TIME_AGO'] = $this->timeAgo($post['DATETIME']);
                 $post['USER'] = $userRepository->getUser("USER_ID", $post["USER_ID"]);
-                $post["LIKED"] = $this->isLikedPost($userId);
+                $post["LIKED"] = $this->isLikedPost($userId, $post["POST_ID"]);
             }
     
             return $posts;
