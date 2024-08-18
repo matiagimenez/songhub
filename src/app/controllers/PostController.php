@@ -57,7 +57,7 @@ class PostController extends Controller
             "avatar" => $response["SPOTIFY_AVATAR"],
         ];
         
-        $time_ago = $this->timeAgo($response["DATETIME"]);
+        $date = $this->formatDate($response["DATETIME"]);
         
         $tags = $this->getPostTags($post_id);
         
@@ -65,7 +65,7 @@ class PostController extends Controller
         
         $post = [
             "id" => $response["POST_ID"],
-            "timeAgo" => $time_ago,
+            "date" => $date,
             "description" => $response["DESCRIPTION"],
             "tags" => $tags,
             "likes" => $response["LIKES"],
@@ -130,7 +130,7 @@ class PostController extends Controller
         return $currUser;
     }
 
-    function timeAgo($postDatetimeString) {
+    private function timeAgo($postDatetimeString) {
         $postDatetime = new DateTime($postDatetimeString);
         $currentDatetime = new DateTime();
         $interval = $postDatetime->diff($currentDatetime);
@@ -148,6 +148,18 @@ class PostController extends Controller
         } else {
             return "hace " . $interval->s . " segundo" . ($interval->s > 1 ? "s" : "");
         }
+    }
+
+    private function formatDate($dateStr) {
+        $date = new DateTime($dateStr);
+        $meses = [
+            1 => 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+            'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+        ];
+        $dia = $date->format('d');
+        $mes = $meses[(int)$date->format('m')];
+        $anio = $date->format('Y');
+        return $dia . ' de ' . $mes . ' de ' . $anio;
     }
 
     private function getPostTags($post_id) {
