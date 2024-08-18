@@ -45,12 +45,14 @@ article.post {
 #comment-form-container form textarea {
 	width: 100%;
 	margin: 0.5rem 0;
+	resize: none;
 	padding: 8px;
+	min-height: 70px;
 	transition-duration: 200ms;
 }
 
 #comment-form-container form textarea:focus {
-	height: 6rem;
+	min-height: 100px;
 }
 
 #comment-form-container form input[type='submit'] {
@@ -67,6 +69,10 @@ article.post {
 	display: grid;
 	grid-template-columns: 110px auto;
 	grid-template-rows: 60px 110px auto;
+}
+
+.main-post .post-content p {
+	padding: 0 8px;
 }
 
 .main-post .user-info {

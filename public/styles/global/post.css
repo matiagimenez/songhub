@@ -172,14 +172,6 @@ article.post {
 	.user-name {
 		width: 100px;
 	}
-
-	.post-time {
-		color: var(--color-grey-light);
-		font-size: 12px;
-		opacity: 1;
-		position: absolute;
-		right: 0px;
-	}
 }
 
 @media (min-width: 425px) {
@@ -192,8 +184,11 @@ article.post {
 	}
 
 	.post-time {
+		color: var(--color-grey-light);
+		font-size: 12px;
+		opacity: 1;
+		position: absolute;
 		right: 8px;
-		top: 0;
 	}
 }
 

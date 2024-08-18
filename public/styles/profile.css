@@ -178,6 +178,17 @@ section.recent-activity article:last-child {
 	background-color: var(--color-violet-dark);
 }
 
+.feed article.post .article-img-container {
+	height: 110px;
+	width: 110px;
+}
+
+.feed article.post .article-img-container img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
 @media (min-width: 400px) {
 	main header {
 		display: flex;
@@ -227,6 +238,17 @@ section.recent-activity article:last-child {
 @media (min-width: 600px) {
 	header .user-stats ul li {
 		font-size: 1rem;
+	}
+}
+
+@media (min-width: 900px) {
+	.feed article.post figure .article-img-container {
+		display: grid;
+		border-radius: 10px;
+		position: relative;
+		grid-row: 2;
+		height: 180px;
+		width: 180px;
 	}
 }
 
