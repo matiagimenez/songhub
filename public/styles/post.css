@@ -51,10 +51,6 @@ article.post {
 	transition-duration: 200ms;
 }
 
-#comment-form-container form textarea:focus {
-	min-height: 100px;
-}
-
 #comment-form-container form input[type='submit'] {
 	margin: 0.5rem auto;
 	margin-right: 0;
