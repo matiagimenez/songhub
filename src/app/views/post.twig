@@ -67,7 +67,7 @@
 			</p>
 			<p>
 				<div>
-					<textarea name="text" class='input' required placeholder="Agrega un comentario..."></textarea>
+					<textarea name="text" class='input' required maxlength="255" placeholder="Agrega un comentario..."></textarea>
 					<input type="hidden" name="post_id" value="{{ post.id }}">
 					<input type="submit" class="submit-button" value="Comentar"/>
 				</div>
