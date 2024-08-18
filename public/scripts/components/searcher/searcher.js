@@ -8,7 +8,7 @@ const profilesResults = document.getElementById('profiles-results');
 
 const link = ElementBuilder.createElement('link', '', {
 	rel: 'stylesheet',
-	href: '../scripts/components/search-content/search-content.css',
+	href: '../scripts/components/searcher/searcher.css',
 });
 document.head.appendChild(link);
 
@@ -40,7 +40,7 @@ function fetchContent(offset) {
 		})
 		.catch((error) => console.error('Error:', error))
 		.finally(() => {
-			// tracksResults.removeChild(loader);
+			tracksResults.removeChild(loader);
 		});
 }
 
@@ -57,7 +57,7 @@ function fetchProfiles(offset) {
 		})
 		.catch((error) => console.error('Error:', error))
 		.finally(() => {
-			// profilesResultsSection.removeChild(loader);
+			profilesResultsSection.removeChild(loader);
 		});
 }
 

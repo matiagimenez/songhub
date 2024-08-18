@@ -22,8 +22,8 @@ export const routes = {
 			scriptPath: '/scripts/components/modal-form/modal-form.js',
 		},
 		{
-			scriptName: 'search-content',
-			scriptPath: '/scripts/components/search-content/search-content.js',
+			scriptName: 'searcher',
+			scriptPath: '/scripts/components/searcher/searcher.js',
 		},
 		{
 			scriptName: 'pagination',
