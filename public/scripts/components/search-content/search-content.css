@@ -1,0 +1,41 @@
+.search-results-section {
+	position: relative;
+}
+
+.profiles-results-section {
+	position: relative;
+}
+
+#search-results-section {
+	min-height: 600px;
+}
+
+.search-loader {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: radial-gradient(farthest-side, #1db954 94%, #0000) top/8px 8px
+			no-repeat,
+		conic-gradient(#0000 30%, #1db954);
+	mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+	-webkit-mask: radial-gradient(
+		farthest-side,
+		#0000 calc(100% - 8px),
+		#000 0
+	);
+	position: absolute;
+	bottom: 500px;
+	left: 48%;
+	animation: s3 1s infinite linear;
+}
+
+#track-results-section.search-loader {
+	left: 40%;
+	bottom: 200px;
+}
+
+@media screen and (min-width: 600px) {
+	#search-results-section {
+		min-height: 800px;
+	}
+}

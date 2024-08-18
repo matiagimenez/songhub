@@ -1,8 +1,16 @@
+import { ElementBuilder } from '../../utils/ElementBuilder.js';
+
 const searchInput = document.getElementById('search-on-page');
-const searchResult = document.getElementById('search-results-section');
+const form = document.getElementById('search-form');
 const tracksResults = document.getElementById('tracks-results');
 const albumsResults = document.getElementById('albums-results');
 const profilesResults = document.getElementById('profiles-results');
+
+const link = ElementBuilder.createElement('link', '', {
+	rel: 'stylesheet',
+	href: '../scripts/components/search-content/search-content.css',
+});
+document.head.appendChild(link);
 
 // const exploreSection = document.querySelector(".explore-section");
 const recentActivitySection = document.getElementById(
@@ -20,22 +28,37 @@ const profilesResultsSection = document.getElementById(
 
 // Request API search content endpoint
 function fetchContent(offset) {
+	const loader = ElementBuilder.createElement('div', '', {
+		class: 'search-loader',
+	});
+	tracksResults.appendChild(loader);
+
 	fetch(`/content/search?search=${searchInput.value}&offset=${offset}`)
 		.then((response) => response.json())
 		.then((data) => {
 			setData(data);
 		})
-		.catch((error) => console.error('Error:', error));
+		.catch((error) => console.error('Error:', error))
+		.finally(() => {
+			// tracksResults.removeChild(loader);
+		});
 }
 
 function fetchProfiles(offset) {
-	console.log('Buscando Perfiles...');
+	const loader = ElementBuilder.createElement('div', '', {
+		class: 'search-loader',
+	});
+	profilesResultsSection.appendChild(loader);
+
 	fetch(`/user/profile/search?username=${searchInput.value}&offset=${offset}`)
 		.then((response) => response.json())
 		.then((data) => {
 			setData(data);
 		})
-		.catch((error) => console.error('Error:', error));
+		.catch((error) => console.error('Error:', error))
+		.finally(() => {
+			// profilesResultsSection.removeChild(loader);
+		});
 }
 
 // Prevent Default cuando se presiona Enter
@@ -43,6 +66,10 @@ searchInput.addEventListener('keydown', function (event) {
 	if (event.key === 'Enter') {
 		event.preventDefault();
 	}
+});
+
+form.addEventListener('submit', (e) => {
+	event.preventDefault();
 });
 
 // Utiliza debounce para evitar llamadas innecesarias. Optimizando la busqueda
