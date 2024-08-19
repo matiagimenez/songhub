@@ -145,7 +145,7 @@ function setProfiles(data) {
 			<figure>
 							<a href="/user/visit?username=${item.USERNAME}">
 								<section class="profile-img-container" id="${item.USER_ID}" >
-										<img loading="lazy" width="180px" height="180px" src="${item.SPOTIFY_AVATAR}" alt="Foto de perfil de ${item.USERNAME}" class="profile-img" />
+										<img loading="lazy" width="180px" height="180px" src="${item.SPOTIFY_AVATAR}" alt="Foto de perfil de ${item.USERNAME}" class="profile-img blur" />
 								</section>
 							</a>
 				<figcaption>
@@ -177,10 +177,11 @@ function setContent(data) {
 	setAlbums(data.albums);
 	const articles = searchResultsSection.querySelectorAll('.add-modal-access');
 	window.applyModalListeners(articles);
-	const post_form_openers =
-		searchResultsSection.querySelectorAll('.post-form-opener');
+	const post_form_openers = searchResultsSection.querySelectorAll('.post-form-opener');
 	const create_post = searchResultsSection.querySelector('#create-post');
 	window.applyPostFormListeners(post_form_openers, create_post);
+	const images = searchResultsSection.querySelectorAll('.blur');
+	window.addLoader(images);
 }
 
 // Setea los Tracks
@@ -194,8 +195,8 @@ function setTracks(tracks) {
 		article.dataset.type = item.type;
 		article.innerHTML = `
         <figure>
-            <section class="article-img-container" id="${item.id}" data-type="${item.type}" >
-                <img loading="lazy" width="180px" height="180px" src="${item.album.images[0].url}" alt="Portada del ${item.type} ${item.name} del artista ${item.artists[0].name}" class="image-border" />
+            <section class="article-img-container" id="${item.id}" data-type="${item.type}" style="background-image: url('${ item.album.images[2].url }'); background-size: cover; background-position: center;">
+                <img loading="lazy" width="180px" height="180px" src="${item.album.images[0].url}" alt="Portada del ${item.type} ${item.name} del artista ${item.artists[0].name}" class="image-border blur" />
             </section>
             <figcaption>
                 <a href="/content?id=${item.id}&type=${item.type}">
@@ -220,8 +221,8 @@ function setAlbums(albums) {
 		article.dataset.type = item.type;
 		article.innerHTML = `
         <figure>
-            <section class="article-img-container" id="${item.id}" data-type="${item.type}" >
-                <img loading="lazy" width="180px" height="180px" src="${item.images[0].url}" alt="Portada del ${item.type} ${item.name} del artista ${item.artists[0].name}" class="image-border" />
+            <section class="article-img-container" id="${item.id}" data-type="${item.type}" style="background-image: url('${ item.images[2].url }'); background-size: cover; background-position: center;">
+                <img loading="lazy" width="180px" height="180px" src="${item.images[0].url}" alt="Portada del ${item.type} ${item.name} del artista ${item.artists[0].name}" class="image-border blur" />
             </section>
             <figcaption>
                 <a href="/content?id=${item.id}&type=${item.type}">
