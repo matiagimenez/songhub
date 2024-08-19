@@ -44,6 +44,10 @@ section#profiles-results {
 	border: none;
 }
 
+.blur {
+	filter: blur(10px);
+}
+
 @media (prefers-color-scheme: dark) {
 	body {
 		background-color: var(--color-violet-dark-black);

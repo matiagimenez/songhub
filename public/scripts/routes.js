@@ -46,6 +46,10 @@ export const routes = {
 			scriptName: 'search-filters',
 			scriptPath: '/scripts/components/explore-search/search-filters.js',
 		},
+		{
+			scriptName: 'blur-image-load',
+			scriptPath: '/scripts/animations/blur-image-load.js',
+		},
 	],
 	'/user/followers': [
 		{
