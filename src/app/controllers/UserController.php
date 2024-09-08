@@ -52,9 +52,7 @@ class UserController extends Controller
         $currUser = $this->repository->getUser("USERNAME", $username);
         $isFollowing = $this->repository->isFollowing($currUser->fields["USER_ID"], $user->fields["USER_ID"]);
 
-        // echo "<pre>";
-        // var_dump($posts);
-        // die;
+
 
         Renderer::getInstance()->profile($user, $country, $posts, $stats["following"], $stats["followers"], $favorites, $isFollowing, $message, $postsCount);
     }

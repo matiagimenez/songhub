@@ -15,7 +15,7 @@ class PostRepository extends Repository
 {
     public $table = "POST";
 
-    public function getPostsFromUser($userId, $page = 0)
+    public function getPostsFromUser($user_id, $page = 0)
     {
         try {
             $limit = 10;
@@ -34,7 +34,7 @@ class PostRepository extends Repository
                     ],
                 ],
                 "USER_ID",
-                $userId,
+                $user_id,
                 "DATETIME",
                 $limit,
                 $offset
@@ -46,13 +46,15 @@ class PostRepository extends Repository
             $userRepository = new UserRepository();
             $userRepository->setQueryBuilder($this->queryBuilder);
 
-            $user = $userRepository->getUser("USER_ID", $userId);
+            $user = $userRepository->getUser("USER_ID", $user_id);
 
             foreach ($posts as &$post) {
                 $tags = $tagRepository->getTags($post["POST_ID"]);
                 $post["TAGS"] = $tags;
                 $post['TIME_AGO'] = $this->timeAgo($post['DATETIME']);
                 $post['USER'] = $user;
+                $isLiked = $this->isLikedPost($user_id, $post["POST_ID"]);
+                $post["LIKED"] = $isLiked;
             }
 
             return $posts;
@@ -95,10 +97,10 @@ class PostRepository extends Repository
         }
     }
 
-    public function getPostsCountFromUser($userId)
+    public function getPostsCountFromUser($user_id)
     {
         try {
-            return $this->queryBuilder->count($this->table, "USER_ID", $userId);
+            return $this->queryBuilder->count($this->table, "USER_ID", $user_id);
         } catch(Exception $exception) {
             $this->logger->error(
                 "Error al obtener los posts del usuario",
@@ -308,7 +310,7 @@ class PostRepository extends Repository
         }
     }
 
-    public function getUserFeedPosts($userId, $page = 0) {
+    public function getUserFeedPosts($user_id, $page = 0) {
         try {
             $limit = 10;
             $offset = $page * $limit;
@@ -330,7 +332,7 @@ class PostRepository extends Repository
                     ],
                 ],
                 'FOLLOW.FOLLOWER_ID',
-                $userId,
+                $user_id,
                 'POST.DATETIME',
                 $limit,
                 $offset
@@ -347,7 +349,7 @@ class PostRepository extends Repository
                 $post["TAGS"] = $tags;
                 $post['TIME_AGO'] = $this->timeAgo($post['DATETIME']);
                 $post['USER'] = $userRepository->getUser("USER_ID", $post["USER_ID"]);
-                $post["LIKED"] = $this->isLikedPost($userId, $post["POST_ID"]);
+                $post["LIKED"] = $this->isLikedPost($user_id, $post["POST_ID"]);
             }
     
             return $posts;

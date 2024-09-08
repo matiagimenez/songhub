@@ -143,6 +143,10 @@ export const routes = {
 			scriptName: 'feed',
 			scriptPath: '/scripts/components/feed/feed.js',
 		},
+		{
+			scriptName: 'likes-handler',
+			scriptPath: '/scripts/components/likes-handler/likes-handler.js',
+		},
 	],
 	'/search': [
 		{

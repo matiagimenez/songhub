@@ -180,8 +180,12 @@
                             </a>
                         </section>
                         <section class="reaction-container like-container">
-                            <button class="heart-button">
-                                <i class="ph ph-heart icon heart-icon"></i>
+                            <button class="heart-button" post-id="{{ post.POST_ID }}">
+                                {% if post.LIKED %}
+                                    <i class="ph ph-heart icon heart-icon ph-fill active"></i>
+                                {% else %}
+                                    <i class="ph ph-heart icon heart-icon"></i>
+                                {% endif %}
                                 <span class="visually-hidden">Dar favorito al post</span>
                             </button>
                             <p>{{ post.LIKES }}</p>
