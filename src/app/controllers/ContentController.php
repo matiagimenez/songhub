@@ -131,7 +131,7 @@ class ContentController extends Controller
             "track_api_url" => $body["href"],
             "track_id" => $body["id"],
             "track_name" => $body["name"],
-            "track_preview_url" => $body["preview_url"],
+            "track_preview_url" => $body["preview_url"] ?? null,
         ];
 
         $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/artists/" . $track["artist_id"], [], ["Authorization" => "Bearer " . $this->access_token]);

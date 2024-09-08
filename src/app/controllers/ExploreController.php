@@ -178,8 +178,7 @@ class ExploreController extends Controller
                 array_push($recentActivity, $track);
             }
         }
-    
-        
+
         return $recentActivity;
     }
 

@@ -45,7 +45,7 @@
 					<i class="ph ph-chats-circle icon comment-icon"></i>
 					<span class="visually-hidden">Comentar post</span>
 				</button>
-				<p>20</p>
+				<p>{{post.comments|length}}</p>
 			</section>
 			<section class="reaction-container like-container">
 				<button class="heart-button" post-id="{{ post.id }}">
@@ -92,13 +92,6 @@
 					</p>
 				</section>
 				<footer>
-					<section class="reaction-container comment-container">
-						<button>
-							<i class="ph ph-chats-circle icon comment-icon"></i>
-							<span class="visually-hidden">Comentar post</span>
-						</button>
-						<p>20</p>
-					</section>
 					<section class="reaction-container like-container">
 						<button class="heart-button" comment-id="{{ comment.id }}" post-id="{{ post.id }}">
 							<i class="{{ comment.liked ? " ph-fill active " : " ph " }} ph-heart icon heart-icon"></i>

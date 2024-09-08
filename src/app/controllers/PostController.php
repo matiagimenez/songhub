@@ -78,7 +78,6 @@ class PostController extends Controller
             "liked" => $response["LIKED"] ?? false
         ];
 
-
         $currentUser = [
           "id" => $userInstance->fields["USER_ID"],
           "username" => $userInstance->fields["USERNAME"],

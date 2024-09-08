@@ -76,7 +76,7 @@
                         Agregar canción/álbum como favorita
                     </span>
                 </button>
-                {% if content.type == 'track' %}
+                {% if content.type == 'track' and content.track_spotify_url %}
                     <a class="spotify-button" href="{{ content.track_spotify_url }}" target="_blank">
                         <i class="ph ph-spotify-logo icon-lg spotify-icon"></i>
                         <span class="visually-hidden">
