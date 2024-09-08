@@ -35,6 +35,10 @@ section#profiles-results {
 	grid-auto-rows: 210px;
 }
 
+.artist-title {
+	padding: 4px 0;
+}
+
 .profile-img {
 	border-radius: 16px;
 	padding: 1rem;
