@@ -145,7 +145,7 @@ function setProfiles(data) {
 			<figure>
 							<a href="/user?username=${item.USERNAME}">
 								<section class="profile-img-container" id="${item.USER_ID}" >
-										<img loading="lazy" width="180px" height="180px" src="${item.SPOTIFY_AVATAR}" alt="Foto de perfil de ${item.USERNAME}" class="profile-img blur" />
+										<img loading="lazy" width="180px" height="180px" src="${item.SPOTIFY_AVATAR}" alt="Foto de perfil de ${item.USERNAME}" class="profile-img" />
 								</section>
 							</a>
 				<figcaption>
