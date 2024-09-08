@@ -23,27 +23,22 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
 2. Perfiles de usuario (tiempo estimado: 6 días)
 
     - Páginas de perfil para cada usuario: debe poder agregar información personal, una descripción y hasta 3 álbumes y/o canciones favoritas.
-    - Listado de todas los posts realizados por el usuario.
-    - Se podrán filtrar los posts del usuario. Por defecto se ordenan cronológicamente (más recientes) y se podrá filtrar por artista/nombre/valoración.
+    - Listado de todas los posts realizados por el usuario. Se ordenan cronológicamente (más recientes).
 
 3. Búsqueda y navegación (tiempo estimado: 6 dias)
 
     - Funcionalidad de búsqueda para encontrar canciones, álbumes, y artistas.
-    - Filtro de resultado de búsqueda en base a canción, artista, álbum, género y año de lanzamiento.
     - Resultados separados por sección (canciones y álbumes).
     - En la página de “Explorar” se muestran recomendaciones personalizadas al usuario en base a su actividad en Spotify.
 
 4. Creación de reviews (tiempo estimado: 7 o más días)
 
-    - Un usuario debe poder escribir y publicar reviews sobre canciones o álbumes. Debe poder incluir calificaciones, algunos comentarios y tags que considere relevantes.
-    - Las reviews pueden ser privadas (solo visibles por el usuario) o publicas (visibles por todo el mundo).
-    - Si la valoración es mayor a 4 puntos, agregar a los me gusta del usuario en Spotify.
+    - Un usuario debe poder escribir y publicar reviews sobre canciones o álbumes. Debe poder incluir calificaciones, alguna descripción y tags que considere relevantes.
 
 5. Interacción social (tiempo estimado: 7 o más días)
     - Comentarios en las reviews para fomentar la participación y el debate.
     - Sistema de me gustas en los posts realizados por otro usuario.
     - Un usuario debe poder comenzar/dejar de seguir a otro usuario dentro de Songhub.
-    - Compartir las reviews en redes sociales (por ejemplo: Twitter) para fomentar la difusión y generar interacciones.
 
 ##### Tiempo total de trabajo estimado: 1 mes
 
@@ -59,16 +54,15 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
     -   Implementar validaciones en el lado del servidor y del cliente para garantizar que los datos cumplan con los requisitos especificados.
 
 -   Integración de APIs de música:
+    -   Al momento de registrarse en nuestro sitio, el usuario debe asociar una cuenta personal de Spotify.
+        <img src="https://github.com/user-attachments/assets/eae831f9-90d1-48b9-9044-fabb2fc90baa" width=500 height=500/>
+    -   Existe la posibilidad de integrar APIs de servicios de música ([Spotify API](https://developer.spotify.com/documentation/web-api)) para obtener información actualizada sobre canciones y álbumes. Además, utilizamos la API para recomendar
+        contenido al usuario en función de su actividad en la cuenta de Spotify asociada a su cuenta.
+      
 
-    -   Existe la posibilidad de integrar APIs de servicios de música ([Spotify API](https://developer.spotify.com/documentation/web-api)) para obtener información actualizada sobre canciones y álbumes (por ejemplo, imagenes)
-
--   Documentación y despliegue:
-    -   Crear una documentación clara que especifique los requisitos y los pasos necesarios para el despliegue del sitio web.
-    -   Proporcionar instrucciones detalladas sobre cómo configurar el entorno de desarrollo, instalar las dependencias y ejecutar la aplicación en el entorno de producción.
 
 ### 2. Sitemap
-
-![sitemap](https://github.com/matiasgimenezdev/songhub/assets/117539520/1fc060ff-731d-4397-bda8-a24eb6673d52)
+![sitemap](https://github.com/user-attachments/assets/98d7c59b-71ae-49d5-8f9f-c180585d100b)
 
 ### 3. Wireframes
 
