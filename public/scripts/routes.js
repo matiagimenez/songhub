@@ -118,7 +118,7 @@ export const routes = {
 		},
 	],
 
-	'/user?': [
+	'/user': [
 		{
 			scriptName: 'menu-animation',
 			scriptPath: '/scripts/animations/menu-animation.js',
@@ -278,14 +278,6 @@ export const routes = {
 			scriptName: 'expanding-cards',
 			scriptPath: '/scripts/components/carousel/carousel.js',
 		},
-		// {
-		// 	scriptName: 'post-comment',
-		// 	scriptPath: '../scripts/components/post/post-comment.js',
-		// },
-		// {
-		// 	scriptName: 'post-share',
-		// 	scriptPath: '../scripts/components/post/post-share.js',
-		// },
 		{
 			scriptName: 'feed',
 			scriptPath: '/scripts/components/feed/feed.js',
