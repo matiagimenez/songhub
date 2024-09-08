@@ -48,7 +48,6 @@ class AuthController extends Controller
 
     public function register()
     {
-
         $username = $this->sanitizeUserInput(Request::getInstance()->getParameter("username", "POST"));
         $email = $this->sanitizeUserInput(Request::getInstance()->getParameter("email", "POST"), FILTER_SANITIZE_EMAIL);
         $emailConfirmation = $this->sanitizeUserInput(Request::getInstance()->getParameter("email-confirmation", "POST"), FILTER_SANITIZE_EMAIL);
@@ -85,13 +84,13 @@ class AuthController extends Controller
 
     private function authorizeSpotifyAccount()
     {
-
-        $host = Config::getInstance()->get("HOST");
-        $port = Config::getInstance()->get("PORT");
         $client_id = Config::getInstance()->get("SPOTIFY_CLIENT_ID");
         $url = 'https://accounts.spotify.com/authorize';
-        //? Esta es la URL a la que nos redirige spotify una vez que el usuario fue autorizado
-        $redirect_uri = "http://" . $host . ":" . $port . "/spotify/tokens";
+
+        //? Esta es la URL a la que nos redirige spotify una vez que el usuario fue autorizado}
+        $redirect_uri = $this->get_redirect_uri();
+        $redirect_uri = $redirect_uri . "/spotify/tokens";
+
 
         $parameters = [
             'client_id' => $client_id,
@@ -120,15 +119,13 @@ class AuthController extends Controller
             die;
         }
 
-        $host = Config::getInstance()->get("HOST");
-        $port = Config::getInstance()->get("PORT");
         $client_id = Config::getInstance()->get("SPOTIFY_CLIENT_ID");
         $client_secret = Config::getInstance()->get("SPOTIFY_CLIENT_SECRET");
 
         $url = 'https://accounts.spotify.com/api/token';
 
-        //? Esta URL debe ser la misma que se utilizo al momento de autorizar la aplicación. No habrá una redirección, sino que es solamente a modo de validación.
-        $redirect_uri = "http://" . $host . ":" . $port . "/spotify/tokens";
+        $redirect_uri = $this->get_redirect_uri();
+        $redirect_uri = $redirect_uri . "/spotify/tokens";
 
         $body = [
             'grant_type' => "authorization_code",
@@ -257,8 +254,6 @@ class AuthController extends Controller
 
     public function sendConfirmationEmail() {
         $mailer = Mailer::getInstance();
-        $host = Config::getInstance()->get("HOST");
-        $port = Config::getInstance()->get("PORT");
 
         $email = $this->sanitizeUserInput(Request::getInstance()->getParameter("confirmation-email", "POST"));
         $token = $this->generateToken();
@@ -276,9 +271,8 @@ class AuthController extends Controller
         Session::getInstance()->set("username", $username);
         
 
-        //? Esta es la URL a la que se redirige al usuario para recuperar su contraseña
-        $redirect_uri = "http://" . $host . ":" . $port . "/email-confirmation?token={$token}";
-
+        $redirect_uri = $this->get_redirect_uri();
+        $redirect_uri = $redirect_uri . "/email-confirmation?token={$token}";
 
         $to = $email; 
         $subject = "Recuperar acceso | Songhub";
@@ -355,4 +349,18 @@ class AuthController extends Controller
         
         Renderer::getInstance()->password_recovery("", false, true);
     }   
+
+    private function get_redirect_uri() {
+        $redirect_uri = "";
+        $host = Config::getInstance()->get("HOST");
+        $port = Config::getInstance()->get("PORT");
+
+        if($port > 443) {
+            $redirect_uri = "http://" . $host . ":" . $port;
+        } else {
+            $redirect_uri = "http://" . $host;
+        }
+
+        return $redirect_uri;
+    }
 }
