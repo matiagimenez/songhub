@@ -3,3 +3,4 @@ logs/
 .env
 .history
 cache
+.env.prod

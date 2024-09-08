@@ -1,0 +1,44 @@
+services:
+    web:
+        image: songhub:1.0.0
+        container_name: songhub
+        ports:
+            - '${PORT}:80' # Mapea el puerto 80 del contenedor al puerto 8888 de la máquina host
+        depends_on:
+            - database
+        environment:
+            DB_USERNAME: ${DB_USERNAME}
+            DB_PASSWORD: ${DB_PASSWORD}
+            DB_HOSTNAME: ${DB_HOSTNAME}
+            DB_NAME: ${DB_NAME}
+            DB_CHARSET: ${DB_CHARSET}
+            DB_PORT: ${DB_PORT}
+            DB_ADAPTER: 'mysql'
+            LOG_PATH: '/logs/app.log'
+            LOG_LEVEL: 'DEBUG'
+            HOST: ${HOST}
+            PORT: ${PORT}
+            SPOTIFY_CLIENT_ID: ${SPOTIFY_CLIENT_ID}
+            SPOTIFY_CLIENT_SECRET: ${SPOTIFY_CLIENT_SECRET}
+            SMTP_HOST: ${SMTP_HOST}
+            SMTP_USER: ${SMTP_USER}
+            SMTP_PASSWORD: ${SMTP_PASSWORD}
+        entrypoint:
+            [
+                '/bin/sh',
+                '-c',
+                'vendor/bin/phinx migrate -e development && sleep 15 && apache2-foreground',
+            ]
+    database:
+        image: mysql:8.0.37
+        container_name: mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_DATABASE: ${DB_NAME}
+        volumes:
+            - mysql_data:/var/lib/mysql
+        ports:
+            - ${DB_PORT}:3306
+volumes:
+    mysql_data:
