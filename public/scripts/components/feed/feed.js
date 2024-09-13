@@ -13,7 +13,6 @@ document.head.appendChild(link);
 
 const feed = document.querySelector('section.feed');
 
-// Evento para detectar cuando el usuario llega al final del feed
 window.addEventListener('scroll', () => {
 	function addLoader() {
 		const lastChild = document.querySelector(
@@ -156,7 +155,6 @@ window.addEventListener('scroll', () => {
 	const totalHeight = document.documentElement.scrollHeight - 50;
 	const isLoading = document.querySelector('div.feed-loader');
 
-	// Verifico si el scroll está en el final de página
 	if (scrollPosition >= totalHeight && !isLoading) {
 		if (endOfTheFeed) return;
 

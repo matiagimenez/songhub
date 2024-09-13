@@ -501,7 +501,6 @@ function createModal(data) {
 	textarea.focus();
 }
 
-// const go_to_top = document.getElementById("go-to-top");
 const main_header = document.getElementById('main-header');
 const html = document.querySelector('html');
 

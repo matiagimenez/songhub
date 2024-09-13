@@ -15,7 +15,6 @@ document.head.appendChild(link);
 
 const users = document.querySelector('section.users');
 
-// Evento para detectar cuando el usuario llega al final del feed
 window.addEventListener('scroll', () => {
 	function addLoader() {
 		const loader = ElementBuilder.createElement('div', '', {
@@ -108,11 +107,9 @@ window.addEventListener('scroll', () => {
 	}
 
 	const scrollPosition = Math.ceil(window.scrollY + window.innerHeight);
-	/* Si el usuario se encuentra en los últimos 50px de página, se dispara la recarga */
 	const totalHeight = document.documentElement.scrollHeight - 50;
 	const isLoading = document.querySelector('div.list-loader');
 
-	// Verifico si el scroll está en el final de página
 	if (scrollPosition >= totalHeight && !isLoading) {
 		if (endOfTheList) return;
 

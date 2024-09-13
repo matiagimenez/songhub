@@ -180,7 +180,6 @@ function animateCarousel() {
 	});
 
 	cardsContainer.addEventListener('touchend', (event) => {
-		// Funcion que determina cual fue la direccion del swipe
 		const checkDirection = () => {
 			if (touchendX < touchstartX) {
 				nextCardChange();
