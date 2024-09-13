@@ -179,32 +179,12 @@ class User
     {
         $countryId = trim($countryId);
 
-        if($countryId == 0) {
+        if ($countryId == 0) {
             $countryId = null;
         }
 
         $this->fields["COUNTRY_ID"] = $countryId;
     }
-
-    // public function set(array $values)
-    // {
-
-    //     foreach (array_keys($this->fields) as $field) {
-    //         $field = trim($field);
-    //         if (!isset($values[$field])) {
-    //             continue;
-    //         }
-
-    //         $property = explode("_", $field);
-    //         if (count($property) > 1) {
-    //             $method = "set" . ucfirst(strtolower($property[0])) . ucfirst(strtolower($property[1]));
-    //         } else {
-    //             $method = "set" . ucfirst(strtolower($property[0]));
-    //         }
-
-    //         $this->$method($values[$field]);
-    //     }
-    // }
 
     public function set(array $values)
     {

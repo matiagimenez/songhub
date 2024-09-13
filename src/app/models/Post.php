@@ -23,8 +23,6 @@ class Post
 
     public function setDatetime($date)
     {
-        // $date = date("Y-m-d");
-
         $this->fields["DATETIME"] = $date;
     }
 
@@ -42,19 +40,14 @@ class Post
     {
         $this->fields["RATING"] = $rating;
     }
-    
+
     public function setContentId($content_id)
     {
         $this->fields["CONTENT_ID"] = $content_id;
     }
 
     public function setUserId($user_id)
-    {   
-        // $queryBuilder = QueryBuilder::getInstance();
-        // $userRepository = new UserRepository();
-        // $userRepository->setQueryBuilder($queryBuilder);
-        // $username = Session::getInstance()->get("username");
-        // $user = $userRepository->getUser("USERNAME", $username);
+    {
         $this->fields["USER_ID"] = $user_id;
     }
 
@@ -69,7 +62,6 @@ class Post
             $property = explode("_", $field);
             if (count($property) > 1) {
                 $method = "set" . ucfirst(strtolower($property[0])) . ucfirst(strtolower($property[1]));
-
             } else {
                 $method = "set" . ucfirst(strtolower($property[0]));
             }
@@ -78,7 +70,5 @@ class Post
         }
 
         $this->setLikes();
-
     }
-
 }

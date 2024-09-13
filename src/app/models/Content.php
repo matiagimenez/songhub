@@ -8,7 +8,6 @@ class Content
 {
     public $fields = [
         "CONTENT_ID" => null, // Id from Spotify
-        // "AVERAGE_RATING" => null,
         "RELEASE_DATE" => null,
         "SPOTIFY_ID" => null,
         "SPOTIFY_API_URL" => null,
@@ -24,11 +23,6 @@ class Content
     {
         $this->fields["CONTENT_ID"] = $content_id;
     }
-
-    // public function setAverageRating($average_rating)
-    // {
-    //     $this->fields["AVERAGE_RATING"] = $average_rating;
-    // }
 
     public function setReleaseDate($release_date)
     {
@@ -90,17 +84,8 @@ class Content
             foreach ($property as $part) {
                 $method .= ucfirst(strtolower($part));
             }
-            
-            // if (count($property) > 1) {
-            //     $method = "set" . ucfirst(strtolower($property[0])) . ucfirst(strtolower($property[1]));
-
-            // } else {
-            //     $method = "set" . ucfirst(strtolower($property[0]));
-            // }
 
             $this->$method($values[$field]);
         }
-
     }
-
 }
