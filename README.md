@@ -58,10 +58,9 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
         <img src="https://github.com/user-attachments/assets/eae831f9-90d1-48b9-9044-fabb2fc90baa" width=500 height=500/>
     -   Existe la posibilidad de integrar APIs de servicios de música ([Spotify API](https://developer.spotify.com/documentation/web-api)) para obtener información actualizada sobre canciones y álbumes. Además, utilizamos la API para recomendar
         contenido al usuario en función de su actividad en la cuenta de Spotify asociada a su cuenta.
-      
-
 
 ### 2. Sitemap
+
 ![sitemap](https://github.com/user-attachments/assets/98d7c59b-71ae-49d5-8f9f-c180585d100b)
 
 ### 3. Wireframes
@@ -69,5 +68,3 @@ El presupuesto funcional es estimado y entendemos que podria variar ante problem
 Se encuentran en el siguiente [proyecto](https://www.figma.com/team_invite/redeem/8gsvLe0YYBM4Q47UAvpgqo) Figma. Es el mismo proyecto que utilizamos para las practicas de la cursada, por lo tanto, hay posibilidad de que algun docente tenga acceso al mismo.
 
 ### 4. [Modelo de datos](https://drive.google.com/file/d/13X7mGucqO1l9EiWeonvWR7GnOXmyRzrF/view?usp=sharing)
-
-### 5. [Diagrama de clases](https://drive.google.com/file/d/1HtCK7KejQNIDRchia1vwpbA9fTwMlj8Q/view?usp=sharing)
