@@ -1,9 +1,9 @@
 <?php
+
 namespace Songhub\App\Controllers;
 
 use Songhub\app\repositories\TagRepository;
 use Songhub\core\Controller;
-use Songhub\core\Request;
 
 class TagController extends Controller
 {
@@ -20,7 +20,8 @@ class TagController extends Controller
         }
     }
 
-    private function createTag($tag, $postID) {
+    private function createTag($tag, $postID)
+    {
         $tagData["POST_ID"] = $postID;
         $tagData["TEXT"] = $tag;
         $this->repository->createTag($tagData);
@@ -31,5 +32,4 @@ class TagController extends Controller
         $tags = $this->repository->getTags($post_id);
         return $tags;
     }
-
 }

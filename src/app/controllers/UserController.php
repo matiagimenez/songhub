@@ -2,11 +2,9 @@
 
 namespace Songhub\App\Controllers;
 
-use Songhub\app\repositories\FollowRepository;
-use Songhub\app\repositories\PostRepository;
+
 use Songhub\app\repositories\UserRepository;
 use Songhub\core\Controller;
-use Songhub\core\database\QueryBuilder;
 use Songhub\core\Renderer;
 use Songhub\core\Request;
 use Songhub\core\Session;
@@ -19,15 +17,18 @@ class UserController extends Controller
         parent::__construct();
     }
 
-    public function profile($user = null, $message = "") {
+    public function profile($user = null, $message = "")
+    {
         $this->renderProfile('getUser', $user, $message);
     }
 
-    public function visit($user = null, $message = "") {
+    public function visit($user = null, $message = "")
+    {
         $this->renderProfile('getUserVisit', $user, $message);
     }
 
-    private function renderProfile($userMethod, $user, $message) {
+    private function renderProfile($userMethod, $user, $message)
+    {
         if (is_null(Session::getInstance()->get("access_token"))) {
             Renderer::getInstance()->login();
             exit;
@@ -59,23 +60,24 @@ class UserController extends Controller
 
     public function edit($message = "")
     {
-        if(is_null(Session::getInstance()->get("access_token"))) {
+        if (is_null(Session::getInstance()->get("access_token"))) {
             Renderer::getInstance()->login();
             exit;
         }
-        
+
         $username = Session::getInstance()->get("username");
         $user = $this->repository->getUser("USERNAME", $username);
 
         $country = $this->repository->getUserNationality($user->fields["COUNTRY_ID"]);
         $availableCountries = $this->repository->getAvailableCountries();
 
-        $favorites = $this -> repository->getUserFavorites($user->fields["USER_ID"]);
+        $favorites = $this->repository->getUserFavorites($user->fields["USER_ID"]);
 
         Renderer::getInstance()->edit($user, $country, $availableCountries, $favorites, $message);
     }
 
-    public function edit_password() {
+    public function edit_password()
+    {
         $username = Session::getInstance()->get("username");
         $oldPassword = $this->sanitizeUserInput(Request::getInstance()->getParameter("old-password", "POST"));
         $newPassword = $this->sanitizeUserInput(Request::getInstance()->getParameter("new-password", "POST"));
@@ -87,19 +89,19 @@ class UserController extends Controller
             "NEW_PASSWORD_CONFIRMATION" =>  $newPasswordConfirmation,
         ];
 
-        list($status, $message) = $this -> repository -> updateUserPassword("USERNAME", $username, $data);
+        list($status, $message) = $this->repository->updateUserPassword("USERNAME", $username, $data);
 
-        if(!$status){
+        if (!$status) {
             Renderer::getInstance()->edit_password($message);
             exit;
         }
-        
+
 
         $user = $this->repository->getUser("USERNAME", $username);
 
         $this->profile($user, $message);
     }
-    
+
     public function updateUser()
     {
         $username = Session::getInstance()->get("username");
@@ -113,9 +115,9 @@ class UserController extends Controller
             "COUNTRY_ID" => $country
         ];
 
-        list($status, $message) = $this -> repository -> updateUser("USERNAME", $username, $data);
+        list($status, $message) = $this->repository->updateUser("USERNAME", $username, $data);
 
-        if(!$status){
+        if (!$status) {
             $this->edit($message);
             exit;
         }
@@ -129,9 +131,9 @@ class UserController extends Controller
     {
         $username = $this->sanitizeUserInput(Request::getInstance()->getParameter("username", "GET"));
         $offset = $this->sanitizeUserInput(Request::getInstance()->getParameter("offset", "GET"));
-        
+
         $users = $this->repository->searchProfiles($username, $offset);
-        
+
         ob_clean();
         header('Content-Type: application/json');
         echo json_encode($users);
