@@ -12,7 +12,6 @@ class ExploreController extends Controller
 
     private $access_token = "";
     private $seeds = null;
-    private $recommendations = null;
 
     public function __construct()
     {
@@ -28,31 +27,26 @@ class ExploreController extends Controller
 
     public function explore()
     {
-        if(is_null(Session::getInstance()->get("access_token"))) {
+        if (is_null(Session::getInstance()->get("access_token"))) {
             Renderer::getInstance()->login();
             exit;
         }
-        
+
         $recommendations = null;
         $userTopTracks = $this->getUserTops();
-        $newReleases = $this->getNewReleases();
         $recentActivity = $this->getUserRecentActivity();
-        $this->access_token = Session::getInstance()->get("access_token");
         $username = Session::getInstance()->get("username");
+        $newReleases = $this->getNewReleases();
 
-        
+        $this->access_token = Session::getInstance()->get("access_token");
+
         //? Valida si se pudo personalizar la recomendación en base a artistas/tracks TOP del usuario, sino recomienda en base a canciones guardadas.
         if (!$this->validSeeds()) {
-            $this->getUserSavedTracks();
+            $this->loadSeedFromUserSavedTracks();
         }
 
-        //? Valida si se pudo personalizar la recomendación, sino recomienda ultimos lanzamientos (info. más genérica).
-        if ($this->validSeeds()) {
-            //? Obtiene recomendaciones personalizadas para el usuario
-            $recommendations = $this->getRecommendations();
+        $recommendations = $this->getRecommendations(); //? Obtiene recomendaciones personalizadas para el usuario
 
-        }
-        
         Renderer::getInstance()->explore($recentActivity, $newReleases, $recommendations, $userTopTracks, $username);
     }
 
@@ -73,7 +67,7 @@ class ExploreController extends Controller
             foreach ($body["items"] as $artist) {
                 $topArtistId = $artist["id"];
                 array_push($this->seeds["artists"], $topArtistId);
-        
+
                 foreach ($artist["genres"] as $genre) {
                     array_push($this->seeds["genres"], $genre);
                 }
@@ -117,17 +111,16 @@ class ExploreController extends Controller
                     "track_preview_url" => $track["preview_url"],
                 ];
 
-                if(strlen($ids) > 0 ){
+                if (strlen($ids) > 0) {
                     $ids .= "," . $track["artist_id"];
                 } else {
                     $ids .= $track["artist_id"];
                 }
 
                 array_push($userTopTracks, $track);
-                
             }
         }
-        
+
         return $userTopTracks;
     }
 
@@ -169,7 +162,7 @@ class ExploreController extends Controller
                     "track_preview_url" => $item["track"]["preview_url"],
                 ];
 
-                if(strlen($ids) > 0 ){
+                if (strlen($ids) > 0) {
                     $ids .= "," . $track["artist_id"];
                 } else {
                     $ids .= $track["artist_id"];
@@ -182,7 +175,7 @@ class ExploreController extends Controller
         return $recentActivity;
     }
 
-    private function getUserSavedTracks()
+    private function loadSeedFromUserSavedTracks()
     {
         $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/me/tracks?limit=10", [], ["Authorization" => "Bearer " . $this->access_token]);
         $body = json_decode($response["body"], true);
@@ -201,24 +194,20 @@ class ExploreController extends Controller
         }
     }
 
-
     private function validSeeds()
     {
         return count($this->seeds["artists"]) > 0 || count($this->seeds["tracks"]) > 0 || count($this->seeds["genres"]) > 0;
     }
 
-    private function getRecommendations()
+    private function generateArtistQuery($max)
     {
-        /* 
-            En primer lugar, debemos armar el seed que usará Spotify para generar las recomendaciones personalizadas de contenido al usuario 
-            El tamaño límite del seed es de 5. Por lo tanto, elegí 2 artistas, 2 generos y 1 canción dentro del contenido más escuchado por el usuario.
-        */
         $artists = "";
-        $genres = "";
-        $tracks = count($this->seeds["tracks"]) > 0 ? $this->seeds["tracks"][array_rand($this->seeds["tracks"])] : ""; // Agrega 1 track al seed de recomendaciones
 
-        // Agrega 2 artistas al seed de recomendaciones
-        for ($i = 1; $i <= 2; $i++) {
+        if (count($this->seeds["artists"]) == 0) {
+            return "";
+        }
+
+        for ($i = 1; $i <= $max; $i++) {
             $randomIndex = array_rand($this->seeds["artists"]);
             $artistId = $this->seeds["artists"][$randomIndex];
             if (strlen($artists) > 0) {
@@ -228,8 +217,19 @@ class ExploreController extends Controller
             }
         }
 
-        // Agrega 2 géneros al seed de recomendaciones
-        for ($i = 1; $i <= 2; $i++) {
+        return $artists;
+    }
+
+    private function generateGenreQuery($max)
+    {
+        $genres = "";
+
+        //? Si no pudo obtener información acerca del contenido consumido por el usuario, utiliza un género aleatorio como seed.
+        if (count($this->seeds["genres"]) == 0) {
+            $this->seeds["genres"] = ["acoustic", "alternative", "blues", "bossanova", "british", "cantopop", "classical", "club",  "deep-house", "disco", "disney", "hip-hop", "indie", "jazz", "k-pop", "latin", "latino", "new-release", "pop", "punk-rock", "r-n-b", "reggae", "reggaeton", "rock", "rock-n-roll", "tango", "techno"];
+        }
+
+        for ($i = 1; $i <= $max; $i++) {
             $randomIndex = array_rand($this->seeds["genres"]);
             $genre = $this->seeds["genres"][$randomIndex];
             $words = explode(" ", $genre);
@@ -248,6 +248,27 @@ class ExploreController extends Controller
             } else {
                 $genres .= $genre;
             }
+        }
+
+        return $genres;
+    }
+
+    private function generateTrackQuery()
+    {
+        return count($this->seeds["tracks"]) > 0 ? $this->seeds["tracks"][array_rand($this->seeds["tracks"])] : "";
+    }
+
+    private function getRecommendations()
+    {
+
+        if (!$this->validSeeds()) {
+            $genres = $this->generateGenreQuery(5);
+        } else {
+            // En primer lugar, debemos armar el seed que usará Spotify para generar las recomendaciones personalizadas de contenido al usuario 
+            // El tamaño límite del seed es de 5. Por lo tanto, elegí 2 artistas, 2 generos y 1 canción dentro del contenido más escuchado por el usuario.
+            $artists = $this->generateArtistQuery(2);
+            $genres = $this->generateGenreQuery(2);
+            $tracks = $this->generateTrackQuery();
         }
 
         $response = HttpClient::getInstance()->get("https://api.spotify.com/v1/recommendations?seed_artists=$artists&seed_tracks=$tracks&seed_genres=$genres&limit=10", [], ["Authorization" => "Bearer " . $this->access_token]);
@@ -284,7 +305,7 @@ class ExploreController extends Controller
                     "track_preview_url" => $track["preview_url"],
                 ];
 
-                if(strlen($ids) > 0 ){
+                if (strlen($ids) > 0) {
                     $ids .= "," . $track["artist_id"];
                 } else {
                     $ids .= $track["artist_id"];
@@ -293,7 +314,7 @@ class ExploreController extends Controller
                 array_push($recommendations, $track);
             }
         }
-        
+
         return $recommendations;
     }
 
@@ -327,7 +348,7 @@ class ExploreController extends Controller
                     "release_date" => $item["release_date"],
                 ];
 
-                if(strlen($ids) > 0 ){
+                if (strlen($ids) > 0) {
                     $ids .= "," . $album["artist_id"];
                 } else {
                     $ids .= $album["artist_id"];
