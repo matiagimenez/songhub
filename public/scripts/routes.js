@@ -176,10 +176,6 @@ export const routes = {
 			scriptPath: '/scripts/animations/menu-animation.js',
 		},
 		{
-			scriptName: 'modal-form',
-			scriptPath: '/scripts/components/modal-form/modal-form.js',
-		},
-		{
 			scriptName: 'favorite-button',
 			scriptPath:
 				'/scripts/components/favorite-button/favorite-button.js',
