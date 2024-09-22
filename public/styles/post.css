@@ -39,7 +39,6 @@ article.post {
 #comment-form-container form {
 	flex: 1;
 	margin: 0.5rem;
-	/* max-width: 900px; */
 }
 
 #comment-form-container form textarea {
@@ -86,17 +85,4 @@ article.post {
 	.main-post .post-time {
 		top: 72px;
 	}
-
-	/* #comment-form-container form textarea {
-		width: 80%;
-	}
-
-	#comment-form-container form div {
-		display: flex;
-	}
-
-	#comment-form-container form input[type="submit"] {
-		flex: 1;
-		margin-left: 10px;
-	} */
 }
