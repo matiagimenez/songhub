@@ -197,6 +197,10 @@ export const routes = {
 			scriptName: 'footer-animation',
 			scriptPath: '/scripts/animations/footer-animation.js',
 		},
+		{
+			scriptName: 'modal-form',
+			scriptPath: '/scripts/components/modal-form/modal-form.js',
+		},
 	],
 	'/user/profile': [
 		{

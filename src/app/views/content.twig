@@ -135,7 +135,7 @@
                 <p class="no-content-msg">No hay ningún post relacionado a este contenido</p>
             {% else %}
                 {% for post in mostRelevantPosts %}
-                    <article tabindex="0" class="post add-modal-access" id="post-{{ post.POST_ID }}" aria-posinset="{{ loop.index }}" aria-setsize="{{ posts|length }}" aria-labelledby="post-{{ post.POST_ID }}-song-title post-{{ post.POST_ID }}-artist-title" aria-describedby="post-content-{{ post.POST_ID }}">
+                    <article tabindex="0" class="post" id="post-{{ post.POST_ID }}" aria-posinset="{{ loop.index }}" aria-setsize="{{ posts|length }}" aria-labelledby="post-{{ post.POST_ID }}-song-title post-{{ post.POST_ID }}-artist-title" aria-describedby="post-content-{{ post.POST_ID }}">
                     <figure>
                         <section class="article-img-container">
                             <img loading="lazy" class="image-border" width="100px" height="100px" src="{{ post.COVER_ID }}" alt="Portada del álbum '{{ post.TITLE }}' {{ post.NAME }}" />
@@ -199,7 +199,7 @@
             <p class="no-content-msg">No hay ningún post relacionado a este contenido</p>
         {% else %}
             {% for post in mostRecentPosts %}
-                 <article tabindex="0" class="post add-modal-access" id="post-{{ post.POST_ID }}" aria-posinset="{{ loop.index }}" aria-setsize="{{ posts|length }}" aria-labelledby="post-{{ post.POST_ID }}-song-title post-{{ post.POST_ID }}-artist-title" aria-describedby="post-content-{{ post.POST_ID }}">
+                 <article tabindex="0" class="post" id="post-{{ post.POST_ID }}" aria-posinset="{{ loop.index }}" aria-setsize="{{ posts|length }}" aria-labelledby="post-{{ post.POST_ID }}-song-title post-{{ post.POST_ID }}-artist-title" aria-describedby="post-content-{{ post.POST_ID }}">
                     <figure>
                         <section class="article-img-container">
                             <img loading="lazy" class="image-border" width="100px" height="100px" src="{{ post.COVER_ID }}" alt="Portada del álbum '{{ post.TITLE }}' {{ post.NAME }}" />
