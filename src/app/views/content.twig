@@ -70,12 +70,22 @@
                 <button class="submit-button post-form-opener" id="{{ content.album_id }}" data-type="{{ content.type }}">Crear post</button>
             {% endif %}
             <section>
-                <button class="favorite-button toggle-favorite-content">
-                    <i class="ph ph-heart icon heart-icon"></i>
-                    <span class="visually-hidden">
-                        Agregar canción/álbum como favorita
-                    </span>
-                </button>
+                {% if content.type == 'track' %}
+                    <button class="favorite-button toggle-favorite-content" data-username="{{username}}" data-type="{{ content.type }}" data-content="{{ content.track_id }}">
+                        <i class="ph ph-heart icon heart-icon"></i>
+                        <span class="visually-hidden">
+                            Agregar canción como favorita
+                        </span>
+                    </button>
+                {% else %}
+                    <button class="favorite-button toggle-favorite-content" data-username="{{username}}" data-type="{{ content.type }}" data-content="{{ content.album_id }}">
+                        <i class="ph ph-heart icon heart-icon"></i>
+                        <span class="visually-hidden">
+                            Agregar álbum como favorita
+                        </span>
+                    </button>
+                {% endif %}
+                
                 {% if content.type == 'track' and content.track_spotify_url %}
                     <a class="spotify-button" href="{{ content.track_spotify_url }}" target="_blank">
                         <i class="ph ph-spotify-logo icon-lg spotify-icon"></i>

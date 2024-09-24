@@ -22,6 +22,11 @@ export const routes = {
 			scriptPath: '/scripts/components/modal-form/modal-form.js',
 		},
 		{
+			scriptName: 'favorite-button',
+			scriptPath:
+				'/scripts/components/favorite-button/favorite-button.js',
+		},
+		{
 			scriptName: 'searcher',
 			scriptPath: '/scripts/components/searcher/searcher.js',
 		},
@@ -32,11 +37,6 @@ export const routes = {
 		{
 			scriptName: 'logout-button',
 			scriptPath: '/scripts/components/logout-button/logout-button.js',
-		},
-		{
-			scriptName: 'favorite-button',
-			scriptPath:
-				'/scripts/components/favorite-button/favorite-button.js',
 		},
 		{
 			scriptName: 'footer-animation',
