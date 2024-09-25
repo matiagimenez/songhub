@@ -11,7 +11,7 @@ removeFavoriteButtons.forEach(async (button) => {
 
 			window.location.replace(`/user/profile`);
 		} catch (error) {
-			console.log(error);
+			console.error(error);
 			window.location.replace('/error/internal-error');
 		}
 	});

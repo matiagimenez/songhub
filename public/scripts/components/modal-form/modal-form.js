@@ -425,8 +425,6 @@ function createModal(data) {
 			values['RATING'] = score_rating;
 			values['TAGS'] = tags_list;
 
-			console.log(values);
-
 			if (score_rating === 0) {
 				view_error_message(
 					'No es posible postear una canción con 0 estrellas.'
@@ -525,7 +523,6 @@ function applyPostFormListeners(post_form_openers, create_post) {
 					'.submit-button.post-form-opener'
 				);
 
-				console.log(create_post_button);
 				content_id = create_post_button.getAttribute('id');
 				content_type = create_post_button.dataset.type;
 			}
@@ -538,11 +535,10 @@ function applyPostFormListeners(post_form_openers, create_post) {
 			})
 				.then((response) => response.json())
 				.then((data) => {
-					// console.log(data);
 					createModal(data);
 				})
 				.catch((error) => {
-					console.log(error);
+					console.error(error);
 				});
 		});
 	});

@@ -16,7 +16,7 @@ async function handleAddFavorite(contentId, contentType, username) {
 
 		window.location.replace(`/user?username=${username}`);
 	} catch (error) {
-		console.log(error);
+		console.error(error);
 		window.location.replace('/error/internal-error');
 	}
 }

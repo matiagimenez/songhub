@@ -57,8 +57,6 @@ window.addEventListener('scroll', () => {
 
 			const data = await response.json();
 
-			console.log(data);
-
 			removeLoader();
 
 			if (data.length === 0) {

@@ -22,7 +22,6 @@ function previousCardChange() {
 		}
 	} else {
 		cards[cards.length - 1].classList.add('active');
-		console.log(thumbs);
 		if (thumbs.length > 0) {
 			thumbs[activeCardIndex].classList.remove('active-thumb');
 			thumbs[cards.length - 1].classList.add('active-thumb');
