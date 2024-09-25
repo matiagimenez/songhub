@@ -1,258 +1,269 @@
 {% extends 'base.twig' %}
-{% block extra_head %}    
-    <script type="application/ld+json">
-        {% if content.type == 'track' %}
-            {
-                "@context": "https://schema.org",
-                "@type": "MusicRecording",
-                "name": {{ content.track_name }},
-                "byArtist": {
-                    "@type": "MusicGroup",
-                    "name": {{ content.artist_name }}
-                },
-                "album": {
-                    "@type": "MusicAlbum",
-                    "name": {{ content.album_name }}
-                },
-                "datePublished": {{ content.release_date }},
-                "url": {{ content.track_spotify_url }},
-                "image": {{ content.images[1].url }},
-            }
-        {% else %}
-            {
-                "@context": "https://schema.org",
-                "@type": "MusicAlbum",
-                "name": {{ content.album_name }},
-                "byArtist": {
-                    "@type": "MusicGroup",
-                    "name": {{ content.artist_name }}
-                },
-                "datePublished": {{ content.release_date }},
-                "url": {{ content.track_spotify_url }},
-                "image": {{ content.images[1].url }},
-            }
-        {% endif %}
-    </script>
+{% block extra_head %}
+	<script type="application/ld+json">
+		{% if content.type == 'track' %}
+			{
+															                "@context": "https://schema.org",
+															                "@type": "MusicRecording",
+															                "name":
+			{{ content.track_name }},
+															                "byArtist": {
+															                    "@type": "MusicGroup",
+															                    "name":
+			{{ content.artist_name }}
+			},
+															                "album": {
+															                    "@type": "MusicAlbum",
+															                    "name":
+			{{ content.album_name }}
+			},
+															                "datePublished":
+			{{ content.release_date }},
+															                "url":
+			{{ content.track_spotify_url }},
+															                "image":
+			{{ content.images[1].url }},
+															            }
+		{% else %}
+			{
+															                "@context": "https://schema.org",
+															                "@type": "MusicAlbum",
+															                "name":
+			{{ content.album_name }},
+															                "byArtist": {
+															                    "@type": "MusicGroup",
+															                    "name":
+			{{ content.artist_name }}
+			},
+															                "datePublished":
+			{{ content.release_date }},
+															                "url":
+			{{ content.track_spotify_url }},
+															                "image":
+			{{ content.images[1].url }},
+															            }
+		{% endif %}
+	</script>
 {% endblock %}
 {% block main %}
-    <section class="song-section">
-        <figure>
-            <img src="{{ content.images[1].url }}"
-                alt="{{ 'Portada del ' ~ content.type ~ ' ' ~ content.album_name ~ ' de ' ~ content.artist_name }}"
-                width="225px" height="225px" class="image-border" />
-            <figcaption>
-                {% if content.type == 'track' %}
-                    <p>Canción</p>
-                    <h2>{{ content.track_name }}</h2>
-                    <h3>{{ content.album_name }}</h3>
-                {% else %}
-                    <p>Álbum</p>
-                    <h2>{{ content.album_name }}</h2>
-                {% endif %}
-                <p class="artist-info">
-                    <img src="{{ content.artist_avatar_url }}" alt="{{ 'Imagen de perfil de ' ~ content.artist_name }}"
-                        height="55px" width="55px" />
-                    <a href="{{ content.artist_spotify_url }}" target="_blank">{{ content.artist_name }} · {{ content.release_date|split('-')[0] }}</a>
-                </p>
-            </figcaption>
-        </figure>
-        <section class="song-stats">
-            <h2>Valoración promedio </h2>
-            <p class="posts-amount">{{averageRating}}</p>
-            <p class="post-count">
-                {{postsCount}} posts
-            </p>
-        </section>
-        <section class="song-actions">
-            {% if content.type == 'track' %}
-                <button class="submit-button post-form-opener" id="{{ content.track_id }}" data-type="{{ content.type }}">Crear post</button>
-            {% else %}
-                <button class="submit-button post-form-opener" id="{{ content.album_id }}" data-type="{{ content.type }}">Crear post</button>
-            {% endif %}
-            <section>
-                {% if content.type == 'track' %}
-                    <button class="favorite-button toggle-favorite-content" data-username="{{username}}" data-type="{{ content.type }}" data-content="{{ content.track_id }}">
-                        <i class="ph ph-heart icon heart-icon"></i>
-                        <span class="visually-hidden">
-                            Agregar canción como favorita
-                        </span>
-                    </button>
-                {% else %}
-                    <button class="favorite-button toggle-favorite-content" data-username="{{username}}" data-type="{{ content.type }}" data-content="{{ content.album_id }}">
-                        <i class="ph ph-heart icon heart-icon"></i>
-                        <span class="visually-hidden">
-                            Agregar álbum como favorita
-                        </span>
-                    </button>
-                {% endif %}
-                
-                {% if content.type == 'track' and content.track_spotify_url %}
-                    <a class="spotify-button" href="{{ content.track_spotify_url }}" target="_blank">
-                        <i class="ph ph-spotify-logo icon-lg spotify-icon"></i>
-                        <span class="visually-hidden">
-                            Ver en spotify
-                        </span>
-                    </a>
-                    <button class="track-preview-button">
-                        <i class="ph ph-play-circle icon-lg play-icon"></i>
-                        <span class="visually-hidden">
-                            Reproducir pre-escucha de la canción
-                        </span>
-                    </button>
-                    <audio class="track-preview">
-                        <source src="{{ content.track_preview_url }}" type="audio/mp3">
-                        Tu navegador no soporta la etiqueta de audio.
-                    </audio>
-                {% else %}
-                    <a class="spotify-button" href="{{ content.album_spotify_url }}" target="_blank">
-                        <i class="ph ph-spotify-logo icon-lg spotify-icon"></i>
-                        <span class="visually-hidden">
-                            Ver en spotify
-                        </span>
-                    </a>
-                {% endif %}
-                {% if content.type == 'track' %}
-                    <a class="share-post" target="_blank" href="https://x.com/intent/post?text=¿Te gustaría dejar tu opinión sobre sobre {{ content.track_name ~ ' de ' ~ content.artist_name }}? Crea tu post en Songhub: {{currentUrl}}">
-                        <span class="visually-hidden">
-                            Compartir información de la canción en X (Twitter)
-                        </span>
-                    </a>
-                {% else %}
-                    <a class="share-post" target="_blank" href="https://x.com/intent/post?text=¿Te gustaría dejar tu opinión sobre sobre {{ content.album_name ~ ' de ' ~ content.artist_name }}? Crea tu post en Songhub: {{currentUrl}}">
-                        <span class="visually-hidden">
-                            Compartir información del album en X (Twitter)
-                        </span>
-                    </a>
-                {% endif %}
-            </section>
-        </section>
-    </section>
+	<section class="song-section">
+		<figure>
+			<img src="{{ content.images[1].url }}" alt="{{ 'Portada del ' ~ content.type ~ ' ' ~ content.album_name ~ ' de ' ~ content.artist_name }}" width="225px" height="225px" class="image-border"/>
+			<figcaption>
+				{% if content.type == 'track' %}
+					<p>Canción</p>
+					<h2>{{ content.track_name }}</h2>
+					<h3>{{ content.album_name }}</h3>
+				{% else %}
+					<p>Álbum</p>
+					<h2>{{ content.album_name }}</h2>
+				{% endif %}
+				<p class="artist-info">
+					<img src="{{ content.artist_avatar_url }}" alt="{{ 'Imagen de perfil de ' ~ content.artist_name }}" height="55px" width="55px"/>
+					<a href="{{ content.artist_spotify_url }}" target="_blank">{{ content.artist_name }}
+						·
+						{{ content.release_date|split('-')[0] }}</a>
+				</p>
+			</figcaption>
+		</figure>
+		<section class="song-stats">
+			<h2>Valoración promedio
+			</h2>
+			<p class="posts-amount">{{averageRating}}</p>
+			<p class="post-count">
+				{{postsCount}}
+				posts
+			</p>
+		</section>
+		<section class="song-actions">
+			{% if content.type == 'track' %}
+				<button class="submit-button post-form-opener" id="{{ content.track_id }}" data-type="{{ content.type }}">Crear post</button>
+			{% else %}
+				<button class="submit-button post-form-opener" id="{{ content.album_id }}" data-type="{{ content.type }}">Crear post</button>
+			{% endif %}
+			<section>
+				{% if content.type == 'track' %}
+					<button class="favorite-button toggle-favorite-content" data-username="{{username}}" data-type="{{ content.type }}" data-content="{{ content.track_id }}">
+						<i class="ph ph-heart icon heart-icon"></i>
+						<span class="visually-hidden">
+							Agregar canción como favorita
+						</span>
+					</button>
+				{% else %}
+					<button class="favorite-button toggle-favorite-content" data-username="{{username}}" data-type="{{ content.type }}" data-content="{{ content.album_id }}">
+						<i class="ph ph-heart icon heart-icon"></i>
+						<span class="visually-hidden">
+							Agregar álbum como favorita
+						</span>
+					</button>
+				{% endif %}
 
-    <section class="most-popular-posts">
-        <h2 class="section-title">Publicaciones más populares</h2>
-        <section>
-            {% if mostRelevantPosts is empty %}
-                <p class="no-content-msg">No hay ningún post relacionado a este contenido</p>
-            {% else %}
-                {% for post in mostRelevantPosts %}
-                    <article tabindex="0" class="post" id="post-{{ post.POST_ID }}" aria-posinset="{{ loop.index }}" aria-setsize="{{ posts|length }}" aria-labelledby="post-{{ post.POST_ID }}-song-title post-{{ post.POST_ID }}-artist-title" aria-describedby="post-content-{{ post.POST_ID }}">
-                    <figure>
-                        <section class="article-img-container">
-                            <img loading="lazy" class="image-border" width="100px" height="100px" src="{{ post.COVER_ID }}" alt="Portada del álbum '{{ post.TITLE }}' {{ post.NAME }}" />
-                        </section>
-                        <section class="user-info">
-                            <img loading="lazy" class="user-img" height="25px" width="25px" src="{{ post.USER.fields.SPOTIFY_AVATAR }}" alt="Imagen de perfil de '{{ post.USER.fields.USERNAME }}'" />
-                            <p class="user-name">
-                                <a href="/user?username={{post.USER.fields.USERNAME}}">{{ post.USER.fields.NAME }}</a>
-                                <span>${{ post.USER.fields.USERNAME }}</span>
-                            </p>
-                            <p class="post-time">{{ post.TIME_AGO }}</p>
-                        </section>
-                        <figcaption>
-                            <h3 class="song-title" id="post-{{ post.POST_ID }}-song-title">
-                                <a href="/content?id={{post.CONTENT_ID}}&type={{ post.TYPE == 't' ? 'track' : 'album' }}">{{ post.TITLE }}</a>
-                            </h3>
-                            <h4 class="artist-title" id="post-{{ post.POST_ID }}-artist-title">{{ post.NAME }}</h4>
-                            {% for tag in post.TAGS %}
-                                <span class="tag">{{ tag.TEXT }}</span>
-                            {% endfor %}
-                            <p class="stars">
-                                {% for i in 1..5 %}
-                                    {% if i <= post.RATING %}
-                                        ★
-                                    {% else %}
-                                        ☆
-                                    {% endif %}
-                                {% endfor %}
-                            </p>
-                        </figcaption>
-                    </figure>
-                    <a href="/post?id={{post.POST_ID}}">
-                        <section class="post-content" id="post-content-{{ post.POST_ID }}">
-                            <p>{{ post.DESCRIPTION }}</p>
-                        </section>
-                    </a>
-                    <footer>
-                        <section class="reaction-container comment-container">
-                            <a href="/post?id={{post.POST_ID}}">
-                                <i class="ph ph-chats-circle icon comment-icon"></i>
-                                <span class="visually-hidden">Comentar post</span>
-                            </a>
-                        </section>
-                        <section class="reaction-container like-container">
-                            <button class="heart-button">
-                                <i class="ph ph-heart icon heart-icon"></i>
-                                <span class="visually-hidden">Dar favorito al post</span>
-                            </button>
-                            <p>{{ post.LIKES }}</p>
-                        </section>
-                    </footer>
-                </article>
-                {% endfor %}
-            {% endif %}
-        </section>
-    </section>
+				{% if content.type == 'track' and content.track_spotify_url %}
+					<a class="spotify-button" href="{{ content.track_spotify_url }}" target="_blank">
+						<i class="ph ph-spotify-logo icon-lg spotify-icon"></i>
+						<span class="visually-hidden">
+							Ver en spotify
+						</span>
+					</a>
+					<button class="track-preview-button">
+						<i class="ph ph-play-circle icon-lg play-icon"></i>
+						<span class="visually-hidden">
+							Reproducir pre-escucha de la canción
+						</span>
+					</button>
+					<audio class="track-preview">
+						<source src="{{ content.track_preview_url }}" type="audio/mp3">
+						Tu navegador no soporta la etiqueta de audio.
+					</audio>
+				{% else %}
+					<a class="spotify-button" href="{{ content.album_spotify_url }}" target="_blank">
+						<i class="ph ph-spotify-logo icon-lg spotify-icon"></i>
+						<span class="visually-hidden">
+							Ver en spotify
+						</span>
+					</a>
+				{% endif %}
+				{% if content.type == 'track' %}
+					<a class="share-post" target="_blank" href="https://x.com/intent/post?text=¿Te gustaría dejar tu opinión sobre sobre {{ content.track_name ~ ' de ' ~ content.artist_name }}? Crea tu post en Songhub: {{currentUrl}}">
+						<span class="visually-hidden">
+							Compartir información de la canción en X (Twitter)
+						</span>
+					</a>
+				{% else %}
+					<a class="share-post" target="_blank" href="https://x.com/intent/post?text=¿Te gustaría dejar tu opinión sobre sobre {{ content.album_name ~ ' de ' ~ content.artist_name }}? Crea tu post en Songhub: {{currentUrl}}">
+						<span class="visually-hidden">
+							Compartir información del album en X (Twitter)
+						</span>
+					</a>
+				{% endif %}
+			</section>
+		</section>
+	</section>
 
-    <section class="most-recent-posts">
-        <h2 class="section-title">Publicaciones más recientes</h2>
-        {% if mostRecentPosts is empty %}
-            <p class="no-content-msg">No hay ningún post relacionado a este contenido</p>
-        {% else %}
-            {% for post in mostRecentPosts %}
-                 <article tabindex="0" class="post" id="post-{{ post.POST_ID }}" aria-posinset="{{ loop.index }}" aria-setsize="{{ posts|length }}" aria-labelledby="post-{{ post.POST_ID }}-song-title post-{{ post.POST_ID }}-artist-title" aria-describedby="post-content-{{ post.POST_ID }}">
-                    <figure>
-                        <section class="article-img-container">
-                            <img loading="lazy" class="image-border" width="100px" height="100px" src="{{ post.COVER_ID }}" alt="Portada del álbum '{{ post.TITLE }}' {{ post.NAME }}" />
-                        </section>
-                        <section class="user-info">
-                            <img loading="lazy" class="user-img" height="25px" width="25px" src="{{ post.USER.fields.SPOTIFY_AVATAR }}" alt="Imagen de perfil de '{{ post.USER.fields.USERNAME }}'" />
-                            <p class="user-name">
-                                <a href="/user?username={{post.USER.fields.USERNAME}}">{{ post.USER.fields.NAME }}</a>
-                                <span>${{ post.USER.fields.USERNAME }}</span>
-                            </p>
-                            <p class="post-time">{{ post.TIME_AGO }}</p>
-                        </section>
-                        <figcaption>
-                            <h3 class="song-title" id="post-{{ post.POST_ID }}-song-title">
-                                <a href="/content?id={{post.CONTENT_ID}}&type={{ post.TYPE == 't' ? 'track' : 'album' }}">{{ post.TITLE }}</a>
-                            </h3>
-                            <h4 class="artist-title" id="post-{{ post.POST_ID }}-artist-title">{{ post.NAME }}</h4>
-                            {% for tag in post.TAGS %}
-                                <span class="tag">{{ tag.TEXT }}</span>
-                            {% endfor %}
-                            <p class="stars">
-                                {% for i in 1..5 %}
-                                    {% if i <= post.RATING %}
-                                        ★
-                                    {% else %}
-                                        ☆
-                                    {% endif %}
-                                {% endfor %}
-                            </p>
-                        </figcaption>
-                    </figure>
-                    <a href="/post?id={{post.POST_ID}}">
-                        <section class="post-content" id="post-content-{{ post.POST_ID }}">
-                            <p>{{ post.DESCRIPTION }}</p>
-                        </section>
-                    </a>
-                    <footer>
-                        <section class="reaction-container comment-container">
-                            <a href="/post?id={{post.POST_ID}}">
-                                <i class="ph ph-chats-circle icon comment-icon"></i>
-                                <span class="visually-hidden">Comentar post</span>
-                            </a>
-                        </section>
-                        <section class="reaction-container like-container">
-                            <button class="heart-button">
-                                <i class="ph ph-heart icon heart-icon"></i>
-                                <span class="visually-hidden">Dar favorito al post</span>
-                            </button>
-                            <p>{{ post.LIKES }}</p>
-                        </section>
-                    </footer>
-                </article>
-            {% endfor %}
-        {% endif %}
-{% endblock %}
-        
+	<section class="most-popular-posts">
+		<h2 class="section-title">Publicaciones más populares</h2>
+		<section>
+			{% if mostRelevantPosts is empty %}
+				<p class="no-content-msg">No hay ningún post relacionado a este contenido</p>
+			{% else %}
+				{% for post in mostRelevantPosts %}
+					<article tabindex="0" class="post" id="post-{{ post.POST_ID }}" aria-posinset="{{ loop.index }}" aria-setsize="{{ posts|length }}" aria-labelledby="post-{{ post.POST_ID }}-song-title post-{{ post.POST_ID }}-artist-title" aria-describedby="post-content-{{ post.POST_ID }}">
+						<figure>
+							<section class="article-img-container">
+								<img loading="lazy" class="image-border" width="100px" height="100px" src="{{ post.COVER_ID }}" alt="Portada del álbum '{{ post.TITLE }}' {{ post.NAME }}"/>
+							</section>
+							<section class="user-info">
+								<img loading="lazy" class="user-img" height="25px" width="25px" src="{{ post.USER.fields.SPOTIFY_AVATAR }}" alt="Imagen de perfil de '{{ post.USER.fields.USERNAME }}'"/>
+								<p class="user-name">
+									<a href="/user?username={{post.USER.fields.USERNAME}}">{{ post.USER.fields.NAME }}</a>
+									<span>${{ post.USER.fields.USERNAME }}</span>
+								</p>
+								<p class="post-time">{{ post.TIME_AGO }}</p>
+							</section>
+							<figcaption>
+								<h3 class="song-title" id="post-{{ post.POST_ID }}-song-title">
+									<a href="/content?id={{post.CONTENT_ID}}&type={{ post.TYPE == 't' ? 'track' : 'album' }}">{{ post.TITLE }}</a>
+								</h3>
+								<h4 class="artist-title" id="post-{{ post.POST_ID }}-artist-title">{{ post.NAME }}</h4>
+								{% for tag in post.TAGS %}
+									<span class="tag">{{ tag.TEXT }}</span>
+								{% endfor %}
+								<p class="stars">
+									{% for i in 1..5 %}
+										{% if i <= post.RATING %}
+											★
+										{% else %}
+											☆
+										{% endif %}
+									{% endfor %}
+								</p>
+							</figcaption>
+						</figure>
+						<a href="/post?id={{post.POST_ID}}">
+							<section class="post-content" id="post-content-{{ post.POST_ID }}">
+								<p>{{ post.DESCRIPTION }}</p>
+							</section>
+						</a>
+						<footer>
+							<section class="reaction-container comment-container">
+								<a href="/post?id={{post.POST_ID}}">
+									<i class="ph ph-chats-circle icon comment-icon"></i>
+									<span class="visually-hidden">Comentar post</span>
+								</a>
+							</section>
+							<section class="reaction-container like-container">
+								<button class="heart-button">
+									<i class="{{ post.LIKED ? " ph-fill active " : " ph " }} ph-heart icon heart-icon"></i>
+									<span class="visually-hidden">Dar favorito al post</span>
+								</button>
+								<p>{{ post.LIKES }}</p>
+							</section>
+						</footer>
+					</article>
+				{% endfor %}
+			{% endif %}
+		</section>
+	</section>
+
+	<section class="most-recent-posts">
+		<h2 class="section-title">Publicaciones más recientes</h2>
+		{% if mostRecentPosts is empty %}
+			<p class="no-content-msg">No hay ningún post relacionado a este contenido</p>
+		{% else %}
+			{% for post in mostRecentPosts %}
+				<article tabindex="0" class="post" id="post-{{ post.POST_ID }}" aria-posinset="{{ loop.index }}" aria-setsize="{{ posts|length }}" aria-labelledby="post-{{ post.POST_ID }}-song-title post-{{ post.POST_ID }}-artist-title" aria-describedby="post-content-{{ post.POST_ID }}">
+					<figure>
+						<section class="article-img-container">
+							<img loading="lazy" class="image-border" width="100px" height="100px" src="{{ post.COVER_ID }}" alt="Portada del álbum '{{ post.TITLE }}' {{ post.NAME }}"/>
+						</section>
+						<section class="user-info">
+							<img loading="lazy" class="user-img" height="25px" width="25px" src="{{ post.USER.fields.SPOTIFY_AVATAR }}" alt="Imagen de perfil de '{{ post.USER.fields.USERNAME }}'"/>
+							<p class="user-name">
+								<a href="/user?username={{post.USER.fields.USERNAME}}">{{ post.USER.fields.NAME }}</a>
+								<span>${{ post.USER.fields.USERNAME }}</span>
+							</p>
+							<p class="post-time">{{ post.TIME_AGO }}</p>
+						</section>
+						<figcaption>
+							<h3 class="song-title" id="post-{{ post.POST_ID }}-song-title">
+								<a href="/content?id={{post.CONTENT_ID}}&type={{ post.TYPE == 't' ? 'track' : 'album' }}">{{ post.TITLE }}</a>
+							</h3>
+							<h4 class="artist-title" id="post-{{ post.POST_ID }}-artist-title">{{ post.NAME }}</h4>
+							{% for tag in post.TAGS %}
+								<span class="tag">{{ tag.TEXT }}</span>
+							{% endfor %}
+							<p class="stars">
+								{% for i in 1..5 %}
+									{% if i <= post.RATING %}
+										★
+									{% else %}
+										☆
+									{% endif %}
+								{% endfor %}
+							</p>
+						</figcaption>
+					</figure>
+					<a href="/post?id={{post.POST_ID}}">
+						<section class="post-content" id="post-content-{{ post.POST_ID }}">
+							<p>{{ post.DESCRIPTION }}</p>
+						</section>
+					</a>
+					<footer>
+						<section class="reaction-container comment-container">
+							<a href="/post?id={{post.POST_ID}}">
+								<i class="ph ph-chats-circle icon comment-icon"></i>
+								<span class="visually-hidden">Comentar post</span>
+							</a>
+						</section>
+						<section class="reaction-container like-container">
+							<button class="heart-button">
+								<i class="{{ post.LIKED ? " ph-fill active " : " ph " }} ph-heart icon heart-icon"></i>
+								<span class="visually-hidden">Dar favorito al post</span>
+							</button>
+							<p>{{ post.LIKES }}</p>
+						</section>
+					</footer>
+				</article>
+			{% endfor %}
+		{% endif %}
+	{% endblock %}

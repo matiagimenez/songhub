@@ -87,7 +87,7 @@ class AuthController extends Controller
         $client_id = Config::getInstance()->get("SPOTIFY_CLIENT_ID");
         $url = 'https://accounts.spotify.com/authorize';
 
-        //? Esta es la URL a la que nos redirige spotify una vez que el usuario fue autorizado}
+        // Esta es la URL a la que nos redirige spotify una vez que el usuario fue autorizado
         $redirect_uri = $this->get_redirect_uri();
         $redirect_uri = $redirect_uri . "/spotify/tokens";
 

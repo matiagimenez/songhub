@@ -215,7 +215,8 @@ class PostRepository extends Repository
         return $response;
     }
 
-    public function getMostRelevantContentPosts($contentId) {
+    public function getMostRelevantContentPosts($user_id, $contentId)
+    { 
         try {
             $posts = $this->queryBuilder->selectWithMultipleJoinsInDescOrder(
                 $this->table,
@@ -247,8 +248,9 @@ class PostRepository extends Repository
                 $post["TAGS"] = $tags;
                 $post['TIME_AGO'] = $this->timeAgo($post['DATETIME']);
                 $post['USER'] = $userRepository->getUser("USER_ID", $post["USER_ID"]);
+                $isLiked = $this->isLikedPost($user_id, $post["POST_ID"]);
+                $post["LIKED"] = $isLiked;
             }
-    
             return $posts;
         } catch (Exception $exception) {
             $this->logger->error(
@@ -263,7 +265,8 @@ class PostRepository extends Repository
         }
     }
 
-    public function getMostRecentContentPosts($contentId) {
+    public function getMostRecentContentPosts($user_id,$contentId) 
+    {
         try {
             $posts = $this->queryBuilder->selectWithMultipleJoinsInDescOrder(
                 $this->table,
@@ -294,6 +297,8 @@ class PostRepository extends Repository
                 $post["TAGS"] = $tags;
                 $post['TIME_AGO'] = $this->timeAgo($post['DATETIME']);
                 $post['USER'] = $userRepository->getUser("USER_ID", $post["USER_ID"]);
+                $isLiked = $this->isLikedPost($user_id, $post["POST_ID"]);
+                $post["LIKED"] = $isLiked;
             }
     
             return $posts;

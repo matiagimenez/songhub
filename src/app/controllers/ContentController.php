@@ -10,6 +10,7 @@ use Songhub\core\HttpClient;
 use Songhub\app\repositories\ContentRepository;
 use Songhub\app\controllers\ArtistController;
 use Songhub\app\controllers\CoverController;
+use Songhub\app\repositories\UserRepository;
 
 class ContentController extends Controller
 {
@@ -45,10 +46,19 @@ class ContentController extends Controller
         $type = $this->sanitizeUserInput(Request::getInstance()->getParameter("type", "GET"));
         $content = $this->fetchContentData($id, $type);
         $stats = $this->repository->getAverageRating($id);
-
-        $posts = $this->repository->getContentPosts($id);
+        $userInstance = $this->getCurrentUser();
+        $posts = $this->repository->getContentPosts($userInstance->fields["USER_ID"], $id);
      
         Renderer::getInstance()->content($content, $posts["relevant"], $posts["recent"], $stats["average"], $stats["count"]);
+    }
+
+    public function getCurrentUser()
+    {
+        $userRepository = new UserRepository();
+
+        $currentUser = $userRepository->getUser("USERNAME", Session::getInstance()->get("username"));
+
+        return $currentUser;
     }
 
     public function getContentData() {

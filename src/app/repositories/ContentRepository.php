@@ -27,11 +27,11 @@ class ContentRepository extends Repository
         }
     }
 
-    public function getContentPosts($contentId){
+    public function getContentPosts($userId, $contentId){
        $postRepository = new PostRepository();
        $postRepository->setQueryBuilder(QueryBuilder::getInstance());
-       $mostRelevantPosts = $postRepository->getMostRelevantContentPosts($contentId);
-       $mostRecentPosts = $postRepository->getMostRecentContentPosts($contentId);
+       $mostRelevantPosts = $postRepository->getMostRelevantContentPosts($userId, $contentId);
+       $mostRecentPosts = $postRepository->getMostRecentContentPosts($userId, $contentId);
 
        return ["recent" => $mostRecentPosts, "relevant" => $mostRelevantPosts];
     }
