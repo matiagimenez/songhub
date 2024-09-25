@@ -56,6 +56,12 @@ export PATH=$PATH:~/.config/composer/vendor/bin
 CREATE DATABASE <DB_NAME>
 ```
 
+Como alternativa, si posee docker instalado puede utilizar docker-compose para iniciar el contenedor MySQL:
+
+```bash
+docker-compose up -d
+```
+
 6. Ejecutar la migration de la base de datos
 
 ```bash
