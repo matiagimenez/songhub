@@ -3,45 +3,45 @@
 	<script type="application/ld+json">
 		{% if content.type == 'track' %}
 			{
-															                "@context": "https://schema.org",
-															                "@type": "MusicRecording",
-															                "name":
+																		                "@context": "https://schema.org",
+																		                "@type": "MusicRecording",
+																		                "name":
 			{{ content.track_name }},
-															                "byArtist": {
-															                    "@type": "MusicGroup",
-															                    "name":
+																		                "byArtist": {
+																		                    "@type": "MusicGroup",
+																		                    "name":
 			{{ content.artist_name }}
 			},
-															                "album": {
-															                    "@type": "MusicAlbum",
-															                    "name":
+																		                "album": {
+																		                    "@type": "MusicAlbum",
+																		                    "name":
 			{{ content.album_name }}
 			},
-															                "datePublished":
+																		                "datePublished":
 			{{ content.release_date }},
-															                "url":
+																		                "url":
 			{{ content.track_spotify_url }},
-															                "image":
+																		                "image":
 			{{ content.images[1].url }},
-															            }
+																		            }
 		{% else %}
 			{
-															                "@context": "https://schema.org",
-															                "@type": "MusicAlbum",
-															                "name":
+																		                "@context": "https://schema.org",
+																		                "@type": "MusicAlbum",
+																		                "name":
 			{{ content.album_name }},
-															                "byArtist": {
-															                    "@type": "MusicGroup",
-															                    "name":
+																		                "byArtist": {
+																		                    "@type": "MusicGroup",
+																		                    "name":
 			{{ content.artist_name }}
 			},
-															                "datePublished":
+																		                "datePublished":
 			{{ content.release_date }},
-															                "url":
+																		                "url":
 			{{ content.track_spotify_url }},
-															                "image":
+																		                "image":
 			{{ content.images[1].url }},
-															            }
+																		            }
 		{% endif %}
 	</script>
 {% endblock %}
@@ -192,7 +192,7 @@
 								</a>
 							</section>
 							<section class="reaction-container like-container">
-								<button class="heart-button">
+								<button class="heart-button" post-id="{{ post.POST_ID }}">
 									<i class="{{ post.LIKED ? " ph-fill active " : " ph " }} ph-heart icon heart-icon"></i>
 									<span class="visually-hidden">Dar favorito al post</span>
 								</button>
@@ -256,7 +256,7 @@
 							</a>
 						</section>
 						<section class="reaction-container like-container">
-							<button class="heart-button">
+							<button class="heart-button" post-id="{{ post.POST_ID }}">
 								<i class="{{ post.LIKED ? " ph-fill active " : " ph " }} ph-heart icon heart-icon"></i>
 								<span class="visually-hidden">Dar favorito al post</span>
 							</button>

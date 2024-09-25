@@ -199,6 +199,10 @@ export const routes = {
       scriptName: "modal-form",
       scriptPath: "/scripts/components/modal-form/modal-form.js",
     },
+    {
+      scriptName: "likes-handler",
+      scriptPath: "/scripts/components/likes-handler/likes-handler.js",
+    },
   ],
   "/user/profile": [
     {
