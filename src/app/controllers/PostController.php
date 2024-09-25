@@ -221,7 +221,6 @@ class PostController extends Controller
         }
 
         $user = $this->getCurrentUser();
-
         $posts = $this->repository->getUserFeedPosts($user->fields["USER_ID"], $page);
 
 
@@ -234,6 +233,8 @@ class PostController extends Controller
     public function getMoreUserProfilePosts()
     {
         $page = $this->sanitizeUserInput(Request::getInstance()->getParameter("page", "GET"));
+        $username = $this->sanitizeUserInput(Request::getInstance()->getParameter("username", "GET"));
+
         $page = (is_numeric($page) && $page > 0) ? (int)$page : 0;
 
         if (is_null(Session::getInstance()->get("access_token"))) {
@@ -241,7 +242,9 @@ class PostController extends Controller
             exit;
         }
 
-        $user = $this->getCurrentUser();
+        $userRepository = new UserRepository();
+        $user = $userRepository->getUser("USERNAME", $username);
+
 
         $posts = $this->repository->getPostsFromUser($user->fields["USER_ID"], $page);
 

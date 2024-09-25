@@ -39,9 +39,13 @@ window.addEventListener('scroll', () => {
 		let endpoint = '';
 
 		if (window.location.href.includes('user')) {
-			endpoint = '/post/profile';
+			const urlParams = new URLSearchParams(window.location.search);
+			const username = urlParams.get('username');
+			endpoint = `/post/profile?page=${
+				currentPage + 1
+			}&username=${username}`;
 		} else {
-			endpoint = '/post/following';
+			endpoint = `/post/following?page=${currentPage + 1}`;
 		}
 
 		if (!endpoint) return;
@@ -49,9 +53,11 @@ window.addEventListener('scroll', () => {
 		feed.setAttribute('aria-busy', true);
 
 		try {
-			const response = await fetch(`${endpoint}?page=${currentPage + 1}`);
+			const response = await fetch(endpoint);
 
 			const data = await response.json();
+
+			console.log(data);
 
 			removeLoader();
 
