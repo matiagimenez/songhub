@@ -23,6 +23,10 @@ composer install
 3. Clonar el archivo .env.example y renombrarlo a .env. Dentro del archivo generado, configurar los valores para las variables de entorno.
 
 ```
+# Configuración del servidor
+HOST=localhost
+PORT=8888
+
 # Ver niveles de log admitidos por Monolog
 # https://seldaek.github.io/monolog/doc/01-usage.html#log-levels
 LOG_LEVEL = DEBUG
@@ -71,5 +75,5 @@ phinx migrate -e development
 7. Levantar el servidor standalone
 
 ```bash
-php - S localhost:8000 -t public/
+php - S localhost:8888 -t public/
 ```
