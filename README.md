@@ -4,6 +4,11 @@
 
 ### [Instrucciones de ejecucion](https://github.com/matiasgimenezdev/trabajo-integrador-paw/blob/main/docs/INSTRUCTIONS.md)
 
+### Despliegue (es la misma aplicación disponible en dos lugares)
+
+-   #### [Link 1](https://7053-191-80-113-188.ngrok-free.app)
+-   #### [Link 2](https://78ca-190-15-233-40.ngrok-free.app)
+
 ### 1. Visión general
 
 La propuesta es desarrollar un sitio web que combine características de un blog y una red social, permitiendo a los usuarios realizar reviews de música, ya sea sobre canciones o álbumes. El objetivo principal es brindar a los usuarios una plataforma interactiva donde puedan compartir sus opiniones sobre música y descubrir nuevas recomendaciones a partir de las opiniones de otros usaurios.
