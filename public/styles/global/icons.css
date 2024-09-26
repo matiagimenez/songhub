@@ -71,6 +71,10 @@
 	z-index: -1;
 }
 
+.heart-icon {
+	color: var(--color-white);
+}
+
 .heart-icon.active {
 	color: var(--color-red);
 }
