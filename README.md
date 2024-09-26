@@ -7,7 +7,7 @@
 ### Despliegue (es la misma aplicación disponible en dos lugares)
 
 -   #### [Link 1](https://7053-191-80-113-188.ngrok-free.app)
--   #### [Link 2](https://78ca-190-15-233-40.ngrok-free.app)
+-   #### [Link 2](https://e77c-190-15-233-40.ngrok-free.app)
 
 ### 1. Visión general
 
